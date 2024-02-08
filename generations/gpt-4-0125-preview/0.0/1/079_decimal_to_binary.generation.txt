@@ -1,0 +1,13 @@
+```julia
+function decimal_to_binary(decimal::Int)::String
+    # Convert the decimal number to binary
+    binary_str = string(decimal, base=2)
+    
+    # Add the extra characters 'db' at the beginning and at the end
+    formatted_binary_str = "db" * binary_str * "db"
+    
+    return formatted_binary_str
+end
+```
+
+This Julia function takes an integer `decimal` as input and returns a string representing the binary format of the input number, with 'db' added at the beginning and at the end of the binary string. The `string` function with `base=2` is used to convert the decimal number to its binary representation.

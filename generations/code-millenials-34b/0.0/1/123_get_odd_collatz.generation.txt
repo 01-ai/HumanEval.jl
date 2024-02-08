@@ -1,0 +1,19 @@
+
+
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    collatz = BigInt[]
+    while n != 1
+        if n % 2 != 0
+            push!(collatz, n)
+        end
+        n = n % 2 == 0 ? div(n, 2) : 3n + 1
+    end
+    sort(collatz)
+end
+
+# Test cases
+@assert get_odd_collatz(5) == [1, 5]
+@assert get_odd_collatz(10) == [1, 5]
+@assert get_odd_collatz(15) == [1, 5, 15]
+@assert get_odd_collatz(20) == [1, 5, 15]
+@assert get_odd_collatz(25) == [1, 5, 15, 25]

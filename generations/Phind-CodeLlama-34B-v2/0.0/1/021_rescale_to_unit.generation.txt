@@ -1,0 +1,8 @@
+
+
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    min_val = minimum(numbers)
+    max_val = maximum(numbers)
+    range = max_val - min_val
+    return (numbers .- min_val) ./ range
+end

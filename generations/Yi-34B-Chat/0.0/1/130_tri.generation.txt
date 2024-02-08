@@ -1,0 +1,28 @@
+```julia
+function tri(n::Int)::Vector{Int}
+    # Base cases
+    if n == 1
+        return [1]
+    end
+    if n == 2
+        return [1, 1]
+    end
+
+    # Recursive case
+    if n % 2 == 0
+        # Even n
+        return [1] + tri(n - 1)
+    else
+        # Odd n
+        return [1, 2, 1] + tri(n - 3)
+    end
+end
+```
+
+```jldoctest
+julia> tri(3)
+3-element Vector{Int64}:
+ 1
+ 2
+ 6
+```

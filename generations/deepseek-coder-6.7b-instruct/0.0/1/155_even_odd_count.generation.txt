@@ -1,0 +1,20 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function even_odd_count(num::Int)::Tuple{Int, Int}
+    even_count = 0
+    odd_count = 0
+    for digit in abs(num)  # iterate over each digit in the number
+        if digit % 2 == 0
+            even_count += 1
+        else
+            odd_count += 1
+        end
+    end
+    return (even_count, odd_count)
+end
+```
+
+This function works by iterating over each digit in the absolute value of the input number. If the digit is even, it increments the `even_count` variable; if the digit is odd, it increments the `odd_count` variable. Finally, it returns a tuple containing the counts of even and odd digits.
+
+Note: The function uses the `abs` function to ensure that it works correctly with negative numbers. This is because the problem statement specifies that the function should return counts of even and odd digits in the "digits" of the number, regardless of whether the number is positive or negative.

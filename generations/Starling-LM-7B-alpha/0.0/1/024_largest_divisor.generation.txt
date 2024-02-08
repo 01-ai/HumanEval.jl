@@ -1,0 +1,9 @@
+ function largest_divisor(n::Int)::Int
+    divisors = []
+    for i in 2:(n-1)
+        if n % i == 0
+            push!(divisors, i)
+        end
+    end
+    return maximum(divisors)
+end

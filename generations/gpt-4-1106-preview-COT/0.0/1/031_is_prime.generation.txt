@@ -1,0 +1,32 @@
+To implement the `is_prime` function in Julia, we will follow these steps:
+
+1. Check if `n` is less than 2, which is not a prime number, and return `false`.
+2. Check if `n` is 2, which is the only even prime number, and return `true`.
+3. Check if `n` is even, and if so, return `false` because all even numbers greater than 2 are not prime.
+4. Iterate from 3 to the square root of `n` (inclusive), incrementing by 2 (since we've already checked for even numbers).
+5. For each number `i` in the iteration, check if `n` is divisible by `i`. If it is, return `false`.
+6. If no divisors are found, return `true` because `n` is prime.
+
+Now, let's write the code for the `is_prime` function:
+
+```julia
+function is_prime(n::Int)
+    if n < 2
+        return false
+    elseif n == 2
+        return true
+    elseif n % 2 == 0
+        return false
+    end
+
+    for i in 3:2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+
+    return true
+end
+```
+
+This function should work correctly for all integers, and it uses an efficient approach by only checking up to the square root of `n` and skipping even numbers after 2.

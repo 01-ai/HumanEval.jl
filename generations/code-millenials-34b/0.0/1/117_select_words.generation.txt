@@ -1,0 +1,19 @@
+
+
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    isempty(s) && return String[]
+    words = split(s)
+    selected_words = String[]
+    for word in words
+        n_consonants = sum(c in ('b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z') for c in lowercase(word))
+        n_consonants == n && push!(selected_words, word)
+    end
+    return selected_words
+end
+
+# Test cases
+@assert select_words("Mary had a little lamb", 4) == ["little"]
+@assert select_words("Mary had a little lamb", 3) == ["Mary", "lamb"]
+@assert select_words("simple white space", 2) == String[]
+@assert select_words("Hello world", 4) == ["world"]
+@assert select_words("Uncle sam", 3) == ["Uncle"]

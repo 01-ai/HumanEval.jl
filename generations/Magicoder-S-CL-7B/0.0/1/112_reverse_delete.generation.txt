@@ -1,0 +1,11 @@
+
+
+function reverse_delete(s::String, c::String)::Tuple{String, Bool}
+    # Delete all characters in s that are equal to any character in c
+    s = replace(s, c => "")
+
+    # Check if the result string is palindrome
+    is_palindrome = s == reverse(s)
+
+    return (s, is_palindrome)
+end

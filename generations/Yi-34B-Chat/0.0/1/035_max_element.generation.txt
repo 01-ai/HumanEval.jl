@@ -1,0 +1,22 @@
+```julia
+function max_element(xs)
+    # Base case: empty list
+    if length(xs) == 0
+        throw(ArgumentError("Empty list cannot have a maximum element"))
+    end
+
+    # Initialize the maximum element to the first element of the list
+    max_so_far = xs[1]
+
+    # Iterate through the list and update the maximum element
+    for x in xs[2:end]
+        if x > max_so_far
+            max_so_far = x
+        end
+    end
+
+    return max_so_far
+end
+```
+
+This function `max_element` takes a list `xs` and returns the maximum element in the list. It handles the base case of an empty list by throwing an `ArgumentError`, as there is no maximum element in an empty list. It then initializes the maximum element to the first element of the list and iterates through the rest of the list, updating the maximum element if a larger value is encountered. Finally, it returns the maximum element found.

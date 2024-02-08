@@ -1,0 +1,19 @@
+
+
+```julia
+function is_happy(s::String)::Bool
+    if length(s) < 3
+        return false
+    end
+
+    for i in 1:length(s) - 2
+        if s[i] == s[i + 1] || s[i] == s[i + 2] || s[i + 1] == s[i + 2]
+            return false
+        end
+    end
+
+    return true
+end
+```
+
+This function first checks if the length of the string is less than 3. If it is, it returns false. If the length is at least 3, it iterates through the string in groups of 3 characters. If it finds any 3 consecutive characters that are the same, it returns false. If it reaches the end of the string without finding any duplicates, it returns true.

@@ -1,0 +1,14 @@
+```julia
+function palindrome_with_append(s::String)::String
+    function is_palindrome(s)
+        return s == reverse(s)
+    end
+    
+    for i in 1:length(s)
+        if is_palindrome(s[i:end])
+            return s * reverse(s[1:i-1])
+        end
+    end
+    return s * reverse(s[1:end-1])
+end
+```

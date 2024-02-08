@@ -1,0 +1,26 @@
+
+
+To solve this problem, we can use the built-in function `digits` in Julia, which converts a given number into an array of its digits. We will convert the input number `x` to the specified `base` and then join the resulting digits to form a string.
+
+Here is the step-by-step outline:
+
+1. Convert the input number `x` to the specified `base` using the `digits` function.
+2. Join the resulting digits to form a string.
+3. Return the string.
+
+And here is the Julia code implementing this outline:
+
+```julia
+function change_base(x::Int, base::Int)::String
+    # Convert the input number to the specified base
+    digits_arr = digits(x, base)
+    
+    # Join the digits to form a string
+    result = join(digits_arr)
+    
+    # Return the string
+    return result
+end
+```
+
+This function works by first converting the input number `x` to the specified `base` using the `digits` function, which returns an array of the individual digits of the number in the specified base. The `join` function is then used to concatenate these digits into a single string. The resulting string is returned as the output of the function.

@@ -1,0 +1,24 @@
+### Outline for Decoding Function
+
+1. **Understand the Encoding Process**: The encoding process shifts every character in the string by 5 positions in the alphabet. This means 'a' becomes 'f', 'b' becomes 'g', and so on. When it reaches the end of the alphabet, it wraps around to the beginning.
+
+2. **Plan the Decoding Process**: To decode, we need to reverse the process. This means we will shift every character in the encoded string by 21 positions back (since 26 - 5 = 21). This will return the character to its original position in the alphabet.
+
+3. **Handle Character Wrapping**: Just like in the encoding process, we need to ensure that when we shift characters back, we wrap around the alphabet correctly. This is handled by the modulo operation.
+
+4. **Implement the Decoding Function**: We will iterate over each character in the encoded string, convert it to its corresponding position in the alphabet, shift it by 21 positions back, ensure it wraps around using modulo, and then convert it back to a character.
+
+5. **Return the Decoded String**: Finally, we will join these characters back into a string and return the decoded message.
+
+### Code for Decoding Function
+
+```julia
+function decode_shift(encoded_str::String)::String
+    # Decode each character by shifting it 21 positions back in the alphabet
+    decoded_chars = ((char - 'a' + 21) % 26 + 'a' for char in encoded_str)
+    # Join the decoded characters into a string and return
+    return join(decoded_chars)
+end
+```
+
+This function assumes that the input string `encoded_str` is entirely in lowercase and does not include any special characters or spaces. If the input might include such characters, additional checks would be necessary to handle them appropriately.

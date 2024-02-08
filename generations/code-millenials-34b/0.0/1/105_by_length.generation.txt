@@ -1,0 +1,38 @@
+
+
+function by_length(xs::Vector{Int})::Vector{String}
+    # filter for numbers between 1 and 9
+    filtered = filter(x -> 1 <= x <= 9, xs)
+    # sort the array
+    sorted = sort(filtered)
+    # reverse the array
+    reversed = reverse(sorted)
+    # map the numbers to their names
+    names = map(reversed) do x
+        if x == 1
+            "One"
+        elseif x == 2
+            "Two"
+        elseif x == 3
+            "Three"
+        elseif x == 4
+            "Four"
+        elseif x == 5
+            "Five"
+        elseif x == 6
+            "Six"
+        elseif x == 7
+            "Seven"
+        elseif x == 8
+            "Eight"
+        elseif x == 9
+            "Nine"
+        end
+    end
+    names
+end
+
+# Test cases
+println(by_length([2, 1, 1, 4, 5, 8, 2, 3]))
+println(by_length(Int[]))
+println(by_length([1, -1, 55]))

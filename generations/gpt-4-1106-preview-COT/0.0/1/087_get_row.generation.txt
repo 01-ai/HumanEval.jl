@@ -1,0 +1,41 @@
+### Step-by-step Outline:
+
+1. Define the function `get_row` with the appropriate type annotations for the parameters `xs` and `x`.
+2. Initialize an empty array to store the tuples of coordinates where the integer `x` is found.
+3. Loop through each row in `xs` using an index-based loop to keep track of the row number.
+4. Inside the loop, check if the integer `x` is present in the current row.
+5. If `x` is present, loop through the elements of the row to find all occurrences of `x`.
+6. For each occurrence, create a tuple with the current row number and the column index (adjusted to start from 1) and append it to the array of coordinates.
+7. After processing all rows, sort the array of coordinates. First, sort by the row number in ascending order. Then, for coordinates with the same row number, sort by the column number in descending order.
+8. Return the sorted array of coordinates.
+
+### Julia Code:
+
+```julia
+function get_row(xs::Vector{Vector{Int}}, x::Int)::Vector{Tuple{Int, Int}}
+    # Step 2: Initialize an empty array to store the tuples of coordinates
+    coordinates = Tuple{Int, Int}[]
+
+    # Step 3: Loop through each row in `xs`
+    for (row_idx, row) in enumerate(xs)
+        # Step 4: Check if `x` is present in the current row
+        if x in row
+            # Step 5: Loop through the elements of the row to find all occurrences of `x`
+            for (col_idx, value) in enumerate(row)
+                if value == x
+                    # Step 6: Append the tuple to the array of coordinates
+                    push!(coordinates, (row_idx, col_idx))
+                end
+            end
+        end
+    end
+
+    # Step 7: Sort the array of coordinates
+    sort!(coordinates, by = t -> (t[1], -t[2]))
+
+    # Step 8: Return the sorted array of coordinates
+    return coordinates
+end
+```
+
+Now, let's implement the function in Julia.

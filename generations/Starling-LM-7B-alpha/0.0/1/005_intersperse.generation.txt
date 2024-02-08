@@ -1,0 +1,9 @@
+ function intersperse(numbers::Vector{Int}, delimeter::Int)::Vector{Int}
+    result = Vector{Int}()
+    for i in 1:length(numbers)-1
+        push!(result, numbers[i])
+        push!(result, delimeter)
+    end
+    push!(result, numbers[end])
+    return result
+end

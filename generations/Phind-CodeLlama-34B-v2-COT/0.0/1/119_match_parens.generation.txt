@@ -1,0 +1,48 @@
+
+
+To solve this problem, we can count the number of open parentheses "(" and close parentheses ")" in each string. If the total count of open and close parentheses is the same, then the strings are balanced and we return "Yes". Otherwise, we return "No".
+
+Here is the step-by-step outline:
+
+1. Initialize a variable `open_count` to 0. This variable will keep track of the total number of open parentheses.
+2. Initialize a variable `close_count` to 0. This variable will keep track of the total number of close parentheses.
+3. Iterate over each character in the first string:
+   - If the character is an open parenthesis, increment `open_count` by 1.
+   - If the character is a close parenthesis, increment `close_count` by 1.
+4. Iterate over each character in the second string:
+   - If the character is an open parenthesis, increment `open_count` by 1.
+   - If the character is a close parenthesis, increment `close_count` by 1.
+5. If `open_count` is equal to `close_count`, return "Yes". Otherwise, return "No".
+
+Here is the Julia code implementing the above outline:
+
+```julia
+function match_parens(lst::Vector{String})::String
+    open_count = 0
+    close_count = 0
+
+    for char in lst[1]
+        if char == '('
+            open_count += 1
+        elseif char == ')'
+            close_count += 1
+        end
+    end
+
+    for char in lst[2]
+        if char == '('
+            open_count += 1
+        elseif char == ')'
+            close_count += 1
+        end
+    end
+
+    if open_count == close_count
+        return "Yes"
+    else
+        return "No"
+    end
+end
+```
+
+This function works by counting the number of open and close parentheses in each string and comparing the counts. If the counts are equal, the function returns "Yes", indicating that the strings can be concatenated to form a balanced string. Otherwise, it returns "No".

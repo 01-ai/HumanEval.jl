@@ -1,0 +1,23 @@
+ Here's a Julia function that implements the requirements described in the docstring:
+
+```julia
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+    if a == b
+        return nothing
+    elseif isa(a, Integer) && isa(b, Integer)
+        return max(a, b)
+    elseif isa(a, AbstractFloat) && isa(b, AbstractFloat)
+        return max(a, b)
+    elseif isa(a, AbstractString) && isa(b, AbstractString)
+        if parse(Float64, a) > parse(Float64, b)
+            return a
+        else
+            return b
+        end
+    else
+        error("Invalid input type")
+    end
+end
+```
+
+This function compares the two input values `a` and `b` and returns the larger value in its original type. If the values are equal, it returns `nothing`. The function handles integers, floating-point numbers, and strings, and it uses the `parse` function to convert string representations of real numbers to floating-point numbers for comparison.

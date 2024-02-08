@@ -1,0 +1,6 @@
+```julia
+function count_distinct_characters(s::String)::Int
+    distinct_chars = Set(Char.(uppercase(s)))
+    return length(distinct_chars)
+end
+```

@@ -1,0 +1,13 @@
+1.  function closest_integer(value::String)::Int
+2.      # Convert the string to a float
+3.      num = parse(Float64, value)
+4.  
+5.      # Check if the number is equidistant from two integers
+6.      if num % 1 == 0.5
+7.          # Round away from zero
+8.          return round(Int, num + 0.5)
+9.      else
+10.         # Round to the nearest integer
+11.         return round(Int, num)
+12.     end
+13. end

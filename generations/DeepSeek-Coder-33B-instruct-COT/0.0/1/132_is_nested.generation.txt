@@ -1,0 +1,27 @@
+Here is a step-by-step outline of the function:
+
+1. Initialize an empty stack.
+2. Iterate over the string.
+3. If the current character is an opening bracket '[', push it into the stack.
+4. If the current character is a closing bracket ']', pop the top element from the stack.
+5. If the stack is empty after popping, return `true`.
+6. If the stack is not empty after iterating over the string, return `false`.
+
+Here is the Julia code:
+
+```julia
+function is_nested(s::String)::Bool
+    stack = []
+    for bracket in s
+        if bracket == '['
+            pushfirst(stack, bracket)
+        elseif bracket == ']'
+            isempty(stack) && return true
+            popfirst(stack)
+        end
+    end
+    return isempty(stack)
+end
+```
+
+This function works by using a stack to keep track of the brackets. When it encounters an opening bracket, it pushes it onto the stack. When it encounters a closing bracket, it pops the top element from the stack. If the stack is empty after popping, it means that there is a valid subsequence of brackets where at least one bracket is nested, so it returns `true`. If the stack is not empty after iterating over the string, it means that there are unmatched brackets, so it returns `false`.

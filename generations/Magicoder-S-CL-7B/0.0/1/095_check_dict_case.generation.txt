@@ -1,0 +1,7 @@
+
+
+function check_dict_case(d::Dict{String})::Bool
+    all_lower = all(islower, keys(d))
+    all_upper = all(isupper, keys(d))
+    return all_lower || all_upper
+end

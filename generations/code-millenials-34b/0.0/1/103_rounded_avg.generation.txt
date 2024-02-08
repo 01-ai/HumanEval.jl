@@ -1,0 +1,15 @@
+
+
+function rounded_avg(n::Int, m::Int)::Union{Int, String}
+    if n > m
+        return -1
+    end
+    avg = round(Int, (n + m) / 2)
+    return string(avg, base=2)
+end
+
+# Test cases
+@assert rounded_avg(1, 5) == "11"
+@assert rounded_avg(7, 5) == -1
+@assert rounded_avg(10, 20) == "1111"
+@assert rounded_avg(20, 33) == "11010"

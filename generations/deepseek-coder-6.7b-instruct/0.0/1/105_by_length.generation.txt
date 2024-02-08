@@ -1,0 +1,25 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    if isempty(xs)
+        return String[]
+    end
+
+    names = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    filtered = filter(x -> x >= 1 && x <= 9, xs)
+    sorted = sort(filtered, rev=true)
+
+    return [names[i] for i in sorted]
+end
+```
+
+This function first checks if the input vector is empty. If it is, it returns an empty string vector.
+
+Then it filters the input vector to keep only the integers between 1 and 9 inclusive.
+
+It sorts the filtered vector in descending order.
+
+Finally, it uses a comprehension to replace each integer in the sorted vector by its corresponding name from the `names` array.
+
+The result is a vector of strings.

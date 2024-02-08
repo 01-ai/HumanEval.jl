@@ -1,0 +1,13 @@
+
+
+```julia
+function words_string(s::String)::Vector{String}
+    # Split the string by commas and spaces
+    words = split(s, r"[, ]")
+
+    # Filter out empty strings
+    return filter(!isempty, words)
+end
+```
+
+This function first splits the input string `s` by commas and spaces using the `split` function. The `split` function returns a vector of strings, which may contain empty strings. To remove empty strings, we use the `filter` function to filter out empty strings using the `isempty` function.

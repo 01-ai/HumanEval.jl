@@ -1,0 +1,10 @@
+ function truncate_number(number::Float64)::Float64
+    # Get the integer part of the number
+    int_part = trunc(number)
+    
+    # Calculate the decimal part by subtracting the integer part from the original number
+    decimal_part = number - int_part
+    
+    # Return the decimal part
+    return decimal_part
+end

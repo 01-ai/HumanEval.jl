@@ -1,0 +1,17 @@
+To implement the `words_string` function as described in the doc string, we can follow these steps:
+
+1. Use a regular expression to match words in the input string. This allows us to easily handle both commas and spaces as separators.
+2. Filter out any empty strings that might result from consecutive separators or separators at the beginning or end of the string.
+3. Return the resulting array of words.
+
+Here's how the implementation could look in Julia:
+
+```julia
+function words_string(s::String)::Vector{String}
+    # Split the string using a regular expression that matches words
+    words = split(s, r"[, ]+", keepempty=false)
+    return words
+end
+```
+
+This function uses a regular expression (`r"[, ]+"`) to split the input string `s` into words, where the `+` quantifier matches one or more occurrences of either a comma or a space. The `keepempty=false` argument ensures that empty strings resulting from consecutive separators are not included in the output array.

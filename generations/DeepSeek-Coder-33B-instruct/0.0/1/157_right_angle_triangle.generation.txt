@@ -1,0 +1,12 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    sides = [a, b, c]
+    hypotenuse = maximum(sides)
+    sides = setdiff(sides, [hypotenuse])
+    return abs(hypotenuse^2 - sum(sides.^2)) < 1e-6
+end
+```
+
+This function first finds the hypotenuse of the triangle, which is the longest side. Then it calculates the sum of the squares of the other two sides. If the sum of the squares of the other two sides is equal to the square of the hypotenuse, the triangle is a right-angled triangle. The function uses a small tolerance (1e-6) to account for floating point precision issues.

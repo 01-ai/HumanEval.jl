@@ -1,0 +1,31 @@
+### Step-by-Step Outline
+
+1. **Split the String into Words**: First, we need to split the input string `s` into individual words. This can be done using the `split` function in Julia, which will give us an array of words.
+
+2. **Define Consonants**: We need to define what characters are considered consonants. This can be done by listing all the alphabets and excluding the vowels (A, E, I, O, U, and sometimes Y). For simplicity, we'll consider Y as a consonant here.
+
+3. **Count Consonants in Each Word**: For each word in the array, we need to count how many consonants it contains. This involves iterating through each character of the word, checking if it's a consonant, and keeping a count.
+
+4. **Select Words with `n` Consonants**: After counting the consonants in each word, we need to select only those words where the count matches the given number `n`. 
+
+5. **Return the Selected Words**: Finally, return the list of selected words. If no words match the criteria, this list will be empty.
+
+### Julia Code Implementation
+
+```julia
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    # Step 1: Split the string into words
+    words = split(s)
+    
+    # Step 2: Define consonants (considering Y as a consonant)
+    consonants = Set(['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 
+                      'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'])
+    
+    # Step 3 & 4: Select words with exactly n consonants
+    selected_words = [word for word in words if count(c -> lowercase(c) in consonants, word) == n]
+    
+    return selected_words
+end
+```
+
+This function should work as expected for the given examples, correctly identifying and returning words with exactly `n` consonants from the input string.

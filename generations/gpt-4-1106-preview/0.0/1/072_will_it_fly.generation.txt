@@ -1,0 +1,22 @@
+Here's the Julia function `will_it_fly` that matches the doc string description:
+
+```julia
+function will_it_fly(q::Vector{Int}, w::Int)::Bool
+    # Check if the list is palindromic
+    is_palindromic = q == reverse(q)
+    
+    # Check if the sum of elements is less than or equal to the maximum weight
+    sum_within_limit = sum(q) <= w
+    
+    # The object will fly if it's balanced and the sum is within the limit
+    return is_palindromic && sum_within_limit
+end
+
+# Examples
+println(will_it_fly([1, 2], 5))  # false
+println(will_it_fly([3, 2, 3], 1))  # false
+println(will_it_fly([3, 2, 3], 9))  # true
+println(will_it_fly([3], 5))  # true
+```
+
+You can copy this function into your Julia environment and run the examples to verify that it works as expected.

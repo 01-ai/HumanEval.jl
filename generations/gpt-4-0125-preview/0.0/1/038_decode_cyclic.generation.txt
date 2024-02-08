@@ -1,0 +1,12 @@
+To decode a string that was encoded with the `encode_cyclic` function, we need to reverse the encoding process. The encoding process cycles groups of three characters by moving the first character to the end. To decode, we need to move the last character of each group to the beginning. Here's how you can implement the `decode_cyclic` function in Julia:
+
+```julia
+function decode_cyclic(s::String)::String
+    # Use a generator expression to process each group of three characters.
+    # For each group, move the last character to the beginning.
+    # If the group is not of length 3 (which means it's the end of the string and was less than 3 characters), leave it as is.
+    join((length(x) == 3 ? x[end] * x[1:end-1] : x for x in Iterators.partition(s, 3)))
+end
+```
+
+This function works by iterating over the input string in partitions of three characters. For each partition, if its length is 3, it rearranges the characters by moving the last character to the start, effectively reversing the encoding process. If the partition is not of length 3 (which would only happen for the last group if the total length of the input string is not a multiple of 3), it leaves the group as is, since the encoding process does not alter such groups.

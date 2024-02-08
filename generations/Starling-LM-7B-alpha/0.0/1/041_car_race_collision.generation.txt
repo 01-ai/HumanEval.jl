@@ -1,0 +1,4 @@
+ function car_race_collision(n::Int)::Int
+    # The number of collisions is equal to the number of cars in the left-to-right set
+    return n
+end

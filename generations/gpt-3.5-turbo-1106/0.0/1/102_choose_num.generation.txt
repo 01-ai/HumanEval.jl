@@ -1,0 +1,11 @@
+```julia
+function choose_num(x::Int, y::Int)::Int
+    max_even = -1
+    for i in x:y
+        if i % 2 == 0 && i > max_even
+            max_even = i
+        end
+    end
+    return max_even
+end
+```

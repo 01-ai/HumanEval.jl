@@ -1,0 +1,11 @@
+
+
+Here is the Julia implementation of the function based on the provided docstring:
+
+```julia
+function sum_squares_round(xs::Vector)::Int
+    return sum(ceil(Int, x) ^ 2 for x in xs)
+end
+```
+
+This function uses a generator expression to apply the `ceil(Int, x) ^ 2` operation to each element in the input vector `xs`, and then sums the results. The `ceil(Int, x)` function rounds each element `x` in the list to the upper integer (ceiling), and the `^ 2` operation squares the result. The `sum` function then adds up these squared values to produce the final result.

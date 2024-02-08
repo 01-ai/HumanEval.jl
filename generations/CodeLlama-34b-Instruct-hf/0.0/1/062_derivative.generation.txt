@@ -1,0 +1,16 @@
+  Here's an implementation of the `derivative` function in Julia:
+```
+function derivative(xs::Vector)::Vector
+    n = length(xs)
+    ys = Vector{Int}(undef, n-1)
+    for i in 1:n-1
+        ys[i] = xs[i+1] * (i+1)
+    end
+    return ys
+end
+```
+This function takes a vector `xs` of coefficients of a polynomial and returns a new vector `ys` of the same length, where each element `ys[i]` is the derivative of the corresponding element `xs[i]` of the polynomial.
+
+For example, if `xs = [3, 1, 2, 4, 5]`, then `ys = [1, 4, 12, 20]`.
+
+Note that the function assumes that the polynomial is of degree `n-1`, where `n` is the length of the input vector `xs`. If the polynomial has a different degree, the function will not work correctly.

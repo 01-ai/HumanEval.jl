@@ -1,0 +1,16 @@
+ function rounded_avg(n::Int, m::Int)::Union{Int, String}
+    if n > m
+        return -1
+    end
+
+    total = 0
+    for i in range(n, m+1)
+        total += i
+    end
+
+    avg = round(total / (m - n + 1))
+
+    binary_avg = convert(String, avg, 2)
+
+    return binary_avg
+end

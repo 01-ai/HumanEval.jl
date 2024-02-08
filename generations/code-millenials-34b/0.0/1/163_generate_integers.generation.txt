@@ -1,0 +1,20 @@
+
+
+function generate_integers(a::Int, b::Int)::Vector{Int}
+    min_val = min(a, b)
+    max_val = max(a, b)
+    even_digits = Int[]
+
+    for i in min_val:max_val
+        if i % 2 == 0
+            push!(even_digits, i)
+        end
+    end
+
+    return even_digits
+end
+
+# Test cases
+println(generate_integers(2, 8))
+println(generate_integers(8, 2))
+println(generate_integers(10, 14))

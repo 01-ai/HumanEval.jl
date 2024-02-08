@@ -1,0 +1,15 @@
+
+
+function pluck(xs::Vector{Int})::Vector{Int}
+    even_values = filter(x -> x % 2 == 0, xs)
+    isempty(even_values) && return Int[]
+    smallest_even_value = minimum(even_values)
+    smallest_index = findfirst(isequal(smallest_even_value), xs)
+    return [smallest_even_value, smallest_index]
+end
+
+# Test cases
+println(pluck([4, 2, 3]))  # [2, 2]
+println(pluck([1, 2, 3]))  # [2, 2]
+println(pluck(Int[]))  # []
+println(pluck([5, 0, 3, 0, 4, 2]))  # [0, 2] 

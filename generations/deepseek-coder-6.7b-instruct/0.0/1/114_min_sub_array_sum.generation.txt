@@ -1,0 +1,20 @@
+Here is a Julia function that implements the solution:
+
+```julia
+function min_sub_array_sum(nums::Vector{Int})::Int
+    min_sum = typemax(Int)
+    cur_sum = 0
+    for num in nums
+        cur_sum += num
+        if cur_sum < min_sum
+            min_sum = cur_sum
+        end
+        if cur_sum > 0
+            cur_sum = 0
+        end
+    end
+    return min_sum == typemax(Int) ? 0 : min_sum
+end
+```
+
+This function works by iterating over the input array and adding each number to a running total (`cur_sum`). If `cur_sum` ever becomes less than the current minimum sum (`min_sum`), `min_sum` is updated. If `cur_sum` ever becomes positive, it is reset to 0. The function finally returns `min_sum`, which will be the minimum sum of any non-empty sub-array of `nums`. If `min_sum` is still its initial value (`typemax(Int)`), this means that `nums` is empty or all its elements are non-positive, in which case the function returns 0.

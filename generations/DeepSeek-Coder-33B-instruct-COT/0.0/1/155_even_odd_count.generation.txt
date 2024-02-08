@@ -1,0 +1,29 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. Convert the integer to a string.
+2. Initialize two counters, one for even digits and one for odd digits.
+3. Iterate over each character in the string.
+4. Convert the character back to an integer.
+5. If the integer is even, increment the even counter, otherwise increment the odd counter.
+6. Return a tuple of the even and odd counters.
+
+Here is the Julia code that implements this algorithm:
+
+```julia
+function even_odd_count(num::Int)::Tuple{Int, Int}
+    num_str = string(abs(num))
+    even_count = 0
+    odd_count = 0
+    for char in num_str
+        digit = parse(Int, char)
+        if digit % 2 == 0
+            even_count += 1
+        else
+            odd_count += 1
+        end
+    end
+    return (even_count, odd_count)
+end
+```
+
+This function works by first converting the absolute value of the input number to a string. It then initializes two counters, one for even digits and one for odd digits. It then iterates over each character in the string, converts the character back to an integer, and checks if the integer is even or odd. If the integer is even, it increments the even counter, otherwise it increments the odd counter. Finally, it returns a tuple of the even and odd counters.

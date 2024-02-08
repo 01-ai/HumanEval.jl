@@ -1,0 +1,35 @@
+Here is the Julia function that implements the Tribonacci sequence:
+
+```julia
+function tri(n::Int)::Vector{Int}
+    if n == 0
+        return Int[]
+    elseif n == 1
+        return [1]
+    elseif n == 2
+        return [1, 2]
+    else
+        seq = [1, 2, 6]
+        for i in 3:n
+            if seq[i-1] % 2 == 0
+                pushappend(seq, 1 + seq[i-1] � 2)
+            else
+                pushappend(seq, seq[i-1] + seq[i-2] + seq[i])
+            end
+        end
+        return seq
+    end
+end
+```
+
+This function first handles the special cases where `n` is 0, 1, or 2. For `n` greater than 2, it initializes a vector `seq` with the first three numbers of the sequence. Then it iteratively calculates the next number in the sequence based on the given rules and appends it to `seq`. The function finally returns `seq`.
+
+Please note that the `pushappend` function is not a built-in Julia function. It is a placeholder for the function that would be used to append an element to a vector. If you want to use this function, you should define it as follows:
+
+```julia
+function pushappend(v::Vector{Int}, x::Int)
+    pushfirst(v, x)
+end
+```
+
+This function simply prepends the new element to the vector, which is the opposite of what you would normally do when appending an element to a vector.

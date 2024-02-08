@@ -1,0 +1,42 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function min_path(grid::Vector{Vector{Int}}, k::Int)::Vector{Int}
+    n = length(grid)
+    visited = zeros(Bool, n, n)
+    path = zeros(Int, k)
+    min_path = zeros(Int, k)
+    min_path[1:k] .= typemax(Int)
+
+    function dfs(x::Int, y::Int, step::Int)
+        if step > k
+            return
+        end
+        visited[x, y] = true
+        path[step] = grid[x+1][y+1]
+        if step == k
+            if path < min_path
+                min_path[:] = path
+            end
+        else
+            for (dx, dy) in [(-1, 0), (1, 0), (0, -1), (0, 1)]
+                nx, ny = x + dx, y + dy
+                if 1 <= nx <= n && 1 <= ny <= n && !visited[nx, ny]
+                    dfs(nx, ny, step + 1)
+                end
+            end
+        end
+        visited[x, y] = false
+    end
+
+    for i in 1:n, j in 1:n
+        dfs(i, j, 1)
+    end
+
+    return min_path
+end
+```
+
+This function uses a depth-first search (DFS) to find all possible paths of length `k`. It keeps track of the current path and the minimum path found so far. The DFS is started from each cell in the grid. If a path of length `k` is found, it is compared to the minimum path found so far. If the current path is lexicographically smaller, it becomes the new minimum path.
+
+The time complexity of this function is O(n^2 * 4^k), where n is the size of the grid and k is the length of the path. This is because for each cell in the grid, we can potentially explore 4 directions (up, down, left, right) for each step in the path.

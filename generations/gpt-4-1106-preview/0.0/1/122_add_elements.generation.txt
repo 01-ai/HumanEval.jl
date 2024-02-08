@@ -1,0 +1,25 @@
+Here is the Julia function `add_elements` that implements the functionality described in the doc string:
+
+```julia
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    # Initialize the sum to 0
+    sum_of_elements = 0
+    
+    # Iterate over the first k elements of the array
+    for i in 1:k
+        # Check if the element has at most two digits
+        if xs[i] >= -99 && xs[i] <= 99
+            # Add the element to the sum
+            sum_of_elements += xs[i]
+        end
+    end
+    
+    # Return the sum of elements with at most two digits
+    return sum_of_elements
+end
+
+# Example usage
+println(add_elements([111, 21, 3, 4000, 5, 6, 7, 8, 9], 4))  # Output should be 24
+```
+
+This function iterates over the first `k` elements of the input vector `xs` and checks if each element has at most two digits by verifying that it is between -99 and 99, inclusive. If the condition is met, the element is added to the sum. Finally, the function returns the calculated sum.

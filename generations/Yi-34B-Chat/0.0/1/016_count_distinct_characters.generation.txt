@@ -1,0 +1,20 @@
+```julia
+function count_distinct_characters(s::String)::Int
+    # Initialize a counter for distinct characters
+    distinct_char_count = 0
+
+    # Loop through each character in the string
+    for c in s
+        # If the character is not in the set of distinct characters yet,
+        # increment the counter and add the character to the set
+        if !(c in keys(distinct_characters))
+            distinct_char_count += 1
+            distinct_characters[c] = true
+        end
+    end
+
+    return distinct_char_count
+end
+```
+
+This function works by initializing an empty set `distinct_characters` to keep track of the distinct characters. Then, for each character in the string, it checks if the character is already in the set. If not, it increments the counter and adds the character to the set. Finally, it returns the count of distinct characters.

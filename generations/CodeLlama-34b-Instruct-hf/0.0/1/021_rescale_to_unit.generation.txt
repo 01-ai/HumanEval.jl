@@ -1,0 +1,16 @@
+  Here's one way to implement the `rescale_to_unit` function in Julia:
+```
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    min_value = minimum(numbers)
+    max_value = maximum(numbers)
+    return (numbers .- min_value) ./ (max_value - min_value)
+end
+```
+Here's an explanation of how the function works:
+
+1. The `minimum` and `maximum` functions are used to find the smallest and largest values in the input vector, respectively.
+2. The `numbers .- min_value` expression subtracts the minimum value from each element of the input vector, effectively shifting the values so that the smallest value is now 0.
+3. The `(max_value - min_value)` expression calculates the range of the input values (i.e., the difference between the largest and smallest values).
+4. The resulting vector is then divided by the range to rescale the values to the unit interval [0, 1].
+
+Note that this implementation assumes that the input vector contains at least two elements. If the input vector contains only one element, the function will throw an error.

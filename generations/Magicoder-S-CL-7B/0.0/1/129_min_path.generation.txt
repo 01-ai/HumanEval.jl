@@ -1,0 +1,15 @@
+
+
+function min_path(grid::Vector{Vector{Int}}, k::Int)::Vector{Int}
+    N = length(grid)
+    dirs = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+    visited = falses(N, N)
+    min_path = zeros(Int, k)
+    min_path[1] = grid[1][1]
+    visited[1, 1] = true
+    for i in 2:k
+        min_path[i] = minimum(grid[j][i] for j in 1:N if !visited[j, 1])
+        visited[j, 1] = true
+    end
+    return min_path
+end

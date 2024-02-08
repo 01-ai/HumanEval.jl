@@ -1,0 +1,27 @@
+```julia
+function get_row(xs::Vector{Vector{Int}}, x::Int)::Vector{Tuple{Int, Int}}
+    # Initialize an empty vector to store the coordinates
+    coordinates = Vector{Tuple{Int, Int}}()
+
+    # Iterate over each row in the matrix
+    for (row_index, row) in enumerate(xs)
+        # Check if the number is present in the current row
+        if x in row
+            # If present, add the coordinate (row_index, column_index) to the vector
+            push!(coordinates, (row_index, findfirst(==(x), row) + 1))
+        end
+    end
+
+    # Sort the coordinates by row index in ascending order
+    sort!(coordinates, by = t -> t[1])
+
+    # For each row, sort the coordinates by column index in descending order
+    for i in 1:length(coordinates)
+        coordinates[i] = (coordinates[i][1], reverse(coordinates[i][2:end])[1])
+    end
+
+    return coordinates
+end
+```
+
+This function takes a vector of vectors `xs` and an integer `x` as input. It iterates over each row of the matrix, checking if `x` is present in the row. If `x` is found, it adds the coordinate (row index, column index) to the `coordinates` vector. After all rows have been checked, it sorts the `coordinates` vector by row index in ascending order. Finally, for each row, it sorts the coordinates by column index in descending order. The resulting vector of tuples is then returned.

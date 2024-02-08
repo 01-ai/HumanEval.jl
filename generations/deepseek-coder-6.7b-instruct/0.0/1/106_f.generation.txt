@@ -1,0 +1,37 @@
+Here is the Julia function `f` that satisfies the given conditions:
+
+```julia
+function f(n::Int)
+    result = Int[]
+    for i in 1:n
+        if i % 2 == 0
+            push_factorial(result, i)
+        else
+            push_sum(result, i)
+        end
+    end
+    return result
+end
+
+function push_factorial(arr::Vector{Int}, num::Int)
+    fact = 1
+    for i in 1:num
+        fact *= i
+    end
+    push_factorial(arr, fact)
+end
+
+function push_sum(arr::Vector{Int}, num::Int)
+    sum = 0
+    for i in 1:num
+        sum += i
+    end
+    push_sum(arr, sum)
+end
+```
+
+In this code, `f` function is the main function that takes an integer `n` as input and returns a vector of size `n`. The `push_factorial` and `push_sum` functions are helper functions that calculate the factorial and sum of numbers from 1 to `i` respectively.
+
+Please note that the `push_factorial` and `push_sum` functions are recursive, which means they call themselves. This is done to avoid code duplication.
+
+Also, please note that the `push_factorial` and `push_sum` functions are not defined in the provided code. You need to define them according to the problem statement.

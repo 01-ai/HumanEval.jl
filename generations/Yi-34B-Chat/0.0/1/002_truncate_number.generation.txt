@@ -1,0 +1,13 @@
+```julia
+function truncate_number(number::Float64)::Float64
+    # Decompose the number into integer and decimal parts
+    integer_part = floor(number)
+    decimal_part = number - integer_part
+    
+    # Ensure the decimal part is smaller than 1
+    decimal_part = min(decimal_part, 1.0)
+    
+    # Return the decimal part
+    return decimal_part
+end
+```

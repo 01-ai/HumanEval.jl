@@ -1,0 +1,21 @@
+```julia
+function digitSum(s::String)::Int
+    # Initialize the sum to zero
+    sum = 0
+
+    # Loop over each character in the string
+    for c in s
+        # If the character is a digit (0-9) or an uppercase letter (A-Z), add its
+        # ASCII code to the sum
+        if c in '0':'9' || c in 'A':'Z'
+            # Convert the character to an integer and add it to the sum
+            sum += Int(c) - 48 + 65
+        end
+    end
+
+    # Return the sum
+    return sum
+end
+```
+
+This function defines a `digitSum` function that takes a `String` as input and returns the sum of the ASCII codes of the uppercase characters in the string. It does this by iterating over each character in the string and checking if it is a digit or an uppercase letter. If so, it adds the corresponding ASCII code to the sum. The ASCII codes for digits are added as-is, while the ASCII codes for uppercase letters are adjusted by adding 65 (the difference between the ASCII code for 'A' and '0').

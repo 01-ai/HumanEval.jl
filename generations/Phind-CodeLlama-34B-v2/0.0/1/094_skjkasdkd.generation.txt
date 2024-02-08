@@ -1,0 +1,36 @@
+
+
+Here is a Julia function that implements the `skjkasdkd` function as described in the docstring:
+
+```julia
+function skjkasdkd(xs::Vector{Int})::Int
+    function is_prime(n::Int)::Bool
+        if n <= 1
+            return false
+        elseif n <= 3
+            return true
+        elseif n % 2 == 0 || n % 3 == 0
+            return false
+        end
+        i = 5
+        while i * i <= n
+            if n % i == 0 || n % (i + 2) == 0
+                return false
+            end
+            i += 6
+        end
+        return true
+    end
+
+    max_prime = -1
+    for x in xs
+        if is_prime(x) && x > max_prime
+            max_prime = x
+        end
+    end
+
+    return sum(digits(max_prime))
+end
+```
+
+This function first defines a helper function `is_prime` that checks whether a given integer is prime. Then, it iterates over the input list `xs`, updating `max_prime` whenever it finds a larger prime number. Finally, it returns the sum of the digits of `max_prime`. If no prime number is found in `xs`, `max_prime` remains `-1` and the function returns `0`.

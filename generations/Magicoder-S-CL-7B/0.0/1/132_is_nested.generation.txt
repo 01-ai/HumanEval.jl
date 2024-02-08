@@ -1,0 +1,17 @@
+
+
+function is_nested(s::String)::Bool
+    stack = []
+    for c in s
+        if c == '['
+            push!(stack, c)
+        elseif c == ']'
+            if isempty(stack) || stack[end] != '['
+                return true
+            else
+                pop!(stack)
+            end
+        end
+    end
+    return isempty(stack)
+end

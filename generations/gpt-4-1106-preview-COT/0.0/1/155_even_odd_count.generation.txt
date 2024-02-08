@@ -1,0 +1,47 @@
+To implement the `even_odd_count` function, we can follow these steps:
+
+1. Initialize two counters, one for even digits and one for odd digits, both set to 0.
+2. Convert the input integer to its absolute value to handle negative numbers.
+3. Convert the absolute integer to a string to iterate over its digits.
+4. Loop through each character in the string representation of the number.
+5. For each character, convert it back to an integer to check if it's even or odd.
+6. If the digit is even, increment the even counter; if it's odd, increment the odd counter.
+7. After the loop, return a tuple containing the even and odd counters.
+
+Now, let's write the code for the function:
+
+```julia
+function even_odd_count(num::Int)::Tuple{Int, Int}
+    even_count = 0
+    odd_count = 0
+    
+    # Step 2: Handle negative numbers
+    num = abs(num)
+    
+    # Step 3: Convert the number to a string
+    num_str = string(num)
+    
+    # Step 4: Loop through each character in the string
+    for digit_char in num_str
+        # Step 5: Convert character to integer
+        digit = parse(Int, digit_char)
+        
+        # Step 6: Check if the digit is even or odd and increment the counters
+        if digit % 2 == 0
+            even_count += 1
+        else
+            odd_count += 1
+        end
+    end
+    
+    # Step 7: Return the tuple with even and odd counts
+    return (even_count, odd_count)
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(even_odd_count(-12)) # Expected output: (1, 1)
+println(even_odd_count(123)) # Expected output: (1, 2)
+```

@@ -1,0 +1,40 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+
+function prime_fib(n::Int)::Int
+    if n <= 0
+        throw(DomainError(n, "argument must be a positive integer"))
+    end
+    count = 0
+    a, b = 0, 1
+    while count < n
+        c = a + b
+        a = b
+        b = c
+        if is_prime(c)
+            count += 1
+        end
+    end
+    return b
+end
+```
+
+This function first checks if a number is prime by checking if it is divisible by any number up to its square root. If it is not, it is a prime number. Then it generates Fibonacci numbers and checks if they are prime. If they are, it increments a counter. When the counter reaches the input number, it returns the current Fibonacci number.

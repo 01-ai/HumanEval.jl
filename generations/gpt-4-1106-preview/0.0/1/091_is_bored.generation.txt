@@ -1,0 +1,26 @@
+Certainly! Below is the Julia function `is_bored` that implements the functionality described in the doc string:
+
+```julia
+function is_bored(s::String)::Int
+    # Split the string into sentences based on the delimiters
+    sentences = split(s, r"[.?!]")
+    
+    # Initialize boredom count
+    boredom_count = 0
+    
+    # Iterate through each sentence
+    for sentence in sentences
+        # Trim whitespace from the sentence
+        trimmed_sentence = strip(sentence)
+        
+        # Check if the sentence starts with "I" followed by a space or the end of the sentence
+        if startswith(trimmed_sentence, "I ") || trimmed_sentence == "I"
+            boredom_count += 1
+        end
+    end
+    
+    return boredom_count
+end
+```
+
+You can test this function with the provided examples or any other string to count the number of boredoms as defined.

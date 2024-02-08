@@ -1,0 +1,21 @@
+```julia
+function is_happy(s::String)::Bool
+    # Check if the string is at least 3 characters long
+    if length(s) < 3
+        return false
+    end
+
+    # Loop through the string, checking every 3 consecutive letters
+    for i in 1:length(s) - 2
+        # If the current 3 letters are not distinct, the string is not happy
+        if s[i] == s[i+1] || s[i] == s[i+2] || s[i+1] == s[i+2]
+            return false
+        end
+    end
+
+    # If we made it here, the string is happy
+    return true
+end
+```
+
+This function checks if the length of the string is at least 3, and then iterates over the string, checking every 3 consecutive letters to ensure they are distinct. If at any point the function finds 3 consecutive letters that are not distinct, it returns `false`. If the entire string is checked without finding such a sequence, it returns `true`, indicating that the string is happy.

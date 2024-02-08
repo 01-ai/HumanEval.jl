@@ -1,0 +1,9 @@
+Here is a simple Julia function that calculates the number of collisions based on the given problem:
+
+```julia
+function car_race_collision(n::Int)::Int
+    return n * n
+end
+```
+
+This function works by simply returning the square of the input `n`. This is because each car moving left to right will collide with each car moving right to left. Therefore, the total number of collisions is the square of the number of cars.

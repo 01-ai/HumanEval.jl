@@ -1,0 +1,17 @@
+
+
+Here is the Julia implementation of the `change_base` function:
+
+```julia
+function change_base(x::Int, base::Int)::String
+    digits = "0123456789"
+    result = ""
+    while x > 0
+        result = digits[x % base + 1] * result
+        x = div(x, base)
+    end
+    return result
+end
+```
+
+This function works by repeatedly dividing the input number `x` by the desired `base`, and collecting the remainder in the `result` string. The remainder is converted to the corresponding digit in the `digits` string. The process continues until `x` becomes 0. The resulting string is the base-`base` representation of the input number.

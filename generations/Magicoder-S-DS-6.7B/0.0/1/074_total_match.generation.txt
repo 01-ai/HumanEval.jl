@@ -1,0 +1,15 @@
+Here is a Julia function that implements the `total_match` function as described in the problem:
+
+```julia
+function total_match(xs::Vector{String}, ys::Vector{String})::Vector{String}
+    sum_xs = sum(length.(xs))
+    sum_ys = sum(length.(ys))
+    if sum_xs < sum_ys
+        return xs
+    else
+        return ys
+    end
+end
+```
+
+This function works by first calculating the total number of characters in each list using the `sum` function combined with the `length` function. It then compares these sums and returns the list with the smaller sum. If the sums are equal, it returns the first list.

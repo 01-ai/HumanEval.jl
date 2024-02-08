@@ -1,0 +1,7 @@
+ function special_factorial(n::Int)::BigInt
+    if n <= 1
+        return BigInt(1)
+    else
+        return n * special_factorial(n - 1)
+    end
+end

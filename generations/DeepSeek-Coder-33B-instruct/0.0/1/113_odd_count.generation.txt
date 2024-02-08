@@ -1,0 +1,18 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function odd_count(xs::Vector{String})::Vector{String}
+    result = String[]
+    for (i, x) in enumerate(xs)
+        odd_count = count(isodd, parse.(Int, collect(x)))
+        pushfirst(result, "the number of odd elements $(odd_count)n the str$(odd_count)ng $(odd_count) of the $(odd_count)nput.")
+    end
+    return result
+end
+```
+
+This function works by iterating over each string in the input vector. For each string, it counts the number of odd digits and then constructs a new string with the count of odd digits. This new string is then added to the beginning of the result vector.
+
+The `count` function is used to count the number of odd digits in the string. The `parse` function is used to convert each character in the string to an integer. The `collect` function is used to convert the string to a vector of characters. The `isodd` function is used as the predicate for the `count` function.
+
+The `pushfirst` function is used to add the new string to the beginning of the result vector. This is because the problem statement asks for the output to be in the same order as the input, but with each string modified.

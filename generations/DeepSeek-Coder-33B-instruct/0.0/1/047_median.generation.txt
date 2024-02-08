@@ -1,0 +1,15 @@
+Here is the Julia function that calculates the median of a list:
+
+```julia
+function median(l::Vector)
+    sorted_l = sort(l)
+    n = length(sorted_l)
+    if n % 2 == 0
+        return 0.5 * (sorted_l[n � 2] + sorted_l[n � 2 + 1])
+    else
+        return sorted_l[n � 2 + 1]
+    end
+end
+```
+
+This function first sorts the input list and then checks if the length of the list is even or odd. If it's even, it calculates the average of the two middle elements. If it's odd, it returns the middle element.

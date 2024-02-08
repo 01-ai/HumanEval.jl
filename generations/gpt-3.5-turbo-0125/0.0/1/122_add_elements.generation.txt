@@ -1,0 +1,13 @@
+```julia
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    sum = 0
+    count = 0
+    for i in 1:k
+        if abs(xs[i]) < 100
+            sum += xs[i]
+            count += 1
+        end
+    end
+    return sum
+end
+```

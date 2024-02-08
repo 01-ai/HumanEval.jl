@@ -1,0 +1,20 @@
+Here is a Julia function that implements the given doc string:
+
+```julia
+function reverse_string(s::String)::String
+    if !any(isletter, s)
+        return reverse(s)
+    end
+    return map(c -> isletter(c) ? (isupper(c) ? lowercase(c) : uppercase(c)) : c, s)
+end
+```
+
+This function works by first checking if the string contains any letters. If it doesn't, it simply reverses the string. If it does contain letters, it maps over each character in the string. If the character is a letter, it reverses its case. If the character is not a letter, it leaves it as is.
+
+Let's test the function with the provided examples:
+
+```julia
+println(reverse_string("1234"))  # "4321"
+println(reverse_string("ab"))  # "BA"
+println(reverse_string("#a@C"))  # "#A@C"
+```

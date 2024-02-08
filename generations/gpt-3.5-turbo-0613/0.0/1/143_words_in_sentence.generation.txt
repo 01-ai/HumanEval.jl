@@ -1,0 +1,9 @@
+Here is the implementation for the `words_in_sentence` function:
+
+```julia
+function words_in_sentence(sentence::String)::String
+    words = split(sentence)
+    prime_words = filter(word -> isprime(length(word)), words)
+    return join(prime_words, " ")
+end
+```

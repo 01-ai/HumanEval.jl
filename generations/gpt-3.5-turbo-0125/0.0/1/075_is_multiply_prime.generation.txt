@@ -1,0 +1,32 @@
+```julia
+function is_multiply_prime(a::Int)::Bool
+    function is_prime(n)
+        if n <= 1
+            return false
+        end
+        for i in 2:isqrt(n)
+            if n % i == 0
+                return false
+            end
+        end
+        return true
+    end
+
+    function find_prime_factors(n)
+        factors = []
+        for i in 2:n
+            if n % i == 0 && is_prime(i)
+                push!(factors, i)
+            end
+        end
+        return factors
+    end
+
+    prime_factors = find_prime_factors(a)
+    if length(prime_factors) == 3
+        return true
+    else
+        return false
+    end
+end
+```

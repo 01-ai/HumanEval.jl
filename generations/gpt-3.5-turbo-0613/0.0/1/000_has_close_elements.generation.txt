@@ -1,0 +1,15 @@
+Here is the implementation for the `has_close_elements` function:
+
+```julia
+function has_close_elements(numbers::Vector{Float64}, threshold::Float64)::Bool
+    n = length(numbers)
+    for i in 1:n-1
+        for j in i+1:n
+            if abs(numbers[i] - numbers[j]) < threshold
+                return true
+            end
+        end
+    end
+    return false
+end
+```

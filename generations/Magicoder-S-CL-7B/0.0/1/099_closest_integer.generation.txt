@@ -1,0 +1,10 @@
+
+
+function closest_integer(value::String)::Int
+    number = parse(Float64, value)
+    if number > 0
+        return ceil(number)
+    else
+        return floor(number)
+    end
+end

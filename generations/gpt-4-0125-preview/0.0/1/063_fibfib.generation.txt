@@ -1,0 +1,29 @@
+To efficiently compute the n-th element of the FibFib number sequence, we can use dynamic programming to avoid recalculating the same values multiple times. Here's how you can implement the `fibfib` function in Julia:
+
+```julia
+function fibfib(n::Int)::Int
+    # Base cases
+    if n == 0
+        return 0
+    elseif n == 1
+        return 0
+    elseif n == 2
+        return 1
+    end
+
+    # Initialize an array to store computed values
+    dp = zeros(Int, n+1)
+    dp[1] = 0
+    dp[2] = 0
+    dp[3] = 1
+
+    # Fill the dp array with computed fibfib values
+    for i in 4:n+1
+        dp[i] = dp[i-1] + dp[i-2] + dp[i-3]
+    end
+
+    return dp[n+1]
+end
+```
+
+This implementation uses a dynamic programming approach where we store the computed values of the FibFib sequence in an array `dp`. This way, we only compute each value of the sequence once, which significantly improves the efficiency of the function, especially for large values of `n`.

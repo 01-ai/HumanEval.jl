@@ -1,0 +1,19 @@
+Here is a Julia function that implements the `fruit_distribution` function as described in the problem:
+
+```julia
+function fruit_distribution(s::String, n::Int)::Int
+    # Split the string into words
+    words = split(s)
+
+    # Extract the number of apples and oranges
+    apples = parse(Int, words[1])
+    oranges = parse(Int, words[4])
+
+    # Calculate the number of mangoes
+    mangoes = n - apples - oranges
+
+    return mangoes
+end
+```
+
+This function works by first splitting the input string into words. It then extracts the number of apples and oranges from the string and calculates the number of mangoes by subtracting the total number of apples and oranges from the total number of fruits. The result is then returned.

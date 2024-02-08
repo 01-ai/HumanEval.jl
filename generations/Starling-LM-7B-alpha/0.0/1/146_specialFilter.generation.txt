@@ -1,0 +1,9 @@
+ function specialFilter(nums::Vector{Int})::Int
+    count = 0
+    for num in nums
+        if num > 10 && parse(Int, string(num)[1]) % 2 == 1 && parse(Int, string(num)[end]) % 2 == 1
+            count += 1
+        end
+    end
+    return count
+end

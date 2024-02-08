@@ -1,0 +1,17 @@
+Here is the implementation of the `pairs_sum_to_zero` function in Julia:
+
+```julia
+function pairs_sum_to_zero(l::Vector{Int})::Bool
+    n = length(l)
+    for i in 1:n-1
+        for j in i+1:n
+            if l[i] + l[j] == 0
+                return true
+            end
+        end
+    end
+    return false
+end
+```
+
+This function iterates through all pairs of distinct elements in the list and checks if their sum is zero. If such a pair is found, it returns `true`. If no such pair is found, it returns `false`.

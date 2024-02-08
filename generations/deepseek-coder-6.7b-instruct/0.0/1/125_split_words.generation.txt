@@ -1,0 +1,15 @@
+Here is the Julia function that implements the given problem:
+
+```julia
+function split_words(txt::String)
+    if contains(txt, " ")
+        return split(txt, " ")
+    elseif contains(txt, ",")
+        return split(txt, ",")
+    else
+        return sum([(x in 'a':'z') && (x % 2 == 1) for x in txt])
+    end
+end
+```
+
+This function checks if the input string contains a whitespace, a comma, or neither. If it contains a whitespace, it splits the string on whitespace. If it contains a comma, it splits the string on commas. If it contains neither, it counts the number of lower-case letters with odd order in the alphabet and returns that count.

@@ -1,0 +1,18 @@
+
+
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    if isempty(xs)
+        return Int[]
+    end
+    if sum([first(xs), last(xs)]) % 2 == 0
+        return sort(xs, rev=true)
+    else
+        return sort(xs)
+    end
+end
+
+# Test cases
+@assert sort_array_based_on_head_tail(Int[]) == Int[]
+@assert sort_array_based_on_head_tail([5]) == [5]
+@assert sort_array_based_on_head_tail([2, 4, 3, 0, 1, 5]) == [0, 1, 2, 3, 4, 5]
+@assert sort_array_based_on_head_tail([2, 4, 3, 0, 1, 5, 6]) == [6, 5, 4, 3, 2, 1, 0]

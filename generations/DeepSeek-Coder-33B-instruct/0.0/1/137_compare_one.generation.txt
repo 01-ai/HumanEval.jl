@@ -1,0 +1,28 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+    a = parse_number(a)
+    b = parse_number(b)
+    if a > b
+        return a
+    elseif b > a
+        return b
+    else
+        return nothing
+    end
+end
+
+function parse_number(x::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat}
+    if typeof(x) == AbstractString
+        x = replace(x, "," => ".")
+        return parse(Float64, x)
+    else
+        return x
+    end
+end
+```
+
+This function first converts the input strings to floats if they are strings. Then it compares the two numbers and returns the larger one. If the numbers are equal, it returns `nothing`.
+
+The `parse_number` function is used to convert the input strings to floats. It replaces any commas in the string with periods, and then parses the string as a float. If the input is not a string, it is returned as is.

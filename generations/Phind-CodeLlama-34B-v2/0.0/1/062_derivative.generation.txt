@@ -1,0 +1,5 @@
+
+
+function derivative(xs::Vector)::Vector
+    return [i*x for (i,x) in enumerate(xs)][2:end]
+end

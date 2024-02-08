@@ -1,0 +1,11 @@
+```julia
+function generate_integers(a::Int, b::Int)::Vector{Int}
+    result = Int[]
+    for i in a:b
+        if i % 2 == 0
+            push!(result, i)
+        end
+    end
+    return result
+end
+```

@@ -1,0 +1,34 @@
+Here is the Julia function `is_nested` that matches the provided doc string:
+
+```julia
+function is_nested(s::String)::Bool
+    # Initialize a counter for the balance of brackets
+    balance = 0
+    # Initialize a variable to track if we have seen a nested bracket
+    nested = false
+
+    # Iterate over each character in the string
+    for c in s
+        if c == '['
+            # Increment balance when we see an opening bracket
+            balance += 1
+        elseif c == ']'
+            # Decrement balance when we see a closing bracket
+            balance -= 1
+            # If balance is greater than zero after decrement, we have a nested bracket
+            if balance > 0
+                nested = true
+            end
+        end
+        # If balance goes negative, we have an invalid sequence
+        if balance < 0
+            return false
+        end
+    end
+
+    # Return true if we have seen a nested bracket and balance is zero at the end
+    return nested && balance == 0
+end
+```
+
+This function checks for a valid sequence of brackets and also ensures that at least one bracket is nested. It returns `true` if these conditions are met, and `false` otherwise.

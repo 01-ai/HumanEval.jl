@@ -1,0 +1,5 @@
+
+
+function iscube(a::Int)::Bool
+    # Your code here
+end

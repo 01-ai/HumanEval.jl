@@ -1,0 +1,19 @@
+
+
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    if length(xs) < 2
+        return nothing
+    end
+    min_element = minimum(xs)
+    next_smallest = nothing
+    for element in xs
+        if element != min_element && (next_smallest === nothing || element < next_smallest)
+            next_smallest = element
+        end
+    end
+    return next_smallest
+end
+```
+
+This function first checks if the length of the input vector is less than 2. If it is, it returns `nothing` because there is no second smallest element. If the length is at least 2, it finds the minimum element in the vector and initializes the `next_smallest` variable to `nothing`. It then iterates through the vector and checks if the current element is not equal to the minimum element and is either less than the current `next_smallest` value or if `next_smallest` is still `nothing`. If either of these conditions is true, it updates the `next_smallest` value to the current element. After iterating through the entire vector, it returns the `next_smallest` value.

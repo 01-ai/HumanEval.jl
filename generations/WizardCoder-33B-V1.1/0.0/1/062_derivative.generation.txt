@@ -1,0 +1,12 @@
+
+
+Here is the Julia function that implements the doc string:
+
+```julia
+function derivative(xs::Vector)::Vector
+    n = length(xs)
+    return [i * xs[i+1] for i in 1:n-1]
+end
+```
+
+This function works by iterating over the indices of the input vector (excluding the last one), and for each index `i`, it multiplies the coefficient `xs[i+1]` by the index `i` to get the coefficient of the derivative term. The result is a vector of these derivative coefficients. 

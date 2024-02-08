@@ -1,0 +1,27 @@
+```julia
+function prime_fib(n::Int)::Int
+    # Base cases
+    if n == 1
+        return 2
+    elseif n == 2
+        return 3
+    end
+
+    # Initialize the Fibonacci sequence
+    a, b = 0, 1
+    for _ in 1:n-2
+        # Calculate the next number in the Fibonacci sequence
+        a, b = b, a + b
+        # Check if the current number is prime
+        if isprime(a)
+            # If it's prime, return it
+            return a
+        end
+    end
+
+    # The last number in the Fibonacci sequence is the n-th number
+    return a
+end
+```
+
+This function calculates the n-th Fibonacci number and checks if it's prime. If it is, it returns that number. If not, it continues to the next number in the sequence until it finds a prime or reaches the end of the sequence.

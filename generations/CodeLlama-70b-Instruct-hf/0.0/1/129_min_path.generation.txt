@@ -1,0 +1,68 @@
+
+
+```julia
+function min_path(grid::Vector{Vector{Int}}, k::Int)::Vector{Int}
+    # Check if the grid is empty or the k is less than 1
+    if isempty(grid) || k < 1
+        return []
+    end
+
+    # Initialize the result array
+    result = []
+
+    # Find the minimum value in the grid
+    min_val = minimum(grid)
+
+    # Find the index of the minimum value in the grid
+    min_idx = findfirst(x -> x == min_val, grid)
+
+    # Append the minimum value to the result array
+    push!(result, min_val)
+
+    # Repeat the process k times
+    for i in 1:k
+        # Find the neighboring cells of the current cell
+        neighbors = find_neighbors(grid, min_idx)
+
+        # Find the minimum value among the neighbors
+        min_val = minimum(neighbors)
+
+        # Find the index of the minimum value among the neighbors
+        min_idx = findfirst(x -> x == min_val, neighbors)
+
+        # Append the minimum value to the result array
+        push!(result, min_val)
+    end
+
+    return result
+end
+
+# Function to find the neighboring cells of a given cell
+function find_neighbors(grid::Vector{Vector{Int}}, idx::CartesianIndex)
+    neighbors = []
+
+    # Check if the cell has a neighbor to the left
+    if idx[2] > 1
+        push!(neighbors, grid[idx[1]][idx[2] - 1])
+    end
+
+    # Check if the cell has a neighbor to the right
+    if idx[2] < length(grid[idx[1]])
+        push!(neighbors, grid[idx[1]][idx[2] + 1])
+    end
+
+    # Check if the cell has a neighbor above
+    if idx[1] > 1
+        push!(neighbors, grid[idx[1] - 1][idx[2]])
+    end
+
+    # Check if the cell has a neighbor below
+    if idx[1] < length(grid)
+        push!(neighbors, grid[idx[1] + 1][idx[2]])
+    end
+
+    return neighbors
+end
+```
+
+This Julia function implements the `min_path` function based on the given doc string. It takes a grid and a positive integer `k` as input and returns the minimum path of length `k` in the grid. The function first checks if the grid is empty or `k` is less than 1. If so, it returns an empty array. Otherwise, it initializes an empty result array, finds the minimum value in the grid, and appends it to the result array. Then, it repeats the process `k` times, finding the neighboring cells of the current cell, finding the minimum value among the neighbors, and appending the minimum value to the result array. Finally, it returns the result array.

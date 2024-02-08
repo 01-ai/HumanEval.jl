@@ -1,0 +1,12 @@
+function prime_length(s::String)::Bool
+    len = length(s)
+    if len <= 1
+        return false
+    end
+    for i in 2:isqrt(len)
+        if len % i == 0
+            return false
+        end
+    end
+    return true
+end

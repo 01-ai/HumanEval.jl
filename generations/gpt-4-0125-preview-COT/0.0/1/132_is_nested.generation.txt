@@ -1,0 +1,41 @@
+### Step-by-Step Outline
+
+1. **Initialize a Counter**: Start with a counter set to 0. This counter will be used to track the balance of opening and closing brackets.
+
+2. **Iterate Through the String**: Loop through each character in the string.
+
+    a. **Opening Bracket**: If the character is an opening bracket (`'['`), increment the counter by 1.
+    
+    b. **Closing Bracket**: If the character is a closing bracket (`']'`), check if the counter is greater than 0. If it is, decrement the counter by 1. If the counter is 0, it means there are unmatched closing brackets, and you can return `false` immediately.
+    
+3. **Check for Nested Brackets**: After the loop, if the counter is not 0, it means there are unmatched opening brackets, which implies there was at least one nested bracket. Return `true` if the counter is not 0, indicating there was a nested structure. Otherwise, return `false`.
+
+4. **Optimization**: To ensure there's at least one nested bracket, we need to check if the counter ever goes above 1 during the iteration. If it does, it means there was a point where an opening bracket was followed by another opening bracket before a closing bracket, indicating a nested structure.
+
+### Julia Code Implementation
+
+```julia
+function is_nested(s::String)::Bool
+    counter = 0
+    nested = false  # Track if there's a nested structure
+    
+    for char in s
+        if char == '['
+            counter += 1
+            if counter > 1
+                nested = true  # Found a nested structure
+            end
+        elseif char == ']'
+            if counter > 0
+                counter -= 1
+            else
+                return false  # Unmatched closing bracket
+            end
+        end
+    end
+    
+    return nested && counter == 0  # Ensure all brackets are matched and there was a nested structure
+end
+```
+
+This implementation checks for both the balance of brackets and the presence of a nested structure, fulfilling the requirements of the function.

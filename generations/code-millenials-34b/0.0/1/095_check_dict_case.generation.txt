@@ -1,0 +1,17 @@
+
+
+function check_dict_case(d::Dict{String})::Bool
+    if isempty(d)
+        return false
+    end
+    lower_case = all(islower, keys(d))
+    upper_case = all(isupper, keys(d))
+    return lower_case || upper_case
+end
+
+# Test cases
+@assert check_dict_case(Dict("a" => "apple", "b" => "banana")) == true
+@assert check_dict_case(Dict("a" => "apple", "A" => "banana", "B" => "banana")) == false
+@assert check_dict_case(Dict("a" => "apple", "8" => "banana", "a" => "apple")) == false
+@assert check_dict_case(Dict("Name" => "John", "Age" => "36", "City" => "Houston")) == false
+@assert check_dict_case(Dict("STATE" => "NC", "ZIP" => "12345")) == true

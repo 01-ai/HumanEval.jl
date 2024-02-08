@@ -1,0 +1,21 @@
+Here is the implementation of the `correct_bracketing` function in Julia:
+
+```julia
+function correct_bracketing(brackets::String)::Bool
+    stack = []
+    for bracket in brackets
+        if bracket == '('
+            push!(stack, bracket)
+        elseif bracket == ')'
+            if isempty(stack)
+                return false
+            else
+                pop!(stack)
+            end
+        end
+    end
+    return isempty(stack)
+end
+```
+
+This function uses a stack to keep track of the opening brackets. Whenever an opening bracket is encountered, it is pushed onto the stack. If a closing bracket is encountered, it is checked if the stack is empty or not. If the stack is empty, it means there is no corresponding opening bracket, so the function returns `false`. Otherwise, the topmost opening bracket is popped from the stack. Finally, the function checks if the stack is empty or not. If the stack is empty, it means all opening brackets have corresponding closing brackets, so the function returns `true`. Otherwise, it returns `false`.

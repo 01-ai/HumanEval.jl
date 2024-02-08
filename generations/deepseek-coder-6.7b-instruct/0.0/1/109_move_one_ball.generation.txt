@@ -1,0 +1,41 @@
+Here is the Julia function that implements the given problem:
+
+```julia
+function move_one_ball(xs::Vector{Int})::Bool
+    n = length(xs)
+    if n == 0
+        return true
+    end
+    for i in 1:n
+        if xs[i] < xs[i-1]
+            if i > 1 && xs[i-1] > xs[i+1]
+                return false
+            end
+            xs[i-1:end] = circshift(xs[i-1:end], -1)
+            if is_sorted(xs)
+                return true
+            end
+            xs[i-1:end] = circshift(xs[i-1:end], 1)
+            xs[1:i-1] = circshift(xs[1:i-1], 1)
+            if is_sorted(xs)
+                return true
+            end
+            return false
+        end
+    end
+    return true
+end
+
+function is_sorted(xs::Vector{Int})::Bool
+    for i in 1:length(xs)-1
+        if xs[i] > xs[i+1]
+            return false
+        end
+    end
+    return true
+end
+```
+
+This function works by iterating over the array and checking if the current element is less than the previous one. If it is, it tries to shift the elements to the right to see if the array is sorted. If it can't be sorted by shifting, it returns false. If it can be sorted, it returns true. If the array is empty, it returns true.
+
+The helper function `is_sorted` checks if the array is sorted in non-decreasing order.

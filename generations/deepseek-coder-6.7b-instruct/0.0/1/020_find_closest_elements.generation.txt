@@ -1,0 +1,19 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function find_closest_elements(numbers::Vector{Float64})::Tuple{Float64, Float64}
+    sort_numbers = sort(numbers)
+    min_diff = Inf
+    result = (0.0, 0.0)
+    for i in 2:length(sort_numbers)
+        diff = sort_numbers[i] - sort_numbers[i-1]
+        if diff < min_diff
+            min_diff = diff
+            result = (sort_numbers[i-1], sort_numbers[i])
+        end
+    end
+    return result
+end
+```
+
+This function first sorts the input vector of numbers. Then it iterates over the sorted vector, calculating the difference between each pair of consecutive numbers. If the difference is less than the current minimum difference, it updates the minimum difference and the result tuple. Finally, it returns the result tuple.

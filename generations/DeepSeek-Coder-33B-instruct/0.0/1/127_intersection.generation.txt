@@ -1,0 +1,20 @@
+Here is a Julia function that implements the given problem:
+
+```julia
+function intersection(interval1::Vector{Int}, interval2::Vector{Int})::String
+    start = max(interval1[1], interval2[1])
+    end_ = min(interval1[2], interval2[2])
+    length_ = end_ - start + 1
+    if length_ <= 1
+        return "NO"
+    end
+    for i in 2:sqrt(length_)
+        if length_ % i == 0
+            return "NO"
+        end
+    end
+    return "YES"
+end
+```
+
+This function first calculates the start and end of the intersection of the two intervals. If the length of the intersection is less than or equal to 1, it returns "NO". Then it checks if the length is a prime number by trying to divide it by all numbers up to its square root. If it is divisible by any of these numbers, it returns "NO". If it is not divisible by any of these numbers, it returns "YES".

@@ -1,0 +1,21 @@
+
+
+# Outline
+
+1. Define the function `sum_to_n(n::Int)::Int`.
+2. Initialize a variable `sum` to 0.
+3. Use a for loop to iterate over the range `1:n`.
+4. In each iteration, add the current number to `sum`.
+5. After the loop, return `sum`.
+
+# Code
+
+```julia
+function sum_to_n(n::Int)::Int
+    sum = 0
+    for i in 1:n
+        sum += i
+    end
+    return sum
+end
+```

@@ -1,0 +1,16 @@
+Here is a Julia function that implements the given doc string:
+
+```julia
+function is_bored(s::String)::Int
+    sentences = split(s, r"[.?!]")
+    count = 0
+    for sentence in sentences
+        if startswith(sentence, "I")
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function works by first splitting the input string into sentences using the `split` function. It then iterates over each sentence and checks if it starts with the word "I". If it does, it increments a counter. Finally, it returns the counter, which represents the number of boredoms.

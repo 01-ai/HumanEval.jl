@@ -1,0 +1,24 @@
+### Step-by-Step Outline
+
+1. **Sort the Array**: First, sort the input array `xs` in descending order. This will arrange the elements such that the largest elements are at the beginning of the array.
+
+2. **Select Top K Elements**: After sorting, select the first `k` elements from the sorted array. This step is straightforward since the array is already sorted in descending order, and thus, the first `k` elements will be the largest `k` elements.
+
+3. **Return Result**: Return the selected `k` elements as the result. This will be a vector of integers containing the top `k` maximum numbers from the original array, sorted in descending order.
+
+### Julia Code Implementation
+
+```julia
+function top_k(xs::Vector{Int}, k::Int)::Vector{Int}
+    # Step 1: Sort the array in descending order
+    sorted_xs = sort(xs, rev=true)
+    
+    # Step 2: Select the first k elements from the sorted array
+    top_k_elements = sorted_xs[1:k]
+    
+    # Step 3: Return the result
+    return top_k_elements
+end
+```
+
+This implementation follows the outlined steps to ensure that the function behaves as expected, returning the top `k` maximum numbers from the input array `xs` in descending order.

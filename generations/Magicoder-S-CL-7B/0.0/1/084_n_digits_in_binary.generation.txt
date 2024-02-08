@@ -1,0 +1,11 @@
+
+
+function n_digits_in_binary(N::Int)::String
+    binary_digits = ""
+    while N > 0
+        remainder = N % 2
+        N = div(N, 2)
+        binary_digits = string(remainder, binary_digits)
+    end
+    return binary_digits
+end

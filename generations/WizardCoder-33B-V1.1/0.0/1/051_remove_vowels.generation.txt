@@ -1,0 +1,13 @@
+
+function remove_vowels(text::String)::String
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    return filter(x -> !(x in vowels), text)
+end
+
+# Test cases
+println(remove_vowels("")) # ""
+println(remove_vowels("abcdef\\nghijklm")) # "bcdf\\nghjklm"
+println(remove_vowels("abcdef")) # "bcdf"
+println(remove_vowels("aaaaa")) # ""
+println(remove_vowels("aaBAA")) # "B"
+println(remove_vowels("zbcd")) # "zbcd" 

@@ -1,0 +1,14 @@
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    # Initialize an empty vector to store the differences
+    differences = Vector{Int}(undef, length(game))
+    
+    # Iterate through each match
+    for i in 1:length(game)
+        # Calculate the absolute difference between the game score and the guess
+        differences[i] = abs(game[i] - guess[i])
+    end
+    
+    return differences
+end
+```

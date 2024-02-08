@@ -1,0 +1,21 @@
+Here is the implementation for the `longest` function in Julia:
+
+```julia
+function longest(xs::Vector{String})::Union{Nothing, String}
+    if isempty(xs)
+        return nothing
+    end
+    
+    longest_str = xs[1]
+    longest_len = length(longest_str)
+    
+    for i in 2:length(xs)
+        if length(xs[i]) > longest_len
+            longest_str = xs[i]
+            longest_len = length(longest_str)
+        end
+    end
+    
+    return longest_str
+end
+```

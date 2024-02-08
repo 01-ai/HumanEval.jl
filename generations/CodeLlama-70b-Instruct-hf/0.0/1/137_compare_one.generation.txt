@@ -1,0 +1,24 @@
+
+
+```julia
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+    # Convert the strings to floats if necessary
+    if typeof(a) == String
+        a = parse(Float64, replace(a, "," => "."))
+    end
+    if typeof(b) == String
+        b = parse(Float64, replace(b, "," => "."))
+    end
+
+    # Compare the values and return the larger one
+    if a > b
+        return a
+    elseif b > a
+        return b
+    else
+        return nothing
+    end
+end
+```
+
+This function first converts the strings to floats if necessary, replacing the commas with periods. Then, it compares the values and returns the larger one if they are not equal. If they are equal, it returns `nothing`.

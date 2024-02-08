@@ -1,0 +1,15 @@
+
+
+function parse_music(music_string::String)::Vector{Int}
+    beats = Int[]
+    for note in split(music_string)
+        if note == "o"
+            push!(beats, 4)
+        elseif note == "o|"
+            push!(beats, 2)
+        elseif note == ".|"
+            push!(beats, 1)
+        end
+    end
+    return beats
+end

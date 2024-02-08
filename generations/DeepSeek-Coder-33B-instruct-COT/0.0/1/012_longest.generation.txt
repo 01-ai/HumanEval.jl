@@ -1,0 +1,30 @@
+Here is a step-by-step outline of the function:
+
+1. Check if the input list is empty. If it is, return `nothing`.
+2. Initialize a variable `longest_string` to the first string in the list.
+3. Iterate over the rest of the list.
+4. For each string, check if its length is greater than the length of `longest_string`.
+5. If it is, update `longest_string` to that string.
+6. After iterating over the entire list, return `longest_string`.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function longest(xs::Vector{String})::Union{Nothing, String}
+    if isempty(xs)
+        return nothing
+    end
+
+    longest_string = xs[1]
+
+    for x in xs
+        if length(x) > length(longest_string)
+            longest_string = x
+        end
+    end
+
+    return longest_string
+end
+```
+
+This function works by first checking if the input list is empty. If it is, it returns `nothing`. Otherwise, it initializes `longest_string` to the first string in the list and then iterates over the rest of the list. For each string, it checks if its length is greater than the length of `longest_string`. If it is, it updates `longest_string` to that string. After iterating over the entire list, it returns `longest_string`.

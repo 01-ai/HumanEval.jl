@@ -1,0 +1,32 @@
+Here is a step-by-step outline of how you can implement this function:
+
+1. Check if the list is empty or contains only one element. If so, return true as it is considered to be monotonic.
+2. Determine if the list is increasing or decreasing.
+3. Iterate over the list and check if each pair of consecutive elements maintains the same order as the first pair.
+4. If any pair of consecutive elements does not maintain the same order, return false.
+5. If all pairs of consecutive elements maintain the same order, return true.
+
+Here is the Julia code that implements this outline:
+
+```julia
+function monotonic(l::Vector)::Bool
+    n = length(l)
+    if n < 2
+        return true
+    end
+
+    increasing = l[end] > l[1]
+
+    for i in 1:n-1
+        if increasing && l[i] > l[i+1]
+            return false
+        elseif !increasing && l[i] < l[i+1]
+            return false
+        end
+    end
+
+    return true
+end
+```
+
+This function works by first checking if the list is increasing or decreasing. It then iterates over the list, checking each pair of consecutive elements to see if they maintain the same order as the first pair. If it finds a pair that does not maintain the same order, it returns false. If it does not find any such pair, it returns true.

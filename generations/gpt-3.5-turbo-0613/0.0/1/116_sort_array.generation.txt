@@ -1,0 +1,7 @@
+Here is the implementation of the `sort_array` function:
+
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    return sort(arr, by = x -> (count_ones(x), x))
+end
+```

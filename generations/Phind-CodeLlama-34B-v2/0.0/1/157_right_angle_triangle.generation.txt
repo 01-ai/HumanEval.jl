@@ -1,0 +1,7 @@
+
+
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    sides = [a, b, c]
+    sort!(sides)
+    return isapprox(sides[1]^2 + sides[2]^2, sides[3]^2; atol=1e-10)
+end

@@ -1,0 +1,41 @@
+To implement the `digitSum` function, we will follow these steps:
+
+1. Initialize a sum variable to 0.
+2. Iterate over each character in the input string.
+3. Check if the current character is an uppercase letter.
+4. If it is, convert the character to its ASCII code and add it to the sum.
+5. After the loop, return the sum.
+
+Now, let's write the code for the `digitSum` function:
+
+```julia
+function digitSum(s::String)::Int
+    # Step 1: Initialize the sum
+    sum = 0
+    
+    # Step 2: Iterate over each character in the string
+    for c in s
+        # Step 3: Check if the character is an uppercase letter
+        if 'A' <= c <= 'Z'
+            # Step 4: Convert to ASCII and add to sum
+            sum += Int(c)
+        end
+    end
+    
+    # Step 5: Return the sum
+    return sum
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(digitSum(""))          # Expected output: 0
+println(digitSum("abAB"))      # Expected output: 131
+println(digitSum("abcCd"))     # Expected output: 67
+println(digitSum("helloE"))    # Expected output: 69
+println(digitSum("woArBld"))   # Expected output: 131
+println(digitSum("aAaaaXa"))   # Expected output: 153
+```
+
+This code should work correctly according to the specifications provided in the docstring.

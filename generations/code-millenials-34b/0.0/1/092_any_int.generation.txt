@@ -1,0 +1,19 @@
+
+
+function any_int(x::Number, y::Number, z::Number)::Bool
+    if typeof(x) <: Integer && typeof(y) <: Integer && typeof(z) <: Integer
+        if x == y + z || y == x + z || z == x + y
+            return true
+        else
+            return false
+        end
+    else
+        return false
+    end
+end
+
+# Test cases
+@assert any_int(5, 2, 7) == true
+@assert any_int(3, 2, 2) == false
+@assert any_int(3, -2, 1) == true
+@assert any_int(3.6, -2.2, 2) == false

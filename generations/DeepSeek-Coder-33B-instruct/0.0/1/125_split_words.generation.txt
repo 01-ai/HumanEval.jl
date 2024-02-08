@@ -1,0 +1,15 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function split_words(txt::String)::Union{Vector{<:AbstractString},Int}
+    if occursin(r"\s", txt)
+        return split(txt)
+    elseif occursin(",", txt)
+        return split(txt, ",")
+    else
+        return count(c -> isodd(c - 'a' + 1), txt)
+    end
+end
+```
+
+This function first checks if the input string contains any whitespace characters. If it does, it splits the string on whitespace and returns the resulting array of words. If the string does not contain any whitespace, it then checks if it contains any commas. If it does, it splits the string on commas and returns the resulting array of words. If the string does not contain any whitespace or commas, it counts the number of lower-case letters with odd order in the alphabet and returns this count.

@@ -1,0 +1,16 @@
+
+
+Outline:
+
+1. Define a function named `strlen` that takes a single argument `x` of type `String`.
+2. The function should return an `Int` value.
+3. Use the built-in `length` function to calculate the length of the string `x`.
+4. Return the calculated length.
+
+Code:
+
+```julia
+function strlen(x::String)::Int
+    return length(x)
+end
+```

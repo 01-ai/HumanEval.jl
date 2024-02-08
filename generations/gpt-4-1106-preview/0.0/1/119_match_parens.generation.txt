@@ -1,0 +1,39 @@
+Here is the Julia function `match_parens` that implements the logic described in the doc string:
+
+```julia
+function match_parens(lst::Vector{String})::String
+    # Concatenate the strings in both possible orders
+    str1 = lst[1] * lst[2]
+    str2 = lst[2] * lst[1]
+    
+    # Function to check if a string has balanced parentheses
+    function is_balanced(s::String)::Bool
+        balance = 0
+        for c in s
+            if c == '('
+                balance += 1
+            elseif c == ')'
+                balance -= 1
+            end
+            # If balance goes negative, parentheses are not balanced
+            if balance < 0
+                return false
+            end
+        end
+        return balance == 0
+    end
+    
+    # Check if either concatenated string is balanced
+    if is_balanced(str1) || is_balanced(str2)
+        return "Yes"
+    else
+        return "No"
+    end
+end
+
+# Examples
+println(match_parens(["()(", ")"])) # Should print "Yes"
+println(match_parens([")", ")"]))   # Should print "No"
+```
+
+This function first defines a helper function `is_balanced` to check if a given string has balanced parentheses. Then it checks both possible concatenations of the input strings to see if either results in a balanced string. If at least one of the concatenated strings is balanced, it returns "Yes"; otherwise, it returns "No".

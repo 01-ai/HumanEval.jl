@@ -1,0 +1,16 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function count_distinct_characters(s::String)::Int
+    return length(Set(lowercase(s)))
+end
+```
+
+This function works by first converting the string to lowercase using the `lowercase` function, then converting the string to a set, which automatically removes any duplicate characters. The number of elements in the set is then returned, which is the number of distinct characters in the string.
+
+Here is how you can test the function:
+
+```julia
+println(count_distinct_characters("xyzXYZ"))  # Output: 3
+println(count_distinct_characters("Jerry"))  # Output: 4
+```

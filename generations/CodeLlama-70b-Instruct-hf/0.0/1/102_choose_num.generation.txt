@@ -1,0 +1,19 @@
+
+
+```julia
+function choose_num(x::Int, y::Int)::Int
+    if x > y
+        return -1
+    end
+
+    for i in x:y
+        if i % 2 == 0
+            return i
+        end
+    end
+
+    return -1
+end
+```
+
+This function first checks if x is greater than y. If it is, it returns -1. If not, it iterates through the range from x to y and checks if each number is even. If it finds an even number, it returns it. If it doesn't find any even numbers, it returns -1.

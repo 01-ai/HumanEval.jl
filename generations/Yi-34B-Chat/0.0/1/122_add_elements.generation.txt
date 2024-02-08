@@ -1,0 +1,18 @@
+```julia
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    # Initialize the sum to zero
+    sum_of_elements = 0
+
+    # Loop through the first k elements of xs
+    for i in 1:k
+        # Check if the element has at most two digits
+        if xs[i] <= 99
+            # Add the element to the sum
+            sum_of_elements += xs[i]
+        end
+    end
+
+    # Return the sum
+    return sum_of_elements
+end
+```

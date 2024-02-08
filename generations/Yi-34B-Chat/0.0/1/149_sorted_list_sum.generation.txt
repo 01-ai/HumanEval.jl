@@ -1,0 +1,16 @@
+```julia
+function sorted_list_sum(xs::Vector{String})::Vector{String}
+    # Filter out strings with odd lengths
+    even_length_strings = filter(x -> length(x) % 2 == 0, xs)
+    
+    # Sort the strings by length (ascending), and then by alphabetical order
+    sorted_strings = sort(even_length_strings, by = length, alg = QuickSort)
+    
+    # If two strings have the same length, sort them alphabetically
+    sorted_strings = sort(sorted_strings)
+    
+    return sorted_strings
+end
+```
+
+This function filters out strings with odd lengths from the input list, then sorts the remaining strings by length (ascending) using `sort` with a custom comparison function `by = length`. If two strings have the same length, they are sorted alphabetically using the default `sort` algorithm (which is `QuickSort` in Julia). Finally, the sorted list is returned.

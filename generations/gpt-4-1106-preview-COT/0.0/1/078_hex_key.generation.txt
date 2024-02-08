@@ -1,0 +1,34 @@
+### Step-by-step Outline:
+
+1. Define the function `hex_key` that takes a string `num` as its argument.
+2. Create a set or list of prime hexadecimal digits, which includes the characters '2', '3', '5', '7', 'B', and 'D'.
+3. Initialize a counter to keep track of the number of prime hexadecimal digits found in the input string.
+4. Iterate over each character in the input string `num`.
+5. For each character, check if it is in the set of prime hexadecimal digits.
+6. If the character is a prime hexadecimal digit, increment the counter.
+7. After iterating through all characters, return the counter as the result.
+
+### Julia Code:
+
+```julia
+function hex_key(num::String)::Int
+    # Step 2: Define the set of prime hexadecimal digits
+    prime_hex_digits = Set(['2', '3', '5', '7', 'B', 'D'])
+    
+    # Step 3: Initialize the counter
+    prime_count = 0
+    
+    # Step 4: Iterate over each character in the input string
+    for digit in num
+        # Step 5 & 6: Check if the character is a prime hexadecimal digit and increment the counter
+        if digit in prime_hex_digits
+            prime_count += 1
+        end
+    end
+    
+    # Step 7: Return the counter
+    return prime_count
+end
+```
+
+Now, let's implement the function in Julia.

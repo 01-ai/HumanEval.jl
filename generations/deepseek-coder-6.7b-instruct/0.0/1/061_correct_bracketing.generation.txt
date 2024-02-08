@@ -1,0 +1,22 @@
+Here is a Julia function that implements the `correct_bracketing` function:
+
+```julia
+function correct_bracketing(brackets::String)::Bool
+    count = 0
+    for bracket in brackets
+        if bracket == "("
+            count += 1
+        elseif bracket == ")"
+            count -= 1
+            if count < 0
+                return false
+            end
+        else
+            return false
+        end
+    end
+    return count == 0
+end
+```
+
+This function uses a counter to keep track of the number of opening brackets that have not been closed. If it encounters a closing bracket without a corresponding opening bracket, it returns `false`. If it encounters any other character, it also returns `false`. If the counter is ever negative, it means there is a closing bracket without a corresponding opening bracket, so it returns `false`. If the counter is 0 at the end of the string, it means all brackets were correctly matched, so it returns `true`.

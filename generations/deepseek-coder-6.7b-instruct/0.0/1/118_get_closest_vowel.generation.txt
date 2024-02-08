@@ -1,0 +1,15 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function get_closest_vowel(word::String)::String
+    vowels = "aeiouAEIOU"
+    for i in length(word):-1:2
+        if word[i] in vowels && word[i-1] ∉ vowels && word[i+1] ∉ vowels
+            return word[i]
+        end
+    end
+    return ""
+end
+```
+
+This function iterates over the string from right to left, skipping the first and last character. For each character, it checks if it is a vowel and the characters to its left and right are not vowels. If it finds such a character, it returns it. If it doesn't find any, it returns an empty string.

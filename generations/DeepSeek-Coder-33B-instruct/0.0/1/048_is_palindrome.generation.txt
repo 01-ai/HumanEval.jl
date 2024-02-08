@@ -1,0 +1,18 @@
+Here is the Julia function that checks if a given string is a palindrome:
+
+```julia
+function is_palindrome(text::String)::Bool
+    return text == reverse(text)
+end
+```
+
+This function works by comparing the input string `text` with its reverse. If they are the same, then `text` is a palindrome, so the function returns `true`. Otherwise, it returns `false`.
+
+You can test this function with the examples provided in the doc string:
+
+```julia
+println(is_palindrome("")) # true
+println(is_palindrome("aba")) # true
+println(is_palindrome("aaaaa")) # true
+println(is_palindrome("zbcd")) # false
+```

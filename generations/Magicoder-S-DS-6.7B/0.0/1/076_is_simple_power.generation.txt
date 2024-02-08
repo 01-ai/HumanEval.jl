@@ -1,0 +1,9 @@
+function is_simple_power(x::Number, n::Number)::Bool
+    if n == 1
+        return x == 1
+    elseif n == 0
+        return x == 0
+    else
+        return x > 0 && isinteger(x^(1/n))
+    end
+end

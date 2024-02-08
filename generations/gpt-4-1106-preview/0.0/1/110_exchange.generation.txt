@@ -1,0 +1,23 @@
+Here is the Julia function `exchange` that implements the described functionality:
+
+```julia
+function exchange(lst1::Vector{Int}, lst2::Vector{Int})::String
+    # Count the number of even and odd numbers in lst1 and lst2
+    even_count_lst1 = count(iseven, lst1)
+    odd_count_lst1 = length(lst1) - even_count_lst1
+    even_count_lst2 = count(iseven, lst2)
+    
+    # Check if there are enough even numbers in lst2 to exchange with odd numbers in lst1
+    if odd_count_lst1 <= even_count_lst2
+        return "YES"
+    else
+        return "NO"
+    end
+end
+
+# Example usage:
+println(exchange([1, 2, 3, 4], [1, 2, 3, 4]))  # Output: "YES"
+println(exchange([1, 2, 3, 4], [1, 5, 3, 4]))  # Output: "NO"
+```
+
+This function counts the number of even and odd numbers in both lists. If there are enough even numbers in `lst2` to replace all the odd numbers in `lst1`, it returns "YES". Otherwise, it returns "NO".

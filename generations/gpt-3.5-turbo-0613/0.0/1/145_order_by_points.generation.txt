@@ -1,0 +1,13 @@
+Here is the implementation of the `order_by_points` function in Julia:
+
+```julia
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    return sort(nums, by = x -> (sum(digits(abs(x))), findfirst(isequal(x), nums)))
+end
+```
+
+This function uses the `sort` function to sort the given list of integers. The `by` argument is used to specify the sorting criteria. In this case, we sort the numbers based on the sum of their digits (`sum(digits(abs(x)))`) and their index in the original list (`findfirst(isequal(x), nums)`).
+
+Note that we use `abs(x)` to ensure that negative numbers are also sorted correctly based on the sum of their digits.
+
+Let me know if you need any further assistance!

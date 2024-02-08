@@ -1,0 +1,13 @@
+```julia
+function sort_array_based_on_head_tail(xs::Vector{Int})
+    if isempty(xs)
+        return xs
+    end
+    
+    if isodd(xs[1] + xs[end])
+        return sort(xs)
+    else
+        return reverse(sort(xs))
+    end
+end
+```

@@ -1,0 +1,11 @@
+```julia
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing,Int}}
+    neg_ints = filter(x -> x < 0, xs)
+    pos_ints = filter(x -> x > 0, xs)
+    
+    max_neg = isempty(neg_ints) ? nothing : maximum(neg_ints)
+    min_pos = isempty(pos_ints) ? nothing : minimum(pos_ints)
+    
+    return (max_neg, min_pos)
+end
+```

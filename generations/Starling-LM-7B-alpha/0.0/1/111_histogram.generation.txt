@@ -1,0 +1,11 @@
+ function histogram(s::String)::Dict{String, Int}
+    counts = Dict{String, Int}()
+    for c in s
+        if !haskey(counts, c)
+            counts[c] = 1
+        else
+            counts[c] += 1
+        end
+    end
+    return counts
+end

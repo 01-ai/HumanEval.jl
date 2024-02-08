@@ -1,0 +1,21 @@
+
+
+Here is the Julia implementation of the `count_nums` function based on the provided docstring:
+
+```julia
+function count_nums(xs::Vector{Int})::Int
+    count = 0
+    for x in xs
+        if x < 0
+            x = -x
+        end
+        digits = map(d -> parse(Int, d), string(x))
+        if sum(digits) > 0
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function iterates over each element in the input vector `xs`. If the element is negative, it converts it to positive. Then it converts each digit of the element into an integer and calculates the sum of all digits. If the sum is greater than 0, it increments the `count` variable. Finally, it returns the `count` variable which represents the number of elements with a sum of digits greater than 0.

@@ -1,0 +1,9 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function common(l1::Vector, l2::Vector)::Vector
+    return sort(unique(intersect(l1, l2)))
+end
+```
+
+This function uses the built-in `intersect` function to find common elements between two lists, `unique` to remove duplicates, and `sort` to sort the result.

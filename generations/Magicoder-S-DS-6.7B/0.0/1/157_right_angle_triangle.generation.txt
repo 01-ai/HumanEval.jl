@@ -1,0 +1,6 @@
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    sides = [a, b, c]
+    hypotenuse = maximum(sides)
+    sides = setdiff(sides, [hypotenuse])
+    return hypotenuse^2 == sum(sides .^ 2)
+end

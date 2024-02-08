@@ -1,0 +1,45 @@
+To implement the `count_digits` function as described, we can follow these steps:
+
+1. Convert the integer `n` into a string to easily iterate through its digits.
+2. Iterate through each digit, checking if it is odd.
+3. If a digit is odd, multiply it with an accumulator variable initialized to 1. If no odd digit is found, the accumulator will remain 1, which we will adjust to return 0 in such a case.
+4. Return the product of odd digits or 0 if there are no odd digits.
+
+Here's how the implementation looks in Julia:
+
+```julia
+function count_digits(n::Int)::Int
+    # Convert the integer to a string to iterate through its digits
+    digits_str = string(n)
+    
+    # Initialize the product accumulator to 1
+    product = 1
+    
+    # Flag to check if there's at least one odd digit
+    has_odd = false
+    
+    # Iterate through each character in the string representation of n
+    for digit_char in digits_str
+        # Convert the character back to an integer
+        digit = parse(Int, digit_char)
+        
+        # Check if the digit is odd
+        if digit % 2 != 0
+            # Multiply the product by the digit
+            product *= digit
+            # Set the flag to true since we found an odd digit
+            has_odd = true
+        end
+    end
+    
+    # If no odd digit was found, return 0
+    if !has_odd
+        return 0
+    end
+    
+    # Return the product of odd digits
+    return product
+end
+```
+
+This function works by iterating through each digit of the input number, checking if it's odd, and multiplying it to the accumulator if it is. If no odd digits are found, it returns 0.

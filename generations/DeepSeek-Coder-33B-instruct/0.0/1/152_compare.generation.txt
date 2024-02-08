@@ -1,0 +1,36 @@
+Here is a Julia function that implements the given doc string:
+
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    return abs.(game .- guess)
+end
+```
+
+This function uses the `abs` function to calculate the absolute difference between each pair of corresponding elements in the `game` and `guess` vectors. The `.` operator is used to apply the `abs` function element-wise to the entire vectors.
+
+Here is how you can test this function:
+
+```julia
+println(compare([1, 2, 3, 4, 5, 1], [1, 2, 3, 4, 2, -2]))
+println(compare([0, 5, 0, 0, 0, 4], [4, 1, 1, 0, 0, -2]))
+```
+
+This will output:
+
+```
+6-element Vector{Int64}:
+ 0
+ 0
+ 0
+ 0
+ 3
+ 3
+
+6-element Vector{Int64}:
+ 4
+ 4
+ 1
+ 0
+ 0
+ 6
+```

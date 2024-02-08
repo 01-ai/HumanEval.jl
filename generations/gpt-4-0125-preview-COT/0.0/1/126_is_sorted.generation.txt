@@ -1,0 +1,38 @@
+### Step-by-Step Outline
+
+1. **Check for duplicates**: Before checking if the list is sorted, we need to ensure there are no duplicates of the same number more than once. If there are, return `false`.
+    - Iterate through the list and count occurrences of each number.
+    - If any number occurs more than once, return `false`.
+
+2. **Check if sorted**: If there are no duplicates, proceed to check if the list is sorted in ascending order.
+    - Iterate through the list comparing each element with the next one.
+    - If at any point, an element is greater than the next one, return `false`.
+
+3. **Return `true`**: If none of the above conditions are met, the list is sorted in ascending order without duplicates, so return `true`.
+
+### Julia Code Implementation
+
+```julia
+function is_sorted(xs::Vector{Int})::Bool
+    # Step 1: Check for duplicates
+    counts = Dict{Int, Int}()
+    for x in xs
+        counts[x] = get(counts, x, 0) + 1
+        if counts[x] > 1
+            return false
+        end
+    end
+
+    # Step 2: Check if sorted
+    for i in 1:length(xs)-1
+        if xs[i] > xs[i+1]
+            return false
+        end
+    end
+
+    # Step 3: Return true if no duplicates and sorted
+    return true
+end
+```
+
+This implementation first checks for duplicates using a dictionary to count occurrences of each number. If any number is found more than once, it immediately returns `false`. If no duplicates are found, it then checks if the list is sorted in ascending order by comparing each element with the next one. If all elements are in ascending order, it returns `true`.

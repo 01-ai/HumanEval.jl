@@ -1,0 +1,11 @@
+
+
+function will_it_fly(q::Vector{Int}, w::Int)::Bool
+    return q == reverse(q) && sum(q) <= w
+end
+
+# Test cases
+println(will_it_fly([1, 2], 5))  # false
+println(will_it_fly([3, 2, 3], 1))  # false
+println(will_it_fly([3, 2, 3], 9))  # true
+println(will_it_fly([3], 5))  # true 

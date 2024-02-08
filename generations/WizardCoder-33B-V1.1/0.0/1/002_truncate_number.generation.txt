@@ -1,0 +1,11 @@
+
+
+Here is the Julia function that implements the given doc string:
+
+```julia
+function truncate_number(number::Float64)::Float64
+    return number - floor(number)
+end
+```
+
+This function works by subtracting the largest integer smaller than the given number from the given number. The `floor` function is used to get the largest integer smaller than the given number. The result is the decimal part of the number. 

@@ -1,0 +1,33 @@
+  Here is a possible implementation of the `fruit_distribution` function in Julia:
+```
+function fruit_distribution(s::String, n::Int)::Int
+    # Parse the string to extract the number of apples and oranges
+    apples, oranges = parse.(Int, split(s, " apples and "))
+
+    # Calculate the number of mango fruits
+    mangoes = n - apples - oranges
+
+    return mangoes
+end
+```
+Here's an explanation of how the function works:
+
+1. The function takes two arguments: `s`, a string that represents the distribution of apples and oranges, and `n`, an integer that represents the total number of fruits in the basket.
+2. The function uses the `parse` function to extract the number of apples and oranges from the string. The `split` function is used to split the string into two parts: the number of apples and the number of oranges. The `parse` function is then used to convert these strings into integers.
+3. The function calculates the number of mango fruits by subtracting the number of apples and oranges from the total number of fruits.
+4. The function returns the number of mango fruits.
+
+Here are some examples of how the function can be used:
+```
+julia> fruit_distribution("5 apples and 6 oranges", 19)
+8
+
+julia> fruit_distribution("0 apples and 1 oranges", 3)
+2
+
+julia> fruit_distribution("2 apples and 3 oranges", 100)
+95
+
+julia> fruit_distribution("100 apples and 1 oranges", 120)
+19
+```

@@ -1,0 +1,15 @@
+Certainly! Below is the Julia function `words_string` that takes a string `s` and returns a vector of words as described in the doc string.
+
+```julia
+function words_string(s::String)::Vector{String}
+    # Split the string by commas and spaces, and filter out any empty strings
+    words = split(s, r"[, ]+", keepempty=false)
+    return words
+end
+
+# Example usage:
+println(words_string("Hi, my name is John"))
+println(words_string("One, two, three, four, five, six"))
+```
+
+This function uses a regular expression `r"[, ]+"` to split the input string `s` by commas and spaces. The `keepempty=false` argument ensures that empty strings are not included in the resulting array.

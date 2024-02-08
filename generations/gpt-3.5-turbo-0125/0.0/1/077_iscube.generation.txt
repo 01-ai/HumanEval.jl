@@ -1,0 +1,6 @@
+```julia
+function iscube(a::Int)::Bool
+    cube_root = cbrt(abs(a))
+    return a == cube_root^3
+end
+```

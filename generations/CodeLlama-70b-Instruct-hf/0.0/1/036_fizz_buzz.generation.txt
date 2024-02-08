@@ -1,0 +1,17 @@
+
+
+```julia
+function fizz_buzz(n::Int)
+    count = 0
+    for i in 1:n-1
+        if i % 11 == 0 || i % 13 == 0
+            if occursin("7", string(i))
+                count += 1
+            end
+        end
+    end
+    return count
+end
+```
+
+This function iterates through all integers from 1 to n-1. For each integer, it checks if it is divisible by 11 or 13. If it is, it checks if the digit 7 appears in the integer. If it does, it increments the count. Finally, it returns the count.

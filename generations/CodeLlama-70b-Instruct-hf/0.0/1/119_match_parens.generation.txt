@@ -1,0 +1,24 @@
+
+
+```julia
+function match_parens(lst::Vector{String})::String
+    # Count the number of open parentheses in the first string
+    open_count1 = count(x -> x == "(", lst[1])
+    # Count the number of close parentheses in the first string
+    close_count1 = count(x -> x == ")", lst[1])
+
+    # Count the number of open parentheses in the second string
+    open_count2 = count(x -> x == "(", lst[2])
+    # Count the number of close parentheses in the second string
+    close_count2 = count(x -> x == ")", lst[2])
+
+    # Check if the sum of open parentheses in both strings is equal to the sum of close parentheses in both strings
+    if open_count1 + open_count2 == close_count1 + close_count2
+        return "Yes"
+    else
+        return "No"
+    end
+end
+```
+
+This function first counts the number of open and close parentheses in each string. Then, it checks if the sum of open parentheses in both strings is equal to the sum of close parentheses in both strings. If they are equal, it returns "Yes", indicating that it is possible to concatenate the two strings in some order to form a good string. Otherwise, it returns "No".

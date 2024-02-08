@@ -1,0 +1,17 @@
+
+
+function by_length(xs::Vector{Int})::Vector{String}
+    # Filter the input array to only include integers between 1 and 9
+    filtered = filter(x -> 1 <= x <= 9, xs)
+
+    # Sort the filtered array in descending order
+    sorted = sort(filtered, rev = true)
+
+    # Create a vector of the names of the digits
+    digit_names = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+
+    # Replace each digit in the sorted array with its corresponding name
+    result = digit_names[sorted .+ 1]
+
+    return result
+end

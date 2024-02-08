@@ -1,0 +1,26 @@
+
+
+# Outline
+
+1. Initialize an empty string `result` to store the final string without vowels.
+2. Define the vowels in a vector `vowels`.
+3. Iterate over each character `c` in the input string `text`.
+4. If `c` is not in `vowels`, append `c` to `result`.
+5. Return `result`.
+
+# Code
+
+```julia
+function remove_vowels(text::String)::String
+    result = ""
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+
+    for c in text
+        if c ∉ vowels
+            result *= c
+        end
+    end
+
+    return result
+end
+```

@@ -1,0 +1,36 @@
+  Here is an implementation of the `remove_vowels` function in Julia:
+```
+function remove_vowels(text::String)::String
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    result = ""
+    for c in text
+        if !(c in vowels)
+            result *= c
+        end
+    end
+    return result
+end
+```
+This function uses a list of vowels and iterates over the input string. If the current character is not a vowel, it is added to the result string. The function returns the result string.
+
+Here are some examples of how the function can be used:
+```
+julia> remove_vowels("")
+""
+
+julia> remove_vowels("abcdef\\nghijklm")
+"bcdf\\nghjklm"
+
+julia> remove_vowels("abcdef")
+"bcdf"
+
+julia> remove_vowels("aaaaa")
+""
+
+julia> remove_vowels("aaBAA")
+"B"
+
+julia> remove_vowels("zbcd")
+"zbcd"
+```
+Note that the function does not modify the input string, it returns a new string with the vowels removed.

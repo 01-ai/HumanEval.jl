@@ -1,0 +1,5 @@
+```julia
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    return sort(nums, by=x->(sum(digits(abs(x))), findfirst(isequal(x), nums)))
+end
+```

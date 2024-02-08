@@ -1,0 +1,34 @@
+To implement the `rolling_max` function, we will follow these steps:
+
+1. Initialize an empty vector `result` that will store the rolling maximum values.
+2. Initialize a variable `current_max` to `-Inf` (negative infinity) to keep track of the current maximum value as we iterate through the list.
+3. Iterate through each element in the `numbers` vector.
+4. For each element, update `current_max` if the element is greater than `current_max`.
+5. Append `current_max` to the `result` vector.
+6. After the loop, return the `result` vector.
+
+Now, let's write the code for the `rolling_max` function:
+
+```julia
+function rolling_max(numbers::Vector{Int})::Vector{Int}
+    # Step 1: Initialize the result vector
+    result = Vector{Int}()
+    
+    # Step 2: Initialize the current maximum value
+    current_max = -Inf
+    
+    # Step 3: Iterate through the numbers
+    for number in numbers
+        # Step 4: Update the current maximum value
+        current_max = max(current_max, number)
+        
+        # Step 5: Append the current maximum to the result
+        push!(result, current_max)
+    end
+    
+    # Step 6: Return the result
+    return result
+end
+```
+
+This function will now calculate the rolling maximum for a given vector of integers.

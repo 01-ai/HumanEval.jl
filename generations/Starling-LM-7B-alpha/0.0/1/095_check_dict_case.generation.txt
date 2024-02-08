@@ -1,0 +1,6 @@
+ function check_dict_case(d::Dict{String})::Bool
+    keys = collect(keys(d))
+    all_lower = all(lowercase(key) == key for key in keys)
+    all_upper = all(uppercase(key) == key for key in keys)
+    return all_lower || all_upper
+end

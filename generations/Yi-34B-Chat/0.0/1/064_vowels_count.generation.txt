@@ -1,0 +1,15 @@
+```julia
+function vowels_count(s::String)::Int
+    vowels = 0
+    for c in s
+        if c in 'a' : 'z'
+            if c == 'y' && s[end] == c
+                vowels += 1
+            elseif c in 'a' : 'e' 'i' 'o' 'u'
+                vowels += 1
+            end
+        end
+    end
+    return vowels
+end
+```

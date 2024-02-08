@@ -1,0 +1,23 @@
+
+
+function is_happy(s::String)::Bool
+    if length(s) < 3
+        return false
+    end
+
+    for i in 1:(length(s) - 2)
+        if s[i] == s[i+1] || s[i] == s[i+2] || s[i+1] == s[i+2]
+            return false
+        end
+    end
+
+    return true
+end
+
+# Test cases
+println(is_happy("a")) # false
+println(is_happy("aa")) # false
+println(is_happy("abcd")) # true
+println(is_happy("aabb")) # false
+println(is_happy("adb")) # true
+println(is_happy("xyy")) # false 

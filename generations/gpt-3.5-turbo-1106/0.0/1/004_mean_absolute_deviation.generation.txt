@@ -1,0 +1,7 @@
+```julia
+function mean_absolute_deviation(numbers::Vector{Float64})::Float64
+    mean_val = mean(numbers)
+    deviations = abs.(numbers .- mean_val)
+    return mean(deviations)
+end
+```

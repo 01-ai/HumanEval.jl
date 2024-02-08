@@ -1,0 +1,11 @@
+
+
+Here is the Julia function that implements the doc string:
+
+```julia
+function top_k(xs::Vector{Int}, k::Int)::Vector{Int}
+    return sort(xs, rev=true)[1:k]
+end
+```
+
+This function works by first sorting the input array in descending order using the `sort` function with `rev=true`. Then it returns the first `k` elements of the sorted array. 

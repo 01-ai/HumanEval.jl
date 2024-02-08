@@ -1,0 +1,19 @@
+Here is a simple Julia function that uses a stack to check if the brackets are correctly paired:
+
+```julia
+function correct_bracketing(brackets::String)::Bool
+    stack = []
+    for bracket in brackets
+        if bracket == '('
+            pushfirst(stack, bracket)
+        elseif bracket == ')'
+            if isempty(stack) || popfirst(stack) != '('
+                return false
+            end
+        end
+    end
+    return isempty(stack)
+end
+```
+
+This function iterates over the string of brackets. If it encounters an opening bracket, it pushes it onto the stack. If it encounters a closing bracket, it checks if the stack is empty or if the top of the stack is not an opening bracket. If either of these conditions is true, it returns `false`. If the function finishes iterating over the string and the stack is not empty, it returns `false`. Otherwise, it returns `true`.

@@ -1,0 +1,28 @@
+
+
+# Outline
+
+1. Initialize a variable `max_val` to hold the maximum value found so far, setting it as the first element of the list `xs`.
+2. Iterate over the list `xs` starting from the second element (since `max_val` is already initialized with the first one).
+3. For each element, compare it with `max_val`. If it's greater, update `max_val` with this new element.
+4. After the loop finishes, return `max_val` as the maximum element of the list.
+
+# Code
+
+```julia
+function max_element(xs)
+    # Step 1: Initialize max_val with the first element of the list
+    max_val = xs[1]
+
+    # Step 2: Iterate over the list starting from the second element
+    for x in xs[2:end]
+        # Step 3: Compare each element with max_val and update max_val if necessary
+        if x > max_val
+            max_val = x
+        end
+    end
+
+    # Step 4: Return the maximum element
+    return max_val
+end
+```

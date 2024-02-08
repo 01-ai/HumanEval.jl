@@ -1,0 +1,8 @@
+
+function filter_by_prefix(xs::Vector{String}, prefix::String)::Vector{String}
+    return filter(x -> startswith(x, prefix), xs)
+end
+
+# Testing the function
+println(filter_by_prefix(String[], "a"))
+println(filter_by_prefix(["abc", "bcd", "cde", "array"], "a")) 

@@ -1,0 +1,16 @@
+Here is the Julia code for the `find_zero` function:
+
+```julia
+function find_zero(xs::Vector{Int})
+    n = length(xs)
+    a = xs[n]
+    b = xs[n-1]
+    return -b/a
+end
+```
+
+This function works by taking the coefficients of the polynomial and finding the roots of the polynomial. The roots of a polynomial are found by setting the polynomial equal to zero and solving for x. In this case, the polynomial is of the form `a*x^n + b*x^(n-1) + ...`, so the roots are found by setting `a*x^n + b*x^(n-1) + ... = 0` and solving for x.
+
+The function `find_zero` takes the last two coefficients of the polynomial (`a` and `b`) and returns the root of the polynomial, which is `-b/a`. This is because the root of the polynomial is the x-intercept of the line `y = -b/a*x`, which is the line that intersects the x-axis when the polynomial is equal to zero.
+
+The function assumes that the input vector `xs` has an even number of elements and that the last non-zero coefficient is the leading coefficient. If these assumptions are not met, the function may not return a valid root.

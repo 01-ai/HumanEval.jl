@@ -1,0 +1,19 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    # Calculate the sum of digits for each number
+    sums = [sum(abs, digits(num)) for num in nums]
+
+    # Create a list of tuples, where each tuple contains the index, sum of digits and the number itself
+    nums_with_points = [(i, sums[i], nums[i]) for i in 1:length(nums)]
+
+    # Sort the list of tuples first by the sum of digits, then by the index
+    sorted_nums = sort(nums_with_points, by=x->(x[2], x[1]))
+
+    # Return only the numbers from the sorted list of tuples
+    return [num for (_, _, num) in sorted_nums]
+end
+```
+
+This function first calculates the sum of digits for each number in the input list. Then it creates a list of tuples, where each tuple contains the index of the number, the sum of its digits, and the number itself. The list of tuples is sorted first by the sum of digits, and then by the index of the number in the original list. Finally, the function returns a list of numbers from the sorted list of tuples.

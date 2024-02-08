@@ -1,0 +1,46 @@
+Here's the Julia function `valid_date` that checks if a given date string is valid according to the rules specified in the doc string:
+
+```julia
+function valid_date(date::String)::Bool
+    # Check if the date string is not empty
+    if isempty(date)
+        return false
+    end
+
+    # Define a dictionary for the number of days in each month
+    days_in_month = Dict(
+        1 => 31, 2 => 29, 3 => 31, 4 => 30, 5 => 31, 6 => 30,
+        7 => 31, 8 => 31, 9 => 30, 10 => 31, 11 => 30, 12 => 31
+    )
+
+    # Check the format of the date string
+    date_pattern = r"^\d{2}-\d{2}-\d{4}$"
+    if !occursin(date_pattern, date)
+        return false
+    end
+
+    # Split the date string into components
+    date_parts = split(date, "-")
+    month_str, day_str, year_str = date_parts
+
+    # Convert the date components to integers
+    month = parse(Int, month_str)
+    day = parse(Int, day_str)
+    year = parse(Int, year_str)
+
+    # Check if the month is valid
+    if month < 1 || month > 12
+        return false
+    end
+
+    # Check if the day is valid for the given month
+    max_days = get(days_in_month, month, 31)  # Default to 31 if month is not found
+    if day < 1 || day > max_days
+        return false
+    end
+
+    return true
+end
+```
+
+You can test this function with the examples provided in the doc string to ensure it works as expected.

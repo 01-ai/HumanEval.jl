@@ -1,0 +1,15 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function sort_even(l::Vector)::Vector
+    even_indices = filter(x -> x % 2 == 0, 1:length(l))
+    sorted_even_values = sort(l[even_indices])
+    l_prime = l
+    l_prime[even_indices] = sorted_even_values
+    return l_prime
+end
+```
+
+This function first identifies the even indices of the input list `l`. Then it sorts the values at these even indices. It creates a copy of the input list `l` and replaces the values at the even indices with the sorted values. The modified list is then returned.
+
+The function uses the `filter` function to identify the even indices, and the `sort` function to sort the values at the even indices. The `%` operator is used to determine if an index is even. The `sort` function sorts the values in ascending order, so the resulting list will have the same values at the odd indices as the input list, and the values at the even indices will be sorted in ascending order.

@@ -1,0 +1,24 @@
+
+
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    i = 2
+    while i * i <= n
+        if n % i:
+            while n % i == 0
+                pushfirst(factors, i)
+                n = n � i
+            end
+        end
+        i += 1
+    end
+    if n > 1
+        pushfirst(factors, n)
+    end
+    return factors
+end
+
+# Testing the function
+println(factorize(8))  # [2, 2, 2]
+println(factorize(25))  # [5, 5]
+println(factorize(70))  # [2, 5, 7] 

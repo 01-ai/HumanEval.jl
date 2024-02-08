@@ -1,0 +1,32 @@
+Here is a step-by-step outline of how you can implement this function:
+
+1. Check if all the inputs are integers. If not, return `false`.
+2. Calculate the sum of the first two numbers.
+3. Check if the sum is equal to the third number. If it is, return `true`.
+4. If the sum is not equal to the third number, calculate the sum of the first and third numbers.
+5. Check if the sum is equal to the second number. If it is, return `true`.
+6. If the sum is not equal to the second number, return `false`.
+
+Here is the Julia code that implements this function:
+
+```julia
+function any_int(x::Number, y::Number, z::Number)::Bool
+    if !(typeof(x) <: Integer) || !(typeof(y) <: Integer) || !(typeof(z) <: Integer)
+        return false
+    end
+
+    sum_xy = x + y
+    if sum_xy == z
+        return true
+    end
+
+    sum_xz = x + z
+    if sum_xz == y
+        return true
+    end
+
+    return false
+end
+```
+
+This function first checks if all the inputs are integers. If not, it returns `false`. Then it calculates the sum of the first two numbers and checks if it is equal to the third number. If it is, it returns `true`. If it is not, it calculates the sum of the first and third numbers and checks if it is equal to the second number. If it is, it returns `true`. If it is not, it returns `false`.

@@ -1,0 +1,8 @@
+```julia
+function common(l1::Vector, l2::Vector)::Vector
+    set1 = Set(l1)
+    set2 = Set(l2)
+    common_elements = intersect(set1, set2)
+    return sort!(collect(common_elements))
+end
+```

@@ -1,0 +1,3 @@
+ function decode_shift(s::String)::String
+    join(((x - 5 + 'a' - 26) % 26 + 'a' for x in s))
+end

@@ -1,0 +1,35 @@
+### Outline for Implementing `all_prefixes` Function
+
+1. **Initialize an empty vector**: This will hold all the prefixes of the input string.
+2. **Loop through the string**: Use a loop to iterate through the string, from the first character to the last.
+3. **Extract prefixes**: In each iteration, extract a substring from the beginning of the string to the current position in the loop. This substring is a prefix.
+4. **Store the prefix**: Append the extracted prefix to the vector initialized in step 1.
+5. **Return the vector**: After the loop ends, return the vector containing all the prefixes.
+
+### Julia Code Implementation
+
+```julia
+function all_prefixes(s::String)::Vector{String}
+    # Step 1: Initialize an empty vector for storing prefixes
+    prefixes = Vector{String}()
+    
+    # Step 2: Loop through the string to extract prefixes
+    for i in 1:length(s)
+        # Step 3: Extract the prefix
+        prefix = s[1:i]
+        
+        # Step 4: Store the prefix
+        push!(prefixes, prefix)
+    end
+    
+    # Step 5: Return the vector of prefixes
+    return prefixes
+end
+```
+
+### Example Usage
+
+```julia
+# Test the function with an example
+println(all_prefixes("abc"))  # Expected output: ["a", "ab", "abc"]
+```

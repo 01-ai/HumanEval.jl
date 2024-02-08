@@ -1,0 +1,31 @@
+Here's the Julia function `find_max` that implements the functionality described in the doc string:
+
+```julia
+function find_max(words::Vector{String})::String
+    # Initialize variables to keep track of the word with the maximum number of unique characters
+    # and the maximum number of unique characters found so far.
+    max_unique_chars = 0
+    max_word = ""
+
+    for word in words
+        # Create a set of characters to find the number of unique characters in the word.
+        unique_chars = length(Set(word))
+
+        # Update the max_word if the current word has more unique characters,
+        # or if it has the same number but comes first in lexicographical order.
+        if unique_chars > max_unique_chars || (unique_chars == max_unique_chars && word < max_word)
+            max_unique_chars = unique_chars
+            max_word = word
+        end
+    end
+
+    return max_word
+end
+
+# Examples
+println(find_max(["name", "of", "string"])) # Output: "string"
+println(find_max(["name", "enam", "game"])) # Output: "enam"
+println(find_max(["aaaaaaa", "bb", "cc"]))  # Output: "aaaaaaa"
+```
+
+This function iterates through each word in the input vector, calculates the number of unique characters using a set, and keeps track of the word with the maximum number of unique characters. If there is a tie, it chooses the word that comes first lexicographically.

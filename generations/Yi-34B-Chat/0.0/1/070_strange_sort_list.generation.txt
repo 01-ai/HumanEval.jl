@@ -1,0 +1,21 @@
+```julia
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    # Base case: empty list returns empty list
+    if length(xs) == 0
+        return Int64[]
+    end
+
+    # Find the minimum value and remove it from the list
+    min_value = minimum(xs)
+    xs = xs[xs .!= min_value]
+
+    # Find the maximum value from the remaining list and remove it
+    max_value = maximum(xs)
+    xs = xs[xs .!= max_value]
+
+    # Recursively sort the remaining list
+    return [min_value, max_value] + strange_sort_list(xs)
+end
+```
+
+This function uses a divide-and-conquer approach to sort the list in the strange order. It first finds the minimum value and removes it from the list, then finds the maximum value from the remaining list and removes it. This process is repeated until the list is empty.

@@ -1,0 +1,46 @@
+
+
+To solve this problem, we can use a stack data structure. We will iterate through each character in the string. If the character is an opening parenthesis, we will push it to the stack and increment the current level of nesting. If the character is a closing parenthesis, we will pop an element from the stack and update the maximum level of nesting if necessary. After processing all characters, we will store the maximum level of nesting for each group in a vector and return it.
+
+Here is the step-by-step outline:
+
+1. Initialize an empty stack and a variable `max_level` to store the maximum level of nesting.
+2. Initialize an empty vector `levels` to store the maximum level of nesting for each group.
+3. Iterate through each character in the string.
+4. If the character is an opening parenthesis, push it to the stack and increment `max_level`.
+5. If the character is a closing parenthesis, pop an element from the stack and update `max_level` if necessary.
+6. If the stack is empty, push `max_level` to `levels` and reset `max_level` to 0.
+7. After processing all characters, return `levels`.
+
+Here is the Julia code implementing the above outline:
+
+```julia
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    stack = Int[]
+    max_level = 0
+    levels = Int[]
+
+    for c in paren_string
+        if c == '('
+            push!(stack, 1)
+            max_level += 1
+        elseif c == ')'
+            pop!(stack)
+            if isempty(stack)
+                push!(levels, max_level)
+                max_level = 0
+            end
+        elseif c == ' ' && !isempty(stack)
+            error("Invalid input: unbalanced parentheses")
+        end
+    end
+
+    if !isempty(stack)
+        error("Invalid input: unbalanced parentheses")
+    end
+
+    return levels
+end
+```
+
+This function assumes that the input string is valid, i.e., it has balanced parentheses. If the input string may be invalid, you can add error checking code to handle unbalanced parentheses.

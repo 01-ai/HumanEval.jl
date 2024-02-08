@@ -1,0 +1,19 @@
+Here is a Julia function that implements the given doc string:
+
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    # Filter the array to only include integers between 1 and 9 inclusive
+    filtered_xs = filter(x -> 1 <= x <= 9, xs)
+
+    # Sort the filtered array in reverse order
+    sorted_xs = sort(filtered_xs, rev=true)
+
+    # Map each integer to its corresponding name
+    names = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    result = map(x -> names[x], sorted_xs)
+
+    return result
+end
+```
+
+This function first filters the input array to only include integers between 1 and 9 inclusive. Then it sorts the filtered array in reverse order. Finally, it maps each integer in the sorted array to its corresponding name from the "One" to "Nine" array. The resulting array of names is returned. If the input array is empty, the function returns an empty array.

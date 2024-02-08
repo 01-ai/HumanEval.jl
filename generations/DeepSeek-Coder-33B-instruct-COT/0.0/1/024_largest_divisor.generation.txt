@@ -1,0 +1,23 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. Initialize a variable `largest_divisor` to 1. This variable will keep track of the largest divisor of `n` that is less than `n`.
+
+2. Iterate over all numbers from 2 to `n-1`. For each number `i`, check if `n` is divisible by `i`. If `n` is divisible by `i`, update `largest_divisor` to `i`.
+
+3. After the loop finishes, `largest_divisor` will be the largest number that divides `n` evenly and is less than `n`.
+
+Here is the Julia code that implements this algorithm:
+
+```julia
+function largest_divisor(n::Int)::Int
+    largest_divisor = 1
+    for i in 2:n-1
+        if n % i == 0
+            largest_divisor = i
+        end
+    end
+    return largest_divisor
+end
+```
+
+This function works by iterating over all numbers from 2 to `n-1` and checking if `n` is divisible by each number. If `n` is divisible by a number, that number is stored in `largest_divisor`. The function then returns `largest_divisor`, which is the largest number that divides `n` evenly and is less than `n`.

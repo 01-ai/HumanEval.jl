@@ -1,0 +1,46 @@
+To solve this problem, we can use a depth-first search (DFS) algorithm. We start from each cell in the grid and perform a DFS to find all possible paths of length `k`. We keep track of the minimum path found so far based on the lexicographical order.
+
+Here is the implementation of the `min_path` function in Julia:
+
+```julia
+function min_path(grid::Vector{Vector{Int}}, k::Int)::Vector{Int}
+    N = length(grid)
+    min_path = []
+    min_path_value = Inf
+    
+    function dfs(cell::Tuple{Int, Int}, path::Vector{Int})
+        if length(path) == k
+            if path < min_path_value
+                min_path_value = path
+                min_path = copy(path)
+            end
+            return
+        end
+        
+        x, y = cell
+        for dx = -1:1, dy = -1:1
+            nx, ny = x + dx, y + dy
+            if 1 <= nx <= N && 1 <= ny <= N && (dx == 0 || dy == 0)
+                push!(path, grid[nx][ny])
+                dfs((nx, ny), path)
+                pop!(path)
+            end
+        end
+    end
+    
+    for i = 1:N, j = 1:N
+        dfs((i, j), [grid[i][j]])
+    end
+    
+    return min_path
+end
+```
+
+Now we can test the function with the provided examples:
+
+```julia
+println(min_path([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 3))  # [1, 2, 1]
+println(min_path([[5, 9, 3], [4, 1, 6], [7, 8, 2]], 1))  # [1]
+```
+
+The output should match the expected results.

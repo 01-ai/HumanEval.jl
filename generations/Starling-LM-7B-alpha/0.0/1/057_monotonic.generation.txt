@@ -1,0 +1,8 @@
+ function monotonic(l::Vector)::Bool
+    # Check if the list elements are monotonically increasing or decreasing
+    if all(l .<= l[end]) || all(l .>= l[end])
+        return true
+    else
+        return false
+    end
+end

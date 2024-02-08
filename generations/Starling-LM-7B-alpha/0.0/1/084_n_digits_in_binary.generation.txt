@@ -1,0 +1,8 @@
+ function n_digits_in_binary(N::Int)::String
+    binary_str = ""
+    while N > 0
+        binary_str *= string(mod(N, 2))
+        N = div(N, 2)
+    end
+    return reverse(binary_str)
+end

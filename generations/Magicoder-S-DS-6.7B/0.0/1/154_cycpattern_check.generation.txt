@@ -1,0 +1,23 @@
+Here is a Julia function that implements the `cycpattern_check` function as described in the problem:
+
+```julia
+function cycpattern_check(a::String , b::String)::Bool
+    # Check if b is a substring of a
+    if occursin(b, a)
+        return true
+    end
+
+    # Check if any rotation of b is a substring of a
+    for i in 1:length(b)
+        rotated_b = string(b[i+1:end], b[1:i])
+        if occursin(rotated_b, a)
+            return true
+        end
+    end
+
+    # If no rotation of b is a substring of a, return false
+    return false
+end
+```
+
+This function first checks if the second word is a substring of the first word. If it is, it returns `true`. If it's not, it checks if any rotation of the second word is a substring of the first word. If any rotation is found, it returns `true`. If no rotation of the second word is a substring of the first word, it returns `false`.

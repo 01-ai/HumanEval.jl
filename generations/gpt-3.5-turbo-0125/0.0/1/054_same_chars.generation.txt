@@ -1,0 +1,5 @@
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    return sort(collect(s0)) == sort(collect(s1))
+end
+```

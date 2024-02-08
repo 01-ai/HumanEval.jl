@@ -1,0 +1,20 @@
+Here is a Julia function that implements the `next_smallest` function as described in the doc string:
+
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    if length(xs) < 2
+        return nothing
+    end
+    min1, min2 = typemax(Int), typemax(Int)
+    for x in xs
+        if x < min1
+            min1, min2 = x, min1
+        elseif x < min2 && x != min1
+            min2 = x
+        end
+    end
+    return min2 == typemax(Int) ? nothing : min2
+end
+```
+
+This function works by initializing two variables `min1` and `min2` to the maximum possible integer value. It then iterates over the input list `xs`. If a number is smaller than `min1`, it updates `min1` and `min2`. If a number is between `min1` and `min2`, it updates `min2`. If no such number is found, it returns `nothing`.

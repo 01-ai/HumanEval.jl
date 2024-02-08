@@ -1,0 +1,16 @@
+
+
+```julia
+function palindrome_with_append(s::String)::String
+    # Find the longest postfix of s that is a palindrome
+    i = length(s)
+    while i > 0 && s[i] != s[i-1]
+        i -= 1
+    end
+
+    # Append the reverse of the prefix before the palindromic suffix
+    return s * reverse(s[1:i-1])
+end
+```
+
+This function finds the longest postfix of the input string that is a palindrome, and then appends the reverse of the prefix before the palindromic suffix to the end of the string.

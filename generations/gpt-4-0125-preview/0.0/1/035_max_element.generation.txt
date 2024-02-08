@@ -1,0 +1,24 @@
+Certainly! Below is the Julia function `max_element` that takes a list `xs` and returns the maximum element in the list.
+
+```julia
+function max_element(xs)
+    # Check if the list is empty
+    if isempty(xs)
+        error("List is empty")
+    end
+
+    # Initialize max_val with the first element of the list
+    max_val = xs[1]
+
+    # Iterate through the list to find the maximum value
+    for x in xs
+        if x > max_val
+            max_val = x
+        end
+    end
+
+    return max_val
+end
+```
+
+This function starts by checking if the list is empty and raises an error if it is. It then initializes `max_val` with the first element of the list. It iterates through the list, updating `max_val` whenever it finds an element greater than the current `max_val`. Finally, it returns `max_val` as the maximum element in the list.

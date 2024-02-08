@@ -1,0 +1,16 @@
+Here is the implementation for the `get_odd_collatz` function:
+
+```julia
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    collatz_seq = BigInt[n]
+    while n != 1
+        if isodd(n)
+            push!(collatz_seq, n)
+        end
+        n = isodd(n) ? 3n + 1 : n ÷ 2
+    end
+    return sort(collatz_seq)
+end
+```
+
+This function starts with the given positive integer `n` and generates the Collatz sequence by repeatedly applying the Collatz rule until reaching 1. It checks if each term in the sequence is odd and adds it to the `collatz_seq` vector if it is. Finally, it returns the sorted `collatz_seq` vector.

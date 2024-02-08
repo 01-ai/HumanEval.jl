@@ -1,0 +1,10 @@
+```julia
+function simplify(x::String, n::String)::Bool
+    x_num, x_den = parse.(Int, split(x, '/'))
+    n_num, n_den = parse.(Int, split(n, '/'))
+    
+    result = x_num * n_num / (x_den * n_den)
+    
+    return result == round(result)
+end
+```

@@ -1,0 +1,30 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. Initialize a variable `max_word` to store the word with maximum number of unique characters.
+2. Initialize a variable `max_unique_chars` to store the maximum number of unique characters.
+3. Iterate over each word in the list.
+4. For each word, calculate the number of unique characters.
+5. If the number of unique characters is greater than `max_unique_chars`, update `max_word` and `max_unique_chars`.
+6. If the number of unique characters is equal to `max_unique_chars`, compare the words lexicographically and update `max_word` if the current word comes first.
+7. After iterating over all words, return `max_word`.
+
+Here is the Julia code that implements the above steps:
+
+```julia
+function find_max(words::Vector{String})::String
+    max_word = ""
+    max_unique_chars = 0
+    for word in words
+        unique_chars = length(unique(word))
+        if unique_chars > max_unique_chars
+            max_word = word
+            max_unique_chars = unique_chars
+        elseif unique_chars == max_unique_chars
+            max_word = min(max_word, word)
+        end
+    end
+    return max_word
+end
+```
+
+This function uses the `unique` function to get the unique characters in a word and the `min` function to compare words lexicographically. The `min` function returns the word that comes first in lexicographical order.

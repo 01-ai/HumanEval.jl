@@ -1,0 +1,57 @@
+To implement the function `skjkasdkd` as described in the docstring, we need to follow these steps:
+
+1. Filter the list of integers to include only prime numbers.
+2. Find the largest prime number in the filtered list.
+3. Calculate the sum of the digits of the largest prime number.
+4. Return the sum of the digits.
+
+Here is the Julia implementation of the function:
+
+```julia
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+
+function sum_of_digits(n::Int)::Int
+    sum = 0
+    while n > 0
+        sum += n % 10
+        n = div(n, 10)
+    end
+    return sum
+end
+
+function skjkasdkd(xs::Vector{Int})::Int
+    # Filter the list to get only prime numbers
+    primes = filter(is_prime, xs)
+    
+    # Find the largest prime number
+    largest_prime = maximum(primes)
+    
+    # Calculate the sum of the digits of the largest prime number
+    sum_digits = sum_of_digits(largest_prime)
+    
+    return sum_digits
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(skjkasdkd([0, 3, 2, 1, 3, 5, 7, 4, 5, 5, 5, 2, 181, 32, 4, 32, 3, 2, 32, 324, 4, 3])) # should return 10
+println(skjkasdkd([1, 0, 1, 8, 2, 4597, 2, 1, 3, 40, 1, 2, 1, 2, 4, 2, 5, 1])) # should return 25
+println(skjkasdkd([1, 3, 1, 32

@@ -1,0 +1,23 @@
+```julia
+function is_prime(n::Int)
+    if n <= 1
+        return false
+    end
+    for i in 2:isqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+function count_up_to(n::Int)::Vector{Int}
+    primes = Int[]
+    for i in 2:n
+        if is_prime(i)
+            push!(primes, i)
+        end
+    end
+    return primes
+end
+```

@@ -1,0 +1,36 @@
+  Here is a possible implementation of the `file_name_check` function in Julia:
+```
+function file_name_check(file_name::String)::String
+    # Check if the file name contains more than three digits
+    if count(c -> isdigit(c), file_name) > 3
+        return "No"
+    end
+
+    # Check if the file name contains exactly one dot
+    if count(c -> c == '.', file_name) != 1
+        return "No"
+    end
+
+    # Check if the substring before the dot starts with a letter from the Latin alphabet
+    if !isalpha(file_name[1])
+        return "No"
+    end
+
+    # Check if the substring after the dot is one of the allowed extensions
+    if !in(file_name[file_name.find('.') + 1:end], ["txt", "exe", "dll"])
+        return "No"
+    end
+
+    return "Yes"
+end
+```
+Here's an explanation of the code:
+
+1. The function takes a string `file_name` as input and returns a string indicating whether the file name is valid or not.
+2. The first `if` statement checks if the file name contains more than three digits. If it does, the function returns "No".
+3. The second `if` statement checks if the file name contains exactly one dot. If it doesn't, the function returns "No".
+4. The third `if` statement checks if the substring before the dot starts with a letter from the Latin alphabet. If it doesn't, the function returns "No".
+5. The fourth `if` statement checks if the substring after the dot is one of the allowed extensions (".txt", ".exe", or ".dll"). If it isn't, the function returns "No".
+6. If all the conditions are met, the function returns "Yes".
+
+Note that the `count` function is used to count the number of digits in the file name, and the `isalpha` function is used to check if a character is a letter from the Latin alphabet. The `in` function is used to check if a substring is in a list of allowed extensions.

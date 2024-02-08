@@ -1,0 +1,13 @@
+
+
+function hex_key(num::String)::Int
+    primes = Set(['2', '3', '5', '7', 'B', 'D'])
+    return count(c -> c in primes, num)
+end
+
+# Test cases
+println(hex_key("AB")) # 1
+println(hex_key("1077E")) # 2
+println(hex_key("ABED1A33")) # 4
+println(hex_key("123456789ABCDEF0")) # 6
+println(hex_key("2020")) # 2 

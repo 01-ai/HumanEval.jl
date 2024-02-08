@@ -1,0 +1,25 @@
+```julia
+function sort_third(l::Vector)
+    # Initialize an empty vector to store the sorted list
+    l_sorted = Vector{eltype(l)}(undef, length(l))
+
+    # Loop through the indices of the list
+    for i in eachindex(l)
+        # If the index is divisible by 3, sort the elements at those indices
+        if i % 3 == 0
+            # Get the indices of elements to be sorted
+            inds_to_sort = findall(x -> x % 3 == 0, eachindex(l))
+            # Sort the elements at those indices
+            l_sorted[inds_to_sort] = sort(l[inds_to_sort])
+        # Otherwise, copy the element from the original list
+        else
+            l_sorted[i] = l[i]
+        end
+    end
+
+    # Return the sorted list
+    return l_sorted
+end
+```
+
+This function works by iterating over each index of the input list `l`. For indices that are divisible by 3, it finds all such indices and sorts the elements at those indices. For all other indices, it simply copies the element from the original list. The sorted list is then returned.

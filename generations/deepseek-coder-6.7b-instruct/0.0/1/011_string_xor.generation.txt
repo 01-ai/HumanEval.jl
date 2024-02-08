@@ -1,0 +1,22 @@
+Here is the Julia function that performs the binary XOR operation on two strings:
+
+```julia
+function string_xor(a::String, b::String)::String
+    if length(a) != length(b)
+        error("Strings must be of the same length")
+    end
+
+    result = ""
+    for i in 1:length(a)
+        result *= string(parse(Int, string(a[i])) ⊻ parse(Int, string(b[i])))
+    end
+
+    return result
+end
+```
+
+This function first checks if the two input strings are of the same length. If they are not, it throws an error. If they are of the same length, it iterates over each character in the strings, performs a bitwise XOR operation on the corresponding characters (converted to integers), and appends the result to the `result` string. Finally, it returns the `result` string.
+
+The `⊻` operator is used for the XOR operation in Julia. It performs a bitwise XOR operation on two integers.
+
+Please note that this function assumes that the input strings are binary strings and do not contain any other characters. If this is not the case, you may need to add additional error checking to handle such inputs.

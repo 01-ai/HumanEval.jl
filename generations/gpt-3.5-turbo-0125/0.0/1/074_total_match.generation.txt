@@ -1,0 +1,14 @@
+```julia
+function total_match(xs::Vector{String}, ys::Vector{String})::Vector{String}
+    total_chars_xs = sum(length.(xs))
+    total_chars_ys = sum(length.(ys))
+    
+    if total_chars_xs < total_chars_ys
+        return xs
+    elseif total_chars_xs > total_chars_ys
+        return ys
+    else
+        return xs
+    end
+end
+```

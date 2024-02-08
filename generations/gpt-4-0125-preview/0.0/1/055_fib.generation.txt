@@ -1,0 +1,13 @@
+Certainly! Below is the Julia implementation of the `fib` function to compute the n-th Fibonacci number.
+
+```julia
+function fib(n::Int)::Int
+    if n <= 1
+        return n
+    else
+        return fib(n-1) + fib(n-2)
+    end
+end
+```
+
+This implementation uses a simple recursive approach. However, it's worth noting that this approach can be inefficient for large values of `n` due to the exponential growth in the number of function calls. For larger values, iterative approaches or memoization techniques are recommended to improve performance.

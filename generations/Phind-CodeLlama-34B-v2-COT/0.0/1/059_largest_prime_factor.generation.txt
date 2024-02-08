@@ -1,0 +1,25 @@
+
+
+# Outline
+
+1. Start by creating a function named `largest_prime_factor` that takes an integer `n` as input.
+2. Initialize a variable `max_prime` to 1. This variable will keep track of the largest prime factor found so far.
+3. Create a loop that iterates over the range 2:n.
+4. In each iteration, check if the current number is a factor of `n` by using the modulo operator. If it is, update `max_prime` to the current number if it is greater than the current `max_prime`.
+5. After the loop, return `max_prime`.
+
+# Code
+
+```julia
+function largest_prime_factor(n::Int)::Int
+    max_prime = 1
+    for i in 2:n
+        if n % i == 0
+            max_prime = max(max_prime, i)
+        end
+    end
+    return max_prime
+end
+```
+
+This function works by iterating over all numbers from 2 to `n` and checking if they are factors of `n`. If a number is a factor, it is a prime factor of `n`, and the function updates `max_prime` to this number if it is greater than the current `max_prime`. The function returns the largest prime factor after the loop finishes.

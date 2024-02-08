@@ -1,0 +1,34 @@
+Here is a step-by-step outline of how you can implement the function:
+
+1. Create a set to store the elements of the list.
+2. Iterate over the list.
+3. For each element, check if its negation is in the set. If it is, return `true`.
+4. If the negation is not in the set, add the element to the set.
+5. If the end of the list is reached and no pair of elements summing to zero is found, return `false`.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function pairs_sum_to_zero(l::Vector{Int})::Bool
+    seen = Set{Int}()
+    for num in l
+        if -num in seen
+            return true
+        end
+        push_or_delete(seen, num)
+    end
+    return false
+end
+
+function push_or_delete(s::Set{Int}, num::Int)
+    if num in s
+        deleteat(s, num)
+    else
+        push_or_delete(s, num)
+    end
+end
+```
+
+This function works by iterating over the list and checking if the negation of the current number is in the set. If it is, it means that there is a pair of numbers in the list that sum to zero, so it returns `true`. If the negation is not in the set, it adds the current number to the set. If the end of the list is reached and no pair of elements summing to zero is found, it returns `false`.
+
+The `push_or_delete` function is used to add a number to the set if it is not already in the set, and to delete it if it is. This is done to ensure that the set only contains distinct elements.

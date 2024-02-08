@@ -1,0 +1,20 @@
+
+
+```julia
+function triangle_area3(a::Number, b::Number, c::Number)::Number
+    # Check if the three sides form a valid triangle
+    if a + b > c && a + c > b && b + c > a
+        # Calculate the semi-perimeter
+        s = (a + b + c) / 2
+        # Calculate the area using Heron's formula
+        area = sqrt(s * (s - a) * (s - b) * (s - c))
+        # Round the area to 2 decimal points
+        return round(area, digits=2)
+    else
+        # Return -1 if the three sides do not form a valid triangle
+        return -1
+    end
+end
+```
+
+This function first checks if the three sides form a valid triangle using the triangle inequality theorem. If they do, it calculates the area using Heron's formula and rounds it to 2 decimal points. If they don't, it returns -1.

@@ -1,0 +1,30 @@
+ function do_algebra(operator::Vector{String}, operand::Vector{Int})
+    # Check if the lengths of the operator and operand lists are equal and differ by one
+    if length(operator) != length(operand) - 1
+        error("The lengths of the operator and operand lists are not equal and differ by one")
+    end
+
+    # Initialize the result variable
+    result = operand[1]
+
+    # Iterate through the operator and operand lists
+    for i in 2:length(operator)
+        # Perform the operation based on the current operator
+        if operator[i] == "+"
+            result += operand[i]
+        elseif operator[i] == "-"
+            result -= operand[i]
+        elseif operator[i] == "*"
+            result *= operand[i]
+        elseif operator[i] == "÷"
+            result ÷= operand[i]
+        elseif operator[i] == "^"
+            result ^= operand[i]
+        else
+            error("Invalid operator: $operator[i]")
+        end
+    end
+
+    # Return the result
+    return result
+end

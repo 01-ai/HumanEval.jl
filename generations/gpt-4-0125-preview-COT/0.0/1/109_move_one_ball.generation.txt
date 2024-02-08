@@ -1,0 +1,48 @@
+### Outline
+
+To implement the `move_one_ball` function, we can follow these steps:
+
+1. **Check for an empty array**: If the array is empty, return `true` as per the problem statement.
+
+2. **Identify if the array is already sorted**: If the input array is already in non-decreasing order, return `true` because no operation is needed.
+
+3. **Find the number of shifts needed**:
+    - The array can be made sorted in non-decreasing order by right shifts if there is exactly one place in the array where the sequence of numbers breaks the non-decreasing order. This is because a right shift operation can only fix a single "wrap-around" point in the sequence.
+    - Iterate through the array to find if there's exactly one point where `xs[i] > xs[i+1]` (considering the array to be 1-indexed as per Julia convention). Keep track of such occurrences.
+    - If there's more than one such point, return `false` because it's not possible to sort the array with right shift operations under these conditions.
+
+4. **Check if the array can be sorted with a single shift**:
+    - If there's exactly one point where `xs[i] > xs[i+1]`, check if the first element of the array is greater than or equal to the last element. If not, it means the array cannot be sorted into non-decreasing order with a single right shift operation, so return `false`.
+    - Otherwise, return `true`.
+
+### Code
+
+Now, let's implement the code based on the outline:
+
+```julia
+function move_one_ball(xs::Vector{Int})::Bool
+    # Step 1: Check for an empty array
+    if isempty(xs)
+        return true
+    end
+
+    # Step 2: Check if the array is already sorted
+    if issorted(xs)
+        return true
+    end
+
+    # Step 3: Find the number of shifts needed
+    shift_points = 0
+    for i in 1:length(xs)-1
+        if xs[i] > xs[i+1]
+            shift_points += 1
+        end
+    end
+
+    # If there are more than one shift points, it's not possible to sort with right shifts
+    if shift_points > 1
+        return false
+    end
+
+    # Step 4: Check if the array can be sorted with a single shift
+    # This is

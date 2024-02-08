@@ -1,0 +1,11 @@
+
+
+function sort_even(l::Vector)::Vector
+    even_indices = [i for i in 1:length(l) if i % 2 == 0]
+    even_values = l[even_indices]
+    sort!(even_values)
+    for (i, j) in enumerate(even_indices)
+        l[j] = even_values[i]
+    end
+    return l
+end

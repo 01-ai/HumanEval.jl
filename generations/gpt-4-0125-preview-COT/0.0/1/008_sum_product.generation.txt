@@ -1,0 +1,30 @@
+### Step-by-Step Outline
+
+1. **Initialize** two variables, `sum` and `product`, with values `0` and `1` respectively. These will hold the cumulative sum and product of the integers in the list.
+
+2. **Iterate** through each integer in the given list of integers.
+   - For each integer, **add** it to `sum`.
+   - For each integer, **multiply** it with `product`.
+
+3. **Return** a tuple containing the final `sum` and `product` after iterating through the entire list.
+
+### Julia Code Implementation
+
+```julia
+function sum_product(numbers::Vector{Int})::Tuple{Int, Int}
+    # Step 1: Initialize sum and product
+    sum = 0
+    product = 1
+    
+    # Step 2: Iterate through the list of integers
+    for number in numbers
+        sum += number       # Add current number to sum
+        product *= number   # Multiply current number with product
+    end
+    
+    # Step 3: Return the sum and product as a tuple
+    return (sum, product)
+end
+```
+
+This function should work as expected for both empty and non-empty lists of integers, returning a tuple of the sum and product according to the specifications.

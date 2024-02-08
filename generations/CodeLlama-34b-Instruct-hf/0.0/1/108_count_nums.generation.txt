@@ -1,0 +1,26 @@
+  Here's one way to implement the `count_nums` function in Julia:
+```
+function count_nums(xs::Vector{Int})::Int
+    count = 0
+    for x in xs
+        if sum(digits(x)) > 0
+            count += 1
+        end
+    end
+    return count
+end
+```
+Explanation:
+
+* The function takes a vector of integers `xs` as input.
+* It initializes a variable `count` to 0.
+* It loops through each element `x` in `xs` using a `for` loop.
+* For each `x`, it calculates the sum of its digits using the `digits` function from the `Base` module. If the sum is greater than 0, it increments `count` by 1.
+* Finally, it returns `count`.
+
+Here's an example usage of the function:
+```
+julia> count_nums([1, 2, 3, 4, 5])
+3
+```
+This returns 3, because the sum of the digits of 1, 2, and 3 is greater than 0, but the sum of the digits of 4 and 5 is not.

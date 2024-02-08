@@ -1,0 +1,11 @@
+
+
+function n_digits_in_binary(N::Int)::String
+    binary_representation = string(N, base = 2)
+    return sum(parse(Int, digit) for digit in binary_representation)
+end
+
+# Test cases
+println(n_digits_in_binary(1000)) # "1"
+println(n_digits_in_binary(150))  # "110"
+println(n_digits_in_binary(147))  # "1100" 

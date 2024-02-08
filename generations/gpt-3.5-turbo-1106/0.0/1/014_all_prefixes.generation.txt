@@ -1,0 +1,6 @@
+```julia
+function all_prefixes(s::String)::Vector{String}
+    prefixes = [s[1:i] for i in 1:length(s)]
+    return prefixes
+end
+```

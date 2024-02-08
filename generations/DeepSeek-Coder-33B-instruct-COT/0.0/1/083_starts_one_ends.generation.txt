@@ -1,0 +1,20 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. First, you need to calculate the total number of n-digit positive integers. This is simply 10^n.
+2. Then, you need to calculate the number of n-digit positive integers that start with 1. This is 9 * 10^(n-1).
+3. Next, you need to calculate the number of n-digit positive integers that end with 1. This is 10^(n-1).
+4. Finally, you need to calculate the number of n-digit positive integers that start or end with 1. This is the sum of the numbers calculated in steps 2 and 3.
+
+Here is the Julia code that implements this algorithm:
+
+```julia
+function starts_one_ends(n::Int)::Int
+    total = 10^n
+    starts_with_one = 9 * 10^(n-1)
+    ends_with_one = 10^(n-1)
+    starts_or_ends_with_one = starts_with_one + ends_with_one
+    return starts_or_ends_with_one
+end
+```
+
+This function works by first calculating the total number of n-digit positive integers, then calculating the number of n-digit positive integers that start with 1 and end with 1, and finally adding these two numbers together to get the total number of n-digit positive integers that start or end with 1.

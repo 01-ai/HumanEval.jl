@@ -1,0 +1,28 @@
+### Step-by-Step Outline
+
+1. **Check for Edge Cases**: First, check if the input list `xs` has less than 2 unique elements. If so, return `nothing` because it's impossible to find the 2nd smallest element in such cases.
+
+2. **Find Unique Elements**: Since we're interested in the 2nd smallest unique element, we need to remove duplicates from the list. This can be done by converting the list to a set and then back to a list to ensure all elements are unique.
+
+3. **Sort the Unique Elements**: Sort the list of unique elements in ascending order. This step is crucial because it makes it straightforward to find the 2nd smallest element by simply accessing the element at the second index.
+
+4. **Return the 2nd Smallest Element**: After sorting, if the list has at least two elements, return the element at index 1 (the second element, since indexing is 0-based in Julia). Otherwise, return `nothing`.
+
+### Julia Code Implementation
+
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    # Step 1: Check for edge cases
+    if length(unique(xs)) < 2
+        return nothing
+    end
+
+    # Step 2 & 3: Find unique elements and sort them
+    unique_sorted_xs = sort(unique(xs))
+
+    # Step 4: Return the 2nd smallest element
+    return length(unique_sorted_xs) >= 2 ? unique_sorted_xs[2] : nothing
+end
+```
+
+This implementation follows the outlined steps to ensure that the function behaves as expected, including handling edge cases appropriately.

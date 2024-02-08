@@ -1,0 +1,19 @@
+
+
+function move_one_ball(xs::Vector{Int})::Bool
+    N = length(xs)
+    if N == 0
+        return true
+    end
+    min_value = minimum(xs)
+    min_index = findfirst(isequal(min_value), xs)
+    for i = 1:N
+        if i == min_index
+            continue
+        end
+        if xs[i] < min_value
+            return false
+        end
+    end
+    return true
+end

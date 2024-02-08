@@ -1,0 +1,20 @@
+Here is the implementation of the `prime_length` function in Julia:
+
+```julia
+function prime_length(s::String)::Bool
+    n = length(s)
+    if n <= 1
+        return false
+    end
+    
+    for i in 2:isqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    
+    return true
+end
+```
+
+The function first checks if the length of the string `s` is less than or equal to 1. If so, it returns `false` since 1 is not a prime number. Otherwise, it iterates from 2 to the square root of the length of `s` and checks if the length is divisible by any number in that range. If it is, it returns `false`. If no divisors are found, it returns `true`, indicating that the length of `s` is a prime number.

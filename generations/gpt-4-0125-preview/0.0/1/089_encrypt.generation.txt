@@ -1,0 +1,32 @@
+To implement the `encrypt` function as described, we need to rotate each letter in the input string by 4 places down the alphabet. This means 'a' becomes 'e', 'b' becomes 'f', and so on. When we reach the end of the alphabet, we loop back to the beginning, so 'w' becomes 'a', 'x' becomes 'b', etc. Here's how you can implement this in Julia:
+
+```julia
+function encrypt(s::String)
+    # Define the alphabet and its length for easy reference
+    alphabet = 'a':'z'
+    alphabet_len = length(alphabet)
+
+    # Convert the input string to a list of characters for processing
+    encrypted_chars = Char[]
+
+    for char in s
+        # Check if the character is a lowercase letter
+        if char in alphabet
+            # Find the index of the character in the alphabet
+            index = findfirst(isequal(char), alphabet)
+            # Calculate the new index after rotation, wrapping around if necessary
+            new_index = mod(index + 4 - 1, alphabet_len) + 1
+            # Append the encrypted character to the result list
+            push!(encrypted_chars, alphabet[new_index])
+        else
+            # If the character is not a lowercase letter, just append it as is
+            push!(encrypted_chars, char)
+        end
+    end
+
+    # Convert the list of characters back to a string and return it
+    return join(encrypted_chars)
+end
+```
+
+This function works by iterating over each character in the input string. If the character is a lowercase letter, it finds its index in the alphabet, calculates the new index after rotating by 4 places, and then finds the corresponding letter in the alphabet. If the character is not a lowercase letter, it's added to the result without modification. Finally, the list of characters is joined back into a string and returned as the encrypted message.

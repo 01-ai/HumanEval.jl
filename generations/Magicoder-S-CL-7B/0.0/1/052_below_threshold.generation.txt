@@ -1,0 +1,10 @@
+
+
+function below_threshold(l::Vector, t::Number)::Bool
+    for i in l
+        if i >= t
+            return false
+        end
+    end
+    return true
+end

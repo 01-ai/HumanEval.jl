@@ -1,0 +1,19 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. First, you need to check if the input number is negative. If it is, you can convert it to its absolute value. This is because the cube of a negative number is also a cube of its absolute value.
+
+2. Then, you can calculate the cube root of the absolute value of the input number.
+
+3. If the cube root is an integer, then the input number is a cube of some integer. Otherwise, it is not.
+
+Here is the Julia code that implements this algorithm:
+
+```julia
+function iscube(a::Int)::Bool
+    a = abs(a)
+    cube_root = round(Int, cbrt(a))
+    return cube_root^3 == a
+end
+```
+
+This function first calculates the cube root of the absolute value of the input number, rounds it to the nearest integer, and then checks if the cube of this rounded number is equal to the absolute value of the input number. If it is, the function returns `true`, otherwise it returns `false`.

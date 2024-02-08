@@ -1,0 +1,21 @@
+Here is the implementation for the `check_if_last_char_is_a_letter` function:
+
+```julia
+function check_if_last_char_is_a_letter(s::String)::Bool
+    if isempty(s)
+        return false
+    end
+    
+    last_char = s[end]
+    if isletter(last_char)
+        words = split(s)
+        last_word = words[end]
+        if last_word[end] == last_char
+            return false
+        end
+        return true
+    end
+    
+    return false
+end
+```

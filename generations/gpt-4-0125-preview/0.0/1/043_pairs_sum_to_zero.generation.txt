@@ -1,0 +1,25 @@
+To implement the `pairs_sum_to_zero` function in Julia, we can use a hash set to keep track of the elements we've seen so far. For each element in the list, we check if its negation is in the set. If it is, we return `true` because we've found a pair that sums to zero. If we finish iterating through the list without finding such a pair, we return `false`.
+
+Here's how you can implement this:
+
+```julia
+function pairs_sum_to_zero(l::Vector{Int})::Bool
+    seen = Set{Int}()
+    for num in l
+        if -num in seen
+            return true
+        end
+        push!(seen, num)
+    end
+    return false
+end
+```
+
+This function works as follows:
+- It initializes an empty set `seen` to keep track of the numbers encountered so far.
+- It iterates through each number in the input list `l`.
+- For each number, it checks if the negation of that number is already in the `seen` set. If it is, it means there is a pair that sums to zero, and the function returns `true`.
+- If the negation is not in the set, it adds the current number to the `seen` set and continues to the next number.
+- If the loop completes without finding any such pair, the function returns `false`.
+
+This solution has a time complexity of O(n), where n is the number of elements in the input list, because each lookup and insertion operation in a hash set is O(1) on average.

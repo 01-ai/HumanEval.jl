@@ -1,0 +1,10 @@
+```julia
+function derivative(xs::Vector)
+    n = length(xs)
+    if n <= 1
+        return [0]
+    else
+        return [xs[i] * i for i in 1:n-1]
+    end
+end
+```

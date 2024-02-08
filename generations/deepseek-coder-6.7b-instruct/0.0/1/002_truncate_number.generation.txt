@@ -1,0 +1,9 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function truncate_number(number::Float64)::Float64
+    return number - trunc(number)
+end
+```
+
+This function works by subtracting the integer part of the number from the original number. The result is the decimal part of the number.

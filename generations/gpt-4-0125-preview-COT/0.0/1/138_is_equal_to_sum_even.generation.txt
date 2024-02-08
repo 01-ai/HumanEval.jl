@@ -1,0 +1,32 @@
+### Outline
+
+To implement the `is_equal_to_sum_even` function, we can follow these steps:
+
+1. **Check for the minimum possible sum**: Since the smallest even number is 2, the smallest sum we can get from 4 positive even numbers is \(2 + 2 + 2 + 2 = 8\). If `n` is less than 8, return `false` immediately.
+
+2. **Check if `n` is even**: The sum of even numbers is always even. If `n` is odd, return `false`.
+
+3. **Check if `n` can be divided into 4 even numbers**: Since we know `n` is even and greater than or equal to 8, it can always be represented as the sum of four even numbers. This is because we can always use three 2s and adjust the fourth number to make the sum equal to `n`. For example, if `n` is 10, we can represent it as \(2 + 2 + 2 + 4\). Hence, for any even `n` >= 8, we can return `true`.
+
+Now, let's implement the code based on the outline.
+
+### Code
+
+```julia
+function is_equal_to_sum_even(n::Int)::Bool
+    # Step 1: Check for the minimum possible sum
+    if n < 8
+        return false
+    end
+
+    # Step 2: Check if `n` is even
+    if n % 2 != 0
+        return false
+    end
+
+    # Step 3: Since `n` is even and >= 8, it can be divided into 4 even numbers
+    return true
+end
+```
+
+This function efficiently checks whether a given number `n` can be written as the sum of exactly 4 positive even numbers by leveraging the properties of even numbers and the specific requirement of using exactly 4 numbers.

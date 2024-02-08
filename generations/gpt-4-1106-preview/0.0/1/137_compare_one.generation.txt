@@ -1,0 +1,35 @@
+Here's the Julia function `compare_one` that follows the specifications provided in the doc string:
+
+```julia
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+    # Function to convert string to float if possible, considering both . and , as decimal separators
+    function parse_real_number(s::AbstractString)
+        try
+            return parse(Float64, replace(s, ',' => '.'))
+        catch
+            error("Invalid string representation of a real number: $s")
+        end
+    end
+    
+    # Convert strings to floats if necessary
+    a_real = isa(a, AbstractString) ? parse_real_number(a) : a
+    b_real = isa(b, AbstractString) ? parse_real_number(b) : b
+    
+    # Compare the real number representations
+    if a_real > b_real
+        return a
+    elseif a_real < b_real
+        return b
+    else
+        return nothing
+    end
+end
+
+# Examples
+println(compare_one(1, 2.5)) # Should print 2.5
+println(compare_one(1, "2,3")) # Should print "2,3"
+println(compare_one("5,1", "6")) # Should print "6"
+println(compare_one("1", 1)) # Should print nothing
+```
+
+This function first defines a helper function `parse_real_number` to convert a string to a float, handling both `.` and `,` as decimal separators. Then, it converts the inputs to real numbers if they are strings, compares them, and returns the original input of the larger value, or `nothing` if they are equal.

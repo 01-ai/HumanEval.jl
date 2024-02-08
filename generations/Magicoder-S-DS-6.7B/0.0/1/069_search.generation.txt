@@ -1,0 +1,22 @@
+Here is a Julia function that implements the given problem:
+
+```julia
+function search(numbers::Vector)::Int
+    freq = Dict{Int, Int}()
+    for num in numbers
+        if haskey(freq, num)
+            freq[num] += 1
+        else
+            freq[num] = 1
+        end
+    end
+    for num in sort(collect(keys(freq)), rev=true)
+        if num > 0 && freq[num] >= num
+            return num
+        end
+    end
+    return -1
+end
+```
+
+This function first creates a dictionary `freq` where the keys are the unique numbers in the input list and the values are their frequencies. Then it iterates over the keys in descending order, and for each key, it checks if the key is greater than zero and its frequency is greater than or equal to the key itself. If such a key is found, it is returned. If no such key is found after checking all keys, the function returns -1.

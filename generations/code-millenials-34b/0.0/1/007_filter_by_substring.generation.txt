@@ -1,0 +1,12 @@
+
+
+function filter_by_substring(strings::Vector{String}, substring::AbstractString)::Vector{String}
+    filter(str -> occursin(substring, str), strings)
+end
+
+# Test cases
+strings = String[]
+@assert filter_by_substring(strings, "a") == String[]
+
+strings = ["abc", "bacd", "cde", "array"]
+@assert filter_by_substring(strings, "a") == ["abc", "bacd", "array"]

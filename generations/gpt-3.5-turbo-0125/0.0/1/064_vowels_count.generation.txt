@@ -1,0 +1,12 @@
+```julia
+function vowels_count(s::String)::Int
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    count = 0
+    for (i, char) in enumerate(s)
+        if char in vowels || (i == length(s) && (char == 'y' || char == 'Y'))
+            count += 1
+        end
+    end
+    return count
+end
+```

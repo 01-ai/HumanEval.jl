@@ -1,0 +1,12 @@
+Here is the implementation for the `any_int` function:
+
+```julia
+function any_int(x::Number, y::Number, z::Number)::Bool
+    if isinteger(x) && isinteger(y) && isinteger(z)
+        if x == y + z || y == x + z || z == x + y
+            return true
+        end
+    end
+    return false
+end
+```

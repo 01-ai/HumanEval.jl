@@ -1,0 +1,31 @@
+### Step-by-Step Outline
+
+1. **Initialize an empty vector** to store the differences between the game scores and the guesses.
+2. **Iterate through the game scores and guesses simultaneously** using a loop.
+   - For each pair of score and guess, calculate the absolute difference.
+   - Append the absolute difference to the vector initialized in step 1.
+3. **Return the vector** containing the differences.
+
+### Julia Code Implementation
+
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    # Step 1: Initialize an empty vector for differences
+    differences = Vector{Int}(undef, length(game))
+    
+    # Step 2: Iterate through the game scores and guesses
+    for i in 1:length(game)
+        # Calculate the absolute difference and store it
+        differences[i] = abs(game[i] - guess[i])
+    end
+    
+    # Step 3: Return the vector of differences
+    return differences
+end
+
+# Example usage
+println(compare([1, 2, 3, 4, 5, 1], [1, 2, 3, 4, 2, -2]))
+println(compare([0, 5, 0, 0, 0, 4], [4, 1, 1, 0, 0, -2]))
+```
+
+This implementation follows the outlined steps to calculate the absolute differences between the game scores and the guesses, storing and returning them in a vector as specified.

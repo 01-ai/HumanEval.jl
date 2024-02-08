@@ -1,0 +1,17 @@
+
+
+```julia
+function iscube(a::Int)::Bool
+    # Step 1: Calculate the cube root of the absolute value of the input
+    c = round(Int, a^(1/3))
+
+    # Step 2: Check if the cube of the calculated value is equal to the input
+    return a == c^3
+end
+```
+
+This function works by first calculating the cube root of the absolute value of the input. It then checks if the cube of this calculated value is equal to the input. If it is, it returns `true`, otherwise it returns `false`.
+
+The function uses the `round` function to round the calculated cube root to the nearest integer. This is necessary because the exact cube root of a number might not be an integer, but we are only interested in integer cube roots.
+
+The function also works with negative numbers because the cube root of a negative number is a negative number. However, the `round` function will still return the nearest integer, which will be positive, so the function will still work correctly.

@@ -1,0 +1,19 @@
+
+
+```julia
+function vowels_count(s::String)::Int
+    vowels = "aeiouAEIOU"
+    count = 0
+    for char in s
+        if char in vowels
+            count += 1
+        end
+    end
+    if s[end] == 'y' || s[end] == 'Y'
+        count += 1
+    end
+    return count
+end
+```
+
+This function iterates through each character in the string and checks if it is a vowel. If it is, it increments the count. If the last character is 'y' or 'Y', it also increments the count. Finally, it returns the count.

@@ -1,0 +1,51 @@
+To implement the `monotonic` function, we will follow these steps:
+
+1. Check if the input vector `l` is empty or has only one element. If so, return `true` because a single element or no elements can be considered trivially monotonic.
+
+2. Determine the direction of monotonicity by comparing the first two different elements in the list. If the second element is greater than the first, we will assume the list should be monotonically increasing; otherwise, it should be monotonically decreasing.
+
+3. Iterate through the list starting from the second element and compare each element with the previous one to ensure that the sequence is either non-decreasing or non-increasing, depending on the direction determined in step 2.
+
+4. If at any point we find a pair of elements that violate the monotonicity direction, return `false`.
+
+5. If we reach the end of the list without finding any violations, return `true`.
+
+Now, let's implement the code for the `monotonic` function:
+
+```julia
+function monotonic(l::Vector)::Bool
+    # Step 1: Check for trivial cases
+    length_l = length(l)
+    if length_l <= 1
+        return true
+    end
+    
+    # Step 2: Determine the direction of monotonicity
+    increasing = nothing
+    for i in 2:length_l
+        if l[i] != l[i-1]
+            increasing = l[i] > l[i-1]
+            break
+        end
+    end
+    
+    # If all elements are equal, the list is monotonic
+    if increasing === nothing
+        return true
+    end
+    
+    # Step 3: Check for monotonicity
+    for i in 2:length_l
+        if increasing && l[i] < l[i-1]
+            return false
+        elseif !increasing && l[i] > l[i-1]
+            return false
+        end
+    end
+    
+    # Step 5: If no violations found, the list is monotonic
+    return true
+end
+```
+
+This function should now work as expected for the given examples.

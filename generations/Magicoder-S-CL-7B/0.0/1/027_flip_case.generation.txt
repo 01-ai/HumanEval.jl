@@ -1,0 +1,5 @@
+
+
+function flip_case(s::String)::String
+    return map(x -> x ∈ 'A':'Z' ? Char(x + 32) : Char(x - 32), s)
+end

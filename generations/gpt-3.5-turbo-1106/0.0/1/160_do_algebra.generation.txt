@@ -1,0 +1,19 @@
+```julia
+function do_algebra(operator::Vector{String}, operand::Vector{Int})
+    result = operand[1]
+    for i in 1:length(operator)
+        if operator[i] == "+"
+            result += operand[i+1]
+        elseif operator[i] == "-"
+            result -= operand[i+1]
+        elseif operator[i] == "*"
+            result *= operand[i+1]
+        elseif operator[i] == "÷"
+            result ÷= operand[i+1]
+        elseif operator[i] == "^"
+            result ^= operand[i+1]
+        end
+    end
+    return result
+end
+```

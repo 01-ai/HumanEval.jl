@@ -1,0 +1,19 @@
+Here is the implementation of the `flip_case` function in Julia:
+
+```julia
+function flip_case(s::String)::String
+    flipped = ""
+    for c in s
+        if islower(c)
+            flipped *= uppercase(c)
+        elseif isupper(c)
+            flipped *= lowercase(c)
+        else
+            flipped *= c
+        end
+    end
+    return flipped
+end
+```
+
+This function iterates over each character in the input string `s`. If the character is lowercase, it converts it to uppercase using the `uppercase` function. If the character is uppercase, it converts it to lowercase using the `lowercase` function. If the character is neither lowercase nor uppercase, it leaves it unchanged. The flipped characters are then concatenated to the `flipped` string. Finally, the `flipped` string is returned as the result.

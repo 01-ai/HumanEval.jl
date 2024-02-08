@@ -1,0 +1,22 @@
+
+
+```julia
+function sort_even(l::Vector)
+    # Create a copy of the input list
+    l_copy = copy(l)
+
+    # Extract the even indices from the list
+    even_indices = l_copy[2:2:end]
+
+    # Sort the even indices
+    sorted_even_indices = sort(even_indices)
+
+    # Replace the even indices in the list with the sorted even indices
+    l_copy[2:2:end] = sorted_even_indices
+
+    # Return the modified list
+    return l_copy
+end
+```
+
+This function takes a list `l` as input, creates a copy of it, extracts the even indices from the list, sorts them, and then replaces the even indices in the original list with the sorted even indices. Finally, it returns the modified list.

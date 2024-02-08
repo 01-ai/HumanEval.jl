@@ -1,0 +1,13 @@
+To implement the `sort_third` function, we will follow these steps:
+
+1. Initialize an empty array to store the elements at indices divisible by three.
+2. Iterate through the input list `l` and for each element at an index `i` (0-based indexing):
+   - If `(i + 1) % 3 == 0`, append the element to the array created in step 1.
+3. Sort the array containing the elements at indices divisible by three.
+4. Create a new list `l_prime` that will store the final result.
+5. Iterate through the input list `l` again and for each element at an index `i` (0-based indexing):
+   - If `(i + 1) % 3 == 0`, append the next element from the sorted array to `l_prime`.
+   - Otherwise, append the current element from `l` to `l_prime`.
+6. Return the list `l_prime`.
+
+Now, let's write the code for the `sort_third` function in Julia.

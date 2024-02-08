@@ -1,0 +1,40 @@
+### Step-by-step outline for implementing the `largest_smallest_integers` function:
+
+1. Initialize two variables, `largest_negative` and `smallest_positive`, to `nothing`. These will hold the largest negative and smallest positive integers found in the list, respectively.
+
+2. Iterate through each element `x` in the input vector `xs`.
+
+3. For each element `x`, check if it is negative. If it is, compare it with `largest_negative`:
+   - If `largest_negative` is `nothing` or `x` is greater than `largest_negative`, update `largest_negative` to `x`.
+
+4. For each element `x`, also check if it is positive. If it is, compare it with `smallest_positive`:
+   - If `smallest_positive` is `nothing` or `x` is less than `smallest_positive`, update `smallest_positive` to `x`.
+
+5. After iterating through all elements, return the tuple `(largest_negative, smallest_positive)`.
+
+6. Include examples in the docstring to demonstrate how the function should be used and what output to expect.
+
+### Julia code for the `largest_smallest_integers` function:
+
+```julia
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing, Int}}
+    largest_negative = nothing
+    smallest_positive = nothing
+
+    for x in xs
+        if x < 0
+            if isnothing(largest_negative) || x > largest_negative
+                largest_negative = x
+            end
+        elseif x > 0
+            if isnothing(smallest_positive) || x < smallest_positive
+                smallest_positive = x
+            end
+        end
+    end
+
+    return (largest_negative, smallest_positive)
+end
+```
+
+Now, let's implement the function in Julia.

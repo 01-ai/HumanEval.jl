@@ -1,0 +1,34 @@
+Certainly! Below is the implementation of the `modp` function in Julia:
+
+```julia
+function modp(n::Int, p::Int)::Int
+    # Initialize result to 1 (as 2^0 mod p is always 1)
+    result = 1
+    
+    # Base to be exponentiated, which is 2 in this case
+    base = 2
+    
+    # Update n to be within 0 <= n < p-1 using modulo, if p > 1
+    n = p > 1 ? n % (p - 1) : n
+    
+    # Loop to calculate (base^n) % p using the binary exponentiation method
+    while n > 0
+        # If n is odd, multiply base with result
+        if n % 2 == 1
+            result = (result * base) % p
+        end
+        
+        # Square the base and reduce it modulo p
+        base = (base * base) % p
+        
+        # Reduce n by half
+        n >>= 1
+    end
+    
+    return result
+end
+```
+
+This function uses the binary exponentiation algorithm to efficiently compute `2^n mod p`. The algorithm reduces the number of multiplications by squaring the base and halving the exponent at each step. It also takes into account the possibility of integer overflow by performing modulo operations at each step.
+
+You can test the function with the provided examples to ensure it works as expected.

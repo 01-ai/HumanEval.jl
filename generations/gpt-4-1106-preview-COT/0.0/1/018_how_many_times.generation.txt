@@ -1,0 +1,36 @@
+To implement the `how_many_times` function, we can follow these steps:
+
+1. Check if the `sub_s` is empty. If it is, return 0 because an empty substring cannot be found in any string.
+2. Initialize a counter to 0. This will keep track of the number of times the substring is found in the string.
+3. Loop through the original string `s` starting from index 0 to the length of `s` minus the length of `sub_s`. This is because a substring cannot start beyond this point and still be fully contained within `s`.
+4. In each iteration, check if the substring of `s` starting at the current index and having the same length as `sub_s` is equal to `sub_s`.
+5. If it is, increment the counter.
+6. After the loop, return the counter.
+
+Now, let's write the code for the `how_many_times` function:
+
+```julia
+function how_many_times(s::String, sub_s::String)::Int
+    # Step 1: Return 0 if sub_s is empty
+    if isempty(sub_s)
+        return 0
+    end
+    
+    # Step 2: Initialize the counter
+    count = 0
+    
+    # Step 3: Loop through the string
+    for i in 1:(length(s) - length(sub_s) + 1)
+        # Step 4: Check if the current substring matches sub_s
+        if s[i:i+length(sub_s)-1] == sub_s
+            # Step 5: Increment the counter
+            count += 1
+        end
+    end
+    
+    # Step 6: Return the counter
+    return count
+end
+```
+
+This function should work correctly according to the specification in the doc string. It will count overlapping occurrences of `sub_s` in `s`.

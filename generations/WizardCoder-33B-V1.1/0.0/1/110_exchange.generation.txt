@@ -1,0 +1,22 @@
+
+
+function exchange(lst1::Vector{Int}, lst2::Vector{Int})::String
+    # Check if there are any odd numbers in lst1
+    if any(isodd, lst1)
+        # Check if there are any even numbers in lst2
+        if any(iseven, lst2)
+            return "YES"
+        else
+            return "NO"
+        end
+    else
+        return "YES"
+    end
+end
+
+# Test cases
+println(exchange([1, 2, 3, 4], [1, 2, 3, 4])) # "YES"
+println(exchange([1, 2, 3, 4], [1, 5, 3, 4])) # "NO"
+println(exchange([1, 3, 5, 7], [2, 4, 6, 8])) # "YES"
+println(exchange([1, 3, 5, 7], [1, 3, 5, 7])) # "YES"
+println(exchange([2, 4, 6, 8], [1, 3, 5, 7])) # "NO" 

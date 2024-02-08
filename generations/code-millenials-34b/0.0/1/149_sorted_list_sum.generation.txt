@@ -1,0 +1,16 @@
+
+
+function sorted_list_sum(xs::Vector{String})::Vector{String}
+    filter!(x -> length(x) % 2 == 0, xs)
+    sort!(xs, by = length)
+    return xs
+end
+
+# Test cases
+@assert sorted_list_sum(["aa", "a", "aaa"]) == ["aa"]
+@assert sorted_list_sum(["ab", "a", "aaa", "cd"]) == ["ab", "cd"]
+@assert sorted_list_sum(["abc", "a", "aaa", "cd"]) == ["a", "cd"]
+@assert sorted_list_sum(["abc", "abc", "abc"]) == ["abc", "abc", "abc"]
+@assert sorted_list_sum(["abc", "abc", "abcd"]) == ["abc", "abcd"]
+@assert sorted_list_sum(["abc", "abc", "abcd", "abcd"]) == ["abc", "abcd", "abcd"]
+@assert sorted_list_sum(["abc", "abc", "abcd", "abcd", "abcde"]) == ["abc", "abcd", "abcde"]

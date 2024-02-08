@@ -1,0 +1,25 @@
+
+
+```julia
+function hex_key(num::String)::Int
+    # Define a set of prime hexadecimal digits
+    prime_hex_digits = Set(["2", "3", "5", "7", "B", "D"])
+
+    # Initialize the count of prime hexadecimal digits
+    count = 0
+
+    # Iterate through each character in the string
+    for char in num
+        # Check if the character is a prime hexadecimal digit
+        if char in prime_hex_digits
+            # Increment the count
+            count += 1
+        end
+    end
+
+    # Return the count of prime hexadecimal digits
+    return count
+end
+```
+
+This function iterates through each character in the string and checks if it is a prime hexadecimal digit. If it is, it increments the count. Finally, it returns the count of prime hexadecimal digits.

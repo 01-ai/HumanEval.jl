@@ -1,0 +1,36 @@
+Here is a step-by-step outline of the algorithm:
+
+1. Initialize a variable `min_sum` to the first element of the array `nums`. This will keep track of the minimum sum of any sub-array we've seen so far.
+
+2. Initialize a variable `current_sum` to 0. This will keep track of the sum of the current sub-array we're considering.
+
+3. Iterate over the array `nums`. For each element `num` in `nums`:
+
+    a. Add `num` to `current_sum`.
+
+    b. If `current_sum` is less than `min_sum`, update `min_sum` to `current_sum`.
+
+    c. If `current_sum` is greater than or equal to 0, reset `current_sum` to 0.
+
+4. Return `min_sum`.
+
+Here is the Julia code implementing the above algorithm:
+
+```julia
+function min_sub_array_sum(nums::Vector{Int})::Int
+    min_sum = nums[1]
+    current_sum = 0
+    for num in nums
+        current_sum += num
+        if current_sum < min_sum
+            min_sum = current_sum
+        end
+        if current_sum >= 0
+            current_sum = 0
+        end
+    end
+    return min_sum
+end
+```
+
+This function works by keeping track of the minimum sum of any sub-array seen so far, and the sum of the current sub-array. It iterates over the array, updating the current sum and the minimum sum as necessary. If the current sum ever becomes greater than or equal to 0, it resets the current sum to 0, because any sub-array that includes a positive number will always have a smaller sum than the sub-array that doesn't include that number.

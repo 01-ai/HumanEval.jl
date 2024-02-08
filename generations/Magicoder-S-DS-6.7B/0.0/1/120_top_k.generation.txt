@@ -1,0 +1,9 @@
+Here is a Julia function that implements the `top_k` function as described in the problem:
+
+```julia
+function top_k(xs::Vector{Int}, k::Int)::Vector{Int}
+    sort(xs, rev=true)[1:k]
+end
+```
+
+This function sorts the input vector in descending order and then returns the first `k` elements. The `rev=true` argument to the `sort` function ensures that the sorting is done in descending order.

@@ -1,0 +1,25 @@
+
+
+To solve this problem, we can use two pointers approach. One pointer will start from the beginning of the array and the other will start from the end. We will compare the elements at both pointers and if they are not equal, we will increment a counter. If the elements are equal, we will move both pointers. We will stop when both pointers meet in the middle.
+
+Here is the Julia code for the function:
+
+```julia
+function smallest_change(xs::Vector{Int})::Int
+    left = 1
+    right = length(xs)
+    changes = 0
+
+    while left < right
+        if xs[left] != xs[right]
+            changes += 1
+        end
+        left += 1
+        right -= 1
+    end
+
+    return changes
+end
+```
+
+This function works by iterating over the elements of the array and comparing them. If the elements are not equal, it increments the `changes` counter. The function returns the `changes` counter, which represents the minimum number of changes needed to make the array palindromic.

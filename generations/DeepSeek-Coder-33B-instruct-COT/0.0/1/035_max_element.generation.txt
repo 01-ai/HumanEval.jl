@@ -1,0 +1,22 @@
+Here is a step-by-step outline of how you can implement the `max_element` function in Julia:
+
+1. Initialize a variable `max_val` to the first element of the list `xs`.
+2. Iterate over the list `xs`.
+3. For each element `x` in the list, if `x` is greater than `max_val`, update `max_val` to `x`.
+4. After the loop, `max_val` will be the maximum element in the list.
+
+Here is the Julia code that implements this outline:
+
+```julia
+function max_element(xs)
+    max_val = xs[1]
+    for x in xs
+        if x > max_val
+            max_val = x
+        end
+    end
+    return max_val
+end
+```
+
+This function works by first assuming the first element of the list is the maximum. It then checks each element in the list. If it finds an element that is larger than the current maximum, it updates the maximum. After checking all elements, it returns the maximum value.

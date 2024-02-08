@@ -1,0 +1,23 @@
+
+
+# Outline
+
+1. Define the function `right_angle_triangle` that takes three arguments `a`, `b`, and `c`.
+2. Sort the sides in ascending order.
+3. Check if the sum of the squares of the smallest two sides is equal to the square of the largest side.
+4. If the condition in step 3 is true, return `true`. Otherwise, return `false`.
+
+# Code
+
+```julia
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    # Step 2: Sort the sides in ascending order
+    sides = sort([a, b, c])
+    
+    # Step 3: Check if the sum of the squares of the smallest two sides is equal to the square of the largest side
+    is_right_angle = sides[1]^2 + sides[2]^2 == sides[3]^2
+    
+    # Step 4: Return the result
+    return is_right_angle
+end
+```

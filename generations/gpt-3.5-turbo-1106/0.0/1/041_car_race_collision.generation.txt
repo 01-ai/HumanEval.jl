@@ -1,0 +1,5 @@
+```julia
+function car_race_collision(n::Int)::Int
+    return n * (n - 1)  # Number of collisions between n cars moving in opposite directions
+end
+```

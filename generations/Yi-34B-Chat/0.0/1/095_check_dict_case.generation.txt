@@ -1,0 +1,20 @@
+```julia
+function check_dict_case(d::Dict{String})::Bool
+    # Check if dictionary is empty
+    if isempty(d)
+        return false
+    end
+
+    # Get all keys in lower case
+    lowercase_keys = String.(collect(keys(d)));
+    lowercase_keys = map(lowercase_keys) do s
+        return lowercase(s)
+    end
+
+    # Check if all keys are lower case or upper case
+    return all(isequal(lowercase_keys[1]), lowercase_keys) ||
+           all(isequal(uppercase(lowercase_keys[1])), lowercase_keys)
+end
+```
+
+This function checks if all keys in a dictionary are lower case or upper case. If the dictionary is empty, it returns `false`. If any key is not a string or if the keys are a mix of lower and upper case, the function also returns `false`.

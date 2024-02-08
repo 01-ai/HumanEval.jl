@@ -1,0 +1,30 @@
+Certainly! Below is the Julia function `flip_case` that takes a string `s` as input and returns a new string with the case of each character flipped:
+
+```julia
+"""
+    flip_case(s::String)::String
+
+For a given string, flip lowercase characters to uppercase and uppercase to lowercase.
+
+# Examples
+
+```jldoctest
+julia> flip_case("Hello")
+"hELLO"
+```
+"""
+function flip_case(s::String)::String
+    return join([islower(c) ? uppercase(c) : lowercase(c) for c in s])
+end
+
+# Helper functions to check if a character is lowercase or uppercase
+islower(c::Char) = 'a' <= c <= 'z'
+isupper(c::Char) = 'A' <= c <= 'Z'
+
+# Example usage
+println(flip_case("Hello"))  # Output should be "hELLO"
+```
+
+This function uses a list comprehension to iterate over each character in the input string `s`. For each character `c`, it checks if it is lowercase using the helper function `islower`. If it is, it converts it to uppercase using `uppercase(c)`. If it is not lowercase (and thus is uppercase), it converts it to lowercase using `lowercase(c)`. The resulting characters are joined back into a string using `join`.
+
+The helper functions `islower` and `isupper` are simple utility functions that check if a character is in the range of lowercase or uppercase letters, respectively.

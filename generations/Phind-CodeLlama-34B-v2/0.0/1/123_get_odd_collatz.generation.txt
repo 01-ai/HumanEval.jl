@@ -1,0 +1,16 @@
+
+
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    collatz_sequence = BigInt[]
+    while n != 1
+        if n % 2 != 0
+            push!(collatz_sequence, n)
+        end
+        n = n % 2 == 0 ? n ÷ 2 : 3n + 1
+    end
+    push!(collatz_sequence, 1)
+    return sort(collatz_sequence)
+end
+
+# Test the function
+println(get_odd_collatz(5))

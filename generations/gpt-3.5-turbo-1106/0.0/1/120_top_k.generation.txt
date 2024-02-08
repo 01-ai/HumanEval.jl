@@ -1,0 +1,6 @@
+```julia
+function top_k(xs::Vector{Int}, k::Int)::Vector{Int}
+    sorted_xs = sort(xs, rev=true)
+    return sorted_xs[1:k]
+end
+```

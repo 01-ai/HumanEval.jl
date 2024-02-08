@@ -1,0 +1,51 @@
+To implement the `parse_nested_parens` function, we will follow these steps:
+
+1. Initialize an empty vector `depths` to store the maximum depth of each group.
+2. Split the input string `paren_string` by spaces to separate each group of parentheses.
+3. For each group of parentheses:
+   a. Initialize a counter `current_depth` to 0 to keep track of the current depth.
+   b. Initialize a variable `max_depth` to 0 to keep track of the maximum depth found in the current group.
+   c. Iterate over each character in the group:
+      i. If the character is an opening parenthesis `'('`, increment `current_depth` by 1.
+      ii. If the character is a closing parenthesis `')'`, decrement `current_depth` by 1.
+      iii. Update `max_depth` if `current_depth` is greater than `max_depth`.
+   d. Append `max_depth` to the `depths` vector.
+4. Return the `depths` vector.
+
+Now, let's write the code for the function:
+
+```julia
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    depths = Int[]
+    groups = split(paren_string)
+    
+    for group in groups
+        current_depth = 0
+        max_depth = 0
+        for char in group
+            if char == '('
+                current_depth += 1
+                max_depth = max(max_depth, current_depth)
+            elseif char == ')'
+                current_depth -= 1
+            end
+        end
+        push!(depths, max_depth)
+    end
+    
+    return depths
+end
+```
+
+Let's test the function with the provided example:
+
+```julia
+julia> parse_nested_parens("(()()) ((())) () ((())()())")
+4-element Vector{Int64}:
+ 2
+ 3
+ 1
+ 3
+```
+
+This function should work correctly for the given example and similar inputs.

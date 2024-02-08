@@ -1,0 +1,14 @@
+
+
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    if length(xs) < 2
+        return nothing
+    end
+    min1 = min(xs)
+    xs = filter(x -> x != min1, xs)
+    if isempty(xs)
+        return nothing
+    else
+        return min(xs)
+    end
+end

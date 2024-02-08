@@ -1,0 +1,17 @@
+```julia
+function string_sequence(n::Int)::String
+    # Initialize an empty string
+    result = ""
+
+    # Loop over the range from 0 to n inclusive
+    for i in 0:n
+        # Append the current number to the result string
+        result *= "$i "
+    end
+
+    # Remove the trailing space
+    return result[1:end-1]
+end
+```
+
+This function defines a `string_sequence` that takes an integer `n` and returns a string containing space-delimited numbers from 0 to `n` inclusive. It uses a for loop to iterate over the range from 0 to `n` and concatenates the numbers with a space in between. Finally, it removes the trailing space from the result string before returning it.

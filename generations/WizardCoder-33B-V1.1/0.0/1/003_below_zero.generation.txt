@@ -1,0 +1,18 @@
+
+
+Here is the Julia function that implements the above logic:
+
+```julia
+function below_zero(operations::Vector{Int})::Bool
+    balance = 0
+    for operation in operations
+        balance += operation
+        if balance < 0
+            return true
+        end
+    end
+    return false
+end
+```
+
+This function works by iterating over the list of operations, adding each operation to the current balance, and checking if the balance is less than zero at any point. If it is, the function immediately returns `true`. If the function finishes iterating over all operations without the balance ever falling below zero, it returns `false`. 

@@ -1,0 +1,23 @@
+```julia
+function is_multiply_prime(a::Int)::Bool
+    function is_prime(n)
+        if n <= 1
+            return false
+        end
+        for i in 2:isqrt(n)
+            if n % i == 0
+                return false
+            end
+        end
+        return true
+    end
+    
+    count = 0
+    for i in 2:a
+        if a % i == 0 && is_prime(i)
+            count += 1
+        end
+    end
+    return count == 3
+end
+```

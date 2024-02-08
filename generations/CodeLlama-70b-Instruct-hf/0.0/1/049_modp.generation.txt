@@ -1,0 +1,9 @@
+
+
+```julia
+function modp(n::Int, p::Int)::Int
+    return mod(2^n, p)
+end
+```
+
+This function takes two integers `n` and `p` as input and returns the value of 2^n modulo p. It uses the `mod` function to calculate the modulo operation.

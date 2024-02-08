@@ -1,0 +1,24 @@
+
+
+```julia
+function n_digits_in_binary(N::Int)::String
+    # Convert the integer to binary string
+    binary_str = string(bin(N))
+
+    # Remove the leading "0b"
+    binary_str = binary_str[3:end]
+
+    # Initialize the sum of digits
+    sum_of_digits = 0
+
+    # Iterate through the binary string and add the digits
+    for digit in binary_str
+        sum_of_digits += parse(Int, digit)
+    end
+
+    # Convert the sum of digits to binary string
+    return string(bin(sum_of_digits))
+end
+```
+
+This function first converts the integer to a binary string using the `bin` function. It then removes the leading "0b" from the binary string. Then, it iterates through the binary string and adds the digits to calculate the sum of digits. Finally, it converts the sum of digits to a binary string and returns it.

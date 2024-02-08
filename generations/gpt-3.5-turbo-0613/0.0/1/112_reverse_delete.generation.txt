@@ -1,0 +1,13 @@
+Here is the implementation for the `reverse_delete` function:
+
+```julia
+function reverse_delete(s::String, c::String)::Tuple{String, Bool}
+    result = ""
+    for char in s
+        if char ∉ c
+            result *= char
+        end
+    end
+    return result, result == reverse(result)
+end
+```

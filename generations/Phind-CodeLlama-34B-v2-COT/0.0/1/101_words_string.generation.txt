@@ -1,0 +1,22 @@
+
+
+# Outline
+
+1. Use the built-in Julia function `split` to split the input string `s` into an array of words based on the delimiter which can be a comma or a space.
+2. Use the `filter` function to remove any empty strings from the resulting array.
+3. Return the filtered array of words.
+
+# Code
+
+```julia
+function words_string(s::String)::Vector{String}
+    # Split the string into words using comma or space as delimiter
+    words = split(s, r"[ ,]")
+    
+    # Remove any empty strings from the array
+    words = filter(word -> !isempty(word), words)
+    
+    # Return the array of words
+    return words
+end
+```

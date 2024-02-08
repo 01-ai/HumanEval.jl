@@ -1,0 +1,22 @@
+Here's the Julia function `choose_num` that implements the described functionality:
+
+```julia
+function choose_num(x::Int, y::Int)::Int
+    # Check if x is greater than y, if so, return -1 as there is no range
+    if x > y
+        return -1
+    end
+
+    # Start from y and go down to x to find the largest even number
+    for num in y:-1:x
+        if num % 2 == 0
+            return num
+        end
+    end
+
+    # If no even number is found, return -1
+    return -1
+end
+```
+
+You can test this function with the provided examples to ensure it works as expected.

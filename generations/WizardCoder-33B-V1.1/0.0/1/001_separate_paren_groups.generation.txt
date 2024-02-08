@@ -1,0 +1,30 @@
+
+
+Here is a Julia function that solves the problem:
+
+```julia
+function separate_paren_groups(paren_string::String)::Vector{String}
+    paren_string = replace(paren_string, " " => "")
+    groups = String[]
+    open_count = 0
+    start_index = 0
+    for (i, char) in enumerate(paren_string)
+        if char == '('
+            if open_count == 0
+                start_index = i
+            end
+            open_count += 1
+        elseif char == ')'
+            open_count -= 1
+            if open_count == 0
+                pushfirst(groups, paren_string[start_index:i])
+            end
+        end
+    end
+    return groups
+end
+```
+
+This function works by iterating over the characters in the string. It keeps track of the number of open parentheses. When it encounters an open parenthesis, it checks if it's the first one in a group (`open_count == 0`). If it is, it sets `start_index` to the current index. When it encounters a closing parenthesis, it checks if it's the last one in a group (`open_count == 0`). If it is, it adds the group to the list of groups.
+
+The function returns the list of groups in reverse order because it adds the most recent group to the beginning of the list. 

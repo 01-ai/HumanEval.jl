@@ -1,0 +1,30 @@
+To implement the `make_a_pile` function as described, we need to follow these steps:
+
+1. Initialize an empty vector to store the number of stones in each level.
+2. Start with the first level having `n` stones.
+3. Depending on whether `n` is odd or even, increment the number of stones for the next level by 2 (to ensure the next level has the next odd or even number, respectively).
+4. Repeat step 3 until we have filled all `n` levels.
+
+Here's how the implementation looks in Julia:
+
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    # Initialize the pile with the first level
+    pile = [n]
+    
+    # Loop to fill the rest of the levels
+    for i in 2:n
+        # Check if the last number of stones added was odd or even
+        # and add the next odd or even number accordingly
+        if pile[end] % 2 == 0
+            push!(pile, pile[end] + 2)
+        else
+            push!(pile, pile[end] + 2)
+        end
+    end
+    
+    return pile
+end
+```
+
+This function starts with the first level having `n` stones and then adds the next odd or even number of stones for each subsequent level, depending on the parity of the starting number of stones. Note that the increment step (adding 2) is the same for both odd and even cases, so the if-else block could be simplified further.

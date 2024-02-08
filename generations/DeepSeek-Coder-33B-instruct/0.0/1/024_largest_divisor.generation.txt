@@ -1,0 +1,14 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function largest_divisor(n::Int)::Int
+    for i in n-1:-1:1
+        if n % i == 0
+            return i
+        end
+    end
+    return 1
+end
+```
+
+This function works by iterating from `n-1` down to `1` and checking if `n` is divisible by the current number `i`. If it is, it returns `i` as the largest divisor. If no divisor is found, it returns `1`.

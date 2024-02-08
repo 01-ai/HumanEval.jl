@@ -1,0 +1,20 @@
+  Here's one way to implement the `below_threshold` function in Julia:
+```
+function below_threshold(l::Vector, t::Number)::Bool
+    return all(x -> x < t, l)
+end
+```
+Explanation:
+
+* The `all` function takes a function and a collection as arguments, and returns `true` if the function returns `true` for all elements in the collection.
+* The function `x -> x < t` is a lambda function that takes a single argument `x` and returns `true` if `x` is less than `t`.
+* The `all` function is applied to the vector `l` and the lambda function, which returns `true` if all elements in `l` are less than `t`.
+
+Here's an example usage of the function:
+```
+julia> below_threshold([1, 2, 4, 10], 100)
+true
+
+julia> below_threshold([1, 20, 4, 10], 5)
+false
+```

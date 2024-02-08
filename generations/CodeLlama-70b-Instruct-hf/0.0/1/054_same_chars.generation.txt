@@ -1,0 +1,23 @@
+
+
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    # Convert the strings to lowercase
+    s0 = lowercase(s0)
+    s1 = lowercase(s1)
+
+    # Check if the lengths of the strings are different
+    if length(s0) != length(s1)
+        return false
+    end
+
+    # Sort the strings
+    s0 = sort(s0)
+    s1 = sort(s1)
+
+    # Compare the sorted strings
+    return s0 == s1
+end
+```
+
+This function first converts the input strings to lowercase, then checks if their lengths are different. If they are, it returns `false`. If they are the same length, it sorts the strings and compares them. If they are equal, it returns `true`, otherwise it returns `false`.

@@ -1,0 +1,20 @@
+```julia
+function below_zero(operations::Vector{Int})::Bool
+    # Initialize the balance to zero
+    balance = 0
+    
+    # Iterate over the operations
+    for operation in operations
+        # Apply the operation to the balance
+        balance += operation
+        
+        # If the balance is below zero, return true
+        if balance < 0
+            return true
+        end
+    end
+    
+    # If the balance never went below zero, return false
+    return false
+end
+```

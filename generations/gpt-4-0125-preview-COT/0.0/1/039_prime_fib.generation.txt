@@ -1,0 +1,62 @@
+### Outline for Implementing `prime_fib` Function
+
+1. **Define the Fibonacci Sequence Generator**:
+   - Create a function or a generator to produce Fibonacci numbers. This can be done using a simple loop or recursion, but for efficiency, an iterative approach is preferred.
+
+2. **Check for Primality**:
+   - Implement a function to check if a given number is prime. This function will be used to test each Fibonacci number generated.
+
+3. **Main Function Logic**:
+   - Initialize a counter to keep track of how many prime Fibonacci numbers have been found.
+   - Use a loop to generate Fibonacci numbers in sequence.
+   - For each Fibonacci number, check if it is prime.
+   - If it is prime, increment the counter.
+   - Once the counter matches the input `n`, return the current Fibonacci number as the result.
+
+4. **Optimization Considerations**:
+   - For checking primality, only test divisibility up to the square root of the number to save computation time.
+   - Cache previously found prime numbers and Fibonacci numbers if necessary to avoid recalculating.
+
+### Julia Code Implementation
+
+```julia
+# Function to check if a number is prime
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    end
+    for i in 2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+# Function to generate the n-th Fibonacci number
+function fib(n::Int)::Int
+    a, b = 0, 1
+    for _ in 1:n
+        a, b = b, a + b
+    end
+    return a
+end
+
+# Main function to find the n-th prime Fibonacci number
+function prime_fib(n::Int)::Int
+    count = 0
+    fib_index = 1
+    while true
+        fib_num = fib(fib_index)
+        if is_prime(fib_num)
+            count += 1
+            if count == n
+                return fib_num
+            end
+        end
+        fib_index += 1
+    end
+end
+```
+
+This implementation provides a straightforward approach to generating prime Fibonacci numbers. It leverages separate functions for generating Fibonacci numbers and checking for primality, which makes the code modular and easier to understand. The `prime_fib` function integrates these components to find the n-th prime Fibonacci number as requested.

@@ -1,0 +1,33 @@
+To implement the `parse_music` function as described, we can follow these steps:
+
+1. Split the input string into its components based on spaces. This will help us identify each musical note or symbol.
+2. Iterate through the split string and match each element with its corresponding beats according to the legend provided.
+3. Append the number of beats to a list.
+4. Return the list of integers representing the beats for each note.
+
+Here's how the implementation might look in Julia:
+
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    # Split the music string into components
+    notes = split(music_string)
+    
+    # Initialize an empty list to store the beats
+    beats = Int[]
+    
+    # Iterate through each note and convert to beats
+    for note in notes
+        if note == "o"
+            push!(beats, 4)  # Whole note, 4 beats
+        elseif note == "o|"
+            push!(beats, 2)  # Half note, 2 beats
+        elseif note == ".|"
+            push!(beats, 1)  # Quarter note, 1 beat
+        end
+    end
+    
+    return beats
+end
+```
+
+This function takes a string representing musical notes and returns a list of integers where each integer represents the number of beats for the corresponding note in the input string. The function uses simple string operations and conditional statements to map each note to its beat value and collects these values in a list which is then returned.

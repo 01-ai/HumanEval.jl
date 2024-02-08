@@ -1,0 +1,27 @@
+
+
+```julia
+function derivative(xs::Vector)::Vector
+    # Check if the input is a vector
+    if !isa(xs, Vector)
+        throw(ArgumentError("Input must be a vector"))
+    end
+
+    # Check if the input is empty
+    if isempty(xs)
+        throw(ArgumentError("Input vector cannot be empty"))
+    end
+
+    # Initialize the derivative vector
+    derivative = Vector{Int64}(undef, length(xs) - 1)
+
+    # Calculate the derivative
+    for i in 1:length(xs) - 1
+        derivative[i] = xs[i + 1] * (i + 1)
+    end
+
+    return derivative
+end
+```
+
+This function takes a vector of coefficients representing a polynomial and returns the derivative of the polynomial in the same form. It first checks if the input is a vector and if it is empty. If either of these conditions is not met, it throws an error. Then, it initializes the derivative vector with the same type as the input vector and calculates the derivative by multiplying each coefficient by its power and subtracting 1 from the power. Finally, it returns the derivative vector.

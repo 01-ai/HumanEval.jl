@@ -1,0 +1,14 @@
+ function exchange(lst1::Vector{Int}, lst2::Vector{Int})::String
+    even_lst1 = filter(x -> x % 2 == 0, lst1)
+    even_lst2 = filter(x -> x % 2 == 0, lst2)
+
+    if length(even_lst1) == length(lst1)
+        return "YES"
+    end
+
+    if length(even_lst2) >= length(lst1) - length(even_lst1)
+        return "YES"
+    else
+        return "NO"
+    end
+end

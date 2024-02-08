@@ -1,0 +1,26 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function closest_integer(value::String)::Int
+    num = parse(Float64, value)
+    return round(Int, num)
+end
+```
+
+This function first converts the input string to a `Float64` number using the `parse` function. Then it rounds this number to the nearest integer using the `round` function. The `Int` argument to the `round` function specifies that the result should be an integer.
+
+Here is how you can test this function:
+
+```julia
+julia> closest_integer("10")
+10
+
+julia> closest_integer("15.3")
+15
+
+julia> closest_integer("14.5")
+15
+
+julia> closest_integer("-14.5")
+-15
+```

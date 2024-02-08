@@ -1,0 +1,29 @@
+
+
+To solve this problem, we will create a function `hex_key` that takes a string `num` as input and returns an integer. The function will iterate over each character in the string, convert it to a hexadecimal number if it is a prime, and increment a counter if it is. The prime hexadecimal numbers are 2, 3, 5, 7, B, D, E, F. 
+
+Here is the step-by-step outline of the function:
+
+1. Initialize a counter `count` to 0.
+2. Iterate over each character `c` in the string `num`.
+3. Convert the character `c` to a hexadecimal number `n`.
+4. Check if `n` is a prime number.
+5. If `n` is a prime number, increment `count`.
+6. After the loop, return `count`.
+
+Now let's write the code for the function:
+
+```julia
+function hex_key(num::String)::Int
+    count = 0
+    primes = ['2', '3', '5', '7', 'B', 'D', 'E', 'F']
+    for c in num
+        if c in primes
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function works by iterating over each character in the input string, checking if it is one of the prime hexadecimal digits, and incrementing a counter if it is. The function finally returns the count of prime digits.

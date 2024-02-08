@@ -1,0 +1,12 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    length(xs) < 2 && return nothing
+    xs = sort(unique(xs))
+    length(xs) < 2 && return nothing
+    return xs[2]
+end
+```
+
+This function first checks if the length of the input vector is less than 2. If so, it returns `nothing` because there are not enough elements to find the 2nd smallest. Then it sorts and removes duplicates from the vector. If the length of the vector after removing duplicates is less than 2, it returns `nothing` because there are not enough unique elements. Finally, it returns the 2nd element of the sorted, unique vector.

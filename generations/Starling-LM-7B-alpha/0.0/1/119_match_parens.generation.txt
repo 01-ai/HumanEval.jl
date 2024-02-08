@@ -1,0 +1,26 @@
+ Here's a Julia function that implements the `match_parens` function as described in the docstring:
+
+```julia
+function match_parens(lst::Vector{String})::String
+    open_count = 0
+    close_count = 0
+
+    for str in lst
+        for char in str
+            if char == '('
+                open_count += 1
+            elseif char == ')'
+                close_count += 1
+            end
+        end
+    end
+
+    if open_count == close_count
+        return "Yes"
+    else
+        return "No"
+    end
+end
+```
+
+This function iterates through each string in the input list and counts the number of open and close parentheses in each string. If the count of open and close parentheses is the same, it returns "Yes", otherwise it returns "No".

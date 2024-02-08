@@ -1,0 +1,33 @@
+"""
+    filter_integers(values::AbstractVector)::Vector{Int}
+
+Filter a given list of any values only for integers.
+
+# Examples
+
+```jldoctest
+julia> filter_integers(["a", 3.14, 5])
+1-element Vector{Int64}:
+ 5
+
+julia> filter_integers([1, 2, 3, "abc", Set(), []])
+3-element Vector{Int64}:
+ 1
+ 2
+ 3
+```
+"""
+function filter_integers(values::AbstractVector)::Vector{Int}
+    # Initialize an empty vector to hold the integers
+    integers = Vector{Int}()
+
+    # Iterate over the values and filter out the integers
+    for value in values
+        if isinteger(value)
+            push!(integers, value)
+        end
+    end
+
+    # Return the filtered vector of integers
+    return integers
+end

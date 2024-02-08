@@ -1,0 +1,24 @@
+Here is a Julia function that implements the given doc string:
+
+```julia
+function count_up_to(n::Int)::Vector{Int}
+    primes = Int[]
+    for i in 2:n-1
+        is_prime = true
+        for j in 2:i-1
+            if i % j == 0
+                is_prime = false
+                break
+            end
+        end
+        if is_prime
+            push_prime = push(primes, i)
+        end
+    end
+    return primes
+end
+```
+
+This function works by iterating over each integer from 2 to n-1. For each integer, it checks if it is a prime number by checking if it is divisible by any integer from 2 to i-1. If it is not divisible by any of these integers, it is a prime number and is added to the primes array. The function finally returns the primes array.
+
+However, this function is not efficient for large n because it checks each integer for divisibility by all integers less than it, which is unnecessary. A more efficient function would only check divisibility by integers up to the square root of i.

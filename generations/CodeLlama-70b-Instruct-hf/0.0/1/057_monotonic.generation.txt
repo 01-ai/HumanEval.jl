@@ -1,0 +1,23 @@
+
+
+```julia
+function monotonic(l::Vector)::Bool
+    if length(l) < 2
+        return true
+    end
+
+    increasing = l[2] > l[1]
+
+    for i in 2:length(l) - 1
+        if increasing && l[i + 1] < l[i]
+            return false
+        elseif !increasing && l[i + 1] > l[i]
+            return false
+        end
+    end
+
+    return true
+end
+```
+
+This function checks if the elements of the list are monotonically increasing or decreasing. It first checks if the list has less than two elements, in which case it returns `true`. Then, it checks if the second element is greater than the first element, indicating that the list is increasing. It then iterates through the list, checking if each subsequent element is greater than or less than the previous element, depending on whether the list is increasing or decreasing. If it finds an element that violates the monotonicity, it returns `false`. If it reaches the end of the list without finding a violation, it returns `true`.

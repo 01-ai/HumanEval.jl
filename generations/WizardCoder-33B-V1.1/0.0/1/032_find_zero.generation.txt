@@ -1,0 +1,11 @@
+
+function find_zero(xs::Vector{Int})
+    n = length(xs)
+    a = xs[n]
+    b = xs[n-1]
+    return -b / a
+end
+
+# Testing
+println(find_zero([1, 2])) # -0.5
+println(find_zero([-6, 11, -6, 1])) # 1.0 

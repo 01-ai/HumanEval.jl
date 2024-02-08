@@ -1,0 +1,51 @@
+### Step-by-step outline for `multiply_unit_digits` function:
+
+1. Extract the unit digit from the first integer `a`:
+   - Find the remainder of `a` when divided by 10.
+   
+2. Extract the unit digit from the second integer `b`:
+   - Find the remainder of `b` when divided by 10.
+   
+3. Multiply the two unit digits obtained from steps 1 and 2.
+
+4. Return the product as the result.
+
+### Julia code for `multiply_unit_digits` function:
+
+```julia
+"""
+    multiply_unit_digits(a::Int, b::Int)::Int
+
+Complete the function that takes two integers and returns the product of their
+unit digits. Assume the input is always valid.
+
+# Examples
+
+```jldoctest
+julia> multiply_unit_digits(148, 412)
+16
+
+julia> multiply_unit_digits(19, 28)
+72
+
+julia> multiply_unit_digits(2020, 1851)
+0
+
+julia> multiply_unit_digits(14, -15)
+20
+```
+"""
+function multiply_unit_digits(a::Int, b::Int)::Int
+    # Extract the unit digit from both integers
+    unit_digit_a = abs(a) % 10
+    unit_digit_b = abs(b) % 10
+    
+    # Multiply the unit digits
+    product = unit_digit_a * unit_digit_b
+    
+    # Return the product
+    return product
+end
+```
+
+Note: The `abs` function is used to handle negative numbers correctly, ensuring that the unit digit is always positive.

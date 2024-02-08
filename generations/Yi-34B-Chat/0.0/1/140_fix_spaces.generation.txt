@@ -1,0 +1,13 @@
+```julia
+function fix_spaces(s::String)::String
+    # Replace all spaces with underscores
+    s = replace(s, ' ' => '_')
+    # Check for consecutive underscores and replace them with dashes
+    while occursin(r"__+", s)
+        s = replace(s, r"__+" => "-")
+    end
+    return s
+end
+```
+
+This function first replaces all spaces with underscores. Then, it looks for sequences of two or more underscores and replaces them with dashes. The `occsin` function is used to check for the presence of the pattern, and `replace` is used to replace the pattern with a dash.

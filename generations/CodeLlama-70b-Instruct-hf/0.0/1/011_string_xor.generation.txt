@@ -1,0 +1,22 @@
+
+
+```julia
+function string_xor(a::String, b::String)::String
+    # Check if the input strings are valid
+    if !all(c -> c == '0' || c == '1', a) || !all(c -> c == '0' || c == '1', b)
+        throw(ArgumentError("Input strings must consist only of '0's and '1's"))
+    end
+
+    # Convert the input strings to integers
+    a_int = parse(Int, a, base=2)
+    b_int = parse(Int, b, base=2)
+
+    # Perform XOR operation on the integers
+    result_int = a_int ⊻ b_int
+
+    # Convert the result to a string and return it
+    return string(result_int, base=2)
+end
+```
+
+This function first checks if the input strings are valid, i.e., they only contain '0's and '1's. If they are not, it throws an `ArgumentError`. If they are valid, it converts them to integers using the `parse` function and the `base=2` argument to specify that the strings are in binary format. It then performs the XOR operation on the integers using the `⊻` operator. Finally, it converts the result back to a string using the `string` function with the `base=2` argument to convert it back to binary format.

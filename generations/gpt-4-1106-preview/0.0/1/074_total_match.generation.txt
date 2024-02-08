@@ -1,0 +1,26 @@
+Here is the Julia function `total_match` that implements the described functionality:
+
+```julia
+function total_match(xs::Vector{String}, ys::Vector{String})::Vector{String}
+    # Calculate the total number of characters in each list
+    xs_total_chars = sum(length, xs)
+    ys_total_chars = sum(length, ys)
+    
+    # Compare the total number of characters and return the list with fewer characters
+    # If they are equal, return the first list
+    if xs_total_chars < ys_total_chars
+        return xs
+    else
+        return ys
+    end
+end
+
+# Examples
+println(total_match(String[], String[])) # Should print String[]
+println(total_match(["hi", "admin"], ["hI", "Hi"])) # Should print ["hI", "Hi"]
+println(total_match(["hi", "admin"], ["hi", "hi", "admin", "project"])) # Should print ["hi", "admin"]
+println(total_match(["hi", "admin"], ["hI", "hi", "hi"])) # Should print ["hI", "hi", "hi"]
+println(total_match(["4"], ["1", "2", "3", "4", "5"])) # Should print ["4"]
+```
+
+You can copy and paste this function into your Julia environment to test it with the provided examples or with your own custom inputs.

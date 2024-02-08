@@ -1,0 +1,36 @@
+### Step-by-Step Outline
+
+1. **Check if a number is prime**: Implement a helper function to determine if `n` is a prime number. A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself.
+    - Start by handling the edge cases: if `n` is less than 2, it's not prime.
+    - Use a loop to check if `n` has any divisors other than 1 and itself. If it does, it's not prime.
+2. **Implement the `x_or_y` function**: Use the helper function to check if `n` is prime.
+    - If `n` is prime, return `x`.
+    - Otherwise, return `y`.
+
+### Julia Code Implementation
+
+```julia
+# Step 1: Helper function to check if a number is prime
+function is_prime(n::Int)::Bool
+    if n < 2
+        return false
+    end
+    for i in 2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+# Step 2: Main function to return x or y based on whether n is prime
+function x_or_y(n::Int, x::Int, y::Int)::Int
+    if is_prime(n)
+        return x
+    else
+        return y
+    end
+end
+```
+
+This implementation first checks if `n` is prime using the `is_prime` helper function. If `n` is prime, it returns `x`; otherwise, it returns `y`. The `is_prime` function efficiently checks for primality by iterating only up to the square root of `n`, which is a common optimization for primality tests.

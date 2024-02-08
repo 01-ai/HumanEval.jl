@@ -1,0 +1,46 @@
+To implement the `int_to_mini_roman` function, we will follow these steps:
+
+1. Define a dictionary (or an array of tuples) that maps integers to their corresponding Roman numeral symbols. We will include the symbols for 1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, and 1000, as these are the base symbols and their subtractive combinations needed to represent any number up to 1000.
+
+2. Initialize an empty string that will hold the resulting Roman numeral.
+
+3. Starting from the largest value in the mapping and working down, repeatedly subtract the largest possible Roman numeral value from the input number, appending the corresponding Roman numeral symbol to the result string each time, until the input number is reduced to zero.
+
+4. Return the resulting Roman numeral string in lowercase.
+
+Now, let's write the code for the `int_to_mini_roman` function:
+
+```julia
+function int_to_mini_roman(number::Int)::String
+    # Step 1: Define the mapping of integers to Roman numeral symbols
+    roman_numerals = [
+        (1000, "m"), (900, "cm"), (500, "d"), (400, "cd"),
+        (100, "c"), (90, "xc"), (50, "l"), (40, "xl"),
+        (10, "x"), (9, "ix"), (5, "v"), (4, "iv"), (1, "i")
+    ]
+
+    # Step 2: Initialize the result string
+    result = ""
+
+    # Step 3: Convert the number to a Roman numeral
+    for (value, symbol) in roman_numerals
+        while number >= value
+            number -= value
+            result *= symbol
+        end
+    end
+
+    # Step 4: Return the result in lowercase
+    return result
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(int_to_mini_roman(19))   # Should print "xix"
+println(int_to_mini_roman(152))  # Should print "clii"
+println(int_to_mini_roman(426))  # Should print "cdxxvi"
+```
+
+This function should now correctly convert integers to their lowercase Roman numeral equivalents for numbers between 1 and 1000.

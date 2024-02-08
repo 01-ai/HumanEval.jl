@@ -1,0 +1,17 @@
+
+
+```julia
+function will_it_fly(q::Vector{Int}, w::Int)::Bool
+    # Check if the object is balanced
+    is_balanced = q == reverse(q)
+
+    # Check if the sum of the elements is less than or equal to the maximum possible weight
+    sum_elements = sum(q)
+    is_weight_ok = sum_elements <= w
+
+    # Return true if both conditions are met, otherwise return false
+    return is_balanced && is_weight_ok
+end
+```
+
+This function first checks if the object `q` is balanced by comparing it with its reverse. If it is balanced, it then checks if the sum of its elements is less than or equal to the maximum possible weight `w`. If both conditions are met, it returns `true`, otherwise it returns `false`.

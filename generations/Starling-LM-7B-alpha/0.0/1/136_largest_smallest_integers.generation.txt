@@ -1,0 +1,22 @@
+ function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing,Int}}
+    neg_int = nothing
+    pos_int = nothing
+
+    for x in xs
+        if x < 0 && !isnothing(neg_int) && neg_int < x
+            continue
+        elseif x < 0 && !isnothing(neg_int)
+            neg_int = x
+        elseif x > 0 && !isnothing(pos_int) && pos_int > x
+            continue
+        elseif x > 0 && !isnothing(pos_int)
+            pos_int = x
+        elseif x < 0
+            neg_int = x
+        elseif x > 0
+            pos_int = x
+        end
+    end
+
+    return (neg_int, pos_int)
+end

@@ -1,0 +1,20 @@
+```julia
+function is_simple_power(x::Number, n::Number)::Bool
+    # Check if x is a simple power of n
+    # Simple power means n^int = x
+    # If x is an integer, then it's a simple power of 1
+    if x == 1 || n == 1
+        return true
+    end
+
+    # Check if x is a power of n
+    if x != n^(floor(Int, log(x, n)) + 1)
+        return false
+    end
+
+    # If we reach this point, x is a power of n
+    return true
+end
+```
+
+This function checks if `x` is a simple power of `n` by ensuring that `x` is equal to `n` raised to the power of the integer part of the logarithm of `x` to the base `n`, plus 1. If `x` is 1 or `n` is 1, the function returns `true` because any number is a simple power of 1.

@@ -1,0 +1,21 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function modp(n::Int, p::Int)::Int
+    return powermod(2, n, p)
+end
+
+function powermod(a::Int, b::Int, m::Int)::Int
+    result = 1
+    while b > 0
+        if b % 2 == 1
+            result = (result * a) % m
+        end
+        a = (a * a) % m
+        b = b � 2
+    end
+    return result
+end
+```
+
+In this function, we use the powermod function to calculate 2^n modulo p. This function uses the binary exponentiation method to calculate the power in a more efficient way. It multiplies the base (a) by itself for each bit in the exponent (b), and reduces the result modulo the modulus (m). This way, we avoid overflow and keep the result within the range of the modulus.

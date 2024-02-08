@@ -1,0 +1,11 @@
+```julia
+function rolling_max(numbers::Vector{Int})::Vector{Int}
+    max_num = numbers[1]
+    result = [max_num]
+    for num in numbers[2:end]
+        max_num = max(max_num, num)
+        push!(result, max_num)
+    end
+    return result
+end
+```

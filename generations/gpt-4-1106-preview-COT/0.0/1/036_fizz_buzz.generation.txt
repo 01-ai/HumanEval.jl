@@ -1,0 +1,39 @@
+To implement the `fizz_buzz` function, we will follow these steps:
+
+1. Initialize a counter to keep track of the number of times the digit 7 appears.
+2. Iterate over the range of numbers from 1 to `n-1`.
+3. For each number, check if it is divisible by 11 or 13.
+4. If the number is divisible by 11 or 13, convert it to a string and count the occurrences of the digit '7'.
+5. Increment the counter by the number of occurrences of '7'.
+6. Return the counter after the loop ends.
+
+Now, let's write the code for the `fizz_buzz` function following the outline:
+
+```julia
+function fizz_buzz(n::Int)
+    # Step 1: Initialize the counter
+    count_sevens = 0
+
+    # Step 2: Iterate over the range of numbers
+    for i in 1:(n-1)
+        # Step 3: Check divisibility by 11 or 13
+        if i % 11 == 0 || i % 13 == 0
+            # Step 4: Convert to string and count '7's
+            count_sevens += count('7', string(i))
+        end
+    end
+
+    # Step 6: Return the counter
+    return count_sevens
+end
+```
+
+Let's test the function with the provided examples to ensure it works correctly:
+
+```julia
+println(fizz_buzz(50)) # Expected output: 0
+println(fizz_buzz(78)) # Expected output: 2
+println(fizz_buzz(79)) # Expected output: 3
+```
+
+Please note that the actual implementation may vary slightly, but the logic should remain consistent with the steps outlined above.

@@ -1,0 +1,27 @@
+Here is a Julia function that implements the FibFib sequence:
+
+```julia
+function fibfib(n::Int)::Int
+    if n < 0
+        throw(DomainError(n, "n must be a non-negative integer"))
+    elseif n == 0 || n == 1
+        return 0
+    elseif n == 2
+        return 1
+    else
+        fibfib_values = [0, 0, 1]
+        for i in 3:n
+            push_value = fibfib_values[1] + fibfib_values[2] + fibfib_values[3]
+            push_value == fibfib_values[1] ? popfirst(fibfib_values) : popfirst(fibfib_values)
+            push_value == fibfib_values[2] ? popfirst(fibfib_values) : popfirst(fibfib_values)
+            push_value == fibfib_values[3] ? popfirst(fibfib_values) : popfirst(fibfib_values)
+            pushfirst(fibfib_values, push_value)
+        end
+        return fibfib_values[1]
+    end
+end
+```
+
+This function uses a dynamic programming approach to store the last three FibFib numbers and calculate the next one. It also checks for repeated values to avoid infinite recursion.
+
+Please note that this function can be optimized further by using a constant amount of memory and avoiding the repeated value checks. However, this version is easier to understand and easier to implement.

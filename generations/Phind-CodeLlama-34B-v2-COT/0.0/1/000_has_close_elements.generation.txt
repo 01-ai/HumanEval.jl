@@ -1,0 +1,24 @@
+
+
+# Outline
+
+1. Initialize a variable `result` as `false`.
+2. Iterate over the `numbers` vector with a loop.
+3. In each iteration, check if the difference between the current number and the next one is less than or equal to `threshold`.
+4. If it is, set `result` to `true` and break the loop.
+5. After the loop, return `result`.
+
+# Code
+
+```julia
+function has_close_elements(numbers::Vector{Float64}, threshold::Float64)::Bool
+    result = false
+    for i in 1:length(numbers)-1
+        if abs(numbers[i] - numbers[i+1]) <= threshold
+            result = true
+            break
+        end
+    end
+    return result
+end
+```

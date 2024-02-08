@@ -1,0 +1,31 @@
+### Step-by-Step Outline
+
+1. **Extract Even Indices**: Create a new list that contains elements from the even indices of the input list `l`. Remember that Julia is 1-indexed, so even indices in Julia's 1-based indexing system are odd indices in 0-based systems like Python's.
+
+2. **Sort the Extracted List**: Sort the list created in step 1. This will be the sorted values that need to be placed back into the original list at the even indices.
+
+3. **Replace Even Indices in Original List**: Iterate through the original list `l` and replace the elements at even indices with the sorted elements from step 2.
+
+4. **Return the Modified List**: Return the modified list `l` after replacing the even-index elements with their sorted counterparts.
+
+### Julia Code Implementation
+
+```julia
+function sort_even(l::Vector)::Vector
+    # Step 1: Extract elements at even indices
+    even_indices_elements = [l[i] for i in 2:2:length(l)]
+    
+    # Step 2: Sort the extracted list
+    sorted_even_indices_elements = sort(even_indices_elements)
+    
+    # Step 3: Replace even indices in original list with sorted elements
+    for (i, val) in enumerate(sorted_even_indices_elements)
+        l[2*i] = val
+    end
+    
+    # Step 4: Return the modified list
+    return l
+end
+```
+
+This implementation follows the outlined steps to achieve the desired functionality. It uses list comprehension to extract elements at even indices, sorts them, and then iterates through the sorted list to replace the elements at even indices in the original list.

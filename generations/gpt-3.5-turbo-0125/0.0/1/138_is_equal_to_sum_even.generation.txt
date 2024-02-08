@@ -1,0 +1,19 @@
+```julia
+function is_equal_to_sum_even(n::Int)::Bool
+    if n % 2 != 0
+        return false
+    end
+    for i in 1:2:n
+        for j in 1:2:n
+            for k in 1:2:n
+                for l in 1:2:n
+                    if i + j + k + l == n
+                        return true
+                    end
+                end
+            end
+        end
+    end
+    return false
+end
+```

@@ -1,0 +1,23 @@
+Here is the implementation of the `bf` function:
+
+```julia
+function bf(planet1::String, planet2::String)::NTuple
+    planets = ("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune")
+    planet1_index = findfirst(x -> x == planet1, planets)
+    planet2_index = findfirst(x -> x == planet2, planets)
+    
+    if planet1_index == nothing || planet2_index == nothing
+        return ()
+    end
+    
+    if planet1_index < planet2_index
+        return planets[planet1_index+1:planet2_index-1]
+    else
+        return planets[planet2_index+1:planet1_index-1]
+    end
+end
+```
+
+This function first defines a tuple `planets` containing the names of all eight planets in the solar system. It then finds the indices of `planet1` and `planet2` in the `planets` tuple using the `findfirst` function. If either `planet1` or `planet2` is not a correct planet name (i.e., their indices are `nothing`), the function returns an empty tuple `()`. 
+
+If both `planet1` and `planet2` are correct planet names, the function checks if `planet1` comes before `planet2` in the `planets` tuple. If it does, the function returns a subtuple of `planets` containing all planets between `planet1` and `planet2`, excluding both `planet1` and `planet2`. If `planet2` comes before `planet1`, the function returns a subtuple of `planets` containing all planets between `planet2` and `planet1`, excluding both `planet2` and `planet1`.

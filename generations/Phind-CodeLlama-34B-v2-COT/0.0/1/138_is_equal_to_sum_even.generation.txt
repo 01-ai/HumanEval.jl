@@ -1,0 +1,26 @@
+
+
+# Outline
+
+1. Check if the given number is greater than or equal to 10. If not, return false because the sum of the smallest four positive even numbers (2, 4, 6, 8) is 20.
+2. Check if the given number is divisible by 4. If not, return false because the sum of four positive even numbers is always divisible by 4.
+3. If both conditions are met, return true.
+
+# Code
+
+```julia
+function is_equal_to_sum_even(n::Int)::Bool
+    # Check if the given number is greater than or equal to 10
+    if n < 10
+        return false
+    end
+
+    # Check if the given number is divisible by 4
+    if n % 4 != 0
+        return false
+    end
+
+    # If both conditions are met, return true
+    return true
+end
+```

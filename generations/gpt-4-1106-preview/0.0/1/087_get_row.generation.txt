@@ -1,0 +1,26 @@
+Here's the Julia function `get_row` that matches the doc string description:
+
+```julia
+function get_row(xs::Vector{Vector{Int}}, x::Int)::Vector{Tuple{Int, Int}}
+    # Initialize an empty array to store the coordinates
+    coords = Tuple{Int, Int}[]
+
+    # Iterate over each row with its index
+    for (i, row) in enumerate(xs)
+        # Find the indices of the element x in the current row
+        indices = findall(v -> v == x, row)
+        # Append the coordinates to the coords array
+        for idx in indices
+            push!(coords, (i, idx))
+        end
+    end
+
+    # Sort the coordinates by row in ascending order
+    # and by column in descending order within each row
+    sort!(coords, by = t -> (t[1], -t[2]))
+
+    return coords
+end
+```
+
+You can test this function with the provided examples to ensure it works as expected.

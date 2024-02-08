@@ -1,0 +1,9 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function unique_elements(l::Vector)
+    return sort(unique(l))
+end
+```
+
+This function uses the built-in `unique` function to remove duplicates from the input vector, and then uses the `sort` function to sort the resulting vector.

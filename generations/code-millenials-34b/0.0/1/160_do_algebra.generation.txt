@@ -1,0 +1,25 @@
+
+
+function do_algebra(operator::Vector{String}, operand::Vector{Int})
+    stack = []
+    for i in 1:length(operator)
+        if operator[i] == "+"
+            push!(stack, operand[i] + operand[i+1])
+        elseif operator[i] == "-"
+            push!(stack, operand[i] - operand[i+1])
+        elseif operator[i] == "*"
+            push!(stack, operand[i] * operand[i+1])
+        elseif operator[i] == "÷"
+            push!(stack, floor(operand[i] / operand[i+1]))
+        elseif operator[i] == "^"
+            push!(stack, operand[i] ^ operand[i+1])
+        end
+    end
+    return stack[1]
+end
+
+# Test cases
+@assert do_algebra(["+", "*", "-"], [2, 3, 4, 5]) == 9
+@assert do_algebra(["+", "*"], [2, 3, 4]) == 14
+@assert do_algebra(["-", "*", "^"], [10, 2, 3, 4]) == 80
+@assert do_algebra(["+", "*", "÷", "^"], [10, 2, 3, 4, 5]) == 2000

@@ -1,0 +1,13 @@
+```julia
+function make_a_pile(n::Int)
+    pile = [n]
+    for i in 1:n-1
+        if n % 2 == 0
+            push!(pile, n + i*2)
+        else
+            push!(pile, n + i*2 - 1)
+        end
+    end
+    return pile
+end
+```

@@ -1,0 +1,6 @@
+
+
+function generate_integers(a::Int, b::Int)::Vector{Int}
+    min_val, max_val = minmax(a, b)
+    return sort(filter(iseven, min_val:max_val))
+end

@@ -1,0 +1,46 @@
+  Here is a possible implementation of the `smallest_change` function in Julia:
+```
+function smallest_change(xs::Vector{Int})::Int
+    # Check if the array is already palindromic
+    if is_palindromic(xs)
+        return 0
+    end
+
+    # Find the first element that is not equal to the last element
+    i = 1
+    while i <= length(xs) && xs[i] == xs[end-i+1]
+        i += 1
+    end
+
+    # If we reached the end of the array, all elements are equal
+    if i > length(xs)
+        return 0
+    end
+
+    # Find the first element that is not equal to the last element
+    j = length(xs)
+    while j >= 1 && xs[j] == xs[end-j+1]
+        j -= 1
+    end
+
+    # If we reached the beginning of the array, all elements are equal
+    if j < 1
+        return 0
+    end
+
+    # Return the minimum number of changes needed to make the array palindromic
+    return min(i-1, j)
+end
+
+# Test the function
+@assert smallest_change([1, 2, 3, 5, 4, 7, 9, 6]) == 4
+@assert smallest_change([1, 2, 3, 4, 3, 2, 2]) == 1
+@assert smallest_change([1, 2, 3, 2, 1]) == 0
+```
+This function first checks if the array is already palindromic. If it is, then no changes are needed, so the function returns 0.
+
+Otherwise, the function finds the first element that is not equal to the last element. It does this by iterating through the array from the beginning and comparing each element to the last element. Once it finds an element that is not equal, it stops and returns the index of that element.
+
+The function then finds the first element that is not equal to the last element from the end of the array. It does this by iterating through the array from the end and comparing each element to the last element. Once it finds an element that is not equal, it stops and returns the index of that element.
+
+Finally, the function returns the minimum of the two indices found, which represents the minimum number of changes needed to make the array palindromic.

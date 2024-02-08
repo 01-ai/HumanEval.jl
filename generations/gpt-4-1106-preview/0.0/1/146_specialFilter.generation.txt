@@ -1,0 +1,24 @@
+Certainly! Below is the Julia function `specialFilter` that matches the description provided in the doc string:
+
+```julia
+function specialFilter(nums::Vector{Int})::Int
+    count = 0
+    for num in nums
+        if num > 10
+            str_num = string(abs(num))  # Convert number to string and take absolute value
+            first_digit = parse(Int, str_num[1])
+            last_digit = parse(Int, str_num[end])
+            if first_digit % 2 == 1 && last_digit % 2 == 1
+                count += 1
+            end
+        end
+    end
+    return count
+end
+
+# Example usage:
+println(specialFilter([15, -73, 14, -15]))  # Output: 1
+println(specialFilter([33, -2, -3, 45, 21, 109]))  # Output: 2
+```
+
+This function iterates through each number in the input vector `nums`, checks if the number is greater than 10, and then checks if both the first and last digits are odd. If both conditions are met, it increments the `count`. Finally, it returns the count of such numbers.

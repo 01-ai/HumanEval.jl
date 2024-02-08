@@ -1,0 +1,9 @@
+Certainly! Below is the Julia function `incr_list` that takes a vector of integers and returns a new vector with each element incremented by 1.
+
+```julia
+function incr_list(xs::Vector)::Vector
+    return [x + 1 for x in xs]
+end
+```
+
+You can use this function as described in the docstring. It uses a list comprehension to iterate over each element in the input vector `xs`, increment it by 1, and collect the results into a new vector.

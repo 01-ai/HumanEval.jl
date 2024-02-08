@@ -1,0 +1,15 @@
+
+
+Here is the Julia function based on the given doc string:
+
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    stones = Int[]
+    for i in 1:n
+        push!(stones, n + 2*(i-1))
+    end
+    return stones
+end
+```
+
+This function creates an empty vector `stones` and then iterates over the range from 1 to `n`. In each iteration, it calculates the number of stones for the current level by adding `2*(i-1)` to `n` if `n` is even or `2*(i-1)` to `n+1` if `n` is odd, and then appends this number to the `stones` vector. Finally, it returns the `stones` vector.

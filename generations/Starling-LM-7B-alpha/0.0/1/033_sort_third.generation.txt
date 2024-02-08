@@ -1,0 +1,5 @@
+ function sort_third(l::Vector)
+    sorted_indices = sort(findall(x -> mod(x, 3) == 0, l))
+    sorted_values = sort(l[sorted_indices])
+    return [l[i] for i in 1:length(l) if mod(i, 3) != 0] .+ [sorted_values[findfirst(x -> mod(x, 3) == 0, l[1:i])]]
+end

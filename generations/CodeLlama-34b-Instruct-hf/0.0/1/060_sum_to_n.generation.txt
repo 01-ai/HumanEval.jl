@@ -1,0 +1,26 @@
+  Here is an implementation of the `sum_to_n` function in Julia:
+```
+function sum_to_n(n::Int)::Int
+    return sum(1:n)
+end
+```
+This function takes an integer `n` as input and returns the sum of the numbers from `1` to `n`. The `sum` function is used to calculate the sum of the range `1:n`.
+
+Here are some examples of how to use the `sum_to_n` function:
+```
+julia> sum_to_n(30)
+465
+
+julia> sum_to_n(100)
+5050
+
+julia> sum_to_n(5)
+15
+
+julia> sum_to_n(10)
+55
+
+julia> sum_to_n(1)
+1
+```
+Note that the `sum_to_n` function is a pure function, meaning that it has no side effects and always returns the same output given the same input. This is a key property of functional programming, and it allows for more predictable and composable code.

@@ -1,0 +1,32 @@
+Here is a possible implementation for the `match_parens` function:
+
+```julia
+function match_parens(lst::Vector{String})::String
+    s1, s2 = lst[1], lst[2]
+    count = 0
+    
+    for c in s1
+        if c == '('
+            count += 1
+        elseif c == ')'
+            count -= 1
+        end
+    end
+    
+    for c in s2
+        if c == '('
+            count -= 1
+        elseif c == ')'
+            count += 1
+        end
+    end
+    
+    if count == 0
+        return "Yes"
+    else
+        return "No"
+    end
+end
+```
+
+This implementation iterates over each character in the first string and increments the count for each opening parenthesis and decrements the count for each closing parenthesis. Then, it iterates over each character in the second string and does the opposite. Finally, it checks if the count is zero, which means that all parentheses are balanced, and returns "Yes" in that case. Otherwise, it returns "No".

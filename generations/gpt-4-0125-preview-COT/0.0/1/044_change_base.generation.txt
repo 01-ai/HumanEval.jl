@@ -1,0 +1,39 @@
+### Outline for `change_base` Function
+
+1. **Input Validation**: Check if the base is within the valid range (2 to 9). If not, return an error or a message indicating the invalid base.
+2. **Base Conversion Process**:
+   - Initialize an empty string to store the result.
+   - While the input number `x` is greater than 0:
+     - Divide `x` by the `base` and find the remainder.
+     - Convert the remainder to a string and prepend it to the result string.
+     - Update `x` to be the quotient of `x` divided by the `base`.
+3. **Return the Result**: Once the loop is complete, return the result string.
+
+### Julia Code for `change_base`
+
+```julia
+function change_base(x::Int, base::Int)::String
+    # Step 1: Input Validation
+    if base < 2 || base > 9
+        return "Invalid base. Base must be between 2 and 9."
+    end
+    
+    # Step 2: Base Conversion Process
+    result = ""
+    while x > 0
+        remainder = x % base
+        result = string(remainder) * result  # Prepend the remainder to the result string
+        x = x ÷ base  # Update x to be the quotient
+    end
+    
+    # Handle the case when x is 0
+    if result == ""
+        return "0"
+    end
+    
+    # Step 3: Return the Result
+    return result
+end
+```
+
+This function follows the outlined steps to convert the given number `x` to the specified `base` and returns the result as a string. Note that the function includes a check for the base to ensure it's within the valid range and handles the case when `x` is 0 by returning "0".

@@ -1,0 +1,19 @@
+
+
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    result = []
+    for group in split(paren_string, ' ')
+        max_depth = 0
+        current_depth = 0
+        for char in group
+            if char == '('
+                current_depth += 1
+                max_depth = max(max_depth, current_depth)
+            elseif char == ')'
+                current_depth -= 1
+            end
+        end
+        push!(result, max_depth)
+    end
+    return result
+end

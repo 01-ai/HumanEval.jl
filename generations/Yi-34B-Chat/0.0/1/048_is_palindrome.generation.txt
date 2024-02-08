@@ -1,0 +1,16 @@
+```julia
+function is_palindrome(text::String)::Bool
+    # Your code here
+    return true  # Replace this line with your implementation
+end
+```
+
+To implement the `is_palindrome` function, you can use the `reverse` function to reverse the string and then compare it with the original string. If both strings are equal, the input string is a palindrome. Here's how you can do it:
+
+```julia
+function is_palindrome(text::String)::Bool
+    return text == reverse(text)
+end
+```
+
+This function checks if the input string is a palindrome by comparing it with its reverse. If the strings are equal, the function returns `true`, otherwise it returns `false`.

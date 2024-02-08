@@ -1,0 +1,23 @@
+  Here's one way to implement the `sort_even` function in Julia:
+```
+function sort_even(l::Vector)::Vector
+    l_sorted = sort(l[2:2:end])
+    return [l[1:2:end]; l_sorted]
+end
+```
+Explanation:
+
+* The function takes a vector `l` as input and returns a new vector `l_sorted` that is identical to `l` in the odd indices, while its values at the even indices are equal to the values of the even indices of `l`, but sorted.
+* We use the `sort` function to sort the even indices of `l` and store the result in `l_sorted`.
+* We then return a new vector that is the concatenation of the odd indices of `l` and the sorted even indices of `l`.
+
+Here's an example usage of the function:
+```
+julia> sort_even([5, 6, 3, 4])
+5-element Vector{Int64}:
+ 5
+ 4
+ 3
+ 6
+```
+As you can see, the function returns a new vector that is identical to the input vector in the odd indices, while its values at the even indices are equal to the values of the even indices of the input vector, but sorted.

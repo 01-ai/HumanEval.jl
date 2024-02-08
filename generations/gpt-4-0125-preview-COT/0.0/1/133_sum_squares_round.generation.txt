@@ -1,0 +1,26 @@
+### Step-by-Step Outline
+
+1. **Round each element to the upper integer**: Iterate through the list and apply the ceiling function (`ceil`) to each element to round it up to the nearest integer.
+
+2. **Square each rounded element**: After rounding each element, square it. This can be done in the same iteration as the rounding.
+
+3. **Sum the squared values**: Once all elements are squared, sum them up.
+
+4. **Return the sum**: The final step is to return the calculated sum.
+
+### Julia Code Implementation
+
+```julia
+function sum_squares_round(xs::Vector)::Int
+    # Step 1 & 2: Round to upper int and square each element
+    squared_rounded_elements = [ceil(Int, x)^2 for x in xs]
+    
+    # Step 3: Sum the squared values
+    sum_squared = sum(squared_rounded_elements)
+    
+    # Step 4: Return the sum
+    return sum_squared
+end
+```
+
+This implementation uses list comprehension for steps 1 and 2, which makes the code concise and efficient. The `ceil` function is used to round each element to the nearest upper integer, and then each rounded element is squared. Finally, the `sum` function calculates the sum of all squared values.

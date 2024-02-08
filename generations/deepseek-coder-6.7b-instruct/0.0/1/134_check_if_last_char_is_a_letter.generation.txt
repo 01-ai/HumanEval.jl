@@ -1,0 +1,25 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function check_if_last_char_is_a_letter(s::String)::Bool
+    if isempty(s)
+        return false
+    end
+
+    last_char = s[end]
+    if !isletter(last_char)
+        return false
+    end
+
+    if length(s) > 1
+        prev_char = s[end-1]
+        if isletter(prev_char) || prev_char == ' '
+            return false
+        end
+    end
+
+    return true
+end
+```
+
+This function first checks if the string is empty. If it is, it returns `false`. Then it checks if the last character of the string is a letter. If it is not, it returns `false`. Finally, it checks if the last character is part of a word (i.e., if the previous character is a letter or a space). If it is, it returns `false`. If all these checks pass, it returns `true`.

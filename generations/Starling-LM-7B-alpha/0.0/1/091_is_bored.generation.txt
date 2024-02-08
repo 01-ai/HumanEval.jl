@@ -1,0 +1,9 @@
+ function is_bored(s::String)::Int
+    boredom_count = 0
+    for i in eachindex(s)
+        if i > 1 && s[i] in ['.', '?', '!'] && s[i-1] == 'I'
+            boredom_count += 1
+        end
+    end
+    return boredom_count
+end

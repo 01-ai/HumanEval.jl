@@ -1,0 +1,27 @@
+To implement the `anti_shuffle` function as described, we can follow these steps:
+
+1. Split the input string into words based on spaces. This will help us maintain the order of words and spaces in the sentence.
+2. For each word, convert it into a list of characters, sort the characters based on their ASCII values, and then join them back into a string.
+3. Join the processed words back into a single string, ensuring that spaces between words are preserved.
+
+Here's how the implementation could look in Julia:
+
+```julia
+function anti_shuffle(s::String)::String
+    # Split the string into words, preserving spaces by using a regular expression
+    words = split(s, r"(\s+)", keep=true)
+    
+    # Process each word: sort the characters and join them back into a string
+    processed_words = [isempty(match(r"\s+", word)) ? join(sort(collect(word))) : word for word in words]
+    
+    # Join the processed words back into a single string
+    return join(processed_words)
+end
+
+# Example usage
+println(anti_shuffle("Hi")) # "Hi"
+println(anti_shuffle("hello")) # "ehllo"
+println(anti_shuffle("Hello World!!!")) # "Hello !!!Wdlor"
+```
+
+This implementation uses a regular expression `r"(\s+)"` with the `split` function and the `keep=true` argument to keep the spaces as separate elements in the resulting array. This way, we can process each element (either a word or a space) accordingly and maintain the original structure of the input string.

@@ -1,0 +1,11 @@
+
+
+function circular_shift(x::Int, shift::Int)::String
+    digits = collect(string(x))
+    n = length(digits)
+    shift = shift % n
+    if shift < 0
+        shift += n
+    end
+    return join(digits[shift+1:end] ⋁ digits[1:shift])
+end

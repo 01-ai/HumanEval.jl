@@ -1,0 +1,28 @@
+Certainly! Below is the Julia function `sum_product` that takes a vector of integers as input and returns a tuple containing the sum and product of all the integers in the list, adhering to the specifications provided in the doc string.
+
+```julia
+function sum_product(numbers::Vector{Int})::Tuple{Int, Int}
+    # Initialize sum and product
+    sum = 0
+    product = 1
+
+    # Check if the list is empty
+    if isempty(numbers)
+        return (sum, product)
+    end
+
+    # Iterate through the list to calculate sum and product
+    for number in numbers
+        sum += number
+        product *= number
+    end
+
+    return (sum, product)
+end
+
+# Examples
+println(sum_product(Int[]))  # Expected output: (0, 1)
+println(sum_product([1, 2, 3, 4]))  # Expected output: (10, 24)
+```
+
+This function initializes `sum` to 0 and `product` to 1. It then checks if the input list is empty, in which case it immediately returns the initial values of `sum` and `product`. If the list is not empty, it iterates through each number in the list, adding it to `sum` and multiplying it to `product`. Finally, it returns the calculated `sum` and `product` as a tuple.

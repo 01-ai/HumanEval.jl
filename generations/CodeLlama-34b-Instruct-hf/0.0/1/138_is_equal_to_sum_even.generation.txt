@@ -1,0 +1,20 @@
+  Here's one possible implementation of the `is_equal_to_sum_even` function in Julia:
+```
+function is_equal_to_sum_even(n::Int)::Bool
+    for i in 1:n-1
+        if n % 2 == 0 && n - i % 2 == 0 && n - 2i % 2 == 0 && n - 3i % 2 == 0
+            return true
+        end
+    end
+    return false
+end
+```
+This function uses a loop to iterate over all possible combinations of 4 positive even numbers that sum to `n`. It checks whether the difference between `n` and each of the 4 numbers is even, and if so, it returns `true`. If no such combination is found, it returns `false`.
+
+Here's an explanation of the code:
+
+* `for i in 1:n-1`: This loop iterates over all possible values of `i` from 1 to `n-1`.
+* `if n % 2 == 0 && n - i % 2 == 0 && n - 2i % 2 == 0 && n - 3i % 2 == 0`: This line checks whether `n` is even, and whether the difference between `n` and each of the 4 numbers is even. If all of these conditions are true, it returns `true`.
+* `return false`: If no combination of 4 positive even numbers that sum to `n` is found, this line returns `false`.
+
+Note that this implementation assumes that `n` is a positive integer. If `n` can be negative or a non-integer, you may need to modify the function accordingly.

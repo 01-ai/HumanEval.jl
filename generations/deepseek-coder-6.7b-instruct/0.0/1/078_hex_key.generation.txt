@@ -1,0 +1,17 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function hex_key(num::String)::Int
+    primes = [2, 3, 5, 7, 11, 13]
+    count = 0
+    for hex in num
+        dec = parse(Int, hex, base=16)
+        if dec in primes
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function works by iterating over each character in the input string, converting it to a decimal number using the `parse` function with base 16. Then it checks if this decimal number is in the list of prime hexadecimal digits. If it is, it increments the count. Finally, it returns the count.

@@ -1,0 +1,29 @@
+To implement the `get_row` function as described, we need to iterate through each row and column of the given 2D vector `xs`, check if the current element matches the given integer `x`, and if so, record its position (row, column) in a list of tuples. We then sort this list first by row in ascending order and then by column in descending order within each row. Here's how you can do it:
+
+```julia
+function get_row(xs::Vector{Vector{Int}}, x::Int)::Vector{Tuple{Int, Int}}
+    # Initialize an empty list to store the positions of x
+    positions = Tuple{Int, Int}[]
+
+    # Iterate through each row and column to find x
+    for (i, row) in enumerate(xs)
+        for (j, value) in enumerate(row)
+            if value == x
+                # If x is found, append its position (row, column) to the list
+                push!(positions, (i, j))
+            end
+        end
+    end
+
+    # Sort the positions first by row in ascending order, then by column in descending order
+    sort!(positions, by = t -> (t[1], -t[2]))
+
+    return positions
+end
+```
+
+This function works as follows:
+- It iterates through each element of the 2D vector `xs`, keeping track of the row and column indices.
+- Whenever it finds an element equal to `x`, it records its position as a tuple `(row, column)`.
+- After collecting all positions, it sorts them. The sorting is done in two steps encapsulated in one: it first sorts by row in ascending order, and for elements with the same row, it sorts by column in descending order by negating the column index in the sorting key.
+- Finally, it returns the sorted list of positions.

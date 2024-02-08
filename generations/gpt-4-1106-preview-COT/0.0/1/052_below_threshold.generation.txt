@@ -1,0 +1,32 @@
+To implement the `below_threshold` function, we will follow these steps:
+
+1. Define the function `below_threshold` that takes a vector `l` and a number `t` as arguments.
+2. Iterate over each element in the vector `l`.
+3. Check if the current element is greater than or equal to the threshold `t`.
+4. If any element is greater than or equal to `t`, return `false`.
+5. If the loop completes without finding any element greater than or equal to `t`, return `true`.
+
+Now, let's write the code for the function:
+
+```julia
+"""
+    below_threshold(l::Vector, t::Number)::Bool
+
+Return `true` if all numbers in the list `l` are below threshold t.
+"""
+function below_threshold(l::Vector, t::Number)::Bool
+    for num in l
+        if num >= t
+            return false
+        end
+    end
+    return true
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(below_threshold([1, 2, 4, 10], 100))  # Expected output: true
+println(below_threshold([1, 20, 4, 10], 5))   # Expected output: false
+```

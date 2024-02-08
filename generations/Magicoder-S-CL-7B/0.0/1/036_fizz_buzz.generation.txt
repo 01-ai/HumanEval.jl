@@ -1,0 +1,11 @@
+
+
+function fizz_buzz(n::Int)
+    count = 0
+    for i in 1:n-1
+        if (i % 11 == 0 || i % 13 == 0) && contains(string(i), '7')
+            count += 1
+        end
+    end
+    return count
+end

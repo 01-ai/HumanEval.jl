@@ -1,0 +1,38 @@
+Here is a Julia function that solves the problem using dynamic programming. The function first initializes a 3D array dp to store the minimum path for each cell and each length. Then it iterates over the grid and for each cell, it iterates over the possible lengths from 1 to k. For each length, it iterates over the possible previous cells and updates the dp array accordingly. Finally, it returns the minimum path of length k.
+
+```julia
+function min_path(grid::Vector{Vector{Int}}, k::Int)::Vector{Int}
+    N = length(grid)
+    dp = fill((typemax(Int), Vector{Int}()), N, N, k)
+
+    for i in 1:N
+        for j in 1:N
+            dp[i, j, 1] = (grid[i][j], [grid[i][j]])
+        end
+    end
+
+    directions = [(0, 1), (1, 0), (-1, 0), (0, -1)]
+    for len in 2:k
+        for i in 1:N
+            for j in 1:N
+                for (dx, dy) in directions
+                    x, y = i + dx, j + dy
+                    if 1 <= x <= N && 1 <= y <= N
+                        (min_val, min_path) = dp[x, y, len-1]
+                        if grid[i][j] < min_val
+                            dp[i, j, len] = (grid[i][j], [grid[i][j]; min_path])
+                        elseif grid[i][j] == min_val
+                            dp[i, j, len] = (min_val, min_path)
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    min_val, min_path = findmin(dp[:, :, k])
+    return min_path
+end
+```
+
+This function assumes that the grid is a square grid and that the cells are numbered from 1 to N*N in row-major order. The function also assumes that the grid is large enough to contain a path of length k.

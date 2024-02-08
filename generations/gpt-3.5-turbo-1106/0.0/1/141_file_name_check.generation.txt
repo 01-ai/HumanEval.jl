@@ -1,0 +1,21 @@
+```julia
+function file_name_check(file_name::String)::String
+    if count(x -> isdigit(x), file_name) > 3
+        return "No"
+    end
+    parts = split(file_name, '.')
+    if length(parts) != 2
+        return "No"
+    end
+    before_dot = parts[1]
+    after_dot = parts[2]
+    if isempty(before_dot) || !isletter(before_dot[1])
+        return "No"
+    end
+    if after_dot in ["txt", "exe", "dll"]
+        return "Yes"
+    else
+        return "No"
+    end
+end
+```

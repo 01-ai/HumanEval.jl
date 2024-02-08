@@ -1,0 +1,68 @@
+  Here is one possible implementation of the `int_to_mini_roman` function in Julia:
+```
+function int_to_mini_roman(number::Int)::String
+    # Check that the input is a positive integer
+    if number <= 0
+        throw(DomainError("Input must be a positive integer"))
+    end
+
+    # Convert the input to a string
+    number_str = string(number)
+
+    # Initialize an empty string to store the roman numeral
+    roman_numeral = ""
+
+    # Iterate over the digits of the input string
+    for i in 1:length(number_str)
+        # Get the current digit
+        digit = number_str[i]
+
+        # Convert the digit to a roman numeral
+        if digit == '1'
+            roman_numeral *= "i"
+        elseif digit == '2'
+            roman_numeral *= "ii"
+        elseif digit == '3'
+            roman_numeral *= "iii"
+        elseif digit == '4'
+            roman_numeral *= "iv"
+        elseif digit == '5'
+            roman_numeral *= "v"
+        elseif digit == '6'
+            roman_numeral *= "vi"
+        elseif digit == '7'
+            roman_numeral *= "vii"
+        elseif digit == '8'
+            roman_numeral *= "viii"
+        elseif digit == '9'
+            roman_numeral *= "ix"
+        elseif digit == '0'
+            roman_numeral *= "x"
+        end
+    end
+
+    # Return the roman numeral
+    return roman_numeral
+end
+```
+Here's an explanation of how the function works:
+
+1. The function takes a single argument `number`, which is a positive integer.
+2. The function checks that the input is a positive integer by using the `DomainError` function. If the input is not a positive integer, the function throws an error.
+3. The function converts the input integer to a string using the `string` function.
+4. The function initializes an empty string `roman_numeral` to store the roman numeral.
+5. The function iterates over the digits of the input string using a `for` loop.
+6. For each digit, the function checks which roman numeral it corresponds to and appends it to the `roman_numeral` string.
+7. The function returns the `roman_numeral` string.
+
+Here are some examples of how to use the function:
+```
+julia> int_to_mini_roman(19)
+"xix"
+
+julia> int_to_mini_roman(152)
+"clii"
+
+julia> int_to_mini_roman(426)
+"cdxxvi"
+```

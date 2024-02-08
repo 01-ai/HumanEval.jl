@@ -1,0 +1,21 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. Check if `n` is greater than `m`. If it is, return -1.
+2. Compute the average of the integers from `n` through `m`.
+3. Round the average to the nearest integer.
+4. Convert the rounded integer to binary.
+5. Return the binary representation as a string.
+
+Here is the Julia code that implements this algorithm:
+
+```julia
+function rounded_avg(n::Int, m::Int)::Union{Int, String}
+    if n > m
+        return -1
+    end
+    avg = round(Int, (n + m) / 2)
+    return string(avg, base = 2)
+end
+```
+
+This function first checks if `n` is greater than `m`. If it is, it returns -1. Otherwise, it computes the average of the integers from `n` through `m`, rounds it to the nearest integer, converts it to binary, and returns the binary representation as a string.

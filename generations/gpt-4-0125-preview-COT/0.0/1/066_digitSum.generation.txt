@@ -1,0 +1,33 @@
+### Step-by-Step Outline
+
+1. **Initialize a sum variable**: Start with a variable to keep track of the sum of ASCII codes of uppercase characters found in the string.
+
+2. **Iterate through each character in the string**: Go through each character in the input string to check if it is an uppercase character.
+
+3. **Check if a character is uppercase**: For each character, determine if it is an uppercase letter. In ASCII, uppercase letters range from 65 ('A') to 90 ('Z'). Alternatively, you can use the built-in `isuppercase` function in Julia.
+
+4. **Add ASCII value if uppercase**: If the character is uppercase, add its ASCII value to the sum. You can use the `Int` function to get the ASCII value of a character.
+
+5. **Return the sum**: After iterating through all characters, return the sum.
+
+### Julia Code Implementation
+
+```julia
+function digitSum(s::String)::Int
+    # Step 1: Initialize sum variable
+    sum = 0
+    
+    # Step 2: Iterate through each character in the string
+    for char in s
+        # Step 3 & 4: Check if a character is uppercase and add its ASCII value to sum
+        if isuppercase(char)
+            sum += Int(char)
+        end
+    end
+    
+    # Step 5: Return the sum
+    return sum
+end
+```
+
+This function should work as expected based on the provided examples. It iterates through the string, checks for uppercase characters, and sums their ASCII values.

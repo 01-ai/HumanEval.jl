@@ -1,0 +1,9 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    return sum(x for (i, x) in enumerate(xs) if i % 2 == 1 && x % 2 == 1)
+end
+```
+
+This function uses a list comprehension to iterate over the elements of the input list `xs` along with their indices. It only includes the elements that are in odd positions (i.e., where the index `i` is odd) and are odd themselves (i.e., where `x` is odd). The `sum` function then adds up these elements.

@@ -1,0 +1,39 @@
+
+
+To solve this problem, we will first create a helper function to check if a number is prime or not. Then we will use this helper function in the main function to count up to the nth prime number.
+
+Step-by-step outline:
+
+1. Create a helper function `is_prime(n::Int)::Bool` that checks if a given number is prime or not.
+2. In the `is_prime` function, check if the number is less than 2 (the smallest prime number) and return `false` if true.
+3. Then, check if the number is equal to 2 (the only even prime number) and return `true` if true.
+4. For all other cases, check if the number is divisible by any number from 2 to the square root of the number. If it is divisible, return `false`.
+5. If the number is not divisible by any number, return `true`.
+6. In the main function `count_up_to(n::Int)::Vector{Int}`, create an empty vector `primes` to store the prime numbers.
+7. Use a for loop to iterate over the numbers from 2 to n (inclusive).
+8. For each number, check if it is prime using the `is_prime` function. If it is prime, push it to the `primes` vector.
+9. After the loop, return the `primes` vector.
+
+Here is the Julia code for the above outline:
+
+```julia
+function is_prime(n::Int)::Bool
+    n < 2 && return false
+    n == 2 && return true
+    n % 2 == 0 && return false
+    for i in 3:sqrt(n)
+        n % i == 0 && return false
+    end
+    return true
+end
+
+function count_up_to(n::Int)::Vector{Int}
+    primes = Int[]
+    for i in 2:n
+        is_prime(i) && push!(primes, i)
+    end
+    return primes
+end
+```
+
+This code should correctly implement the `count_up_to` function as described in the problem statement.

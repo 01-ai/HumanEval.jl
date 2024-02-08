@@ -1,0 +1,12 @@
+Here is the implementation of the `rescale_to_unit` function in Julia:
+
+```julia
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    min_val = minimum(numbers)
+    max_val = maximum(numbers)
+    transformed = (numbers .- min_val) ./ (max_val - min_val)
+    return transformed
+end
+```
+
+This function takes a vector of `Float64` numbers as input. It calculates the minimum and maximum values in the input vector. Then, it applies a linear transformation to each element of the input vector, such that the smallest number becomes 0 and the largest number becomes 1. The transformed vector is returned as the output.

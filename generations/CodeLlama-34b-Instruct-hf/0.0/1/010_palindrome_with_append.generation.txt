@@ -1,0 +1,26 @@
+  Here is a possible implementation of the `palindrome_with_append` function in Julia:
+```
+function palindrome_with_append(s::String)::String
+    # Find the longest postfix of the supplied string that is a palindrome
+    i = length(s)
+    while i > 0 && s[i] == s[i-1]
+        i -= 1
+    end
+    # Append to the end of the string the reverse of the string prefix that comes before the palindromic suffix
+    return s * reverse(s[1:i-1])
+end
+```
+Here's an explanation of the code:
+
+1. The function takes a string `s` as input and returns a string.
+2. The first line of the function finds the longest postfix of the supplied string that is a palindrome. This is done by iterating over the characters of the string in reverse order, starting from the end of the string, and checking if each character is equal to the previous character. If the characters are not equal, the loop breaks and the index of the first character that is not equal to the previous character is stored in the variable `i`.
+3. The second line of the function appends to the end of the string the reverse of the string prefix that comes before the palindromic suffix. This is done by concatenating the original string with the reverse of the string prefix that comes before the palindromic suffix. The string prefix is obtained by slicing the original string from the beginning to the index `i-1`. The reverse of this prefix is obtained by calling the `reverse` function on the prefix.
+4. The function returns the resulting string.
+
+Here are some examples of how the function works:
+
+* If the input string is empty, the function returns an empty string.
+* If the input string is "cat", the function returns "catac". This is because the longest postfix of "cat" that is a palindrome is "cat", and the reverse of the string prefix that comes before the palindromic suffix is "cata".
+* If the input string is "cata", the function returns "catac". This is because the longest postfix of "cata" that is a palindrome is "cata", and the reverse of the string prefix that comes before the palindromic suffix is "cata".
+
+I hope this helps! Let me know if you have any questions or need further clarification.

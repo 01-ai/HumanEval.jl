@@ -1,0 +1,10 @@
+To implement the function `skjkasdkd(xs::Vector{Int})::Int`, we will follow these steps:
+
+1. Define a helper function `is_prime(n::Int)::Bool` that takes an integer `n` and returns `true` if `n` is a prime number, otherwise returns `false`.
+2. Within the `skjkasdkd` function, filter the input list `xs` to keep only the prime numbers using the `is_prime` helper function.
+3. Find the maximum prime number from the filtered list. If the list is empty (no prime numbers), return 0.
+4. Define a helper function `sum_of_digits(n::Int)::Int` that takes an integer `n` and returns the sum of its digits.
+5. Use the `sum_of_digits` function to calculate the sum of the digits of the largest prime number found.
+6. Return the sum of the digits.
+
+Now, let's write the code for the function and the helper functions.

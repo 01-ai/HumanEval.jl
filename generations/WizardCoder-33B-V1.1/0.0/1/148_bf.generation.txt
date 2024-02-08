@@ -1,0 +1,20 @@
+
+
+Here is the Julia function that implements the above doc string:
+
+```julia
+function bf(planet1::String, planet2::String)::NTuple
+    planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+    if planet1 ∉ planets || planet2 ∉ planets
+        return ()
+    end
+    start_index = findfirst(isequal(planet1), planets)
+    end_index = findfirst(isequal(planet2), planets)
+    if start_index > end_index
+        start_index, end_index = end_index, start_index
+    end
+    return Tuple(planets[start_index+1:end_index-1])
+end
+```
+
+This function first checks if the input planet names are valid. If they are not, it returns an empty tuple. If they are, it finds the indices of the two planets in the list of planets. It then returns all planets between these two indices, sorted by the proximity to the sun. 

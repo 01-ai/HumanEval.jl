@@ -1,0 +1,9 @@
+ function count_distinct_characters(s::String)::Int
+    distinct_chars = Set()
+    for c in s
+        if !haskey(distinct_chars, lowercase(c))
+            push!(distinct_chars, lowercase(c))
+        end
+    end
+    return length(distinct_chars)
+end

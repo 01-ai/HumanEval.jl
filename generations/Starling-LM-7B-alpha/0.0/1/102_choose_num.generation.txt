@@ -1,0 +1,11 @@
+ function choose_num(x::Int, y::Int)::Int
+    if x % 2 == 0 && y % 2 == 0
+        return max(x, y)
+    elseif x % 2 == 0
+        return x
+    elseif y % 2 == 0
+        return y
+    else
+        return -1
+    end
+end

@@ -1,0 +1,12 @@
+```julia
+function count_upper(s::String)::Int
+    vowels = Set(['A', 'E', 'I', 'O', 'U'])
+    count = 0
+    for (i, c) in enumerate(s)
+        if i % 2 != 0 && c in vowels
+            count += 1
+        end
+    end
+    return count
+end
+```

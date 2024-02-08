@@ -1,0 +1,44 @@
+  Here is a possible implementation of the `total_match` function in Julia:
+```
+function total_match(xs::Vector{String}, ys::Vector{String})::Vector{String}
+    # Calculate the total number of characters in each list
+    x_total = sum(length, xs)
+    y_total = sum(length, ys)
+
+    # Return the list with the smaller total number of characters
+    if x_total < y_total
+        return xs
+    elseif y_total < x_total
+        return ys
+    else
+        return xs
+    end
+end
+```
+This function first calculates the total number of characters in each list using the `sum` function and the `length` function. It then compares the two totals and returns the list with the smaller total number of characters. If the two totals are equal, it returns the first list.
+
+Here are some examples of how the function can be used:
+```
+julia> total_match(String[], String[])
+String[]
+
+julia> total_match(["hi", "admin"], ["hI", "Hi"])
+2-element Vector{String}:
+ "hI"
+ "Hi"
+
+julia> total_match(["hi", "admin"], ["hi", "hi", "admin", "project"])
+2-element Vector{String}:
+ "hi"
+ "admin"
+
+julia> total_match(["hi", "admin"], ["hI", "hi", "hi"])
+3-element Vector{String}:
+ "hI"
+ "hi"
+ "hi"
+
+julia> total_match(["4"], ["1", "2", "3", "4", "5"])
+1-element Vector{String}:
+ "4"
+```

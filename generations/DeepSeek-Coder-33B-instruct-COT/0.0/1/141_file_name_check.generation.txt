@@ -1,0 +1,33 @@
+Here is a Julia function that implements the given problem:
+
+```julia
+function file_name_check(file_name::String)::String
+    # Split the file name into two parts: before and after the dot
+    parts = split(file_name, '.')
+
+    # Check if there are exactly two parts (before and after the dot)
+    if length(parts) != 2
+        return "No"
+    end
+
+    # Check if the first part is not empty and starts with a letter
+    if isempty(parts[1]) || !isletter(parts[1][1])
+        return "No"
+    end
+
+    # Check if the second part is one of the allowed extensions
+    if !(parts[2] in ["txt", "exe", "dll"])
+        return "No"
+    end
+
+    # Check if there are more than three digits in the file name
+    if count(isdigit, file_name) > 3
+        return "No"
+    end
+
+    # If all checks pass, return "Yes"
+    return "Yes"
+end
+```
+
+This function works by first splitting the file name into two parts: the part before the dot and the part after the dot. It then checks each of the conditions specified in the problem statement. If any of the conditions are not met, it returns "No". If all conditions are met, it returns "Yes".

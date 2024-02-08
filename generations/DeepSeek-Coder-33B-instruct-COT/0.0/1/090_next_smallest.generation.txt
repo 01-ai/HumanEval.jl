@@ -1,0 +1,28 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. First, check if the length of the input list `xs` is less than 2. If it is, return `nothing` because there is no 2nd smallest element.
+
+2. Sort the list `xs` in ascending order.
+
+3. Iterate over the sorted list `xs`. If the current element is not equal to the first element, return it. This is because the first element is the smallest and the next smallest element is the second smallest.
+
+4. If no such element is found, return `nothing`.
+
+Here is the Julia code that implements the above steps:
+
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    if length(xs) < 2
+        return nothing
+    end
+    xs = sort(xs)
+    for x in xs
+        if x != xs[1]
+            return x
+        end
+    end
+    return nothing
+end
+```
+
+This function works by first checking if the length of the input list is less than 2. If it is, it returns `nothing` because there is no 2nd smallest element. Then it sorts the list in ascending order. It then iterates over the sorted list and checks if the current element is not equal to the first element. If it is not, it returns the current element because the first element is the smallest and the next smallest element is the second smallest. If no such element is found, it returns `nothing`.

@@ -1,0 +1,31 @@
+
+
+# Outline
+
+1. Initialize a variable `max_unique_count` to 0 and `max_word` to an empty string.
+2. Iterate over each word in the input vector `words`.
+3. For each word, find the number of unique characters it contains.
+4. If the number of unique characters is greater than `max_unique_count`, update `max_unique_count` and `max_word` with the current word.
+5. If the number of unique characters is equal to `max_unique_count`, compare the current word and `max_word` lexicographically and update `max_word` if the current word comes first.
+6. After iterating over all words, return `max_word`.
+
+# Code
+
+```julia
+function find_max(words::Vector{String})::String
+    max_unique_count = 0
+    max_word = ""
+
+    for word in words
+        unique_count = length(unique(word))
+        if unique_count > max_unique_count
+            max_unique_count = unique_count
+            max_word = word
+        elseif unique_count == max_unique_count
+            max_word = min(max_word, word)
+        end
+    end
+
+    return max_word
+end
+```

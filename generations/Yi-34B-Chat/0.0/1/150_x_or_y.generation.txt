@@ -1,0 +1,24 @@
+```julia
+function x_or_y(n::Int, x::Int, y::Int)::Int
+    # Check if n is a prime number
+    if isprime(n)
+        return x
+    else
+        return y
+    end
+end
+```
+
+This function takes three integer arguments `n`, `x`, and `y`. It then checks if `n` is a prime number using the `isprime` function. If `n` is a prime number, the function returns the value of `x`. If `n` is not a prime number, the function returns the value of `y`.
+
+Here's an example of how you might use this function:
+
+```julia
+julia> x_or_y(7, 34, 12)
+34
+
+julia> x_or_y(15, 8, 5)
+5
+```
+
+As you can see from the examples, when `n` is a prime number (7 in the first example), the function returns the value of `x` (34). When `n` is not a prime number (15 in the second example), the function returns the value of `y` (5).

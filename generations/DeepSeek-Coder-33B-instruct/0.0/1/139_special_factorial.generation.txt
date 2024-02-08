@@ -1,0 +1,15 @@
+Here is the Julia function that implements the Brazilian factorial:
+
+```julia
+function special_factorial(n::Int)::BigInt
+    result = BigInt(1)
+    for i in 1:n
+        result *= factorial(BigInt(i))
+    end
+    return result
+end
+```
+
+This function works by initializing a variable `result` to 1 and then iterating from 1 to `n` (inclusive). For each iteration, it multiplies `result` by the factorial of the current number `i`. The factorial of a number `i` is calculated using the `factorial` function, which returns a `BigInt` to avoid overflow for large inputs. The final result is the product of all factorials from 1 to `n`.
+
+For example, `special_factorial(4)` returns `288` because `4!!! = 4 * 3 * 2 * 1 = 288`.

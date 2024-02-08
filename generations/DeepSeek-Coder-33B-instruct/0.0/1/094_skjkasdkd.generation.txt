@@ -1,0 +1,43 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function skjkasdkd(xs::Vector{Int})::Int
+    # Function to check if a number is prime
+    function is_prime(n::Int)
+        if n <= 1
+            return false
+        elseif n <= 3
+            return true
+        elseif n % 2 == 0 || n % 3 == 0
+            return false
+        end
+        i = 5
+        while i * i <= n
+            if n % i == 0 || n % (i + 2) == 0
+                return false
+            end
+            i += 6
+        end
+        return true
+    end
+
+    # Find the largest prime number
+    largest_prime = -1
+    for x in xs
+        if is_prime(x) && x > largest_prime
+            largest_prime = x
+        end
+    end
+
+    # Calculate the sum of the digits of the largest prime number
+    sum_of_digits = 0
+    while largest_prime > 0
+        sum_of_digits += largest_prime % 10
+        largest_prime = div(largest_prime, 10)
+    end
+
+    return sum_of_digits
+end
+```
+
+This function first defines a helper function `is_prime` to check if a number is prime. It then iterates over the input vector `xs` to find the largest prime number. Finally, it calculates the sum of the digits of the largest prime number by repeatedly dividing the number by 10 and adding the remainder to the sum.

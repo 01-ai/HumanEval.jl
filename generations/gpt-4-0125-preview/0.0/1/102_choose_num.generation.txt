@@ -1,0 +1,23 @@
+To implement the `choose_num` function as described, we need to iterate through the range `[x, y]` in reverse (to find the biggest even number first) and check for the first even number. If we find an even number, we return it; otherwise, we return -1 if no even number is found in the range. Here's how you can do it:
+
+```julia
+function choose_num(x::Int, y::Int)::Int
+    # Check if x is greater than y, if so, there's no range to search through
+    if x > y
+        return -1
+    end
+
+    # Iterate from y down to x
+    for num in y:-1:x
+        # Check if the current number is even
+        if num % 2 == 0
+            return num
+        end
+    end
+
+    # If no even number was found, return -1
+    return -1
+end
+```
+
+This function starts from the end of the range and moves backward, checking each number to see if it's even. This way, it ensures that the first even number it finds is the largest one in the given range. If the loop completes without finding an even number, the function returns -1, indicating that no such number exists within the range.

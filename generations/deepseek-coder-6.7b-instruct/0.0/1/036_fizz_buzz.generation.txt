@@ -1,0 +1,26 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function fizz_buzz(n::Int)
+    count = 0
+    for i in 1:n-1
+        if i % 11 == 0 || i % 13 == 0
+            count += count_digits(i, 7)
+        end
+    end
+    return count
+end
+
+function count_digits(n::Int, digit::Int)
+    count = 0
+    while n > 0
+        if n % 10 == digit
+            count += 1
+        end
+        n = div(n, 10)
+    end
+    return count
+end
+```
+
+In this function, we iterate over all integers less than `n`. If the current integer is divisible by 11 or 13, we count the number of times the digit 7 appears in it. We use the helper function `count_digits` to count the number of times a specific digit appears in a number.

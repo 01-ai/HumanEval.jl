@@ -1,0 +1,19 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. First, we need to find the integer part of the given number. We can do this using the `floor` function in Julia, which returns the largest integer less than or equal to a given floating-point number.
+
+2. Then, we subtract the integer part from the original number to get the decimal part.
+
+Here is the Julia code that implements this:
+
+```julia
+function truncate_number(number::Float64)::Float64
+    integer_part = floor(number)
+    decimal_part = number - integer_part
+    return decimal_part
+end
+```
+
+This function works by first finding the integer part of the given number using the `floor` function. It then subtracts this integer part from the original number to get the decimal part. The decimal part is then returned.
+
+For example, if you call `truncate_number(3.5)`, the function will return `0.5`.

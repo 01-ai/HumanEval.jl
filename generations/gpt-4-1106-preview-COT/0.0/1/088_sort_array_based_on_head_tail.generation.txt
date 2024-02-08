@@ -1,0 +1,38 @@
+### Step-by-Step Outline:
+
+1. Check if the input array `xs` is empty or contains only one element. If so, return the array as is, since there is nothing to sort.
+2. Calculate the sum of the first and last elements of the array.
+3. Determine the sorting order based on the sum:
+   - If the sum is odd, sort the array in ascending order.
+   - If the sum is even, sort the array in descending order.
+4. Create a copy of the array to avoid modifying the original array.
+5. Sort the copied array using the appropriate order determined in step 3.
+6. Return the sorted array.
+
+### Julia Code:
+
+```julia
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    # Step 1: Check for empty or single-element array
+    if length(xs) <= 1
+        return xs
+    end
+    
+    # Step 2: Calculate the sum of the first and last elements
+    sum_head_tail = xs[1] + xs[end]
+    
+    # Step 3: Determine the sorting order
+    sort_order = isodd(sum_head_tail) ? Base.Sort.Forward : Base.Sort.Reverse
+    
+    # Step 4: Create a copy of the array
+    sorted_xs = copy(xs)
+    
+    # Step 5: Sort the copied array
+    sort!(sorted_xs, order=sort_order)
+    
+    # Step 6: Return the sorted array
+    return sorted_xs
+end
+```
+
+Now, let's implement the function in Julia.

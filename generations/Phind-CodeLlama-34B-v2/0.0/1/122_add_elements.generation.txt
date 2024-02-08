@@ -1,0 +1,26 @@
+
+
+Here is the Julia function that solves the problem:
+
+```julia
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    # Check if the input is valid
+    @assert 1 <= k <= length(xs)
+    @assert 1 <= length(xs) <= 100
+
+    # Initialize the sum
+    sum = 0
+
+    # Iterate over the first k elements of xs
+    for i in 1:k
+        # Check if the element has at most two digits
+        if 0 <= xs[i] <= 99
+            sum += xs[i]
+        end
+    end
+
+    return sum
+end
+```
+
+This function first checks if the input is valid according to the constraints. Then it initializes a variable `sum` to store the sum of the elements with at most two digits. It then iterates over the first `k` elements of `xs` and checks if each element has at most two digits. If it does, the function adds the element to `sum`. Finally, the function returns `sum`.

@@ -1,0 +1,32 @@
+Here is a Julia function that implements the logic described in the problem:
+
+```julia
+function match_parens(lst::Vector{String})::String
+    s1, s2 = lst
+    if is_balanced(s1) && is_balanced(s2)
+        return "Yes"
+    else
+        return "No"
+    end
+end
+
+function is_balanced(s::String)::Bool
+    stack = []
+    for c in s
+        if c == '('
+            pushfirst(stack, c)
+        elseif c == ')'
+            if isempty(stack)
+                return false
+            else
+                popfirst(stack)
+            end
+        end
+    end
+    return isempty(stack)
+end
+```
+
+This function works by first checking if both strings are balanced. If they are, it returns "Yes". If not, it returns "No". The `is_balanced` function checks if a string is balanced by using a stack. It pushes open parentheses onto the stack and pops them off when a close parenthesis is encountered. If at any point there is a close parenthesis with no matching open parenthesis, or if there are any open parentheses left on the stack after checking all characters, it returns false.
+
+The time complexity of this function is O(n), where n is the total number of characters in the two strings. The space complexity is also O(n), as in the worst case scenario, all characters could be open parentheses and they would all be pushed onto the stack.

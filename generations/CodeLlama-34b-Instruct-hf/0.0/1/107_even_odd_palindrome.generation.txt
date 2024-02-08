@@ -1,0 +1,36 @@
+  Here is a possible implementation of the `even_odd_palindrome` function in Julia:
+```
+function even_odd_palindrome(n::Int)::Tuple{Int, Int}
+    # Initialize variables to keep track of the number of even and odd palindromes
+    even_count = 0
+    odd_count = 0
+
+    # Iterate from 1 to n
+    for i in 1:n
+        # Check if i is a palindrome
+        if is_palindrome(i)
+            # If i is a palindrome, increment the appropriate count
+            if i % 2 == 0
+                even_count += 1
+            else
+                odd_count += 1
+            end
+        end
+    end
+
+    # Return the tuple of even and odd counts
+    return (even_count, odd_count)
+end
+
+# Helper function to check if a number is a palindrome
+function is_palindrome(n::Int)::Bool
+    # Convert the number to a string
+    s = string(n)
+
+    # Check if the string is a palindrome
+    return s == reverse(s)
+end
+```
+This implementation uses a helper function `is_palindrome` to check if a number is a palindrome. The `even_odd_palindrome` function iterates from 1 to `n` and checks if each number is a palindrome using the `is_palindrome` function. If a number is a palindrome, it increments the appropriate count (even or odd) and returns the tuple of even and odd counts at the end.
+
+Note that this implementation assumes that the input `n` is a positive integer. If `n` is not a positive integer, the function will throw an error.

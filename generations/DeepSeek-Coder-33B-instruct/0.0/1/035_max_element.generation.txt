@@ -1,0 +1,15 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function max_element(xs)
+    max_val = xs[1]
+    for x in xs
+        if x > max_val
+            max_val = x
+        end
+    end
+    return max_val
+end
+```
+
+This function works by initializing `max_val` to the first element of the list, then iterating over the list, updating `max_val` whenever it encounters a larger element. At the end of the function, `max_val` will hold the maximum element in the list.

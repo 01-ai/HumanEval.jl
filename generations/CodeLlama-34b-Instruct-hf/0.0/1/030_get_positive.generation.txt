@@ -1,0 +1,14 @@
+  Here is a possible implementation of the `get_positive` function in Julia:
+```
+function get_positive(xs::Vector)
+    return filter(x -> x > 0, xs)
+end
+```
+Explanation:
+
+* The `filter` function takes a function and a vector as input, and returns a new vector containing only the elements for which the function returns `true`.
+* In this case, the function `x -> x > 0` is used to filter out the negative numbers.
+* The `>` operator is used to compare each element of the vector with 0. If the element is greater than 0, the function returns `true`, otherwise it returns `false`.
+* The `filter` function returns a new vector containing only the elements for which the function returned `true`.
+
+Note that this implementation assumes that the input vector contains only integers. If the input vector contains other types of numbers (e.g. floating-point numbers), the function may need to be modified accordingly.

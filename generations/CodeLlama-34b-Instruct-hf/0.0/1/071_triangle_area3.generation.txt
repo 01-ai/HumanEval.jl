@@ -1,0 +1,29 @@
+  Here's one way to implement the `triangle_area3` function in Julia:
+```
+function triangle_area3(a::Number, b::Number, c::Number)::Number
+    if a + b > c && a + c > b && b + c > a
+        return round(sqrt(a * b * c) / 2, 2)
+    else
+        return -1
+    end
+end
+```
+Explanation:
+
+* The function takes three arguments `a`, `b`, and `c`, which are the lengths of the sides of a triangle.
+* The function checks if the three sides form a valid triangle by checking if the sum of any two sides is greater than the third side. This is done using the `if` statement.
+* If the three sides form a valid triangle, the function calculates the area of the triangle using the formula `sqrt(a * b * c) / 2`. The `sqrt` function calculates the square root of a number, and the `*` operator is used to multiply the three sides of the triangle. The `/ 2` is used to divide the result by 2 to get the area of the triangle.
+* The `round` function is used to round the result to 2 decimal points.
+* If the three sides do not form a valid triangle, the function returns -1.
+
+Here are some examples of how to use the function:
+```
+julia> triangle_area3(3, 4, 5)
+6.0
+
+julia> triangle_area3(1, 2, 10)
+-1
+
+julia> triangle_area3(5, 6, 7)
+10.83
+```

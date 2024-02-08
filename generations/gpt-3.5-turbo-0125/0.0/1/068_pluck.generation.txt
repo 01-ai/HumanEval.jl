@@ -1,0 +1,11 @@
+```julia
+function pluck(xs::Vector{Int})
+    even_values = filter(x -> x % 2 == 0, xs)
+    if isempty(even_values)
+        return []
+    end
+    min_even_value = minimum(even_values)
+    min_even_value_index = findfirst(x -> x == min_even_value, xs)
+    return [min_even_value, min_even_value_index]
+end
+```

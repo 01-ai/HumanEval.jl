@@ -1,0 +1,42 @@
+
+
+To solve this problem, we will first sort the input list in ascending order. Then, we will create a new list by alternating between adding the minimum and maximum elements from the sorted list until the sorted list is empty.
+
+Here is the step-by-step outline:
+
+1. Sort the input list in ascending order.
+2. Initialize an empty list to store the result.
+3. While the sorted list is not empty:
+   - Add the minimum element from the sorted list to the result list.
+   - If the sorted list is not empty, add the maximum element from the sorted list to the result list.
+4. Return the result list.
+
+And here is the Julia code implementing this algorithm:
+
+```julia
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    # Sort the input list in ascending order
+    sorted_xs = sort(xs)
+
+    # Initialize an empty list to store the result
+    result = Int[]
+
+    # While the sorted list is not empty
+    while !isempty(sorted_xs)
+        # Add the minimum element from the sorted list to the result list
+        push!(result, minimum(sorted_xs))
+        deleteat!(sorted_xs, findmin(sorted_xs)[2])
+
+        # If the sorted list is not empty, add the maximum element from the sorted list to the result list
+        if !isempty(sorted_xs)
+            push!(result, maximum(sorted_xs))
+            deleteat!(sorted_xs, findmax(sorted_xs)[2])
+        end
+    end
+
+    # Return the result list
+    return result
+end
+```
+
+This function works by repeatedly taking the minimum and maximum elements from the sorted list and adding them to the result list. It stops when the sorted list is empty, and it returns the result list.

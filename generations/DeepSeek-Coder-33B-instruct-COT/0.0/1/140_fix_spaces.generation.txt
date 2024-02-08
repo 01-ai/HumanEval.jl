@@ -1,0 +1,32 @@
+Here is a step-by-step outline of how you can implement the `fix_spaces` function in Julia:
+
+1. Initialize an empty string `result`.
+2. Iterate over each character `c` in the input string `s`.
+3. If `c` is a space, check if the last character in `result` was also a space.
+4. If it was, append a '-' to `result`. If not, append an '_' to `result`.
+5. If `c` is not a space, append `c` to `result`.
+6. Return `result`.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function fix_spaces(s::String)::String
+    result = ""
+    for c in s
+        if c == ' '
+            if !isempty(result) && last(result) == ' '
+                result *= '-'
+            else
+                result *= '_'
+            end
+        else
+            result *= c
+        end
+    end
+    return result
+end
+```
+
+This function works by iterating over each character in the input string. If the character is a space, it checks if the last character in the result string was also a space. If it was, it appends a '-' to the result string. If not, it appends an '_'. If the character is not a space, it appends the character to the result string.
+
+Please note that this function assumes that consecutive spaces are always separated by other characters. If consecutive spaces can occur at the beginning or end of the string, you might want to add additional checks to handle these cases.

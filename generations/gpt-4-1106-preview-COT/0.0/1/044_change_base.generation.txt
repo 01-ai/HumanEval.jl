@@ -1,0 +1,51 @@
+To implement the `change_base` function, we will follow these steps:
+
+1. Validate the input to ensure that `x` is a non-negative integer and `base` is an integer between 2 and 9 (inclusive), as bases greater than 10 are not handled by this function.
+2. If `x` is 0, return "0" immediately, as the base conversion of 0 is 0 in any base.
+3. Initialize an empty string `result` to store the digits of the new base representation.
+4. While `x` is greater than 0, perform the following steps:
+   a. Calculate the remainder of `x` divided by `base`. This will give us the next digit in the base representation, starting from the least significant digit.
+   b. Convert the remainder to a string and prepend it to `result`.
+   c. Divide `x` by `base` and update `x` to the quotient (use integer division).
+5. Once the loop is finished, `result` will contain the base representation of `x` in reverse order. Reverse `result` to get the correct order.
+6. Return `result`.
+
+Now, let's write the code for the `change_base` function:
+
+```julia
+function change_base(x::Int, base::Int)::String
+    # Step 1: Validate input
+    if x < 0 || base < 2 || base > 9
+        throw(ArgumentError("Invalid input: x must be non-negative and base must be between 2 and 9."))
+    end
+
+    # Step 2: Handle the special case where x is 0
+    if x == 0
+        return "0"
+    end
+
+    # Step 3: Initialize the result string
+    result = ""
+
+    # Step 4: Convert x to the new base
+    while x > 0
+        # Step 4a: Get the next digit
+        digit = x % base
+
+        # Step 4b: Prepend the digit to the result
+        result = string(digit) * result
+
+        # Step 4c: Update x
+        x ÷= base  # Use integer division
+    end
+
+    # Step 5: Reverse the result (not needed since we prepended digits)
+
+    # Step 6: Return the result
+    return result
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia

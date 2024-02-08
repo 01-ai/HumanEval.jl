@@ -1,0 +1,17 @@
+
+
+Here is the Julia function that implements the above doc string:
+
+```julia
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    sum = 0
+    for i in 1:2:length(xs)
+        if xs[i] % 2 != 0
+            sum += xs[i]
+        end
+    end
+    return sum
+end
+```
+
+This function works by iterating over the elements of the input vector `xs` in steps of 2 (i.e., it only considers the elements at odd positions). If an element is odd (i.e., its remainder when divided by 2 is not 0), it is added to the sum. The function finally returns the sum of all such elements. 

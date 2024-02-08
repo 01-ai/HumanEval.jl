@@ -1,0 +1,16 @@
+Here is the implementation for the `odd_count` function:
+
+```julia
+function odd_count(xs::Vector{String})::Vector{String}
+    result = Vector{String}(undef, length(xs))
+    for i in 1:length(xs)
+        count = countdigits(xs[i], base=10, digits=0:9)
+        odd_count = count[1] + count[3] + count[5] + count[7] + count[9]
+        result[i] = "the number of odd elements in the string $i of the input."
+        result[i] = replace(result[i], "$i", "$odd_count")
+    end
+    return result
+end
+```
+
+This function uses the `countdigits` function to count the number of occurrences of each digit in the string. It then sums the counts for the odd digits (1, 3, 5, 7, 9) to get the total count of odd elements in the string. Finally, it replaces the placeholder `$i` in the output string with the actual count and returns the resulting vector.

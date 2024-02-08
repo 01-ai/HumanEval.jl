@@ -1,0 +1,12 @@
+Certainly! Below is the Julia function `unique_elements` that takes a vector `l` as input and returns a sorted vector of unique elements:
+
+```julia
+function unique_elements(l::Vector)
+    return sort(unique(l))
+end
+
+# Example usage:
+# julia> unique_elements([5, 3, 5, 2, 3, 3, 9, 0, 123])
+```
+
+This function uses the built-in `unique` function to remove duplicate elements and then sorts the resulting vector with `sort`.

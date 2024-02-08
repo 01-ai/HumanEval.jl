@@ -1,0 +1,27 @@
+To implement the `factorize` function as described, we can follow a simple algorithm to factorize the given integer `n`. The idea is to iterate through possible divisors starting from 2, and for each divisor, check if it divides `n` without leaving a remainder. If it does, it means the divisor is a prime factor, and we repeatedly divide `n` by this divisor (factor) until it no longer divides evenly, indicating we've accounted for all instances of this prime factor in the factorization of `n`. We then proceed to the next possible divisor. This process continues until `n` is reduced to 1, at which point we've found all prime factors.
+
+Here's how this can be implemented in Julia:
+
+```julia
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]  # Initialize an empty array to store factors
+    divisor = 2  # Start with the smallest prime number
+
+    while n >= divisor^2  # No need to check divisors greater than sqrt(n)
+        while n % divisor == 0  # While divisor is a factor of n
+            push!(factors, divisor)  # Add divisor to factors list
+            n ÷= divisor  # Divide n by divisor for further factorization
+        end
+        divisor += 1  # Move to the next potential divisor
+    end
+
+    # If n is greater than 1, it means n is a prime number itself
+    if n > 1
+        push!(factors, n)
+    end
+
+    return factors
+end
+```
+
+This function starts with the smallest prime number (2) and checks if it is a factor of `n`. If it is, the function adds it to the list of factors and divides `n` by this factor, repeating this process until the factor no longer divides `n`. Then, it moves to the next potential factor. This process repeats until all factors are found. The condition `n >= divisor^2` is used to optimize the loop, as there's no need to check divisors greater than the square root of `n` for factors. If after this process `n` is greater than 1, it means that `n` itself is a prime number and should be added to the list of factors.

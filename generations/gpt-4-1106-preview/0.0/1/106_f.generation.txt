@@ -1,0 +1,40 @@
+Certainly! Below is the implementation of the function `f` in Julia:
+
+```julia
+function f(n::Int)::Vector{Int}
+    result = Vector{Int}(undef, n)
+    for i in 1:n
+        if i % 2 == 0
+            # Calculate factorial for even i
+            result[i] = factorial(i)
+        else
+            # Calculate sum from 1 to i for odd i
+            result[i] = sum(1:i)
+        end
+    end
+    return result
+end
+
+# Helper function to calculate factorial
+function factorial(i::Int)::Int
+    if i == 0
+        return 1
+    else
+        return i * factorial(i - 1)
+    end
+end
+```
+
+You can test the function with the provided example:
+
+```julia
+julia> f(5)
+5-element Vector{Int64}:
+  1
+  2
+  6
+ 24
+ 15
+```
+
+This function will generate a list of size `n` where each element follows the rules described in the doc string.

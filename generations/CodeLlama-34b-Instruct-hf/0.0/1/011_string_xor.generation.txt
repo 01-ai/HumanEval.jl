@@ -1,0 +1,24 @@
+  Here's an implementation of the `string_xor` function in Julia:
+```
+function string_xor(a::String, b::String)::String
+    result = ""
+    for (i, j) in zip(a, b)
+        result *= i == j ? "0" : "1"
+    end
+    return result
+end
+```
+Here's an explanation of how the function works:
+
+1. The function takes two string arguments `a` and `b`, which are the two input strings to be XORed.
+2. The function initializes an empty string `result` to store the result of the XOR operation.
+3. The function uses the `zip` function to iterate over the characters of `a` and `b` in parallel.
+4. For each pair of characters `i` and `j`, the function checks if they are equal using the `==` operator. If they are equal, the function appends a `0` to the `result` string. If they are not equal, the function appends a `1` to the `result` string.
+5. The function returns the `result` string.
+
+Here's an example usage of the `string_xor` function:
+```
+julia> string_xor("010", "110")
+"100"
+```
+This example shows that the function correctly XORs the input strings and returns the expected result.

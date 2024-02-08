@@ -1,0 +1,17 @@
+ Here's a Julia function that implements the `simplify` function as described in the docstring:
+
+```julia
+function simplify(x::String, n::String)::Bool
+    # Convert the input strings to numerator and denominator
+    x_num, x_den = parse(Int, split(x, "/")[1])
+    n_num, n_den = parse(Int, split(n, "/")[1])
+
+    # Check if the product of the numerators and denominators is a whole number
+    whole_number = (x_num * n_num) % (x_den * n_den) == 0
+
+    # If the product is a whole number, return true; otherwise, return false
+    return whole_number
+end
+```
+
+This function first splits the input strings `x` and `n` into numerator and denominator parts using the `split` function. Then, it converts the numerator and denominator parts to integers using the `parse` function. Finally, it checks if the product of the numerators and denominators is divisible by the product of the denominators. If it is, the function returns `true`, indicating that the expression `x * n` evaluates to a whole number; otherwise, it returns `false`.

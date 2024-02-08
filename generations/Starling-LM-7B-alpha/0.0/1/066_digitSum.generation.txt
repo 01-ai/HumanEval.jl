@@ -1,0 +1,9 @@
+ function digitSum(s::String)::Int
+    sum = 0
+    for c in s
+        if 'A' <= c <= 'Z'
+            sum += parse(Int, string(c))
+        end
+    end
+    return sum
+end

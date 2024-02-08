@@ -1,0 +1,31 @@
+
+
+Here is the Julia function that solves the problem:
+
+```julia
+function n_digits_in_binary(N::Int)::String
+    # Convert the integer to binary and remove the "0b" prefix
+    binary = string(N, base = 2)[3:end]
+
+    # Calculate the sum of the digits in the binary representation
+    sum_of_digits = sum(parse(Int, digit) for digit in binary)
+
+    # Convert the sum back to binary
+    return string(sum_of_digits, base = 2)
+end
+```
+
+This function first converts the input integer to its binary representation (as a string), then calculates the sum of its digits, and finally converts this sum back to binary. The use of `string(N, base = 2)` for conversion between integer and binary is a Julia feature.
+
+Here is how it works for the provided examples:
+
+```julia
+julia> n_digits_in_binary(1000)
+"1"
+
+julia> n_digits_in_binary(150)
+"110"
+
+julia> n_digits_in_binary(147)
+"1100"
+```

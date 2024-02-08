@@ -1,0 +1,13 @@
+```julia
+function fib(n::Int)::Int
+    # Base cases
+    if n == 0
+        return 0
+    elseif n == 1
+        return 1
+    end
+
+    # Recursive case
+    return fib(n - 1) + fib(n - 2)
+end
+```

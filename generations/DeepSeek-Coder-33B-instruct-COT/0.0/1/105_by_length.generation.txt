@@ -1,0 +1,26 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    # Filter the array to only include numbers between 1 and 9
+    xs = filter(x -> 1 <= x <= 9, xs)
+
+    # Sort the array in ascending order
+    sort(xs, rev=true)
+
+    # Replace each digit by its corresponding name
+    map(x -> ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"][x], xs)
+end
+```
+
+This function works by first filtering the input array to only include numbers between 1 and 9. It then sorts the filtered array in reverse order. Finally, it replaces each digit in the sorted array with its corresponding name.
+
+The `filter` function is used to filter the array based on a condition. In this case, the condition is that the number must be between 1 and 9.
+
+The `sort` function is used to sort the array. The `rev=true` argument is used to sort the array in reverse order.
+
+The `map` function is used to apply a function to each element of the array. In this case, the function is an anonymous function that takes a number and returns its corresponding name.
+
+The `map` function returns a new array with the results of applying the function to each element of the input array.
+
+The `filter`, `sort`, and `map` functions are all higher-order functions, which means they take other functions as arguments. This is a common pattern in Julia.

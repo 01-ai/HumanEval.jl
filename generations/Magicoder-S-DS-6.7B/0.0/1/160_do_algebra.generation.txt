@@ -1,0 +1,25 @@
+Here is a Julia function that implements the given problem:
+
+```julia
+function do_algebra(operator::Vector{String}, operand::Vector{Int})
+    result = operand[1]
+    for i in 1:length(operator)
+        if operator[i] == "+"
+            result += operand[i+1]
+        elseif operator[i] == "-"
+            result -= operand[i+1]
+        elseif operator[i] == "*"
+            result *= operand[i+1]
+        elseif operator[i] == "�"
+            result = Int(floor(result / operand[i+1]))
+        elseif operator[i] == "^"
+            result = Int(round(result ^ operand[i+1]))
+        end
+    end
+    return result
+end
+```
+
+This function works by iterating over the operators and applying them to the operands in the order they appear. The result of each operation is then used as the input for the next operation. The result is returned after all operations have been applied.
+
+Please note that the function assumes that the input is valid and does not perform any error checking. If you want to make the function more robust, you should add error checking code to handle invalid inputs.

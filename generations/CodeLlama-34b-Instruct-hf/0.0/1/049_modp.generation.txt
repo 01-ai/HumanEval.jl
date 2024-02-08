@@ -1,0 +1,29 @@
+  Here's an implementation of the `modp` function in Julia:
+```
+function modp(n::Int, p::Int)::Int
+    return (2^n) % p
+end
+```
+Explanation:
+
+* The function takes two `Int` arguments, `n` and `p`, and returns an `Int` value.
+* The function uses the modulo operator (`%`) to compute `2^n` modulo `p`.
+* The result is returned as an `Int` value.
+
+Example usage:
+```
+julia> modp(3, 5)
+3
+
+julia> modp(1101, 101)
+2
+
+julia> modp(0, 101)
+1
+
+julia> modp(3, 11)
+8
+
+julia> modp(100, 101)
+1
+```

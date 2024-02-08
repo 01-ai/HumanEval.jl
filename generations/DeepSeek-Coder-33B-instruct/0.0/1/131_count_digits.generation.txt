@@ -1,0 +1,16 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function count_digits(n::Int)::Int
+    digits = parse.(Int, collect(string(n)))
+    product = 1
+    for digit in digits
+        if digit % 2 != 0
+            product *= digit
+        end
+    end
+    return product == 1 ? 0 : product
+end
+```
+
+This function works by first converting the integer `n` into a string, then into a list of characters, and finally into a list of integers. It then iterates over this list, multiplying the product by the digit if it is odd. If the product is 1 at the end, it means that all digits were even, so it returns 0. Otherwise, it returns the product.

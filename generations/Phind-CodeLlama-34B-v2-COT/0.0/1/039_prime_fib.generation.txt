@@ -1,0 +1,58 @@
+
+
+To solve this problem, we will first need to create a helper function to check if a number is prime. Then, we will create a function to generate Fibonacci numbers. Finally, we will create the main function `prime_fib` that will use these two helper functions to find the n-th Fibonacci number that is also prime.
+
+Step-by-step outline:
+
+1. Create a helper function `is_prime` that takes an integer as input and returns a boolean indicating whether the number is prime.
+2. Create a helper function `fib` that takes an integer as input and returns the corresponding Fibonacci number.
+3. Create the main function `prime_fib` that takes an integer as input. This function should use a loop to generate Fibonacci numbers and check if each number is prime using the `is_prime` function. When it finds the n-th prime Fibonacci number, it should return that number.
+
+Now let's write the code:
+
+```julia
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+
+function fib(n::Int)::Int
+    if n <= 1
+        return n
+    else
+        a, b = 0, 1
+        for _ in 2:n
+            a, b = b, a + b
+        end
+        return b
+    end
+end
+
+function prime_fib(n::Int)::Int
+    count = 0
+    i = 1
+    while count < n
+        f = fib(i)
+        if is_prime(f)
+            count += 1
+        end
+        i += 1
+    end
+    return fib(i - 1)
+end
+```
+
+This code should correctly implement the `prime_fib` function as described in the problem statement. The `is_prime` function checks if a number is prime by checking divisibility up to the square root of the number, which is the standard optimization for this type of problem. The `fib` function generates Fibonacci numbers using a loop, and the `prime_fib` function combines these two functions to find the n-th prime Fibonacci number.

@@ -1,0 +1,12 @@
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    divisor = 2
+    while n > 1
+        while n % divisor == 0
+            pushfirst(factors, divisor)
+            n = n � divisor
+        end
+        divisor += 1
+    end
+    return factors
+end

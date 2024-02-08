@@ -1,0 +1,28 @@
+### Step-by-Step Outline
+
+1. **Filter Odd Length Strings**: First, filter out the strings that have odd lengths from the input list. This can be done by using the `filter` function or a list comprehension, checking the length of each string with the modulo operator to determine if it's even.
+
+2. **Sort the Filtered List**: After filtering, sort the remaining list. The sorting criteria are primarily the length of the strings and secondarily the alphabetical order if two strings have the same length. This can be achieved by using the `sort` function with a custom sorting key that first considers the length of the strings and then the strings themselves for comparison.
+
+3. **Return the Sorted List**: Finally, return the sorted list of strings that have even lengths and are sorted according to the specified criteria.
+
+### Julia Code Implementation
+
+```julia
+function sorted_list_sum(xs::Vector{String})::Vector{String}
+    # Step 1: Filter out strings with odd lengths
+    even_length_strings = filter(s -> length(s) % 2 == 0, xs)
+    
+    # Step 2: Sort the filtered list by length, then alphabetically
+    sorted_strings = sort(even_length_strings, by = s -> (length(s), s))
+    
+    # Step 3: Return the sorted list
+    return sorted_strings
+end
+
+# Examples
+println(sorted_list_sum(["aa", "a", "aaa"])) # Expected: ["aa"]
+println(sorted_list_sum(["ab", "a", "aaa", "cd"])) # Expected: ["ab", "cd"]
+```
+
+This implementation follows the outlined steps to filter, sort, and return the list of strings according to the specified criteria.

@@ -1,0 +1,10 @@
+```julia
+function odd_count(xs::Vector{String})::Vector{String}
+    result = String[]
+    for s in xs
+        count = count(x -> parse(Int, x) % 2 != 0, s)
+        push!(result, "the number of odd elements $countn the str$(count)ng $s of the $countnput.")
+    end
+    return result
+end
+```

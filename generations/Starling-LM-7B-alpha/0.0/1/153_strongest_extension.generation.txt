@@ -1,0 +1,13 @@
+ function strongest_extension(class_name::String, extensions::Vector{String})::String
+    # Calculate the strength of each extension
+    strengths = [(CAP - SM, index) for index in eachindex(extensions) for (CAP, SM) in enumerate(extensions)]
+
+    # Sort the strengths in descending order
+    sorted_strengths = sort(strengths, rev=true)
+
+    # Get the strongest extension
+    strongest_extension = extensions[sorted_strengths[1].index]
+
+    # Return the result
+    return string(class_name, ".", strongest_extension)
+end

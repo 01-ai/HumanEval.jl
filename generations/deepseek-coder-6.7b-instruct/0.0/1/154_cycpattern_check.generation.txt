@@ -1,0 +1,22 @@
+Here is a Julia function that implements the described behavior:
+
+```julia
+function cycpattern_check(a::String , b::String)::Bool
+    if length(a) != length(b)
+        return false
+    end
+    for i in 1:length(b)
+        if occursin(b, a)
+            return true
+        end
+        b = b[end] * b[1:end-1]
+    end
+    return false
+end
+```
+
+This function works by iterating over all possible rotations of the second string `b` and checking if it is a substring of the first string `a`. If it is, the function returns `true`. If no rotation of `b` is a substring of `a` after all iterations, the function returns `false`.
+
+The `occursin` function is used to check if a string is a substring of another string. The `*` operator is used to concatenate the last character of `b` with all characters of `b` except the last one, effectively rotating `b`.
+
+The `if length(a) != length(b)` check is used to ensure that the two strings have the same length, as the problem statement specifies that the second string must be a substring of the first string.

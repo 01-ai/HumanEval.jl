@@ -1,0 +1,39 @@
+
+
+To solve this problem, we can follow these steps:
+
+1. Sort the input array in ascending order.
+2. Initialize a minimum difference as infinity and two variables to store the closest pair.
+3. Iterate through the array and for each pair of consecutive elements, calculate their difference.
+4. If the difference is less than the current minimum difference, update the minimum difference and the closest pair.
+5. Return the closest pair.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function find_closest_elements(numbers::Vector{Float64})::Tuple{Float64, Float64}
+    # Step 1: Sort the input array in ascending order
+    sort!(numbers)
+
+    # Step 2: Initialize a minimum difference and the closest pair
+    min_diff = typemax(Float64)
+    closest_pair = (0.0, 0.0)
+
+    # Step 3: Iterate through the array
+    for i in 1:(length(numbers) - 1)
+        # Calculate the difference between the current pair of elements
+        diff = numbers[i + 1] - numbers[i]
+
+        # Step 4: Update the minimum difference and the closest pair if necessary
+        if diff < min_diff
+            min_diff = diff
+            closest_pair = (numbers[i], numbers[i + 1])
+        end
+    end
+
+    # Step 5: Return the closest pair
+    return closest_pair
+end
+```
+
+This function works by first sorting the input array, which allows it to find the closest pair of elements in linear time. The time complexity of the function is O(n log n) due to the sorting step, where n is the length of the input array. The space complexity is O(1) as it only uses a constant amount of space to store the minimum difference and the closest pair.

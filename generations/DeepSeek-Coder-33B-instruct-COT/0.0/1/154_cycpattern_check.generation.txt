@@ -1,0 +1,24 @@
+Here is a step-by-step outline of the solution:
+
+1. First, check if the second string is a substring of the first string. If it is, return `true`.
+2. If not, generate all rotations of the second string.
+3. For each rotation, check if it is a substring of the first string. If it is, return `true`.
+4. If no rotation is a substring of the first string, return `false`.
+
+Here is the Julia code that implements this solution:
+
+```julia
+function cycpattern_check(a::String, b::String)::Bool
+    if occursin(b, a)
+        return true
+    end
+    for i in 1:length(b)
+        if occursin(b[i:end] * b[1:i-1], a)
+            return true
+        end
+    end
+    return false
+end
+```
+
+This function works by first checking if the second string is a substring of the first string. If it is, it returns `true`. If not, it generates all rotations of the second string and checks if each rotation is a substring of the first string. If any rotation is a substring, it returns `true`. If no rotation is a substring, it returns `false`.

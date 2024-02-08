@@ -1,0 +1,17 @@
+```julia
+function derivative(xs::Vector)::Vector
+    # Initialize the derivative coefficients with the same length as the original polynomial
+    derivative_xs = zeros(length(xs) - 1)
+
+    # Loop through the coefficients of the original polynomial and calculate the derivative
+    for i in 1:length(xs) - 1
+        # The derivative of x^i is i*x^(i-1)
+        derivative_xs[i] = i * xs[i]
+    end
+
+    # Return the derivative coefficients
+    return derivative_xs
+end
+```
+
+This function takes a vector `xs` representing the coefficients of a polynomial and calculates the derivative of the polynomial by applying the formula for the derivative of a polynomial term: `d/dx (x^i) = i*x^(i-1)`. The function returns a vector of the derivative coefficients in the same form as the original polynomial.

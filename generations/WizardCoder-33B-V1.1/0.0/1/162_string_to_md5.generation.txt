@@ -1,0 +1,8 @@
+
+function string_to_md5(text::String)::Union{Nothing,String}
+    isempty(text) ? nothing : bytes2hex(md5(text))
+end
+
+# Test the function
+println(string_to_md5("Hello world"))  # "3e25960a79dbc69b674cd4ec67a72c62"
+println(string_to_md5(""))  # nothing

@@ -1,0 +1,24 @@
+
+
+function match_parens(lst::Vector{String})::String
+    open_count = 0
+    close_count = 0
+    for str in lst
+        for char in str
+            if char == '('
+                open_count += 1
+            elseif char == ')'
+                close_count += 1
+            end
+        end
+    end
+    if open_count == close_count
+        return "Yes"
+    else
+        return "No"
+    end
+end
+
+# Test cases
+@assert match_parens(["()(", ")"]) == "Yes"
+@assert match_parens([")", ")"]) == "No"

@@ -1,0 +1,23 @@
+Here is a step-by-step outline of how to implement the function:
+
+1. Initialize an empty vector to store the filtered strings.
+2. Iterate over each string in the input vector.
+3. For each string, check if it contains the given substring.
+4. If it does, add it to the filtered vector.
+5. Return the filtered vector.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function filter_by_substring(strings::Vector{String}, substring::AbstractString)::Vector{String}
+    filtered_strings = String[]
+    for string in strings
+        if occursin(substring, string)
+            push_string = push(filtered_strings, string)
+        end
+    end
+    return filtered_strings
+end
+```
+
+This function uses the `occursin` function to check if a string contains a substring. If it does, the `push` function is used to add the string to the `filtered_strings` vector.

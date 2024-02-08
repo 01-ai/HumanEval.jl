@@ -1,0 +1,15 @@
+Here is the implementation of the `fizz_buzz` function in Julia:
+
+```julia
+function fizz_buzz(n::Int)
+    count = 0
+    for i in 1:n-1
+        if (i % 11 == 0 || i % 13 == 0) && contains(string(i), '7')
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function iterates over the integers from 1 to `n-1` and checks if each integer is divisible by 11 or 13 and contains the digit 7. If both conditions are met, the count is incremented. Finally, the function returns the count.

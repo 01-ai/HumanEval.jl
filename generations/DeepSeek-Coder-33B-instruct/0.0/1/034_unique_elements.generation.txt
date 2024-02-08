@@ -1,0 +1,22 @@
+Here is the Julia function that implements the doc string:
+
+```julia
+function unique_elements(l::Vector)
+    return sort(unique(l))
+end
+```
+
+This function works by first using the `unique` function to remove duplicate elements from the input list, and then using the `sort` function to sort the resulting list.
+
+You can test this function with the example provided in the doc string:
+
+```julia
+julia> unique_elements([5, 3, 5, 2, 3, 3, 9, 0, 123])
+6-element Vector{Int64}:
+   0
+   2
+   3
+   5
+   9
+ 123
+```

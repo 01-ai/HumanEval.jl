@@ -1,0 +1,27 @@
+  Here is a possible implementation of the `median` function in Julia:
+```
+function median(l::Vector)
+    if isempty(l)
+        return nothing
+    end
+    n = length(l)
+    if n % 2 == 0
+        return (l[n ÷ 2] + l[n ÷ 2 + 1]) / 2
+    else
+        return l[n ÷ 2 + 1]
+    end
+end
+```
+This function first checks if the input list is empty, and if so, returns `nothing`. Otherwise, it calculates the median of the list based on the number of elements in the list. If the number of elements is even, the median is calculated as the average of the two middle elements. If the number of elements is odd, the median is the middle element.
+
+Here are some examples of how the function can be used:
+```
+julia> median([3, 1, 2, 4, 5])
+3
+
+julia> median([-10, 4, 6, 1000, 10, 20])
+8.0
+
+julia> median([])
+nothing
+```

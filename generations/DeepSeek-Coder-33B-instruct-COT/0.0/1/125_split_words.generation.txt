@@ -1,0 +1,23 @@
+Here is the Julia code for the function `split_words`:
+
+```julia
+function split_words(txt::String)::Union{Vector{<:AbstractString},Int}
+    if ' ' in txt
+        return split(txt)
+    elseif ',' in txt
+        return split(txt, ',')
+    else
+        return count(c -> isodd(c - 'a' + 1) && islower(c), txt)
+    end
+end
+```
+
+This function works as follows:
+
+1. It checks if the input string `txt` contains a whitespace character. If it does, it splits the string on whitespace and returns the resulting list of words.
+
+2. If the string does not contain a whitespace character, it checks if it contains a comma. If it does, it splits the string on commas and returns the resulting list of words.
+
+3. If the string does not contain a whitespace or a comma, it counts the number of lower-case letters with odd order in the alphabet and returns this count. The order of a letter in the alphabet is determined by subtracting the ASCII value of 'a' from the ASCII value of the letter and adding 1 (since 'a' is considered the first letter in the alphabet).
+
+The function uses the `count` function with a predicate function that checks if a character is a lower-case letter with odd order in the alphabet. The `isodd` function checks if a number is odd, and the `islower` function checks if a character is a lower-case letter.

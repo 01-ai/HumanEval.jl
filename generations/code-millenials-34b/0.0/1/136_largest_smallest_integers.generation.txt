@@ -1,0 +1,12 @@
+
+
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing,Int}}
+    neg = filter(x -> x < 0, xs)
+    pos = filter(x -> x > 0, xs)
+    return (isempty(neg) ? nothing : maximum(neg), isempty(pos) ? nothing : minimum(pos))
+end
+
+# Test cases
+@assert largest_smallest_integers([2, 4, 1, 3, 5, 7]) == (nothing, 1)
+@assert largest_smallest_integers(Int[]) == (nothing, nothing)
+@assert largest_smallest_integers([0]) == (nothing, nothing)

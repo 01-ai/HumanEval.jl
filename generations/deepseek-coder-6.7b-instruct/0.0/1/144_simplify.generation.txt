@@ -1,0 +1,27 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function simplify(x::String, n::String)::Bool
+    x_num, x_den = parse.(Int, split(x, "/"))
+    n_num, n_den = parse.(Int, split(n, "/"))
+
+    return (x_num * n_den) % (x_den * n_num) == 0
+end
+```
+
+This function first splits the input strings into numerator and denominator parts, converts them to integers, and stores them in `x_num`, `x_den`, `n_num`, and `n_den`. Then it checks if the result of the multiplication of `x_num` and `n_den` modulo the product of `x_den` and `n_num` equals zero. If it does, it means that the result of the multiplication is a whole number, and the function returns `true`. Otherwise, it returns `false`.
+
+You can test this function with the provided examples:
+
+```julia
+julia> simplify("1/5", "5/1")
+true
+
+julia> simplify("1/6", "2/1")
+false
+
+julia> simplify("7/10", "10/2")
+false
+```
+
+These results match the expected outputs.

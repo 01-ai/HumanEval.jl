@@ -1,0 +1,31 @@
+Here is a Julia function that computes the n-th element of the FibFib sequence.
+
+```julia
+function fibfib(n::Int)::Int
+    if n < 0
+        throw(DomainError(n, "n must be non-negative"))
+    elseif n == 0
+        return 0
+    elseif n == 1
+        return 0
+    elseif n == 2
+        return 1
+    end
+
+    fibfib_n_minus_1 = 1
+    fibfib_n_minus_2 = 0
+    fibfib_n_minus_3 = 0
+    fibfib_n = 0
+
+    for i in 3:n
+        fibfib_n = fibfib_n_minus_1 + fibfib_n_minus_2 + fibfib_n_minus_3
+        fibfib_n_minus_3 = fibfib_n_minus_2
+        fibfib_n_minus_2 = fibfib_n_minus_1
+        fibfib_n_minus_1 = fibfib_n
+    end
+
+    return fibfib_n
+end
+```
+
+This function uses a loop to compute the n-th FibFib number. It starts by initializing the first three FibFib numbers (0, 0, 1) and then iteratively computes each subsequent FibFib number as the sum of the previous three numbers. The time complexity of this function is O(n), which is the best possible time complexity for this problem.

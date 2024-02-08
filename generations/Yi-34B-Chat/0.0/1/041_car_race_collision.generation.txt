@@ -1,0 +1,37 @@
+```julia
+function car_race_collision(n::Int)::Int
+    # Initialize the number of collisions to 0
+    collisions = 0
+
+    # Loop through the cars
+    for i in 1:n
+        # The car is initially moving left to right
+        moving_left_to_right = true
+
+        # Loop through the other cars
+        for j in 1:n
+            # If the current car is the same as the one we're checking against,
+            # we don't need to check for collision
+            if i == j
+                continue
+            end
+
+            # If the car is moving right to left and they are on the same position,
+            # we have a collision
+            if moving_left_to_right && (i == n - j + 1)
+                collisions += 1
+            end
+
+            # If the car has collided, it continues moving in its original
+            # direction
+            if !moving_left_to_right && (i == j)
+                moving_left_to_right = true
+            end
+        end
+    end
+
+    return collisions
+end
+```
+
+This function works by iterating through each car in the first set of cars (moving left to right) and checking for collisions with the corresponding car in the second set (moving right to left). The collision occurs when the two cars are on the same position, which happens when the sum of their indices equals `n` (since the cars are moving in opposite directions). After each collision, the car that was moving left to right continues moving in that direction, and the car that was moving right to left switches direction. The function counts the number of times this happens and returns the total number of collisions.

@@ -1,0 +1,22 @@
+
+
+```julia
+function special_factorial(n::Int)::BigInt
+    # Check if the input is a positive integer
+    if n < 1
+        throw(DomainError(n, "Input must be a positive integer"))
+    end
+
+    # Initialize the result
+    result = factorial(n)
+
+    # Calculate the special factorial
+    for i in 1:(n - 1)
+        result *= factorial(i)
+    end
+
+    return result
+end
+```
+
+This function first checks if the input is a positive integer. If it is not, it throws a `DomainError` to indicate that the input is invalid. If the input is valid, it initializes the result with the factorial of `n` and then iterates from `1` to `n - 1` to calculate the special factorial. Finally, it returns the result.

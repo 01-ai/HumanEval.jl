@@ -1,0 +1,27 @@
+
+
+# Step-by-step outline:
+# 1. Create a list of all the planets in the solar system in the correct order.
+# 2. Check if `planet1` and `planet2` are in the list of planets.
+# 3. If they are, find the index of `planet1` and `planet2` in the list.
+# 4. If `planet1` is closer to the Sun than `planet2`, swap the two.
+# 5. Get the sublist of planets located between `planet1` and `planet2` (excluding `planet1` and `planet2`).
+# 6. Return the sublist as a tuple.
+
+# Code:
+function bf(planet1::String, planet2::String)::NTuple
+    planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+
+    if !(planet1 in planets) || !(planet2 in planets)
+        return ()
+    end
+
+    planet1_index = findfirst(isequal(planet1), planets)
+    planet2_index = findfirst(isequal(planet2), planets)
+
+    if planet1_index > planet2_index
+        planet1_index, planet2_index = planet2_index, planet1_index
+    end
+
+    return Tuple(planets[planet1_index+1:planet2_index-1])
+end

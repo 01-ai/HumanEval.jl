@@ -1,0 +1,33 @@
+ function hex_key(num::String)::Int
+    primes = [2, 3, 5, 7, 11, 13, 17]
+    count = 0
+
+    for digit in num
+        if digit in primes
+            count += 1
+        elseif digit in '0':1'9'
+            continue
+        else
+            digit_decimal = parse(Int, string(digit))
+            if isprime(digit_decimal)
+                count += 1
+            end
+        end
+    end
+
+    return count
+end
+
+function isprime(n::Int)
+    if n <= 1
+        return false
+    end
+    for i in 2:sqrt(Int, n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+end

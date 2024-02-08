@@ -1,0 +1,30 @@
+Here's the Julia function `strange_sort_list` that implements the strange sorting algorithm as described in the doc string:
+
+```julia
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    sorted_xs = sort(xs)
+    strange_sorted = Int[]
+    left, right = 1, length(sorted_xs)
+    
+    while left <= right
+        if left == right
+            push!(strange_sorted, sorted_xs[left])
+            break
+        else
+            push!(strange_sorted, sorted_xs[left])
+            push!(strange_sorted, sorted_xs[right])
+            left += 1
+            right -= 1
+        end
+    end
+    
+    return strange_sorted
+end
+
+# Examples
+println(strange_sort_list([1, 2, 3, 4])) # Output: [1, 4, 2, 3]
+println(strange_sort_list([5, 5, 5, 5])) # Output: [5, 5, 5, 5]
+println(strange_sort_list(Int[]))         # Output: []
+```
+
+This function first sorts the input list `xs` in ascending order. Then it creates an empty list `strange_sorted` to store the result. It uses two pointers, `left` and `right`, to keep track of the minimum and maximum elements to be added to the `strange_sorted` list. It iterates until `left` is greater than `right`, adding the minimum and maximum elements in each iteration. If `left` and `right` are equal, it means there's only one element left, which is added to the list, and the loop is terminated. Finally, the function returns the `strange_sorted` list.

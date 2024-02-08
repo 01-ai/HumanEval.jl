@@ -1,0 +1,13 @@
+
+
+The problem is asking to find the number of collisions between the two sets of `n` cars moving in opposite directions. Since the cars are infinitely sturdy and strong, they continue moving in their trajectory as if they did not collide, the number of collisions will be equal to the number of cars in each set.
+
+Here is the Julia function based on the problem description:
+
+```julia
+function car_race_collision(n::Int)::Int
+    return n
+end
+```
+
+This function simply returns `n`, which is the number of cars in each set. As each car in the left-to-right set will collide with a car in the right-to-left set, the total number of collisions is equal to the number of cars in each set.

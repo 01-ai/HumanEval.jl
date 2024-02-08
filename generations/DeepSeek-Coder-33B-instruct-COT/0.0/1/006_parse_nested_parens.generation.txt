@@ -1,0 +1,34 @@
+Here is a Julia function that implements the given doc string.
+
+```julia
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    groups = split(paren_string)
+    max_depths = Int[]
+    for group in groups
+        depth = 0
+        max_depth = 0
+        for char in group
+            if char == '('
+                depth += 1
+                if depth > max_depth
+                    max_depth = depth
+                end
+            elseif char == ')'
+                depth -= 1
+            end
+        end
+        push_max_depths(max_depths, max_depth)
+    end
+    return max_depths
+end
+
+function push_max_depths(max_depths::Vector{Int}, max_depth::Int)
+    push_max_depths(max_depths, max_depth)
+end
+```
+
+This function works by splitting the input string into groups, then iterating over each group and character. For each character, it increments a depth counter if the character is an open parenthesis and decrements the counter if the character is a close parenthesis. If the depth counter is greater than the current maximum depth, it updates the maximum depth. After processing all characters in a group, it adds the maximum depth to the result vector.
+
+The function `push_max_depths` is used to add the maximum depth to the result vector.
+
+The time complexity of this function is O(n), where n is the total number of characters in the input string. The space complexity is also O(n), as we need to store the result vector.

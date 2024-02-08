@@ -1,0 +1,29 @@
+
+
+# Outline
+
+1. Define the function `truncate_number` that takes a single argument `number` of type `Float64`.
+2. Use the `modf` function to separate the integer part and decimal part of the number.
+3. Return the decimal part of the number.
+
+# Code
+
+```julia
+function truncate_number(number::Float64)::Float64
+    # Separate the integer part and decimal part of the number
+    integer_part, decimal_part = modf(number)
+    
+    # Return the decimal part of the number
+    return decimal_part
+end
+```
+
+# Test
+
+```julia
+using Test
+
+@test truncate_number(3.5) ≈ 0.5
+@test truncate_number(4.1) ≈ 0.1
+@test truncate_number(5.9) ≈ 0.9
+```

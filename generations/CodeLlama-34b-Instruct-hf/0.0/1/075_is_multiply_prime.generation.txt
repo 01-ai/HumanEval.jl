@@ -1,0 +1,40 @@
+  Here's one way to implement the `is_multiply_prime` function in Julia:
+```
+function is_multiply_prime(a::Int)::Bool
+    if a < 100
+        for i in 2:a-1
+            if a % i == 0
+                for j in 2:i-1
+                    if i % j == 0
+                        for k in 2:j-1
+                            if j % k == 0
+                                return true
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    return false
+end
+```
+Here's an explanation of the code:
+
+1. The function takes an integer `a` as input and returns a boolean value indicating whether `a` is the multiplication of 3 prime numbers.
+2. The function first checks if `a` is less than 100, since the problem statement specifies that `a` is less than 100.
+3. If `a` is less than 100, the function loops through the numbers from 2 to `a-1` and checks if `a` is divisible by any of them.
+4. If `a` is divisible by a number `i`, the function loops through the numbers from 2 to `i-1` and checks if `i` is divisible by any of them.
+5. If `i` is divisible by a number `j`, the function loops through the numbers from 2 to `j-1` and checks if `j` is divisible by any of them.
+6. If `j` is divisible by a number `k`, the function returns `true`.
+7. If none of the above conditions are met, the function returns `false`.
+
+Here's an example usage of the function:
+```
+julia> is_multiply_prime(30)
+true
+
+julia> is_multiply_prime(20)
+false
+```
+Note that the function assumes that the input `a` is a positive integer. If `a` can be negative or a non-integer, the function may need to be modified accordingly.

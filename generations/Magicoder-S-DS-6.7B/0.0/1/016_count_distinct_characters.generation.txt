@@ -1,0 +1,3 @@
+function count_distinct_characters(s::String)::Int
+    return length(unique(lowercase.(collect(s))))
+end

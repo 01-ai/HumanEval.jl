@@ -1,0 +1,29 @@
+Certainly! Below is the Julia function that implements the specification given in the doc string:
+
+```julia
+function longest(xs::Vector{String})::Union{Nothing, String}
+    # Return `nothing` if the input list is empty
+    if isempty(xs)
+        return nothing
+    end
+
+    # Initialize the longest string with the first element
+    longest_str = xs[1]
+
+    # Iterate through the list to find the longest string
+    for str in xs
+        if length(str) > length(longest_str)
+            longest_str = str
+        end
+    end
+
+    return longest_str
+end
+
+# Examples
+println(longest(String[])) # Should print nothing
+println(longest(["a", "b", "c"])) # Should print "a"
+println(longest(["a", "bb", "ccc"])) # Should print "ccc"
+```
+
+You can copy this function into your Julia environment and run the examples to verify that it works as expected.

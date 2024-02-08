@@ -1,0 +1,16 @@
+ function get_closest_vowel(word::String)::String
+    vowels = ["a", "e", "i", "o", "u"]
+    word_length = length(word)
+
+    for i in 2:word_length-1
+        if 'a' <= word[i] <= 'z' && !in(word[i], vowels)
+            if 'a' <= word[i+1] <= 'z' && in(word[i+1], vowels)
+                return word[i+1]
+            end
+            if 'A' <= word[i-1] <= 'Z' && in(word[i-1], vowels)
+                return word[i-1]
+            end
+        end
+    end
+    return ""
+end

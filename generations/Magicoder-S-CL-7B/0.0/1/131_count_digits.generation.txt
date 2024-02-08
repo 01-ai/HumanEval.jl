@@ -1,0 +1,11 @@
+
+
+function count_digits(n::Int)::Int
+    product = 1
+    for digit in digits(n)
+        if digit % 2 == 1
+            product *= digit
+        end
+    end
+    return product
+end

@@ -1,0 +1,30 @@
+
+
+# Outline
+
+1. Initialize a counter variable to store the number of times the substring is found in the original string.
+2. Use a while loop to check for the occurrence of the substring in the original string.
+3. If the substring is found, increment the counter and remove the found substring from the original string.
+4. Continue the process until there is no occurrence of the substring in the original string.
+5. Return the counter variable as the result.
+
+# Code
+
+```julia
+function how_many_times(s::String, sub_s::String)::Int
+    counter = 0
+    while occursin(sub_s, s)
+        counter += 1
+        s = replace(s, sub_s => "", count=1)
+    end
+    return counter
+end
+```
+
+# Test
+
+```julia
+@assert how_many_times("", "a") == 0
+@assert how_many_times("aaa", "a") == 3
+@assert how_many_times("aaaa", "aa") == 3
+```

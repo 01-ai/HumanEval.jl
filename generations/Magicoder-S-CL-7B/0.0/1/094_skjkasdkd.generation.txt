@@ -1,0 +1,22 @@
+
+
+function skjkasdkd(xs::Vector{Int})::Int
+    function is_prime(n::Int)::Bool
+        if n < 2
+            return false
+        end
+        for i in 2:floor(Int, sqrt(n))
+            if n % i == 0
+                return false
+            end
+        end
+        return true
+    end
+
+    function sum_digits(n::Int)::Int
+        return sum(digits(n))
+    end
+
+    max_prime = maximum(x for x in xs if is_prime(x))
+    return sum_digits(max_prime)
+end

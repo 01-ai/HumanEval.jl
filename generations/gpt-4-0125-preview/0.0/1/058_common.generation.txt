@@ -1,0 +1,27 @@
+To implement the `common` function as described, we can follow these steps:
+
+1. Find the intersection of the two lists to get the common elements.
+2. Remove duplicates from the common elements.
+3. Sort the resulting list of unique common elements.
+4. Return the sorted list.
+
+Here's how you can implement this in Julia:
+
+```julia
+function common(l1::Vector, l2::Vector)::Vector
+    # Step 1: Find the intersection
+    common_elements = intersect(l1, l2)
+    
+    # Step 2 & 3: Remove duplicates and sort (intersect already ensures uniqueness)
+    sorted_common_elements = sort(common_elements)
+    
+    # Step 4: Return the sorted list of unique common elements
+    return sorted_common_elements
+end
+
+# Examples
+println(common([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121]))
+println(common([5, 3, 2, 8], [3, 2]))
+```
+
+This function first uses the `intersect` function to find common elements between the two lists, which inherently ensures that the elements are unique. Then, it sorts these elements using the `sort` function. Finally, it returns the sorted list of unique common elements.

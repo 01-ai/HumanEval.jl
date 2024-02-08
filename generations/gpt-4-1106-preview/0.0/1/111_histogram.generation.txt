@@ -1,0 +1,34 @@
+Here is the Julia function `histogram` that implements the functionality described in the doc string:
+
+```julia
+function histogram(s::String)::Dict{String, Int}
+    # Split the string into words and filter out empty strings
+    words = filter(!isempty, split(s, ' '))
+    
+    # Create a dictionary to count the occurrences of each letter
+    counts = Dict{String, Int}()
+    for word in words
+        counts[word] = get(counts, word, 0) + 1
+    end
+    
+    # Find the maximum count
+    max_count = maximum(values(counts), init=0)
+    
+    # Filter the dictionary to only include letters with the maximum count
+    max_count_letters = Dict(filter(pair -> pair[2] == max_count, counts))
+    
+    return max_count_letters
+end
+```
+
+You can use this function to create a histogram of the most frequent letters in a space-separated string. Here are some examples of how to use the function:
+
+```julia
+println(histogram("a b c"))
+println(histogram("a b b a"))
+println(histogram("a b c a b"))
+println(histogram("b b b b a"))
+println(histogram(""))
+```
+
+Each call to `histogram` will print the dictionary containing the letters with the highest frequency and their counts. If the string is empty, it will return an empty dictionary.

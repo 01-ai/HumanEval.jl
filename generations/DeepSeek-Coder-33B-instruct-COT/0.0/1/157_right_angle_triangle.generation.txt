@@ -1,0 +1,18 @@
+Here is a step-by-step outline of the function:
+
+1. Check if the given sides form a right-angled triangle.
+2. If the square of the longest side is equal to the sum of the squares of the other two sides, then the triangle is right-angled.
+3. Return `true` if the triangle is right-angled, `false` otherwise.
+
+Here is the Julia code:
+
+```julia
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    sides = [a, b, c]
+    hypotenuse = maximum(sides)
+    sides = setdiff(sides, [hypotenuse])
+    return hypotenuse^2 == sum(s^2 for s in sides)
+end
+```
+
+This function works by first creating an array of the sides, finding the longest side (the hypotenuse), and then removing it from the array. It then checks if the square of the hypotenuse is equal to the sum of the squares of the other two sides. If it is, the function returns `true`, otherwise it returns `false`.

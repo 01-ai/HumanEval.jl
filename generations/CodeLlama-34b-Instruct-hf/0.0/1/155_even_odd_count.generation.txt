@@ -1,0 +1,29 @@
+  Here's one way to implement the `even_odd_count` function in Julia:
+```
+function even_odd_count(num::Int)::Tuple{Int, Int}
+    even_count = 0
+    odd_count = 0
+    while num != 0
+        if num % 2 == 0
+            even_count += 1
+        else
+            odd_count += 1
+        end
+        num = num ÷ 10
+    end
+    return (even_count, odd_count)
+end
+```
+Here's an explanation of the code:
+
+1. The function takes an integer `num` as input and returns a tuple of two integers, `even_count` and `odd_count`.
+2. The function initializes two variables, `even_count` and `odd_count`, to 0.
+3. The function then enters a loop that continues until `num` is 0.
+4. Inside the loop, the function checks if the last digit of `num` is even or odd. If it's even, it increments `even_count`. If it's odd, it increments `odd_count`.
+5. The function then divides `num` by 10 to remove the last digit and repeats the process until `num` is 0.
+6. Finally, the function returns the tuple `(even_count, odd_count)`.
+
+Here are some examples of how the function works:
+
+* `even_odd_count(-12)` returns `(1, 1)` because there is one even digit (-2) and one odd digit (1).
+* `even_odd_count(123)` returns `(1, 2)` because there is one even digit (2) and two odd digits (1 and 3).

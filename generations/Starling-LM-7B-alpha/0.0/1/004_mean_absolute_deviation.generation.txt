@@ -1,0 +1,12 @@
+ function mean_absolute_deviation(numbers::Vector{Float64})::Float64
+    # Calculate the mean of the input numbers
+    mean_value = mean(numbers)
+
+    # Calculate the absolute difference between each element and the mean
+    absolute_differences = [abs(x - mean_value) for x in numbers]
+
+    # Calculate the mean of the absolute differences
+    mad = mean(absolute_differences)
+
+    return mad
+end

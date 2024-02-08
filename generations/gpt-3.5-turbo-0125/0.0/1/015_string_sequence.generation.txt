@@ -1,0 +1,5 @@
+```julia
+function string_sequence(n::Int)::String
+    return join(string.(0:n), " ")
+end
+```

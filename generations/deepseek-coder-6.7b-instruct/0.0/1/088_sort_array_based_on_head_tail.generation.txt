@@ -1,0 +1,20 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    if isempty(xs)
+        return Int[]
+    end
+
+    sum_head_tail = xs[1] + xs[end]
+    sorted_xs = sort(xs)
+
+    if iseven(sum_head_tail)
+        return reverse(sorted_xs)
+    else
+        return sorted_xs
+    end
+end
+```
+
+This function first checks if the input array is empty. If it is, it returns an empty array. If the array is not empty, it calculates the sum of the first and last elements of the array. Then it sorts the array in ascending order. If the sum is even, it reverses the sorted array to get a descending order. If the sum is odd, it returns the sorted array as is.

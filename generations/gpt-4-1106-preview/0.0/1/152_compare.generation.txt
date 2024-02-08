@@ -1,0 +1,21 @@
+Here is the Julia function `compare` that implements the functionality described in the doc string:
+
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    # Check if the lengths of the game and guess vectors are the same
+    if length(game) != length(guess)
+        error("The lengths of the game and guess vectors must be the same.")
+    end
+
+    # Calculate the absolute differences between the game results and guesses
+    differences = abs.(game .- guess)
+
+    return differences
+end
+
+# Examples
+println(compare([1, 2, 3, 4, 5, 1], [1, 2, 3, 4, 2, -2]))
+println(compare([0, 5, 0, 0, 0, 4], [4, 1, 1, 0, 0, -2]))
+```
+
+This function takes two vectors `game` and `guess` as input and returns a vector of integers representing the absolute differences between the corresponding elements of `game` and `guess`. The `abs.` function is used to calculate the absolute value of each element-wise difference, and the `.-` operator is used for element-wise subtraction.

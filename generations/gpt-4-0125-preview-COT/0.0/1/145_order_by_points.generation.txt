@@ -1,0 +1,24 @@
+### Step-by-Step Outline
+
+1. **Define the function** `order_by_points` that takes a vector of integers as input.
+2. **Calculate the sum of digits** for each number in the input vector. Since the numbers can be negative, ensure to work with their absolute values when calculating the sum of digits.
+3. **Pair each number with its sum of digits** and original index. This can be done by creating a tuple or a custom struct for each number, containing the number itself, the sum of its digits, and its original index.
+4. **Sort the numbers** based on the sum of their digits. If two numbers have the same sum of digits, they should be ordered based on their original index in the input vector. This can be achieved by using a custom sorting function or by leveraging the sorting capabilities of Julia, specifying the sorting criteria.
+5. **Extract and return the sorted numbers** from the sorted list of tuples or structs, disregarding the sum of digits and original indices at this point.
+
+### Julia Code Implementation
+
+```julia
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    # Step 2 & 3: Calculate the sum of digits for each number and pair it with its original index
+    nums_with_sum_and_index = [(num, sum(digits(abs(num))), index) for (index, num) in enumerate(nums)]
+    
+    # Step 4: Sort the numbers based on the sum of their digits and then by their original index
+    sort!(nums_with_sum_and_index, by = x -> (x[2], x[3]))
+    
+    # Step 5: Extract and return the sorted numbers
+    return [x[1] for x in nums_with_sum_and_index]
+end
+```
+
+This implementation follows the outlined steps, ensuring that the numbers are sorted according to the sum of their digits and, in case of a tie, by their original index in the input vector.

@@ -1,0 +1,35 @@
+Here is a step-by-step outline of the algorithm:
+
+1. Check if the length of the input list is less than 3. If it is, return false because there are not enough elements to form a triple.
+
+2. Sort the list in ascending order.
+
+3. Iterate over the list with three nested loops. The outer two loops select two elements, and the inner loop checks for the third element that would make the sum of the three elements equal to zero.
+
+4. If a triple is found that sums to zero, return true.
+
+5. If no triple sums to zero is found after checking all possible triples, return false.
+
+Here is the Julia code implementing the above algorithm:
+
+```julia
+function triples_sum_to_zero(l::Vector{Int})::Bool
+    n = length(l)
+    if n < 3
+        return false
+    end
+    sort(l)
+    for i in 1:n-2
+        for j in i+1:n-1
+            for k in j+1:n
+                if l[i] + l[j] + l[k] == 0
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end
+```
+
+This function has a time complexity of O(n^3) due to the three nested loops. It can be optimized to O(n^2) by using a two-pointer technique.

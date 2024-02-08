@@ -1,0 +1,27 @@
+
+
+```julia
+function simplify(x::String, n::String)::Bool
+    # Split the fractions into numerator and denominator
+    x_num, x_den = split(x, "/")
+    n_num, n_den = split(n, "/")
+
+    # Convert the numerator and denominator to integers
+    x_num = parse(Int, x_num)
+    x_den = parse(Int, x_den)
+    n_num = parse(Int, n_num)
+    n_den = parse(Int, n_den)
+
+    # Calculate the product of the fractions
+    product = x_num * n_num
+
+    # Check if the product is divisible by the denominator
+    if product % x_den == 0 && product % n_den == 0
+        return true
+    else
+        return false
+    end
+end
+```
+
+This function first splits the fractions into numerator and denominator, then converts them to integers. It calculates the product of the fractions and checks if the product is divisible by the denominator. If it is, it returns `true`, otherwise it returns `false`.

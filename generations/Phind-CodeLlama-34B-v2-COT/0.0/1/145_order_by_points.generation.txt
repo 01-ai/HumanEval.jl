@@ -1,0 +1,37 @@
+
+
+# Outline
+
+1. Define the function `order_by_points` that takes a vector of integers `nums` as input and returns a vector of integers.
+2. Create a new empty vector `result` to store the sorted numbers.
+3. Create a dictionary `dict` to store the sum of digits of each number as key and its index as value.
+4. Iterate over the input vector `nums` and for each number, calculate the sum of its digits and check if it already exists in the dictionary.
+5. If it exists, append the number to the `result` vector.
+6. If it doesn't exist, add a new entry to the dictionary with the sum of digits as key and a tuple containing the number and its index as value.
+7. After iterating over all the numbers, sort the dictionary based on the keys (sum of digits) in ascending order.
+8. Iterate over the sorted dictionary and for each entry, append the number to the `result` vector.
+9. Return the `result` vector.
+
+# Code
+
+```julia
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    result = Int[]
+    dict = Dict{Int, Tuple{Int, Int}}()
+
+    for (i, num) in enumerate(nums)
+        digits_sum = sum(digits(abs(num)))
+        if haskey(dict, digits_sum)
+            push!(result, num)
+        else
+            dict[digits_sum] = (num, i)
+        end
+    end
+
+    for (_, (num, _)) in sort(collect(dict))
+        push!(result, num)
+    end
+
+    return result
+end
+```

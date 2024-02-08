@@ -1,0 +1,21 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function is_simple_power(x::Number, n::Number)::Bool
+    if n == 1
+        return x == 1
+    end
+    if x == 0
+        return true
+    end
+    while x > 1
+        x /= n
+        if x != round(x)
+            return false
+        end
+    end
+    return true
+end
+```
+
+This function works by continuously dividing `x` by `n` until `x` becomes 1. If at any point `x` is not an integer, it returns `false`. If `n` is 1, it checks if `x` is 1. If `x` is 0, it returns true.

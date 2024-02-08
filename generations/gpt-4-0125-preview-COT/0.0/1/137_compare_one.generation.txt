@@ -1,0 +1,47 @@
+### Step-by-Step Outline
+
+1. **Type Conversion**: Convert the inputs to a common format for comparison. This involves:
+   - Checking if any of the inputs is a string that represents a number.
+   - Converting such strings to floats, taking into account both "." and "," as decimal separators.
+
+2. **Comparison**:
+   - Compare the converted values to determine the larger one.
+   - If the values are equal, return `nothing`.
+
+3. **Return Original Type**:
+   - Depending on which input is larger, return the original input (not the converted one) in its original type.
+   - Ensure that if the inputs are equal, `nothing` is returned as specified.
+
+### Julia Code Implementation
+
+```julia
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+    # Helper function to convert string to float if necessary
+    function convert_to_float(x)
+        if isa(x, AbstractString)
+            try
+                return parse(Float64, replace(x, ',' => '.'))
+            catch
+                error("String cannot be converted to a float")
+            end
+        else
+            return x
+        end
+    end
+
+    # Convert inputs to floats for comparison, if necessary
+    a_converted = convert_to_float(a)
+    b_converted = convert_to_float(b)
+
+    # Compare the converted values
+    if a_converted > b_converted
+        return a
+    elseif b_converted > a_converted
+        return b
+    else
+        return nothing
+    end
+end
+```
+
+This implementation first converts any string inputs that represent numbers into floats, taking care of different decimal separators. It then compares these possibly converted values. Depending on the comparison result, it returns the original input in its original type or `nothing` if they are equal.

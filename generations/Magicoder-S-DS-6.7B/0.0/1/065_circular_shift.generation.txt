@@ -1,0 +1,9 @@
+function circular_shift(x::Int, shift::Int)::String
+    digits_str = string(x)
+    len = length(digits_str)
+    if shift > len
+        return reverse(digits_str)
+    else
+        return string(digits_str[end-shift+1:end], digits_str[1:end-shift])
+    end
+end

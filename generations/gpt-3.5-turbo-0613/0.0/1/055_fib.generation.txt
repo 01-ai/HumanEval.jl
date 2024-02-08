@@ -1,0 +1,23 @@
+Here is the implementation of the `fib` function in Julia:
+
+```julia
+function fib(n::Int)::Int
+    if n <= 0
+        throw(ArgumentError("n must be a positive integer"))
+    elseif n == 1 || n == 2
+        return 1
+    else
+        fib_n_minus_1 = 1
+        fib_n_minus_2 = 1
+        fib_n = 0
+        for i in 3:n
+            fib_n = fib_n_minus_1 + fib_n_minus_2
+            fib_n_minus_2 = fib_n_minus_1
+            fib_n_minus_1 = fib_n
+        end
+        return fib_n
+    end
+end
+```
+
+This function calculates the n-th Fibonacci number iteratively using a loop. It handles the base cases where n is 1 or 2, and throws an error if n is less than or equal to 0.

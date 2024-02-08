@@ -1,0 +1,3 @@
+function add_even_eles_at_odd_inds(xs::Vector{Int})::Int
+    return sum(x for (i, x) in enumerate(xs) if i % 2 != 0 && x % 2 == 0)
+end

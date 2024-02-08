@@ -1,0 +1,10 @@
+
+
+function multiply_unit_digits(a::Int, b::Int)::Int
+    # Get the last digit of a and b
+    last_digit_a = a % 10
+    last_digit_b = b % 10
+
+    # Return the product of the last digits
+    return last_digit_a * last_digit_b
+end

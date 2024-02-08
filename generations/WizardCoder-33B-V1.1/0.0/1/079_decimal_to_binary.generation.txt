@@ -1,0 +1,12 @@
+
+
+Here is the Julia function that implements the given doc string:
+
+```julia
+function decimal_to_binary(decimal::Int)::String
+    binary = string(decimal, base = 2)
+    return "db" * binary * "db"
+end
+```
+
+This function uses the built-in `string` function in Julia to convert the decimal number to a binary string. The `base = 2` argument tells `string` to use base 2 (binary) when converting the number. The `*` operator is used to concatenate the "db" characters to the beginning and end of the binary string. 

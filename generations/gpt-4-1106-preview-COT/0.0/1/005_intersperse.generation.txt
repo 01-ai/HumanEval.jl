@@ -1,0 +1,43 @@
+To implement the `intersperse` function, we will follow these steps:
+
+1. Check if the input `numbers` vector is empty. If it is, return an empty vector immediately.
+2. Initialize an empty vector `result` that will store the interspersed numbers.
+3. Iterate through the `numbers` vector, adding each element to the `result` vector followed by the `delimeter`.
+4. Since we don't want to add the `delimeter` after the last element, we need to handle the last element separately.
+5. Return the `result` vector.
+
+Now, let's write the code for the `intersperse` function:
+
+```julia
+function intersperse(numbers::Vector{Int}, delimeter::Int)::Vector{Int}
+    # Step 1: Check if the input vector is empty
+    if isempty(numbers)
+        return Int[]
+    end
+    
+    # Step 2: Initialize the result vector
+    result = Int[]
+    
+    # Step 3: Iterate through the numbers vector
+    for i in 1:length(numbers)-1
+        push!(result, numbers[i])
+        push!(result, delimeter)
+    end
+    
+    # Step 4: Handle the last element separately
+    push!(result, numbers[end])
+    
+    # Step 5: Return the result vector
+    return result
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(intersperse(Int[], 4)) # Should print Int64[]
+
+println(intersperse([1, 2, 3], 4)) # Should print [1, 4, 2, 4, 3]
+```
+
+This function should work as expected based on the provided doc string.

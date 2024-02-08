@@ -1,0 +1,23 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+    bucket = capacity
+    refills = 0
+    for row in grid
+        for well in row
+            if well == 1
+                if bucket > 0
+                    bucket -= 1
+                else
+                    refills += 1
+                    bucket = capacity - 1
+                end
+            end
+        end
+    end
+    return refills
+end
+```
+
+This function iterates over each well in the grid. If a well contains water (1), it tries to extract water from the bucket. If the bucket is not empty, it does so and continues to the next well. If the bucket is empty, it refills the bucket, increments the refill count, and continues to extract water from the bucket. The function returns the number of refills required.

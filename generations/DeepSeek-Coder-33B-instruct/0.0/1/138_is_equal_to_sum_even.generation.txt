@@ -1,0 +1,13 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function is_equal_to_sum_even(n::Int)::Bool
+    return n >= 8 && iseven(n)
+end
+```
+
+This function works by first checking if the input number `n` is greater than or equal to 8. If it is not, the function immediately returns `false`, because a number less than 8 cannot be the sum of exactly 4 positive even numbers.
+
+Next, the function checks if `n` is even. If it is not, the function returns `false`, because a number that is not even cannot be the sum of exactly 4 positive even numbers.
+
+Finally, if both of these conditions are met, the function returns `true`, because `n` can be written as the sum of exactly 4 positive even numbers.

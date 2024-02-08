@@ -1,0 +1,11 @@
+Here is a Julia function that implements the given doc string:
+
+```julia
+function simplify(x::String, n::String)::Bool
+    x_num, x_den = parse.(Int, split(x, '/'))
+    n_num, n_den = parse.(Int, split(n, '/'))
+    return x_num * n_num % (x_den * n_den) == 0
+end
+```
+
+This function first splits the input strings into numerator and denominator parts, converts them to integers, and then checks if the product of the numerators is divisible by the product of the denominators. If it is, the function returns `true`, otherwise it returns `false`.

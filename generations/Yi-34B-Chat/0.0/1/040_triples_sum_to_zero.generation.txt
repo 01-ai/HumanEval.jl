@@ -1,0 +1,46 @@
+```julia
+function triples_sum_to_zero(l::Vector{Int})::Bool
+    # Base case: if the list has less than 3 elements, there is no way to
+    # form a triple summing to zero.
+    if length(l) < 3
+        return false
+    end
+
+    # Sort the list to ensure a stable and deterministic order of
+    # comparison.
+    l = sort(l)
+
+    # Iterate over the list, looking for three elements that sum to zero.
+    for i in 1:length(l)
+        if l[i] == 0
+            # If we find an element equal to zero, we can skip the rest
+            # of the list, as it would not contain a different triple
+            # summing to zero.
+            return true
+        end
+
+        # Look for two elements that sum to the negative of the current
+        # element.
+        j = i + 1
+        k = length(l)
+        while j < k
+            if l[i] + l[j] + l[k] == 0
+                # If we find such a triple, return true.
+                return true
+            end
+            # Move to the next element in the list.
+            if l[j] + l[k] > 0
+                k -= 1
+            else
+                j += 1
+            end
+        end
+    end
+
+    # If we reach this point, we have checked all possible triples and
+    # none of them sum to zero.
+    return false
+end
+```
+
+This function works by iterating over the list and checking for the existence of three distinct elements that sum to zero. It first sorts the list to ensure a stable order of comparison. Then, for each element in the list, it checks if the element is zero, in which case it returns true as there is no need to check further. If the element is not zero, it looks for two other elements that sum to the negative of the current element. If such a triple is found, the function returns true. If not, the function continues to the next element in the list. If no such triple is found for any element in the list, the function returns false.

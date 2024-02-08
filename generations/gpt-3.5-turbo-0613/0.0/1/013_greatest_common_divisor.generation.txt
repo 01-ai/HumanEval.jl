@@ -1,0 +1,12 @@
+Here is the implementation of the `greatest_common_divisor` function in Julia:
+
+```julia
+function greatest_common_divisor(a::Int, b::Int)::Int
+    while b != 0
+        a, b = b, a % b
+    end
+    return abs(a)
+end
+```
+
+This function uses the Euclidean algorithm to find the greatest common divisor of two integers `a` and `b`. It repeatedly divides `a` by `b` and updates `a` and `b` until `b` becomes zero. The final value of `a` is the greatest common divisor. The `abs` function is used to ensure that the result is always positive.

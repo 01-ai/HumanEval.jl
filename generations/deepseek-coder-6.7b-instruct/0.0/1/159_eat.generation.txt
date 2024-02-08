@@ -1,0 +1,13 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function eat(number::Int, need::Int, remaining::Int)::Vector{Int}
+    if remaining >= need
+        return [number + need, remaining - need]
+    else
+        return [number + remaining, 0]
+    end
+end
+```
+
+This function first checks if there are enough remaining carrots to satisfy the need. If there are, it returns the total number of eaten carrots as the sum of the already eaten carrots and the need, and the number of remaining carrots as the difference between the remaining carrots and the need. If there are not enough remaining carrots, it returns the total number of eaten carrots as the sum of the already eaten carrots and the remaining carrots, and the number of remaining carrots as 0.

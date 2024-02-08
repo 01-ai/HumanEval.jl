@@ -1,0 +1,5 @@
+
+
+function cycpattern_check(a::String , b::String)::Bool
+    # Your code here
+end

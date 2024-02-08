@@ -1,0 +1,28 @@
+To implement the `order_by_points` function as described, we can follow these steps:
+
+1. Define the function `order_by_points` that takes a vector of integers as input.
+2. Use a custom sorting function that sorts the numbers based on the sum of their digits. For this, we can use the `sort` function with a custom `lt` (less than) comparator.
+3. In the custom comparator, calculate the sum of digits of each number. Since the numbers can be negative, we should take the absolute value before summing the digits.
+4. If two numbers have the same sum of digits, they will remain in their original order because Julia's `sort` is stable by default.
+5. Return the sorted vector.
+
+Here's how the implementation looks in Julia:
+
+```julia
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    # Define a helper function to calculate the sum of digits of a number
+    function sum_of_digits(n::Int)
+        return sum(digits(abs(n)))
+    end
+
+    # Sort the numbers based on the sum of their digits
+    # Since Julia's sort is stable, numbers with the same sum of digits will remain in their original order
+    return sort(nums, lt=(x, y) -> sum_of_digits(x) < sum_of_digits(y))
+end
+
+# Examples
+println(order_by_points([1, 11, -1, -11, -12]))  # Output: [-1, -11, 1, -12, 11]
+println(order_by_points(Int[]))  # Output: Int64[]
+```
+
+This function first calculates the sum of digits for each number (taking care of negative numbers by using `abs`) and then sorts the array based on these sums. The use of a stable sort ensures that numbers with the same sum of digits are ordered by their original positions in the input array.

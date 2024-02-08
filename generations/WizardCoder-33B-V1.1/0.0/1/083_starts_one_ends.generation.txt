@@ -1,0 +1,15 @@
+
+
+Here is a simple solution using Julia:
+
+```julia
+function starts_one_ends(n::Int)::Int
+    if n == 1
+        return 2
+    else
+        return 2 * 10^(n-1) - 2
+    end
+end
+```
+
+This function works by first checking if `n` is 1. If it is, it returns 2, because there are only two 1-digit numbers that start or end with 1 (1 and 1). If `n` is greater than 1, it calculates the count by subtracting 2 from the total number of n-digit numbers (which is 10^n). This is because the 10^n numbers include the 10^n-1 numbers that start or end with 1, and also the 10^(n-1) numbers that start or end with 1, but are not included in the 10^n-1 count. 

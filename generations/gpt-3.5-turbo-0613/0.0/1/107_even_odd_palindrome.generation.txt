@@ -1,0 +1,3 @@
+To solve this problem, we can iterate through the range from 1 to n and check if each number is a palindrome. If it is, we increment the count of even or odd palindromes accordingly. Finally, we return the counts as a tuple.
+
+Here's the implementation:

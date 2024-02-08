@@ -1,0 +1,18 @@
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing,Int}}
+    neg_nums = filter(x -> x < 0, xs)
+    pos_nums = filter(x -> x > 0, xs)
+
+    if isempty(neg_nums)
+        neg_max = nothing
+    else
+        neg_max = maximum(neg_nums)
+    end
+
+    if isempty(pos_nums)
+        pos_min = nothing
+    else
+        pos_min = minimum(pos_nums)
+    end
+
+    return (neg_max, pos_min)
+end

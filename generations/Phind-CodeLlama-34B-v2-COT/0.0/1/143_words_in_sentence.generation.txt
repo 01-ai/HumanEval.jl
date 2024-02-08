@@ -1,0 +1,48 @@
+
+
+To solve this problem, we will first write a helper function to check if a number is prime or not. Then, we will split the given sentence into words and check the length of each word if it is prime or not. If it is prime, we will add it to the result string.
+
+Here is the step-by-step outline:
+
+1. Write a helper function `is_prime(n::Int)` to check if a number is prime or not.
+2. Split the given sentence into words using the `split` function.
+3. Initialize an empty string `result` to store the words with prime lengths.
+4. Iterate over the words using a for loop.
+5. For each word, check if its length is prime using the `is_prime` function.
+6. If the length of the word is prime, add it to the `result` string. Make sure to add a space before the word if `result` is not empty.
+7. Return `result`.
+
+Here is the Julia code implementing the above outline:
+
+```julia
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+
+function words_in_sentence(sentence::String)::String
+    words = split(sentence)
+    result = ""
+    for word in words
+        if is_prime(length(word))
+            result = result * (isempty(result) ? "" : " ") * word
+        end
+    end
+    return result
+end
+```
+
+This code should work correctly for the given problem constraints. The time complexity is O(n^2) due to the prime checking function, where n is the length of the sentence. The space complexity is O(n) for storing the words in the sentence.

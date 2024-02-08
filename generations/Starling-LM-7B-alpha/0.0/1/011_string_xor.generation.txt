@@ -1,0 +1,13 @@
+ function string_xor(a::String, b::String)::String
+    result = ""
+    for i in 1:length(a)
+        if a[i] == '1' && b[i] == '1'
+            result *= '0'
+        elseif a[i] == '0' && b[i] == '0'
+            result *= '0'
+        else
+            result *= '1'
+        end
+    end
+    return result
+end

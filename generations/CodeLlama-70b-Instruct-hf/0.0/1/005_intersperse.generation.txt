@@ -1,0 +1,17 @@
+
+
+```julia
+function intersperse(numbers::Vector{Int}, delimeter::Int)::Vector{Int}
+    if isempty(numbers)
+        return Int[]
+    end
+
+    result = Vector{Int}(undef, 2 * length(numbers) - 1)
+    result[1:2:end] = numbers
+    result[2:2:end] = delimeter
+
+    return result
+end
+```
+
+This function takes two arguments: `numbers`, a vector of integers, and `delimeter`, an integer. It returns a new vector of integers with the `delimeter` inserted between every two consecutive elements of the input vector. If the input vector is empty, it returns an empty vector.

@@ -1,0 +1,33 @@
+  Here's an implementation of the `circular_shift` function in Julia:
+```
+function circular_shift(x::Int, shift::Int)::String
+    # Convert the integer to a string
+    s = string(x)
+
+    # Get the number of digits in the string
+    n = length(s)
+
+    # If shift is greater than the number of digits, reverse the string
+    if shift > n
+        return reverse(s)
+    end
+
+    # Otherwise, shift the digits right by shift
+    return s[shift+1:n] * s[1:shift]
+end
+```
+Here's an explanation of how the function works:
+
+1. The function takes two arguments: `x`, an integer, and `shift`, an integer representing the number of digits to shift.
+2. The function converts the integer `x` to a string using the `string` function.
+3. The function gets the number of digits in the string using the `length` function.
+4. If the `shift` argument is greater than the number of digits, the function returns the string reversed using the `reverse` function.
+5. Otherwise, the function shifts the digits right by `shift` using string slicing. The `s[shift+1:n]` expression gets the substring starting at the `shift+1`th character and ending at the `n`th character (which is the last character in the string). The `s[1:shift]` expression gets the substring starting at the first character and ending at the `shift`th character. The two substrings are then concatenated using the `*` operator to form the final result.
+
+Here are some examples of how the function works:
+
+* `circular_shift(12, 1)` returns `"21"` because the digits of `12` are shifted right by 1 to form `"21"`.
+* `circular_shift(12, 2)` returns `"12"` because the digits of `12` are shifted right by 2 to form `"12"`.
+* `circular_shift(123, 3)` returns `"312"` because the digits of `123` are shifted right by 3 to form `"312"`.
+* `circular_shift(123, 4)` returns `"231"` because the digits of `123` are shifted right by 4 to form `"231"`.
+* `circular_shift(123, 5)` returns `"123"` because the digits of `123` are shifted right by 5 to form `"123"`.

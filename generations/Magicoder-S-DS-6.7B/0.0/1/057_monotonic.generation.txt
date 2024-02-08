@@ -1,0 +1,19 @@
+function monotonic(l::Vector)::Bool
+    if length(l) <= 1
+        return true
+    end
+
+    increasing = true
+    decreasing = true
+
+    for i in 2:length(l)
+        if l[i] < l[i-1]
+            increasing = false
+        end
+        if l[i] > l[i-1]
+            decreasing = false
+        end
+    end
+
+    return increasing || decreasing
+end

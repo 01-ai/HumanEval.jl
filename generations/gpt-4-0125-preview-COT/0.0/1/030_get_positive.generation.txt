@@ -1,0 +1,21 @@
+### Step-by-Step Outline
+
+1. **Define the function** `get_positive` that takes a vector of integers `xs` as its argument.
+2. **Filter the vector** to include only positive numbers. This can be done by using the `filter` function or a list comprehension, checking if each element is greater than 0.
+3. **Return the filtered vector** containing only the positive numbers.
+
+### Julia Code Implementation
+
+```julia
+function get_positive(xs::Vector{Int})
+    # Filter the vector to include only positive numbers
+    positive_xs = filter(x -> x > 0, xs)
+    return positive_xs
+end
+
+# Example usage
+println(get_positive([-1, 2, -4, 5, 6]))
+println(get_positive([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10]))
+```
+
+This function uses the `filter` function to iterate over each element in the input vector `xs`, applying the lambda function `x -> x > 0` to determine if an element is positive. Only elements for which this lambda function returns `true` are included in the output vector `positive_xs`, which is then returned.

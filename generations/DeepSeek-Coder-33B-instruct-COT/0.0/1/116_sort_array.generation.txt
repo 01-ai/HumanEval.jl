@@ -1,0 +1,27 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. Define a function `sort_array` that takes a vector of integers as input.
+2. For each integer in the input vector, convert it to binary and count the number of ones in its binary representation.
+3. Create a new vector of tuples where each tuple contains the integer and the number of ones in its binary representation.
+4. Sort this new vector of tuples first by the number of ones and then by the integer itself.
+5. Extract the sorted integers from the sorted vector of tuples and return them.
+
+Here is the Julia code that implements this outline:
+
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    # Step 2 and 3
+    arr_with_ones = [(i, count_ones(i)) for i in arr]
+    # Step 4
+    sort_arr_with_ones = sort(arr_with_ones, by = x -> (x[2], x[1]))
+    # Step 5
+    sorted_arr = [i[1] for i in sort_arr_with_ones]
+    return sorted_arr
+end
+
+function count_ones(n::Int)::Int
+    return count(c -> c == '1', bin(n, pad = 8))
+end
+```
+
+In this code, `count_ones` is a helper function that counts the number of ones in the binary representation of an integer. The `bin` function is used to convert an integer to binary, and the `count` function is used to count the number of ones. The `sort` function is used to sort the array of tuples, and the `by` keyword argument is used to specify the sorting order. The `x -> (x[2], x[1])` is a lambda function that specifies the sorting order: first by the number of ones and then by the integer itself.

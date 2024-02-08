@@ -1,0 +1,44 @@
+### Step-by-Step Outline
+
+1. **Define the Function**: Start by defining the function `strongest_extension` with the specified parameters: `class_name` as a `String` and `extensions` as a `Vector{String}`.
+
+2. **Calculate Strength of Each Extension**:
+    - Iterate through each extension in the `extensions` list.
+    - For each extension, calculate its strength. The strength is determined by the difference between the number of uppercase letters (CAP) and the number of lowercase letters (SM) in the extension's name.
+    - Use Julia's string functions to count uppercase and lowercase letters.
+
+3. **Identify the Strongest Extension**:
+    - Keep track of the extension with the highest strength value. Initialize variables to store the strongest extension's name and its strength value.
+    - If two extensions have the same strength, prioritize the one that appears first in the list (this is inherently handled by updating the strongest extension only if a stronger one is found).
+
+4. **Format and Return the Result**:
+    - Once the strongest extension is identified, format the result as `ClassName.StrongestExtensionName`.
+    - Return the formatted string.
+
+### Julia Code Implementation
+
+```julia
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    # Initialize variables to keep track of the strongest extension
+    strongest_ext = ""
+    highest_strength = -Inf  # Start with negative infinity to ensure any strength will be higher
+
+    for ext in extensions
+        # Calculate the strength of the current extension
+        CAP = count(isuppercase, ext)
+        SM = count(islowercase, ext)
+        strength = CAP - SM
+
+        # Update the strongest extension if the current one is stronger
+        if strength > highest_strength
+            strongest_ext = ext
+            highest_strength = strength
+        end
+    end
+
+    # Format and return the result
+    return class_name * "." * strongest_ext
+end
+```
+
+This implementation follows the outlined steps to calculate the strength of each extension, identify the strongest one, and return the formatted result as specified in the doc string.

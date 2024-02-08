@@ -1,0 +1,15 @@
+
+
+# Outline
+
+1. Define the function `add` that takes two arguments `x` and `y`.
+2. The function should add `x` and `y` and return the result.
+3. The function should specify the input types as `Int` to ensure the inputs are integers.
+
+# Code
+
+```julia
+function add(x::Int, y::Int)
+    return x + y
+end
+```

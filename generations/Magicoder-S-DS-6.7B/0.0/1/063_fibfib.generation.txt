@@ -1,0 +1,25 @@
+function fibfib(n::Int)::Int
+    if n < 0
+        throw(DomainError(n, "n must be non-negative"))
+    elseif n == 0 || n == 1
+        return 0
+    elseif n == 2
+        return 1
+    end
+
+    fibfib_sequence = zeros(Int, n+1)
+    fibfib_sequence[1] = 0
+    fibfib_sequence[2] = 0
+    fibfib_sequence[3] = 1
+
+    for i in 4:n+1
+        fibfib_sequence[i] = fibfib_sequence[i-1] + fibfib_sequence[i-2] + fibfib_sequence[i-3]
+    end
+
+    return fibfib_sequence[n+1]
+end
+
+# Test cases
+println(fibfib(1)) # 0
+println(fibfib(5)) # 4
+println(fibfib(8)) # 24

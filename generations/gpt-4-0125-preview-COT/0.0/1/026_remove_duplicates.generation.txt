@@ -1,0 +1,35 @@
+### Step-by-Step Outline
+
+1. **Initialize** an empty `Vector{Int}` named `unique_numbers` to store the numbers that occur only once.
+2. **Initialize** an empty `Dict{Int, Int}` named `counts` to keep track of the occurrence count of each number.
+3. **Iterate** through each number in the input `numbers` vector.
+   - For each number, **increment** its count in the `counts` dictionary. If the number is not yet in the dictionary, add it with a count of 1.
+4. **Iterate** again through each number in the input `numbers` vector.
+   - For each number, **check** its count in the `counts` dictionary. If the count is exactly 1, **append** it to the `unique_numbers` vector.
+5. **Return** the `unique_numbers` vector.
+
+### Julia Code Implementation
+
+```julia
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    # Step 1: Initialize the storage for unique numbers and counts
+    unique_numbers = Vector{Int}()
+    counts = Dict{Int, Int}()
+
+    # Step 2: Count occurrences of each number
+    for number in numbers
+        counts[number] = get(counts, number, 0) + 1
+    end
+
+    # Step 3: Collect numbers that occur only once
+    for number in numbers
+        if counts[number] == 1
+            push!(unique_numbers, number)
+        end
+    end
+
+    return unique_numbers
+end
+```
+
+This function first counts the occurrences of each number using a dictionary. Then, it iterates through the list again, this time collecting only those numbers that have a count of 1 into a new list, which it returns. This approach maintains the order of the unique elements as they appeared in the input.

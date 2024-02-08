@@ -1,0 +1,24 @@
+Here is an implementation of the `fibfib` function in Julia:
+
+```julia
+function fibfib(n::Int)::Int
+    if n == 0 || n == 1
+        return 0
+    elseif n == 2
+        return 1
+    else
+        fib1 = 0
+        fib2 = 0
+        fib3 = 1
+        for i in 3:n
+            fib = fib1 + fib2 + fib3
+            fib1 = fib2
+            fib2 = fib3
+            fib3 = fib
+        end
+        return fib3
+    end
+end
+```
+
+This implementation uses a loop to efficiently compute the n-th element of the fibfib number sequence. It initializes three variables `fib1`, `fib2`, and `fib3` to represent the three previous elements of the sequence. It then iteratively computes the next element by summing the three previous elements and updating the variables accordingly. Finally, it returns the value of `fib3`, which represents the n-th element of the sequence.

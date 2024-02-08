@@ -1,0 +1,29 @@
+```julia
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    # Initialize an empty vector to store the selected words
+    selected_words = Vector{SubString{String}}()
+
+    # Loop through the string, character by character
+    for i in 1:length(s)
+        # If the current character is a space, it's the start of a new word
+        if s[i] == ' '
+            # If the current word has exactly n consonants, add it to the list
+            if length(selected_words) == n
+                push!(selected_words, s[i-n+1:i-1])
+            end
+            # Reset the current word to the next part of the string
+            i += n - 1
+        end
+    end
+
+    # If the last word has exactly n consonants, add it to the list
+    if length(selected_words) == n - 1
+        push!(selected_words, s[end-n+1:end])
+    end
+
+    # Return the list of selected words
+    return selected_words
+end
+```
+
+This function works by iterating through the string and keeping track of the current word. Each time it encounters a space, it checks if the current word has exactly `n` consonants. If so, it adds the word to the list of selected words. The function also handles the case where the last word of the string has exactly `n` consonants.

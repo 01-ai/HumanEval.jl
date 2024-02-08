@@ -1,0 +1,26 @@
+
+
+# Outline
+
+1. Calculate the mean of the input numbers.
+2. Subtract the mean from each number in the input list and calculate the absolute value.
+3. Calculate the mean of these absolute differences.
+4. Return this mean as the result.
+
+# Code
+
+```julia
+function mean_absolute_deviation(numbers::Vector{Float64})::Float64
+    # Calculate the mean of the input numbers
+    mean_value = mean(numbers)
+
+    # Subtract the mean from each number in the input list and calculate the absolute value
+    absolute_differences = abs.(numbers .- mean_value)
+
+    # Calculate the mean of these absolute differences
+    mad = mean(absolute_differences)
+
+    # Return the result
+    return mad
+end
+```

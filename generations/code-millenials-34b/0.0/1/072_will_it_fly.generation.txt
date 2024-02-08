@@ -1,0 +1,13 @@
+
+
+function will_it_fly(q::Vector{Int}, w::Int)::Bool
+    is_balanced = q == reverse(q)
+    sum_q = sum(q)
+    return is_balanced && sum_q <= w
+end
+
+# Test cases
+@assert will_it_fly([1, 2], 5) == false
+@assert will_it_fly([3, 2, 3], 1) == false
+@assert will_it_fly([3, 2, 3], 9) == true
+@assert will_it_fly([3], 5) == true

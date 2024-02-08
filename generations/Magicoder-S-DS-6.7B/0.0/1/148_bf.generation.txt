@@ -1,0 +1,21 @@
+Here is a Julia function that implements the behavior described in the docstring:
+
+```julia
+function bf(planet1::String, planet2::String)::Tuple
+    planets = ("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune")
+    planet1_index = findfirst(isequal(planet1), planets)
+    planet2_index = findfirst(isequal(planet2), planets)
+
+    if planet1_index === nothing || planet2_index === nothing
+        return ()
+    end
+
+    if planet1_index > planet2_index
+        planet1_index, planet2_index = planet2_index, planet1_index
+    end
+
+    return planets[planet1_index+1:planet2_index-1]
+end
+```
+
+This function first checks if the input planet names are valid. If not, it returns an empty tuple. If they are valid, it finds their indices in the tuple of planet names. If `planet1` is further from the sun than `planet2`, it swaps their indices. Finally, it returns all planets whose orbits are located between the orbits of `planet1` and `planet2`, sorted by the proximity to the sun.

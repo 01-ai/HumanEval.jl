@@ -1,0 +1,5 @@
+
+
+function do_algebra(operator::Vector{String}, operand::Vector{Int})
+    # Your code here
+end

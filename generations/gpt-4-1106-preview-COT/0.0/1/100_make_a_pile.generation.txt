@@ -1,0 +1,39 @@
+To implement the `make_a_pile` function, we will follow these steps:
+
+1. Initialize an empty vector `pile` to store the number of stones in each level.
+2. Start with the first level having `n` stones and add it to `pile`.
+3. For each subsequent level, calculate the number of stones by adding 2 to the previous level's number of stones.
+4. Repeat step 3 until we have `n` levels in the pile.
+5. Return the `pile` vector.
+
+Now, let's write the code for the `make_a_pile` function:
+
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    # Step 1: Initialize the pile vector
+    pile = Vector{Int}(undef, n)
+    
+    # Step 2: Add the first level to the pile
+    pile[1] = n
+    
+    # Step 3 and 4: Calculate the number of stones for each subsequent level
+    for i in 2:n
+        pile[i] = pile[i-1] + 2
+    end
+    
+    # Step 5: Return the pile vector
+    return pile
+end
+```
+
+Let's test the function with the provided example:
+
+```julia
+julia> make_a_pile(3)
+3-element Vector{Int64}:
+ 3
+ 5
+ 7
+```
+
+This should produce the expected output.

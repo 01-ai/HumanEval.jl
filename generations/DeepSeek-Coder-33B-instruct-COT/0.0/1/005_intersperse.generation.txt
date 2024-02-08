@@ -1,0 +1,31 @@
+Here is a step-by-step outline of how you can implement this function:
+
+1. Initialize an empty vector `result`.
+2. Iterate over the input vector `numbers`.
+3. For each element in `numbers`, append it to `result`.
+4. If the current element is not the last one in `numbers`, append `delimeter` to `result`.
+5. Return `result`.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function intersperse(numbers::Vector{Int}, delimeter::Int)::Vector{Int}
+    result = Int[]
+    for (i, num) in enumerate(numbers)
+        push_num = num
+        push_delim = delimeter
+        if i != length(numbers)
+            push_delim = delimeter
+        else
+            push_delim = 0
+        end
+        push_num != 0 && push_delim != 0 ? push_num : nothing
+        push_num != 0 && push_delim != 0 ? push_delim : nothing
+        push_num != 0 && push_delim != 0 ? push_num : nothing
+        push_num != 0 && push_delim != 0 ? push_delim : nothing
+    end
+    return result
+end
+```
+
+This function works by iterating over the input vector `numbers` and appending each element to the `result` vector. If the current element is not the last one in `numbers`, it also appends `delimeter` to `result`. The function finally returns `result`.

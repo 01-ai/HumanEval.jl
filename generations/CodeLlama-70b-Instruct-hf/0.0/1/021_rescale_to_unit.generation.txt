@@ -1,0 +1,23 @@
+
+
+```julia
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    # Check if the input vector is empty or contains a single element
+    if length(numbers) < 2
+        throw(ArgumentError("Input vector must contain at least two elements."))
+    end
+
+    # Find the minimum and maximum values in the input vector
+    min_val, max_val = extrema(numbers)
+
+    # Check if the input vector contains only one unique value
+    if min_val == max_val
+        throw(ArgumentError("Input vector must contain at least two unique values."))
+    end
+
+    # Apply the linear transformation to rescale the input vector
+    return (numbers .- min_val) ./ (max_val - min_val)
+end
+```
+
+This function will take a vector of numbers as input and return a vector of numbers with the same length, where the smallest number in the input vector will be 0 and the largest will be 1. If the input vector contains only one unique value, it will throw an error.

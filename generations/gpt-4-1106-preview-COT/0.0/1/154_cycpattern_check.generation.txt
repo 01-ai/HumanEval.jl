@@ -1,0 +1,37 @@
+### Step-by-step outline for `cycpattern_check` function:
+
+1. Check if the length of `b` is greater than the length of `a`. If it is, return `false` because `b` cannot be a substring of `a`.
+
+2. Concatenate `a` with itself. This is because if `b` is a rotation of a substring of `a`, then it will appear in the concatenated string.
+
+3. Use the `occursin` function to check if `b` is a substring of the concatenated string from step 2.
+
+4. Return the result of the `occursin` check.
+
+### Julia code for `cycpattern_check` function:
+
+```julia
+function cycpattern_check(a::String, b::String)::Bool
+    # Step 1: If `b` is longer than `a`, it can't be a substring
+    if length(b) > length(a)
+        return false
+    end
+    
+    # Step 2: Concatenate `a` with itself
+    double_a = a * a
+    
+    # Step 3: Check if `b` is a substring of the concatenated string
+    return occursin(b, double_a)
+end
+```
+
+### Example usage:
+
+```julia
+println(cycpattern_check("abcd", "abd")) # false
+println(cycpattern_check("hello", "ell")) # true
+println(cycpattern_check("whassup", "psus")) # false
+println(cycpattern_check("abab", "baa")) # true
+println(cycpattern_check("efef", "eeff")) # false
+println(cycpattern_check("himenss", "simen")) # true
+```

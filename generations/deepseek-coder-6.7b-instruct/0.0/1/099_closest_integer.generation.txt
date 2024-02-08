@@ -1,0 +1,27 @@
+Here is the Julia function that implements the given problem:
+
+```julia
+function closest_integer(value::String)::Int
+    num = parse(Float64, value)
+    if num >= 0
+        return Int(round(num))
+    else
+        return Int(round(num - 0.5 + 0.01))
+    end
+end
+```
+
+This function first converts the string to a float number. If the number is positive or zero, it rounds it to the nearest integer using the `round` function. If the number is negative, it rounds it to the nearest integer, but subtracts 0.5 to ensure that it rounds away from zero. The `0.01` is added to ensure that if the number is exactly halfway between two integers, it rounds up.
+
+You can test this function with the provided examples:
+
+```julia
+julia> closest_integer("10")
+10
+
+julia> closest_integer("15.3")
+15
+
+julia> closest_integer("-14.5")
+-15
+```

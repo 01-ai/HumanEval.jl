@@ -1,0 +1,11 @@
+function make_a_pile(n::Int)::Vector{Int}
+    pile = Int[]
+    for i in 1:n
+        if n % 2 == 0
+            pushfirst(pile, 2 * i)
+        else
+            pushfirst(pile, 2 * i - 1)
+        end
+    end
+    return pile
+end

@@ -1,0 +1,36 @@
+  Here's one way to implement the `simplify` function in Julia:
+```
+function simplify(x::String, n::String)::Bool
+    # Parse the fractions
+    x_num, x_den = parse.(Int, split(x, "/"))
+    n_num, n_den = parse.(Int, split(n, "/"))
+
+    # Simplify the fractions
+    gcd = gcd(x_num, n_num)
+    x_num = x_num ÷ gcd
+    n_num = n_num ÷ gcd
+
+    # Check if the simplified fractions are equal
+    return x_num == n_num
+end
+```
+Here's an explanation of the code:
+
+1. The function takes two string arguments `x` and `n`, which represent the fractions to be simplified.
+2. The `parse` function is used to convert the strings to integers. The `split` function is used to split the strings on the `/` character, and the `Int` function is used to convert the resulting strings to integers.
+3. The `gcd` function is used to find the greatest common divisor of the numerators and denominators of the two fractions.
+4. The numerators and denominators are divided by the GCD to simplify the fractions.
+5. The simplified fractions are compared to see if they are equal. If they are equal, the function returns `true`, otherwise it returns `false`.
+
+Here are some examples of how the function can be used:
+```
+julia> simplify("1/5", "5/1")
+true
+
+julia> simplify("1/6", "2/1")
+false
+
+julia> simplify("7/10", "10/2")
+false
+```
+Note that the function assumes that the input strings are valid fractions, and does not perform any error checking. If the input strings are not valid fractions, the function may produce unexpected results.

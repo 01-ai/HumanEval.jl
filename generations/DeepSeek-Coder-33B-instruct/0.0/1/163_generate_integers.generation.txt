@@ -1,0 +1,12 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function generate_integers(a::Int, b::Int)::Vector{Int}
+    if a > b
+        a, b = b, a
+    end
+    return [i for i in a:b if iseven(i)]
+end
+```
+
+This function first checks if `a` is greater than `b`, and if so, it swaps the values of `a` and `b`. Then it uses a list comprehension to generate a list of even numbers between `a` and `b`. The `iseven` function is used to check if a number is even. The resulting list is returned.

@@ -1,0 +1,9 @@
+ function filter_by_prefix(xs::Vector{String}, prefix::String)::Vector{String}
+    filtered_strings = String[]
+    for str in xs
+        if startswith(str, prefix)
+            push!(filtered_strings, str)
+        end
+    end
+    return filtered_strings
+end

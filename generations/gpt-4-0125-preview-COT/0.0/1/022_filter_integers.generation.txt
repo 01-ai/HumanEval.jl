@@ -1,0 +1,34 @@
+### Step-by-Step Outline
+
+1. **Initialize an empty vector** to store the filtered integers.
+2. **Iterate through the given list** (`values`) to examine each element.
+3. **Check if an element is an integer** by using the `isa` function to determine if the element's type is `Int`.
+4. **If an element is an integer**, append it to the initialized vector.
+5. **Return the vector** containing only the integers after iterating through the entire list.
+
+### Julia Code Implementation
+
+```julia
+function filter_integers(values::AbstractVector)::Vector{Int}
+    # Step 1: Initialize an empty vector for integers
+    filtered_integers = Int[]
+
+    # Step 2: Iterate through the given list
+    for value in values
+        # Step 3: Check if the element is an integer
+        if isa(value, Int)
+            # Step 4: Append the integer to the vector
+            push!(filtered_integers, value)
+        end
+    end
+
+    # Step 5: Return the vector of integers
+    return filtered_integers
+end
+
+# Examples for testing
+println(filter_integers(["a", 3.14, 5]))  # Expected: [5]
+println(filter_integers([1, 2, 3, "abc", Set(), []]))  # Expected: [1, 2, 3]
+```
+
+This implementation follows the outlined steps to filter integers from a given list, ensuring that the returned vector contains only integers.

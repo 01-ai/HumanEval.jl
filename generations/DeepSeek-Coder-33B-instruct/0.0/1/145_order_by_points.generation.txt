@@ -1,0 +1,15 @@
+Here is a Julia function that implements the required functionality:
+
+```julia
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    # Calculate the sum of digits for each number
+    sums = [sum(digits(abs(n))) for n in nums]
+
+    # Sort the numbers based on the sums and their original indices
+    return nums[sortperm([sums, 1:length(nums)])]
+end
+```
+
+This function first calculates the sum of digits for each number in the input list. Then it sorts the numbers based on these sums and their original indices. The `sortperm` function is used to get the permutation that sorts the sums and indices, and this permutation is used to reorder the numbers.
+
+Note that the `abs` function is used to ensure that the sum of digits is calculated correctly for negative numbers.

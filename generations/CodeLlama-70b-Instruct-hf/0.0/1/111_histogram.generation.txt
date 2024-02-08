@@ -1,0 +1,41 @@
+
+
+```julia
+function histogram(s::String)::Dict{String, Int}
+    # Split the string into an array of words
+    words = split(s)
+
+    # Create a dictionary to store the count of each word
+    word_count = Dict{String, Int}()
+
+    # Iterate through each word in the array
+    for word in words
+        # If the word is already in the dictionary, increment its count
+        if haskey(word_count, word)
+            word_count[word] += 1
+        # If the word is not in the dictionary, add it with a count of 1
+        else
+            word_count[word] = 1
+        end
+    end
+
+    # Find the maximum count in the dictionary
+    max_count = maximum(values(word_count))
+
+    # Create a dictionary to store the words with the maximum count
+    max_count_words = Dict{String, Int}()
+
+    # Iterate through each word in the dictionary
+    for (word, count) in word_count
+        # If the word's count is equal to the maximum count, add it to the max_count_words dictionary
+        if count == max_count
+            max_count_words[word] = count
+        end
+    end
+
+    # Return the dictionary of words with the maximum count
+    return max_count_words
+end
+```
+
+This function first splits the input string into an array of words using the `split` function. It then creates a dictionary to store the count of each word. It iterates through each word in the array, incrementing the count if the word is already in the dictionary or adding it with a count of 1 if it is not. Finally, it finds the maximum count in the dictionary, creates a new dictionary to store the words with the maximum count, and returns it.

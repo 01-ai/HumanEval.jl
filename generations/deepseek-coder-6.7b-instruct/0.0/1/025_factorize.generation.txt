@@ -1,0 +1,23 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    divisor = 2
+    while divisor <= n
+        if n % divisor == 0
+            pushfirst(factors, divisor)
+            n = n � divisor
+        else
+            divisor += 1
+        end
+    end
+    return factors
+end
+```
+
+This function works by continuously dividing the input number by a divisor starting from 2. If the number is divisible, the divisor is added to the list of factors and the number is updated to be the result of the division. If the number is not divisible, the divisor is incremented and the process is repeated. This continues until the number is 1, at which point all prime factors have been found.
+
+The function uses the `pushfirst` function to add the divisor to the list of factors at the front of the list, ensuring that the factors are returned in ascending order.
+
+The time complexity of this function is O(sqrt(n)), as in the worst case it will need to check up to the square root of the number to find all prime factors. The space complexity is O(log n), as the number of factors can be at most log n (in the case of a number with many repeated factors).

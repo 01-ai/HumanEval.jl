@@ -1,0 +1,15 @@
+
+
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    # Count the number of ones in the binary representation of each number
+    ones_count = map(x -> count(c -> c == '1', string(x, base=2)), arr)
+
+    # Sort the array based on the number of ones in ascending order
+    sorted_arr = arr[sortperm(ones_count)]
+
+    return sorted_arr
+end
+```
+
+This function first counts the number of ones in the binary representation of each number in the array using the `map` function. It then sorts the array based on the number of ones in ascending order using the `sortperm` function. Finally, it returns the sorted array.

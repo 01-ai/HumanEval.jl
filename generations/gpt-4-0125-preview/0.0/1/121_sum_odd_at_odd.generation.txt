@@ -1,0 +1,22 @@
+To implement the `sum_odd_at_odd` function as described, we need to iterate through the given vector, check if both the element and its position are odd, and if so, add it to a running total. In Julia, indices are 1-based, so an element is in an odd position if its index is odd. Here's how you can do it:
+
+```julia
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    sum = 0
+    for (i, x) in enumerate(xs)
+        if i % 2 != 0 && x % 2 != 0
+            sum += x
+        end
+    end
+    return sum
+end
+```
+
+This function works as follows:
+- It initializes a variable `sum` to 0 to keep track of the total sum of odd elements at odd positions.
+- It uses `enumerate(xs)` to iterate through the vector `xs` with both index `i` and value `x`.
+- For each element, it checks if both the index `i` and the value `x` are odd using the modulo operator `%`.
+- If both conditions are true, it adds the value `x` to `sum`.
+- Finally, it returns the total `sum`.
+
+This implementation should work correctly for the examples provided in the doc string.

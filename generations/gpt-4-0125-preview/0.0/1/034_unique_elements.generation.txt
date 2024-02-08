@@ -1,0 +1,7 @@
+```julia
+function unique_elements(l::Vector)
+    return sort(unique(l))
+end
+```
+
+This Julia function `unique_elements` takes a vector `l` as input and returns a sorted vector of unique elements from `l`. It uses the built-in `unique` function to find unique elements and then sorts them using the `sort` function.

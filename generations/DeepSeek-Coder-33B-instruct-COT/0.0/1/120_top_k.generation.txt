@@ -1,0 +1,36 @@
+Here is a step-by-step outline of the solution:
+
+1. Sort the input array in descending order.
+2. Return the first `k` elements of the sorted array.
+
+Here is the Julia code that implements the above steps:
+
+```julia
+function top_k(xs::Vector{Int}, k::Int)::Vector{Int}
+    sorted_xs = sort(xs, rev=true)
+    return sorted_xs[1:k]
+end
+```
+
+This function first sorts the input array `xs` in descending order using the `sort` function with `rev=true`. Then it returns the first `k` elements of the sorted array.
+
+Let's test the function with the provided examples:
+
+```julia
+julia> top_k([-3, -4, 5], 3)
+3-element Vector{Int64}:
+  5
+ -3
+ -4
+
+julia> top_k([4, -4, 4], 2)
+2-element Vector{Int64}:
+ 4
+ 4
+
+julia> top_k([-3, 2, 1, 2, -1, -2, 1], 1)
+1-element Vector{Int64}:
+ 2
+```
+
+As you can see, the function works as expected.

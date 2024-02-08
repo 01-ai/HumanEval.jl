@@ -1,0 +1,19 @@
+```julia
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    depths = []
+    for group in split(paren_string, " ")
+        depth = 0
+        max_depth = 0
+        for char in group
+            if char == '('
+                depth += 1
+                max_depth = max(max_depth, depth)
+            elseif char == ')'
+                depth -= 1
+            end
+        end
+        push!(depths, max_depth)
+    end
+    return depths
+end
+```

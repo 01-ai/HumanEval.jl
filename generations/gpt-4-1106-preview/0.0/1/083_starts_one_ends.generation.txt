@@ -1,0 +1,25 @@
+Certainly! To solve this problem, we need to count the number of n-digit positive integers that either start or end with 1. We can break this down into two cases:
+
+1. Numbers that start with 1: For an n-digit number to start with 1, there are 10^(n-1) possibilities for the remaining digits (since each of the remaining n-1 digits can be any number from 0 to 9).
+
+2. Numbers that end with 1: Similarly, for an n-digit number to end with 1, there are 10^(n-1) possibilities for the first n-1 digits.
+
+However, we must be careful not to double-count the numbers that both start and end with 1. There are 10^(n-2) such numbers (since the middle n-2 digits can be any number from 0 to 9).
+
+Therefore, the total count is the sum of the counts from the two cases minus the double-counted numbers.
+
+Here's the Julia function that implements this logic:
+
+```julia
+function starts_one_ends(n::Int)::Int
+    if n == 1
+        # If n is 1, there's only one number that starts and ends with 1, which is 1 itself.
+        return 1
+    else
+        # Count numbers starting with 1 and numbers ending with 1, then subtract the double-counted numbers.
+        return 2 * 10^(n - 1) - 10^(n - 2)
+    end
+end
+```
+
+This function first checks if `n` is 1, in which case the answer is simply 1. Otherwise, it calculates the count using the formula derived above.

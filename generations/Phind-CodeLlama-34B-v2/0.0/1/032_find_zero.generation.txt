@@ -1,0 +1,22 @@
+
+
+function find_zero(xs::Vector{Int})
+    @assert length(xs) % 2 == 0 "The list of coefficients must have an even number of elements."
+    @assert xs[end] != 0 "The leading coefficient must be non-zero."
+
+    # Define a function to find the root of.
+    f(x) = poly(xs, x)
+
+    # Use the Bisection method to find the root.
+    left, right = -100.0, 100.0  # Initial guesses.
+    while right - left > 1e-6
+        mid = (left + right) / 2
+        if f(mid) > 0
+            right = mid
+        else
+            left = mid
+        end
+    end
+
+    return (left + right) / 2
+end

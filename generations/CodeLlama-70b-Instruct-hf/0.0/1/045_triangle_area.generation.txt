@@ -1,0 +1,19 @@
+
+
+```julia
+function triangle_area(a, h)
+    """
+    Given length of a side and high return area for a triangle.
+
+    # Examples
+
+    ```jldoctest
+    julia> triangle_area(5, 3)
+    7.5
+    ```
+    """
+    return a * h / 2
+end
+```
+
+This function calculates the area of a triangle given the length of a side and the height. The area of a triangle is calculated using the formula `A = (a * h) / 2`, where `a` is the length of a side and `h` is the height.

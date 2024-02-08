@@ -1,0 +1,26 @@
+Here is a Julia function that implements the derivative function as described in the doc string.
+
+```julia
+function derivative(xs::Vector)::Vector
+    n = length(xs)
+    return [i * xs[i+1] for i in 1:n-1]
+end
+```
+
+This function works by iterating over the indices of the input vector `xs` (excluding the first one, which is the constant term and doesn't contribute to the derivative). For each index `i`, it multiplies `i` by the coefficient `xs[i+1]` (since the derivative of `x^i` is `ix^(i-1)`), and stores the result in a new vector.
+
+Here is how you can test this function:
+
+```julia
+julia> derivative([3, 1, 2, 4, 5])
+4-element Vector{Int64}:
+  1
+  4
+ 12
+ 20
+
+julia> derivative([1, 2, 3])
+2-element Vector{Int64}:
+ 2
+ 6
+```

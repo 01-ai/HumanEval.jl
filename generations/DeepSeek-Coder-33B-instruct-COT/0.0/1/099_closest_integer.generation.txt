@@ -1,0 +1,26 @@
+Here is a step-by-step outline of how to implement the function:
+
+1. Convert the string to a float.
+2. Use the `round` function to round the float to the nearest integer.
+3. Convert the result back to an integer.
+
+Here is the Julia code that implements this:
+
+```julia
+function closest_integer(value::String)::Int
+    float_value = parse(Float64, value)
+    rounded_value = round(float_value)
+    return Int(rounded_value)
+end
+```
+
+This function first converts the string to a float using the `parse` function. Then it uses the `round` function to round the float to the nearest integer. Finally, it converts the result back to an integer using the `Int` function and returns it.
+
+Here is how you can test this function:
+
+```julia
+println(closest_integer("10"))  # should print 10
+println(closest_integer("15.3"))  # should print 15
+println(closest_integer("14.5"))  # should print 15
+println(closest_integer("-14.5"))  # should print -15
+```

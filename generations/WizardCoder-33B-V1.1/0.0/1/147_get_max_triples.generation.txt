@@ -1,0 +1,18 @@
+
+
+Here is the Julia function that solves the problem:
+
+```julia
+function get_max_triples(n::Int)::Int
+    a = [i^2 - i + 1 for i in 1:n]
+    count = 0
+    for i in 1:n-2, j in i+1:n-1, k in j+1:n
+        if (a[i] + a[j] + a[k]) % 3 == 0
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function first creates the array `a` as described in the problem. Then it iterates over all possible triples `(i, j, k)` where `i < j < k`. For each triple, it checks if the sum of the corresponding elements in `a` is a multiple of 3. If it is, it increments the counter `count`. Finally, it returns the counter. 

@@ -1,0 +1,17 @@
+To implement the `right_angle_triangle` function, we can use the Pythagorean theorem. According to the theorem, in a right-angled triangle, the square of the length of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the lengths of the other two sides. This can be represented as \(c^2 = a^2 + b^2\) where \(c\) is the length of the hypotenuse and \(a\) and \(b\) are the lengths of the other two sides.
+
+However, since we don't know which of the three sides is the hypotenuse, we need to check all three possibilities. The hypotenuse is always the longest side of the triangle.
+
+Here's the Julia function implementing this logic:
+
+```julia
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    # Sort the sides to ensure c is the longest side (potential hypotenuse)
+    sides = sort([a, b, c])
+    
+    # Check if the square of the longest side is equal to the sum of squares of the other two sides
+    return sides[3]^2 == sides[1]^2 + sides[2]^2
+end
+```
+
+This function first sorts the sides of the triangle to ensure that `sides[3]` (the last element in the sorted list) is the longest side, which is a candidate for being the hypotenuse. Then, it checks if the Pythagorean theorem holds for these sides. If it does, the function returns `true`, indicating that the triangle is right-angled. Otherwise, it returns `false`.

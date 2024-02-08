@@ -1,0 +1,48 @@
+
+
+To solve this problem, we will first create an array `a` of length `n` where each element `i` is calculated as `i * i - i + 1`. Then, we will count the number of triples `(a[i], a[j], a[k])` where `i < j < k` and `a[i] + a[j] + a[k]` is a multiple of 3.
+
+Here is the step-by-step outline:
+
+1. Initialize an empty array `a` of length `n`.
+2. Fill the array `a` with the calculated values.
+3. Initialize a counter `count` to store the number of triples.
+4. Iterate over the array `a` with three nested loops to get all possible triples `(a[i], a[j], a[k])` where `i < j < k`.
+5. For each triple, check if the sum `a[i] + a[j] + a[k]` is a multiple of 3.
+6. If it is, increment the counter `count`.
+7. After iterating over all possible triples, return the counter `count`.
+
+Here is the Julia code implementing the above outline:
+
+```julia
+function get_max_triples(n::Int)::Int
+    # Step 1: Initialize an empty array a of length n
+    a = zeros(Int, n)
+
+    # Step 2: Fill the array a with the calculated values
+    for i in 1:n
+        a[i] = i * i - i + 1
+    end
+
+    # Step 3: Initialize a counter to store the number of triples
+    count = 0
+
+    # Step 4: Iterate over the array a with three nested loops to get all possible triples (a[i], a[j], a[k]) where i < j < k
+    for i in 1:n-2
+        for j in i+1:n-1
+            for k in j+1:n
+                # Step 5: Check if the sum a[i] + a[j] + a[k] is a multiple of 3
+                if (a[i] + a[j] + a[k]) % 3 == 0
+                    # Step 6: If it is, increment the counter count
+                    count += 1
+                end
+            end
+        end
+    end
+
+    # Step 7: Return the counter count
+    return count
+end
+```
+
+This function works by generating all possible triples of array elements and checking if their sum is a multiple of 3. The counter is incremented each time a valid triple is found. The function finally returns the total count of valid triples.

@@ -1,0 +1,33 @@
+To implement the `sort_even` function as described, we need to follow these steps:
+
+1. Extract the elements at even indices from the input list.
+2. Sort the extracted elements.
+3. Replace the elements at even indices in the original list with the sorted elements.
+
+In Julia, indexing is 1-based, so even indices from a 1-based perspective are actually odd indices in a 0-based perspective (like Python). Here's how you can implement the function:
+
+```julia
+function sort_even(l::Vector)::Vector
+    # Extract elements at even indices (1-based indexing)
+    even_indices_elements = [l[i] for i in 2:2:length(l)]
+    
+    # Sort the extracted elements
+    sorted_even_indices_elements = sort(even_indices_elements)
+    
+    # Replace elements at even indices with sorted elements
+    l_prime = copy(l) # Create a copy to modify and return
+    j = 1 # Index for sorted_even_indices_elements
+    for i in 2:2:length(l)
+        l_prime[i] = sorted_even_indices_elements[j]
+        j += 1
+    end
+    
+    return l_prime
+end
+```
+
+This function works as follows:
+- It first creates a list of elements that are at even indices in the input list `l`.
+- Then, it sorts this list.
+- After that, it iterates over the even indices of the original list and replaces the elements at these indices with the sorted elements.
+- Finally, it returns the modified list `l_prime` which has the same elements at odd indices as the original list but sorted elements at even indices.

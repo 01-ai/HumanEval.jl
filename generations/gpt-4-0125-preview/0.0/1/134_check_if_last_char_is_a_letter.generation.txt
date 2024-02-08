@@ -1,0 +1,29 @@
+To implement the `check_if_last_char_is_a_letter` function as described, we need to perform a few checks:
+
+1. Ensure the string is not empty.
+2. Check if the last character is an alphabetical character.
+3. Ensure the last character is not part of a word, which implies it should be followed by a space or be the very last character in the string without any trailing spaces.
+
+Given the description, there seems to be a contradiction in the requirement that the last character must be an alphabetical character and not part of a word. Based on the examples provided, it appears the intent is to check if the last non-space character is an alphabetical character, and it is part of a word (since a character not part of a word would imply it's standalone, not followed by a space, which contradicts the examples).
+
+Assuming the goal is to check if the last non-space character is an alphabetical character and it is part of a word, here's how you could implement it:
+
+```julia
+function check_if_last_char_is_a_letter(s::String)::Bool
+    # Trim any trailing spaces from the string
+    trimmed_s = rstrip(s)
+    
+    # Check if the trimmed string is empty
+    if isempty(trimmed_s)
+        return false
+    end
+    
+    # Get the last character of the trimmed string
+    last_char = last(trimmed_s)
+    
+    # Check if the last character is an alphabetical character
+    return isletter(last_char)
+end
+```
+
+This implementation trims trailing spaces, checks if the resulting string is empty, and then checks if the last character of the non-empty, trimmed string is an alphabetical character. This should meet the requirements based on the examples provided.

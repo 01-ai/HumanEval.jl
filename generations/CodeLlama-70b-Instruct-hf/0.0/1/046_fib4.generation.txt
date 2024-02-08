@@ -1,0 +1,23 @@
+
+
+```julia
+function fib4(n::Int)::Int
+    # Check for invalid input
+    if n < 0
+        throw(DomainError(n, "Input must be a non-negative integer"))
+    end
+
+    # Initialize the first four elements of the sequence
+    fib4_sequence = [0, 0, 2, 0]
+
+    # Calculate the n-th element of the sequence using dynamic programming
+    for i = 5:n
+        fib4_sequence[i] = sum(fib4_sequence[i-4:i])
+    end
+
+    # Return the n-th element of the sequence
+    return fib4_sequence[n]
+end
+```
+
+This function uses dynamic programming to efficiently compute the n-th element of the fib4 number sequence. It initializes the first four elements of the sequence and then calculates the remaining elements using the given formula. Finally, it returns the n-th element of the sequence.

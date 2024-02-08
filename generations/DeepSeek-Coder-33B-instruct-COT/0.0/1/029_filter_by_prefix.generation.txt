@@ -1,0 +1,23 @@
+Here is a step-by-step outline of how to implement the function:
+
+1. Initialize an empty vector to store the filtered strings.
+2. Iterate over each string in the input vector.
+3. Check if the string starts with the given prefix.
+4. If it does, add it to the filtered vector.
+5. Return the filtered vector.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function filter_by_prefix(xs::Vector{String}, prefix::String)::Vector{String}
+    filtered = String[]
+    for x in xs
+        if startswith(x, prefix)
+            push_end(filtered, x)
+        end
+    end
+    return filtered
+end
+```
+
+This function uses the `startswith` function to check if a string starts with a given prefix, and the `push_end` function to add a string to the end of a vector.

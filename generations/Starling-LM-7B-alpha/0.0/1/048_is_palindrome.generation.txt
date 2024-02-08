@@ -1,0 +1,31 @@
+ Here's a Julia function that checks if a given string is a palindrome:
+
+```julia
+function is_palindrome(text::String)::Bool
+    # Remove all non-alphanumeric characters and convert to lowercase
+    cleaned_text = lowercase(replace(text, r"[^0-9a-z]" => ""))
+
+    # Check if the cleaned text is the same forwards and backwards
+    return cleaned_text == reverse(cleaned_text)
+end
+```
+
+This function first removes all non-alphanumeric characters from the input string and converts it to lowercase. Then, it checks if the cleaned text is the same forwards and backwards. If it is, the function returns `true`, indicating that the input string is a palindrome; otherwise, it returns `false`.
+
+Here are some examples of using the function:
+
+```jldoctest
+julia> is_palindrome("")
+true
+
+julia> is_palindrome("aba")
+true
+
+julia> is_palindrome("aaaaa")
+true
+
+julia> is_palindrome("zbcd")
+false
+```
+
+These examples demonstrate that the function correctly identifies palindromes and non-palindromes.

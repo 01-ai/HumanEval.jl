@@ -1,0 +1,29 @@
+Here is the Julia function `parse_music` that parses the given music string and returns a vector of integers representing the beats for each note:
+
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    # Initialize an empty vector to store the beats
+    beats = Int[]
+
+    # Split the music string into individual notes
+    notes = split(music_string, " ")
+
+    # Iterate over each note and determine the number of beats
+    for note in notes
+        if note == "o"
+            push!(beats, 4)  # Whole note, 4 beats
+        elseif note == "o|"
+            push!(beats, 2)  # Half note, 2 beats
+        elseif note == ".|"
+            push!(beats, 1)  # Quarter note, 1 beat
+        end
+    end
+
+    return beats
+end
+
+# Example usage
+println(parse_music("o o| .| o| o| .| .| .| .| o o"))
+```
+
+This function first initializes an empty vector to store the beats. It then splits the input string into individual notes using a space as the delimiter. It iterates over each note, checks the note type, and appends the corresponding number of beats to the `beats` vector. Finally, it returns the `beats` vector.

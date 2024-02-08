@@ -1,0 +1,31 @@
+Certainly! Below is the Julia function `right_angle_triangle` that checks if the given sides form a right-angled triangle:
+
+```julia
+"""
+    right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+
+Given the lengths of the three sides of a triangle. Return `true` if the three
+sides form a right-angled triangle, `false` otherwise. A right-angled triangle
+is a triangle in which one angle is right angle or 90 degree.
+
+# Examples
+
+```jldoctest
+julia> right_angle_triangle(3, 4, 5)
+true
+
+julia> right_angle_triangle(1, 2, 3)
+false
+```
+"""
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    # Sort the sides so that c is the longest side
+    sides = sort([a, b, c])
+    a, b, c = sides
+
+    # Check if the square of the longest side equals the sum of the squares of the other two sides
+    return isapprox(a^2 + b^2, c^2)
+end
+```
+
+This function first sorts the sides to ensure that `c` is the longest side, which is necessary for the Pythagorean theorem to be applied correctly. Then it checks if the sum of the squares of the two shorter sides (`a` and `b`) is approximately equal to the square of the longest side (`c`). The `isapprox` function is used to account for potential floating-point arithmetic issues. If the condition is met, the function returns `true`, indicating that the sides form a right-angled triangle. Otherwise, it returns `false`.

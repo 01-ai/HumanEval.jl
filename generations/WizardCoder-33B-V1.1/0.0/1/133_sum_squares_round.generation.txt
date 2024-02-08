@@ -1,0 +1,11 @@
+
+
+Here is the Julia function that implements the given doc string:
+
+```julia
+function sum_squares_round(xs::Vector)::Int
+    return sum(x -> floor(Int, x)^2, xs)
+end
+```
+
+This function uses the `sum` function to sum up the squared elements of the input vector. The `floor` function is used to round each element in the list to the upper int(Ceiling). The `^` operator is used to square the elements. 

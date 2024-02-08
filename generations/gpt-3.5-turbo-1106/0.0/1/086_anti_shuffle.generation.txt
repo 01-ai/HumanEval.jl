@@ -1,0 +1,7 @@
+```julia
+function anti_shuffle(s::String)::String
+    words = split(s, " ")
+    ordered_words = [join(sort(collect(word)), "") for word in words]
+    return join(ordered_words, " ")
+end
+```

@@ -1,0 +1,30 @@
+To implement the `compare_one` function as described, we need to handle the conversion of strings to numbers, taking into account that the decimal separator might be either a dot (`.`) or a comma (`,`). We also need to ensure that the comparison is done numerically and that the return type matches the type of the larger value, or `nothing` if they are equal. Here's how you can do it:
+
+```julia
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+    # Convert inputs to floats for comparison, handling both . and , as decimal separators
+    function to_float(x)
+        if isa(x, AbstractString)
+            # Replace comma with dot for conversion
+            x = replace(x, ',' => '.')
+            return parse(Float64, x)
+        elseif isa(x, Integer) || isa(x, AbstractFloat)
+            return Float64(x)
+        end
+    end
+
+    a_float = to_float(a)
+    b_float = to_float(b)
+
+    # Compare the float representations
+    if a_float > b_float
+        return a
+    elseif b_float > a_float
+        return b
+    else
+        return nothing
+    end
+end
+```
+
+This function first converts both inputs to `Float64` for a fair comparison, taking care of the decimal separator issue for strings. It then compares these float values. Depending on the comparison result, it returns the original input that corresponds to the larger value, or `nothing` if they are equal. This approach ensures that the return type matches the type of the input variable that is larger.

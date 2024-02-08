@@ -1,0 +1,26 @@
+Here is a step-by-step outline of how you can implement the function:
+
+1. Initialize a counter variable to 0.
+2. Iterate over each number in the input array.
+3. For each number, convert it to a string and split it into individual digits.
+4. Sum the digits. If the number is negative, the first digit will be negative.
+5. If the sum of the digits is greater than 0, increment the counter.
+6. After iterating over all numbers, return the counter.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function count_nums(xs::Vector{Int})::Int
+    counter = 0
+    for num in xs
+        digits = split(string(num), "")
+        sum_digits = sum(parse(Int, digit) for digit in digits)
+        if sum_digits > 0
+            counter += 1
+        end
+    end
+    return counter
+end
+```
+
+This function works by first converting each number to a string, then splitting the string into individual characters (which are the digits of the number). It then converts each digit back to an integer and sums them up. If the sum is greater than 0, it increments the counter. Finally, it returns the counter.

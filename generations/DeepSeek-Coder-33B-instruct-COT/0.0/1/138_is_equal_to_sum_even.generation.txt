@@ -1,0 +1,20 @@
+Here is a step-by-step outline of the function:
+
+1. Check if the number `n` is greater than or equal to 8. If it is not, return false because it is not possible to write it as the sum of exactly 4 positive even numbers.
+2. If `n` is greater than or equal to 8, check if the remainder of `n` divided by 4 is 0. If it is, return true because `n` can be written as the sum of exactly 4 positive even numbers. If it is not, return false.
+
+Here is the Julia code:
+
+```julia
+function is_equal_to_sum_even(n::Int)::Bool
+    if n < 8
+        return false
+    elseif n % 4 == 0
+        return true
+    else
+        return false
+    end
+end
+```
+
+This function works by first checking if `n` is less than 8. If it is, it returns false because it is not possible to write `n` as the sum of exactly 4 positive even numbers. If `n` is not less than 8, it then checks if `n` is divisible by 4. If it is, it returns true because `n` can be written as the sum of exactly 4 positive even numbers. If `n` is not divisible by 4, it returns false.

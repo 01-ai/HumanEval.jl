@@ -1,0 +1,23 @@
+
+```julia
+function cycpattern_check(a::String, b::String)::Bool
+    if length(a) < length(b)
+        return false
+    end
+    b_rotations = [b[i:end] * b[1:i-1] for i in 1:length(b)]
+    for rotation in b_rotations
+        if occursin(rotation, a)
+            return true
+        end
+    end
+    return false
+end
+```
+
+This function first checks if the length of the first string is less than the length of the second string. If it is, it returns `false` because the second string cannot be a substring of the first string.
+
+Next, it creates a list of rotations of the second string by slicing the string and concatenating the slices. For example, if the second string is "abcd", the rotations will be "abcd", "bcda", "cdab", and "dabc".
+
+It then iterates through the list of rotations and checks if each rotation is a substring of the first string using the `occursin` function. If it finds a rotation that is a substring of the first string, it returns `true`.
+
+If it finishes iterating through the list of rotations without finding a match, it returns `false`.

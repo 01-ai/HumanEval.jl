@@ -1,0 +1,14 @@
+
+
+function can_arrange(xs::Vector{Int})::Int
+    for i in 2:length(xs)
+        if xs[i] < xs[i-1]
+            return i
+        end
+    end
+    return -1
+end
+
+# Test cases
+println(can_arrange([1, 2, 4, 3, 5]))  # Expected output: 4
+println(can_arrange([1, 2, 3]))  # Expected output: -1

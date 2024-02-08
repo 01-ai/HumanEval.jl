@@ -1,0 +1,13 @@
+
+
+function pluck(xs::Vector{Int})::Vector{Int}
+    min_val = typemax(Int)
+    min_idx = -1
+    for (i, x) in enumerate(xs)
+        if x % 2 == 0 && x < min_val
+            min_val = x
+            min_idx = i
+        end
+    end
+    return min_val == typemax(Int) ? Int[] : [min_val, min_idx]
+end

@@ -1,0 +1,38 @@
+To implement the function `is_equal_to_sum_even`, we will follow these steps:
+
+1. Check if `n` is less than 8. If it is, return `false` because the smallest sum of four positive even numbers is `2 + 2 + 2 + 2 = 8`.
+
+2. Check if `n` is even. If it is not, return `false` because the sum of even numbers is always even.
+
+3. If `n` is greater than or equal to 8 and is even, then it can be written as the sum of four even numbers. This is because we can always find four even numbers that sum up to any even number `n` that is 8 or greater. For example, if `n` is even and greater than 8, we can write `n` as `(n - 6) + 2 + 2 + 2`. The number `(n - 6)` will always be even and positive if `n` is even and greater than 8.
+
+4. Return `true` if the above conditions are met.
+
+Now, let's write the code for the function `is_equal_to_sum_even`:
+
+```julia
+function is_equal_to_sum_even(n::Int)::Bool
+    # Step 1: Check if n is less than 8
+    if n < 8
+        return false
+    end
+    
+    # Step 2: Check if n is even
+    if n % 2 != 0
+        return false
+    end
+    
+    # Step 3 and 4: If n is greater than or equal to 8 and even, it can be written as the sum of four even numbers
+    return true
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(is_equal_to_sum_even(4))  # Output: false
+println(is_equal_to_sum_even(6))  # Output: false
+println(is_equal_to_sum_even(8))  # Output: true
+```
+
+This function should work correctly based on the logic we've outlined.

@@ -1,0 +1,35 @@
+  Here is an implementation of the `reverse_delete` function in Julia:
+```
+function reverse_delete(s::String, c::String)::Tuple{String, Bool}
+    # Create a new string by deleting all characters in s that are equal to any character in c
+    new_s = ""
+    for i in 1:length(s)
+        if s[i] ∉ c
+            new_s *= s[i]
+        end
+    end
+
+    # Check if the result string is a palindrome
+    is_palindrome = new_s == reverse(new_s)
+
+    return (new_s, is_palindrome)
+end
+```
+Here's an explanation of the code:
+
+1. We define a new string `new_s` to store the result of deleting all characters in `s` that are equal to any character in `c`.
+2. We loop through each character in `s` and check if it is not in `c`. If it is not, we add it to `new_s`.
+3. We check if the result string `new_s` is a palindrome by comparing it to its reverse. If it is, we set `is_palindrome` to `true`, otherwise we set it to `false`.
+4. We return a tuple containing the result string `new_s` and the boolean value `is_palindrome`.
+
+Here are some examples of how to use the `reverse_delete` function:
+```
+julia> reverse_delete("abcde", "ae")
+("bcd", false)
+
+julia> reverse_delete("abcdef", "b")
+("acdef", false)
+
+julia> reverse_delete("abcdedcba", "ab")
+("cdedc", true)
+```

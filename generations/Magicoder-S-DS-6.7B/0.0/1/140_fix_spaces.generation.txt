@@ -1,0 +1,5 @@
+function fix_spaces(s::String)::String
+    s = replace(s, r"\s+" => "-")
+    s = replace(s, " " => "_")
+    return s
+end

@@ -1,0 +1,29 @@
+Here is a Julia function that implements the Collatz conjecture and returns the odd numbers in the sequence.
+
+```julia
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    collatz_sequence = BigInt[]
+    while n != 1
+        push_odd(n, collatz_sequence)
+        n = n % 2 == 0 ? n � 2 : 3n + 1
+    end
+    push_odd(n, collatz_sequence)
+    sort(collatz_sequence)
+end
+
+function push_odd(n::Int, collatz_sequence::Vector{BigInt})
+    if n % 2 != 0
+        push_bigint(n, collatz_sequence)
+    end
+end
+
+function push_bigint(n::Int, collatz_sequence::Vector{BigInt})
+    pushfirst(collatz_sequence, BigInt(n))
+end
+```
+
+This function works by iterating through the Collatz sequence until it reaches 1. For each number in the sequence, it checks if it is odd and if so, it adds it to the `collatz_sequence`. Finally, it sorts the sequence in increasing order and returns it.
+
+The `push_odd` function checks if a number is odd and if so, it adds it to the `collatz_sequence`. The `push_bigint` function adds a number to the `collatz_sequence` as a `BigInt`.
+
+The `BigInt` type is used to avoid overflow, as the Collatz sequence can quickly grow very large.

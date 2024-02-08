@@ -1,0 +1,42 @@
+To implement the `specialFilter` function as described, we need to follow these steps:
+
+1. Iterate through each number in the input array.
+2. Check if a number is greater than 10.
+3. Check if both the first and last digits of the number are odd.
+4. Count the numbers that satisfy both conditions (2 and 3).
+
+Here's how you can implement this in Julia:
+
+```julia
+function specialFilter(nums::Vector{Int})::Int
+    # Function to check if both the first and last digits of a number are odd
+    function isFirstAndLastDigitOdd(n::Int)::Bool
+        # Convert number to its absolute value to handle negative numbers
+        n = abs(n)
+        # Extract the last digit
+        last_digit = n % 10
+        # Extract the first digit by continuously dividing by 10 until n < 10
+        while n >= 10
+            n = div(n, 10)
+        end
+        first_digit = n
+        # Check if both digits are odd
+        return (first_digit % 2 != 0) && (last_digit % 2 != 0)
+    end
+
+    # Initialize a counter for numbers that satisfy the conditions
+    count = 0
+
+    # Iterate through each number in the input array
+    for num in nums
+        # Check if the number is greater than 10 and both first and last digits are odd
+        if num > 10 && isFirstAndLastDigitOdd(num)
+            count += 1
+        end
+    end
+
+    return count
+end
+```
+
+This function defines a helper function `isFirstAndLastDigitOdd` to check if both the first and last digits of a number are odd. It then iterates through the input array, applying the conditions specified in the problem statement, and counts the numbers that satisfy these conditions.

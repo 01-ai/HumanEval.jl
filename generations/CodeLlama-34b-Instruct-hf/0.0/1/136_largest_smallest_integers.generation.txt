@@ -1,0 +1,29 @@
+  Here's one way to implement the `largest_smallest_integers` function in Julia:
+```
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing,Int}}
+    negatives = Int[]
+    positives = Int[]
+    for x in xs
+        if x < 0
+            push!(negatives, x)
+        elseif x > 0
+            push!(positives, x)
+        end
+    end
+    if isempty(negatives)
+        return (nothing, nothing)
+    elseif isempty(positives)
+        return (nothing, nothing)
+    else
+        return (maximum(negatives), minimum(positives))
+    end
+end
+```
+Here's how the function works:
+
+1. It first initializes two empty vectors `negatives` and `positives` to store the negative and positive integers in the input vector `xs`.
+2. It then iterates over the elements of `xs` and checks if each element is negative or positive. If it's negative, it's added to the `negatives` vector. If it's positive, it's added to the `positives` vector.
+3. After iterating over all elements of `xs`, the function checks if either of the `negatives` or `positives` vectors is empty. If both are empty, it returns `(nothing, nothing)`. If only one of them is empty, it returns `(nothing, nothing)` for the corresponding element.
+4. If both `negatives` and `positives` are non-empty, it returns the maximum of `negatives` and the minimum of `positives`.
+
+Note that the function uses the `maximum` and `minimum` functions to find the largest and smallest elements in the `negatives` and `positives` vectors, respectively. These functions return the largest and smallest elements in the vector, or `nothing` if the vector is empty.

@@ -1,0 +1,13 @@
+
+
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    seen = Set()
+    result = Vector{Int}()
+    for number in numbers
+        if !(number in seen)
+            push!(result, number)
+            push!(seen, number)
+        end
+    end
+    return result
+end

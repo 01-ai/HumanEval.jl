@@ -1,0 +1,46 @@
+
+
+function min_path(grid::Vector{Vector{Int}}, k::Int)::Vector{Int}
+    n = length(grid)
+    visited = zeros(Int, n, n)
+    min_path = []
+    for i in 1:n
+        for j in 1:n
+            if visited[i, j] == 0
+                visited[i, j] = 1
+                dfs!(grid, visited, i, j, k, min_path)
+            end
+        end
+    end
+    return min_path
+end
+
+function dfs!(grid, visited, i, j, k, min_path)
+    if k == 0
+        return true
+    end
+    if i < 1 || i > length(grid) || j < 1 || j > length(grid[1]) || visited[i, j] == -1
+        return false
+    end
+    if visited[i, j] == 1
+        return false
+    end
+    visited[i, j] = -1
+    if dfs!(grid, visited, i+1, j, k-1, min_path) ||
+       dfs!(grid, visited, i-1, j, k-1, min_path) ||
+       dfs!(grid, visited, i, j+1, k-1, min_path) ||
+       dfs!(grid, visited, i, j-1, k-1, min_path)
+        push!(min_path, grid[i, j])
+        return true
+    end
+    visited[i, j] = 1
+    return false
+end
+
+# Test Cases
+
+grid1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+grid2 = [[5, 9, 3], [4, 1, 6], [7, 8, 2]]
+
+@assert min_path(grid1, 3) == [1, 2, 1]
+@assert min_path(grid2, 1) == [1]

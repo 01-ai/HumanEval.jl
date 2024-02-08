@@ -1,0 +1,16 @@
+
+
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    strongest_extension = ""
+    strongest_strength = -Inf
+    for extension in extensions
+        CAP = count(isuppercase, extension)
+        SM = count(islowercase, extension)
+        strength = CAP - SM
+        if strength > strongest_strength
+            strongest_strength = strength
+            strongest_extension = extension
+        end
+    end
+    return "$class_name.$strongest_extension"
+end

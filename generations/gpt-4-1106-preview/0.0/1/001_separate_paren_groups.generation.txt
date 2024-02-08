@@ -1,0 +1,40 @@
+Certainly! Below is the Julia function `separate_paren_groups` that takes a string containing multiple groups of nested parentheses and returns a vector of strings, each containing a separate group of balanced parentheses.
+
+```julia
+function separate_paren_groups(paren_string::String)::Vector{String}
+    # Remove spaces from the input string
+    paren_string = replace(paren_string, " " => "")
+    
+    # Initialize an empty vector to store the separate groups
+    groups = Vector{String}()
+    
+    # Initialize counters for the current group and the level of nesting
+    current_group = ""
+    nesting_level = 0
+    
+    # Iterate over each character in the string
+    for c in paren_string
+        # If we encounter an opening parenthesis, increase the nesting level
+        if c == '('
+            nesting_level += 1
+            current_group *= c
+        # If we encounter a closing parenthesis, decrease the nesting level
+        elseif c == ')'
+            nesting_level -= 1
+            current_group *= c
+            # If the nesting level reaches zero, we have a complete group
+            if nesting_level == 0
+                push!(groups, current_group)
+                current_group = ""
+            end
+        end
+    end
+    
+    return groups
+end
+
+# Example usage
+println(separate_paren_groups("( ) (( )) (( )( ))"))
+```
+
+This function works by iterating over each character in the input string, keeping track of the level of nesting with a counter. When the counter returns to zero, it means that a group of balanced parentheses has been completed, and it is added to the list of groups. The function then continues to look for the next group.

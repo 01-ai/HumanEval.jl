@@ -1,0 +1,23 @@
+
+
+Here is the Julia implementation of the `monotonic` function based on the provided docstring:
+
+```julia
+function monotonic(l::Vector)::Bool
+    if length(l) < 2
+        return true
+    end
+
+    dir = l[2] - l[1]
+    for i in 3:length(l)
+        if (l[i] - l[i-1]) * dir < 0
+            return false
+        end
+        dir = l[i] - l[i-1]
+    end
+
+    return true
+end
+```
+
+This function works by initializing a direction variable `dir` to the difference between the second and first elements of the list. Then, it iterates over the rest of the list, checking if the difference between consecutive elements is of the same sign as `dir`. If it encounters an element with a different sign, it returns `false`. If it finishes iterating without encountering any such elements, it returns `true`.

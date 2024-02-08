@@ -1,0 +1,35 @@
+### Step-by-Step Outline
+
+1. **Initialize Variables**: Start by initializing a vector to store the number of stones in each level. Also, initialize a variable to keep track of the current number of stones, which starts with `n`.
+
+2. **Determine the Pattern**: Based on the value of `n`, determine whether we will be adding odd or even numbers to the pile. This can be done by checking if `n` is odd or even.
+
+3. **Build the Pile**: Use a loop to add the appropriate number of stones to each level. For each iteration:
+   - Add the current number of stones to the vector.
+   - Determine the next number of stones to add based on whether we're adding odd or even numbers. This can be done by adding 2 to the current number of stones.
+
+4. **Return the Vector**: After the loop has added stones to all `n` levels, return the vector.
+
+### Julia Code Implementation
+
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    # Step 1: Initialize the vector and the current number of stones
+    pile = Int[]
+    current_stones = n
+    
+    # Step 2: Determine the pattern (odd or even)
+    increment = n % 2 == 0 ? 2 : 2  # Both odd and even numbers will increment by 2
+    
+    # Step 3: Build the pile
+    for _ in 1:n
+        push!(pile, current_stones)
+        current_stones += increment  # Move to the next number in the sequence
+    end
+    
+    # Step 4: Return the vector
+    return pile
+end
+```
+
+This function starts with `n` stones and builds a pile of `n` levels, where each level has either the next odd or even number of stones, depending on whether `n` is odd or even. However, since both odd and even numbers follow the same increment pattern (adding 2 each time), the distinction in step 2 is not necessary but included for clarity.

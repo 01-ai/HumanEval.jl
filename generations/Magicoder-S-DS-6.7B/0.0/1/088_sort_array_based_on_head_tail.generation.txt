@@ -1,0 +1,12 @@
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    if isempty(xs)
+        return Int[]
+    end
+
+    sum_head_tail = xs[1] + xs[end]
+    if sum_head_tail % 2 == 0
+        return sort(xs, rev=true)
+    else
+        return sort(xs)
+    end
+end

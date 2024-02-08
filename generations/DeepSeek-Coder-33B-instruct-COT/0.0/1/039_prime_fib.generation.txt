@@ -1,0 +1,49 @@
+Here is a step-by-step outline of the function:
+
+1. Define a helper function `is_prime(n)` that checks if a number `n` is prime.
+2. Define a helper function `fib(n)` that calculates the n-th Fibonacci number.
+3. Initialize a counter `count` to 0.
+4. Start a loop that continues until `count` is equal to `n`.
+5. In each iteration of the loop, calculate the next Fibonacci number using the `fib` function.
+6. Check if the Fibonacci number is prime using the `is_prime` function.
+7. If the Fibonacci number is prime, increment `count`.
+8. If `count` is equal to `n`, return the Fibonacci number.
+
+Here is the Julia code:
+
+```julia
+function is_prime(n)
+    if n == 1
+        return false
+    end
+    for i in 2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+function fib(n)
+    a, b = 0, 1
+    for i in 1:n
+        a, b = b, a + b
+    end
+    return a
+end
+
+function prime_fib(n)
+    count = 0
+    i = 1
+    while count < n
+        f = fib(i)
+        if is_prime(f)
+            count += 1
+        end
+        i += 1
+    end
+    return fib(i-1)
+end
+```
+
+This function works by generating Fibonacci numbers and checking if they are prime. It stops when it has found `n` prime Fibonacci numbers. The last Fibonacci number found is returned.

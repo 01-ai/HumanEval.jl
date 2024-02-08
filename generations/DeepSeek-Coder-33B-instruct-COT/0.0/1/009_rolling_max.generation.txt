@@ -1,0 +1,33 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. Initialize an empty vector `max_numbers` to store the rolling maximum numbers.
+2. Iterate over the input vector `numbers`.
+3. For each number, compare it with the maximum number found so far. If the current number is greater, update the maximum number.
+4. Append the maximum number to `max_numbers`.
+5. Return `max_numbers`.
+
+Here is the Julia code that implements the above steps:
+
+```julia
+function rolling_max(numbers::Vector{Int})::Vector{Int}
+    max_numbers = Int[]
+    max_so_far = typemin(Int)
+    for num in numbers
+        max_so_far = max(max_so_far, num)
+        push_max_numbers(max_numbers, max_so_far)
+    end
+    return max_numbers
+end
+```
+
+In this code, `max_so_far` is used to keep track of the maximum number found so far, and `push_max_numbers` is used to append the maximum number to `max_numbers`.
+
+Please note that `push_max_numbers` is not a built-in function in Julia. You need to define it as follows:
+
+```julia
+function push_max_numbers(max_numbers::Vector{Int}, max_so_far::Int)
+    push_max_numbers(max_numbers, max_so_far)
+end
+```
+
+This function simply appends `max_so_far` to `max_numbers`.

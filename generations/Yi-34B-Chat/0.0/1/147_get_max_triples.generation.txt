@@ -1,0 +1,25 @@
+```julia
+function get_max_triples(n::Int)::Int
+    # Initialize the array a with the given formula
+    a = [i * i - i + 1 for i in 1:n]
+    
+    # Initialize the count of valid triples
+    valid_triples = 0
+    
+    # Loop through all possible i, j, k combinations
+    for i in 1:(n - 2)
+        for j in (i + 1):(n - 1)
+            for k in (j + 1):n
+                # Check if the sum of the triple is a multiple of 3
+                if (a[i] + a[j] + a[k]) % 3 == 0
+                    valid_triples += 1
+                end
+            end
+        end
+    end
+    
+    return valid_triples
+end
+```
+
+This function defines a `get_max_triples` function that takes an integer `n` and returns the number of triples `(a[i], a[j], a[k])` where `i < j < k` and `a[i] + a[j] + a[k]` is a multiple of 3. The function first initializes an array `a` with the given formula for each index `i`. It then iterates through all possible combinations of `i`, `j`, and `k` and checks if the sum of the elements at those indices is a multiple of 3. If it is, the count of valid triples is incremented. Finally, the function returns the total count of valid triples.

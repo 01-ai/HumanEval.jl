@@ -1,0 +1,20 @@
+```julia
+function is_sorted(xs::Vector{Int})::Bool
+    # Check for duplicates by comparing the length of the original array
+    # with the length of the array after removing duplicates.
+    if length(xs) != length(unique(xs))
+        return false
+    end
+
+    # Check if the array is sorted in ascending order.
+    for i in 1:length(xs)-1
+        if xs[i] > xs[i+1]
+            return false
+        end
+    end
+
+    return true
+end
+```
+
+This Julia function `is_sorted` takes a vector of integers as input and returns `true` if the vector is sorted in ascending order without any duplicate elements (more than one occurrence of the same number is considered a duplicate and results in `false`). It first checks for duplicates by comparing the length of the original vector with the length of the vector after removing duplicates using the `unique` function. Then, it iterates through the vector to check if each element is less than or equal to the next element, ensuring the vector is sorted in ascending order.

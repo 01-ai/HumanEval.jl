@@ -1,0 +1,29 @@
+
+
+```julia
+function search(numbers::Vector)::Int
+    # Create a dictionary to store the frequency of each number
+    freq = Dict{Int, Int}()
+
+    # Iterate through the numbers and update the frequency
+    for num in numbers
+        if haskey(freq, num)
+            freq[num] += 1
+        else
+            freq[num] = 1
+        end
+    end
+
+    # Find the greatest number with frequency greater than or equal to itself
+    max_num = -1
+    for (num, freq) in freq
+        if freq >= num && num > max_num
+            max_num = num
+        end
+    end
+
+    return max_num
+end
+```
+
+This function iterates through the numbers and counts the frequency of each number. Then, it finds the greatest number with frequency greater than or equal to itself. If such a number exists, it returns it; otherwise, it returns -1.

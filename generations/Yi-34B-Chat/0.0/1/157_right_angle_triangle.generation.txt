@@ -1,0 +1,15 @@
+```julia
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    # Check if the triangle is valid (all sides must be positive)
+    if a <= 0 || b <= 0 || c <= 0
+        return false
+    end
+
+    # Use the Pythagorean theorem to check if the triangle is right-angled
+    pythagorean_check = a^2 + b^2 == c^2
+
+    return pythagorean_check
+end
+```
+
+This function checks if the three sides of a triangle form a right-angled triangle using the Pythagorean theorem. If the sum of the squares of the two shorter sides equals the square of the longest side, then the triangle is right-angled.

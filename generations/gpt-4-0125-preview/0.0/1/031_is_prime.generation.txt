@@ -1,0 +1,30 @@
+Certainly! Below is the Julia function `is_prime` that checks if a given number is prime.
+
+```julia
+function is_prime(n::Int)
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+```
+
+This function first handles the simple cases:
+- If `n` is less than or equal to 1, it is not prime.
+- If `n` is 2 or 3, it is prime.
+- If `n` is divisible by 2 or 3, it is not prime.
+
+Then, it checks for factors beyond 3 by iterating from 5 onwards, incrementing by 6 each time (since any prime number greater than 3 can be written in the form of 6k ± 1). If `n` is divisible by any of these numbers, it is not prime. The loop runs while `i * i <= n` to avoid unnecessary checks beyond the square root of `n`, as any factor larger than the square root would have a corresponding factor smaller than the square root.
+
+This is an efficient way to check for primality for relatively small numbers.

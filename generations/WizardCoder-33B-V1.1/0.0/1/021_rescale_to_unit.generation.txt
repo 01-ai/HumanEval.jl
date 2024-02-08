@@ -1,0 +1,12 @@
+
+
+Here is the Julia function that implements the above doc string:
+
+```julia
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    min_val, max_val = extrema(numbers)
+    return (numbers .- min_val) ./ (max_val - min_val)
+end
+```
+
+This function works by first finding the minimum and maximum values in the input vector using the `extrema` function. It then subtracts the minimum value from each element in the vector and divides the result by the difference between the maximum and minimum values. This rescales the numbers to the range [0, 1]. 

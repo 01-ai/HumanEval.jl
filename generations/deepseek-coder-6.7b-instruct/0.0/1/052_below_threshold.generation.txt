@@ -1,0 +1,14 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function below_threshold(l::Vector, t::Number)::Bool
+    for i in l
+        if i >= t
+            return false
+        end
+    end
+    return true
+end
+```
+
+This function iterates over each element in the vector `l`. If it finds an element that is greater than or equal to `t`, it immediately returns `false`. If it doesn't find any such element, it returns `true` after the loop finishes.

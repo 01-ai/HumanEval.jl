@@ -1,0 +1,17 @@
+
+
+```julia
+function reverse_string(s::String)::String
+    # Check if the string contains any letters
+    if any(isletter, s)
+        # Reverse the case of letters
+        result = join([isletter(c) ? uppercase(c) : lowercase(c) for c in s])
+    else
+        # Reverse the string
+        result = reverse(s)
+    end
+    return result
+end
+```
+
+This function first checks if the string contains any letters using the `any` function and the `isletter` function. If it does, it reverses the case of each letter using the `uppercase` and `lowercase` functions. If it doesn't, it reverses the entire string using the `reverse` function.

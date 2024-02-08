@@ -1,0 +1,13 @@
+
+
+function is_sorted(xs::Vector{Int})::Bool
+    if length(xs) == 0 || length(xs) == 1
+        return true
+    end
+    for i in 2:length(xs)
+        if xs[i] < xs[i-1] || count(x -> x == xs[i], xs) > 1
+            return false
+        end
+    end
+    return true
+end

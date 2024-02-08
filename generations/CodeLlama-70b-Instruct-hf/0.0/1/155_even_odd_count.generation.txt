@@ -1,0 +1,27 @@
+
+
+```julia
+function even_odd_count(num::Int)::Tuple{Int, Int}
+    # Convert the number to a string to access individual digits
+    num_str = string(abs(num))
+
+    # Initialize variables to count even and odd digits
+    even_count = 0
+    odd_count = 0
+
+    # Iterate through each digit of the number
+    for digit in num_str
+        # Check if the digit is even
+        if parse(Int, digit) % 2 == 0
+            even_count += 1
+        else
+            odd_count += 1
+        end
+    end
+
+    # Return a tuple with the even and odd digit counts
+    return (even_count, odd_count)
+end
+```
+
+This function first converts the number to a string to access individual digits. It then initializes variables to count even and odd digits. It iterates through each digit of the number, checks if the digit is even, and increments the corresponding count. Finally, it returns a tuple with the even and odd digit counts.

@@ -1,0 +1,7 @@
+```julia
+function n_digits_in_binary(N::Int)::String
+    binary_str = string(N, base=2)
+    total_sum = sum(parse.(Int, split(binary_str, "")))
+    return string(total_sum)
+end
+```

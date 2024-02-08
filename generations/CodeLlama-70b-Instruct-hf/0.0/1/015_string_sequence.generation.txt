@@ -1,0 +1,26 @@
+
+
+```julia
+function string_sequence(n::Int)::String
+    # Check if n is non-negative
+    if n < 0
+        throw(DomainError(n, "Input must be non-negative"))
+    end
+
+    # Initialize an empty string
+    result = ""
+
+    # Iterate from 0 to n
+    for i in 0:n
+        # Append the current number to the result string
+        result *= string(i) * " "
+    end
+
+    # Remove the trailing space
+    result = rstrip(result)
+
+    return result
+end
+```
+
+This function takes an integer `n` as input and returns a string containing space-delimited numbers starting from 0 upto `n` inclusive. It first checks if `n` is non-negative, and if it is, it iterates from 0 to `n` and appends each number to the result string. Finally, it removes the trailing space and returns the result.

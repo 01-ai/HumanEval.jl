@@ -1,0 +1,11 @@
+
+
+function triples_sum_to_zero(l::Vector{Int})::Bool
+    n = length(l)
+    for i in 1:n, j in (i+1):n, k in (j+1):n
+        if l[i] + l[j] + l[k] == 0
+            return true
+        end
+    end
+    return false
+end

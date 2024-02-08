@@ -1,0 +1,45 @@
+To implement the `count_up_to` function, we will follow these steps:
+
+1. Define the function `count_up_to` that takes a single argument `n` of type `Int`.
+2. Check if `n` is less than 2, if so, return an empty array since there are no prime numbers less than 2.
+3. Initialize an empty array to store the prime numbers.
+4. Iterate from 2 to `n-1` (inclusive) to check for prime numbers.
+5. For each number in the iteration, check if it is a prime number.
+6. If the number is prime, append it to the array of prime numbers.
+7. After the loop, return the array of prime numbers.
+
+Now, let's write the code for the function:
+
+```julia
+function count_up_to(n::Int)::Vector{Int}
+    # Step 2: Return an empty array if n is less than 2
+    if n < 2
+        return Int[]
+    end
+
+    # Step 3: Initialize an empty array to store prime numbers
+    primes = Int[]
+
+    # Step 4: Iterate from 2 to n-1 to check for prime numbers
+    for i in 2:n-1
+        # Step 5: Check if i is a prime number
+        is_prime = true
+        for j in 2:sqrt(i)
+            if i % j == 0
+                is_prime = false
+                break
+            end
+        end
+
+        # Step 6: If i is prime, append it to the array of prime numbers
+        if is_prime
+            push!(primes, i)
+        end
+    end
+
+    # Step 7: Return the array of prime numbers
+    return primes
+end
+```
+
+This function uses a simple trial division algorithm to check for primality, which is efficient enough for small values of `n`. For larger values of `n`, more sophisticated algorithms like the Sieve of Eratosthenes could be used to improve performance.

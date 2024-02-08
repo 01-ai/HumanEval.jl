@@ -1,0 +1,22 @@
+
+
+function find_zero(xs::Vector{Int})
+    n = length(xs)
+    if n % 2 == 0 && xs[n] != 0
+        x = 0
+        for i in 1:n
+            x += xs[i] / (n - i + 1)
+        end
+        return x
+    else
+        error("The list must have an even number of coefficients and the largest non-zero coefficient.")
+    end
+end
+
+# Test cases
+
+julia> round(find_zero([1, 2]), digits = 1) # f(x) = 1 + 2x
+-0.5
+
+julia> round(find_zero([-6, 11, -6, 1]), digits = 1) # (x - 1) * (x - 2) * (x - 3) = -6 + 11x - 6x^2 + x^3
+1.0

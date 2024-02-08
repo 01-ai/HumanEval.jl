@@ -1,0 +1,28 @@
+Here is a Julia function that implements the described behavior:
+
+```julia
+function triples_sum_to_zero(l::Vector{Int})::Bool
+    n = length(l)
+    if n < 3
+        return false
+    end
+    sort(l)
+    for i in 1:n-2
+        start = i + 1
+        endd = n
+        while start < endd
+            sum = l[i] + l[start] + l[endd]
+            if sum == 0
+                return true
+            elseif sum < 0
+                start += 1
+            else
+                endd -= 1
+            end
+        end
+    end
+    return false
+end
+```
+
+This function first checks if the length of the list is less than 3, in which case it returns `false`. Then it sorts the list. It then uses a three-pointer technique to find three numbers in the list that sum to zero. The pointers start from the `i+1`th element, the end of the list, and move towards each other until they meet. If the sum of the three numbers is zero, it returns `true`. If the sum is less than zero, it moves the `start` pointer to the right. If the sum is greater than zero, it moves the `endd` pointer to the left. If it doesn't find three numbers that sum to zero, it returns `false`.

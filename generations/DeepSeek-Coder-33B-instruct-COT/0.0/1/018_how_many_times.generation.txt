@@ -1,0 +1,25 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. Initialize a variable `count` to 0. This variable will keep track of how many times the substring appears in the original string.
+2. Loop over the original string.
+3. For each character in the original string, check if the substring is present from the current position.
+4. If the substring is present, increment the `count` variable.
+5. Return the `count` variable.
+
+Here is the Julia code that implements the above steps:
+
+```julia
+function how_many_times(s::String, sub_s::String)::Int
+    count = 0
+    for i in 1:length(s)
+        if i + length(sub_s) - 1 <= length(s)
+            if s[i:i+length(sub_s)-1] == sub_s
+                count += 1
+            end
+        end
+    end
+    return count
+end
+```
+
+This function works by looping over the original string and checking if the substring is present from the current position. If it is, it increments the count. The `if i + length(sub_s) - 1 <= length(s)` condition is used to prevent an out-of-bounds error when checking if the substring is present.

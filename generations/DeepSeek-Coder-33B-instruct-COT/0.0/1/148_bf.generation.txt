@@ -1,0 +1,25 @@
+Here is a step-by-step outline of the function:
+
+1. Define a list of planets in order of their distance from the sun.
+2. Check if both `planet1` and `planet2` are in the list of planets. If not, return an empty tuple.
+3. Find the index of `planet1` and `planet2` in the list.
+4. If `planet1` is to the right of `planet2` in the list, swap their indices.
+5. Return a tuple of all planets between `planet1` and `planet2`.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function bf(planet1::String, planet2::String)::NTuple
+    planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+    if !(planet1 in planets) || !(planet2 in planets)
+        return ()
+    end
+    i1, i2 = findfirst(x -> x == planet1, planets), findfirst(x -> x == planet2, planets)
+    if i1 > i2
+        i1, i2 = i2, i1
+    end
+    return Tuple(planets[i1+1:i2-1])
+end
+```
+
+This function first checks if the input planets are valid. If they are not, it returns an empty tuple. Then it finds the indices of the input planets in the list of planets. If the index of `planet1` is greater than the index of `planet2`, it swaps the indices. Finally, it returns a tuple of all planets between `planet1` and `planet2`.

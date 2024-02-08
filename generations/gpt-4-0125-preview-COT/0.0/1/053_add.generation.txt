@@ -1,0 +1,30 @@
+### Step-by-Step Outline
+
+1. **Define the Function**: Start by defining the function `add` that takes two parameters, `x` and `y`, both of type `Int`.
+2. **Perform Addition**: Inside the function, add the two numbers `x` and `y`.
+3. **Return the Result**: Return the result of the addition.
+
+### Julia Code Implementation
+
+```julia
+"""
+    add(x::Int, y::Int)
+
+Add two numbers `x` and `y`.
+
+# Examples
+
+```jldoctest
+julia> add(2, 3)
+5
+
+julia> add(5, 7)
+12
+```
+"""
+function add(x::Int, y::Int)
+    return x + y
+end
+```
+
+This function simply takes two integers as input and returns their sum. The type annotations ensure that the function only accepts integers, making it type-safe.

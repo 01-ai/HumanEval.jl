@@ -1,0 +1,29 @@
+### Step-by-Step Outline
+
+1. **Convert the Integer to Binary**: Convert the given integer `N` to its binary representation. This can be done using the built-in Julia function `bin()` which converts an integer to a binary string.
+
+2. **Sum the Digits of the Binary Representation**: Iterate through the binary string, converting each character to an integer and summing these integers. This will give the total sum of the digits in the binary representation.
+
+3. **Convert the Sum to String**: Since the function is expected to return a string, convert the sum obtained in step 2 back to a string using the `string()` function.
+
+4. **Return the Result**: Return the string representation of the sum.
+
+### Julia Code Implementation
+
+```julia
+function n_digits_in_binary(N::Int)::String
+    # Step 1: Convert N to its binary representation
+    binary_representation = bin(N)
+    
+    # Step 2: Sum the digits of the binary representation
+    sum_of_digits = sum([parse(Int, char) for char in binary_representation])
+    
+    # Step 3: Convert the sum to a string
+    sum_as_string = string(sum_of_digits)
+    
+    # Step 4: Return the result
+    return sum_as_string
+end
+```
+
+This function should work as expected for the given examples and constraints.

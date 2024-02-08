@@ -1,0 +1,6 @@
+function all_prefixes(s::String)::Vector{String}
+    return [s[1:i] for i in 1:length(s)]
+end
+
+# Test the function
+println(all_prefixes("abc") == ["a", "ab", "abc"])

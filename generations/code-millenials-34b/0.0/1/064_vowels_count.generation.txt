@@ -1,0 +1,21 @@
+
+
+function vowels_count(s::String)::Int
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    y_vowels = ['y', 'Y']
+    count = 0
+    for c in s
+        if c in vowels
+            count += 1
+        end
+    end
+    # Check if last character is 'y' or 'Y'
+    if s[end] in y_vowels
+        count += 1
+    end
+    return count
+end
+
+# Test cases
+println(vowels_count("abcde"))  # Expected output: 2
+println(vowels_count("ACEDY"))  # Expected output: 3

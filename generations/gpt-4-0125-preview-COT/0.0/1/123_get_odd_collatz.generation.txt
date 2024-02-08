@@ -1,0 +1,46 @@
+### Step-by-Step Outline
+
+1. **Initialize Variables**: Start by initializing a variable to hold the current value of the sequence, starting with `n`. Also, initialize an empty list (or vector) to store the odd numbers encountered in the sequence.
+
+2. **Generate Collatz Sequence**:
+    - Use a loop to generate the Collatz sequence starting from `n`.
+    - At each step, check if the current number is odd.
+        - If it is odd, add it to the list of odd numbers. Make sure to convert it to `BigInt` to avoid overflow issues.
+    - Update the current number for the next iteration of the loop:
+        - If the current number is even, divide it by 2.
+        - If the current number is odd, multiply it by 3 and then add 1.
+    - Continue this process until the current number becomes 1. Include 1 in the sequence if it's not already included, as it's the termination condition of the Collatz sequence and is also an odd number.
+
+3. **Sort and Return**:
+    - Once the loop ends, sort the list of odd numbers in increasing order.
+    - Return the sorted list.
+
+### Julia Code Implementation
+
+```julia
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    # Initialize the current value and the list of odd numbers
+    current_value = BigInt(n)
+    odd_numbers = BigInt[]
+
+    # Generate the Collatz sequence
+    while current_value != 1
+        # Check if the current value is odd
+        if current_value % 2 != 0
+            push!(odd_numbers, current_value)
+        end
+        # Update the current value based on Collatz rules
+        current_value = current_value % 2 == 0 ? current_value ÷ 2 : 3*current_value + 1
+    end
+
+    # Add 1 to the list if it's not already included
+    if 1 ∉ odd_numbers
+        push!(odd_numbers, BigInt(1))
+    end
+
+    # Sort and return the list of odd numbers
+    return sort(odd_numbers)
+end
+```
+
+This implementation follows the outlined steps to generate the Collatz sequence for a given `n`, extract the odd numbers, and return them sorted. Using `BigInt` ensures that the function can handle large numbers without overflow issues.

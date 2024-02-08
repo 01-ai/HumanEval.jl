@@ -1,0 +1,14 @@
+function special_factorial(n::Int)::BigInt
+    if n == 0
+        return BigInt(1)
+    else
+        result = BigInt(1)
+        for i in 1:n
+            result *= factorial(BigInt(i))
+        end
+        return result
+    end
+end
+
+# Test the function
+println(special_factorial(4))  # Output: 288

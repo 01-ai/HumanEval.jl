@@ -1,0 +1,14 @@
+
+
+#= [CODE] =#
+function special_factorial(n::Int)::BigInt
+    if n < 0
+        throw(DomainError(n, "n must be a non-negative integer"))
+    end
+    result = BigInt(1)
+    for i = n:-1:1
+        result *= factorial(i)
+    end
+    return result
+end
+#= [/CODE] =#

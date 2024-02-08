@@ -1,0 +1,30 @@
+Here is a Julia function that implements the required functionality:
+
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    # Create a tuple for each number in the array, where the first element is the
+    # number of ones in its binary representation, and the second element is the
+    # number itself.
+    num_ones_and_nums = [(count_ones(num), num) for num in arr]
+
+    # Sort the array based on the first element of the tuple (number of ones in
+    # binary representation), and then based on the second element (the number
+    # itself).
+    sorted_nums = sort(num_ones_and_nums)
+
+    # Return the sorted array of numbers.
+    return [num for (_, num) in sorted_nums]
+end
+
+# Helper function to count the number of ones in the binary representation of a number.
+function count_ones(num::Int)::Int
+    count = 0
+    while num > 0
+        count += num % 2
+        num = div(num, 2)
+    end
+    return count
+end
+```
+
+This function works by first creating a tuple for each number in the input array, where the first element of the tuple is the number of ones in the binary representation of the number, and the second element is the number itself. It then sorts this array of tuples based on the first element of the tuple (number of ones in binary representation), and then based on the second element (the number itself). Finally, it returns the sorted array of numbers.

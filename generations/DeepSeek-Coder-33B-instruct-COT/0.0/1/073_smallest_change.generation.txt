@@ -1,0 +1,23 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function smallest_change(xs::Vector{Int})::Int
+    n = length(xs)
+    dp = zeros(Int, n, n)
+    for len in 2:n
+        for i in 1:n-len+1
+            j = i + len - 1
+            if xs[i] == xs[j]
+                dp[i, j] = dp[i+1, j-1]
+            else
+                dp[i, j] = min(dp[i+1, j], dp[i, j-1]) + 1
+            end
+        end
+    end
+    return dp[1, n]
+end
+```
+
+This function uses dynamic programming to solve the problem. It first initializes a 2D array `dp` where `dp[i, j]` is the minimum number of changes needed to make the subarray `xs[i:j]` palindromic. It then iteratively fills up this array by considering all possible subarrays of increasing length. For each subarray, if the first and last elements are the same, the minimum number of changes is the same as the minimum number of changes needed to make the subarray `xs[i+1:j-1]` palindromic. If the first and last elements are different, the minimum number of changes is the minimum of the minimum number of changes needed to make the subarrays `xs[i+1:j]` and `xs[i:j-1]` palindromic, plus one. The final result is `dp[1, n]`, where `n` is the length of the input array.
+
+The time complexity of this function is O(n^2), where n is the length of the input array. The space complexity is also O(n^2), as we need to store the 2D array `dp`.

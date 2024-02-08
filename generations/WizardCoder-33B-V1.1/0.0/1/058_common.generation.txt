@@ -1,0 +1,9 @@
+
+
+function common(l1::Vector, l2::Vector)::Vector
+    return sort(unique(intersect(l1, l2)))
+end
+
+# Testing the function
+println(common([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121]))
+println(common([5, 3, 2, 8], [3, 2])) 

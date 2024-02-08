@@ -1,0 +1,18 @@
+ function pluck(xs::Vector{Int})::Vector{Int}
+    even_nodes = filter(x -> mod(x, 2) == 0, xs)
+    if length(even_nodes) == 0
+        return Int[]
+    end
+
+    smallest_even_index = findfirst(x -> mod(x, 2) == 0, xs)
+    smallest_even_value = mod(xs[smallest_even_index], 2) == 0 ? xs[smallest_even_index] : smallest_even_index
+
+    for i in smallest_even_index+1:length(xs)
+        if mod(xs[i], 2) == 0 && smallest_even_value > xs[i]
+            smallest_even_value = xs[i]
+            smallest_even_index = i
+        end
+    end
+
+    return [smallest_even_value, smallest_even_index]
+end

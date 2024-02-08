@@ -1,0 +1,13 @@
+Here is the Julia function based on the given doc string:
+
+```julia
+function eat(number::Int, need::Int, remaining::Int)::Vector{Int}
+    if need <= remaining
+        return [number + need, remaining - need]
+    else
+        return [number + remaining, 0]
+    end
+end
+```
+
+This function first checks if the number of carrots needed is less than or equal to the remaining carrots. If it is, it returns a vector with the total number of eaten carrots after meals and the remaining carrots after meals. If the number of carrots needed is more than the remaining carrots, it returns a vector with the total number of eaten carrots after meals and 0 remaining carrots.

@@ -1,0 +1,18 @@
+To implement the function `add_even_eles_at_odd_inds` as described, we need to iterate through the input vector `xs`, check if the index is odd (keeping in mind that Julia is 1-indexed, so odd indices in Julia are even indices in 0-indexed languages), and if the element at that index is even. If both conditions are met, we add the element to a running total. Finally, we return the total.
+
+Here's how you can implement this function in Julia:
+
+```julia
+function add_even_eles_at_odd_inds(xs::Vector{Int})::Int
+    total = 0
+    for i in 1:length(xs)
+        # Check if the index is odd and the element is even
+        if i % 2 == 0 && xs[i] % 2 == 0
+            total += xs[i]
+        end
+    end
+    return total
+end
+```
+
+This function iterates through each element in the vector `xs`, checks if the index `i` is even (which corresponds to odd indices in 0-indexed languages) and if the element at that index is even. If both conditions are true, it adds the element to the `total`. Finally, it returns the `total` sum of all such elements.

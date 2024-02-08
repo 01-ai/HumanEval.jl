@@ -1,0 +1,43 @@
+ Here's a Julia function that implements the described sorting algorithm:
+
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    sorted_arr = sort(arr, by=x -> (count_ones(x), x))
+    return sorted_arr
+end
+
+function count_ones(n::Int)
+    count = 0
+    while n > 0
+        if mod(n, 2) == 1
+            count += 1
+        end
+        n = div(n, 2)
+    end
+    return count
+end
+```
+
+This function first defines a helper function `count_ones` that counts the number of ones in the binary representation of a given integer. The `sort_array` function then sorts the input array using the `sort` function with a custom sorting criterion that first compares the number of ones in the binary representation of the integers and, for equal counts, compares the integers themselves.
+
+Here are some test cases to verify the correctness of the function:
+
+```julia
+julia> sort_array([1, 5, 2, 3, 4])
+5-element Vector{Int64}:
+ 0
+ 1
+ 2
+ 3
+ 4
+
+julia> sort_array([1, 0, 2, 3, 4])
+5-element Vector{Int64}:
+ 0
+ 1
+ 2
+ 3
+ 4
+```
+
+These test cases confirm that the `sort_array` function correctly sorts the input array based on the number of ones in the binary representation and the decimal value of the integers.

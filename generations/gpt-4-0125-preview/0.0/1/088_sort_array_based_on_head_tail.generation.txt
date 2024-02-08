@@ -1,0 +1,24 @@
+```julia
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    # Check if the array is empty or contains only one element
+    if length(xs) <= 1
+        return copy(xs)
+    end
+
+    # Determine the sorting order based on the sum of the first and last elements
+    if (xs[1] + xs[end]) % 2 == 0
+        # If the sum is even, sort in descending order
+        return sort(xs, rev=true)
+    else
+        # If the sum is odd, sort in ascending order
+        return sort(xs)
+    end
+end
+
+# Examples
+println(sort_array_based_on_head_tail(Int[])) # Should print an empty array
+println(sort_array_based_on_head_tail([5])) # Should print [5]
+println(sort_array_based_on_head_tail([2, 4, 3, 0, 1, 5])) # Should print [0, 1, 2, 3, 4, 5]
+println(sort_array_based_on_head_tail([2, 4, 3, 0, 1, 5, 6])) # Should print [6, 5, 4, 3, 2, 1, 0]
+```
+This Julia function `sort_array_based_on_head_tail` takes a vector of integers as input and returns a sorted copy of the vector. The sorting order is determined based on the sum of the first and last elements of the vector: if the sum is odd, the vector is sorted in ascending order; if the sum is even, the vector is sorted in descending order.

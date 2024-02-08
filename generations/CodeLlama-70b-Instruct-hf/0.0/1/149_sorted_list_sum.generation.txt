@@ -1,0 +1,15 @@
+
+
+```julia
+function sorted_list_sum(xs::Vector{String})::Vector{String}
+    # Filter out strings with odd lengths
+    filtered_list = filter(x -> length(x) % 2 == 0, xs)
+
+    # Sort the list by length and then alphabetically
+    sorted_list = sort(filtered_list, by = x -> (length(x), x))
+
+    return sorted_list
+end
+```
+
+This function first filters out strings with odd lengths using the `filter` function. Then, it sorts the remaining strings by length and then alphabetically using the `sort` function. The `by` keyword argument allows us to specify a function that returns a tuple of the length and the string itself. This tuple is used for sorting, ensuring that the strings are sorted by length first and then alphabetically.

@@ -1,0 +1,7 @@
+ function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    result = Vector{Int}(undef, length(game))
+    for i in 1:length(game)
+        result[i] = abs(game[i] - guess[i])
+    end
+    return result
+end

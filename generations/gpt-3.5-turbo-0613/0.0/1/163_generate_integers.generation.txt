@@ -1,0 +1,15 @@
+Here is the implementation for the `generate_integers` function:
+
+```julia
+function generate_integers(a::Int, b::Int)::Vector{Int}
+    digits = []
+    for i in a:b
+        for digit in digits(i)
+            if digit % 2 == 0
+                push!(digits, digit)
+            end
+        end
+    end
+    return sort(unique(digits))
+end
+```

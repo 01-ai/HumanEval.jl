@@ -1,0 +1,11 @@
+
+
+Here is the Julia function that implements the above doc string:
+
+```julia
+function get_positive(xs::Vector)
+    return filter(x -> x > 0, xs)
+end
+```
+
+This function uses the `filter` function to return a new vector that contains only the elements of `xs` for which the function `x -> x > 0` returns `true`. 

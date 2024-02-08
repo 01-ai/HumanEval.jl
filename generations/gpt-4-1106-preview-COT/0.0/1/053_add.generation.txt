@@ -1,0 +1,36 @@
+### Outline for the `add` function
+
+1. Define the function `add` that takes two arguments, `x` and `y`, both of type `Int`.
+2. Inside the function, return the sum of `x` and `y`.
+3. Include simple error checking to ensure that the inputs are integers.
+4. Write a couple of examples in the docstring to illustrate how the function works.
+
+### Julia code for the `add` function
+
+```julia
+"""
+    add(x::Int, y::Int)
+
+Add two numbers `x` and `y`.
+
+# Examples
+
+```jldoctest
+julia> add(2, 3)
+5
+
+julia> add(5, 7)
+12
+```
+"""
+function add(x::Int, y::Int)
+    # Step 2: Return the sum of x and y
+    return x + y
+end
+
+# Examples to test the function
+println(add(2, 3))  # Should print 5
+println(add(5, 7))  # Should print 12
+```
+
+This function is straightforward and does not require complex error checking since the type annotations in the function signature (`x::Int, y::Int`) will ensure that the function only accepts integers as arguments. If non-integer arguments are passed, Julia will throw a `MethodError`.

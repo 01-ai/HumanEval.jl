@@ -1,0 +1,48 @@
+
+
+# Outline
+
+1. Initialize an empty string `encoded_message` to store the encoded message.
+2. Iterate over each character `c` in the input `message`.
+3. Check if `c` is a letter.
+4. If `c` is a letter, swap its case.
+5. If `c` is a vowel, replace it with the letter that appears 2 places after that vowel in the English alphabet.
+6. Append the transformed character to `encoded_message`.
+7. Return `encoded_message`.
+
+# Code
+
+```julia
+function encode_swap(message::String)::String
+    # Define the vowels and their replacements
+    vowels = 'a':'z'
+    replacements = 'c':'z'
+
+    # Initialize an empty string to store the encoded message
+    encoded_message = ""
+
+    # Iterate over each character in the message
+    for c in message
+        # Check if the character is a letter
+        if isletter(c)
+            # Swap the case of the character
+            c = c == lowercase(c) ? uppercase(c) : lowercase(c)
+
+            # Check if the character is a vowel
+            if c in vowels
+                # Find the index of the vowel in the vowels array
+                index = findfirst(isequal(c), vowels)
+
+                # Replace the vowel with the corresponding replacement
+                c = replacements[index]
+            end
+        end
+
+        # Append the transformed character to the encoded message
+        encoded_message *= c
+    end
+
+    # Return the encoded message
+    return encoded_message
+end
+```

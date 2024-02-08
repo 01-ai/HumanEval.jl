@@ -1,0 +1,16 @@
+
+
+Here is the Julia implementation of the `median` function as per the given docstring:
+
+```julia
+function median(l::Vector)
+    n = length(l)
+    if n % 2 == 0
+        return (l[n ÷ 2] + l[n ÷ 2 + 1]) / 2
+    else
+        return l[div(n + 1, 2)]
+    end
+end
+```
+
+This function works by first checking if the length of the input list `l` is even or odd. If it's even, the function returns the average of the two middle elements. If it's odd, the function returns the middle element. The `div` function is used to perform integer division, ensuring that the result is always an integer.

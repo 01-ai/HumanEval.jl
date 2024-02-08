@@ -1,0 +1,23 @@
+Here's the Julia function `pairs_sum_to_zero` that implements the functionality described in the doc string:
+
+```julia
+function pairs_sum_to_zero(l::Vector{Int})::Bool
+    # Create a set to store the elements we have seen
+    seen = Set{Int}()
+    
+    # Iterate through each element in the list
+    for num in l
+        # Check if the negation of the current element is in the set
+        if -num in seen
+            return true
+        end
+        # Add the current element to the set
+        push!(seen, num)
+    end
+    
+    # If no pairs sum to zero, return false
+    return false
+end
+```
+
+You can test this function with the examples provided in the doc string to verify its correctness.

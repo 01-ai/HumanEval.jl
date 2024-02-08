@@ -1,0 +1,5 @@
+
+
+function starts_one_ends(n::Int)::Int
+    # Your code here
+end

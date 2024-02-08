@@ -1,0 +1,10 @@
+
+
+function prod_signs(xs::Vector{Int})::Union{Nothing,Int}
+    if isempty(xs)
+        return nothing
+    end
+    signs = [x > 0 ? 1 : -1 for x in xs]
+    magnitudes = [abs(x) for x in xs]
+    return sum(signs) * prod(magnitudes)
+end

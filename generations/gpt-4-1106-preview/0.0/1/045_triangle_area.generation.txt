@@ -1,0 +1,21 @@
+Certainly! Below is the Julia function `triangle_area` that calculates the area of a triangle given the length of a side `a` and the height `h`.
+
+```julia
+"""
+    triangle_area(a, h)
+
+Given length of a side and height, return area for a triangle.
+
+# Examples
+
+```jldoctest
+julia> triangle_area(5, 3)
+7.5
+```
+"""
+function triangle_area(a, h)
+    return 0.5 * a * h
+end
+```
+
+You can use this function in Julia to calculate the area of a triangle with the given side length and height.

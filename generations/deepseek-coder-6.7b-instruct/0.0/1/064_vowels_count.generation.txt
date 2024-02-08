@@ -1,0 +1,28 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function vowels_count(s::String)::Int
+    vowels = ['a', 'e', 'i', 'o', 'u', 'y', 'Y']
+    count = 0
+    for c in s
+        if c in vowels
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function works by iterating over each character in the input string. If the character is in the list of vowels, it increments the count. Finally, it returns the count.
+
+You can test the function with the examples you provided:
+
+```julia
+julia> vowels_count("abcde")
+2
+
+julia> vowels_count("ACEDY")
+3
+```
+
+These results match the expected output.

@@ -1,0 +1,41 @@
+To implement the `words_in_sentence` function, we need to follow these steps:
+
+1. Define a helper function to check if a number is prime.
+2. Split the sentence into words.
+3. Filter the words based on the length being a prime number.
+4. Join the filtered words back into a string with spaces.
+
+Here's the Julia code for the function:
+
+```julia
+# Helper function to check if a number is prime
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    end
+    for i in 2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+# Main function to filter words with prime length
+function words_in_sentence(sentence::String)::String
+    # Split the sentence into words
+    words = split(sentence)
+    
+    # Filter words where the length is a prime number
+    prime_length_words = filter(word -> is_prime(length(word)), words)
+    
+    # Join the filtered words back into a string
+    return join(prime_length_words, " ")
+end
+
+# Examples
+println(words_in_sentence("This is a test")) # Output: "is"
+println(words_in_sentence("lets go for swimming")) # Output: "go for"
+```
+
+This code defines the `words_in_sentence` function as specified in the doc string, along with a helper function `is_prime` to check for prime numbers. The examples at the end demonstrate the usage of the function.

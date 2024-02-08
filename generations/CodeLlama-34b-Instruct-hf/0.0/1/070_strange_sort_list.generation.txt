@@ -1,0 +1,31 @@
+  Here's an implementation of the `strange_sort_list` function in Julia:
+```
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    n = length(xs)
+    if n == 0
+        return Int[]
+    end
+    result = Vector{Int}(undef, n)
+    i = 1
+    while i <= n
+        result[i] = xs[i]
+        i += 1
+    end
+    for i = 1:n-1
+        result[i] = min(result[i], result[i+1])
+    end
+    return result
+end
+```
+Here's an explanation of the code:
+
+1. The function takes a vector of integers `xs` as input and returns a vector of integers `result` as output.
+2. The function first checks if the input vector is empty. If it is, it returns an empty vector.
+3. Otherwise, it initializes a new vector `result` with the same length as `xs`.
+4. It then iterates over the elements of `xs` and assigns each element to the corresponding position in `result`.
+5. It then iterates over the elements of `result` and for each element, it finds the minimum value among the remaining elements in `result`.
+6. It then assigns the minimum value to the current position in `result`.
+7. It repeats step 5 and 6 until all elements in `result` have been processed.
+8. Finally, it returns the sorted vector `result`.
+
+Note that this implementation assumes that the input vector `xs` is not empty. If the input vector is empty, the function will return an empty vector.

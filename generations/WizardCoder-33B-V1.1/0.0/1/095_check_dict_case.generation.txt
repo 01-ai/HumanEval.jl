@@ -1,0 +1,20 @@
+
+
+function check_dict_case(d::Dict{String})::Bool
+    if isempty(d)
+        return false
+    end
+
+    all_lower = all(islowercase, keys(d))
+    all_upper = all(isuppercase, keys(d))
+
+    return all_lower || all_upper
+end
+
+# Test cases
+println(check_dict_case(Dict("a" => "apple", "b" => "banana"))) # true
+println(check_dict_case(Dict("a" => "apple", "A" => "banana", "B" => "banana"))) # false
+println(check_dict_case(Dict("a" => "apple", "8" => "banana", "a" => "apple"))) # false
+println(check_dict_case(Dict("Name" => "John", "Age" => "36", "City" => "Houston"))) # false
+println(check_dict_case(Dict("STATE" => "NC", "ZIP" => "12345"))) # true
+println(check_dict_case(Dict())) # false 

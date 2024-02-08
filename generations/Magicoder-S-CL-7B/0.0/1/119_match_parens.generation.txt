@@ -1,0 +1,22 @@
+
+
+function match_parens(lst::Vector{String})::String
+    open_count = 0
+    close_count = 0
+
+    for string in lst
+        for char in string
+            if char == '('
+                open_count += 1
+            elseif char == ')'
+                close_count += 1
+            end
+        end
+    end
+
+    if open_count == close_count
+        return "Yes"
+    else
+        return "No"
+    end
+end

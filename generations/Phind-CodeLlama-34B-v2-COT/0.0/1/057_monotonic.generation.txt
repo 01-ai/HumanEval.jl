@@ -1,0 +1,27 @@
+
+
+```julia
+function monotonic(l::Vector)::Bool
+    # Step 1: Initialize a flag for increasing (inc) and decreasing (dec)
+    inc, dec = true, true
+
+    # Step 2: Iterate over the list and check for increasing and decreasing
+    for i in 2:length(l)
+        if l[i] > l[i-1]
+            dec = false
+        elseif l[i] < l[i-1]
+            inc = false
+        end
+    end
+
+    # Step 3: Return true if list is either increasing or decreasing
+    return inc || dec
+end
+```
+
+This function works by initializing two Boolean flags, `inc` and `dec`, to `true`. It then iterates over the list `l`, updating the flags as follows:
+
+- If the current element is greater than the previous one, it sets `dec` to `false`.
+- If the current element is less than the previous one, it sets `inc` to `false`.
+
+Finally, it returns the logical OR of `inc` and `dec`. If either flag is `true`, it means that the list is either monotonically increasing or decreasing, so the function returns `true`. If both flags are `false`, it means that the list is not monotonically increasing or decreasing, so the function returns `false`.

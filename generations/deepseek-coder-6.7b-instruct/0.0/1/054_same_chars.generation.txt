@@ -1,0 +1,14 @@
+Here is the Julia function that implements the same_chars function:
+
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    # Create a sorted character array for each string
+    sorted_s0 = sort([c for c in s0 if isletter(c)])
+    sorted_s1 = sort([c for c in s1 if isletter(c)])
+
+    # Compare the sorted character arrays
+    return sorted_s0 == sorted_s1
+end
+```
+
+This function first creates sorted character arrays for each string, ignoring non-letter characters. It then compares these sorted arrays to determine if the two strings have the same characters. The function returns true if the sorted arrays are equal, and false otherwise.

@@ -1,0 +1,40 @@
+
+
+# Outline
+
+1. Create a dictionary to map the string numbers to their corresponding integer values.
+2. Split the input string into an array of strings.
+3. Map the array of strings to an array of integers using the dictionary.
+4. Sort the array of integers.
+5. Map the sorted array of integers back to an array of strings using the dictionary.
+6. Join the array of strings into a single string with spaces between each element and return it.
+
+# Code
+
+```julia
+function sort_numbers(numbers::String)::String
+    # Create a dictionary to map the string numbers to their corresponding integer values
+    num_dict = Dict("zero" => 0, "one" => 1, "two" => 2, "three" => 3, "four" => 4, "five" => 5, "six" => 6, "seven" => 7, "eight" => 8, "nine" => 9)
+
+    # Split the input string into an array of strings
+    num_array = split(numbers)
+
+    # Map the array of strings to an array of integers using the dictionary
+    num_array = map(x -> num_dict[x], num_array)
+
+    # Sort the array of integers
+    sort!(num_array)
+
+    # Map the sorted array of integers back to an array of strings using the dictionary
+    num_array = map(x -> begin
+        for (k, v) in num_dict
+            if v == x
+                return k
+            end
+        end
+    end, num_array)
+
+    # Join the array of strings into a single string with spaces between each element and return it
+    return join(num_array, " ")
+end
+```

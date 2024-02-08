@@ -1,0 +1,9 @@
+Here is the Julia function that implements the described behavior:
+
+```julia
+function sum_squares(xs::Vector{Int})::Int
+    return sum(i % 3 == 0 ? xs[i]^2 : (i % 4 == 0 ? xs[i]^3 : xs[i]), i in 1:length(xs))
+end
+```
+
+This function uses the `sum` function with a generator expression to iterate over the indices of the input vector `xs`. For each index `i`, it checks if `i` is a multiple of 3 or 4. If `i` is a multiple of 3, it squares the `i`-th element of `xs`. If `i` is a multiple of 4 but not a multiple of 3, it cubes the `i`-th element of `xs`. If `i` is not a multiple of 3 or 4, it leaves the `i`-th element of `xs` unchanged. The sum of these transformed elements is then returned.

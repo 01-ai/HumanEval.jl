@@ -1,0 +1,18 @@
+
+
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    i = 2
+    while i * i <= n
+        if n % i == 0
+            push!(factors, i)
+            n = n / i
+        else
+            i += 1
+        end
+    end
+    if n > 1
+        push!(factors, n)
+    end
+    return factors
+end

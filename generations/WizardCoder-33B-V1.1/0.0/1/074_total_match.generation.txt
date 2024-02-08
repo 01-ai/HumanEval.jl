@@ -1,0 +1,15 @@
+
+
+Here is the Julia function that implements the above doc string:
+
+```julia
+function total_match(xs::Vector{String}, ys::Vector{String})::Vector{String}
+    if sum(length.(xs)) < sum(length.(ys))
+        return xs
+    else
+        return ys
+    end
+end
+```
+
+This function works by summing the lengths of all strings in each list and comparing the sums. If the sum of the lengths of `xs` is less than the sum of the lengths of `ys`, it returns `xs`; otherwise, it returns `ys`. 

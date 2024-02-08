@@ -1,0 +1,26 @@
+
+
+# Outline
+
+1. Initialize an empty vector to store the coefficients of the derivative.
+2. Iterate through the input vector starting from the second element (since the derivative of a constant is 0).
+3. For each element, multiply it by its index and add it to the derivative coefficients vector.
+4. Return the derivative coefficients vector.
+
+# Code
+
+```julia
+function derivative(xs::Vector)::Vector
+    # Initialize an empty vector to store the coefficients of the derivative
+    derivative_coefficients = similar(xs, length(xs) - 1)
+
+    # Iterate through the input vector starting from the second element
+    for i in 2:length(xs)
+        # For each element, multiply it by its index and add it to the derivative coefficients vector
+        derivative_coefficients[i - 1] = xs[i] * i
+    end
+
+    # Return the derivative coefficients vector
+    return derivative_coefficients
+end
+```

@@ -1,0 +1,21 @@
+ Here's the implementation of the `find_zero` function as described in the docstring:
+
+```julia
+function find_zero(xs::Vector{Int})
+    n = length(xs)
+    # Check if the number of coefficients is even and the largest non-zero coefficient is present
+    if mod(n, 2) != 0 || maximum(abs.(xs)) == 0
+        error("Invalid input: find_zero requires an even number of coefficients and a non-zero largest coefficient.")
+    end
+
+    # Calculate the sum of coefficients
+    sum_coeff = sum(xs)
+
+    # Calculate the value of x that makes the polynomial equal to zero
+    x = -sum_coeff / n
+
+    return round(x, digits = 1)
+end
+```
+
+This function first checks if the number of coefficients is even and if the largest non-zero coefficient is present. If not, it throws an error. Then, it calculates the sum of coefficients and the value of x that makes the polynomial equal to zero. Finally, it rounds the result to one decimal place and returns it.

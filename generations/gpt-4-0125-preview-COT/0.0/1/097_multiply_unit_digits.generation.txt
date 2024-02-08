@@ -1,0 +1,25 @@
+### Step-by-Step Outline
+
+1. **Extract Unit Digits**: For both input integers `a` and `b`, extract their unit (last) digits. This can be done by taking the remainder when each number is divided by 10. In Julia, the modulus operator `%` can be used for this purpose.
+
+2. **Multiply Unit Digits**: Multiply the unit digits obtained from step 1.
+
+3. **Return Result**: Return the product obtained in step 2 as the result of the function.
+
+### Julia Code Implementation
+
+```julia
+function multiply_unit_digits(a::Int, b::Int)::Int
+    # Step 1: Extract unit digits
+    unit_digit_a = a % 10
+    unit_digit_b = b % 10
+    
+    # Step 2: Multiply unit digits
+    product = unit_digit_a * unit_digit_b
+    
+    # Step 3: Return result
+    return product
+end
+```
+
+This function follows the outlined steps to achieve the desired functionality, as demonstrated in the provided examples.

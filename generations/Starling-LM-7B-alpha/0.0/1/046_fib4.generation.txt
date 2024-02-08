@@ -1,0 +1,38 @@
+ Here's a Julia function that efficiently computes the n-th element of the fib4 number sequence without using recursion:
+
+```julia
+function fib4(n::Int)::Int
+    if n == 0 || n == 1
+        return 0
+    elseif n == 2
+        return 2
+    end
+
+    a = zeros(Int, 4)
+    a[1] = 0
+    a[2] = 0
+    a[3] = 2
+    a[4] = 0
+
+    for i in 5:n
+        a[i] = a[i-1] + a[i-2] + a[i-3] + a[i-4]
+    end
+
+    return a[n]
+end
+```
+
+This function first initializes an array `a` of length 4 to store the first four elements of the fib4 sequence. Then, it iteratively computes the remaining elements of the sequence using a for loop. Finally, it returns the n-th element of the fib4 sequence.
+
+Here are some examples of using the function:
+
+```julia
+julia> fib4(5)
+4
+
+julia> fib4(6)
+8
+
+julia> fib4(7)
+14
+```

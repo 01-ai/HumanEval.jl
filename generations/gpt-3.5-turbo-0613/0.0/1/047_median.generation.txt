@@ -1,0 +1,13 @@
+Here is the implementation of the `median` function in Julia:
+
+```julia
+function median(l::Vector)
+    n = length(l)
+    sorted_l = sort(l)
+    if n % 2 == 0
+        return (sorted_l[n//2] + sorted_l[n//2 + 1]) / 2
+    else
+        return sorted_l[(n+1)//2]
+    end
+end
+```

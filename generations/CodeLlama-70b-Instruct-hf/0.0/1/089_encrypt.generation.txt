@@ -1,0 +1,33 @@
+
+
+```julia
+function encrypt(s::String)
+    # Define the alphabet
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+    # Initialize the encrypted string
+    encrypted_str = ""
+
+    # Iterate through each character in the input string
+    for char in s
+        # Find the index of the character in the alphabet
+        char_index = findfirst(x -> x == char, alphabet)
+
+        # If the character is not in the alphabet, append it as is
+        if char_index === nothing
+            encrypted_str *= char
+        else
+            # Calculate the new index of the character after encryption
+            new_index = (char_index + 2 * 2 - 1) % length(alphabet) + 1
+
+            # Append the encrypted character to the encrypted string
+            encrypted_str *= alphabet[new_index]
+        end
+    end
+
+    # Return the encrypted string
+    return encrypted_str
+end
+```
+
+This function takes a string as an argument and returns an encrypted string. It uses the alphabet to find the index of each character in the input string and then calculates the new index of the character after encryption. The new index is calculated by adding 2 * 2 to the original index and then taking the modulus of the length of the alphabet to handle cases where the new index is greater than the length of the alphabet. Finally, it appends the encrypted character to the encrypted string and returns it.

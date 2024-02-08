@@ -1,0 +1,18 @@
+
+
+```julia
+function anti_shuffle(s::String)::String
+    # Split the string into words
+    words = split(s)
+
+    # Sort each word and join them back into a string
+    sorted_words = join([join(sort(word), "") for word in words])
+
+    # Replace the original words with sorted words
+    sorted_s = replace(s, Regex("\\S+") => sorted_words)
+
+    return sorted_s
+end
+```
+
+This function first splits the input string into words using the `split` function. Then, it sorts each word using the `sort` function and joins them back into a string using the `join` function. Finally, it replaces the original words with the sorted words using the `replace` function.

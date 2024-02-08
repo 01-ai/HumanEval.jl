@@ -1,0 +1,16 @@
+
+
+Here is the Julia function that implements the required functionality:
+
+```julia
+function rolling_max(numbers::Vector{Int})::Vector{Int}
+    result = similar(numbers)
+    result[1] = numbers[1]
+    for i in 2:length(numbers)
+        result[i] = max(numbers[i], result[i-1])
+    end
+    return result
+end
+```
+
+This function works by initializing the result array with the same size as the input array. Then, it iterates over the input array, and at each step, it sets the corresponding element in the result array to the maximum of the current element in the input array and the previous element in the result array. The result is a list of rolling maximum element found until given moment in the sequence. 

@@ -1,0 +1,12 @@
+
+
+function hex_key(num::String)::Int
+    primes = [2, 3, 5, 7, 11, 13]
+    count = 0
+    for digit in num
+        if digit in primes
+            count += 1
+        end
+    end
+    return count
+end

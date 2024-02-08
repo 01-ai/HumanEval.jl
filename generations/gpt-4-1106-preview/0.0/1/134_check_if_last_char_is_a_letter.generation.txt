@@ -1,0 +1,21 @@
+Here's the Julia function `check_if_last_char_is_a_letter` based on the provided docstring:
+
+```julia
+function check_if_last_char_is_a_letter(s::String)::Bool
+    # Check if the string is empty or ends with a space
+    if isempty(s) || s[end] == ' '
+        return false
+    end
+
+    # Check if the last character is a letter and not part of a word
+    return isletter(s[end]) && (length(s) == 1 || s[end-1] == ' ')
+end
+
+# Examples
+println(check_if_last_char_is_a_letter("apple pie"))  # false
+println(check_if_last_char_is_a_letter("apple pi e"))  # false
+println(check_if_last_char_is_a_letter("apple pi e "))  # false
+println(check_if_last_char_is_a_letter(""))  # false
+```
+
+This function first checks if the string is empty or ends with a space, in which case it returns `false`. Then it checks if the last character is a letter and if it is not part of a word by ensuring that either the string is of length 1 or the character before the last one is a space. If these conditions are met, it returns `true`; otherwise, it returns `false`.

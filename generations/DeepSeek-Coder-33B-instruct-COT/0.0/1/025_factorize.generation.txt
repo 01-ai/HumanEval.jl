@@ -1,0 +1,32 @@
+Here is a step-by-step outline of the algorithm:
+
+1. Initialize an empty vector to store the factors.
+2. Start a loop from 2 to the square root of the input number.
+3. In each iteration, check if the current number divides the input number.
+4. If it does, divide the input number by the current number and add the current number to the factors vector.
+5. Repeat the loop until the input number is 1.
+6. Return the factors vector.
+
+Here is the Julia code implementing the above algorithm:
+
+```julia
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    i = 2
+    while i * i <= n
+        if n % i:
+            while n % i == 0
+                push(factors, i)
+                n �= i
+            end
+        end
+        i += 1
+    end
+    if n > 1
+        push(factors, n)
+    end
+    return factors
+end
+```
+
+This function works by continuously dividing the input number by the smallest possible factor (starting from 2) until the number becomes 1. The factors are stored in a vector and returned at the end.

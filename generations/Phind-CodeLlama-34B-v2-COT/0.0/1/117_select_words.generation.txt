@@ -1,0 +1,36 @@
+
+
+Here is the step-by-step outline:
+
+1. Initialize an empty vector to store the words that contain exactly `n` consonants.
+2. Split the input string `s` into words using the `split` function.
+3. Iterate over each word in the resulting array.
+4. For each word, count the number of consonants it contains.
+5. If a word contains exactly `n` consonants, push it to the vector initialized in step 1.
+6. After iterating over all words, return the vector.
+
+Here is the Julia code implementing the above outline:
+
+```julia
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    # Initialize an empty vector to store the words with n consonants
+    words_with_n_consonants = Vector{AbstractString}()
+
+    # Split the input string into words
+    words = split(s)
+
+    # Iterate over each word
+    for word in words
+        # Count the number of consonants in the word
+        num_consonants = count(c -> c ∈ 'b':'z' || c ∈ 'B':'Z', word)
+
+        # If the word contains exactly n consonants, push it to the vector
+        if num_consonants == n
+            push!(words_with_n_consonants, word)
+        end
+    end
+
+    # Return the vector of words with n consonants
+    return words_with_n_consonants
+end
+```

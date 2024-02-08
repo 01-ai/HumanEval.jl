@@ -1,0 +1,17 @@
+
+
+```julia
+function correct_angle_bracketing(brackets::String)::Bool
+    stack = Char[]
+    for bracket in brackets
+        if bracket == '<'
+            push!(stack, bracket)
+        elseif bracket == '>'
+            if isempty(stack) || pop!(stack) != '<'
+                return false
+            end
+        end
+    end
+    return isempty(stack)
+end
+```

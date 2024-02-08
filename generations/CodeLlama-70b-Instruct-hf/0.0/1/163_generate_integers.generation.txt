@@ -1,0 +1,26 @@
+
+```julia
+function generate_integers(a::Int, b::Int)::Vector{Int}
+    # Ensure that a and b are positive integers
+    if a < 0 || b < 0
+        throw(DomainError("a and b must be positive integers"))
+    end
+
+    # Swap a and b if necessary to ensure a <= b
+    if a > b
+        a, b = b, a
+    end
+
+    # Generate the even digits between a and b
+    result = Int[]
+    for i = a:b
+        if i % 2 == 0
+            push!(result, i)
+        end
+    end
+
+    return result
+end
+```
+
+This function first checks if `a` and `b` are positive integers. If not, it throws a `DomainError`. Then, it swaps `a` and `b` if necessary to ensure `a <= b`. Finally, it generates the even digits between `a` and `b` and returns them as a vector.

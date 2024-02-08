@@ -1,0 +1,15 @@
+
+
+Here is the Julia function that implements the given doc string:
+
+```julia
+function sum_product(numbers::Vector{Int})::Tuple{Int, Int}
+    if isempty(numbers)
+        return (0, 1)
+    else
+        return (sum(numbers), prod(numbers))
+    end
+end
+```
+
+This function first checks if the input vector is empty. If it is, it returns a tuple of 0 and 1. If it is not, it calculates the sum and product of the numbers in the vector using the built-in `sum` and `prod` functions, respectively, and returns them as a tuple. 

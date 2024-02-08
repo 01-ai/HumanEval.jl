@@ -1,0 +1,23 @@
+
+
+function pluck(xs::Vector{Int})::Vector{Int}
+    min_even = typemax(Int)
+    min_index = 0
+    for (i, x) in enumerate(xs)
+        if x % 2 == 0 && x < min_even
+            min_even = x
+            min_index = i
+        end
+    end
+    if min_index == 0
+        return Int[]
+    else
+        return [min_even, min_index]
+    end
+end
+
+# Test cases
+@assert pluck([4, 2, 3]) == [2, 2]
+@assert pluck([1, 2, 3]) == [2, 2]
+@assert pluck(Int[]) == Int[]
+@assert pluck([5, 0, 3, 0, 4, 2]) == [0, 2]

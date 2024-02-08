@@ -1,0 +1,37 @@
+Certainly! Below is the Julia function `largest_prime_factor` that computes the largest prime factor of a given integer `n`:
+
+```julia
+function largest_prime_factor(n::Int)::Int
+    # Initialize the largest prime factor
+    largest_factor = 1
+
+    # Divide n by 2 until it becomes odd
+    while n % 2 == 0
+        largest_factor = 2
+        n = div(n, 2)
+    end
+
+    # Now n must be odd, start checking for factors from 3 onwards
+    factor = 3
+    while factor * factor <= n
+        while n % factor == 0
+            largest_factor = factor
+            n = div(n, factor)
+        end
+        factor += 2
+    end
+
+    # If n is a prime number greater than 2, then n itself is the largest factor
+    if n > 2
+        largest_factor = n
+    end
+
+    return largest_factor
+end
+
+# Examples
+println(largest_prime_factor(13195)) # Should print 29
+println(largest_prime_factor(2048))  # Should print 2
+```
+
+This function works by first removing all factors of 2, which simplifies the problem to finding the largest odd prime factor. It then iterates through all odd numbers starting from 3, checking if they are factors of `n`. If a factor is found, it divides `n` by that factor and continues the process until `n` becomes a prime number or 1. The largest factor found during this process is returned as the result.

@@ -1,0 +1,9 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function add_even_eles_at_odd_inds(xs::Vector{Int})::Int
+    return sum(x for (i, x) in enumerate(xs) if i % 2 == 1 && x % 2 == 0)
+end
+```
+
+This function uses a generator expression to iterate over the elements of the input vector `xs` along with their indices. The generator expression includes a conditional statement that checks if the index is odd (`i % 2 == 1`) and if the element is even (`x % 2 == 0`). If both conditions are met, the element is included in the sum. The `sum` function is then used to add up all the included elements.

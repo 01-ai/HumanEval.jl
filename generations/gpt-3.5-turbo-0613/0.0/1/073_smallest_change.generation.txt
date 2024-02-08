@@ -1,0 +1,16 @@
+Here is a possible implementation for the `smallest_change` function:
+
+```julia
+function smallest_change(xs::Vector{Int})::Int
+    n = length(xs)
+    count = 0
+    for i in 1:div(n, 2)
+        if xs[i] != xs[n-i+1]
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This implementation iterates over the first half of the array and checks if the corresponding elements from the second half are different. If they are different, it increments the `count` variable. Finally, it returns the `count` variable, which represents the minimum number of elements that need to be changed to make the array palindromic.

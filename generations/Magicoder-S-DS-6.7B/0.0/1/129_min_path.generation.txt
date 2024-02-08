@@ -1,0 +1,49 @@
+Here is a Julia function that implements the `min_path` function as described in the problem. This function uses a breadth-first search (BFS) algorithm to find the minimum path in the grid.
+
+```julia
+function min_path(grid::Vector{Vector{Int}}, k::Int)::Vector{Int}
+    N = length(grid)
+    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+    min_path = []
+    min_val = typemax(Int)
+
+    for i in 1:N
+        for j in 1:N
+            visited = fill(false, N, N)
+            visited[i, j] = true
+            queue = [(i, j, [grid[i][j]])]
+
+            while !isempty(queue)
+                x, y, path = popfirst(queue)
+
+                if length(path) == k
+                    val = path[1]
+                    for i in 2:k
+                        val = val * 10 + path[i]
+                    end
+
+                    if val < min_val
+                        min_val = val
+                        min_path = path
+                    end
+                else
+                    for (dx, dy) in directions
+                        nx, ny = x + dx, y + dy
+
+                        if 1 <= nx <= N && 1 <= ny <= N && !visited[nx, ny]
+                            visited[nx, ny] = true
+                            push(queue, (nx, ny, vcat(path, grid[nx][ny])))
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    return min_path
+end
+```
+
+This function starts from each cell in the grid and performs a BFS to find the minimum path of length `k`. It keeps track of the visited cells and the current path, and when the path length reaches `k`, it checks if the path is less than the current minimum path. If it is, it updates the minimum path.
+
+The time complexity of this function is O(N^2 * 4^k) because for each cell in the grid, it performs a BFS of maximum depth `k`. The space complexity is also O(N^2 * 4^k) because in the worst case, it may need to store all the paths of length `k` in the queue.

@@ -1,0 +1,15 @@
+To implement the decoding function for the encoded string produced by `encode_shift`, we need to reverse the encoding process. Since the encoding process shifts every character by 5 in the alphabet, the decoding process should shift every character by 21 (26 - 5) in the alphabet to get back to the original character. Here's how you can implement both the `encode_shift` and the decoding function, which we'll name `decode_shift`:
+
+```julia
+# Function to encode a string by shifting every character by 5 in the alphabet
+function encode_shift(s::String)::String
+    join(((x - 'a' + 5) % 26 + 'a' for x in s))
+end
+
+# Function to decode a string encoded with `encode_shift` function
+function decode_shift(s::String)::String
+    join(((x - 'a' + 21) % 26 + 'a' for x in s))
+end
+```
+
+Note: The provided `encode_shift` function and the `decode_shift` function assume that the input string `s` consists of lowercase letters only. If the input can include uppercase letters or characters outside the alphabet, additional checks and adjustments would be needed in the implementation.

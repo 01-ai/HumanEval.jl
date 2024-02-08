@@ -1,0 +1,22 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function exchange(lst1::Vector{Int}, lst2::Vector{Int})::String
+    odd_lst1 = count(isodd, lst1)
+    even_lst2 = count(iseven, lst2)
+    if odd_lst1 <= even_lst2
+        return "YES"
+    else
+        return "NO"
+    end
+end
+```
+
+This function works by counting the number of odd numbers in `lst1` and the number of even numbers in `lst2`. If the number of odd numbers in `lst1` is less than or equal to the number of even numbers in `lst2`, it is possible to exchange elements between the two lists to make all the elements of `lst1` to be even. Otherwise, it is not possible.
+
+Here is how you can test the function:
+
+```julia
+println(exchange([1, 2, 3, 4], [1, 2, 3, 4]))  # "YES"
+println(exchange([1, 2, 3, 4], [1, 5, 3, 4]))  # "NO"
+```

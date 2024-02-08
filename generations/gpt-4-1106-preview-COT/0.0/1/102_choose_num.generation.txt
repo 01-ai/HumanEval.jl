@@ -1,0 +1,32 @@
+To implement the `choose_num` function, we can follow these steps:
+
+1. Check if `x` is greater than `y`. If so, return -1 because the range is invalid.
+2. Iterate from `y` down to `x` to find the largest even number in the range.
+3. Check if the current number is even by using the modulo operator (`%`).
+4. If an even number is found, return it.
+5. If the loop completes without finding an even number, return -1.
+
+Now, let's write the code for the `choose_num` function:
+
+```julia
+function choose_num(x::Int, y::Int)::Int
+    # Step 1: Check if the range is valid
+    if x > y
+        return -1
+    end
+
+    # Step 2: Iterate from y down to x to find the largest even number
+    for num in y:-1:x
+        # Step 3: Check if the current number is even
+        if num % 2 == 0
+            # Step 4: Return the even number
+            return num
+        end
+    end
+
+    # Step 5: If no even number is found, return -1
+    return -1
+end
+```
+
+This function will correctly return the largest even number in the given range or -1 if no even number exists within the range.

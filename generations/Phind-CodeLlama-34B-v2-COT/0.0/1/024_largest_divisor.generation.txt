@@ -1,0 +1,30 @@
+
+
+# Outline:
+# 1. Start with a function definition.
+# 2. Initialize a variable `largest_divisor` to 1.
+# 3. Create a loop that iterates from `n` down to 2.
+# 4. In each iteration, check if the current number divides `n` evenly.
+# 5. If it does, update `largest_divisor` to the current number.
+# 6. After the loop, return `largest_divisor`.
+
+# Code:
+
+```julia
+function largest_divisor(n::Int)::Int
+    largest_divisor = 1
+    for i in n:-1:2
+        if n % i == 0
+            largest_divisor = i
+        end
+    end
+    return largest_divisor
+end
+```
+
+# Test:
+
+```julia
+julia> largest_divisor(15)
+5
+```

@@ -1,0 +1,27 @@
+Here is a Julia function that computes the n-th element of the fib4 number sequence. This function uses a loop to compute the sequence, and it does not use recursion.
+
+```julia
+function fib4(n::Int)::Int
+    if n < 0
+        throw(DomainError(n, "n must be non-negative"))
+    elseif n < 4
+        return [0, 0, 2, 0][n+1]
+    end
+
+    fibs = zeros(Int, 4)
+    fibs[1] = 0
+    fibs[2] = 0
+    fibs[3] = 2
+    fibs[4] = 0
+
+    for i in 5:n
+        fibs[i%4+1] = sum(fibs)
+    end
+
+    return fibs[n%4+1]
+end
+```
+
+This function first checks if `n` is negative. If it is, it throws a `DomainError`. If `n` is less than 4, it returns the corresponding base case. Otherwise, it initializes an array `fibs` with the first four elements of the sequence. It then enters a loop that computes the next element of the sequence by summing the previous four elements. The result is stored in `fibs`. Finally, it returns the n-th element of the sequence.
+
+The `n%4+1` is used to ensure that the index is always between 1 and 4, which is the size of the `fibs` array. This is necessary because the sequence is defined recursively in terms of the previous four elements, and we need to keep track of these elements.

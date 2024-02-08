@@ -1,0 +1,9 @@
+Here is the implementation of the `filter_integers` function in Julia:
+
+```julia
+function filter_integers(values::AbstractVector)::Vector{Int}
+    return filter(x -> isa(x, Int), values)
+end
+```
+
+This function takes a vector `values` as input and uses the `filter` function to filter out only the elements that are of type `Int`. The filtered elements are then returned as a new vector of type `Vector{Int}`.

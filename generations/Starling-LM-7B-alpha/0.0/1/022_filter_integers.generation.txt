@@ -1,0 +1,15 @@
+ Here's a Julia function that filters a given list of values for integers:
+
+```julia
+function filter_integers(values::AbstractVector)::Vector{Int}
+    result = []
+    for value in values
+        if isa(value, Int)
+            push!(result, value)
+        end
+    end
+    return result
+end
+```
+
+This function iterates through the input `values` and checks if each value is an instance of the `Int` type. If it is, the value is added to the `result` vector. Finally, the function returns the `result` vector containing only the integer values from the input list.

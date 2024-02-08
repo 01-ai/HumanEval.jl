@@ -1,0 +1,47 @@
+To implement the `strange_sort_list` function, we will follow these steps:
+
+1. Check if the input list `xs` is empty. If it is, return an empty list immediately.
+2. Initialize an empty list `strange_sorted` that will store the result.
+3. While the input list `xs` is not empty, repeat the following steps:
+   a. Find the minimum value in `xs` and append it to `strange_sorted`.
+   b. Remove the minimum value from `xs`.
+   c. If `xs` is not empty, find the maximum value in `xs`, append it to `strange_sorted`, and remove it from `xs`.
+4. Return the `strange_sorted` list.
+
+Now, let's write the code for the function:
+```julia
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    # Step 1: Check if the list is empty
+    if isempty(xs)
+        return Int[]
+    end
+    
+    # Step 2: Initialize the result list
+    strange_sorted = Int[]
+    
+    # Step 3: Perform the strange sorting
+    while !isempty(xs)
+        # Step 3a: Find and append the minimum value
+        min_val = minimum(xs)
+        push!(strange_sorted, min_val)
+        deleteat!(xs, findfirst(isequal(min_val), xs))  # Remove the minimum value
+        
+        # Step 3b: If not empty, find and append the maximum value
+        if !isempty(xs)
+            max_val = maximum(xs)
+            push!(strange_sorted, max_val)
+            deleteat!(xs, findfirst(isequal(max_val), xs))  # Remove the maximum value
+        end
+    end
+    
+    # Step 4: Return the result
+    return strange_sorted
+end
+```
+
+Let's test the function with the provided examples:
+```julia
+println(strange_sort_list([1, 2, 3, 4]))  # Should print [1, 4, 2, 3]
+println(strange_sort_list([5, 5, 5, 5]))  # Should print [5, 5, 5, 5]
+println(strange_sort_list(Int[]))         # Should print []
+```

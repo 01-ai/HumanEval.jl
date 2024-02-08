@@ -1,0 +1,9 @@
+ function add_even_eles_at_odd_inds(xs::Vector{Int})
+    even_sum = 0
+    for i in 1:length(xs)
+        if i % 2 == 1 && xs[i] % 2 == 0
+            even_sum += xs[i]
+        end
+    end
+    return even_sum
+end

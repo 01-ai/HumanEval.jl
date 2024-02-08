@@ -1,0 +1,8 @@
+```julia
+function sum_squares_round(xs::Vector)::Int
+    # Round each element to the upper integer
+    rounded_xs = round.(Int, ceil.(xs))
+    # Calculate the sum of squared numbers
+    return sum(x^2 for x in rounded_xs)
+end
+```

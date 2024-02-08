@@ -1,0 +1,21 @@
+  Here's one way to implement the `right_angle_triangle` function in Julia:
+```
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    return (a^2 + b^2 == c^2) || (b^2 + c^2 == a^2) || (c^2 + a^2 == b^2)
+end
+```
+This function takes three numbers `a`, `b`, and `c` as input, and returns `true` if the three sides form a right-angled triangle, and `false` otherwise.
+
+The function uses the Pythagorean theorem to check if the three sides form a right-angled triangle. The Pythagorean theorem states that in a right-angled triangle, the square of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the other two sides.
+
+In this function, we check if the square of the hypotenuse is equal to the sum of the squares of the other two sides, and if so, we return `true`. If the square of the hypotenuse is not equal to the sum of the squares of the other two sides, we return `false`.
+
+Here's an example of how to use the function:
+```
+julia> right_angle_triangle(3, 4, 5)
+true
+
+julia> right_angle_triangle(1, 2, 3)
+false
+```
+Note that this function assumes that the input values are of type `Number`, which means that they can be any type of number, including integers, floats, and complex numbers. If you want to restrict the input values to a specific type, such as integers or floats, you can modify the function signature accordingly.

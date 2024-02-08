@@ -1,0 +1,9 @@
+Here is the implementation of the `will_it_fly` function in Julia:
+
+```julia
+function will_it_fly(q::Vector{Int}, w::Int)::Bool
+    return q == reverse(q) && sum(q) <= w
+end
+```
+
+This function checks if the input list `q` is balanced by comparing it with its reverse. It also checks if the sum of the elements in `q` is less than or equal to the maximum possible weight `w`. If both conditions are true, the function returns `true`, otherwise it returns `false`.

@@ -1,0 +1,9 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    return [n + 2i for i in 0:(n-1)]
+end
+```
+
+This function uses a list comprehension to generate the sequence of numbers for the pile of stones. The `2i` term in the expression `n + 2i` alternates between even and odd numbers depending on whether `n` is even or odd. The `for` loop iterates over the range `0:(n-1)`, which generates a sequence of `n` numbers. The result is a vector of integers representing the number of stones in each level of the pile.

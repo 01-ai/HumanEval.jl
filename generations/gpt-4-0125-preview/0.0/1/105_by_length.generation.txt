@@ -1,0 +1,24 @@
+To implement the `by_length` function as described, we can follow these steps:
+
+1. Filter the input array to include only integers between 1 and 9.
+2. Sort the filtered array.
+3. Reverse the sorted array.
+4. Map each integer to its corresponding name.
+5. Return the resulting array of strings.
+
+Here's how you can implement this in Julia:
+
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    # Define a dictionary to map numbers to their names
+    num_to_name = Dict(1 => "One", 2 => "Two", 3 => "Three", 4 => "Four",
+                       5 => "Five", 6 => "Six", 7 => "Seven", 8 => "Eight", 9 => "Nine")
+    
+    # Filter, sort, reverse, and map the integers to their names
+    result = [num_to_name[x] for x in reverse(sort(filter(y -> 1 <= y <= 9, xs)))]
+    
+    return result
+end
+```
+
+This function first filters the input array to keep only the integers between 1 and 9. It then sorts this filtered array, reverses it, and finally maps each integer to its corresponding name using a dictionary. The comprehension list is used to create the final array of strings, which is returned as the result.

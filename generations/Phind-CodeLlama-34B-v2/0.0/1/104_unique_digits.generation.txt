@@ -1,0 +1,11 @@
+
+
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    # Filter out numbers with even digits
+    filtered_numbers = filter(x -> !any(iseven, digits(x)), xs)
+
+    # Sort the remaining numbers
+    sort!(filtered_numbers)
+
+    return filtered_numbers
+end

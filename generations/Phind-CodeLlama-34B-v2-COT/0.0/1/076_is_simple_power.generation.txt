@@ -1,0 +1,24 @@
+
+
+# Outline:
+# 1. Define the function `is_simple_power(x::Number, n::Number)::Bool`.
+# 2. Check if `n` is equal to 1. If so, return `false` because 1 is not a simple power of any number.
+# 3. Calculate the `n`th root of `x` using `x^(1/n)`.
+# 4. Check if the `n`th root of `x` is an integer. If so, return `true`. Otherwise, return `false`.
+
+# Code:
+
+```julia
+function is_simple_power(x::Number, n::Number)::Bool
+    # Check if n is equal to 1
+    if n == 1
+        return false
+    end
+
+    # Calculate the nth root of x
+    root = x^(1/n)
+
+    # Check if the nth root of x is an integer
+    return root == round(root)
+end
+```

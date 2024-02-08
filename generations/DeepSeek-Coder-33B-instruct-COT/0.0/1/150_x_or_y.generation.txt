@@ -1,0 +1,40 @@
+Here is a step-by-step outline of how you can implement this function:
+
+1. First, we need to create a helper function to check if a number is prime.
+2. In the main function, we will check if the number `n` is prime.
+3. If `n` is prime, we will return `x`.
+4. If `n` is not prime, we will return `y`.
+
+Here is the Julia code:
+
+```julia
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+
+function x_or_y(n::Int, x::Int, y::Int)::Int
+    if is_prime(n)
+        return x
+    else
+        return y
+    end
+end
+```
+
+This code first checks if `n` is a prime number by calling the `is_prime` function. If `n` is prime, it returns `x`. If `n` is not prime, it returns `y`.
+
+The `is_prime` function checks if `n` is a prime number by checking if it is less than or equal to 1, if it is less than or equal to 3, or if it is divisible by 2 or 3. If `n` is not divisible by 2 or 3, it checks if `n` is divisible by any number from 5 up to the square root of `n`. If `n` is divisible by any of these numbers, it is not prime and the function returns `false`. If `n` is not divisible by any of these numbers, it is prime and the function returns `true`.

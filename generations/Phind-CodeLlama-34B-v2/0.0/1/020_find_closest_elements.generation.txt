@@ -1,0 +1,15 @@
+
+
+function find_closest_elements(numbers::Vector{Float64})::Tuple{Float64, Float64}
+    sort!(numbers)
+    min_diff = Inf
+    result = (0.0, 0.0)
+    for i in 1:length(numbers)-1
+        diff = numbers[i+1] - numbers[i]
+        if diff < min_diff
+            min_diff = diff
+            result = (numbers[i], numbers[i+1])
+        end
+    end
+    return result
+end

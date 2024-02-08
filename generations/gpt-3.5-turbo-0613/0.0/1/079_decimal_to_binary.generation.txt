@@ -1,0 +1,15 @@
+Here is the implementation of the `decimal_to_binary` function in Julia:
+
+```julia
+function decimal_to_binary(decimal::Int)::String
+    binary = ""
+    while decimal > 0
+        remainder = decimal % 2
+        binary = string(remainder) * binary
+        decimal = decimal ÷ 2
+    end
+    return "db" * binary * "db"
+end
+```
+
+This function uses a while loop to repeatedly divide the decimal number by 2 and store the remainder as a binary digit. The binary digits are then concatenated to form the binary representation of the decimal number. Finally, the function returns the binary representation with the extra characters 'db' at the beginning and end.

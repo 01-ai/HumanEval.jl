@@ -1,0 +1,28 @@
+
+
+# Outline
+
+1. Define the function special_factorial(n::Int)::BigInt.
+2. Initialize a variable result to 1 of type BigInt.
+3. Use a for loop to iterate from n to 1.
+4. In each iteration, multiply the result by the factorial of the current number.
+5. After the loop ends, return the result.
+
+# Code
+
+```julia
+function special_factorial(n::Int)::BigInt
+    result = BigInt(1)
+    for i = n:-1:1
+        result *= factorial(i)
+    end
+    return result
+end
+```
+
+# Test
+
+```julia
+julia> special_factorial(4)
+288
+```

@@ -1,0 +1,14 @@
+```julia
+function longest(xs::Vector{String})::Union{Nothing, String}
+    if isempty(xs)
+        return nothing
+    end
+    longest_str = xs[1]
+    for s in xs
+        if length(s) > length(longest_str)
+            longest_str = s
+        end
+    end
+    return longest_str
+end
+```

@@ -1,0 +1,46 @@
+
+
+```julia
+function even_odd_palindrome(n::Int)::Tuple{Int, Int}
+    if n < 1 || n > 1000
+        throw(DomainError(n, "n must be between 1 and 1000"))
+    end
+
+    even_count = 0
+    odd_count = 0
+
+    for i in 1:n
+        if is_palindrome(i)
+            if i % 2 == 0
+                even_count += 1
+            else
+                odd_count += 1
+            end
+        end
+    end
+
+    return (even_count, odd_count)
+end
+
+function is_palindrome(n::Int)::Bool
+    return n == reverse(digits(n))
+end
+
+function reverse(arr::Vector{Int})::Int
+    rev = 0
+    for num in arr
+        rev = rev * 10 + num
+    end
+    return rev
+end
+```
+
+In this implementation, we first check if the input `n` is within the valid range. If it is not, we throw a `DomainError` to indicate that the input is invalid.
+
+Next, we initialize two variables `even_count` and `odd_count` to keep track of the number of even and odd palindromes respectively. We iterate over the numbers from 1 to `n` and check if each number is a palindrome using the `is_palindrome` function. If it is a palindrome, we increment the corresponding count variable based on its parity.
+
+The `is_palindrome` function checks if a number is a palindrome by converting it to a vector of digits using the `digits` function and then reversing the digits using the `reverse` function. If the reversed digits are equal to the original digits, the number is a palindrome.
+
+The `reverse` function takes a vector of digits and reverses them by iterating over the digits and multiplying the current reversed number by 10 and adding the current digit. Finally, we return the reversed number.
+
+After iterating over all numbers from 1 to `n`, we return a tuple containing the even and odd palindrome counts as specified in the docstring.

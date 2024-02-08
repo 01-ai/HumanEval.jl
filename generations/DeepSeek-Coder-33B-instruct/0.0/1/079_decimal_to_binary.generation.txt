@@ -1,0 +1,16 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function decimal_to_binary(decimal::Int)::String
+    binary = string(decimal, base = 2)
+    return "db" * binary * "db"
+end
+```
+
+This function uses the `string` function with `base = 2` to convert the decimal number to a binary string. Then it concatenates the "db" at the beginning and at the end of the binary string.
+
+Let's test the function with the example:
+
+```julia
+println(decimal_to_binary(15))  # Output: "db1111db"
+```

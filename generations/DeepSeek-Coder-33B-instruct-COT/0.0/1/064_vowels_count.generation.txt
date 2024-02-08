@@ -1,0 +1,27 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. Initialize a counter variable to 0. This will keep track of the number of vowels in the string.
+2. Convert the input string to lowercase. This is because the problem does not specify whether the input string can contain uppercase or lowercase letters.
+3. Iterate over each character in the string.
+4. If the character is a vowel, increment the counter.
+5. If the character is 'y' or 'Y' and it is the last character in the string, increment the counter.
+6. Return the counter.
+
+Here is the Julia code that implements the above steps:
+
+```julia
+function vowels_count(s::String)::Int
+    count = 0
+    s = lowercase(s)
+    for c in s
+        if c in ['a', 'e', 'i', 'o', 'u']
+            count += 1
+        elseif c == 'y' && endswith(s, c)
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function works by first converting the input string to lowercase. Then it iterates over each character in the string. If the character is a vowel, it increments the counter. If the character is 'y' and it is the last character in the string, it also increments the counter. Finally, it returns the counter.

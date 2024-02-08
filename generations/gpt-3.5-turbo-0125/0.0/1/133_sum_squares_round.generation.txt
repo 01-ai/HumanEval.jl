@@ -1,0 +1,5 @@
+```julia
+function sum_squares_round(xs::Vector)::Int
+    return sum(ceil.(xs).^2)
+end
+```

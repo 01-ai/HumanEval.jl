@@ -1,0 +1,23 @@
+Here is an implementation of the `fib4` function in Julia:
+
+```julia
+function fib4(n::Int)::Int
+    if n == 0
+        return 0
+    elseif n == 1
+        return 0
+    elseif n == 2
+        return 2
+    elseif n == 3
+        return 0
+    else
+        fib = [0, 0, 2, 0]
+        for i in 4:n
+            fib[i] = fib[i-1] + fib[i-2] + fib[i-3] + fib[i-4]
+        end
+        return fib[n]
+    end
+end
+```
+
+This function uses an array `fib` to store the values of the fib4 sequence up to the `n`-th element. It starts with the base cases `fib[0] = 0`, `fib[1] = 0`, `fib[2] = 2`, and `fib[3] = 0`. Then, it iteratively computes the remaining elements of the sequence using the formula `fib[i] = fib[i-1] + fib[i-2] + fib[i-3] + fib[i-4]`. Finally, it returns the `n`-th element of the sequence.

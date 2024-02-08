@@ -1,0 +1,26 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function move_one_ball(xs::Vector{Int})::Bool
+    if isempty(xs)
+        return true
+    end
+    n = length(xs)
+    max_val, max_idx = findmax(xs)
+    if max_idx == 1 || max_idx == n
+        return true
+    end
+    if all(xs[i] >= xs[mod1(i-1, n)] for i in 1:n)
+        return true
+    end
+    return false
+end
+```
+
+This function works by first checking if the array is empty. If it is, it returns `true` because an empty array is already sorted.
+
+Then it finds the maximum value and its index in the array. If the maximum value is at the beginning or the end of the array, it means that the array can be sorted by performing a right shift operation.
+
+Finally, it checks if the array can be sorted by performing a right shift operation. It does this by checking if every element is greater than or equal to the previous element in the array, after a right shift operation. If it is, it returns `true`. Otherwise, it returns `false`.
+
+The `mod1` function is used to handle the case where the previous element is at the end of the array. It returns the index of the previous element, wrapping around to the end of the array if the index is 1.

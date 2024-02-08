@@ -1,0 +1,39 @@
+### Step-by-Step Outline
+
+1. **Define the function** `hex_key` that takes a string `num` as its parameter.
+2. **Identify prime hexadecimal digits**: Create a set or list of hexadecimal digits that are prime. These are `2`, `3`, `5`, `7`, `B`, and `D`.
+3. **Count prime digits in the input**:
+   - Initialize a counter to `0`.
+   - Iterate through each character in the input string.
+   - For each character, check if it is in the set of prime hexadecimal digits.
+   - If it is, increment the counter by `1`.
+4. **Return the counter**: After iterating through all characters, return the counter as the number of prime hexadecimal digits found in the input string.
+
+### Julia Code Implementation
+
+```julia
+function hex_key(num::String)::Int
+    # Step 2: Define the set of prime hexadecimal digits
+    prime_hex_digits = Set(['2', '3', '5', '7', 'B', 'D'])
+    
+    # Step 3: Count prime digits in the input
+    prime_count = 0
+    for digit in num
+        if digit in prime_hex_digits
+            prime_count += 1
+        end
+    end
+    
+    # Step 4: Return the counter
+    return prime_count
+end
+
+# Example usage
+println(hex_key("AB")) # Expected output: 1
+println(hex_key("1077E")) # Expected output: 2
+println(hex_key("ABED1A33")) # Expected output: 4
+println(hex_key("123456789ABCDEF0")) # Expected output: 6
+println(hex_key("2020")) # Expected output: 2
+```
+
+This implementation follows the outlined steps to accurately count the number of prime hexadecimal digits in a given string, adhering to the requirements specified in the docstring.

@@ -1,0 +1,12 @@
+
+
+function count_distinct_characters(s::String)::Int
+    chars = Set{Char}()
+    for c in s
+        push!(chars, lowercase(c))
+    end
+    return length(chars)
+end
+
+println(count_distinct_characters("xyzXYZ"))
+println(count_distinct_characters("Jerry"))

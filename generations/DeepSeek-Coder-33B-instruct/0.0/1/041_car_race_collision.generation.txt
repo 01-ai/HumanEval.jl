@@ -1,0 +1,11 @@
+The problem is a mathematical problem and not a programming problem. The number of collisions is equal to the number of cars, which is `n`.
+
+Here is the Julia function:
+
+```julia
+function car_race_collision(n::Int)::Int
+    return n
+end
+```
+
+This function simply returns the input `n`, which is the number of cars. Since each car is moving in the same direction, they will collide with each other.

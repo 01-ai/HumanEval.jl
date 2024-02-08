@@ -1,0 +1,29 @@
+
+
+To solve this problem, we will iterate over each character in the string. If the character is a letter, we will reverse its case. If the character is not a letter, we will keep it as it is. If the string contains no letters, we will reverse the string.
+
+Here is the step-by-step outline of the function:
+
+1. Initialize an empty string `result` to store the resulted string.
+2. Iterate over each character `c` in the string `s`.
+3. If `c` is a letter, reverse its case and append it to `result`.
+4. If `c` is not a letter, keep it as it is and append it to `result`.
+5. After iterating over all characters in `s`, check if `result` is empty. If it is, reverse `s` and return it. Otherwise, return `result`.
+
+Here is the Julia code for the function:
+
+```julia
+function reverse_string(s::String)::String
+    result = ""
+    for c in s
+        if isletter(c)
+            append!(result, c == lowercase(c) ? uppercase(c) : lowercase(c))
+        else
+            append!(result, c)
+        end
+    end
+    return isempty(result) ? reverse(s) : result
+end
+```
+
+This function works by iterating over each character in the string `s`. If the character is a letter, it reverses its case and appends it to `result`. If the character is not a letter, it keeps it as it is and appends it to `result`. After iterating over all characters in `s`, it checks if `result` is empty. If it is, it reverses `s` and returns it. Otherwise, it returns `result`.

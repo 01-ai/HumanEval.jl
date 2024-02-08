@@ -1,0 +1,9 @@
+
+
+```julia
+function filter_by_prefix(xs::Vector{String}, prefix::String)::Vector{String}
+    return filter(x -> startswith(x, prefix), xs)
+end
+```
+
+This function takes a vector of strings (`xs`) and a prefix (`prefix`) as input and returns a vector of strings that start with the given prefix. It uses the `filter` function to filter the input vector based on the condition that the string starts with the given prefix.

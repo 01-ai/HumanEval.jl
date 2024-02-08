@@ -1,0 +1,21 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+    a = occursin(r"\.", a) ? parse(Float64, replace(a, "." => "")) : a
+    b = occursin(r"\.", b) ? parse(Float64, replace(b, "." => "")) : b
+
+    a = occursin(r",", a) ? parse(Float64, replace(a, "," => ".")) : a
+    b = occursin(r",", b) ? parse(Float64, replace(b, "," => ".")) : b
+
+    if a == b
+        return nothing
+    else
+        return a > b ? a : b
+    end
+end
+```
+
+This function first replaces any "." or "," in the input variables with nothing, effectively removing them. Then it parses the remaining string to a Float64. If the inputs are equal after these steps, it returns `nothing`. Otherwise, it returns the larger of the two inputs.
+
+Please note that this function assumes that the inputs are either integers, floats, or strings representing real numbers. If the inputs are not of these types, the function may not work as expected.

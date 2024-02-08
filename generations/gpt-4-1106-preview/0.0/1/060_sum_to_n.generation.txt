@@ -1,0 +1,21 @@
+Certainly! Below is the Julia function `sum_to_n` that sums numbers from `1` to `n`:
+
+```julia
+"""
+    sum_to_n(n::Int)::Int
+
+`sum_to_n` is a function that sums numbers from `1` to `n`.
+"""
+function sum_to_n(n::Int)::Int
+    return n * (n + 1) // 2
+end
+
+# Examples
+println(sum_to_n(30))  # Output: 465
+println(sum_to_n(100)) # Output: 5050
+println(sum_to_n(5))   # Output: 15
+println(sum_to_n(10))  # Output: 55
+println(sum_to_n(1))   # Output: 1
+```
+
+This function uses the formula for the sum of the first `n` natural numbers, which is `n * (n + 1) / 2`. The `//` operator is used to perform integer division, ensuring that the result is an integer.

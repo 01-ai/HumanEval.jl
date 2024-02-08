@@ -1,0 +1,7 @@
+
+
+function median(l::Vector)
+    n = length(l)
+    s = sort(l)
+    return n % 2 == 0 ? (s[n ÷ 2] + s[n ÷ 2 + 1]) / 2 : s[div(n + 1, 2)]
+end

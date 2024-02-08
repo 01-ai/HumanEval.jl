@@ -1,0 +1,15 @@
+
+
+function vowels_count(s::String)::Int
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    count = 0
+    for char in s
+        if char in vowels
+            count += 1
+        end
+    end
+    if s[end] == 'y' || s[end] == 'Y'
+        count += 1
+    end
+    return count
+end

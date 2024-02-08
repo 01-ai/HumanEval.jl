@@ -1,0 +1,15 @@
+
+
+function sum_squares(xs::Vector{Int})::Int
+    sum = 0
+    for i in 1:length(xs)
+        if i % 3 == 0
+            sum += xs[i]^2
+        elseif i % 4 == 0
+            sum += xs[i]^3
+        else
+            sum += xs[i]
+        end
+    end
+    return sum
+end

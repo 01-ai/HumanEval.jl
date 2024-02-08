@@ -1,0 +1,11 @@
+```julia
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+    if a > b
+        return a
+    elseif b > a
+        return b
+    else
+        return nothing
+    end
+end
+```

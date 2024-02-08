@@ -1,0 +1,19 @@
+Here is the Julia function that implements the given problem:
+
+```julia
+function search(numbers::Vector{Int})::Int
+    freq = Dict{Int, Int}()
+    for num in numbers
+        freq[num] = get(freq, num, 0) + 1
+    end
+    max_freq = maximum(values(freq))
+    for (num, count) in freq
+        if count >= num && count == max_freq
+            return num
+        end
+    end
+    return -1
+end
+```
+
+This function first counts the frequency of each number in the input list. Then it iterates over the frequency dictionary to find the greatest integer that is greater than zero, and has a frequency greater than or equal to the value of the integer itself. If no such a value exists, it returns -1.

@@ -1,0 +1,14 @@
+Here is a Julia function that implements the closest_integer function as described in the problem:
+
+```julia
+function closest_integer(value::String)::Int
+    num = parse(Float64, value)
+    if num >= 0
+        return round(Int, num)
+    else
+        return -round(Int, -num)
+    end
+end
+```
+
+This function first parses the input string into a Float64 number. Then, it checks if the number is non-negative. If it is, it rounds the number to the nearest integer using the round function. If the number is negative, it rounds the absolute value of the number to the nearest integer and then negates the result. This ensures that the function returns the closest integer to the input number, with the one that is the farthest from zero if the number is equidistant.

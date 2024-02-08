@@ -1,0 +1,33 @@
+To implement the `split_words` function as described in the doc string, we need to follow these steps:
+
+1. Check if the input string contains whitespaces. If so, split the string on whitespaces and return the resulting list.
+2. If there are no whitespaces, check if the string contains commas. If so, split the string on commas and return the resulting list.
+3. If the string contains neither whitespaces nor commas, count the number of lowercase letters with an odd order in the alphabet and return this count.
+
+Here's how you can implement this in Julia:
+
+```julia
+function split_words(txt::String)::Union{Vector{<:AbstractString},Int}
+    # Check for whitespaces and split if present
+    if occursin(' ', txt)
+        return split(txt)
+    end
+
+    # Check for commas and split if present
+    if occursin(',', txt)
+        return split(txt, ',')
+    end
+
+    # Count lowercase letters with odd order in the alphabet
+    odd_order_count = sum([isodd(Int(c) - Int('a')) for c in txt if islower(c)])
+    
+    return odd_order_count
+end
+
+# Examples to test the function
+println(split_words("Hello world!"))  # Should print ["Hello", "world!"]
+println(split_words("Hello,world!"))  # Should print ["Hello", "world!"]
+println(split_words("abcdef"))        # Should print 3
+```
+
+This implementation follows the steps outlined above. It uses the `occursin` function to check for the presence of whitespaces and commas, the `split` function to split the string accordingly, and a list comprehension combined with `sum` to count the lowercase letters with an odd order in the alphabet.

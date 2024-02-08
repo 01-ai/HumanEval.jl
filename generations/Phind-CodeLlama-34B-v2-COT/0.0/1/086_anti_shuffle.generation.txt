@@ -1,0 +1,26 @@
+
+
+To solve this problem, we can follow these steps:
+
+1. Split the input string into words using the `split` function.
+2. For each word, sort the characters based on their ASCII values using the `sort` function.
+3. Join the sorted words back into a single string using the `join` function.
+
+Here is the Julia code that implements this algorithm:
+
+```julia
+function anti_shuffle(s::String)::String
+    # Step 1: Split the input string into words
+    words = split(s)
+
+    # Step 2: For each word, sort the characters based on their ASCII values
+    sorted_words = map(sort, words)
+
+    # Step 3: Join the sorted words back into a single string
+    sorted_string = join(sorted_words, " ")
+
+    return sorted_string
+end
+```
+
+This function works by first splitting the input string into a vector of words. It then uses the `map` function to apply the `sort` function to each word, creating a new vector of sorted words. Finally, it uses the `join` function to combine the sorted words back into a single string, with a space between each word.

@@ -1,0 +1,9 @@
+Here is the Julia function that satisfies the given doc string:
+
+```julia
+function string_sequence(n::Int)::String
+    return join(string.(0:n), " ")
+end
+```
+
+This function works by first creating a range from 0 to `n`, then converting each number in the range to a string using the `string` function, and finally joining all the strings together with a space in between.

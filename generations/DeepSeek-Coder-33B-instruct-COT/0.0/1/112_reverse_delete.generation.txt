@@ -1,0 +1,23 @@
+Here is a step-by-step outline of the solution:
+
+1. Initialize an empty string `result`.
+2. Iterate over each character `ch` in the string `s`.
+3. If `ch` is not in `c`, append it to `result`.
+4. After the iteration, check if `result` is a palindrome.
+5. Return a tuple containing `result` and the result of the palindrome check.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function reverse_delete(s::String, c::String)::Tuple{String, Bool}
+    result = ""
+    for ch in s
+        if !(ch in c)
+            result *= ch
+        end
+    end
+    return (result, result == reverse(result))
+end
+```
+
+In this code, `result *= ch` is equivalent to `result = result * ch`, which appends `ch` to `result`. The `in` function checks if `ch` is in `c`. The `reverse` function reverses a string. The `==` operator checks if two strings are equal.

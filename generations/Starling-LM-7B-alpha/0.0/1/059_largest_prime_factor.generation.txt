@@ -1,0 +1,32 @@
+ Here's a Julia function that implements the `largest_prime_factor` function as described in the docstring:
+
+```julia
+function largest_prime_factor(n::Int)::Int
+    largest_factor = 1
+    i = 2
+    while i^2 <= n
+        if n % i == 0
+            while n % i == 0
+                n ÷= i
+                largest_factor = i
+            end
+        end
+        i += 1
+    end
+    return largest_factor
+end
+```
+
+This function uses a simple algorithm to find the largest prime factor of a given number `n`. It starts with the smallest prime number, 2, and checks if `n` is divisible by `i`. If it is, it divides `n` by `i` and updates the `largest_factor` variable. It continues this process until `i` is no longer a factor of `n`.
+
+Here are some examples of how to use the function:
+
+```julia
+julia> largest_prime_factor(13195)
+29
+
+julia> largest_prime_factor(2048)
+2
+```
+
+These examples demonstrate that the function correctly returns the largest prime factor of the given input.

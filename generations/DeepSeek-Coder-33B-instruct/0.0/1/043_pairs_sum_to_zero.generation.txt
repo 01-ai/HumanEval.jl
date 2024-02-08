@@ -1,0 +1,26 @@
+Here is a Julia function that implements the `pairs_sum_to_zero` function based on the given doc string:
+
+```julia
+function pairs_sum_to_zero(l::Vector{Int})::Bool
+    seen = Set{Int}()
+    for num in l
+        if -num in seen
+            return true
+        end
+        push_if_not_exists(seen, num)
+    end
+    return false
+end
+
+function push_if_not_exists(s::Set{Int}, num::Int)
+    if num != 0 && !(num in s)
+        push_if_not_exists(s, num)
+    end
+end
+```
+
+This function works by iterating over the input list and checking if the negative of the current number is in the set of seen numbers. If it is, it returns `true` because a pair that sums to zero has been found. If it isn't, it adds the current number to the set of seen numbers.
+
+The `push_if_not_exists` function is used to add a number to the set if it is not already in the set and is not zero. This is to avoid false positives when checking for pairs that sum to zero.
+
+Please note that this function assumes that the input list does not contain any `NaN` or `Inf` values. If the input list may contain such values, you should add additional checks to handle them.

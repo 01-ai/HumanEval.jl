@@ -1,0 +1,15 @@
+Certainly! Below is the Julia function `derivative` that takes a vector of coefficients representing a polynomial and returns the coefficients of its derivative:
+
+```julia
+function derivative(xs::Vector)::Vector
+    # The derivative of a constant is 0, so we ignore the first coefficient
+    # and start differentiating from the linear term.
+    return [i * xs[i] for i in 2:length(xs)]
+end
+
+# Examples
+println(derivative([3, 1, 2, 4, 5]))  # Output: [1, 4, 12, 20]
+println(derivative([1, 2, 3]))        # Output: [2, 6]
+```
+
+This function uses a list comprehension to multiply each coefficient by its corresponding power (which is the index `i` minus 1) and then returns the resulting vector, which represents the coefficients of the derivative polynomial. Note that the first coefficient (the constant term) is not included in the derivative, as its derivative is zero.

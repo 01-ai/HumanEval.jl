@@ -1,0 +1,13 @@
+Here is the implementation for the `count_up_to` function:
+
+```julia
+function count_up_to(n::Int)::Vector{Int}
+    primes = Int[]
+    for i in 2:n-1
+        if isprime(i)
+            push!(primes, i)
+        end
+    end
+    return primes
+end
+```

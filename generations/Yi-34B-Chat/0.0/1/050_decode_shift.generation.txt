@@ -1,0 +1,33 @@
+```julia
+"""
+Returns encoded string by shifting every character by 5 in the alphabet.
+"""
+function encode_shift(s::String)::String
+    join(((x - 'a' + 5 + 26) % 26 + 'a' for x in s))
+end
+
+"""
+Takes as input string encoded with `encode_shift` function. Returns decoded string.
+"""
+function decode_shift(s::String)::String
+    # Your code here
+end
+```
+
+To implement the `decode_shift` function, you would need to reverse the process done by `encode_shift`. This involves shifting each character in the input string back by 5 positions in the alphabet. If the shift goes beyond 'z', it should wrap around to the beginning of the alphabet. Here's how you might implement the `decode_shift` function:
+
+```julia
+function decode_shift(s::String)::String
+    # Step 1: Loop over each character in the string
+    decoded_string = ""
+    for c in s
+        # Step 2: Calculate the shift
+        shift_amount = (c - 'a' - 5) % 26
+        # Step 3: Add the shifted character to the decoded string
+        decoded_string += (shift_amount + 'a')
+    end
+    return decoded_string
+end
+```
+
+This function calculates the shift amount by finding the difference between the character and 'a', then subtracting 5 to reverse the original shift. It then takes the remainder of the division by 26 to ensure the shift doesn't go beyond 'z'. Finally, it adds the shifted character to the decoded string.

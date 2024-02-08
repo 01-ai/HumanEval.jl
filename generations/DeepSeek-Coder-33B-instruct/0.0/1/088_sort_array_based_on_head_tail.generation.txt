@@ -1,0 +1,19 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    if isempty(xs)
+        return Int[]
+    end
+
+    sum_head_tail = xs[1] + xs[end]
+
+    if isodd(sum_head_tail)
+        return sort(xs)
+    else
+        return sort(xs, rev=true)
+    end
+end
+```
+
+This function first checks if the input array is empty. If it is, it returns an empty array. If it's not, it calculates the sum of the first and last elements of the array. If this sum is odd, it sorts the array in ascending order. If it's even, it sorts the array in descending order.

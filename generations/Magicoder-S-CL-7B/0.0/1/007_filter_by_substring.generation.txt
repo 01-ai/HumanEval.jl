@@ -1,0 +1,5 @@
+
+
+function filter_by_substring(strings::Vector{String}, substring::AbstractString)::Vector{String}
+    return [s for s in strings if contains(s, substring)]
+end

@@ -1,0 +1,19 @@
+```julia
+function total_match(xs::Vector{String}, ys::Vector{String})::Vector{String}
+    # Calculate the total number of characters in each list
+    x_total = sum(length.(xs))
+    y_total = sum(length.(ys))
+
+    # If one list has fewer characters, return it
+    if x_total < y_total
+        return xs
+    elseif x_total > y_total
+        return ys
+    end
+
+    # If the lists have the same number of characters, return the first list
+    return xs
+end
+```
+
+This function calculates the total number of characters in each list of strings and compares them. If one list has fewer characters, it is returned. If both lists have the same number of characters, the first list is returned. If the total number of characters is equal, the first list is returned.

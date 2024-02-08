@@ -1,0 +1,30 @@
+Here is a Julia function that implements the `separate_paren_groups` function as described in the problem:
+
+```julia
+function separate_paren_groups(paren_string::String)::Vector{String}
+    paren_string = replace(paren_string, " " => "")
+    groups = String[]
+    stack = Char[]
+    current_group = ""
+
+    for c in paren_string
+        if c == '('
+            pushfirst(stack, c)
+            current_group *= c
+        elseif c == ')'
+            popfirst(stack)
+            current_group *= c
+            if isempty(stack)
+                pushfirst(groups, current_group)
+                current_group = ""
+            end
+        end
+    end
+
+    return groups
+end
+```
+
+This function works by iterating over each character in the input string. If the character is an open parenthesis, it is pushed onto the stack and added to the current group. If the character is a close parenthesis, it is popped from the stack and added to the current group. If the stack is empty after popping, it means that the current group is complete and can be added to the list of groups. The current group is then reset for the next group.
+
+The function returns a vector of strings, where each string is a separate group of balanced parentheses.

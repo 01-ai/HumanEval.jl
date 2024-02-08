@@ -1,0 +1,11 @@
+```julia
+function cycpattern_check(a::String, b::String)::Bool
+    n = length(a)
+    m = length(b)
+    if n != m
+        return false
+    end
+    a = a * a
+    return occursin(b, a)
+end
+```

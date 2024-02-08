@@ -1,0 +1,25 @@
+
+
+# Step-by-step outline
+
+1. Split the input strings `x` and `n` by the "/" character to get the numerator and denominator of each fraction.
+2. Convert the numerators and denominators from string to integer type.
+3. Multiply the numerators and denominators together to get the new numerator and denominator of the resulting fraction.
+4. Check if the new denominator is equal to 1. If it is, return true. Otherwise, return false.
+
+# Code
+
+```julia
+function simplify(x::String, n::String)::Bool
+    # Split the strings by "/" and convert the parts to integers
+    x_num, x_den = parse(Int, split(x, "/")[1]), parse(Int, split(x, "/")[2])
+    n_num, n_den = parse(Int, split(n, "/")[1]), parse(Int, split(n, "/")[2])
+
+    # Multiply the numerators and denominators together
+    new_num = x_num * n_num
+    new_den = x_den * n_den
+
+    # Check if the new denominator is equal to 1
+    return new_den == 1
+end
+```

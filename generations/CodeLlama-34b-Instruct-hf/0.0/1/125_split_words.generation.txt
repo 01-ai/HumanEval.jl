@@ -1,0 +1,19 @@
+  Here is a possible implementation of the `split_words` function in Julia:
+```
+function split_words(txt::String)::Union{Vector{<:AbstractString},Int}
+    if occursin(" ", txt)
+        return split(txt, " ")
+    elseif occursin(",", txt)
+        return split(txt, ",")
+    else
+        return length(filter(islowercase, txt))
+    end
+end
+```
+Explanation:
+
+* The function first checks if the input string `txt` contains any whitespace characters. If it does, it splits the string on whitespace using the `split` function and returns the resulting vector of substrings.
+* If the input string does not contain any whitespace, the function checks if it contains any commas. If it does, it splits the string on commas using the `split` function and returns the resulting vector of substrings.
+* If the input string does not contain any whitespace or commas, the function returns the number of lowercase letters in the string using the `length` function and the `filter` function to filter out any non-lowercase letters.
+
+Note that the function returns a `Union` type, which means that it can return either a vector of substrings or an integer, depending on the input string. This is because the function is designed to handle input strings that contain whitespace, commas, or neither, and it needs to return a consistent type in each case.

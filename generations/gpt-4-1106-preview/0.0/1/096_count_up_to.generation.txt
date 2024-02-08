@@ -1,0 +1,40 @@
+Certainly! Below is the Julia function `count_up_to` that implements the functionality described in the doc string:
+
+```julia
+function count_up_to(n::Int)::Vector{Int}
+    # Helper function to check if a number is prime
+    function is_prime(k::Int)::Bool
+        if k < 2
+            return false
+        end
+        for i in 2:sqrt(k)
+            if k % i == 0
+                return false
+            end
+        end
+        return true
+    end
+
+    # Main function logic
+    primes = Int[]
+    for i in 2:n-1
+        if is_prime(i)
+            push!(primes, i)
+        end
+    end
+    return primes
+end
+```
+
+You can use this function in Julia to get an array of prime numbers less than a given non-negative integer `n`. Here are some examples of how to use the function:
+
+```julia
+println(count_up_to(5))  # Output: [2, 3]
+println(count_up_to(11)) # Output: [2, 3, 5, 7]
+println(count_up_to(0))  # Output: []
+println(count_up_to(20)) # Output: [2, 3, 5, 7, 11, 13, 17, 19]
+println(count_up_to(1))  # Output: []
+println(count_up_to(18)) # Output: [2, 3, 5, 7, 11, 13, 17]
+```
+
+Please note that the `is_prime` function is a simple implementation and may not be the most efficient for very large numbers. For practical purposes, more sophisticated algorithms or libraries could be used to check for primality.

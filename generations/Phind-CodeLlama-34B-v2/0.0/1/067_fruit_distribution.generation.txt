@@ -1,0 +1,12 @@
+
+
+function fruit_distribution(s::String, n::Int)::Int
+    # Extract the number of apples and oranges from the string
+    apples = parse(Int, match(r"\d+", s).match)
+    oranges = parse(Int, match(r"\d+", s[findlast(isequal(' '), s)+1:end]).match)
+
+    # Calculate the number of mango fruits
+    mango = n - apples - oranges
+
+    return mango
+end

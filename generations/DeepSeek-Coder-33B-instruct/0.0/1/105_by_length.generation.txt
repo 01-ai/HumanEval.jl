@@ -1,0 +1,15 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    num_to_str = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    filtered_xs = filter(x -> 1 <= x <= 9, xs)
+    sorted_xs = sort(filtered_xs)
+    reversed_xs = reverse(sorted_xs)
+    return [num_to_str[x+1] for x in reversed_xs]
+end
+```
+
+This function first filters the input array to only include numbers between 1 and 9. It then sorts this filtered array and reverses it. Finally, it replaces each digit by its corresponding name from "One" to "Nine" and returns the resulting array.
+
+The function uses a list comprehension to create the final array. The `+1` is used to index into the `num_to_str` array because Julia arrays are 1-indexed, but the numbers in the input array are 0-indexed.

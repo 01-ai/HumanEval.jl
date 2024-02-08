@@ -1,0 +1,47 @@
+To implement the `separate_paren_groups` function, we will follow these steps:
+
+1. Initialize an empty vector to store the separated groups of parentheses.
+2. Initialize a variable to keep track of the current level of nesting.
+3. Initialize an empty string to build the current group of parentheses.
+4. Iterate over each character in the input string.
+   - If the character is an open parenthesis `'('`, increment the nesting level and add the character to the current group.
+   - If the character is a close parenthesis `')'`, decrement the nesting level and add the character to the current group.
+   - If the nesting level becomes zero after adding a close parenthesis, it means we have completed a group. Add the current group to the vector and reset the current group string to empty.
+   - Ignore spaces in the input string.
+5. Return the vector containing the separated groups of parentheses.
+
+Now, let's write the code for the function:
+```julia
+function separate_paren_groups(paren_string::String)::Vector{String}
+    groups = Vector{String}()
+    current_group = ""
+    nesting_level = 0
+
+    for c in paren_string
+        if c == '('
+            nesting_level += 1
+            current_group *= c
+        elseif c == ')'
+            nesting_level -= 1
+            current_group *= c
+            if nesting_level == 0
+                push!(groups, current_group)
+                current_group = ""
+            end
+        end
+    end
+
+    return groups
+end
+```
+
+Let's test the function with the provided example:
+```julia
+julia> separate_paren_groups("( ) (( )) (( )( ))")
+3-element Vector{String}:
+ "()"
+ "(())"
+ "(()())"
+```
+
+This code should correctly separate the groups of parentheses as described in the doc string.

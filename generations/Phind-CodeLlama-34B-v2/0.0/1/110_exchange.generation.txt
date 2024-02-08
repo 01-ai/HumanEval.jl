@@ -1,0 +1,12 @@
+
+
+function exchange(lst1::Vector{Int}, lst2::Vector{Int})::String
+    odd_count_lst1 = count(x -> x % 2 != 0, lst1)
+    even_count_lst2 = count(x -> x % 2 == 0, lst2)
+
+    if odd_count_lst1 <= even_count_lst2
+        return "YES"
+    else
+        return "NO"
+    end
+end

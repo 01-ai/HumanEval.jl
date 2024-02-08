@@ -1,0 +1,49 @@
+### Step-by-Step Outline
+
+1. **Check for Empty Array**: First, check if the input array `xs` is empty. If it is, return `Nothing`.
+
+2. **Initialize Variables**: Initialize two variables, one for the sum of magnitudes (`sum_magnitudes`) and another for the product of signs (`prod_signs`). Set `sum_magnitudes` to 0 and `prod_signs` to 1 initially.
+
+3. **Iterate Through Array**: Loop through each element in the array `xs`.
+
+    a. **Update Sum of Magnitudes**: Add the absolute value of the current element to `sum_magnitudes`.
+    
+    b. **Update Product of Signs**: Multiply `prod_signs` by -1 if the current element is negative, by 1 if it's positive, and set `prod_signs` to 0 immediately if the current element is 0 (since the product of any number and 0 is 0).
+
+4. **Calculate Final Result**: Multiply `sum_magnitudes` by `prod_signs` to get the final result.
+
+5. **Return Result**: Return the final result.
+
+### Julia Code Implementation
+
+```julia
+function prod_signs(xs::Vector{Int})::Union{Nothing,Int}
+    # Step 1: Check for empty array
+    if isempty(xs)
+        return Nothing
+    end
+
+    # Step 2: Initialize variables
+    sum_magnitudes = 0
+    prod_signs = 1
+
+    # Step 3: Iterate through array
+    for x in xs
+        # Step 3a: Update sum of magnitudes
+        sum_magnitudes += abs(x)
+        
+        # Step 3b: Update product of signs
+        if x < 0
+            prod_signs *= -1
+        elseif x == 0
+            prod_signs = 0
+            break  # No need to continue if we encounter 0
+        end
+    end
+
+    # Step 4 & 5: Calculate final result and return
+    return sum_magnitudes * prod_signs
+end
+```
+
+This function follows the outlined steps to calculate and return the sum of magnitudes of integers multiplied by the product of all signs of each number in the array, handling the special cases of empty arrays and the presence of zeros.

@@ -1,0 +1,12 @@
+
+
+#= [SOURCE]
+function add(x::Int, y::Int)
+    return x + y
+end
+=# [/SOURCE]
+
+#= [TESTS]
+@test add(2, 3) == 5
+@test add(5, 7) == 12
+=# [/TESTS]

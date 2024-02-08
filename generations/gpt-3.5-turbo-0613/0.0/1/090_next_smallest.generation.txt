@@ -1,0 +1,28 @@
+Here is the implementation of the `next_smallest` function in Julia:
+
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    if length(xs) < 2
+        return nothing
+    end
+    
+    smallest = minimum(xs)
+    second_smallest = maximum(xs)
+    
+    for x in xs
+        if x > smallest && x < second_smallest
+            second_smallest = x
+        end
+    end
+    
+    if second_smallest == maximum(xs)
+        return nothing
+    else
+        return second_smallest
+    end
+end
+```
+
+This function first checks if the length of the input list is less than 2. If so, it returns `nothing` since there is no second smallest element. Otherwise, it initializes `smallest` as the minimum value in the list and `second_smallest` as the maximum value in the list.
+
+Then, it iterates over each element in the list and updates `second_smallest` if the element is greater than `smallest` and less than `second_smallest`. Finally, it checks if `second_smallest` is still equal to the maximum value in the list. If so, it means there is no second smallest element and it returns `nothing`. Otherwise, it returns the value of `second_smallest`.

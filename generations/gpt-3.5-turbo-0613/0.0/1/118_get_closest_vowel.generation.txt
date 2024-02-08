@@ -1,0 +1,23 @@
+Here is a possible implementation for the `get_closest_vowel` function:
+
+```julia
+function get_closest_vowel(word::String)::String
+    vowels = Set(['a', 'e', 'i', 'o', 'u'])
+    consonants = Set(['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'])
+    
+    # Remove vowels at the beginning and ending of the word
+    word = replace(word, r"^[aeiou]+", "")
+    word = replace(word, r"[aeiou]+$", "")
+    
+    # Iterate over the characters of the word from right to left
+    for i = length(word):-1:2
+        if word[i] in consonants && word[i-1] in vowels && word[i-2] in consonants
+            return string(word[i-1])
+        end
+    end
+    
+    return ""
+end
+```
+
+This implementation first creates sets of vowels and consonants. It then removes any vowels at the beginning and ending of the word using regular expressions. Finally, it iterates over the characters of the word from right to left and checks if the current character is a consonant, the previous character is a vowel, and the character before the previous character is a consonant. If this condition is met, it returns the previous character as the closest vowel. If no such vowel is found, it returns an empty string.

@@ -1,0 +1,13 @@
+
+
+function is_bored(s::String)::Int
+    boredoms = 0
+    sentences = split(s, ".")
+    for sentence in sentences
+        words = split(sentence, " ")
+        if length(words) > 0 && words[1] == "I"
+            boredoms += 1
+        end
+    end
+    return boredoms
+end

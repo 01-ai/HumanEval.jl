@@ -1,0 +1,11 @@
+
+
+Here is the Julia function based on the given doc string:
+
+```julia
+function strlen(x::String)::Int
+    return length(x)
+end
+```
+
+This function takes a string `x` as input and returns its length. The `length` function in Julia is used to calculate the length of the string.

@@ -1,0 +1,28 @@
+
+
+To solve this problem, we can use a Set data structure to store the elements we have seen so far while iterating through the list. For each element, we check if `-element` is in the set. If it is, we return true. If we finish iterating through the list and haven't returned true, we return false.
+
+Here is the step-by-step outline:
+
+1. Initialize an empty Set to store the elements we have seen.
+2. Iterate through the list of integers.
+3. For each integer, check if it is in the set of seen integers.
+4. If it is, return true.
+5. If we finish iterating through the list without returning true, return false.
+
+And here is the Julia code:
+
+```julia
+function pairs_sum_to_zero(l::Vector{Int})::Bool
+    seen = Set{Int}()
+    for num in l
+        if num in seen
+            return true
+        end
+        push!(seen, -num)
+    end
+    return false
+end
+```
+
+This function works by storing the negation of each number in the set as we iterate through the list. This way, when we encounter a number, we can check if its negation is in the set, which is equivalent to checking if there is another number in the list that sums to zero with it.

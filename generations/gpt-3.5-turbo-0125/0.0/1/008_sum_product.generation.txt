@@ -1,0 +1,12 @@
+```julia
+function sum_product(numbers::Vector{Int})::Tuple{Int, Int}
+    if isempty(numbers)
+        return (0, 1)
+    end
+    
+    sum_val = sum(numbers)
+    product_val = prod(numbers)
+    
+    return (sum_val, product_val)
+end
+```

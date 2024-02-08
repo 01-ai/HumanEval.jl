@@ -1,0 +1,22 @@
+Here is a step-by-step outline of how you can implement this function in Julia:
+
+1. Initialize two variables, `sum` and `product`, to 0 and 1 respectively.
+2. Iterate over the input list of integers.
+3. For each integer, add it to `sum` and multiply `product` by it.
+4. After the loop, return a tuple of `sum` and `product`.
+
+Here is the Julia code that implements this function:
+
+```julia
+function sum_product(numbers::Vector{Int})::Tuple{Int, Int}
+    sum = 0
+    product = 1
+    for num in numbers
+        sum += num
+        product *= num
+    end
+    return (sum, product)
+end
+```
+
+This function works by iterating over the input list of integers and updating the `sum` and `product` variables as it goes. The `sum` variable is updated by adding each integer to it, and the `product` variable is updated by multiplying it by each integer. After the loop, the function returns a tuple of the `sum` and `product`.

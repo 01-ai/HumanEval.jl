@@ -1,0 +1,19 @@
+Here is a step-by-step outline of how to implement this function:
+
+1. Find the minimum and maximum values in the input list.
+2. Calculate the range of the input list (maximum - minimum).
+3. For each number in the input list, subtract the minimum and divide by the range.
+4. Return the transformed list.
+
+Here is the Julia code that implements this function:
+
+```julia
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    min_val = minimum(numbers)
+    max_val = maximum(numbers)
+    range_val = max_val - min_val
+    return (numbers .- min_val) ./ range_val
+end
+```
+
+This function uses Julia's built-in `minimum` and `maximum` functions to find the minimum and maximum values in the input list. It then calculates the range of the list by subtracting the minimum from the maximum. Finally, it applies the linear transform to each number in the list by subtracting the minimum and dividing by the range. The `.` operator is used to apply the subtraction and division to each element of the list in a vectorized manner.

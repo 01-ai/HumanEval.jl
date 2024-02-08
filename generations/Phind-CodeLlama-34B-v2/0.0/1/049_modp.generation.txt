@@ -1,0 +1,11 @@
+
+
+Here is the Julia function based on the given docstring:
+
+```julia
+function modp(n::Int, p::Int)::Int
+    return mod(2^n, p)
+end
+```
+
+This function takes two integer arguments, `n` and `p`, and returns `2^n modulo p`. The `mod` function in Julia is used to compute the remainder of the division of `2^n` by `p`.

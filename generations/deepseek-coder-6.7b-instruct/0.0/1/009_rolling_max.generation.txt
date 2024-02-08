@@ -1,0 +1,18 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function rolling_max(numbers::Vector{Int})::Vector{Int}
+    max_num = maximum(numbers)
+    max_indices = findall(x -> x == max_num, numbers)
+    rolling_max_nums = zeros(Int, length(numbers))
+    rolling_max_nums[max_indices] .= max_num
+    for i in (max_indices[1]+1):length(numbers)
+        rolling_max_nums[i] = max(rolling_max_nums[i-1], numbers[i])
+    end
+    return rolling_max_nums
+end
+```
+
+This function works by first finding the indices of the maximum number in the input vector. It then initializes a new vector with the same length as the input vector, filled with zeros. The maximum number is then placed at the indices where the maximum number occurs in the input vector. Finally, a loop is used to fill in the rest of the new vector with the rolling maximum of the input vector.
+
+The time complexity of this function is O(n), where n is the length of the input vector. This is because it needs to iterate over the input vector twice: once to find the maximum number and its indices, and once to fill in the new vector. The space complexity is also O(n), as it creates a new vector to store the result.

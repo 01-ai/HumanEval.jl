@@ -1,0 +1,36 @@
+
+
+Here is the Julia function implementing the `histogram` function as described in the docstring:
+
+```julia
+function histogram(s::String)::Dict{String, Int}
+    # Create a dictionary to store the frequency of each letter
+    freq = Dict{String, Int}()
+
+    # Split the string into words and iterate over them
+    for word in split(s)
+        # If the word is already in the dictionary, increment its count
+        if haskey(freq, word)
+            freq[word] += 1
+        else
+            # Otherwise, add the word to the dictionary with count 1
+            freq[word] = 1
+        end
+    end
+
+    # Find the maximum count
+    max_count = maximum(values(freq), init=0)
+
+    # Filter the dictionary to only contain words with maximum count
+    result = Dict{String, Int}()
+    for (word, count) in freq
+        if count == max_count
+            result[word] = count
+        end
+    end
+
+    return result
+end
+```
+
+This function first splits the input string into words (assuming words are space-separated) and then counts the frequency of each word using a dictionary. It then finds the maximum count and filters the dictionary to only contain words with the maximum count.

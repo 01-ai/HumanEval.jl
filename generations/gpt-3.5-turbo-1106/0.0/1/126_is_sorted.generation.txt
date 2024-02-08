@@ -1,0 +1,10 @@
+```julia
+function is_sorted(xs::Vector{Int})::Bool
+    for i in 1:length(xs)-1
+        if xs[i] >= xs[i+1]
+            return false
+        end
+    end
+    return true
+end
+```

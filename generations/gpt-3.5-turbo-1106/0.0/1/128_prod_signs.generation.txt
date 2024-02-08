@@ -1,0 +1,19 @@
+```julia
+function prod_signs(xs::Vector{Int})::Union{Nothing,Int}
+    if isempty(xs)
+        return nothing
+    else
+        product = 1
+        for x in xs
+            if x > 0
+                product *= 1
+            elseif x < 0
+                product *= -1
+            else
+                product *= 0
+            end
+        end
+        return sum(abs.(xs)) * product
+    end
+end
+```

@@ -1,0 +1,12 @@
+
+
+function anti_shuffle(s::String)::String
+    words = split(s, " ")
+    sorted_words = map(sort, words)
+    return join(sorted_words, " ")
+end
+
+# Test the function
+println(anti_shuffle("Hi"))
+println(anti_shuffle("hello"))
+println(anti_shuffle("Hello World!!!"))

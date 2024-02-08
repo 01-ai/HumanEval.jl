@@ -1,0 +1,23 @@
+
+
+function get_max_triples(n::Int)::Int
+    a = [i * i - i + 1 for i in 1:n]
+    count = 0
+    for i in 1:n
+        for j in (i + 1):n
+            for k in (j + 1):n
+                if (a[i] + a[j] + a[k]) % 3 == 0
+                    count += 1
+                end
+            end
+        end
+    end
+    return count
+end
+
+# Test cases
+@assert get_max_triples(5) == 1
+@assert get_max_triples(10) == 4
+@assert get_max_triples(100) == 1617
+@assert get_max_triples(1000) == 166833
+@assert get_max_triples(10000) == 16668331

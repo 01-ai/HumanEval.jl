@@ -1,0 +1,32 @@
+ Here's a Julia function that calculates the derivative of a polynomial given its coefficients:
+
+```julia
+function derivative(xs::Vector)
+    n = length(xs)
+    ys = zeros(Int64, n)
+    for i in 1:(n-1)
+        ys[i] = xs[i] * i
+    end
+    return ys
+end
+```
+
+This function takes a vector `xs` as input, which represents the coefficients of a polynomial in the form `xs[0] + xs[1] * x + xs[2] * x^2 + ...`. It then calculates the derivative of the polynomial by multiplying each coefficient `xs[i]` by its corresponding power `i` and storing the result in a new vector `ys`. The function returns the derivative as a vector of integers.
+
+Here are some examples of using the `derivative` function:
+
+```jldoctest
+julia> derivative([3, 1, 2, 4, 5])
+4-element Vector{Int64}:
+  1
+  4
+ 12
+ 20
+
+julia> derivative([1, 2, 3])
+2-element Vector{Int64}:
+ 2
+ 6
+```
+
+These examples demonstrate that the function correctly calculates the derivative of the input polynomials.

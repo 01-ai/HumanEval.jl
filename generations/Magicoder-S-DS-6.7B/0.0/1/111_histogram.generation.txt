@@ -1,0 +1,26 @@
+function histogram(s::String)::Dict{String, Int}
+    words = split(s)
+    counts = Dict{String, Int}()
+    max_count = 0
+
+    for word in words
+        if haskey(counts, word)
+            counts[word] += 1
+        else
+            counts[word] = 1
+        end
+
+        if counts[word] > max_count
+            max_count = counts[word]
+        end
+    end
+
+    max_words = Dict{String, Int}()
+    for (word, count) in counts
+        if count == max_count
+            max_words[word] = count
+        end
+    end
+
+    return max_words
+end

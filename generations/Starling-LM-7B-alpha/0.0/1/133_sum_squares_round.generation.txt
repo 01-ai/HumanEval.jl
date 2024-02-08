@@ -1,0 +1,12 @@
+ function sum_squares_round(xs::Vector)::Int
+    # Round each element in the list to the upper integer (Ceiling)
+    rounded_xs = round.(Int, xs)
+    
+    # Square each element in the rounded list
+    squared_rounded_xs = map(x -> x^2, rounded_xs)
+    
+    # Sum the squared rounded numbers
+    result = sum(squared_rounded_xs)
+    
+    return result
+end

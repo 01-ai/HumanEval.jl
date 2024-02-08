@@ -1,0 +1,15 @@
+  Here's an implementation of the `mean_absolute_deviation` function in Julia:
+```
+function mean_absolute_deviation(numbers::Vector{Float64})::Float64
+    mean = sum(numbers) / length(numbers)
+    return sum(abs(numbers .- mean)) / length(numbers)
+end
+```
+Here's an explanation of the code:
+
+1. The function takes a vector of floating-point numbers as input and returns a floating-point number representing the mean absolute deviation.
+2. The first line calculates the mean of the input vector using the `sum` function and dividing by the length of the vector.
+3. The second line calculates the absolute difference between each element of the input vector and the mean, using the `abs` function and the `.-` operator to perform element-wise subtraction.
+4. The third line calculates the mean of the absolute differences by summing the absolute differences and dividing by the length of the input vector.
+
+The function is tested using the `jldoctest` macro, which is a part of the Julia testing framework. The test case is provided as a docstring in the function definition.

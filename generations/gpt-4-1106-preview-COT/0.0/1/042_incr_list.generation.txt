@@ -1,0 +1,31 @@
+### Outline for the `incr_list` function
+
+1. Define the function `incr_list` that takes a single argument `xs`, which is a vector of integers (`Vector{Int}`).
+2. Inside the function, create a new vector that will store the incremented values.
+3. Iterate over each element in the input vector `xs`.
+4. For each element, increment it by 1 and append the result to the new vector.
+5. Return the new vector with incremented values.
+
+### Julia code for the `incr_list` function
+
+```julia
+function incr_list(xs::Vector)::Vector
+    # Create a new vector to store incremented values
+    incremented_xs = Vector{Int}(undef, length(xs))
+    
+    # Iterate over the input vector and increment each element
+    for (i, x) in enumerate(xs)
+        incremented_xs[i] = x + 1
+    end
+    
+    # Return the new vector with incremented values
+    return incremented_xs
+end
+```
+
+Now, let's test the function with the provided examples to ensure it works as expected.
+
+```julia
+println(incr_list([1, 2, 3])) # Should print [2, 3, 4]
+println(incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123])) # Should print [6, 4, 6, 3, 4, 4, 10, 1, 124]
+```

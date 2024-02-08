@@ -1,0 +1,20 @@
+
+
+function fib4(n::Int)::Int
+    if n < 0
+        throw(DomainError(n, "n must be non-negative"))
+    elseif n < 4
+        return [0, 0, 2, 0][n+1]
+    end
+
+    a, b, c, d = 0, 0, 2, 0
+    for _ in 4:n
+        a, b, c, d = b, c, d, a + b + c + d
+    end
+    return d
+end
+
+# Test cases
+println(fib4(5)) # 4
+println(fib4(6)) # 8
+println(fib4(7)) # 14 

@@ -1,0 +1,11 @@
+Here is the implementation for the `sum_squares_round` function:
+
+```julia
+function sum_squares_round(xs::Vector)::Int
+    sum = 0
+    for x in xs
+        sum += ceil(x)^2
+    end
+    return sum
+end
+```

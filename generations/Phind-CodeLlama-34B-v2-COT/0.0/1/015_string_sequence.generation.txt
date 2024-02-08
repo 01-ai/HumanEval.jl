@@ -1,0 +1,30 @@
+
+
+# Outline
+
+1. Initialize an empty string `result` to store the final string.
+2. Use a for loop to iterate over the range 0 to `n`.
+3. In each iteration, append the current number to `result` and a space.
+4. After the loop, remove the last space from `result` to avoid trailing space.
+5. Return `result`.
+
+# Code
+
+```julia
+function string_sequence(n::Int)::String
+    # Initialize an empty string to store the final string
+    result = ""
+
+    # Iterate over the range 0 to n
+    for i in 0:n
+        # Append the current number to result and a space
+        result *= string(i) * " "
+    end
+
+    # Remove the last space from result to avoid trailing space
+    result = result[1:end-1]
+
+    # Return the final string
+    return result
+end
+```

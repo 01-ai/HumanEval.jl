@@ -1,0 +1,4 @@
+function remove_vowels(text::String)::String
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    return filter(c -> !(c in vowels), text)
+end

@@ -1,0 +1,6 @@
+function generate_integers(a::Int, b::Int)::Vector{Int}
+    if a > b
+        a, b = b, a
+    end
+    return [i for i in a:2:b]
+end

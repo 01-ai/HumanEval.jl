@@ -1,0 +1,13 @@
+  Here's a possible implementation of the `iscube` function in Julia:
+```
+function iscube(a::Int)::Bool
+    return a == 0 || a == 1 || a == -1 || a == 1/2 || a == -1/2
+end
+```
+Explanation:
+
+The function takes an integer `a` as input and returns `true` if `a` is a cube of some integer number.
+
+The function checks if `a` is equal to 0, 1, -1, 1/2, or -1/2. If it is, then `a` is a cube of some integer number, and the function returns `true`. Otherwise, the function returns `false`.
+
+Note that the function assumes that the input `a` is always valid, as specified in the docstring.

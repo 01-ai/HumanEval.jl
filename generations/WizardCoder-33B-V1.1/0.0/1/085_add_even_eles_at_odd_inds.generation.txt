@@ -1,0 +1,8 @@
+
+
+function add_even_eles_at_odd_inds(xs::Vector{Int})::Int
+    return sum(xs[i] for i in 1:2:length(xs) if xs[i] % 2 == 0)
+end
+
+# Test the function
+println(add_even_eles_at_odd_inds([4, 2, 6, 7]))  # Output: 10

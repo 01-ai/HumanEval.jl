@@ -1,0 +1,17 @@
+```julia
+function reverse_string(s::String)::String
+    result = ""
+    for c in s
+        if isletter(c)
+            if isuppercase(c)
+                result *= lowercase(c)
+            else
+                result *= uppercase(c)
+            end
+        else
+            result *= c
+        end
+    end
+    return reverse(result)
+end
+```

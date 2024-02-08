@@ -1,0 +1,32 @@
+### Step-by-Step Outline
+
+1. **Define the Function**: Start by defining the function `strlen` that takes a single argument `x` of type `String`.
+
+2. **Return the Length**: Use Julia's built-in function `length()` to get the length of the string `x`.
+
+3. **Return Type**: Ensure that the function returns an integer (`Int`) representing the length of the string.
+
+### Julia Code Implementation
+
+```julia
+"""
+    strlen(x::String)::Int
+
+Return length of given string.
+
+# Examples
+
+```jldoctest
+julia> strlen("")
+0
+
+julia> strlen("abc")
+3
+```
+"""
+function strlen(x::String)::Int
+    return length(x)
+end
+```
+
+This implementation directly follows the outlined steps, providing a concise and efficient solution to return the length of a given string.

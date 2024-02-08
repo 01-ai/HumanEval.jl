@@ -1,0 +1,29 @@
+To efficiently compute the n-th element of the FibFib number sequence, we can use dynamic programming to avoid redundant calculations that occur with a naive recursive approach. Here's the Julia function that implements this:
+
+```julia
+function fibfib(n::Int)::Int
+    if n == 0
+        return 0
+    elseif n == 1
+        return 0
+    elseif n == 2
+        return 1
+    else
+        # Initialize the base cases
+        a, b, c = 0, 0, 1
+        # Compute the sequence iteratively
+        for i in 3:n
+            temp = a + b + c
+            a, b, c = b, c, temp
+        end
+        return c
+    end
+end
+
+# Examples
+println(fibfib(1)) # Output: 0
+println(fibfib(5)) # Output: 4
+println(fibfib(8)) # Output: 24
+```
+
+This function initializes the first three elements of the sequence and then iteratively computes the subsequent elements up to the n-th element. This approach has a time complexity of O(n) and a space complexity of O(1), which is much more efficient than the exponential time complexity of a naive recursive approach.

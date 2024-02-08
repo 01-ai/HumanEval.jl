@@ -1,0 +1,19 @@
+Certainly! Below is the Julia function `n_digits_in_binary` that takes an integer `N` and returns the sum of its digits in binary as a string.
+
+```julia
+function n_digits_in_binary(N::Int)::String
+    # Convert the number to binary and count the number of '1's
+    binary_str = string(N, base=2)
+    digit_sum = sum(c -> c == '1' ? 1 : 0, binary_str)
+    
+    # Convert the sum back to binary and return as a string
+    return string(digit_sum, base=2)
+end
+
+# Examples
+println(n_digits_in_binary(1000)) # Output should be "1"
+println(n_digits_in_binary(150))  # Output should be "110"
+println(n_digits_in_binary(147))  # Output should be "1100"
+```
+
+This function first converts the given integer `N` to its binary representation as a string. Then, it calculates the sum of the binary digits by counting the number of '1's in the binary string. Finally, it converts the sum back to binary and returns it as a string.

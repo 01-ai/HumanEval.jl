@@ -1,0 +1,10 @@
+```julia
+function simplify(x::String, n::String)::Bool
+    x_num, x_den = split(x, "/")
+    n_num, n_den = split(n, "/")
+    
+    result = parse(Int, x_num) * parse(Int, n_num) / (parse(Int, x_den) * parse(Int, n_den))
+    
+    return result % 1 == 0
+end
+```

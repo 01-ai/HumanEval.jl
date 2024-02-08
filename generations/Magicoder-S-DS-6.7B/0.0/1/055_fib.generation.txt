@@ -1,0 +1,15 @@
+function fib(n::Int)::Int
+    if n <= 0
+        throw(DomainError(n, "n must be a positive integer"))
+    elseif n == 1
+        return 1
+    elseif n == 2
+        return 1
+    else
+        a, b = 1, 1
+        for _ in 3:n
+            a, b = b, a + b
+        end
+        return b
+    end
+end

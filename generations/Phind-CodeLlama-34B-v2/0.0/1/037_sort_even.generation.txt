@@ -1,0 +1,14 @@
+
+
+Here is the Julia implementation of the `sort_even` function based on the provided docstring:
+
+```julia
+function sort_even(l::Vector)::Vector
+    even_indices = filter(i -> i % 2 == 0, 1:length(l))
+    even_values = sort(l[even_indices])
+    l[even_indices] = even_values
+    return l
+end
+```
+
+This function first finds the even indices of the input list `l` and sorts the corresponding values. Then it replaces the values at the even indices of `l` with the sorted values. The modified list `l` is then returned.

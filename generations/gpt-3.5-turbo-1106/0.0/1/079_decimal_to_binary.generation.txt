@@ -1,0 +1,6 @@
+```julia
+function decimal_to_binary(decimal::Int)::String
+    binary_str = string("db", string(decimal, base=2), "db")
+    return binary_str
+end
+```

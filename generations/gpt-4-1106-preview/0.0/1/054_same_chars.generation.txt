@@ -1,0 +1,26 @@
+Here's the Julia function `same_chars` that checks if two words have the same characters:
+
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    # Convert strings to character arrays and sort them
+    sorted_s0 = sort(collect(s0))
+    sorted_s1 = sort(collect(s1))
+    
+    # Remove duplicates by converting to a set
+    unique_s0 = Set(sorted_s0)
+    unique_s1 = Set(sorted_s1)
+    
+    # Check if the sets of characters are equal
+    return unique_s0 == unique_s1
+end
+
+# Examples
+println(same_chars("eabcdzzzz", "dddzzzzzzzddeddabc")) # true
+println(same_chars("abcd", "dddddddabc")) # true
+println(same_chars("dddddddabc", "abcd")) # true
+println(same_chars("eabcd", "dddddddabc")) # false
+println(same_chars("abcd", "dddddddabce")) # false
+println(same_chars("eabcdzzzz", "dddzzzzzzzddddabc")) # false
+```
+
+This function first converts the input strings into arrays of characters, sorts them, and then converts them into sets to remove any duplicate characters. Finally, it compares the sets to determine if the two words have the same characters.

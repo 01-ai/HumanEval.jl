@@ -1,0 +1,33 @@
+### Outline for `min_sub_array_sum` Function
+
+1. **Initialize Variables**: Start by initializing two variables, `min_sum` and `current_sum`. Set `min_sum` to the first element of the array to handle cases where all numbers are positive or negative. `current_sum` will be used to keep track of the current sub-array sum as we iterate through the array.
+
+2. **Iterate Through the Array**: Loop through each element in the array. For each element, add it to `current_sum`. If `current_sum` becomes more than the current element, reset `current_sum` to the value of the current element. This step ensures that we are always considering the minimum possible sum for any sub-array ending at the current element.
+
+3. **Update `min_sum`**: After adding the current element to `current_sum`, check if `current_sum` is less than `min_sum`. If it is, update `min_sum` with the value of `current_sum`. This step ensures that we are keeping track of the minimum sum encountered so far.
+
+4. **Return Result**: After iterating through the entire array, return `min_sum` as the minimum sum of any non-empty sub-array.
+
+### Julia Code for `min_sub_array_sum` Function
+
+```julia
+function min_sub_array_sum(nums::Vector{Int})::Int
+    # Step 1: Initialize variables
+    min_sum = nums[1]
+    current_sum = nums[1]
+
+    # Step 2: Iterate through the array
+    for i in 2:length(nums)
+        # If current_sum is greater than current element, start new sub-array from current element
+        current_sum = min(current_sum + nums[i], nums[i])
+        
+        # Step 3: Update min_sum if current_sum is less than min_sum
+        min_sum = min(min_sum, current_sum)
+    end
+
+    # Step 4: Return the result
+    return min_sum
+end
+```
+
+This function efficiently finds the minimum sum of any non-empty sub-array by dynamically updating the current sum and minimum sum found so far, ensuring that the solution is optimal for any given input array.

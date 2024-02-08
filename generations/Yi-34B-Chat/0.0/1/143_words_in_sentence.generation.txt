@@ -1,0 +1,14 @@
+```julia
+function words_in_sentence(sentence::String)::String
+    # Split the sentence into an array of words
+    words = split(sentence)
+    
+    # Filter out words whose length is not prime
+    prime_words = filter(word -> isprime(length(word)), words)
+    
+    # Join the filtered words back into a string
+    return join(prime_words)
+end
+```
+
+This function takes a `String` representing a sentence and returns a `String` containing the words from the original sentence whose lengths are prime numbers, preserving the order of the words.

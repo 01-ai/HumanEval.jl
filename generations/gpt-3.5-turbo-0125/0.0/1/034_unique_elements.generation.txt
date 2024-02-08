@@ -1,0 +1,6 @@
+```julia
+function unique_elements(l::Vector)
+    unique_sorted = sort(unique(l))
+    return unique_sorted
+end
+```

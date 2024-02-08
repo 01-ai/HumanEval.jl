@@ -1,0 +1,9 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function get_positive(xs::Vector)
+    return filter(x -> x > 0, xs)
+end
+```
+
+This function uses the `filter` function in Julia, which takes a function and a collection, and returns a collection of all items for which the function returns `true`. In this case, the function is `x -> x > 0`, which returns `true` for positive numbers and `false` for non-positive numbers.

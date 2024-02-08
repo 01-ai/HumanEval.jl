@@ -1,0 +1,18 @@
+```julia
+function add_even_eles_at_odd_inds(xs::Vector{Int})::Int
+    # Initialize the sum of even elements at odd indices to zero
+    even_sum_at_odd_inds = 0
+
+    # Iterate over the list and add the even elements at odd indices to the sum
+    for i in 1:length(xs)
+        if xs[i] % 2 == 0 && (i % 2 == 1)
+            even_sum_at_odd_inds += xs[i]
+        end
+    end
+
+    # Return the sum
+    return even_sum_at_odd_inds
+end
+```
+
+This function takes a vector of integers `xs` and returns the sum of the even elements that are at odd indices. It does this by iterating over the list and adding the even elements at odd indices to a running sum. If an element is even and at an odd index, it is added to the sum. The function then returns the final sum.

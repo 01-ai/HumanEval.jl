@@ -1,0 +1,22 @@
+
+
+```julia
+function count_upper(s::String)::Int
+    # Initialize the count of uppercase vowels to 0
+    count = 0
+
+    # Iterate through the string
+    for (i, c) in enumerate(s)
+        # Check if the character is an uppercase vowel and its index is odd
+        if c in ('A', 'E', 'I', 'O', 'U') && isodd(i)
+            # Increment the count
+            count += 1
+        end
+    end
+
+    # Return the count of uppercase vowels
+    return count
+end
+```
+
+This function iterates through the string and checks if each character is an uppercase vowel and its index is odd. If both conditions are met, it increments the count of uppercase vowels. Finally, it returns the count of uppercase vowels.

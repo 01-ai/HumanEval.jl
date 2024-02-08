@@ -1,0 +1,29 @@
+
+
+Here is the step-by-step outline:
+
+1. Initialize a variable `prev` to `nothing` to keep track of the previous number in the list.
+2. Iterate over each number `x` in the list `xs`.
+3. If `prev` is not `nothing`, check if `x` is less than or equal to `prev`. If it is, return `false` because the list is not sorted in ascending order.
+4. If `x` is equal to the next number in the list, return `false` because there is more than 1 duplicate of the same number.
+5. If the loop completes without returning `false`, return `true` because the list is sorted in ascending order and has no more than 1 duplicate of the same number.
+
+Here is the Julia code:
+
+```julia
+function is_sorted(xs::Vector{Int})::Bool
+    prev = nothing
+    for x in xs
+        if prev !== nothing && x <= prev
+            return false
+        end
+        if count(==(x), xs) > 1
+            return false
+        end
+        prev = x
+    end
+    return true
+end
+```
+
+This function works by iterating over each number in the list and checking if it is less than or equal to the previous number (indicating that the list is not sorted) or if it is equal to the next number (indicating that there is more than 1 duplicate). If neither of these conditions is met, the function returns `true`, indicating that the list is sorted and has no more than 1 duplicate.

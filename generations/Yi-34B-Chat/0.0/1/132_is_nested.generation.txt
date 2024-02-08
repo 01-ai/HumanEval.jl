@@ -1,0 +1,27 @@
+```julia
+function is_nested(s::String)::Bool
+    # Initialize a stack to keep track of the opening brackets
+    stack = Stack{Char}()
+    
+    # Loop through the string
+    for c in s
+        # If the current character is an opening bracket, push it onto the stack
+        if c == '['
+            push!(stack, c)
+        # If the current character is a closing bracket, and the stack is not empty,
+        # and the top of the stack is an opening bracket, then we have a nested bracket
+        elseif c == ']' && !isempty(stack)
+            # If the top of the stack is an opening bracket, pop it and return true
+            if peek(stack) == '['
+                pop!(stack)
+                return true
+            end
+        end
+    end
+    
+    # If the stack is not empty after processing the entire string, there are unmatched opening brackets
+    return isempty(stack)
+end
+```
+
+This function uses a stack to keep track of the opening brackets. It iterates through the string and checks for each closing bracket whether it matches an opening bracket on the stack. If it does, the opening bracket is popped from the stack. If at any point a closing bracket is encountered and there is no matching opening bracket on the stack, the function returns `false`. If the entire string is processed and the stack is empty, the function returns `true`, indicating that there are no unmatched opening brackets.

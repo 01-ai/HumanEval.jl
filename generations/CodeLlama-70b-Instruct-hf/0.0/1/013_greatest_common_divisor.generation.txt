@@ -1,0 +1,11 @@
+
+```julia
+function greatest_common_divisor(a::Int, b::Int)::Int
+    while b != 0
+        a, b = b, a % b
+    end
+    return a
+end
+```
+
+This function uses the Euclidean algorithm to find the greatest common divisor of two integers `a` and `b`. It iteratively calculates the remainder of `a` divided by `b` and assigns it to `b`. The loop continues until `b` becomes 0, at which point `a` is the greatest common divisor of the original `a` and `b`.

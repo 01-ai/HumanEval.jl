@@ -1,0 +1,37 @@
+  Here is an implementation of the `get_row` function in Julia, based on the given docstring:
+```
+function get_row(xs::Vector{Vector{Int}}, x::Int)::Vector{Tuple{Int, Int}}
+    # Initialize an empty list to store the coordinates
+    coordinates = Tuple{Int, Int}[]
+
+    # Iterate over the rows of the nested list
+    for (i, row) in enumerate(xs)
+        # Check if the current row contains the given integer
+        if x in row
+            # Add the coordinate to the list
+            push!(coordinates, (i, row.index(x)))
+        end
+    end
+
+    # Sort the coordinates by rows in ascending order
+    sort!(coordinates, by=first)
+
+    # Sort the coordinates of each row by columns in descending order
+    for (i, row) in enumerate(xs)
+        sort!(coordinates[i], by=last, rev=true)
+    end
+
+    return coordinates
+end
+```
+Here's an explanation of the code:
+
+1. We define a function `get_row` that takes two arguments: `xs`, a nested list of integers, and `x`, an integer.
+2. We initialize an empty list `coordinates` to store the coordinates of the given integer in the nested list.
+3. We iterate over the rows of the nested list using the `enumerate` function, which returns both the index and the value of each element.
+4. For each row, we check if the given integer `x` is in the row using the `in` operator. If it is, we add the coordinate `(i, row.index(x))` to the `coordinates` list.
+5. We sort the `coordinates` list by rows in ascending order using the `sort!` function with the `by` keyword argument set to `first`.
+6. We sort the coordinates of each row by columns in descending order using the `sort!` function with the `by` keyword argument set to `last` and the `rev` keyword argument set to `true`.
+7. Finally, we return the `coordinates` list.
+
+The function returns a list of tuples, where each tuple represents a coordinate in the nested list. The tuples are sorted by rows in ascending order, and the coordinates of each row are sorted by columns in descending order.

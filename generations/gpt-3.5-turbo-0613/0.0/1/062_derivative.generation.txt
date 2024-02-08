@@ -1,0 +1,14 @@
+Here is the implementation for the `derivative` function:
+
+```julia
+function derivative(xs::Vector{T}) where T<:Number
+    n = length(xs)
+    derivative_xs = Vector{T}(undef, n-1)
+    for i in 1:n-1
+        derivative_xs[i] = xs[i+1] * i
+    end
+    derivative_xs
+end
+```
+
+This function takes in a vector `xs` representing the coefficients of a polynomial and returns the derivative of the polynomial in the same form. It creates a new vector `derivative_xs` of length `n-1`, where `n` is the length of `xs`. Then, it iterates over the elements of `xs` from index 1 to `n-1` and calculates the derivative coefficient by multiplying the current coefficient with its corresponding power of `x`. Finally, it returns the `derivative_xs` vector.

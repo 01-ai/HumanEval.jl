@@ -1,0 +1,15 @@
+Here is the implementation for the `sort_third` function:
+
+```julia
+function sort_third(l::Vector)
+    l_sorted = copy(l)
+    for i in 1:length(l)
+        if i % 3 == 0
+            l_sorted[i] = sort(l[i])
+        end
+    end
+    return l_sorted
+end
+```
+
+This function creates a copy of the input list `l` called `l_sorted`. Then, it iterates over each index `i` in the range `1:length(l)`. If `i` is divisible by three, it sorts the corresponding element of `l_sorted` using the `sort` function. Finally, it returns the sorted list `l_sorted`.

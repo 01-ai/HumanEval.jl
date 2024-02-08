@@ -1,0 +1,27 @@
+
+
+Here is the Julia function that solves the problem:
+
+```julia
+function specialFilter(nums::Vector{Int})::Int
+    count = 0
+    for num in nums
+        if num > 10 && firstDigitIsOdd(num) && lastDigitIsOdd(num)
+            count += 1
+        end
+    end
+    return count
+end
+
+function firstDigitIsOdd(num::Int)::Bool
+    return parse(Int, string(num)[1]) % 2 != 0
+end
+
+function lastDigitIsOdd(num::Int)::Bool
+    return num % 2 != 0
+end
+```
+
+This function works by iterating over each number in the input array. For each number, it checks if the number is greater than 10 and if the first and last digits of the number are odd. If both conditions are met, it increments a counter. The function finally returns the counter, which represents the number of elements in the array that meet the specified conditions.
+
+The helper functions `firstDigitIsOdd` and `lastDigitIsOdd` are used to check if the first and last digits of a number are odd, respectively. They convert the number to a string to access the first digit, and use the modulo operator to check if the last digit is odd. 

@@ -1,0 +1,17 @@
+
+
+function sum_squares(xs::Vector{Int})::Int
+    for i in 1:length(xs)
+        if i % 3 == 0
+            xs[i] = xs[i]^2
+        elseif i % 4 == 0
+            xs[i] = xs[i]^3
+        end
+    end
+    return sum(xs)
+end
+
+# Test cases
+@assert sum_squares([1, 2, 3]) == 12
+@assert sum_squares(Int[]) == 0
+@assert sum_squares([-1, -5, 2, -1, -5]) == -8

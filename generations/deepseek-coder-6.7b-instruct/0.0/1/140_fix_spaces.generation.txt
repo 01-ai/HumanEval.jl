@@ -1,0 +1,29 @@
+Here is a Julia function that implements the described behavior:
+
+```julia
+function fix_spaces(s::String)::String
+    s = replace(s, r" {2,}" => "-")
+    s = replace(s, " " => "_")
+    return s
+end
+```
+
+This function uses two `replace` calls to achieve the desired result. The first call replaces all occurrences of two or more consecutive spaces with a single dash. The second call replaces all single spaces with underscores.
+
+You can test this function with the examples you provided:
+
+```julia
+julia> fix_spaces("Example")
+"Example"
+
+julia> fix_spaces("Example 1")
+"Example_1"
+
+julia> fix_spaces(" Example 2")
+"_Example_2"
+
+julia> fix_spaces(" Example   3")
+"_Example-3"
+```
+
+As you can see, the function works as expected.

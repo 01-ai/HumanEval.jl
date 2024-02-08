@@ -1,0 +1,38 @@
+  Here's an implementation of the `check_dict_case` function in Julia:
+```
+function check_dict_case(d::Dict{String})::Bool
+    if isempty(d)
+        return false
+    end
+    first_key = first(keys(d))
+    if all(key -> key == uppercase(key) || key == lowercase(key), keys(d))
+        return true
+    end
+    return false
+end
+```
+Here's an explanation of the code:
+
+1. The function takes a dictionary `d` as input, and returns a boolean value indicating whether all keys in the dictionary are in lower case or all keys are in upper case.
+2. The function first checks if the dictionary is empty. If it is, the function returns `false`.
+3. The function then gets the first key in the dictionary using the `first` function.
+4. The function then checks if all keys in the dictionary are either in upper case or lower case using the `all` function. If they are, the function returns `true`.
+5. If the keys are not all in the same case, the function returns `false`.
+
+Here are some examples of how the function can be used:
+```
+julia> check_dict_case(Dict("a" => "apple", "b" => "banana"))
+true
+
+julia> check_dict_case(Dict("a" => "apple", "A" => "banana", "B" => "banana"))
+false
+
+julia> check_dict_case(Dict("a" => "apple", "8" => "banana", "a" => "apple"))
+false
+
+julia> check_dict_case(Dict("Name" => "John", "Age" => "36", "City" => "Houston"))
+false
+
+julia> check_dict_case(Dict("STATE" => "NC", "ZIP" => "12345"))
+true
+```

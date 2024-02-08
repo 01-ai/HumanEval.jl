@@ -1,0 +1,28 @@
+Here is a step-by-step outline of the solution:
+
+1. Initialize a variable `max_strength` to `-Inf` and `strongest_extension` to an empty string.
+2. Iterate over the `extensions` list.
+3. For each extension, calculate its strength as the difference between the number of uppercase letters and the number of lowercase letters.
+4. If the strength of the current extension is greater than `max_strength`, update `max_strength` and `strongest_extension`.
+5. After the loop, return the string `ClassName.StrongestExtensionName`.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    max_strength = -Inf
+    strongest_extension = ""
+    for extension in extensions
+        cap = count(isuppercase, extension)
+        sm = count(islowercase, extension)
+        strength = cap - sm
+        if strength > max_strength
+            max_strength = strength
+            strongest_extension = extension
+        end
+    end
+    return "$class_name.$strongest_extension"
+end
+```
+
+This function uses the `count` function with the `isuppercase` and `islowercase` predicates to count the number of uppercase and lowercase letters in the extension. It then calculates the strength of the extension and updates `max_strength` and `strongest_extension` if the strength of the current extension is greater than `max_strength`. Finally, it returns the string `ClassName.StrongestExtensionName`.

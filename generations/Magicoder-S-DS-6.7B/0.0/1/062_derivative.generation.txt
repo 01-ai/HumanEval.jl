@@ -1,0 +1,3 @@
+function derivative(xs::Vector)::Vector
+    return xs[2:end] .* collect(1:length(xs)-1)
+end

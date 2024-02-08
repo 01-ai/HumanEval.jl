@@ -1,0 +1,15 @@
+
+
+```julia
+function sum_product(numbers::Vector{Int})::Tuple{Int, Int}
+    sum = 0
+    product = 1
+    for number in numbers
+        sum += number
+        product *= number
+    end
+    return (sum, product)
+end
+```
+
+This function iterates through the given list of integers, calculates the sum and product of all the integers, and returns them as a tuple. If the list is empty, it returns (0, 1) as per the specified behavior.

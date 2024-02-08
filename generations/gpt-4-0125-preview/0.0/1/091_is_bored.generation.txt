@@ -1,0 +1,35 @@
+To implement the `is_bored` function as described, we can follow these steps:
+
+1. Split the input string into sentences based on the delimiters '.', '?', and '!'.
+2. Trim whitespace from the beginning and end of each sentence to ensure accurate comparison.
+3. Check if a sentence starts with "I" or "I " to account for both cases where "I" is immediately followed by another word or is a standalone sentence.
+4. Count the number of sentences that meet the criteria of starting with "I".
+5. Return the count.
+
+Here's how the implementation might look in Julia:
+
+```julia
+function is_bored(s::String)::Int
+    # Split the string into sentences based on '.', '?', and '!'
+    sentences = split(s, r"[.?!]")
+    
+    # Initialize a counter for boredom sentences
+    boredom_count = 0
+    
+    # Iterate through each sentence
+    for sentence in sentences
+        # Trim whitespace from the sentence
+        trimmed_sentence = strip(sentence)
+        
+        # Check if the sentence starts with "I" or "I "
+        if startswith(trimmed_sentence, "I ") || trimmed_sentence == "I"
+            # Increment the boredom count
+            boredom_count += 1
+        end
+    end
+    
+    return boredom_count
+end
+```
+
+This function first splits the input string into sentences using a regular expression that matches '.', '?', and '!'. It then iterates through each sentence, trims any leading or trailing whitespace, and checks if the sentence starts with "I" or "I ". If it does, the boredom count is incremented. Finally, the function returns the total count of boredom sentences.

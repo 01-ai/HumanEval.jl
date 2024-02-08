@@ -1,0 +1,18 @@
+
+```julia
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    if length(xs) == 0
+        return Int[]
+    end
+    if length(xs) == 1
+        return [xs[1]]
+    end
+    if (xs[1] + xs[end]) % 2 == 0
+        return sort(xs, rev=true)
+    else
+        return sort(xs)
+    end
+end
+```
+
+This function first checks the length of the input array. If the length is 0 or 1, it returns an empty array or a single-element array respectively. If the length is greater than 1, it checks if the sum of the first and last elements is even or odd. If it is even, it sorts the array in descending order, otherwise it sorts it in ascending order.

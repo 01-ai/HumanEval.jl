@@ -1,0 +1,25 @@
+
+
+Here is the Julia function that implements the Tribonacci sequence:
+
+```julia
+function tri(n::Int)::Vector{Int}
+    if n == 1
+        return [1]
+    elseif n == 2
+        return [1, 2]
+    else
+        result = [1, 2, 6]
+        for i in 4:n
+            if i % 2 == 0
+                pushfirst(result, i � 2 + 1)
+            else
+                pushfirst(result, result[1] + result[2] + result[3])
+            end
+        end
+        return reverse(result)
+    end
+end
+```
+
+This function first checks if `n` is 1 or 2, and returns the corresponding list. For `n` greater than 2, it initializes the result list with the first three Tribonacci numbers. Then it iterates from 4 to `n`, and for each `i`, it checks if `i` is even or odd. If `i` is even, it calculates the `i`-th Tribonacci number using the formula `i � 2 + 1`, and if `i` is odd, it calculates the `i`-th Tribonacci number using the formula `result[1] + result[2] + result[3]`, where `result[1]`, `result[2]`, and `result[3]` are the first three Tribonacci numbers in the result list. The calculated number is then inserted at the beginning of the result list. Finally, the result list is reversed and returned. 

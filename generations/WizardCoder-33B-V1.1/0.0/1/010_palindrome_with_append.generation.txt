@@ -1,0 +1,19 @@
+
+
+function palindrome_with_append(s::String)::String
+    if isempty(s)
+        return ""
+    end
+
+    rev_s = reverse(s)
+    for i in 0:length(s)
+        if s[1:end-i] == rev_s[i+1:end]
+            return s * rev_s[1:i]
+        end
+    end
+end
+
+# Test cases
+println(palindrome_with_append("")) # ""
+println(palindrome_with_append("cat")) # "catac"
+println(palindrome_with_append("cata")) # "catac" 

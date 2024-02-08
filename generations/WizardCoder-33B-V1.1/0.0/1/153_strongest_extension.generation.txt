@@ -1,0 +1,16 @@
+
+
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    strength_dict = Dict{String, Float64}()
+    for ext in extensions
+        upper_count = count(isuppercase, ext)
+        lower_count = count(islowercase, ext)
+        strength_dict[ext] = upper_count - lower_count
+    end
+    strongest_ext = reduce((a, b) -> strength_dict[a] > strength_dict[b] ? a : b, extensions)
+    return "$class_name.$strongest_ext"
+end
+
+# Testing the function
+println(strongest_extension("Slices", ["SErviNGSliCes", "Cheese", "StuFfed"]))  # "Slices.SErviNGSliCes"
+println(strongest_extension("my_class", ["AA", "Be", "CC"]))  # "my_class.AA" 

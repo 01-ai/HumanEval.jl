@@ -1,0 +1,14 @@
+Here is the Julia function that sorts an array of non-negative integers according to the number of ones in their binary representation and then by their decimal value:
+
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    # Create a helper function to count the number of ones in the binary representation of a number
+    count_ones(n) = count(c -> c == '1', string(n, base=2))
+
+    # Sort the array using the helper function to count the number of ones in the binary representation
+    # and then by the decimal value of the number
+    return sort(arr, by=x -> (count_ones(x), x))
+end
+```
+
+This function uses the `sort` function with a custom `by` argument to sort the array. The `by` argument is a function that takes an element of the array and returns a tuple. The first element of the tuple is the number of ones in the binary representation of the number, and the second element of the tuple is the decimal value of the number itself. The `sort` function then sorts the array first by the first element of the tuples (the number of ones in the binary representation), and then by the second element of the tuples (the decimal value of the number).

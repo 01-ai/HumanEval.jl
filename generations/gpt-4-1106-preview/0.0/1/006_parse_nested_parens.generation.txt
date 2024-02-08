@@ -1,0 +1,42 @@
+Certainly! Below is the Julia function `parse_nested_parens` that takes a string of nested parentheses groups separated by spaces and returns a vector of integers representing the deepest level of nesting for each group.
+
+```julia
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    # Split the string into groups of parentheses
+    groups = split(paren_string)
+    # Initialize an empty vector to store the maximum depths
+    max_depths = Int[]
+
+    # Iterate over each group to calculate the maximum depth
+    for group in groups
+        max_depth = 0
+        current_depth = 0
+        # Iterate over each character in the group
+        for char in group
+            if char == '('
+                current_depth += 1
+                max_depth = max(max_depth, current_depth)
+            elseif char == ')'
+                current_depth -= 1
+            end
+        end
+        # Append the maximum depth of the current group to the result vector
+        push!(max_depths, max_depth)
+    end
+
+    return max_depths
+end
+```
+
+You can use this function as shown in the example in the doc string. Here's how you would call the function:
+
+```julia
+julia> parse_nested_parens("(()()) ((())) () ((())()())")
+4-element Vector{Int64}:
+ 2
+ 3
+ 1
+ 3
+```
+
+This function assumes that the input string is well-formed, with each opening parenthesis `(` having a corresponding closing parenthesis `)`. If the input string may contain malformed groups, additional error checking should be implemented.

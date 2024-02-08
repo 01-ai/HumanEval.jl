@@ -1,0 +1,13 @@
+  Here's one way to implement the `string_sequence` function in Julia:
+```
+function string_sequence(n::Int)::String
+    return join(string.(0:n), " ")
+end
+```
+Here's an explanation of how the function works:
+
+1. The `join` function is used to concatenate the elements of a collection (in this case, a range of integers from 0 to `n`) into a single string, with the specified separator (in this case, a space).
+2. The `string.(0:n)` expression creates a range of integers from 0 to `n`, and then converts each integer to a string using the `string` function.
+3. The resulting string is then returned by the function.
+
+For example, if `n` is 5, the function will return the string `"0 1 2 3 4 5"`.

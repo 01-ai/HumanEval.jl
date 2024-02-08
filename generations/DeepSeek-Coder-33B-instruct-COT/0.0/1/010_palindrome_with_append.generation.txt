@@ -1,0 +1,29 @@
+Here is a Julia function that implements the algorithm described in the doc string:
+
+```julia
+function palindrome_with_append(s::String)::String
+    n = length(s)
+    rev_s = reverse(s)
+    for i in 0:n-1
+        if s[1:n-i] == rev_s[i+1:end]
+            return s * rev_s[1:i]
+        end
+    end
+    return s * rev_s
+end
+```
+
+This function works by iterating over the string `s` in reverse order, checking if the current substring from the start of `s` to the end minus the current index `i` is equal to the reverse of the substring from the current index plus one to the end of `s`. If it finds such a substring, it returns the concatenation of `s` and the reverse of the substring from the start of `s` to the current index `i`. If it doesn't find such a substring, it returns the concatenation of `s` and the reverse of `s`.
+
+Here is how it works with the examples from the doc string:
+
+```julia
+julia> palindrome_with_append("")
+""
+
+julia> palindrome_with_append("cat")
+"catac"
+
+julia> palindrome_with_append("cata")
+"catac"
+```

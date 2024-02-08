@@ -1,0 +1,38 @@
+  Here's an implementation of the `has_close_elements` function in Julia:
+```
+function has_close_elements(numbers::Vector{Float64}, threshold::Float64)::Bool
+    for i in 1:length(numbers)-1
+        for j in i+1:length(numbers)
+            if abs(numbers[i] - numbers[j]) <= threshold
+                return true
+            end
+        end
+    end
+    return false
+end
+```
+This function takes two arguments:
+
+* `numbers`: a vector of floating-point numbers
+* `threshold`: a floating-point number representing the maximum allowed distance between two numbers
+
+The function returns `true` if there are any two numbers in the vector that are closer to each other than the given threshold, and `false` otherwise.
+
+Here's an explanation of how the function works:
+
+1. The function first iterates over the vector of numbers using a nested loop. The outer loop iterates over the indices of the vector, and the inner loop iterates over the indices of the vector starting from the current index of the outer loop.
+2. For each pair of indices, the function calculates the absolute difference between the two corresponding elements of the vector using the `abs` function.
+3. If the absolute difference is less than or equal to the given threshold, the function returns `true`.
+4. If the function reaches the end of the vector without finding any pairs of elements that are closer to each other than the given threshold, it returns `false`.
+
+Here are some examples of how to use the function:
+```
+julia> has_close_elements([1.0, 2.0, 3.0], 0.5)
+false
+
+julia> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+true
+
+julia> has_close_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0], 0.5)
+false
+```

@@ -1,0 +1,23 @@
+Here is a step-by-step outline of the function:
+
+1. Initialize a counter variable to 0.
+2. Iterate over the string `s` with an index `i`.
+3. Check if the index `i` is odd and the character at index `i` is an uppercase vowel.
+4. If the character is an uppercase vowel, increment the counter.
+5. Return the counter.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function count_upper(s::String)::Int
+    counter = 0
+    for (i, c) in enumerate(s)
+        if i % 2 != 0 && c in "AEIOU"
+            counter += 1
+        end
+    end
+    return counter
+end
+```
+
+This function works by iterating over the string `s` with an index `i` and character `c`. It checks if the index `i` is odd and the character `c` is an uppercase vowel. If both conditions are true, it increments the counter. Finally, it returns the counter.

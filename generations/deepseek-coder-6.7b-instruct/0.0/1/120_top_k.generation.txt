@@ -1,0 +1,11 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function top_k(xs::Vector{Int}, k::Int)::Vector{Int}
+    return sort(xs, rev=true)[1:k]
+end
+```
+
+This function sorts the input vector in descending order and then returns the first `k` elements. The `rev=true` argument in the `sort` function ensures that the array is sorted in descending order.
+
+The time complexity of this function is O(n log n), where n is the length of the input vector. This is because the `sort` function in Julia uses a sorting algorithm that has a time complexity of O(n log n). The space complexity is O(k), as we are storing the top `k` elements in the output vector.

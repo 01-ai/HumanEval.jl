@@ -1,0 +1,24 @@
+
+
+```julia
+function check_if_last_char_is_a_letter(s::String)::Bool
+    # Check if the string is empty
+    if isempty(s)
+        return false
+    end
+
+    # Check if the last character is a letter
+    last_char = s[end]
+    if isletter(last_char)
+        # Check if the last character is part of a word
+        if length(s) > 1 && isletter(s[end-1])
+            return false
+        end
+        return true
+    end
+
+    return false
+end
+```
+
+This function first checks if the string is empty. If it is, it returns `false`. If the string is not empty, it checks if the last character is a letter using the `isletter` function. If it is, it checks if the last character is part of a word by checking if the character before it is also a letter. If it is, it returns `false`. If it is not, it returns `true`. If the last character is not a letter, it returns `false`.

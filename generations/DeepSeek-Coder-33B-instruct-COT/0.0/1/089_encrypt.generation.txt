@@ -1,0 +1,30 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. Create a function `encrypt` that takes a string `s` as an argument.
+2. Initialize an empty string `result` to store the encrypted string.
+3. Iterate over each character `c` in the string `s`.
+4. If the character `c` is a letter, shift it down by two multiplied to two places.
+5. If the character `c` is not a letter, append it to `result` as it is.
+6. Return `result`.
+
+Here is the Julia code that implements the above steps:
+
+```julia
+function encrypt(s::String)
+    result = ""
+    for c in s
+        if isletter(c)
+            if islowercase(c)
+                result *= Char((c - 'a' + 2*2) % 26 + 'a')
+            else
+                result *= Char((c - 'A' + 2*2) % 26 + 'A')
+            end
+        else
+            result *= c
+        end
+    end
+    return result
+end
+```
+
+This function works by iterating over each character in the input string. If the character is a letter, it shifts it down by two multiplied to two places. If the character is not a letter, it is appended to the result string as it is. The modulo operation is used to ensure that the shift wraps around to the start of the alphabet if it goes beyond 'z' or 'Z'.

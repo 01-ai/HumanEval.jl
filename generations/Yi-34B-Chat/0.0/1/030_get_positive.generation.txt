@@ -1,0 +1,16 @@
+```julia
+function get_positive(xs::Vector)
+    # Initialize an empty vector to store positive numbers
+    positives = Vector{Int64}()
+
+    # Iterate over the list and add positive numbers to the new vector
+    for x in xs
+        if x > 0
+            push!(positives, x)
+        end
+    end
+
+    # Return the new vector with only positive numbers
+    return positives
+end
+```

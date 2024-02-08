@@ -1,0 +1,20 @@
+  Here's one way to implement the `order_by_points` function in Julia:
+```
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    # Create a dictionary to map each number to its sum of digits
+    num_to_sum = Dict(num => sum(digits(num)) for num in nums)
+
+    # Sort the dictionary by the sum of digits
+    sorted_nums = sort(num_to_sum, by=x->x[2])
+
+    # Return the sorted list of numbers
+    return [num for (num, _) in sorted_nums]
+end
+```
+Here's an explanation of how the function works:
+
+1. The function first creates a dictionary `num_to_sum` that maps each number in the input list `nums` to its sum of digits. This is done using a dictionary comprehension.
+2. The function then sorts the dictionary `num_to_sum` by the values (i.e., the sums of digits) using the `sort` function. The `by` keyword argument is used to specify that the sorting should be done based on the values of the dictionary.
+3. Finally, the function returns a list of the sorted numbers by extracting the keys (i.e., the original numbers) from the sorted dictionary using a list comprehension.
+
+Note that the `digits` function is used to get the digits of each number. This function is defined in the `Base` module of Julia, so it is not necessary to import any additional modules.

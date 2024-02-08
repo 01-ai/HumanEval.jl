@@ -1,0 +1,26 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. Create a dictionary to store the frequency of each number in the list.
+2. Iterate over the dictionary in descending order of keys.
+3. For each key-value pair, check if the key is greater than the value.
+4. If the key is greater than the value, return the key.
+5. If no such key is found, return -1.
+
+Here is the Julia code that implements the above steps:
+
+```julia
+function search(numbers::Vector)::Int
+    freq_dict = Dict{Int, Int}()
+    for num in numbers
+        freq_dict[num] = get(freq_dict, num, 0) + 1
+    end
+    for num in sort(collect(keys(freq_dict)), rev=true)
+        if num > freq_dict[num]
+            return num
+        end
+    end
+    return -1
+end
+```
+
+This function first creates a dictionary `freq_dict` where the keys are the numbers in the input list and the values are the frequencies of the numbers. Then it sorts the keys in descending order and checks if the key is greater than its frequency. If it is, it returns the key. If no such key is found, it returns -1.

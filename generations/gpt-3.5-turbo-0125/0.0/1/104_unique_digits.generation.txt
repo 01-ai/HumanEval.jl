@@ -1,0 +1,7 @@
+```julia
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    is_odd(n) = all(d -> d % 2 != 0, digits(n))
+    unique = filter(is_odd, xs)
+    return sort(unique)
+end
+```

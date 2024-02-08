@@ -1,0 +1,41 @@
+To implement the `check_if_last_char_is_a_letter` function, we will follow these steps:
+
+1. Check if the string is empty. If it is, return `false` because there is no last character to check.
+2. Trim any trailing whitespace from the string using the `strip` function, which removes whitespace from both ends of a string.
+3. Check the last character of the trimmed string to see if it is an alphabetical character. We can use the `isletter` function to determine if a character is an alphabetical letter.
+4. If the last character is an alphabetical letter and the character before it is a space (or if the trimmed string is only one character long), return `true`.
+5. Otherwise, return `false`.
+
+Now, let's write the code for the function:
+```julia
+function check_if_last_char_is_a_letter(s::String)::Bool
+    # Step 1: Check if the string is empty
+    if isempty(s)
+        return false
+    end
+
+    # Step 2: Trim trailing whitespace
+    trimmed_s = strip(s)
+
+    # Step 3: Check if the last character is a letter
+    if !isempty(trimmed_s) && isletter(last(trimmed_s))
+        # Step 4: Check if the character before the last is a space or if it's the only character
+        if length(trimmed_s) == 1 || isspace(trimmed_s[end-1])
+            return true
+        end
+    end
+
+    # Step 5: Return false if conditions are not met
+    return false
+end
+```
+
+Let's test the function with the provided examples:
+```julia
+println(check_if_last_char_is_a_letter("apple pie")) # Expected: false
+println(check_if_last_char_is_a_letter("apple pi e")) # Expected: false
+println(check_if_last_char_is_a_letter("apple pi e ")) # Expected: false
+println(check_if_last_char_is_a_letter("")) # Expected: false
+```
+
+Please note that the function assumes that the input string `s` is a valid `String` object and does not contain any non-printable characters other than spaces. If the input may contain other types of whitespace or non-printable characters, additional checks and preprocessing may be required.

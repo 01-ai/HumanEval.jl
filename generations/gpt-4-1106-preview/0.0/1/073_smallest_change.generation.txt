@@ -1,0 +1,23 @@
+Here is the Julia function `smallest_change` that implements the logic described in the doc string:
+
+```julia
+function smallest_change(xs::Vector{Int})::Int
+    n = length(xs)
+    changes = 0
+    
+    for i in 1:(n ÷ 2)
+        if xs[i] != xs[n - i + 1]
+            changes += 1
+        end
+    end
+    
+    return changes
+end
+
+# Examples
+println(smallest_change([1, 2, 3, 5, 4, 7, 9, 6])) # Output: 4
+println(smallest_change([1, 2, 3, 4, 3, 2, 2]))    # Output: 1
+println(smallest_change([1, 2, 3, 2, 1]))          # Output: 0
+```
+
+This function iterates over the first half of the array and compares each element with its corresponding element from the other half of the array (mirrored position). If the elements are not equal, it increments the `changes` counter. The result is the number of changes needed to make the array palindromic.

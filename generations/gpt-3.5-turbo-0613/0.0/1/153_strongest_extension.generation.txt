@@ -1,0 +1,21 @@
+Here is the implementation for the `strongest_extension` function:
+
+```julia
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    strongest = ""
+    max_strength = -Inf
+    
+    for extension in extensions
+        cap = count(isuppercase, extension)
+        sm = count(islowercase, extension)
+        strength = cap - sm
+        
+        if strength > max_strength
+            max_strength = strength
+            strongest = extension
+        end
+    end
+    
+    return "$class_name.$strongest"
+end
+```

@@ -1,0 +1,22 @@
+```julia
+function modp(n::Int, p::Int)::Int
+    # Initialize result to 1
+    result = 1
+
+    # Loop through binary representation of n
+    while n > 0
+        # If the least significant bit is 1, multiply result by p
+        if n & 1 == 1
+            result = (result * p) % p
+        end
+
+        # Shift n to the right and reduce p if necessary
+        n >>= 1
+        p = (p * p) % p
+    end
+
+    return result
+end
+```
+
+This function calculates `2^n` modulo `p` by iteratively squaring `p` and multiplying by 2 if the corresponding bit in `n` is set. The loop continues until `n` is zero.

@@ -1,0 +1,16 @@
+```julia
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    collatz_seq = BigInt[n]
+    while n != 1
+        if n % 2 == 0
+            n = n ÷ 2
+        else
+            n = 3n + 1
+        end
+        if n % 2 != 0
+            push!(collatz_seq, BigInt(n))
+        end
+    end
+    return sort(unique(collatz_seq))
+end
+```

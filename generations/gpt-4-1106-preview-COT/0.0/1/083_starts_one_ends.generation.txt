@@ -1,0 +1,36 @@
+To implement the `starts_one_ends` function, we can follow these steps:
+
+1. Check if `n` is a positive integer. If not, return an error or 0.
+2. If `n` is 1, then all single-digit numbers (1-9) start and end with themselves, so there are 1 such number.
+3. For `n` greater than 1, we can calculate the count as follows:
+   - Numbers that start with 1: There are 10^(n-1) such numbers because the first digit is fixed as 1 and the remaining (n-1) digits can be any digit from 0 to 9.
+   - Numbers that end with 1: Similarly, there are 10^(n-1) such numbers because the last digit is fixed as 1 and the remaining (n-1) digits can be any digit from 0 to 9.
+   - However, we have double-counted the numbers that both start and end with 1. There are 10^(n-2) such numbers (if n > 1) because the first and last digits are fixed as 1 and the remaining (n-2) digits can be any digit from 0 to 9.
+   - To get the final count, we add the counts of numbers that start with 1 and numbers that end with 1, then subtract the count of numbers that both start and end with 1.
+4. Return the final count.
+
+Now, let's write the code for the function:
+
+```julia
+function starts_one_ends(n::Int)::Int
+    # Step 1: Check if n is a positive integer
+    if n <= 0
+        throw(ArgumentError("n must be a positive integer"))
+    end
+    
+    # Step 2: Handle the case when n is 1
+    if n == 1
+        return 1
+    end
+    
+    # Step 3: Calculate the count for n > 1
+    start_with_1 = 10^(n-1)
+    end_with_1 = 10^(n-1)
+    both_start_end_with_1 = 10^(n-2)
+    
+    # Step 4: Return the final count
+    return start_with_1 + end_with_1 - both_start_end_with_1
+end
+```
+
+This function should now correctly calculate the count of n-digit positive integers that start or end with 1

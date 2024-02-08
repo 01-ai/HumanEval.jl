@@ -1,0 +1,23 @@
+```julia
+function n_digits_in_binary(N::Int)::String
+    # Initialize an empty string to store the binary representation of N
+    binary_str = ""
+    
+    # Loop through the binary representation of N
+    while N > 0
+        # Get the last digit of N in binary
+        digit = N % 2
+        
+        # Append it to the binary_str
+        binary_str = string(digit) * binary_str
+        
+        # Remove the last digit from N
+        N = N ÷ 2
+    end
+    
+    # Return the total sum of the digits in binary
+    return binary_str
+end
+```
+
+This function takes an integer `N` and returns a string representing the total sum of its digits in binary. It works by repeatedly finding the last digit of `N` in binary and appending it to an empty string until `N` is zero. The resulting string is then returned.

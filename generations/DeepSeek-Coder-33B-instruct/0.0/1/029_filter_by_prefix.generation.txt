@@ -1,0 +1,9 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function filter_by_prefix(xs::Vector{String}, prefix::String)::Vector{String}
+    return filter(x -> startswith(x, prefix), xs)
+end
+```
+
+This function uses the `filter` function in Julia, which applies a given function to each element of a collection and returns a new collection containing only those elements for which the function returns `true`. The function `startswith` is used to check if a string starts with a given prefix.

@@ -1,0 +1,17 @@
+
+
+function even_odd_count(num::Int)::Tuple{Int, Int}
+    num = abs(num)
+    even = 0
+    odd = 0
+    while num > 0
+        digit = num % 10
+        if digit % 2 == 0
+            even += 1
+        else
+            odd += 1
+        end
+        num = num ÷ 10
+    end
+    return (even, odd)
+end

@@ -1,0 +1,17 @@
+Here is a step-by-step outline of the solution:
+
+1. Convert both strings to arrays of characters.
+2. Sort both arrays.
+3. Compare the sorted arrays. If they are equal, return true. Otherwise, return false.
+
+Here is the Julia code:
+
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    s0_chars = collect(s0)
+    s1_chars = collect(s1)
+    sort(s0_chars) == sort(s1_chars)
+end
+```
+
+This function works by first converting the input strings to arrays of characters. Then it sorts these arrays and checks if they are equal. If they are, it means that the two words have the same characters, so it returns true. Otherwise, it returns false.

@@ -1,0 +1,27 @@
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    # Initialize an empty vector to store the beat counts
+    beats = Vector{Int}()
+
+    # Loop over the music string
+    for note in music_string
+        # Handle whole notes ("o")
+        if note == 'o'
+            push!(beats, 4)
+        # Handle half notes ("o|")
+        elseif note == 'o' && next(music_string) == '|'
+            push!(beats, 2)
+            next(music_string)
+        # Handle quarter notes (".|")
+        elseif note == '.' && next(music_string) == '|'
+            push!(beats, 1)
+            next(music_string)
+        end
+    end
+
+    # Return the vector of beat counts
+    return beats
+end
+```
+
+This function parses the music string and adds the corresponding beat counts to the `beats` vector. It uses `next(music_string)` to advance the string pointer to the next character without consuming it, which is necessary to check for the presence of a pipe character (`|`) after a note.

@@ -1,0 +1,20 @@
+
+
+```julia
+function median(l::Vector)
+    # Step 1: Sort the list
+    sorted_list = sort(l)
+
+    # Step 2: Find the middle index
+    middle_index = length(sorted_list) ÷ 2 + 1
+
+    # Step 3: Return the median
+    if iseven(length(sorted_list))
+        return (sorted_list[middle_index - 1] + sorted_list[middle_index]) / 2
+    else
+        return sorted_list[middle_index]
+    end
+end
+```
+
+This function first sorts the input list, then finds the middle index. If the list has an even number of elements, the median is the average of the two middle elements. If the list has an odd number of elements, the median is the middle element.

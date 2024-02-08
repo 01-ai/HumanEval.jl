@@ -1,0 +1,22 @@
+
+
+Here is a Julia function that implements the `get_max_triples` function as described in the docstring:
+
+```julia
+function get_max_triples(n::Int)::Int
+    a = [i * i - i + 1 for i in 1:n]
+    count = 0
+    for i in 1:n
+        for j in i+1:n
+            for k in j+1:n
+                if (a[i] + a[j] + a[k]) % 3 == 0
+                    count += 1
+                end
+            end
+        end
+    end
+    return count
+end
+```
+
+This function first creates an array `a` of length `n` where each element `i` is calculated as `i * i - i + 1`. Then it counts the number of triples `(a[i], a[j], a[k])` of elements in `a` where `i < j < k` and the sum `a[i] + a[j] + a[k]` is a multiple of 3. The count is then returned as the result.

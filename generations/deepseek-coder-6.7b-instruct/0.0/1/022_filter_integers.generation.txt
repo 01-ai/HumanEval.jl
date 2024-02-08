@@ -1,0 +1,11 @@
+Here is the Julia function that filters a given list of any values only for integers:
+
+```julia
+function filter_integers(values::AbstractVector)::Vector{Int}
+    return [x for x in values if typeof(x) == Int]
+end
+```
+
+This function uses list comprehension to iterate over the input vector `values`. It checks the type of each element `x` in the vector. If the type of `x` is `Int`, it is included in the output vector. If the type of `x` is not `Int`, it is ignored.
+
+The function returns a new vector that contains only the integers from the input vector.

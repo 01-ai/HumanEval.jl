@@ -1,0 +1,19 @@
+Here is the Julia function that implements the Fibonacci sequence:
+
+```julia
+function fib(n::Int)::Int
+    if n <= 0
+        return 0
+    elseif n == 1
+        return 1
+    else
+        a, b = 0, 1
+        for i in 2:n
+            a, b = b, a + b
+        end
+        return b
+    end
+end
+```
+
+This function uses a loop to calculate the n-th Fibonacci number. It starts with two variables `a` and `b` initialized to `0` and `1`, respectively. In each iteration of the loop, it updates `a` and `b` to the next two numbers in the Fibonacci sequence. The n-th Fibonacci number is stored in `b` after the loop finishes.

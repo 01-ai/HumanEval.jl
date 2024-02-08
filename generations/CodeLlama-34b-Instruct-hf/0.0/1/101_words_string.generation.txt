@@ -1,0 +1,32 @@
+  Here is a possible implementation of the `words_string` function in Julia:
+```
+function words_string(s::String)::Vector{String}
+    words = split(s, r"[ ,]+")
+    return filter(x -> !isempty(x), words)
+end
+```
+Explanation:
+
+* `split(s, r"[ ,]+")` splits the input string `s` into an array of substrings using the regular expression `[ ,]+`, which matches one or more spaces or commas.
+* `filter(x -> !isempty(x), words)` filters out any empty strings from the resulting array of substrings.
+* The `::Vector{String}` type annotation specifies that the function should return a vector of strings.
+
+Here are some examples of how the function can be used:
+```
+julia> words_string("Hi, my name is John")
+5-element Vector{String}:
+ "Hi"
+ "my"
+ "name"
+ "is"
+ "John"
+
+julia> words_string("One, two, three, four, five, six")
+6-element Vector{String}:
+ "One"
+ "two"
+ "three"
+ "four"
+ "five"
+ "six"
+```

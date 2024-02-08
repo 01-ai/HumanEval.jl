@@ -1,0 +1,28 @@
+Here is a step-by-step outline of how you can implement this function:
+
+1. Initialize two variables, `largest_negative` and `smallest_positive`, to `nothing`.
+2. Iterate over the input list `xs`.
+3. For each element `x` in `xs`, check if `x` is negative and greater than `largest_negative`. If it is, update `largest_negative` to `x`.
+4. If `x` is positive and less than `smallest_positive`, update `smallest_positive` to `x`.
+5. After the loop, return a tuple `(largest_negative, smallest_positive)`.
+
+Here is the Julia code that implements this function:
+
+```julia
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing,Int}}
+    largest_negative = nothing
+    smallest_positive = nothing
+
+    for x in xs
+        if x < 0 && (largest_negative === nothing || x > largest_negative)
+            largest_negative = x
+        elseif x > 0 && (smallest_positive === nothing || x < smallest_positive)
+            smallest_positive = x
+        end
+    end
+
+    return (largest_negative, smallest_positive)
+end
+```
+
+This function works by iterating over the input list `xs` and updating `largest_negative` and `smallest_positive` as necessary. The `if` statements ensure that `largest_negative` and `smallest_positive` are only updated if `x` is a negative number greater than the current `largest_negative`, or a positive number less than the current `smallest_positive`. If `xs` is empty or contains only zeros, `largest_negative` and `smallest_positive` will remain `nothing`.

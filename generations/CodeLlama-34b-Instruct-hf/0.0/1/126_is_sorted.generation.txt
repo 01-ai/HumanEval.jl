@@ -1,0 +1,21 @@
+  Here's an implementation of the `is_sorted` function in Julia:
+```
+function is_sorted(xs::Vector{Int})::Bool
+    if length(xs) <= 1
+        return true
+    end
+    for i in 2:length(xs)
+        if xs[i] < xs[i-1]
+            return false
+        end
+    end
+    return true
+end
+```
+This function first checks if the length of the input vector is less than or equal to 1, in which case it returns `true` since an empty or single-element vector is always sorted.
+
+Otherwise, it iterates over the elements of the vector starting from the second element, and checks if each element is greater than or equal to the previous element. If any element is less than the previous element, the function returns `false`.
+
+If the loop completes without finding any elements out of order, the function returns `true`.
+
+Note that this implementation assumes that the input vector contains only non-negative integers, as specified in the docstring. If the input vector contains negative numbers or other types of values, the function may not work correctly.

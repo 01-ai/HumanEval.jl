@@ -1,0 +1,20 @@
+Certainly! Below is the Julia function `triangle_area3` that calculates the area of a triangle given the lengths of its sides, or returns -1 if the sides do not form a valid triangle.
+
+```julia
+function triangle_area3(a::Number, b::Number, c::Number)::Number
+    # Check if the sides form a valid triangle
+    if a + b > c && a + c > b && b + c > a
+        # Calculate the semi-perimeter
+        s = (a + b + c) / 2
+        # Calculate the area using Heron's formula
+        area = sqrt(s * (s - a) * (s - b) * (s - c))
+        # Round the area to 2 decimal points
+        return round(area, digits=2)
+    else
+        # If not a valid triangle, return -1
+        return -1
+    end
+end
+```
+
+You can use this function to calculate the area of a triangle with given side lengths. If the sides do not form a valid triangle, the function will return -1.

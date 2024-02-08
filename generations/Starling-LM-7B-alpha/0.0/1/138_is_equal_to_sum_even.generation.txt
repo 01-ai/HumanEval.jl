@@ -1,0 +1,19 @@
+ function is_equal_to_sum_even(n::Int)::Bool
+    if n < 4
+        return false
+    end
+
+    for i in 2:n-3
+        for j in 2:n-3
+            for k in 2:n-3
+                for l in 2:n-3
+                    if i + j + k + l == n
+                        return true
+                    end
+                end
+            end
+        end
+    end
+
+    return false
+end

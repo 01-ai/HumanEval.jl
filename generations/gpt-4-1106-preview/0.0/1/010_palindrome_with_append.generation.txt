@@ -1,0 +1,30 @@
+Certainly! Below is the Julia function `palindrome_with_append` that implements the algorithm described in the doc string:
+
+```julia
+function palindrome_with_append(s::String)::String
+    # If the string is empty or already a palindrome, return it as is
+    if s == reverse(s)
+        return s
+    end
+
+    # Find the longest palindromic suffix
+    for i in 1:length(s)
+        suffix = s[i:end]
+        if suffix == reverse(suffix)
+            # Append the reverse of the prefix to the original string
+            prefix = s[1:i-1]
+            return s * reverse(prefix)
+        end
+    end
+
+    # If no palindromic suffix is found, the entire string needs to be mirrored
+    return s * reverse(s)
+end
+
+# Examples
+println(palindrome_with_append(""))        # Output: ""
+println(palindrome_with_append("cat"))     # Output: "catac"
+println(palindrome_with_append("cata"))    # Output: "catac"
+```
+
+This function checks for the longest palindromic suffix by iterating from the start of the string and checking each suffix. When it finds the longest palindromic suffix, it appends the reverse of the prefix to the original string to form the shortest palindrome. If no palindromic suffix is found, it mirrors the entire string.

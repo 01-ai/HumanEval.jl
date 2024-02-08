@@ -1,0 +1,13 @@
+Here is a Julia function that implements the given problem:
+
+```julia
+function any_int(x::Number, y::Number, z::Number)::Bool
+    if isinteger(x) && isinteger(y) && isinteger(z)
+        return x == y + z || y == x + z || z == x + y
+    else
+        return false
+    end
+end
+```
+
+This function first checks if all three inputs are integers. If they are, it then checks if any of the numbers is equal to the sum of the other two. If either condition is true, it returns `true`; otherwise, it returns `false`.

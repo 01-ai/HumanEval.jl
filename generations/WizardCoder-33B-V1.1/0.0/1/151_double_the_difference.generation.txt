@@ -1,0 +1,11 @@
+
+
+Here is the Julia function that implements the given doc string:
+
+```julia
+function double_the_difference(xs::Vector)
+    sum(x^2 for x in xs if x % 2 != 0 && x >= 0 && isinteger(x))
+end
+```
+
+This function uses a generator expression to square each odd, non-negative integer in the input list, and then uses the `sum` function to add up these squared values. If the input list is empty, `sum` returns 0. 

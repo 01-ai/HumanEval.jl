@@ -1,0 +1,5 @@
+function flip_case(s::String)::String
+    return map(c -> islowercase(c) ? uppercase(c) : lowercase(c), s)
+end
+
+println(flip_case("Hello"))

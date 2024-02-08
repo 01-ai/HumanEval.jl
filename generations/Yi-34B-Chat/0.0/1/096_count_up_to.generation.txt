@@ -1,0 +1,28 @@
+```julia
+function count_up_to(n::Int)::Vector{Int}
+    # Initialize an empty vector to store the prime numbers
+    primes = Vector{Int}()
+
+    # Loop through the numbers from 2 to n-1 (since n is not a prime)
+    for i in 2:n-1
+        # Check if the number is prime
+        is_prime = true
+        for j in 2:i
+            if i % j == 0
+                is_prime = false
+                break
+            end
+        end
+
+        # If the number is prime, add it to the vector
+        if is_prime
+            push!(primes, i)
+        end
+    end
+
+    # Return the vector of prime numbers
+    return primes
+end
+```
+
+This function defines a `count_up_to` function that takes an integer `n` and returns a vector of the first `n` prime numbers that are less than `n`. It uses a simple iterative approach to check if each number is prime by testing if it is divisible by any prime number smaller than itself. If a number is not divisible by any prime smaller than itself, it is considered prime and added to the vector.

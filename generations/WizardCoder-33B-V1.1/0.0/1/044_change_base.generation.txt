@@ -1,0 +1,20 @@
+
+
+Here is the Julia function that implements the above doc string:
+
+```julia
+function change_base(x::Int, base::Int)::String
+    if x == 0
+        return "0"
+    end
+    result = ""
+    while x > 0
+        digit = x % base
+        result = string(digit) * result
+        x = div(x, base)
+    end
+    return result
+end
+```
+
+This function works by repeatedly dividing the input number by the base and appending the remainder to the result string. The process continues until the input number is 0. The result string is then returned. 

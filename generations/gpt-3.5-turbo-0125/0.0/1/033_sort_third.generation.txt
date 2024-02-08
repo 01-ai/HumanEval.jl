@@ -1,0 +1,9 @@
+```julia
+function sort_third(l::Vector)
+    sorted_indices = findall(x -> x % 3 == 0, 1:length(l))
+    sorted_values = sort(l[sorted_indices])
+    l_sorted = copy(l)
+    l_sorted[sorted_indices] = sorted_values
+    return l_sorted
+end
+```

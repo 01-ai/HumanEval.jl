@@ -1,0 +1,7 @@
+```julia
+function sorted_list_sum(xs::Vector{String})::Vector{String}
+    filtered_list = filter(x -> length(x) % 2 == 0, xs)
+    sorted_list = sort(filtered_list, by = x -> (length(x), x))
+    return sorted_list
+end
+```

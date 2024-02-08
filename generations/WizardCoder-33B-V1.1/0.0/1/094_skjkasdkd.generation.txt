@@ -1,0 +1,46 @@
+
+
+Here is the Julia function that solves the problem:
+
+```julia
+function skjkasdkd(xs::Vector{Int})::Int
+    function is_prime(n::Int)::Bool
+        if n <= 1
+            return false
+        elseif n <= 3
+            return true
+        elseif n % 2 == 0 || n % 3 == 0
+            return false
+        end
+        i = 5
+        while i * i <= n
+            if n % i == 0 || n % (i + 2) == 0
+                return false
+            end
+            i += 6
+        end
+        return true
+    end
+
+    function sum_of_digits(n::Int)::Int
+        sum = 0
+        while n > 0
+            sum += n % 10
+            n = div(n, 10)
+        end
+        return sum
+    end
+
+    max_prime = -1
+    for x in xs
+        if is_prime(x) && x > max_prime
+            max_prime = x
+        end
+    end
+    return sum_of_digits(max_prime)
+end
+```
+
+This function first defines two helper functions: `is_prime` and `sum_of_digits`. The `is_prime` function checks if a number is prime, and the `sum_of_digits` function calculates the sum of the digits of a number.
+
+The main function `skjkasdkd` iterates over the input vector `xs`, checks if each number is prime and larger than the current maximum prime found, and if so, updates the maximum prime. Finally, it returns the sum of the digits of the maximum prime found. 

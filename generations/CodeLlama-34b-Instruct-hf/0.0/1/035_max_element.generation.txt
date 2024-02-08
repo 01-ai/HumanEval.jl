@@ -1,0 +1,28 @@
+  Here is a possible implementation of the `max_element` function in Julia:
+```
+function max_element(xs)
+    if isempty(xs)
+        return nothing
+    end
+    m = xs[1]
+    for x in xs
+        if x > m
+            m = x
+        end
+    end
+    return m
+end
+```
+This function first checks if the input list `xs` is empty. If it is, the function returns `nothing`. Otherwise, it initializes a variable `m` to the first element of `xs` and then iterates over the remaining elements of `xs`. For each element `x`, if `x` is greater than `m`, `m` is updated to `x`. After iterating over all elements of `xs`, the function returns `m`, which is the maximum element in the list.
+
+Here are some examples of how the function can be used:
+```
+julia> max_element([1, 2, 3])
+3
+
+julia> max_element([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])
+123
+
+julia> max_element([])
+nothing
+```

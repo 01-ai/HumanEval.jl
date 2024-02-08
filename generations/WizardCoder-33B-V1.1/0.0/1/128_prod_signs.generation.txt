@@ -1,0 +1,16 @@
+
+
+Here is the Julia function that implements the given problem:
+
+```julia
+function prod_signs(xs::Vector{Int})::Union{Nothing,Int}
+    if isempty(xs)
+        return nothing
+    end
+    sum_abs = sum(abs, xs)
+    prod_sign = prod(sign, xs)
+    return sum_abs * prod_sign
+end
+```
+
+This function first checks if the input array `xs` is empty. If it is, it returns `nothing`. If it's not, it calculates the sum of the absolute values of the elements in `xs` and the product of the signs of the elements in `xs`, and then returns their product. 

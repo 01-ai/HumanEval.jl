@@ -1,0 +1,19 @@
+Here is a Julia function that calculates the largest prime factor of a given number:
+
+```julia
+function largest_prime_factor(n::Int)::Int
+    factor = 2
+    while factor * factor <= n
+        if n % factor != 0
+            factor += 1
+        else
+            n �= factor
+        end
+    end
+    return n
+end
+```
+
+This function works by continuously dividing the input number `n` by increasing integers starting from 2 until it can no longer be divided evenly. The last factor that `n` was divided by is the largest prime factor.
+
+For example, if `n` is 13195, the function will first divide `n` by 2, then by 3, then by 5, and so on, until it can no longer be divided evenly by 29. The function then returns 29, which is the largest prime factor of 13195.

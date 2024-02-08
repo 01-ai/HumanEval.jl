@@ -1,0 +1,29 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. Initialize a counter to 0. This counter will keep track of the number of times the digit 7 appears in numbers divisible by 11 or 13.
+
+2. Iterate over the numbers from 1 to `n`.
+
+3. For each number, check if it is divisible by 11 or 13. If it is, convert the number to a string and count the number of times the digit 7 appears in the string. Add this count to the counter.
+
+4. Return the counter.
+
+Here is the Julia code that implements this algorithm:
+
+```julia
+function fizz_buzz(n::Int)
+    count = 0
+    for i in 1:n
+        if i % 11 == 0 || i % 13 == 0
+            count += count_sevens(string(i))
+        end
+    end
+    return count
+end
+
+function count_sevens(s::String)
+    return count(c -> c == '7', s)
+end
+```
+
+In this code, `fizz_buzz` is the main function that implements the algorithm described above. It uses a helper function `count_sevens` to count the number of times the digit 7 appears in a string. The `count` function is used with a predicate that checks if a character is equal to '7'.

@@ -1,0 +1,42 @@
+### Step-by-Step Outline
+
+1. **Initialize Variables**: Create a set or list of vowels to check against. Initialize a variable to hold the closest vowel found.
+
+2. **Iterate Over the Word**: Loop through the word from right to left (since we are looking for the closest vowel from the right side). This can be done by reversing the word or by using a reverse index loop.
+
+3. **Check for Vowels Between Consonants**: 
+    - For each character, check if it is a vowel and not at the beginning or end of the word (since those don't count).
+    - Ensure that this vowel is between two consonants. This means checking the characters immediately before and after the current character (in the original, non-reversed word) to ensure they are not vowels.
+    - If a vowel is found that meets these conditions, store it as the closest vowel.
+
+4. **Return the Result**: 
+    - If a vowel meeting the conditions is found, return it.
+    - If no such vowel is found, return an empty string.
+
+### Julia Code Implementation
+
+```julia
+function get_closest_vowel(word::String)::String
+    # Step 1: Initialize variables
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    closest_vowel = ""
+    
+    # Step 2: Iterate over the word from right to left
+    for i in length(word):-1:2  # Skip the first and last character
+        current_char = word[i]
+        prev_char = word[i-1]
+        next_char = i < length(word) ? word[i+1] : ' '  # Handle the edge case for the second last character
+        
+        # Step 3: Check for vowels between consonants
+        if current_char in vowels && !(prev_char in vowels || next_char in vowels)
+            closest_vowel = current_char
+            break  # Found the closest vowel, exit the loop
+        end
+    end
+    
+    # Step 4: Return the result
+    return closest_vowel
+end
+```
+
+This implementation follows the outlined steps to find the closest vowel that stands between two consonants from the right side of the word, excluding vowels at the beginning and end of the word.

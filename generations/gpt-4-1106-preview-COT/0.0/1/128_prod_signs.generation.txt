@@ -1,0 +1,53 @@
+### Step-by-step outline:
+
+1. Check if the input vector `xs` is empty. If it is, return `Nothing`.
+2. Initialize a variable to keep track of the product of signs, starting with 1.
+3. Initialize a variable to keep track of the sum of magnitudes, starting with 0.
+4. Iterate over each element in the input vector `xs`.
+   - For each element, determine its sign (1 for positive, -1 for negative, 0 for zero).
+   - Multiply the current product of signs by the sign of the current element.
+   - Add the absolute value (magnitude) of the current element to the sum of magnitudes.
+5. If the product of signs is 0, return 0 (since multiplying anything by 0 results in 0).
+6. Otherwise, return the sum of magnitudes multiplied by the product of signs.
+
+### Julia code:
+
+```julia
+function prod_signs(xs::Vector{Int})::Union{Nothing,Int}
+    # Step 1: Check for empty vector
+    if isempty(xs)
+        return nothing
+    end
+
+    # Step 2: Initialize product of signs
+    sign_product = 1
+
+    # Step 3: Initialize sum of magnitudes
+    magnitude_sum = 0
+
+    # Step 4: Iterate over elements
+    for x in xs
+        # Determine the sign and update the product of signs
+        sign_product *= if x > 0
+            1
+        elseif x < 0
+            -1
+        else
+            0
+        end
+
+        # Break early if sign_product is 0
+        if sign_product == 0
+            return 0
+        end
+
+        # Update the sum of magnitudes
+        magnitude_sum += abs(x)
+    end
+
+    # Step 5 & 6: Return the result
+    return magnitude_sum * sign_product
+end
+```
+
+This function should work as expected based on the provided doc string. Let's implement the code.

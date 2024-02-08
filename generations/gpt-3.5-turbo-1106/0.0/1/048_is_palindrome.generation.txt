@@ -1,0 +1,5 @@
+```julia
+function is_palindrome(text::String)::Bool
+    return text == reverse(text)
+end
+```

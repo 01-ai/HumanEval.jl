@@ -1,0 +1,14 @@
+```julia
+function sum_to_n(n::Int)::Int
+    # Initialize the sum to 0
+    total_sum = 0
+
+    # Loop through the numbers from 1 to n, adding each to the total sum
+    for i in 1:n
+        total_sum += i
+    end
+
+    # Return the total sum
+    return total_sum
+end
+```

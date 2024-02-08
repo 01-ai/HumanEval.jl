@@ -1,0 +1,13 @@
+
+
+```julia
+function is_palindrome(text::String)::Bool
+    # Remove all non-alphanumeric characters and convert to lowercase
+    clean_text = replace(lowercase(text), r"[^a-z0-9]" => "")
+
+    # Check if the string is a palindrome
+    return clean_text == reverse(clean_text)
+end
+```
+
+This function first removes all non-alphanumeric characters and converts the string to lowercase. Then, it checks if the string is a palindrome by comparing it to its reverse. If they are equal, it returns `true`, otherwise it returns `false`.

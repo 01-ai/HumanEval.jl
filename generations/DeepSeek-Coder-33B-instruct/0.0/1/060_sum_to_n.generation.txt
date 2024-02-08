@@ -1,0 +1,9 @@
+Here is the Julia function that sums numbers from 1 to n:
+
+```julia
+function sum_to_n(n::Int)::Int
+    return n * (n + 1) � 2
+end
+```
+
+This function uses the formula for the sum of an arithmetic series, which is `n * (n + 1) / 2`. The `�` operator is used for integer division, which discards the remainder and returns an integer.

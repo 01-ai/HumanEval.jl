@@ -1,0 +1,40 @@
+### Step-by-Step Outline:
+
+1. Define the function `parse_music` that takes a single argument `music_string` of type `String`.
+2. Initialize an empty vector `beats` to store the parsed beats as integers.
+3. Split the `music_string` into individual notes using whitespace as the delimiter.
+4. Iterate over each note in the split string.
+5. For each note, determine the type of note based on the legend provided:
+    - If the note is `"o"`, it is a whole note and lasts four beats.
+    - If the note is `"o|"`, it is a half note and lasts two beats.
+    - If the note is `".|"` it is a quarter note and lasts one beat.
+6. Append the corresponding integer value to the `beats` vector based on the type of note.
+7. Return the `beats` vector after the iteration is complete.
+
+### Julia Code:
+
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    # Initialize an empty vector to store the beats
+    beats = Int[]
+
+    # Split the music string into individual notes
+    notes = split(music_string)
+
+    # Iterate over each note and determine its beat value
+    for note in notes
+        if note == "o"
+            push!(beats, 4)  # Whole note
+        elseif note == "o|"
+            push!(beats, 2)  # Half note
+        elseif note == ".|"
+            push!(beats, 1)  # Quarter note
+        end
+    end
+
+    # Return the vector of beats
+    return beats
+end
+```
+
+This function can now be used to parse a string of musical notes into their corresponding beat values.

@@ -1,0 +1,41 @@
+To implement the `histogram` function as described, we can follow these steps:
+
+1. Split the input string by spaces to get individual letters.
+2. Use a dictionary to count the occurrences of each letter.
+3. Find the maximum count of occurrences.
+4. Filter the dictionary to keep only the letters with the maximum count.
+
+Here's how you can implement it in Julia:
+
+```julia
+function histogram(s::String)::Dict{String, Int}
+    # Split the string into letters
+    letters = split(s)
+    # Initialize a dictionary to count occurrences
+    letter_counts = Dict{String, Int}()
+    
+    # Count occurrences of each letter
+    for letter in letters
+        letter_counts[letter] = get(letter_counts, letter, 0) + 1
+    end
+    
+    # Find the maximum count of occurrences
+    max_count = maximum(values(letter_counts); init=0)
+    
+    # Filter the dictionary to keep only letters with the maximum count
+    max_letters = Dict{String, Int}()
+    for (letter, count) in letter_counts
+        if count == max_count
+            max_letters[letter] = count
+        end
+    end
+    
+    return max_letters
+end
+```
+
+This function works as follows:
+- It first splits the input string `s` into individual letters.
+- Then, it counts how many times each letter appears in the string.
+- It finds the maximum count of any letter(s).
+- Finally, it filters the dictionary to return only those letters that have the maximum count, along with their counts.

@@ -1,0 +1,19 @@
+function reverse_string(s::String)::String
+    result = ""
+    for c in s
+        if isletter(c)
+            if islowercase(c)
+                result *= uppercase(c)
+            else
+                result *= lowercase(c)
+            end
+        else
+            result *= c
+        end
+    end
+    if isempty(result)
+        return reverse(s)
+    else
+        return result
+    end
+end

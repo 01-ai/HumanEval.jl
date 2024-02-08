@@ -1,0 +1,24 @@
+  Here's an implementation of the `choose_num` function in Julia:
+```
+function choose_num(x::Int, y::Int)::Int
+    if x > y
+        return -1
+    end
+    for i in x:y
+        if i % 2 == 0
+            return i
+        end
+    end
+    return -1
+end
+```
+This function first checks if `x` is greater than `y`, in which case it returns `-1` since there is no even number in the range `[x, y]`. Otherwise, it iterates over the range `[x, y]` and returns the first even number it finds. If no even number is found, it returns `-1`.
+
+Here's an example usage of the function:
+```
+julia> choose_num(12, 15)
+14
+
+julia> choose_num(13, 12)
+-1
+```

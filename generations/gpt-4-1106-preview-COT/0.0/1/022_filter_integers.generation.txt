@@ -1,0 +1,38 @@
+To implement the `filter_integers` function, we will follow these steps:
+
+1. Define the function `filter_integers` that takes one argument `values`, which is an `AbstractVector`.
+2. Initialize an empty vector `result` that will store the filtered integers.
+3. Iterate over each element in the `values` vector.
+4. Check if the current element is an integer by using the `isa` function to compare the type of the element with `Int`.
+5. If the element is an integer, append it to the `result` vector.
+6. Return the `result` vector after the iteration is complete.
+
+Now, let's write the code for the function:
+
+```julia
+function filter_integers(values::AbstractVector)::Vector{Int}
+    # Step 2: Initialize an empty vector for the result
+    result = Int[]
+
+    # Step 3: Iterate over each element in the values vector
+    for value in values
+        # Step 4: Check if the element is an integer
+        if isa(value, Int)
+            # Step 5: Append the integer to the result vector
+            push!(result, value)
+        end
+    end
+
+    # Step 6: Return the result vector
+    return result
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(filter_integers(["a", 3.14, 5])) # Expected output: [5]
+println(filter_integers([1, 2, 3, "abc", Set(), []])) # Expected output: [1, 2, 3]
+```
+
+This function should work as expected and filter out only the integers from the given list of values.

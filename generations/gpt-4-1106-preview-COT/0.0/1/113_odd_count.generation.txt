@@ -1,0 +1,11 @@
+To implement the `odd_count` function, we will follow these steps:
+
+1. Define the function `odd_count` that takes a vector of strings `xs` as input.
+2. Initialize an empty vector of strings `result` to store the output.
+3. Loop through each string in the input vector `xs`.
+4. For each string, count the number of odd digits.
+5. Create the output string by replacing the letter 'i' with the number of odd digits found in step 4.
+6. Append the output string to the `result` vector.
+7. Return the `result` vector after the loop ends.
+
+Now, let's write the code for the `odd_count` function.

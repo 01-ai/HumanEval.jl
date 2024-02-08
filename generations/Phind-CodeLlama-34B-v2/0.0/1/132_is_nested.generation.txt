@@ -1,0 +1,26 @@
+
+
+Here is a Julia function that implements the `is_nested` function described in the docstring:
+
+```julia
+function is_nested(s::String)::Bool
+    stack = []
+    for c in s
+        if c == '['
+            push!(stack, c)
+        elseif c == ']'
+            if isempty(stack)
+                return false
+            else
+                pop!(stack)
+            end
+        end
+    end
+    if isempty(stack)
+        return false
+    end
+    return true
+end
+```
+
+This function uses a stack to keep track of the brackets in the string. It iterates over the characters in the string. If it encounters an opening bracket, it pushes it onto the stack. If it encounters a closing bracket, it checks if the stack is empty. If the stack is empty, it returns false, as there is no corresponding opening bracket for this closing bracket. If the stack is not empty, it pops an element from the stack. After iterating over all characters in the string, if the stack is not empty, it returns true, as there is a nested bracket sequence. If the stack is empty, it returns false.

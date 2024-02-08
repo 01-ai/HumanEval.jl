@@ -1,0 +1,13 @@
+Here is the implementation of the `digitSum` function in Julia:
+
+```julia
+function digitSum(s::String)::Int
+    sum = 0
+    for c in s
+        if isupper(c)
+            sum += Int(c)
+        end
+    end
+    return sum
+end
+```

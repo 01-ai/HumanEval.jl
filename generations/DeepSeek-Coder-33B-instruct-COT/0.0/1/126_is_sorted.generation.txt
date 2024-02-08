@@ -1,0 +1,28 @@
+Here is a step-by-step outline of how you can implement the function:
+
+1. Check if the input vector `xs` is empty or contains only one element. If so, return `true` because a single element or an empty list is always sorted.
+
+2. Iterate over the vector `xs` from the second element to the last.
+
+3. For each element, check if it is less than or equal to the previous element. If it is, return `false` because the list is not sorted in ascending order.
+
+4. If no such pair of elements is found, return `true` because the list is sorted in ascending order.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function is_sorted(xs::Vector{Int})::Bool
+    n = length(xs)
+    if n <= 1
+        return true
+    end
+    for i in 2:n
+        if xs[i] <= xs[i-1]
+            return false
+        end
+    end
+    return true
+end
+```
+
+This function works by comparing each element in the list with the previous one. If it finds an element that is less than or equal to the previous one, it returns `false` because the list is not sorted in ascending order. If it doesn't find such a pair of elements, it returns `true` because the list is sorted in ascending order.

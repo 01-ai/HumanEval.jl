@@ -1,0 +1,13 @@
+Here is the implementation for the `sum_odd_at_odd` function:
+
+```julia
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    sum = 0
+    for i in 1:2:length(xs)
+        if xs[i] % 2 != 0
+            sum += xs[i]
+        end
+    end
+    return sum
+end
+```

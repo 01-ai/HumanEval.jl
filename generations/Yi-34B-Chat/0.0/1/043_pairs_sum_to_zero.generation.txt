@@ -1,0 +1,22 @@
+```julia
+function pairs_sum_to_zero(l::Vector{Int})::Bool
+    # Check if the list is empty or contains only one element
+    if length(l) < 2
+        return false
+    end
+
+    # Iterate over the list and check for pairs that sum to zero
+    for i in 1:length(l)
+        for j in i+1:length(l)
+            if l[i] + l[j] == 0
+                return true
+            end
+        end
+    end
+
+    # If no pair is found, return false
+    return false
+end
+```
+
+This function `pairs_sum_to_zero` takes a vector of integers `l` as input and returns `true` if there are two distinct elements in the list that sum to zero, and `false` otherwise. It does this by iterating over the list and checking each pair of elements to see if their sum is zero. If such a pair is found, the function returns `true`; otherwise, it returns `false`.

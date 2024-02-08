@@ -1,0 +1,16 @@
+
+
+Here is the Julia function that implements the given problem:
+
+```julia
+function can_arrange(xs::Vector{Int})::Int
+    for i in 2:length(xs)
+        if xs[i] < xs[i-1]
+            return i-1
+        end
+    end
+    return -1
+end
+```
+
+This function iterates over the given array `xs` from the second element to the end. If it finds an element that is less than the previous one, it returns the index of that element. If no such element is found, it returns -1. 

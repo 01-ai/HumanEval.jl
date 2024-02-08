@@ -1,0 +1,7 @@
+
+
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    sums = [sum(digits(abs(num))) for num in nums]
+    sort_order = sortperm(sums)
+    return nums[sort_order]
+end

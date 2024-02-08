@@ -1,0 +1,30 @@
+```julia
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    # Initialize an empty vector to store the odd numbers
+    odd_numbers = Vector{BigInt}()
+
+    # Iterate until the Collatz sequence reaches 1
+    current_number = n
+    while current_number ≠ 1
+        # If the current number is odd, add it to the vector
+        if current_number % 2 ≠ 0
+            push!(odd_numbers, current_number)
+        end
+
+        # Apply the Collatz rule
+        if current_number % 2 == 0
+            current_number //= 2
+        else
+            current_number = 3current_number + 1
+        end
+    end
+
+    # Sort the vector in increasing order
+    sort!(odd_numbers)
+
+    # Return the vector of odd numbers
+    return odd_numbers
+end
+```
+
+This function defines a `get_odd_collatz` function that takes an integer `n` and returns a vector of odd numbers in the Collatz sequence. It uses a while loop to iterate until the sequence reaches 1, pushing odd numbers to a vector. After the loop, the vector is sorted in increasing order and returned. The `BigInt` type is used to avoid integer overflow.

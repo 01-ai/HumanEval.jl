@@ -1,0 +1,43 @@
+### Step-by-step Outline:
+
+1. Define the function `histogram` that takes a string `s` as input.
+2. Initialize an empty dictionary to store the counts of each letter.
+3. Split the string `s` into a list of letters based on spaces.
+4. Iterate over each letter in the list:
+   - Increment the count of the letter in the dictionary.
+5. Find the maximum count of any letter in the dictionary.
+6. Create a new dictionary that only includes the letters with the maximum count.
+7. Return the new dictionary.
+
+### Julia Code:
+
+```julia
+function histogram(s::String)::Dict{String, Int}
+    # Step 2: Initialize an empty dictionary
+    letter_counts = Dict{String, Int}()
+    
+    # Step 3: Split the string into letters
+    letters = split(s)
+    
+    # Step 4: Iterate over each letter and count occurrences
+    for letter in letters
+        letter_counts[letter] = get(letter_counts, letter, 0) + 1
+    end
+    
+    # Step 5: Find the maximum count
+    max_count = maximum(values(letter_counts), init=0)
+    
+    # Step 6: Filter the dictionary to only include max count letters
+    max_count_letters = Dict{String, Int}()
+    for (letter, count) in letter_counts
+        if count == max_count
+            max_count_letters[letter] = count
+        end
+    end
+    
+    # Step 7: Return the filtered dictionary
+    return max_count_letters
+end
+```
+
+This function will return a dictionary with the letters that have the most repetitions in the input string, along with their counts. If the input string is empty, it will return an empty dictionary.

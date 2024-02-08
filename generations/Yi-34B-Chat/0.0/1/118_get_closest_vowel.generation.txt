@@ -1,0 +1,25 @@
+```julia
+function get_closest_vowel(word::String)::String
+    # Check if the word ends with a vowel
+    if isvowel(word[end])
+        return ""
+    end
+
+    # Iterate from the end of the word to find the first vowel
+    for i in length(word):-1:2
+        if isvowel(word[i]) && !isvowel(word[i-1]) && !isvowel(word[i+1])
+            return word[i]
+        end
+    end
+
+    # If no vowel is found, return an empty string
+    return ""
+end
+
+# Helper function to check if a character is a vowel
+function isvowel(c::Char)::Bool
+    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'
+end
+```
+
+This function `get_closest_vowel` takes a `String` as input and returns the closest vowel that stands between two consonants from the right side of the word, or an empty string if no such vowel is found. The function also includes a helper function `isvowel` to check if a character is a vowel.

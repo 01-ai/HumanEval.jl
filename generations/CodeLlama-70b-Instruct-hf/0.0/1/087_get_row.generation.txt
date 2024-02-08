@@ -1,0 +1,28 @@
+
+
+```julia
+function get_row(xs::Vector{Vector{Int}}, x::Int)::Vector{Tuple{Int, Int}}
+    # Initialize an empty list to store the coordinates
+    coordinates = Tuple{Int, Int}[]
+
+    # Iterate through the rows of the list
+    for (i, row) in enumerate(xs)
+        # Check if the integer x is present in the current row
+        if x in row
+            # Find the indices of x in the current row
+            indices = findall(j -> j == x, row)
+
+            # Append the coordinates to the list
+            append!(coordinates, [(i, j) for j in reverse(indices)])
+        end
+    end
+
+    # Sort the coordinates by rows in ascending order
+    sort!(coordinates, by = x -> x[1])
+
+    # Return the list of coordinates
+    return coordinates
+end
+```
+
+This function iterates through the rows of the list `xs` and checks if the integer `x` is present in the current row. If it is present, it finds the indices of `x` in the current row and appends the coordinates to the list of coordinates. Finally, it sorts the coordinates by rows in ascending order and returns the list of coordinates.

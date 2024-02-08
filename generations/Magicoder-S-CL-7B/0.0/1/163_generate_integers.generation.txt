@@ -1,0 +1,11 @@
+
+
+function generate_integers(a::Int, b::Int)::Vector{Int}
+    result = Int[]
+    for i in a:2:b
+        if i % 2 == 0
+            push!(result, i)
+        end
+    end
+    return result
+end

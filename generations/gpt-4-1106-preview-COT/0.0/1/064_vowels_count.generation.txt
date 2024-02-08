@@ -1,0 +1,32 @@
+### Step-by-Step Outline:
+
+1. Define the function `vowels_count` that takes a single argument `s` which is a string.
+2. Create a set or list of vowels that includes 'a', 'e', 'i', 'o', 'u' in both lower and upper cases.
+3. Initialize a counter to keep track of the number of vowels found in the string.
+4. Iterate over each character in the string `s`.
+5. For each character, check if it is in the set of vowels and increment the counter if it is.
+6. After the loop, check if the last character of the string is 'y' or 'Y'. If it is, increment the counter by one.
+7. Return the counter which represents the number of vowels in the string.
+
+### Julia Code:
+
+```julia
+function vowels_count(s::String)::Int
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    count = 0
+
+    for char in s
+        if char in vowels
+            count += 1
+        end
+    end
+
+    if !isempty(s) && (s[end] == 'y' || s[end] == 'Y')
+        count += 1
+    end
+
+    return count
+end
+```
+
+Now, let's write the actual Julia code.

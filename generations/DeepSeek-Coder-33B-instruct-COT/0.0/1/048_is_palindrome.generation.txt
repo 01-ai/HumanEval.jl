@@ -1,0 +1,17 @@
+Here is a step-by-step outline of how to implement the function:
+
+1. Convert the input string to lowercase to ensure the function is case-insensitive.
+2. Remove all non-alphanumeric characters from the string.
+3. Check if the string is equal to its reverse.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function is_palindrome(text::String)::Bool
+    text = lowercase(text)
+    text = filter(isalnum, text)
+    return text == reverse(text)
+end
+```
+
+This function first converts the input string to lowercase and removes all non-alphanumeric characters. Then it checks if the resulting string is equal to its reverse. If it is, the function returns `true`, indicating that the string is a palindrome. If it isn't, the function returns `false`.

@@ -1,0 +1,38 @@
+### Outline to implement the `right_angle_triangle` function:
+
+1. Check if the input values `a`, `b`, and `c` are all positive numbers, since triangle sides must be positive. If any of them is not positive, return `false`.
+
+2. Sort the sides in ascending order to ensure that the largest side is the last one. This is important because, in a right-angled triangle, the largest side is the hypotenuse.
+
+3. Apply the Pythagorean theorem to check if the triangle is right-angled. According to the theorem, for a right-angled triangle with sides `a`, `b`, and hypotenuse `c`, the following equation must hold: `a^2 + b^2 = c^2`.
+
+4. Return `true` if the Pythagorean theorem holds for the sorted sides; otherwise, return `false`.
+
+### Julia code for the `right_angle_triangle` function:
+
+```julia
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    # Step 1: Check for positive side lengths
+    if a <= 0 || b <= 0 || c <= 0
+        return false
+    end
+    
+    # Step 2: Sort the sides
+    sides = sort([a, b, c])
+    
+    # Step 3: Apply the Pythagorean theorem
+    return sides[1]^2 + sides[2]^2 == sides[3]^2
+end
+```
+
+### Examples:
+
+```julia
+# Right-angled triangle
+println(right_angle_triangle(3, 4, 5)) # Should return true
+
+# Not a right-angled triangle
+println(right_angle_triangle(1, 2, 3)) # Should return false
+```
+
+Now, let's implement the function in Julia.

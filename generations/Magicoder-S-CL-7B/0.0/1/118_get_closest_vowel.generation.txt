@@ -1,0 +1,12 @@
+
+
+function get_closest_vowel(word::String)::String
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    word = reverse(word)
+    for i in 1:length(word)-2
+        if word[i] in vowels && word[i+1] in vowels && word[i+2] in vowels
+            return word[i+1]
+        end
+    end
+    return ""
+end

@@ -1,0 +1,22 @@
+Here is the Julia function `is_happy` that checks if a string is happy according to the given definition:
+
+```julia
+function is_happy(s::String)::Bool
+    # A string is not happy if its length is less than 3
+    if length(s) < 3
+        return false
+    end
+
+    # Check every 3 consecutive letters to ensure they are distinct
+    for i in 1:(length(s) - 2)
+        if s[i] == s[i+1] || s[i] == s[i+2] || s[i+1] == s[i+2]
+            return false
+        end
+    end
+
+    # If all checks pass, the string is happy
+    return true
+end
+```
+
+You can use this function to check if a string is happy by passing the string as an argument to the function.

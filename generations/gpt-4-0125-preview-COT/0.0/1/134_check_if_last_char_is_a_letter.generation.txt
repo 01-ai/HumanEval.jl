@@ -1,0 +1,40 @@
+### Step-by-Step Outline
+
+1. **Check if the string is empty**: If the string is empty, return `false` immediately since there's no character to check.
+
+2. **Trim the string**: Remove any trailing spaces from the string to ensure that the last character we check is not a space.
+
+3. **Check if the trimmed string is empty**: After trimming, if the string becomes empty, return `false` because it means there were only spaces.
+
+4. **Get the last character**: Extract the last character of the trimmed string.
+
+5. **Check if the last character is an alphabetical character**: Determine if the last character is an alphabetical character (a letter). This can be done using the `isletter` function in Julia.
+
+6. **Return the result**: If the last character is an alphabetical character, return `true`. Otherwise, return `false`.
+
+### Julia Code Implementation
+
+```julia
+function check_if_last_char_is_a_letter(s::String)::Bool
+    # Step 1: Check if the string is empty
+    if isempty(s)
+        return false
+    end
+
+    # Step 2: Trim the string to remove trailing spaces
+    trimmed_s = rstrip(s)
+
+    # Step 3: Check if the trimmed string is empty
+    if isempty(trimmed_s)
+        return false
+    end
+
+    # Step 4: Get the last character of the trimmed string
+    last_char = last(trimmed_s)
+
+    # Step 5 & 6: Check if the last character is an alphabetical character and return the result
+    return isletter(last_char)
+end
+```
+
+This function follows the outlined steps to ensure that it accurately checks if the last character of a given string (ignoring trailing spaces) is an alphabetical character and not part of a word. The use of `rstrip` to remove trailing spaces and `isletter` to check for an alphabetical character are key to this implementation.

@@ -1,0 +1,39 @@
+### Step-by-Step Outline
+
+1. **Check for Empty or Single Element Array**: If the input array is empty or contains only one element, return it as is since there's nothing to sort.
+
+2. **Determine Sorting Order**:
+   - Calculate the sum of the first and last elements of the array.
+   - Determine the sorting order based on the parity of this sum:
+     - If the sum is odd, the array should be sorted in ascending order.
+     - If the sum is even, the array should be sorted in descending order.
+
+3. **Copy and Sort the Array**:
+   - Make a copy of the input array to avoid modifying the original array.
+   - Sort the copied array based on the determined sorting order.
+
+4. **Return the Sorted Array**: Return the sorted copy of the array.
+
+### Julia Code Implementation
+
+```julia
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    # Step 1: Check for empty or single element array
+    if length(xs) <= 1
+        return copy(xs)
+    end
+
+    # Step 2: Determine sorting order
+    sum_head_tail = xs[1] + xs[end]
+    sort_order = isodd(sum_head_tail) ? Base.Sort.Forward : Base.Sort.Reverse
+
+    # Step 3: Copy and sort the array
+    sorted_xs = copy(xs)
+    sort!(sorted_xs, lt = (sort_order == Base.Sort.Forward ? < : >))
+
+    # Step 4: Return the sorted array
+    return sorted_xs
+end
+```
+
+This implementation follows the outlined steps to ensure the input array is sorted according to the specified conditions without altering the original array.

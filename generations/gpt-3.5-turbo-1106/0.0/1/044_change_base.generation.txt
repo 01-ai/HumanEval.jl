@@ -1,0 +1,5 @@
+```julia
+function change_base(x::Int, base::Int)::String
+    return string(x, base=base)
+end
+```

@@ -1,0 +1,12 @@
+```julia
+function count_nums(xs::Vector{Int})::Int
+    count = 0
+    for num in xs
+        sum_digits = sum(abs.(digits(num)))
+        if sum_digits > 0
+            count += 1
+        end
+    end
+    return count
+end
+```

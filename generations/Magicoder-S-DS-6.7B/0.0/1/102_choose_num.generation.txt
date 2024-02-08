@@ -1,0 +1,11 @@
+function choose_num(x::Int, y::Int)::Int
+    if x > y
+        return -1
+    end
+    for i in y:-2:x
+        if i % 2 == 0
+            return i
+        end
+    end
+    return -1
+end

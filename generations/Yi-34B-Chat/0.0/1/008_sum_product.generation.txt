@@ -1,0 +1,22 @@
+```julia
+function sum_product(numbers::Vector{Int})::Tuple{Int, Int}
+    # Base cases for empty list
+    if length(numbers) == 0
+        return (0, 1)
+    end
+
+    # Initialize sum and product
+    sum_val = numbers[1]
+    product_val = numbers[1]
+
+    # Iterate over the list and update sum and product
+    for number in numbers[2:end]
+        sum_val += number
+        product_val *= number
+    end
+
+    return (sum_val, product_val)
+end
+```
+
+This function `sum_product` takes a vector of integers `numbers` and returns a tuple containing the sum and product of all the integers in the list. If the list is empty, the function returns a tuple with `0` as the sum and `1` as the product, as specified in the docstring.

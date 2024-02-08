@@ -1,0 +1,37 @@
+### Step-by-Step Outline
+
+1. **Base Case Handling**: Check if `n` is 0 or 1. If so, return `n` directly since the first two Fibonacci numbers are 0 and 1, respectively.
+2. **Iterative Approach**:
+   - Initialize two variables to store the previous two Fibonacci numbers, let's call them `a` (for `Fib(n-2)`) and `b` (for `Fib(n-1)`), with initial values of 0 and 1, respectively.
+   - Use a loop to calculate the Fibonacci numbers from 2 up to `n`.
+   - In each iteration, calculate the current Fibonacci number as the sum of the previous two (`a + b`), update `a` to `b`'s value, and `b` to the current Fibonacci number's value.
+   - Continue this process until we reach `n`.
+3. **Return Result**: After the loop ends, return the last calculated Fibonacci number, which corresponds to `Fib(n)`.
+
+### Julia Code Implementation
+
+```julia
+function fib(n::Int)::Int
+    # Base case handling
+    if n == 0 || n == 1
+        return n
+    end
+    
+    # Initialize the first two Fibonacci numbers
+    a, b = 0, 1
+    
+    # Calculate Fibonacci numbers up to n
+    for _ in 2:n
+        a, b = b, a + b  # Update the last two Fibonacci numbers
+    end
+    
+    return b  # Return the n-th Fibonacci number
+end
+
+# Examples
+println(fib(10))  # Expected output: 55
+println(fib(1))   # Expected output: 1
+println(fib(8))   # Expected output: 21
+```
+
+This implementation uses an iterative approach, which is efficient for calculating the n-th Fibonacci number without the need for recursion or a memoization technique.

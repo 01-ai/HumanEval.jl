@@ -1,0 +1,11 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function n_digits_in_binary(N::Int)::String
+    bin_N = string(N, base=2)
+    sum_digits = sum(parse.(Int, collect(bin_N)))
+    return string(sum_digits)
+end
+```
+
+This function first converts the input integer N to binary using the `string` function with `base=2`. Then it converts the binary string to a collection of characters, parses each character back to an integer, and sums them up. Finally, it converts the sum back to a string and returns it.

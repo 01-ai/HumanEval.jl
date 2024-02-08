@@ -1,0 +1,42 @@
+Here is a step-by-step outline of the function:
+
+1. Define a function `count_up_to` that takes an integer `n` as input.
+2. Initialize an empty array `primes` to store the prime numbers.
+3. Iterate over the range from 2 to `n`.
+4. For each number `i` in the range, check if it is a prime number.
+5. If `i` is a prime number, append it to the `primes` array.
+6. Return the `primes` array.
+
+Here is the Julia code that implements the above outline:
+
+```julia
+function count_up_to(n::Int)::Vector{Int}
+    primes = Int[]
+    for i in 2:n
+        if isprime(i)
+            push_prime = push(primes, i)
+        end
+    end
+    return primes
+end
+
+function isprime(n::Int)::Bool
+    if n == 2
+        return true
+    elseif n == 1 || n % 2 == 0
+        return false
+    end
+    d = 3
+    while d * d <= n
+        if n % d == 0
+            return false
+        end
+        d += 2
+    end
+    return true
+end
+```
+
+In the above code, the `isprime` function checks if a number `n` is prime. It first checks if `n` is 2, in which case it returns true. If `n` is 1 or even, it returns false. Then it checks if `n` is divisible by any odd number up to the square root of `n`. If `n` is divisible by any such number, it returns false. Otherwise, it returns true.
+
+The `count_up_to` function uses the `isprime` function to check if each number in the range from 2 to `n` is prime. If a number is prime, it is appended to the `primes` array. The `primes` array is then returned.

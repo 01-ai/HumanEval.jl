@@ -1,0 +1,3 @@
+function max_element(xs)
+    return maximum(xs)
+end

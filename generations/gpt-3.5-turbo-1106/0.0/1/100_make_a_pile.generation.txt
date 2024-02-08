@@ -1,0 +1,13 @@
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    pile = [n]
+    for i in 2:n
+        if n % 2 == 0
+            push!(pile, n + i)
+        else
+            push!(pile, n + 2*(i-1))
+        end
+    end
+    return pile
+end
+```

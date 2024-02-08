@@ -1,0 +1,23 @@
+To implement the `fruit_distribution` function as described, we can follow these steps:
+
+1. Parse the input string to extract the number of apples and oranges.
+2. Subtract the total number of apples and oranges from the total number of fruits to find the number of mangoes.
+
+Here's how you can do it in Julia:
+
+```julia
+function fruit_distribution(s::String, n::Int)::Int
+    # Extract numbers from the string
+    numbers = map(x -> parse(Int, x), matchall(r"\d+", s))
+    
+    # Assuming the format is always "X apples and Y oranges", numbers[1] will be apples, and numbers[2] will be oranges
+    apples, oranges = numbers[1], numbers[2]
+    
+    # Calculate the number of mangoes
+    mangoes = n - apples - oranges
+    
+    return mangoes
+end
+```
+
+This function uses regular expressions to find all occurrences of numbers in the input string, then parses these numbers to integers. It assumes that the first number is the count of apples and the second number is the count of oranges. Finally, it calculates the number of mangoes by subtracting the number of apples and oranges from the total number of fruits.

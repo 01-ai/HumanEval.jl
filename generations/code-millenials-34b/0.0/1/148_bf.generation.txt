@@ -1,0 +1,23 @@
+
+
+# Solution
+function bf(planet1::String, planet2::String)::Tuple
+    planets = ("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune")
+    planet1_index = findfirst(isequal(planet1), planets)
+    planet2_index = findfirst(isequal(planet2), planets)
+
+    if planet1_index === nothing || planet2_index === nothing
+        return ()
+    end
+
+    if planet1_index < planet2_index
+        return planets[planet1_index+1:planet2_index-1]
+    else
+        return planets[planet2_index+1:planet1_index-1]
+    end
+end
+
+# Test cases
+println(bf("Jupiter", "Neptune"))  # Should print ("Saturn", "Uranus")
+println(bf("Earth", "Mercury"))  # Should print ("Venus",)
+println(bf("Mercury", "Uranus"))  # Should print ("Venus", "Earth", "Mars", "Jupiter", "Saturn")

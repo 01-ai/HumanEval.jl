@@ -1,0 +1,30 @@
+ Here's a Julia function that implements the `find_closest_elements` function as described in the docstring:
+
+```julia
+function find_closest_elements(numbers::Vector{Float64})::Tuple{Float64, Float64}
+    if length(numbers) < 2
+        error("The input list must have at least two elements")
+    end
+
+    min_diff = Inf
+    closest_pair = (numbers[1], numbers[2])
+
+    for i in 1:length(numbers)-1
+        for j in i+1:length(numbers)
+            diff = abs(numbers[i] - numbers[j])
+            if diff < min_diff
+                min_diff = diff
+                closest_pair = (numbers[i], numbers[j])
+            end
+        end
+    end
+
+    return closest_pair
+end
+```
+
+This function first checks if the input list has at least two elements. If not, it raises an error. Then, it initializes the minimum difference between two numbers as positive infinity and the closest pair as the first two numbers in the list. 
+
+Next, it iterates through all pairs of numbers in the list and calculates the absolute difference between them. If the difference is smaller than the current minimum difference, it updates the minimum difference and the closest pair. 
+
+Finally, it returns the closest pair in ascending order (smaller number, larger number).

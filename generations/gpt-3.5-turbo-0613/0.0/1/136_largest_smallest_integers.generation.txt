@@ -1,0 +1,17 @@
+Here is the implementation for the `largest_smallest_integers` function:
+
+```julia
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing,Int}}
+    neg_ints = filter(x -> x < 0, xs)
+    pos_ints = filter(x -> x > 0, xs)
+    
+    a = isempty(neg_ints) ? nothing : maximum(neg_ints)
+    b = isempty(pos_ints) ? nothing : minimum(pos_ints)
+    
+    return (a, b)
+end
+```
+
+This function takes a vector of integers `xs` as input and filters out the negative integers into `neg_ints` and positive integers into `pos_ints`. It then checks if either of the filtered vectors is empty and assigns `nothing` to `a` or `b` accordingly. If the vectors are not empty, it assigns the maximum of `neg_ints` to `a` and the minimum of `pos_ints` to `b`. Finally, it returns a tuple `(a, b)`.
+
+Let me know if you need any further assistance!

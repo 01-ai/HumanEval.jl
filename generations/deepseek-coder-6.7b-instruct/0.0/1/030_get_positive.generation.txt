@@ -1,0 +1,9 @@
+Here is the Julia function that fulfills the requirements:
+
+```julia
+function get_positive(xs::Vector)
+    return filter(x -> x > 0, xs)
+end
+```
+
+This function uses the `filter` function to create a new vector that only includes the positive numbers from the input vector `xs`. The `filter` function takes a function and a collection, and returns a new collection that includes only the elements for which the function returns `true`. In this case, the function is `x -> x > 0`, which returns `true` for positive numbers and `false` for non-positive numbers.

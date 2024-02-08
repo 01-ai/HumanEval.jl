@@ -1,0 +1,24 @@
+Here is the Julia function that implements the doc string:
+
+```julia
+function common(l1::Vector, l2::Vector)::Vector
+    return sort(unique(intersect(l1, l2)))
+end
+```
+
+This function works by first finding the intersection of the two input vectors (`intersect(l1, l2)`), which gives a vector of elements that are common to both. Then, it removes any duplicates from this intersection (`unique(...)`), and finally sorts the result (`sort(...)`).
+
+You can test this function with the examples provided in the doc string:
+
+```julia
+julia> common([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121])
+3-element Vector{Int64}:
+   1
+   5
+ 653
+
+julia> common([5, 3, 2, 8], [3, 2])
+2-element Vector{Int64}:
+ 2
+ 3
+```

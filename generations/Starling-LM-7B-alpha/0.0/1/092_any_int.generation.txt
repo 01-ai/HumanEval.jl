@@ -1,0 +1,3 @@
+ function any_int(x::Number, y::Number, z::Number)::Bool
+    return any([x == y + z, y == x + z, z == x + y]) && isinteger(x) && isinteger(y) && isinteger(z)
+end

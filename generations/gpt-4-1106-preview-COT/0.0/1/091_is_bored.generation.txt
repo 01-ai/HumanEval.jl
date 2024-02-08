@@ -1,0 +1,39 @@
+To implement the `is_bored` function, we will follow these steps:
+
+1. Define the function `is_bored` that takes a string `s` as input.
+2. Initialize a counter to keep track of the number of boredoms.
+3. Split the input string into sentences using the delimiters '.', '?' and '!'.
+4. Iterate over each sentence:
+   a. Trim leading and trailing whitespace from the sentence.
+   b. Check if the sentence starts with the word "I" (case-sensitive).
+   c. If it does, increment the boredom counter.
+5. Return the boredom counter.
+
+Now, let's write the code for the function:
+
+```julia
+function is_bored(s::String)::Int
+    # Step 2: Initialize the boredom counter
+    boredom_count = 0
+    
+    # Step 3: Split the input string into sentences
+    sentences = split(s, r"[.?!]")  # Use regex to split by '.', '?', or '!'
+    
+    # Step 4: Iterate over each sentence
+    for sentence in sentences
+        # Step 4a: Trim whitespace
+        trimmed_sentence = strip(sentence)
+        
+        # Step 4b: Check if the sentence starts with "I"
+        if startswith(trimmed_sentence, "I")
+            # Step 4c: Increment the boredom counter
+            boredom_count += 1
+        end
+    end
+    
+    # Step 5: Return the boredom counter
+    return boredom_count
+end
+```
+
+This function should work as expected for the given examples and can be tested with additional cases to ensure its correctness.

@@ -1,0 +1,3 @@
+function common(l1::Vector, l2::Vector)::Vector
+    return sort(unique(intersect(l1, l2)))
+end

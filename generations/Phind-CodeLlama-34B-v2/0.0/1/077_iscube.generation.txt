@@ -1,0 +1,14 @@
+
+
+function iscube(a::Int)::Bool
+    c = round(Int, cuberoot(a))
+    return c^3 == a
+end
+
+# Test the function with the provided examples
+println(iscube(1)) # true
+println(iscube(2)) # false
+println(iscube(-1)) # true
+println(iscube(64)) # true
+println(iscube(0)) # true
+println(iscube(180)) # false

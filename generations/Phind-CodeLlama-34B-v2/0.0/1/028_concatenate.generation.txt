@@ -1,0 +1,11 @@
+
+
+You can implement the `concatenate` function in Julia as follows:
+
+```julia
+function concatenate(xs::Vector{String})::String
+    return join(xs)
+end
+```
+
+This function uses the `join` function from Julia's base library to concatenate the strings in the input vector. The `join` function takes a vector of strings and concatenates them into a single string, with no separator. If the input vector is empty, `join` returns an empty string.

@@ -1,0 +1,16 @@
+Here is the implementation of the `iscube` function in Julia:
+
+```julia
+function iscube(a::Int)::Bool
+    if a == 0
+        return true
+    end
+    
+    n = abs(a)^(1/3)
+    return isinteger(n) && n^3 == abs(a)
+end
+```
+
+The function first checks if the input `a` is equal to 0. If it is, then it returns `true` because 0 is a cube of 0.
+
+If `a` is not equal to 0, the function calculates the cube root of the absolute value of `a` using the `^(1/3)` operator. It then checks if the cube root is an integer using the `isinteger` function. Finally, it checks if the cube of the cube root is equal to the absolute value of `a`. If both conditions are true, then `a` is a cube and the function returns `true`. Otherwise, it returns `false`.

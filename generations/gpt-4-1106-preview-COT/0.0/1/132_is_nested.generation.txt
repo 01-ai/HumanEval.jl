@@ -1,0 +1,54 @@
+To implement the `is_nested` function, we will follow these steps:
+
+1. Initialize a counter to keep track of the balance of square brackets.
+2. Iterate over each character in the string.
+3. If we encounter an opening bracket `[`, increment the counter.
+4. If we encounter a closing bracket `]`, decrement the counter.
+5. If at any point the counter is greater than 1, it means we have a nested bracket, so we can return `true`.
+6. If we finish iterating through the string and the counter never exceeds 1, return `false` because there are no nested brackets.
+
+Now, let's write the code for the `is_nested` function following the outline:
+
+```julia
+function is_nested(s::String)::Bool
+    # Step 1: Initialize the counter
+    counter = 0
+
+    # Step 2: Iterate over each character in the string
+    for c in s
+        # Step 3: Check for opening bracket
+        if c == '['
+            counter += 1
+        # Step 4: Check for closing bracket
+        elseif c == ']'
+            counter -= 1
+        end
+
+        # Step 5: Check if we have a nested bracket
+        if counter > 1
+            return true
+        end
+
+        # If the counter goes negative, it means brackets are not balanced, so we can return false
+        if counter < 0
+            return false
+        end
+    end
+
+    # Step 6: Return false if no nested brackets were found
+    return false
+end
+```
+
+Let's test the function with the provided examples to ensure it works as expected:
+
+```julia
+println(is_nested("[[]]")) # should return true
+println(is_nested("[]]]]]]][[[[[]")) # should return false
+println(is_nested("[][]")) # should return false
+println(is_nested("[]")) # should return false
+println(is_nested("[[][]]")) # should return true
+println(is_nested("[[]][[")) # should return true
+```
+
+This function will correctly identify whether there is a nested subsequence of brackets in the given string.

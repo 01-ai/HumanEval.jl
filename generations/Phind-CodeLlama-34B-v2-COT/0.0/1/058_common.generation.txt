@@ -1,0 +1,26 @@
+
+
+# Outline
+
+1. Merge the two input vectors into a single vector.
+2. Use the `unique` function to remove duplicate elements.
+3. Sort the resulting vector in ascending order.
+4. Return the sorted vector of common elements.
+
+# Code
+
+```julia
+function common(l1::Vector, l2::Vector)::Vector
+    # Merge the two input vectors into a single vector
+    merged = [l1; l2]
+    
+    # Use the `unique` function to remove duplicate elements
+    unique_merged = unique(merged)
+    
+    # Sort the resulting vector in ascending order
+    sorted_unique_merged = sort(unique_merged)
+    
+    # Return the sorted vector of common elements
+    return sorted_unique_merged
+end
+```

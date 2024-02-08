@@ -1,0 +1,19 @@
+Here is a Julia function that implements the encryption as described in the problem:
+
+```julia
+function encrypt(s::String)
+    encrypted_string = ""
+    for c in s
+        if islowercase(c)
+            encrypted_string *= Char(Int('a') + ((Int(c) - Int('a') + 2*2) % 26))
+        elseif isuppercase(c)
+            encrypted_string *= Char(Int('A') + ((Int(c) - Int('A') + 2*2) % 26))
+        else
+            encrypted_string *= c
+        end
+    end
+    return encrypted_string
+end
+```
+
+This function iterates over each character in the input string. If the character is a lowercase or uppercase letter, it calculates the encrypted character by shifting it down by two places and then multiplying it by two. If the character is not a letter, it is added to the encrypted string as is.

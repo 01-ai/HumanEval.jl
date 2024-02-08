@@ -1,0 +1,39 @@
+  Here's an implementation of the `is_prime` function in Julia based on the given docstring:
+```julia
+function is_prime(n::Int)
+    if n <= 1
+        return false
+    end
+    for i in 2:n-1
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+```
+This function checks if a given integer `n` is prime by iterating from 2 to `n-1` and checking if `n` is divisible by any of those numbers. If `n` is divisible by any of those numbers, the function returns `false`. If `n` is not divisible by any of those numbers, the function returns `true`.
+
+Here are some examples of how to use the `is_prime` function:
+```julia
+julia> is_prime(6)
+false
+
+julia> is_prime(101)
+true
+
+julia> is_prime(11)
+true
+
+julia> is_prime(13441)
+true
+
+julia> is_prime(61)
+true
+
+julia> is_prime(4)
+false
+
+julia> is_prime(1)
+false
+```

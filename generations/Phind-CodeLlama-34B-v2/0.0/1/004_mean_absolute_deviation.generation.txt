@@ -1,0 +1,9 @@
+
+
+function mean_absolute_deviation(numbers::Vector{Float64})::Float64
+    n = length(numbers)
+    mean_value = sum(numbers) / n
+    differences = [abs(x - mean_value) for x in numbers]
+    mad = sum(differences) / n
+    return mad
+end

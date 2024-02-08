@@ -1,0 +1,10 @@
+
+
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    sort!(nums, by=x->(sum(abs.(x)), findfirst(isequal(x), nums)))
+    return nums
+end
+
+# Test cases
+println(order_by_points([1, 11, -1, -11, -12]))
+println(order_by_points(Int[]))

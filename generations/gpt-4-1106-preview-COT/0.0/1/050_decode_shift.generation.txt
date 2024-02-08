@@ -1,0 +1,22 @@
+To implement the decoding function, we will follow these steps:
+
+1. Define the function `decode_shift` that takes a single argument `s` which is a `String`.
+2. Inside the function, iterate over each character `x` in the string `s`.
+3. For each character, convert it to its corresponding integer ASCII value.
+4. Since the encoding function shifts each character by 5, we will shift it back by subtracting 5.
+5. To handle the wrap-around of the alphabet (e.g., shifting 'a' back by 5 should give 'v'), we will add 26 (the number of letters in the alphabet) before applying the modulo operation.
+6. Apply the modulo operation with 26 to ensure the result is within the range of lowercase letters.
+7. Convert the resulting integer back to a character by adding it to the ASCII value of 'a'.
+8. Join all the characters together to form the decoded string.
+9. Return the decoded string.
+
+Now, let's write the code for the `decode_shift` function:
+
+```julia
+function decode_shift(s::String)::String
+    # Step 2-8: Decode each character and join them into a string
+    join(((x - 'a' - 5 + 26) % 26 + 'a' for x in s))
+end
+```
+
+This function assumes that the input string `s` contains only lowercase letters. If the input may contain uppercase letters or other characters, additional checks would be needed to handle those cases appropriately.

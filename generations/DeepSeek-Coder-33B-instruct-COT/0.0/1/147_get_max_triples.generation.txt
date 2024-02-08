@@ -1,0 +1,24 @@
+Here is a step-by-step outline of the solution:
+
+1. Create an array `a` of length `n` where each element `a[i]` is calculated as `i * i - i + 1`.
+2. Initialize a counter `count` to 0.
+3. Iterate over all possible triplets `(a[i], a[j], a[k])` where `i < j < k`.
+4. For each triplet, check if the sum of the elements is a multiple of 3. If it is, increment the counter `count`.
+5. Return the counter `count`.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function get_max_triples(n::Int)::Int
+    a = [i * i - i + 1 for i in 1:n]
+    count = 0
+    for i in 1:n-2, j in i+1:n-1, k in j+1:n
+        if (a[i] + a[j] + a[k]) % 3 == 0
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function works by first creating the array `a`, then iterating over all possible triplets `(a[i], a[j], a[k])` where `i < j < k`. For each triplet, it checks if the sum of the elements is a multiple of 3. If it is, it increments the counter `count`. Finally, it returns the counter `count`.

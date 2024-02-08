@@ -1,0 +1,17 @@
+
+
+Here is the Julia function that implements the `filter_integers` function as described in the docstring:
+
+```julia
+function filter_integers(values::AbstractVector)::Vector{Int}
+    result = Int[]
+    for value in values
+        if isa(value, Integer)
+            push!(result, value)
+        end
+    end
+    return result
+end
+```
+
+This function iterates over each element in the input vector `values`. If an element is an integer (checked using the `isa` function), it is added to the `result` vector. The function returns the `result` vector at the end.

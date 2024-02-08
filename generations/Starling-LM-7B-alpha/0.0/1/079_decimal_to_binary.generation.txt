@@ -1,0 +1,9 @@
+ function decimal_to_binary(decimal::Int)::String
+    binary = ""
+    while decimal > 0
+        remainder = decimal % 2
+        decimal = decimal ÷ 2
+        binary = string(remainder) * binary
+    end
+    return "db" * binary * "db"
+end

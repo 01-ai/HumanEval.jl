@@ -1,0 +1,16 @@
+Here is a Julia function that implements the given doc string:
+
+```julia
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    strength_dict = Dict{String, Float64}()
+    for ext in extensions
+        cap = count(isuppercase, ext)
+        sm = count(islowercase, ext)
+        strength_dict[ext] = cap - sm
+    end
+    strongest_ext = reduce((a, b) -> strength_dict[a] > strength_dict[b] ? a : b, keys(strength_dict))
+    return "$class_name.$strongest_ext"
+end
+```
+
+This function first calculates the strength of each extension by counting the number of uppercase and lowercase letters in the extension name and subtracting the latter from the former. It then finds the extension with the highest strength by comparing the strengths of all extensions. Finally, it returns a string in the required format.

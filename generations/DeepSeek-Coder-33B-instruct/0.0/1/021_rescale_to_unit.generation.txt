@@ -1,0 +1,12 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    min_val = minimum(numbers)
+    max_val = maximum(numbers)
+    range_val = max_val - min_val
+    return (numbers .- min_val) ./ range_val
+end
+```
+
+This function first finds the minimum and maximum values in the input vector. It then calculates the range of the values and applies a linear transform to each element in the vector, such that the smallest value becomes 0 and the largest value becomes 1. The transformed values are then returned as a new vector.

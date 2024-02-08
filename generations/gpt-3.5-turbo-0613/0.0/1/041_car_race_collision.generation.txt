@@ -1,0 +1,9 @@
+Here is the implementation of the `car_race_collision` function:
+
+```julia
+function car_race_collision(n::Int)::Int
+    return n * (n - 1) ÷ 2
+end
+```
+
+The function calculates the number of collisions by using the formula `n * (n - 1) ÷ 2`, where `n` is the number of cars. This formula calculates the number of combinations of 2 cars out of `n` cars.

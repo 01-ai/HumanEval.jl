@@ -1,0 +1,9 @@
+function double_the_difference(xs::Vector)
+    sum = 0
+    for x in xs
+        if x > 0 && isinteger(x) && x % 2 != 0
+            sum += x^2
+        end
+    end
+    return sum
+end

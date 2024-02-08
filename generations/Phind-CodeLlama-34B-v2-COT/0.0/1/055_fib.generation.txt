@@ -1,0 +1,24 @@
+
+
+# Outline
+
+1. Define the function `fib(n::Int)::Int`.
+2. Check if `n` is less than or equal to 0. If it is, return 0.
+3. Check if `n` is equal to 1. If it is, return 1.
+4. If `n` is greater than 1, calculate the n-th Fibonacci number using the formula `fib(n) = fib(n-1) + fib(n-2)`.
+
+# Code
+
+```julia
+function fib(n::Int)::Int
+    if n <= 0
+        return 0
+    elseif n == 1
+        return 1
+    else
+        return fib(n-1) + fib(n-2)
+    end
+end
+```
+
+This function works by recursively calling itself to calculate the n-th Fibonacci number. The base cases are when `n` is 0 or 1, in which case the function returns 0 or 1, respectively. For `n` greater than 1, the function calculates the n-th Fibonacci number as the sum of the (n-1)-th and (n-2)-th Fibonacci numbers.

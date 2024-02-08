@@ -1,0 +1,38 @@
+Here is the implementation of the `prime_fib` function in Julia:
+
+```julia
+function prime_fib(n::Int)::Int
+    function is_prime(num::Int)::Bool
+        if num < 2
+            return false
+        end
+        for i in 2:isqrt(num)
+            if num % i == 0
+                return false
+            end
+        end
+        return true
+    end
+    
+    function is_fib(num::Int)::Bool
+        a, b = 0, 1
+        while b < num
+            a, b = b, a + b
+        end
+        return b == num
+    end
+    
+    count = 0
+    num = 2
+    while count < n
+        if is_fib(num) && is_prime(num)
+            count += 1
+        end
+        num += 1
+    end
+    
+    return num - 1
+end
+```
+
+The `prime_fib` function takes an integer `n` as input and returns the `n`-th number that is both a Fibonacci number and a prime number. It uses two helper functions, `is_prime` and `is_fib`, to check if a number is prime and if a number is a Fibonacci number, respectively. The function iterates through numbers starting from 2 until it finds `n` numbers that satisfy both conditions. Finally, it returns the last number found.

@@ -1,0 +1,32 @@
+
+
+# Step-by-step outline:
+# 1. Initialize two variables, `largest_negative` and `smallest_positive`, to `nothing`.
+# 2. Iterate over the input vector `xs`.
+# 3. For each element in `xs`, check if it is negative or positive.
+# 4. If it's negative, check if it's larger than `largest_negative`. If `largest_negative` is `nothing`, assign this value to `largest_negative`.
+# 5. If it's positive, check if it's smaller than `smallest_positive`. If `smallest_positive` is `nothing`, assign this value to `smallest_positive`.
+# 6. After iterating over all elements in `xs`, return `largest_negative` and `smallest_positive` as a tuple.
+
+# Code:
+
+```julia
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing,Int}}
+    largest_negative = nothing
+    smallest_positive = nothing
+
+    for x in xs
+        if x < 0
+            if largest_negative === nothing || x > largest_negative
+                largest_negative = x
+            end
+        elseif x > 0
+            if smallest_positive === nothing || x < smallest_positive
+                smallest_positive = x
+            end
+        end
+    end
+
+    return largest_negative, smallest_positive
+end
+```

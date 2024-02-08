@@ -1,0 +1,9 @@
+
+
+```julia
+function filter_integers(values::AbstractVector)::Vector{Int}
+    return filter(x -> isa(x, Integer), values)
+end
+```
+
+This function takes a vector of any values as input and returns a vector of integers. It uses the `filter` function to filter out only the integers from the input vector.

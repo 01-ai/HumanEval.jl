@@ -1,0 +1,53 @@
+### Step-by-Step Outline
+
+1. **Check if the dictionary is empty**: If the dictionary is empty, return `false` immediately as per the function's specification.
+
+2. **Initialize tracking variables**: Initialize two boolean variables, `all_lower` and `all_upper`, to `true`. These will be used to track whether all keys are in lower case or upper case, respectively.
+
+3. **Iterate through dictionary keys**: Loop through each key in the dictionary.
+
+    a. **Check if the key is a string**: If the key is not a string, immediately return `false` because the key cannot be in lower or upper case.
+    
+    b. **Check case of the key**: For each key, check if it is in lower case or upper case. If a key is found that is not in lower case, set `all_lower` to `false`. Similarly, if a key is found that is not in upper case, set `all_upper` to `false`.
+    
+    c. **Early termination**: If both `all_lower` and `all_upper` become `false`, there's no need to continue checking the rest of the keys. Break out of the loop and return `false`.
+
+4. **Determine the result**: After iterating through all keys, if either `all_lower` or `all_upper` remains `true`, return `true`. Otherwise, return `false`.
+
+### Julia Code Implementation
+
+```julia
+function check_dict_case(d::Dict{String})::Bool
+    # Step 1: Check if the dictionary is empty
+    if isempty(d)
+        return false
+    end
+
+    # Step 2: Initialize tracking variables
+    all_lower = true
+    all_upper = true
+
+    # Step 3: Iterate through dictionary keys
+    for key in keys(d)
+        # Step 3a: Check if the key is a string (implicit in type signature)
+        
+        # Step 3b: Check case of the key
+        if key != lowercase(key)
+            all_lower = false
+        end
+        if key != uppercase(key)
+            all_upper = false
+        end
+        
+        # Step 3c: Early termination
+        if !all_lower && !all_upper
+            return false
+        end
+    end
+
+    # Step 4: Determine the result
+    return all_lower || all_upper
+end
+```
+
+This implementation follows the outlined steps to ensure that the function behaves as specified in the doc string, including

@@ -1,0 +1,28 @@
+
+
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    # Start factorizing from smallest prime number, which is 2.
+    while n % 2 == 0
+        push!(factors, 2)
+        n = div(n, 2)
+    end
+    # n must be odd at this point, thus skip one element (Note i = i +2)
+    for i = 3:2:sqrt(n)
+        while n % i == 0
+            push!(factors, i)
+            n = div(n, i)
+        end
+    end
+    # This condition is to handle the case when n is a prime number
+    # greater than 2
+    if n > 2
+        push!(factors, n)
+    end
+    return factors
+end
+
+# Test cases
+println(factorize(8))
+println(factorize(25))
+println(factorize(70))

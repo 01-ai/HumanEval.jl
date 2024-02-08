@@ -1,0 +1,23 @@
+```julia
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    # Initialize an empty vector to store the unique digits
+    unique_digits_list = Vector{Int}()
+
+    # Loop through the list of integers
+    for x in xs
+        # Check if the integer has any even digit
+        if all(d -> d % 2 != 0, digits(x))
+            # If not, add it to the unique digits list
+            push!(unique_digits_list, x)
+        end
+    end
+
+    # Sort the unique digits list in increasing order
+    sort!(unique_digits_list)
+
+    # Return the sorted list
+    return unique_digits_list
+end
+```
+
+This function takes a vector of positive integers `xs` and returns a sorted vector of all elements that do not have any even digits. It uses the `digits` function to get the digits of an integer and checks if all of them are odd. If an integer has no even digits, it is added to the `unique_digits_list`. Finally, the list is sorted and returned.

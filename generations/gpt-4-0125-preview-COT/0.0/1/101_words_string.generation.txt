@@ -1,0 +1,24 @@
+### Step-by-Step Outline
+
+1. **Split the String**: First, we need to split the input string into an array of substrings. Since the words can be separated by either commas or spaces, we should replace commas with spaces to standardize the delimiters and then split the string by spaces.
+
+2. **Filter Empty Strings**: After splitting, we might end up with empty strings in our array, especially if there were multiple spaces or commas in a row. We need to filter these out.
+
+3. **Return the Result**: Finally, we return the filtered array of words.
+
+### Julia Code Implementation
+
+```julia
+function words_string(s::String)::Vector{String}
+    # Step 1: Replace commas with spaces and split the string by spaces
+    words = split(replace(s, ',' => ' '), ' ')
+    
+    # Step 2: Filter out any empty strings
+    filtered_words = filter(!isempty, words)
+    
+    # Step 3: Return the result
+    return filtered_words
+end
+```
+
+This function first replaces all commas in the input string with spaces to ensure that all delimiters are uniform. Then, it splits the string by spaces to get an array of words. After splitting, it filters out any empty strings that may have resulted from multiple delimiters being next to each other. Finally, it returns the filtered array of words.

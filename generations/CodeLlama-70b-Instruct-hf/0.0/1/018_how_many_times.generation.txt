@@ -1,0 +1,20 @@
+
+
+```julia
+function how_many_times(s::String, sub_s::String)::Int
+    if length(s) == 0 || length(sub_s) == 0
+        return 0
+    end
+
+    count = 0
+    for i = 1:length(s) - length(sub_s) + 1
+        if s[i:i + length(sub_s) - 1] == sub_s
+            count += 1
+        end
+    end
+
+    return count
+end
+```
+
+This function iterates through the string `s` and checks if the substring `sub_s` is present at the current index. If it is, it increments the count. Finally, it returns the count.

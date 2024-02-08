@@ -1,0 +1,28 @@
+
+
+To solve this problem, we can use the Kadane's algorithm. This algorithm is used to find the maximum sum of a contiguous subarray in an array with a run-time complexity of O(n). We can modify this algorithm to find the minimum sum of a subarray by negating all the elements in the array and then finding the maximum sum of a subarray.
+
+Here is the step-by-step outline:
+
+1. Negate all the elements in the array.
+2. Initialize current_sum and min_sum to be the first element of the array.
+3. Iterate over the array from the second element to the end.
+   - Update current_sum to be the maximum of the current element and the sum of current_sum and the current element.
+   - Update min_sum to be the minimum of min_sum and current_sum.
+4. Return the negation of min_sum.
+
+Here is the Julia code:
+
+```julia
+function min_sub_array_sum(nums::Vector{Int})::Int
+    nums = -nums  # negate all the elements in the array
+    current_sum = min_sum = nums[1]
+    for num in nums[2:end]
+        current_sum = max(num, current_sum + num)
+        min_sum = min(min_sum, current_sum)
+    end
+    return -min_sum  # return the negation of min_sum
+end
+```
+
+This function works by first negating all the elements in the array. Then it initializes current_sum and min_sum to be the first element of the array. It iterates over the array from the second element to the end. For each element, it updates current_sum to be the maximum of the current element and the sum of current_sum and the current element. It also updates min_sum to be the minimum of min_sum and current_sum. Finally, it returns the negation of min_sum, which is the minimum sum of any sub-array of the original array.

@@ -1,0 +1,13 @@
+  Here's one way to implement the `any_int` function in Julia:
+```
+function any_int(x::Number, y::Number, z::Number)::Bool
+    return (x + y == z) || (x + z == y) || (y + z == x)
+end
+```
+Explanation:
+
+The function takes three numbers `x`, `y`, and `z` as input. It checks if the sum of any two numbers is equal to the third number. If the sum of `x` and `y` is equal to `z`, or the sum of `x` and `z` is equal to `y`, or the sum of `y` and `z` is equal to `x`, then the function returns `true`. Otherwise, it returns `false`.
+
+Note that the function uses the `||` operator to check if any of the three conditions is true. This is because the function needs to return `true` if any of the conditions is true, and `false` otherwise.
+
+Also, the function uses the `Number` type to specify that the input arguments can be any type of number, including integers, floating-point numbers, and complex numbers. This is because the function needs to work with any type of number that can be added and compared.

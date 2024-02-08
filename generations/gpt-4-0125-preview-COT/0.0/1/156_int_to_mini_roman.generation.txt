@@ -1,0 +1,42 @@
+### Outline for `int_to_mini_roman` Function
+
+1. **Define the Roman numeral mappings**: Create a list of tuples or a dictionary that maps integers to their Roman numeral counterparts. This mapping should be ordered from the largest value to the smallest to facilitate the conversion process.
+
+2. **Initialize an empty string**: This string will be used to build the Roman numeral representation of the given integer.
+
+3. **Iterate through the Roman numeral mappings**: For each mapping, determine how many times the Roman numeral can fit into the remaining part of the integer. For each occurrence, append the Roman numeral to the result string and decrease the integer by the corresponding amount.
+
+4. **Return the result string**: Once the integer is reduced to zero, return the result string, ensuring it is in lowercase as per the function requirements.
+
+### Julia Code Implementation
+
+```julia
+function int_to_mini_roman(number::Int)::String
+    # Step 1: Define the Roman numeral mappings
+    roman_numerals = [
+        (1000, "m"), (900, "cm"), (500, "d"), (400, "cd"),
+        (100, "c"), (90, "xc"), (50, "l"), (40, "xl"),
+        (10, "x"), (9, "ix"), (5, "v"), (4, "iv"), (1, "i")
+    ]
+    
+    # Step 2: Initialize an empty string for the result
+    result = ""
+    
+    # Step 3: Iterate through the Roman numeral mappings
+    for (value, numeral) in roman_numerals
+        # Determine how many times the numeral fits into the number
+        count = div(number, value)
+        
+        # Append the numeral to the result string as many times as it fits
+        result *= repeat(numeral, count)
+        
+        # Decrease the number by the total value added to the result string
+        number -= value * count
+    end
+    
+    # Step 4: Return the result string in lowercase
+    return result
+end
+```
+
+This implementation follows the outlined steps to convert an integer to its Roman numeral representation in lowercase, adhering to the restrictions and examples provided in the doc string.

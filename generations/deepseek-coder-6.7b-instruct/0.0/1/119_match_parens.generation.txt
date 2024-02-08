@@ -1,0 +1,17 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function match_parens(lst::Vector{String})::String
+    left_count = sum(c == '(' for c in lst[1])
+    right_count = sum(c == ')' for c in lst[2])
+    if left_count < right_count
+        return "No"
+    else
+        return "Yes"
+    end
+end
+```
+
+This function works by counting the number of open and close parentheses in the two input strings. If the number of open parentheses in the first string is less than the number of close parentheses in the second string, it means that the two strings cannot be concatenated to form a balanced string, so the function returns "No". Otherwise, it returns "Yes".
+
+Please note that this function assumes that the input list contains exactly two strings. If the list can contain more or less than two strings, you would need to modify the function to handle these cases.

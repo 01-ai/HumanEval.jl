@@ -1,0 +1,9 @@
+```julia
+function any_int(x::Number, y::Number, z::Number)::Bool
+    if all(isinteger, [x, y, z])
+        return (x == y + z) || (y == x + z) || (z == x + y)
+    else
+        return false
+    end
+end
+```

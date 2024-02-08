@@ -1,0 +1,44 @@
+### Step-by-step outline:
+
+1. Check if the vector `xs` is empty or has only one element. If so, return `true` because a single-element or empty list is trivially sorted.
+2. Initialize a variable to keep track of the last seen number in the list.
+3. Loop through the elements of the vector `xs` starting from the second element.
+4. For each element, check if it is greater than the last seen number. If not, return `false` because the list is not sorted in ascending order.
+5. Also, check if the current element is equal to the last seen number. If so, return `false` because the list has a duplicate.
+6. Update the last seen number to the current element.
+7. If the loop completes without returning `false`, return `true` because the list is sorted in ascending order without duplicates.
+
+### Julia code implementation:
+
+```julia
+function is_sorted(xs::Vector{Int})::Bool
+    # Step 1: Check for empty or single-element list
+    if length(xs) <= 1
+        return true
+    end
+    
+    # Step 2: Initialize the last seen number
+    last_seen = xs[1]
+    
+    # Step 3: Loop through the elements starting from the second
+    for i in 2:length(xs)
+        # Step 4: Check if the current element is not greater than the last seen
+        if xs[i] < last_seen
+            return false
+        end
+        
+        # Step 5: Check for duplicates
+        if xs[i] == last_seen
+            return false
+        end
+        
+        # Step 6: Update the last seen number
+        last_seen = xs[i]
+    end
+    
+    # Step 7: If loop completes, the list is sorted without duplicates
+    return true
+end
+```
+
+This function should work correctly according to the specifications provided in the doc string.

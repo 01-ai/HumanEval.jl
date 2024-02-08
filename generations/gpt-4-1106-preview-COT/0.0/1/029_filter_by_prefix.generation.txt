@@ -1,0 +1,21 @@
+### Step-by-step Outline:
+
+1. Define the function `filter_by_prefix` that takes two arguments: `xs` (a vector of strings) and `prefix` (a string).
+2. Use the `filter` function to iterate over each string in the vector `xs`.
+3. Within the `filter` function, check if the current string starts with the given `prefix` using the `startswith` function.
+4. Return the filtered list of strings that start with the given `prefix`.
+
+### Julia Code:
+
+```julia
+function filter_by_prefix(xs::Vector{String}, prefix::String)::Vector{String}
+    # Use the filter function to select strings that start with the prefix
+    return filter(x -> startswith(x, prefix), xs)
+end
+
+# Examples
+println(filter_by_prefix(String[], "a")) # Should print String[]
+println(filter_by_prefix(["abc", "bcd", "cde", "array"], "a")) # Should print ["abc", "array"]
+```
+
+Now, let's write the actual Julia code.

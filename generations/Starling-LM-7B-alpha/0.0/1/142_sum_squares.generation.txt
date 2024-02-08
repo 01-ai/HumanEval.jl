@@ -1,0 +1,33 @@
+ Here's the Julia function `sum_squares` based on the provided documentation:
+
+```julia
+function sum_squares(xs::Vector{Int})::Int
+    sum = 0
+    for i in eachindex(xs)
+        if i % 3 == 0
+            xs[i] = xs[i]^2
+        elseif i % 4 == 0 && i % 3 != 0
+            xs[i] = xs[i]^3
+        end
+        sum += xs[i]
+    end
+    return sum
+end
+```
+
+This function takes a vector of integers `xs` and iterates through each index `i`. If the index `i` is a multiple of 3, it squares the corresponding integer entry in the vector. If the index `i` is a multiple of 4 and not a multiple of 3, it cubes the corresponding integer entry in the vector. The function does not change the entries in the vector whose indices are not multiples of 3 or 4. Finally, it returns the sum of all entries in the vector.
+
+Here are some examples to demonstrate the usage of the function:
+
+```julia
+julia> sum_squares([1, 2, 3])
+12
+
+julia> sum_squares(Int[])
+0
+
+julia> sum_squares([-1, -5, 2, -1, -5])
+-8
+```
+
+These examples show that the function correctly squares and cubes the appropriate entries in the vector and returns the sum of all entries.

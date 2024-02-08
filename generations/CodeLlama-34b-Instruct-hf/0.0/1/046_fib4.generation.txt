@@ -1,0 +1,16 @@
+  Here's an implementation of the `fib4` function in Julia:
+```
+function fib4(n::Int)::Int
+    if n <= 3
+        return 0
+    end
+    a, b, c = 0, 0, 2
+    for i in 4:n
+        a, b, c = b, c, a + b + c
+    end
+    return c
+end
+```
+This function uses a loop to compute the `n`-th element of the `fib4` sequence. It starts with the initial values `a = 0`, `b = 0`, and `c = 2`, and then iterates over the range `4:n`. At each iteration, it updates the values of `a`, `b`, and `c` using the recurrence relation `a = b + c + a`, `b = c + a + b`, and `c = a + b + c`. Finally, it returns the value of `c` as the `n`-th element of the `fib4` sequence.
+
+Note that this implementation does not use recursion, as requested in the problem statement.

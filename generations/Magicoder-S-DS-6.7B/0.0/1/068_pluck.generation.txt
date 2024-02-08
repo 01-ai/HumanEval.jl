@@ -1,0 +1,10 @@
+function pluck(xs::Vector{Int})::Vector{Int}
+    even_nodes = filter(x -> x % 2 == 0, xs)
+    if isempty(even_nodes)
+        return Int[]
+    else
+        min_even = minimum(even_nodes)
+        min_index = findfirst(x -> x == min_even, xs)
+        return [min_even, min_index]
+    end
+end

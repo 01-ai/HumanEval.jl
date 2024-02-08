@@ -1,0 +1,11 @@
+
+
+Here is the Julia function that solves the problem:
+
+```julia
+function iscube(a::Int)::Bool
+    return round(cbrt(a))^3 == a
+end
+```
+
+This function uses the `cbrt` function to calculate the cube root of `a`, rounds it to the nearest integer, and then checks if the cube of this integer equals `a`. If it does, `a` is a cube of some integer, so the function returns `true`. Otherwise, it returns `false`. 

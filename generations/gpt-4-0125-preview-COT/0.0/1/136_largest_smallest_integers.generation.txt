@@ -1,0 +1,43 @@
+### Step-by-Step Outline
+
+1. **Initialize Variables**: Initialize two variables, `largest_negative` and `smallest_positive`, to `nothing`. These will store the largest negative and smallest positive integers found in the input vector, respectively.
+
+2. **Iterate Through the Vector**: Loop through each element in the input vector `xs`.
+
+    a. **Check for Negative Integers**: If the current element is negative and either `largest_negative` is `nothing` or the current element is larger than `largest_negative`, update `largest_negative` with the current element.
+    
+    b. **Check for Positive Integers**: If the current element is positive and either `smallest_positive` is `nothing` or the current element is smaller than `smallest_positive`, update `smallest_positive` with the current element.
+
+3. **Return Results**: Return a tuple containing `largest_negative` and `smallest_positive`.
+
+### Julia Code Implementation
+
+```julia
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing,Int}}
+    # Step 1: Initialize variables
+    largest_negative = nothing
+    smallest_positive = nothing
+
+    # Step 2: Iterate through the vector
+    for x in xs
+        # Step 2a: Check for negative integers
+        if x < 0
+            if isnothing(largest_negative) || x > largest_negative
+                largest_negative = x
+            end
+        end
+
+        # Step 2b: Check for positive integers
+        if x > 0
+            if isnothing(smallest_positive) || x < smallest_positive
+                smallest_positive = x
+            end
+        end
+    end
+
+    # Step 3: Return results
+    return (largest_negative, smallest_positive)
+end
+```
+
+This function efficiently finds the largest negative and smallest positive integers in a given vector, handling edge cases where such integers do not exist by returning `nothing` for the respective values.

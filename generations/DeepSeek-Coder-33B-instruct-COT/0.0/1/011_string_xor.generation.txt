@@ -1,0 +1,30 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. Convert the input strings into binary numbers.
+2. Perform the XOR operation on the binary numbers.
+3. Convert the result back into a string.
+
+Here is the Julia code that implements this:
+
+```julia
+function string_xor(a::String, b::String)::String
+    # Convert the strings to binary numbers
+    a_bin = parse(Int, a, base=2)
+    b_bin = parse(Int, b, base=2)
+
+    # Perform the XOR operation
+    xor_result = xor(a_bin, b_bin)
+
+    # Convert the result back to a string
+    return string(xor_result, base=2, pad=length(a))
+end
+```
+
+This function works by first converting the input strings to binary numbers using the `parse` function with a base of 2. It then performs the XOR operation on these binary numbers using the `xor` function. Finally, it converts the result back to a string using the `string` function with a base of 2 and pads the result with leading zeros to match the length of the input strings.
+
+You can test this function with the example provided in the doc string:
+
+```julia
+julia> string_xor("010", "110")
+"100"
+```

@@ -1,0 +1,17 @@
+function find_zero(xs::Vector{Int})
+    if length(xs) % 2 != 0 || xs[end] != maximum(xs)
+        error("xs must have even number of coefficients and largest non zero coefficient")
+    end
+    n = length(xs) � 2
+    a = xs[1:n]
+    b = xs[n+1:end]
+    if n == 1
+        return -b[1] / a[1]
+    else
+        return find_zero([a[1], a[2] - a[1] * b[1]])
+    end
+end
+
+# Test cases
+@test round(find_zero([1, 2]), digits = 1) == -0.5
+@test round(find_zero([-6, 11, -6, 1]), digits = 1) == 1.0

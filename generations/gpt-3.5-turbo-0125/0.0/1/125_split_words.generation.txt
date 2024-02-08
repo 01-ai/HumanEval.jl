@@ -1,0 +1,12 @@
+```julia
+function split_words(txt::String)
+    if occursin(" ", txt)
+        return split(txt, " ")
+    elseif occursin(",", txt)
+        return split(txt, ",")
+    else
+        count = count(lowercase, txt) |> x -> sum(1 for c in x if isodd(findfirst("abcdefghijklmnopqrstuvwxyz", c)))
+        return count
+    end
+end
+```

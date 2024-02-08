@@ -1,0 +1,46 @@
+
+
+# Outline
+
+1. Define the function `sort_array` that takes a vector of integers as input and returns a sorted vector of integers.
+2. For each integer in the input vector, convert it to its binary representation and count the number of ones.
+3. Create a dictionary where the keys are the count of ones and the values are vectors of integers that have that count of ones.
+4. Sort the keys of the dictionary in ascending order.
+5. For each key in the sorted keys, sort the values in ascending order and append them to the output vector.
+6. Return the output vector.
+
+# Code
+
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    # Create a dictionary to store the count of ones and the integers
+    count_dict = Dict{Int, Vector{Int}}()
+
+    # Iterate over the input array
+    for num in arr
+        # Convert the integer to binary and count the number of ones
+        ones_count = count_ones(num)
+
+        # If the count of ones is already in the dictionary, append the integer
+        # Otherwise, create a new vector with the integer
+        if haskey(count_dict, ones_count)
+            push!(count_dict[ones_count], num)
+        else
+            count_dict[ones_count] = [num]
+        end
+    end
+
+    # Initialize the output vector
+    output = Int[]
+
+    # Iterate over the sorted keys of the dictionary
+    for ones_count in sort(collect(keys(count_dict)))
+        # Sort the values for the current key and append them to the output vector
+        append!(output, sort(count_dict[ones_count]))
+    end
+
+    return output
+end
+```
+
+This function works by first converting each integer to its binary representation and counting the number of ones. It then groups the integers by the count of ones and sorts them in ascending order. The sorted integers are then appended to the output vector.

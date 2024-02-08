@@ -1,0 +1,36 @@
+
+
+To solve this problem, we can iterate over each well and count the number of times we need to lower the bucket. We lower the bucket whenever we encounter a 1 in the well.
+
+Here is the step-by-step outline of the algorithm:
+
+1. Initialize a variable `count` to 0. This variable will keep track of the number of times we need to lower the bucket.
+2. Iterate over each well in the grid.
+3. For each well, iterate over each unit of water.
+4. If the unit of water is 1, increment `count` by the capacity of the bucket.
+5. After iterating over all wells, return `count`.
+
+Now let's write the Julia code for the function based on this outline.
+
+```julia
+function max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+    # Initialize count to 0
+    count::Int = 0
+
+    # Iterate over each well in the grid
+    for well in grid
+        # Iterate over each unit of water in the well
+        for unit in well
+            # If the unit of water is 1, increment count by the capacity of the bucket
+            if unit == 1
+                count += capacity
+            end
+        end
+    end
+
+    # Return the number of times we need to lower the bucket
+    return count
+end
+```
+
+This function works by counting the total number of units of water in all the wells and then multiplying this total by the capacity of the bucket. This gives the total number of times we need to lower the bucket to empty all the wells.

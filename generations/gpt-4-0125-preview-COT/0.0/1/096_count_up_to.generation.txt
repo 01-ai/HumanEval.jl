@@ -1,0 +1,51 @@
+### Step-by-Step Outline
+
+1. **Check for Base Cases**: If `n` is less than 2, return an empty array since there are no prime numbers less than 2.
+
+2. **Initialize an Empty Array**: This will store the prime numbers found.
+
+3. **Iterate through Numbers**: Loop through numbers from 2 up to (but not including) `n`. For each number, check if it is prime.
+
+4. **Check for Primality**:
+    - For the current number in the loop, check if it is prime by trying to divide it by all smaller numbers greater than 1 and less than itself.
+    - If the number is only divisible by 1 and itself (i.e., it has no divisors other than 1 and itself), it is prime.
+
+5. **Add Prime Numbers to Array**: If a number is found to be prime, add it to the array initialized in step 2.
+
+6. **Return the Array**: Once the loop is complete, return the array containing all the prime numbers found.
+
+### Julia Code Implementation
+
+```julia
+function count_up_to(n::Int)::Vector{Int}
+    # Step 1: Check for base cases
+    if n < 2
+        return Int[]
+    end
+    
+    # Step 2: Initialize an empty array for prime numbers
+    primes = Int[]
+    
+    # Step 3: Iterate through numbers from 2 to n-1
+    for num in 2:n-1
+        # Step 4: Check for primality
+        is_prime = true
+        for divisor in 2:sqrt(num)
+            if num % divisor == 0
+                is_prime = false
+                break
+            end
+        end
+        
+        # Step 5: Add prime numbers to array
+        if is_prime
+            push!(primes, num)
+        end
+    end
+    
+    # Step 6: Return the array of prime numbers
+    return primes
+end
+```
+
+This function efficiently finds and returns all prime numbers less than `n` by checking each number for primality and collecting the prime numbers in an array. The use of `sqrt(num)` in the divisor loop optimizes the primality check, as a non-prime number will have at least one divisor less than or equal to its square root.

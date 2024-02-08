@@ -1,0 +1,6 @@
+
+
+function remove_vowels(text::String)::String
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    return join([c for c in text if c ∉ vowels])
+end

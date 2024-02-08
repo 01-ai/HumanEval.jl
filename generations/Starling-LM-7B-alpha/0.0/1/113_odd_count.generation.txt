@@ -1,0 +1,13 @@
+ function odd_count(xs::Vector{String})::Vector{String}
+    result = Vector{String}()
+    for i in 1:length(xs)
+        count = 0
+        for digit in xs[i]
+            if parse(Int, digit) % 2 != 0
+                count += 1
+            end
+        end
+        push!(result, "the number of odd elements $(count)n the str$(i)ng $(i) of the $(i)nput.")
+    end
+    return result
+end

@@ -1,0 +1,23 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    # Function to check if a number has even digit
+    function has_even_digit(n::Int)::Bool
+        while n > 0
+            if (n % 10) % 2 == 0
+                return true
+            end
+            n = div(n, 10)
+        end
+        return false
+    end
+
+    # Filter the list and return the sorted result
+    return sort([x for x in xs if !has_even_digit(x)])
+end
+```
+
+This function first defines a helper function `has_even_digit` that checks if a number has an even digit. It does this by repeatedly dividing the number by 10 and checking the remainder (which is the last digit of the number). If the remainder is even, the function returns `true`. If the number becomes 0, the function returns `false`.
+
+The main function `unique_digits` then uses a list comprehension to create a new list that includes only the numbers from the input list that do not have an even digit. The `sort` function is used to sort the resulting list in increasing order before it is returned.

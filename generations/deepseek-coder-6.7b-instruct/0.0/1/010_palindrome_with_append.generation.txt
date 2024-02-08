@@ -1,0 +1,21 @@
+Here is the Julia function that implements the algorithm described in the doc string:
+
+```julia
+function palindrome_with_append(s::String)::String
+    n = length(s)
+    i = n + 1
+    while i > 1
+        i -= 1
+        if is_palindrome(s[1:i])
+            return s * reverse(s[1:i])
+        end
+    end
+    return s * reverse(s)
+end
+
+function is_palindrome(s::String)::Bool
+    return s == reverse(s)
+end
+```
+
+In this function, `is_palindrome` checks if a given string is a palindrome. The function `palindrome_with_append` finds the shortest palindrome that begins with the supplied string. It starts by checking the entire string and then gradually reduces the length of the string to check for a palindrome. Once it finds a palindrome, it appends the reversed prefix to the end of the string and returns the result. If no palindrome is found, it appends the reversed entire string to the end and returns the result.

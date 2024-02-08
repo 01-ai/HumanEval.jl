@@ -1,0 +1,20 @@
+
+
+```julia
+function top_k(xs::Vector{Int}, k::Int)::Vector{Int}
+    # Check if k is valid
+    if k <= 0 || k > length(xs)
+        throw(ArgumentError("k must be a positive integer less than or equal to the length of xs"))
+    end
+
+    # Sort the array in descending order
+    sorted_xs = sort(xs, rev=true)
+
+    # Return the first k elements of the sorted array
+    return sorted_xs[1:k]
+end
+```
+
+This function first checks if `k` is a valid value (i.e., a positive integer less than or equal to the length of `xs`). If it is not, it throws an `ArgumentError`.
+
+If `k` is valid, it sorts the array `xs` in descending order using the `sort` function with the `rev` argument set to `true`. It then returns the first `k` elements of the sorted array.

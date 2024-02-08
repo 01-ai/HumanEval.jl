@@ -1,0 +1,45 @@
+### Step-by-Step Outline
+
+1. **Split the Sentence into Words**: First, we need to split the given sentence into individual words. This can be done using the `split` function in Julia, which will give us an array of words.
+
+2. **Check for Prime Number Length**: We need a helper function that checks if a given number (in this case, the length of a word) is a prime number. A prime number is a number greater than 1 that has no positive divisors other than 1 and itself.
+
+3. **Filter Words with Prime Length**: Using the helper function, we filter out the words whose lengths are not prime numbers. We iterate through the array of words, check the length of each word with the prime-checking function, and keep the word if its length is prime.
+
+4. **Join the Filtered Words**: After filtering, we join the remaining words back into a string, with spaces between them, to form the final sentence.
+
+5. **Return the Result**: The final step is to return the newly formed sentence which contains only the words with prime number lengths.
+
+### Julia Code Implementation
+
+```julia
+# Helper function to check if a number is prime
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    end
+    for i in 2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+# Main function to filter words with prime length
+function words_in_sentence(sentence::String)::String
+    # Step 1: Split the sentence into words
+    words = split(sentence)
+    
+    # Step 2 & 3: Filter words with prime length
+    prime_length_words = filter(word -> is_prime(length(word)), words)
+    
+    # Step 4: Join the filtered words
+    result_sentence = join(prime_length_words, " ")
+    
+    # Step 5: Return the result
+    return result_sentence
+end
+```
+
+This implementation follows the outlined steps to achieve the desired functionality, ensuring that only words with prime lengths are included in the returned sentence.

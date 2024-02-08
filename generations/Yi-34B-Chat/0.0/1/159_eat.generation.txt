@@ -1,0 +1,22 @@
+```julia
+function eat(number::Int, need::Int, remaining::Int)::Vector{Int}
+    # Check constraints
+    @assert 0 <= number <= 1000 "Number of eaten carrots should be between 0 and 1000"
+    @assert 0 <= need <= 1000 "Number of needed carrots should be between 0 and 1000"
+    @assert 0 <= remaining <= 1000 "Remaining carrots should be between 0 and 1000"
+
+    # Calculate total number of carrots to eat
+    total_need = number + need
+
+    # Check if there are enough carrots to satisfy the need
+    if total_need <= remaining
+        # Eat the needed carrots and return the result
+        return [total_need, remaining - total_need]
+    else
+        # Eat all remaining carrots and return the result
+        return [remaining, 0]
+    end
+end
+```
+
+This function `eat` takes three parameters: `number`, `need`, and `remaining`, all of which are integers. It checks that the constraints are met and then calculates the total number of carrots the rabbit needs to eat. If there are enough carrots to satisfy the need, the function returns an array containing the total number of eaten carrots and the number of carrots left after the meal. If there are not enough carrots, the rabbit eats all the remaining carrots and the function returns an array indicating that the rabbit is still hungry.

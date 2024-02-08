@@ -1,0 +1,14 @@
+```julia
+function find_zero(xs::Vector{Int})
+    n = length(xs)
+    if n % 2 != 0
+        throw(ArgumentError("The number of coefficients must be even"))
+    end
+    if xs[end] == 0
+        throw(ArgumentError("The largest non-zero coefficient must be non-zero"))
+    end
+    
+    roots = roots(Polynomial(xs))
+    return round(roots[1].re, digits=1)
+end
+```

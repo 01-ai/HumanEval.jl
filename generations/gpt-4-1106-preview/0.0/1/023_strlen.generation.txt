@@ -1,0 +1,24 @@
+Certainly! Below is the implementation of the `strlen` function in Julia:
+
+```julia
+"""
+    strlen(x::String)::Int
+
+Return length of given string.
+
+# Examples
+
+```jldoctest
+julia> strlen("")
+0
+
+julia> strlen("abc")
+3
+```
+"""
+function strlen(x::String)::Int
+    return length(x)
+end
+```
+
+You can use this function to get the length of any string by passing it as an argument to `strlen`.

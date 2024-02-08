@@ -1,0 +1,14 @@
+
+
+Here is the Julia function that implements the encryption:
+
+```julia
+function encrypt(s::String)
+    alphabet = 'a':'z'
+    encrypted_alphabet = [alphabet[mod1(i+2*2, 26)] for i in 1:26]
+    mapping = Dict(zip(alphabet, encrypted_alphabet))
+    return map(c -> mapping[c], s)
+end
+```
+
+This function works by first creating a mapping from the original alphabet to the encrypted alphabet. The encrypted alphabet is obtained by shifting the original alphabet by two places to the right, wrapping around to the beginning of the alphabet if necessary. Then, the function maps each character in the input string to its encrypted counterpart using this mapping. 

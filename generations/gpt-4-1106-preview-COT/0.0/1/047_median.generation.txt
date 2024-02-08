@@ -1,0 +1,44 @@
+To implement the `median` function in Julia, we will follow these steps:
+
+1. Sort the input vector `l`.
+2. Determine the number of elements in the sorted vector.
+3. If the number of elements is odd, return the middle element.
+4. If the number of elements is even, return the average of the two middle elements.
+
+Now, let's write the code for the `median` function:
+
+```julia
+"""
+    median(l::Vector)
+
+Return median of elements in the list l.
+
+# Examples
+
+```jldoctest
+julia> median([3, 1, 2, 4, 5])
+3
+
+julia> median([-10, 4, 6, 1000, 10, 20])
+8.0
+```
+"""
+function median(l::Vector)
+    # Step 1: Sort the input vector
+    sorted_l = sort(l)
+    
+    # Step 2: Determine the number of elements
+    n = length(sorted_l)
+    
+    # Step 3 and 4: Calculate the median based on the number of elements
+    if n % 2 == 1
+        # If odd, return the middle element
+        return sorted_l[div(n + 1, 2)]
+    else
+        # If even, return the average of the two middle elements
+        return (sorted_l[n ÷ 2] + sorted_l[n ÷ 2 + 1]) / 2
+    end
+end
+```
+
+This function should work as expected for the provided examples. Note that in Julia, `÷` is the integer division operator, which is used to find the indices of the middle elements.

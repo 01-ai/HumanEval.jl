@@ -1,0 +1,25 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function histogram(s::String)::Dict{String, Int}
+    words = split(s)
+    hist = Dict{String, Int}()
+    max_count = 0
+
+    for word in words
+        hist[word] = get(hist, word, 0) + 1
+        max_count = max(max_count, hist[word])
+    end
+
+    most_frequent = Dict{String, Int}()
+    for (k, v) in hist
+        if v == max_count
+            most_frequent[k] = v
+        end
+    end
+
+    return most_frequent
+end
+```
+
+This function first splits the input string into words and counts the occurrences of each word using a dictionary. It then finds the maximum count and creates a new dictionary that contains only the words that have this maximum count.

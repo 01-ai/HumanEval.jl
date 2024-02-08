@@ -1,0 +1,24 @@
+```julia
+function separate_paren_groups(paren_string::String)::Vector{String}
+    groups = []
+    current_group = ""
+    open_braces = 0
+
+    for char in paren_string
+        if char == '('
+            open_braces += 1
+        elseif char == ')'
+            open_braces -= 1
+        end
+
+        current_group *= char
+
+        if open_braces == 0
+            push!(groups, current_group)
+            current_group = ""
+        end
+    end
+
+    return groups
+end
+```

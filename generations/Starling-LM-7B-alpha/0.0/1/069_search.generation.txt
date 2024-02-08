@@ -1,0 +1,18 @@
+ function search(numbers::Vector{Int})::Int
+    frequencies = Dict{Int, Int}()
+    for number in numbers
+        if haskey(frequencies, number)
+            frequencies[number] += 1
+        else
+            frequencies[number] = 1
+        end
+    end
+
+    for number in sort(collect(keys(frequencies)), rev=true)
+        if frequencies[number] >= number
+            return number
+        end
+    end
+
+    return -1
+end

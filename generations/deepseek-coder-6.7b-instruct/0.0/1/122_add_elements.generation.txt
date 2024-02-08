@@ -1,0 +1,9 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    return sum(x for x in xs[1:k] if length(string(abs(x))) <= 2)
+end
+```
+
+This function uses a generator expression to iterate over the first `k` elements of `xs`. The `string(abs(x))` expression converts each number to a string, and `length()` counts the number of digits in the string. If the number of digits is less than or equal to 2, the number is included in the sum. The `abs()` function is used to handle negative numbers.

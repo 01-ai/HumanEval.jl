@@ -1,0 +1,53 @@
+To implement the `is_multiply_prime` function, we need to check if a given number `a` can be expressed as the product of exactly three prime numbers. Since `a` is less than 100, we can use a simple brute-force approach to check all possible combinations of three prime numbers. Here's the implementation in Julia:
+
+```julia
+"""
+    is_multiply_prime(a::Int)::Bool
+
+Write a function that returns `true` if the given number is the multiplication
+of 3 prime numbers and false otherwise. Knowing that `a` is less then 100.
+
+# Examples
+
+```jldoctest
+julia> is_multiply_prime(30)  # 30 = 2 * 3 * 5
+true
+```
+"""
+function is_multiply_prime(a::Int)::Bool
+    # Helper function to check if a number is prime
+    function is_prime(n::Int)::Bool
+        if n <= 1
+            return false
+        end
+        for i in 2:sqrt(n)
+            if n % i == 0
+                return false
+            end
+        end
+        return true
+    end
+
+    # Check if the number is a product of three prime numbers
+    for i in 2:a
+        if is_prime(i) && a % i == 0
+            for j in i:a
+                if is_prime(j) && a % (i * j) == 0
+                    k = a ÷ (i * j)
+                    if is_prime(k) && i * j * k == a
+                        return true
+                    end
+                end
+            end
+        end
+    end
+    return false
+end
+
+# Example usage
+println(is_multiply_prime(30))  # Should return true
+```
+
+This function first defines a helper function `is_prime` to check if a number is prime. Then, it iterates through all numbers from 2 to `a` to find three prime factors whose product equals `a`. If such a combination is found, the function returns `true`; otherwise, it returns `false`.
+
+Please note that this implementation is not optimized for large numbers, but it is sufficient for the given constraint that `a` is less than 100.

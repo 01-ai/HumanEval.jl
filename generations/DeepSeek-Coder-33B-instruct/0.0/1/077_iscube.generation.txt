@@ -1,0 +1,17 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function iscube(a::Int)::Bool
+    if a < 0
+        a = -a
+    end
+    cube_root = round(Int, cbrt(a))
+    return cube_root^3 == a
+end
+```
+
+This function first checks if the input is negative. If it is, it converts it to positive. Then it calculates the cube root of the absolute value of the input and rounds it to the nearest integer. If the cube of this rounded value is equal to the absolute value of the input, the function returns `true`, otherwise it returns `false`.
+
+The `cbrt` function is used to calculate the cube root of a number in Julia.
+
+Please note that this function assumes that the input is always valid. If the input can be invalid, you should add error checking code to handle these cases.

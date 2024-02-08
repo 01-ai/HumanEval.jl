@@ -1,0 +1,11 @@
+
+
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    sides = [a, b, c]
+    sort(sides)
+    return sides[3]^2 == sides[1]^2 + sides[2]^2
+end
+
+# Test cases
+println(right_angle_triangle(3, 4, 5)) # true
+println(right_angle_triangle(1, 2, 3)) # false 

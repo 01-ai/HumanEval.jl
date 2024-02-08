@@ -1,0 +1,26 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. Define a function `largest_prime_factor` that takes an integer `n` as input.
+2. Initialize a variable `factor` to 2.
+3. Start a while loop that continues until `n` is equal to 1.
+4. Inside the loop, check if `n` is divisible by `factor`. If it is, divide `n` by `factor` and continue the loop.
+5. If `n` is not divisible by `factor`, increment `factor` by 1.
+6. Once `n` is equal to 1, return `factor` as the largest prime factor.
+
+Here is the Julia code that implements this algorithm:
+
+```julia
+function largest_prime_factor(n::Int)::Int
+    factor = 2
+    while n > 1
+        if n % factor == 0
+            n = n � factor
+        else
+            factor += 1
+        end
+    end
+    return factor
+end
+```
+
+This function works by continuously dividing `n` by its smallest factor (starting from 2) until `n` becomes 1. The last factor that `n` was divided by is the largest prime factor.

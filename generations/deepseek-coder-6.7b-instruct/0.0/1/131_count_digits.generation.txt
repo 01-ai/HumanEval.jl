@@ -1,0 +1,16 @@
+function count_digits(n::Int)::Int
+    product = 1
+    while n > 0
+        digit = n % 10
+        if digit % 2 != 0
+            product *= digit
+        end
+        n = div(n, 10)
+    end
+    return product == 1 ? 0 : product
+end
+
+# Test cases
+println(count_digits(1))  # 1
+println(count_digits(4))  # 0
+println(count_digits(235))  # 15

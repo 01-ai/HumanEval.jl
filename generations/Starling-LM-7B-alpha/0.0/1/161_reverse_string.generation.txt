@@ -1,0 +1,15 @@
+ function reverse_string(s::String)::String
+    reversed_string = ""
+    for i in eachindex(s)
+        if isletter(s[i])
+            if isuppercase(s[i])
+                reversed_string *= lowercase(s[i])
+            else
+                reversed_string *= uppercase(s[i])
+            end
+        else
+            reversed_string *= s[i]
+        end
+    end
+    return reverse(reversed_string)
+end

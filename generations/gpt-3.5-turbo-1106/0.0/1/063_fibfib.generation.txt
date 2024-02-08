@@ -1,0 +1,17 @@
+```julia
+function fibfib(n::Int)::Int
+    if n == 0
+        return 0
+    elseif n == 1
+        return 0
+    elseif n == 2
+        return 1
+    else
+        a, b, c = 0, 0, 1
+        for i in 3:n
+            a, b, c = b, c, a + b + c
+        end
+        return c
+    end
+end
+```

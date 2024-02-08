@@ -1,0 +1,24 @@
+
+
+```julia
+function fibfib(n::Int)::Int
+    # Check for invalid input
+    if n < 0
+        throw(DomainError(n, "Input must be a non-negative integer"))
+    end
+
+    # Initialize the first three elements of the sequence
+    a, b, c = 0, 0, 1
+
+    # Iterate from 3 to n
+    for _ in 3:n
+        # Calculate the next element of the sequence
+        a, b, c = b, c, a + b + c
+    end
+
+    # Return the n-th element of the sequence
+    return c
+end
+```
+
+This function efficiently computes the n-th element of the fibfib number sequence using a loop and three variables to store the last three elements of the sequence. It starts with the initial values of the sequence and iterates from 3 to n, updating the variables with the next element of the sequence at each step. Finally, it returns the n-th element of the sequence.

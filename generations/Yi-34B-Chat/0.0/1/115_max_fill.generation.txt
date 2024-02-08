@@ -1,0 +1,29 @@
+```julia
+function max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+    # Initialize the number of fills to 0
+    fills = 0
+
+    # Loop through the rows of the grid
+    for i in 1:length(grid)
+        # Initialize the number of units to fill in this row
+        units_to_fill = 0
+
+        # Loop through the columns of the current row
+        for j in 1:length(grid[i])
+            # If the current cell is 1, add to the units to fill
+            if grid[i][j] == 1
+                units_to_fill += 1
+            end
+
+            # If the bucket is full, add a fill to the total
+            if units_to_fill == capacity
+                fills += 1
+            end
+        end
+    end
+
+    return fills
+end
+```
+
+This function takes a 2D grid of integers and a capacity for the buckets. It loops through each row and column of the grid, counting the number of units of water that need to be filled in each row. It then checks if the number of units to fill in a row equals the bucket capacity, incrementing the total number of fills accordingly. The function returns the total number of times the buckets need to be lowered to empty all the wells.

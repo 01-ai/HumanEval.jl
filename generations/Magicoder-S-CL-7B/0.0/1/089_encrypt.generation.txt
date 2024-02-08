@@ -1,0 +1,15 @@
+
+
+function encrypt(s::String)
+    encrypted_string = ""
+    for char in s
+        if 'a' <= char <= 'z'
+            encrypted_string *= string(char + 4)
+        elseif 'A' <= char <= 'Z'
+            encrypted_string *= string(char + 4)
+        else
+            encrypted_string *= char
+        end
+    end
+    return encrypted_string
+end

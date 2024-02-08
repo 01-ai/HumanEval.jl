@@ -1,0 +1,15 @@
+
+
+```julia
+function specialFilter(nums::Vector{Int})::Int
+    count = 0
+    for num in nums
+        if num > 10 && isodd(num % 10) && isodd(num ÷ 10)
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function iterates through the array `nums` and checks if each number is greater than 10 and if both its first and last digits are odd. If both conditions are met, it increments the `count` variable. Finally, it returns the `count` value, which represents the number of elements in the array that meet the specified criteria.

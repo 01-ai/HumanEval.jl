@@ -1,0 +1,24 @@
+
+
+```julia
+function move_one_ball(xs::Vector{Int})::Bool
+    if length(xs) == 0
+        return true
+    end
+
+    min_index = findfirst(isequal(minimum(xs)), xs)
+    if min_index == 1
+        return true
+    end
+
+    for i in 1:min_index - 1
+        if xs[i] < xs[i + 1]
+            return false
+        end
+    end
+
+    return true
+end
+```
+
+This function checks if it is possible to get a sorted array by performing right shift operations. It first checks if the array is empty, in which case it returns `true`. If the array is not empty, it finds the index of the minimum element in the array and checks if it is at the first position. If it is, then it returns `true`. If it is not, it checks if any element before the minimum element is smaller than the element after it. If it finds such an element, it returns `false`. If it doesn't find such an element, it returns `true`.

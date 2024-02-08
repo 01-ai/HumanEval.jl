@@ -1,0 +1,31 @@
+To solve this problem, we can follow a simple strategy. We need to check if the total number of open parentheses is equal to the total number of close parentheses across both strings. However, it's not enough to just check for equal numbers; we also need to ensure that at no point in any order of concatenation does the number of close parentheses exceed the number of open parentheses. Here's how we can implement this in Julia:
+
+```julia
+function match_parens(lst::Vector{String})::String
+    # Initialize counters for open and close parentheses
+    open_count = 0
+    close_count = 0
+    
+    # Count the total number of open and close parentheses in both strings
+    for str in lst
+        open_count += count(c -> c == '(', str)
+        close_count += count(c -> c == ')', str)
+    end
+    
+    # If the total counts are not equal, it's impossible to form a good string
+    if open_count != close_count
+        return "No"
+    end
+    
+    # Check if concatenating in any order would not result in an imbalance
+    # Start by checking if the first string has more close parentheses than open ones
+    if count(c -> c == ')', lst[1]) > count(c -> c == '(', lst[1])
+        return "No"
+    end
+    
+    # If we pass all checks, it's possible to form a good string
+    return "Yes"
+end
+```
+
+This function first counts the total number of open and close parentheses in both strings. If these counts are not equal, it immediately returns "No" since it's impossible to form a balanced string. Then, it checks if the first string has more close parentheses than open ones, which would also make it impossible to form a balanced string by concatenating the two strings in any order. If none of these conditions are met, the function returns "Yes", indicating that it's possible to form a balanced string.

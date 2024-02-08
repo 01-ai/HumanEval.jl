@@ -1,0 +1,5 @@
+
+
+function fruit_distribution(s::String, n::Int)::Int
+    # Your implementation here
+end

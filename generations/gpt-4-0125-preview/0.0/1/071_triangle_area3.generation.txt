@@ -1,0 +1,34 @@
+To implement the `triangle_area3` function, we can use Heron's formula to calculate the area of a triangle when we know the lengths of all three sides. Heron's formula states that the area of a triangle whose sides have lengths \(a\), \(b\), and \(c\) is:
+
+\[
+\text{Area} = \sqrt{s(s-a)(s-b)(s-c)}
+\]
+
+where \(s\) is the semi-perimeter of the triangle, given by:
+
+\[
+s = \frac{a + b + c}{2}
+\]
+
+Before applying Heron's formula, we need to check if the given sides can form a valid triangle. The triangle inequality theorem states that for any triangle, the sum of the lengths of any two sides must be greater than the length of the remaining side. If this condition is not met, the function should return -1.
+
+Here is the Julia implementation:
+
+```julia
+function triangle_area3(a::Number, b::Number, c::Number)::Number
+    # Check if the sides form a valid triangle
+    if a + b > c && a + c > b && b + c > a
+        # Calculate the semi-perimeter
+        s = (a + b + c) / 2
+        # Calculate the area using Heron's formula
+        area = sqrt(s * (s - a) * (s - b) * (s - c))
+        # Round the area to 2 decimal points and return
+        return round(area, digits=2)
+    else
+        # If not a valid triangle, return -1
+        return -1
+    end
+end
+```
+
+This function first checks if the input lengths satisfy the triangle inequality theorem to determine if they can form a valid triangle. If they do, it calculates the area using Heron's formula and rounds the result to two decimal points. If the inputs do not form a valid triangle, the function returns -1.

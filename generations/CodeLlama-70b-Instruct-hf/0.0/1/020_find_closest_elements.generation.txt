@@ -1,0 +1,26 @@
+
+
+```julia
+function find_closest_elements(numbers::Vector{Float64})::Tuple{Float64, Float64}
+    if length(numbers) < 2
+        throw(ArgumentError("The input list must contain at least two elements."))
+    end
+
+    min_diff = numbers[2] - numbers[1]
+    closest_pair = (numbers[1], numbers[2])
+
+    for i in 1:length(numbers) - 1
+        for j in i+1:length(numbers)
+            diff = abs(numbers[i] - numbers[j])
+            if diff < min_diff
+                min_diff = diff
+                closest_pair = (numbers[i], numbers[j])
+            end
+        end
+    end
+
+    return closest_pair
+end
+```
+
+This function will find the closest pair of elements in the given list of numbers and return them in order (smaller number, larger number). It will throw an error if the list contains less than two elements.

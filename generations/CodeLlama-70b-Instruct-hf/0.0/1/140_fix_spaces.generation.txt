@@ -1,0 +1,17 @@
+
+
+```julia
+function fix_spaces(s::String)::String
+    # Replace all spaces with underscores
+    s = replace(s, " " => "_")
+
+    # Replace consecutive spaces with -
+    while occursin("__", s)
+        s = replace(s, "__" => "-")
+    end
+
+    return s
+end
+```
+
+This function first replaces all spaces with underscores, and then it replaces consecutive underscores with a single hyphen.

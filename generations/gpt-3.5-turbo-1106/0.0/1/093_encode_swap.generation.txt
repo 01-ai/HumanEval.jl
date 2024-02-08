@@ -1,0 +1,26 @@
+```julia
+function encode_swap(message::String)::String
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    encoded_message = ""
+    for char in message
+        if isletter(char)
+            if char in vowels
+                encoded_char = Char(Int(char) + 2)
+                if encoded_char > 'z'
+                    encoded_char -= 26
+                end
+            else
+                if isuppercase(char)
+                    encoded_char = lowercase(char)
+                else
+                    encoded_char = uppercase(char)
+                end
+            end
+            encoded_message *= string(encoded_char)
+        else
+            encoded_message *= string(char)
+        end
+    end
+    return encoded_message
+end
+```

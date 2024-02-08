@@ -1,0 +1,19 @@
+```julia
+function fib4(n::Int)::Int
+    if n == 0
+        return 0
+    elseif n == 1
+        return 0
+    elseif n == 2
+        return 2
+    elseif n == 3
+        return 0
+    else
+        fib_values = [0, 0, 2, 0]
+        for i in 4:n
+            push!(fib_values, sum(fib_values[end-3:end]))
+        end
+        return fib_values[end]
+    end
+end
+```

@@ -1,0 +1,20 @@
+```julia
+function is_sorted(xs::Vector{Int})::Bool
+    # Base case: empty list or list with one element is sorted
+    if length(xs) <= 1
+        return true
+    end
+
+    # Check if each pair of consecutive elements is in order
+    for i in 2:length(xs)
+        if xs[i] < xs[i-1]
+            return false
+        end
+    end
+
+    # If we reach this point, the list is sorted
+    return true
+end
+```
+
+This function checks if a vector of integers is sorted in ascending order. It does this by iterating over the vector and ensuring that each element is greater than or equal to the previous element. If there is a single duplicate in the list, the function will still return `true`, as long as the list is otherwise sorted. However, if there are multiple duplicates of the same number that are not at the end of the list, the function will return `false`.

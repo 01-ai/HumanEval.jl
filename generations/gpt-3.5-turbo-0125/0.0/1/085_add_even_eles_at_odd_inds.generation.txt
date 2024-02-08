@@ -1,0 +1,11 @@
+```julia
+function add_even_eles_at_odd_inds(xs::Vector{Int})::Int
+    total = 0
+    for i in 1:2:length(xs)
+        if xs[i] % 2 == 0
+            total += xs[i]
+        end
+    end
+    return total
+end
+```

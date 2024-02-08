@@ -1,0 +1,33 @@
+
+
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    # Initialize an empty list to store the note durations
+    note_durations = Int[]
+
+    # Split the music string into individual notes
+    notes = split(music_string, " ")
+
+    # Iterate through each note
+    for note in notes
+        # Check if the note is a whole note
+        if note == "o"
+            # Append 4 to the note_durations list
+            push!(note_durations, 4)
+        # Check if the note is a half note
+        elseif note == "o|"
+            # Append 2 to the note_durations list
+            push!(note_durations, 2)
+        # Check if the note is a quarter note
+        elseif note == ".|"
+            # Append 1 to the note_durations list
+            push!(note_durations, 1)
+        end
+    end
+
+    # Return the note_durations list
+    return note_durations
+end
+```
+
+This function splits the music string into individual notes, iterates through each note, and appends the corresponding duration to the `note_durations` list.

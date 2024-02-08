@@ -1,0 +1,17 @@
+```julia
+function is_equal_to_sum_even(n::Int)::Bool
+    if n < 8
+        return false
+    end
+    for i in 2:2:n-6
+        for j in i+2:2:n-4
+            for k in j+2:2:n-2
+                if i + j + k + (n - i - j - k) == n
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end
+```

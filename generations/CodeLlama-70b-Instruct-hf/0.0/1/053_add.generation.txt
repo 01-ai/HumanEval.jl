@@ -1,0 +1,9 @@
+
+
+```julia
+function add(x::Int, y::Int)
+    return x + y
+end
+```
+
+This function takes two integers `x` and `y` as input and returns their sum.

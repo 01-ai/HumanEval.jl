@@ -1,0 +1,17 @@
+
+
+Here is the Julia function that solves the problem:
+
+```julia
+function count_upper(s::String)::Int
+    count = 0
+    for (i, c) in enumerate(s)
+        if i % 2 != 0 && isuppercase(c) && c in "AEIOU"
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function works by iterating over the string `s` with an index `i` and character `c`. If `i` is odd and `c` is an uppercase vowel (i.e., `c` is in "AEIOU"), it increments the count. Finally, it returns the count. 

@@ -1,0 +1,20 @@
+
+
+function cycpattern_check(a::String, b::String)::Bool
+    n = length(b)
+    for i = 1:n
+        if occursin(b, a)
+            return true
+        end
+        b = b[n:end] * b[1:n-1]
+    end
+    return false
+end
+
+# Testing the function
+println(cycpattern_check("abcd", "abd")) # false
+println(cycpattern_check("hello", "ell")) # true
+println(cycpattern_check("whassup", "psus")) # false
+println(cycpattern_check("abab", "baa")) # true
+println(cycpattern_check("efef", "eeff")) # false
+println(cycpattern_check("himenss", "simen")) # true

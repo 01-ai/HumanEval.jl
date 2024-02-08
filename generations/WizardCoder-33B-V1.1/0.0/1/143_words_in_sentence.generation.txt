@@ -1,0 +1,27 @@
+
+
+Here is the Julia function that solves the problem:
+
+```julia
+function words_in_sentence(sentence::String)
+    words = split(sentence)
+    prime_words = [word for word in words if is_prime(length(word))]
+    return join(prime_words, " ")
+end
+
+function is_prime(n::Int)
+    if n == 1
+        return false
+    end
+    for i in 2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+```
+
+This function first splits the sentence into words, then checks each word's length to see if it's a prime number. If it is, the word is added to the list of prime words. Finally, the function joins the prime words into a string with a space between each word.
+
+The `is_prime` function checks if a number is prime by checking if it has any divisors other than 1 and itself. If it does, the function returns false; otherwise, it returns true. 

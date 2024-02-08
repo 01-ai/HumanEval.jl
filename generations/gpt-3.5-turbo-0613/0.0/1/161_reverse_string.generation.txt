@@ -1,0 +1,19 @@
+Here is the implementation of the `reverse_string` function in Julia:
+
+```julia
+function reverse_string(s::String)::String
+    reversed = ""
+    for c in s
+        if isletter(c)
+            if islowercase(c)
+                reversed *= uppercase(c)
+            else
+                reversed *= lowercase(c)
+            end
+        else
+            reversed *= c
+        end
+    end
+    return reverse(reversed)
+end
+```

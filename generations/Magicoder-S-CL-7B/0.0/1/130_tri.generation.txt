@@ -1,0 +1,17 @@
+
+
+function tri(n::Int)::Vector{Int}
+    if n == 0
+        return Int[]
+    elseif n == 1
+        return [1]
+    elseif n == 2
+        return [1, 2]
+    else
+        sequence = [1, 2, 6]
+        for i in 3:n
+            sequence = vcat(sequence, [sequence[i - 1] + sequence[i - 2] + sequence[i - 3]])
+        end
+        return sequence
+    end
+end

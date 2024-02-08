@@ -1,0 +1,9 @@
+ function get_positive(xs::Vector)
+    result = Vector{Int64}()
+    for x in xs
+        if x > 0
+            push!(result, x)
+        end
+    end
+    return result
+end

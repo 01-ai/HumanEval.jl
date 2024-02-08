@@ -1,0 +1,77 @@
+To implement the `prime_fib` function in Julia, we need to follow these steps:
+
+1. Generate Fibonacci numbers.
+2. Check if a Fibonacci number is prime.
+3. Keep track of how many prime Fibonacci numbers we have found.
+4. Return the n-th prime Fibonacci number.
+
+Here's how you can do it:
+
+```julia
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    end
+    for i in 2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+function fib(n::Int)::Int
+    if n <= 1
+        return n
+    else
+        return fib(n-1) + fib(n-2)
+    end
+end
+
+function prime_fib(n::Int)::Int
+    count = 0
+    i = 1
+    while true
+        fib_num = fib(i)
+        if is_prime(fib_num)
+            count += 1
+            if count == n
+                return fib_num
+            end
+        end
+        i += 1
+    end
+end
+```
+
+However, this implementation might be inefficient, especially for larger values of `n`, due to the recursive computation of Fibonacci numbers and the prime checking process. For better performance, especially for larger `n`, consider using an iterative approach to generate Fibonacci numbers and a more efficient prime checking method. Here's an optimized version:
+
+```julia
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    end
+    for i in 2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+function prime_fib(n::Int)::Int
+    fib1, fib2 = 1, 1
+    count = 0
+    while true
+        if fib1 > 1 && is_prime(fib1)
+            count += 1
+            if count == n
+                return fib1
+            end
+        end
+        fib1, fib2 = fib2, fib1 + fib2
+    end
+end
+```
+
+This version uses an iterative approach to generate Fibonacci numbers, which is significantly more efficient for larger `n`.

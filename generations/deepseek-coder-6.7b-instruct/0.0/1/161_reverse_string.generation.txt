@@ -1,0 +1,12 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function reverse_string(s::String)::String
+    if !any(isletter, s)
+        return reverse(s)
+    end
+    return join([isletter(c) ? (islowercase(c) ? uppercase(c) : lowercase(c)) : c for c in s])
+end
+```
+
+This function uses the `isletter` function to check if a character is a letter. If the string contains no letters, it reverses the string. If the string contains letters, it iterates over the string and checks if each character is a letter. If it is, it changes the case of the letter from lower to upper or vise versa. If it is not a letter, it keeps the character as it is. The resulting array of characters is then joined back into a string.

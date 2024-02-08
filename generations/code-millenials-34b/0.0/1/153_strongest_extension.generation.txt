@@ -1,0 +1,20 @@
+
+
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    max_strength = -Inf
+    strongest_ext = ""
+    for ext in extensions
+        cap = sum(isuppercase, ext)
+        sm = sum(islowercase, ext)
+        strength = cap - sm
+        if strength > max_strength
+            max_strength = strength
+            strongest_ext = ext
+        end
+    end
+    return "$class_name.$strongest_ext"
+end
+
+# Test cases
+println(strongest_extension("Slices", ["SErviNGSliCes", "Cheese", "StuFfed"]))  # "Slices.SErviNGSliCes"
+println(strongest_extension("my_class", ["AA", "Be", "CC"]))  # "my_class.AA"

@@ -1,0 +1,35 @@
+
+
+```julia
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    # Split the string into words
+    words = split(s)
+
+    # Initialize an empty list to store the words with n consonants
+    result = []
+
+    # Iterate through each word
+    for word in words
+        # Initialize a counter for consonants
+        consonants = 0
+
+        # Iterate through each character in the word
+        for char in word
+            # Check if the character is a consonant
+            if char != 'a' && char != 'e' && char != 'i' && char != 'o' && char != 'u'
+                consonants += 1
+            end
+        end
+
+        # If the number of consonants is equal to n, add the word to the result list
+        if consonants == n
+            push!(result, word)
+        end
+    end
+
+    # Return the result list
+    return result
+end
+```
+
+This function splits the input string into words, iterates through each word, counts the number of consonants in each word, and adds the words with exactly `n` consonants to the result list.

@@ -1,0 +1,17 @@
+  Here's one way to implement the `all_prefixes` function in Julia:
+```
+function all_prefixes(s::String)::Vector{String}
+    return [s[1:i] for i in 1:length(s)]
+end
+```
+This function uses a list comprehension to generate a vector of all prefixes of the input string `s`. The list comprehension iterates over the length of the string, and for each iteration, it extracts the substring from the first character to the current index `i`.
+
+For example, if the input string is "abc", the list comprehension will generate the following substrings:
+
+* "a" (from the first character to the first character)
+* "ab" (from the first character to the second character)
+* "abc" (from the first character to the third character)
+
+The resulting vector of substrings is then returned as the output of the function.
+
+Note that this implementation assumes that the input string is not empty. If the input string is empty, the function will return an empty vector.

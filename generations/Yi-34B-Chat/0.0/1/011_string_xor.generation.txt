@@ -1,0 +1,17 @@
+```julia
+function string_xor(a::String, b::String)::String
+    # Initialize result with same length as the longer of the two strings
+    result = ""
+    max_length = max(length(a), length(b))
+    for i in 1:max_length
+        # If one of the strings is shorter, use 0 for the missing bit
+        a_bit = a[i] == '1' ? 1 : 0
+        b_bit = b[i] == '1' ? 1 : 0
+        result_bit = a_bit ⊕ b_bit
+        result *= result_bit == 1 ? '1' : '0'
+    end
+    return result
+end
+```
+
+This function works by performing the XOR operation on each bit position of the two strings and concatenating the result. If one of the strings is shorter, the missing bits are assumed to be 0.

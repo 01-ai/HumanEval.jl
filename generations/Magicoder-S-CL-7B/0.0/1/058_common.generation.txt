@@ -1,0 +1,9 @@
+
+
+function common(l1::Vector, l2::Vector)::Vector
+    # Find common elements
+    common_elements = intersect(l1, l2)
+
+    # Sort and return unique elements
+    return sort(unique(common_elements))
+end

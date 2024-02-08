@@ -1,0 +1,41 @@
+```julia
+function encode_swap(message::String)::String
+    # Initialize an empty string to store the encoded message
+    encoded_message = ""
+
+    # Loop through each character in the message
+    for char in message
+        # If the character is a vowel (a, e, i, o, u)
+        if char in "aeiou"
+            # Replace it with the letter that appears 2 places after it in the alphabet
+            if char == "a"
+                char = "c"
+            elseif char == "e"
+                char = "g"
+            elseif char == "i"
+                char = "k"
+            elseif char == "o"
+                char = "q"
+            elseif char == "u"
+                char = "s"
+            end
+        end
+
+        # Swap the case of the character
+        char = uppercase(char)
+
+        # Append the encoded character to the encoded message
+        encoded_message *= char
+    end
+
+    # Return the encoded message
+    return encoded_message
+end
+```
+
+This function takes a `String` message and returns an `String` with the following transformations applied to each character:
+
+1. Swap the case of the character (uppercase becomes lowercase, and vice versa).
+2. If the character is a vowel (a, e, i, o, u), replace it with the letter that appears 2 places after it in the English alphabet (a -> c, e -> g, i -> k, o -> q, u -> s).
+
+The function assumes that the input message contains only letters.

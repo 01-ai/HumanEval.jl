@@ -1,0 +1,9 @@
+ function sorted_list_sum(xs::Vector{String})::Vector{String}
+    # Filter out strings with odd lengths
+    filtered_list = filter(x -> length(x) % 2 == 0, xs)
+    
+    # Sort the list by length and alphabetically if lengths are equal
+    sorted_list = sort(filtered_list, by = x -> (length(x), x))
+    
+    return sorted_list
+end

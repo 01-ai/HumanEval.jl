@@ -1,0 +1,20 @@
+
+
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing,Int}}
+    negatives = filter(x -> x < 0, xs)
+    positives = filter(x -> x > 0, xs)
+
+    if isempty(negatives)
+        a = nothing
+    else
+        a = maximum(negatives)
+    end
+
+    if isempty(positives)
+        b = nothing
+    else
+        b = minimum(positives)
+    end
+
+    return a, b
+end

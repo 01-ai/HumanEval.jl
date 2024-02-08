@@ -1,0 +1,11 @@
+Here is the implementation for the `do_algebra` function:
+
+```julia
+function do_algebra(operator::Vector{String}, operand::Vector{Int})
+    expression = string(operand[1])
+    for i in 1:length(operator)
+        expression *= " $(operator[i]) $(operand[i+1])"
+    end
+    return eval(Meta.parse(expression))
+end
+```

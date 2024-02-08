@@ -1,0 +1,34 @@
+
+
+# Outline
+
+1. Initialize an empty string `result` to store the final result.
+2. Iterate over each character `c` in the input string `s`.
+3. If `c` is a space, check if the next character is also a space.
+4. If the next character is a space, replace the current space with "-" and all following spaces with "_" until a non-space character is found.
+5. If `c` is not a space, add it to `result`.
+6. Return `result`.
+
+# Code
+
+```julia
+function fix_spaces(s::String)::String
+    result = ""
+    i = 1
+    while i <= length(s)
+        if s[i] == ' '
+            result *= '_'
+            while i < length(s) && s[i+1] == ' '
+                i += 1
+            end
+            if i < length(s) && s[i+1] != ' '
+                result *= '-'
+            end
+        else
+            result *= s[i]
+        end
+        i += 1
+    end
+    return result
+end
+```

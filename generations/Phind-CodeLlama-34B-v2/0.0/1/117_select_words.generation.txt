@@ -1,0 +1,18 @@
+
+
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    words = split(s)
+    result = SubString{String}[]
+    for word in words
+        count = 0
+        for letter in word
+            if letter in 'a':'z' && letter ∉ 'a':'e' 'i':'o' 'u'
+                count += 1
+            end
+        end
+        if count == n
+            push!(result, word)
+        end
+    end
+    return result
+end

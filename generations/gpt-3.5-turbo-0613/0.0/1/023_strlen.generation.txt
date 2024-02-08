@@ -1,0 +1,5 @@
+```julia
+function strlen(x::String)::Int
+    return length(x)
+end
+```

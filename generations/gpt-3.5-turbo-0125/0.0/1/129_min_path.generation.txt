@@ -1,0 +1,41 @@
+```julia
+function min_path(grid::Vector{Vector{Int}}, k::Int)::Vector{Int}
+    N = length(grid)
+    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+    
+    function dfs(x, y, visited, path)
+        if length(path) == k
+            return path
+        end
+        
+        next_paths = []
+        for (dx, dy) in directions
+            nx, ny = x + dx, y + dy
+            if 1 <= nx <= N && 1 <= ny <= N && !((nx, ny) in visited)
+                push!(next_paths, (nx, ny))
+            end
+        end
+        
+        next_paths = sort(next_paths)
+        for (nx, ny) in next_paths
+            new_visited = copy(visited)
+            push!(new_visited, (nx, ny))
+            new_path = dfs(nx, ny, new_visited, copy(path))
+            if !isempty(new_path)
+                return new_path
+            end
+        end
+        
+        return []
+    end
+    
+    for i in 1:N
+        for j in 1:N
+            path = dfs(i, j, [(i, j)], [grid[i][j]])
+            if !isempty(path)
+                return path
+            end
+        end
+    end
+end
+```

@@ -1,0 +1,17 @@
+```julia
+function encrypt(s::String)
+    alphabet = collect('a':'z')
+    encrypted = ""
+    for char in s
+        if char in alphabet
+            index = findfirst(isequal(char), alphabet)
+            new_index = mod(index + 2*2, 26) + 1
+            new_char = alphabet[new_index]
+            encrypted *= new_char
+        else
+            encrypted *= char
+        end
+    end
+    return encrypted
+end
+```

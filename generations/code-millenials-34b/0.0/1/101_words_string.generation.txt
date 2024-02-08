@@ -1,0 +1,17 @@
+
+
+function words_string(s::String)::Vector{String}
+    words = split(s, r"[ ,]")
+    filter!(x -> !isempty(x), words)
+    return words
+end
+
+# Test cases
+@test words_string("Hi, my name is John") == ["Hi", "my", "name", "is", "John"]
+@test words_string("One, two, three, four, five, six") == ["One", "two", "three", "four", "five", "six"]
+@test words_string("This, is a test, for split function") == ["This", "is", "a", "test", "for", "split", "function"]
+@test words_string("") == String[]
+@test words_string("   ") == String[]
+@test words_string(" , ") == String[]
+@test words_string(" , one, two, ") == ["one", "two"]
+@test words_string("one, two, , three, , four, , ") == ["one", "two", "three", "four"]

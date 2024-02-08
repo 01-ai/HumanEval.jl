@@ -1,0 +1,31 @@
+To implement the `largest_smallest_integers` function as described, we need to iterate through the input vector `xs` to find the largest negative integer and the smallest positive integer. If no such integers are found, we return `nothing` for the respective positions in the tuple. Here's how you can do it in Julia:
+
+```julia
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing,Int}}
+    # Initialize variables to store the largest negative and smallest positive integers
+    largest_negative = nothing
+    smallest_positive = nothing
+
+    # Iterate through each element in the vector
+    for x in xs
+        # Check if the current element is negative
+        if x < 0
+            # Update largest_negative if it's either nothing or less than the current element
+            if isnothing(largest_negative) || x > largest_negative
+                largest_negative = x
+            end
+        # Check if the current element is positive
+        elseif x > 0
+            # Update smallest_positive if it's either nothing or greater than the current element
+            if isnothing(smallest_positive) || x < smallest_positive
+                smallest_positive = x
+            end
+        end
+    end
+
+    # Return the tuple of largest_negative and smallest_positive
+    return (largest_negative, smallest_positive)
+end
+```
+
+This function works by iterating through each element in the input vector. It checks if an element is negative or positive and updates the `largest_negative` or `smallest_positive` variables accordingly. If no updates are made to these variables, they remain `nothing`, which is returned as part of the tuple for cases where there are no negative or positive integers in the input vector.

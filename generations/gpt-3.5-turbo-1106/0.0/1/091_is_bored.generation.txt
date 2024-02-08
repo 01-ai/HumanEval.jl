@@ -1,0 +1,13 @@
+```julia
+function is_bored(s::String)::Int
+    sentences = split(s, ['.', '?', '!'])
+    count = 0
+    for sentence in sentences
+        words = split(sentence)
+        if !isempty(words) && words[1] == "I"
+            count += 1
+        end
+    end
+    return count
+end
+```

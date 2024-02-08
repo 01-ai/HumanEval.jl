@@ -1,0 +1,38 @@
+Here is a Julia function that checks if a number is the multiplication of 3 prime numbers.
+
+```julia
+function is_prime(n::Int)
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+
+function is_multiply_prime(a::Int)::Bool
+    primes = [i for i in 2:a if is_prime(i)]
+    count = 0
+    for i in 1:length(primes)
+        for j in i+1:length(primes)
+            for k in j+1:length(primes)
+                if primes[i] * primes[j] * primes[k] == a
+                    count += 1
+                end
+            end
+        end
+    end
+    return count == 1
+end
+```
+
+This function first checks if a number is prime. Then it generates a list of all prime numbers less than or equal to the given number. It then checks if the multiplication of any 3 primes in the list equals the given number. If it does, it increments a counter. If the counter is 1, it means the number is the multiplication of 3 prime numbers, so it returns true. Otherwise, it returns false.

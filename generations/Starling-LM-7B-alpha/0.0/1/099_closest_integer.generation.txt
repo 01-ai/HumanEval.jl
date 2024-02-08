@@ -1,0 +1,10 @@
+ function closest_integer(value::String)::Int
+    # Convert the string to a float
+    num = parse(Float64, value)
+
+    # Round the number away from zero
+    rounded_num = round(num + (num > 0 ? 0.5 : -0.5))
+
+    # Convert the rounded number back to an integer
+    return convert(Int, rounded_num)
+end

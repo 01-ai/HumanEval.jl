@@ -1,0 +1,22 @@
+### Step-by-Step Outline
+
+1. **Extract the integer part**: Use the `floor` function to get the largest integer smaller than the given number. This will give us the integer part of the number.
+2. **Calculate the decimal part**: Subtract the integer part from the original number to get the decimal part.
+3. **Return the decimal part**: Ensure the result is of type `Float64` and return it.
+
+### Julia Code Implementation
+
+```julia
+function truncate_number(number::Float64)::Float64
+    # Step 1: Extract the integer part
+    integer_part = floor(number)
+    
+    # Step 2: Calculate the decimal part
+    decimal_part = number - integer_part
+    
+    # Step 3: Return the decimal part
+    return decimal_part
+end
+```
+
+This function works by first finding the integer part of the number using `floor`, which rounds down to the nearest integer. Then, it calculates the decimal part by subtracting this integer part from the original number. Finally, it returns this decimal part.

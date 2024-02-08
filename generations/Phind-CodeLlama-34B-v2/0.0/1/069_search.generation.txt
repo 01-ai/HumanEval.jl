@@ -1,0 +1,27 @@
+
+
+Here is a Julia function that implements the `search` function as described in the docstring:
+
+```julia
+function search(numbers::Vector{Int})::Int
+    freqs = Dict{Int, Int}()
+    for num in numbers
+        if haskey(freqs, num)
+            freqs[num] += 1
+        else
+            freqs[num] = 1
+        end
+    end
+
+    sorted_keys = sort(collect(keys(freqs)), rev=true)
+    for key in sorted_keys
+        if freqs[key] >= key
+            return key
+        end
+    end
+
+    return -1
+end
+```
+
+This function first creates a dictionary `freqs` where the keys are the unique numbers in the input vector `numbers` and the values are the frequencies of these numbers. Then it sorts the keys in descending order and returns the first key that has a frequency greater than or equal to its value. If no such key exists, it returns -1.

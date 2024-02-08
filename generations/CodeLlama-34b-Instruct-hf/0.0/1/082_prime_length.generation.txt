@@ -1,0 +1,26 @@
+  Here's an implementation of the `prime_length` function in Julia:
+```
+function prime_length(s::String)::Bool
+    return isprime(length(s))
+end
+```
+Explanation:
+
+* The `isprime` function is a built-in function in Julia that checks if a number is prime.
+* The `length` function returns the length of a string.
+* The `::Bool` type annotation specifies that the function returns a boolean value.
+
+Here are some examples of how to use the `prime_length` function:
+```
+julia> prime_length("Hello")
+true
+
+julia> prime_length("abcdcba")
+true
+
+julia> prime_length("kittens")
+true
+
+julia> prime_length("orange")
+false
+```

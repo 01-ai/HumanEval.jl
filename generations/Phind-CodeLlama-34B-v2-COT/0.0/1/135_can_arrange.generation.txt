@@ -1,0 +1,21 @@
+
+
+# Outline
+1. Initialize a variable `max_idx` to -1. This will keep track of the largest index which satisfies the condition.
+2. Iterate over the array `xs` with a loop.
+3. In each iteration, check if the current element is less than the previous element.
+4. If it is, update `max_idx` to the current index.
+5. After the loop, return `max_idx`.
+
+# Code
+```julia
+function can_arrange(xs::Vector{Int})::Int
+    max_idx = -1
+    for i in 2:length(xs)
+        if xs[i] < xs[i-1]
+            max_idx = i
+        end
+    end
+    return max_idx
+end
+```

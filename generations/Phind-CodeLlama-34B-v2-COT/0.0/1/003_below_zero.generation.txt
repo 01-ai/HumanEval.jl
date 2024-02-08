@@ -1,0 +1,22 @@
+
+
+# Outline
+1. Initialize a variable `balance` to 0.
+2. Iterate over the `operations` vector.
+3. For each operation, update the `balance` by adding the operation value.
+4. If at any point the `balance` is less than 0, return `true`.
+5. If the loop completes without finding a negative balance, return `false`.
+
+# Code
+```julia
+function below_zero(operations::Vector{Int})::Bool
+    balance = 0
+    for operation in operations
+        balance += operation
+        if balance < 0
+            return true
+        end
+    end
+    return false
+end
+```

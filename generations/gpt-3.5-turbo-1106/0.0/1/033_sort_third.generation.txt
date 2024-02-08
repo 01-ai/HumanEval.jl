@@ -1,0 +1,11 @@
+```julia
+function sort_third(l::Vector)
+    result = copy(l)
+    for i in 1:length(l)
+        if i % 3 == 0
+            result[i] = sort(l[i])
+        end
+    end
+    return result
+end
+```

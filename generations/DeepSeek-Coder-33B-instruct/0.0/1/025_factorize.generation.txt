@@ -1,0 +1,23 @@
+Here is a Julia function that implements the factorization of an integer:
+
+```julia
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    i = 2
+    while i * i <= n
+        while n % i == 0
+            pushfirst(factors, i)
+            n = n � i
+        end
+        i += 1
+    end
+    if n > 1
+        pushfirst(factors, n)
+    end
+    return reverse(factors)
+end
+```
+
+This function works by repeatedly dividing the input number `n` by increasing integers starting from 2. If `n` is divisible by the current integer, it is added to the list of factors and `n` is updated to be the result of the division. This process continues until `n` is no longer divisible by the current integer. The function then increments the current integer and repeats the process. If `n` is greater than 1 after all divisors have been checked, it is added to the list of factors. The function finally returns the list of factors in reverse order.
+
+This function has a time complexity of O(sqrt(n)) because it checks divisibility up to the square root of `n`.

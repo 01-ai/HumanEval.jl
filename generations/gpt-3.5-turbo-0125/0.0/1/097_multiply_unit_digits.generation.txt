@@ -1,0 +1,7 @@
+```julia
+function multiply_unit_digits(a::Int, b::Int)::Int
+    unit_a = abs(a) % 10
+    unit_b = abs(b) % 10
+    return unit_a * unit_b
+end
+```

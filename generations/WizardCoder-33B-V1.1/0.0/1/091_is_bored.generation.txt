@@ -1,0 +1,17 @@
+
+
+Here is the Julia function that solves the problem:
+
+```julia
+function is_bored(s::String)::Int
+    count = 0
+    for sentence in split(s, r"[.!?]")
+        if startswith(strip(sentence), "I")
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function works by splitting the input string into sentences using the regular expression `r"[.!?]"`, which matches any character in the set `[.!?]`. It then checks each sentence to see if it starts with the word "I". If it does, it increments the count. The `strip` function is used to remove leading and trailing whitespace from the sentence. 

@@ -1,0 +1,31 @@
+Certainly! To decode the string that was encoded with the `encode_shift` function, we need to reverse the process. Since the encoding function shifts every character by 5 in the alphabet, the decoding function should shift every character by 21 (which is 26 - 5, to reverse the shift). Here's the implementation for both the `encode_shift` and `decode_shift` functions:
+
+```julia
+"""
+Returns encoded string by shifting every character by 5 in the alphabet.
+"""
+function encode_shift(s::String)::String
+    join(((x - 'a' + 5) % 26 + 'a' for x in s if isletter(x)))
+end
+
+"""
+Takes as input string encoded with `encode_shift` function. Returns decoded string.
+"""
+function decode_shift(s::String)::String
+    join(((x - 'a' + 21) % 26 + 'a' for x in s if isletter(x)))
+end
+```
+
+Please note that I've added a check `if isletter(x)` to ensure that we only try to encode or decode alphabetic characters. Non-alphabetic characters will be ignored. If you want to include non-alphabetic characters in the encoding and decoding process, you would need to adjust the logic accordingly.
+
+Here's how you can use these functions:
+
+```julia
+encoded = encode_shift("hello")
+println("Encoded: ", encoded)  # Output should be "mjqqt"
+
+decoded = decode_shift(encoded)
+println("Decoded: ", decoded)  # Output should be "hello"
+```
+
+Remember that these functions assume that the input string `s` contains only lowercase alphabetic characters. If you need to handle uppercase characters or other edge cases, you would need to modify the functions to handle those cases.

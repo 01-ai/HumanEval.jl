@@ -1,0 +1,36 @@
+### Step-by-Step Outline
+
+1. **Initialize a frequency dictionary**: Create a dictionary (or a similar data structure) to keep track of the frequency of each integer in the input list.
+
+2. **Populate the frequency dictionary**: Iterate through the list of numbers. For each number, update its frequency in the dictionary.
+
+3. **Search for the greatest integer**: Iterate through the keys of the frequency dictionary. For each key (which represents a unique number from the list), check if its frequency (the value associated with the key in the dictionary) is greater than or equal to the number itself. Keep track of the greatest number that satisfies this condition.
+
+4. **Return the result**: If at least one number satisfies the condition, return the greatest one found. Otherwise, return -1.
+
+### Julia Code Implementation
+
+```julia
+function search(numbers::Vector)::Int
+    # Step 1: Initialize a frequency dictionary
+    freq_dict = Dict{Int, Int}()
+
+    # Step 2: Populate the frequency dictionary
+    for num in numbers
+        freq_dict[num] = get(freq_dict, num, 0) + 1
+    end
+
+    # Step 3: Search for the greatest integer
+    greatest_int = -1
+    for (num, freq) in freq_dict
+        if freq >= num && num > greatest_int
+            greatest_int = num
+        end
+    end
+
+    # Step 4: Return the result
+    return greatest_int
+end
+```
+
+This function first creates a dictionary to count the frequency of each number in the input vector. It then iterates through this dictionary to find the greatest number whose frequency is greater than or equal to itself. If no such number exists, it returns -1.

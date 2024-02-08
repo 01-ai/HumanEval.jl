@@ -1,0 +1,45 @@
+Here is the Julia function `triples_sum_to_zero` that implements the functionality described in the doc string:
+
+```julia
+function triples_sum_to_zero(l::Vector{Int})::Bool
+    n = length(l)
+    # If there are fewer than 3 elements, we cannot have a triple that sums to zero.
+    if n < 3
+        return false
+    end
+
+    # Sort the array to use two-pointer technique
+    sort!(l)
+
+    for i in 1:n-2
+        # To avoid duplicates, skip the same value as the previous one
+        if i > 1 && l[i] == l[i-1]
+            continue
+        end
+
+        # Initialize two pointers
+        left = i + 1
+        right = n
+
+        while left < right
+            current_sum = l[i] + l[left] + l[right]
+
+            if current_sum == 0
+                # Found a triple that sums to zero
+                return true
+            elseif current_sum < 0
+                # Move the left pointer to the right
+                left += 1
+            else
+                # Move the right pointer to the left
+                right -= 1
+            end
+        end
+    end
+
+    # No triple found that sums to zero
+    return false
+end
+```
+
+This function first checks if the list has fewer than three elements, in which case it immediately returns `false`. It then sorts the list to use the two-pointer technique effectively. The function iterates through the list, using a fixed element and two pointers to find a triple that sums to zero. If such a triple is found, it returns `true`; otherwise, it continues searching. If no such triple is found by the end of the function, it returns `false`.

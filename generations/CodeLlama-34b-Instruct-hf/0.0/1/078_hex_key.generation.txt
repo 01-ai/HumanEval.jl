@@ -1,0 +1,46 @@
+  Here's an implementation of the `hex_key` function in Julia:
+```julia
+function hex_key(num::String)::Int
+    # Initialize a counter for the number of prime digits
+    count = 0
+
+    # Iterate over the digits of the hexadecimal number
+    for digit in num
+        # Convert the digit to an integer
+        digit_int = parse(Int, digit, base=16)
+
+        # Check if the digit is prime
+        if isprime(digit_int)
+            count += 1
+        end
+    end
+
+    return count
+end
+```
+Here's an explanation of the code:
+
+1. The function takes a single argument `num`, which is a string representing a hexadecimal number.
+2. The function initializes a counter `count` to 0.
+3. The function iterates over the digits of the hexadecimal number using a `for` loop.
+4. Inside the loop, the function converts each digit to an integer using the `parse` function with a base of 16 (hexadecimal).
+5. The function checks if the integer is prime using the `isprime` function. If it is prime, the function increments the `count` variable.
+6. After the loop finishes, the function returns the `count` variable, which represents the number of prime digits in the hexadecimal number.
+
+Here are some examples of how to use the function:
+```julia
+julia> hex_key("AB")
+1
+
+julia> hex_key("1077E")
+2
+
+julia> hex_key("ABED1A33")
+4
+
+julia> hex_key("123456789ABCDEF0")
+6
+
+julia> hex_key("2020")
+2
+```

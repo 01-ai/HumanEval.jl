@@ -1,0 +1,19 @@
+
+
+```julia
+function median(l::Vector)
+    # Sort the list
+    sorted_l = sort(l)
+
+    # Check if the list has an even or odd number of elements
+    if length(sorted_l) % 2 == 0
+        # If even, return the average of the middle two elements
+        return (sorted_l[end ÷ 2] + sorted_l[end ÷ 2 + 1]) / 2
+    else
+        # If odd, return the middle element
+        return sorted_l[end ÷ 2 + 1]
+    end
+end
+```
+
+This function first sorts the list using the `sort` function. Then, it checks if the list has an even or odd number of elements using the modulo operator (`%`). If the list has an even number of elements, it returns the average of the middle two elements. If the list has an odd number of elements, it returns the middle element.

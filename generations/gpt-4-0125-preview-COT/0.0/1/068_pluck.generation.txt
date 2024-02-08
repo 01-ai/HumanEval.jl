@@ -1,0 +1,35 @@
+### Step-by-Step Outline
+
+1. **Check for empty array**: If the input array is empty, return an empty array immediately as there are no nodes to pluck.
+
+2. **Filter even values**: Create a new array that contains only the even values from the input array along with their original indices. This is necessary because we are only interested in plucking even nodes.
+
+3. **Find the smallest even value**: 
+    - If the filtered array of even values is empty, return an empty array as there are no even nodes to pluck.
+    - Otherwise, find the even value with the smallest value. If there are multiple, the one with the smallest index should be automatically selected due to the way we will perform the search.
+
+4. **Return the result**: Return an array containing the smallest even value and its original index in the input array.
+
+### Julia Code Implementation
+
+```julia
+function pluck(xs::Vector{Int})::Vector{Int}
+    # Step 1: Check for empty array
+    if isempty(xs)
+        return Int[]
+    end
+
+    # Step 2: Filter even values and their indices
+    even_values_with_indices = [(value, index) for (index, value) in enumerate(xs) if value % 2 == 0]
+
+    # Step 3: Find the smallest even value
+    if isempty(even_values_with_indices)
+        return Int[]
+    else
+        smallest_even, smallest_index = minimum(even_values_with_indices, by = first)
+        return [smallest_even, smallest_index]
+    end
+end
+```
+
+This implementation follows the outlined steps to ensure that the function behaves as expected according to the provided documentation.

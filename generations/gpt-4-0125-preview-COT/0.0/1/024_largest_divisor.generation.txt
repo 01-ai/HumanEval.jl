@@ -1,0 +1,33 @@
+### Outline for Implementing `largest_divisor` Function
+
+1. **Input Validation**: Check if the input `n` is an integer greater than 1. If not, return an appropriate message or value since every number is divisible by 1, and we are looking for the largest divisor smaller than `n`.
+
+2. **Find the Largest Divisor**:
+    - Start from `n - 1` and decrement down to 2 (inclusive), checking if `n` is divisible by the current number.
+    - The first number found that divides `n` evenly is the largest divisor smaller than `n`.
+    - Return this number.
+
+3. **Edge Case Handling**: If no divisor other than 1 is found (which would be the case for prime numbers), return 1 as a special case.
+
+### Julia Code Implementation
+
+```julia
+function largest_divisor(n::Int)::Int
+    # Step 1: Input validation
+    if n <= 1
+        error("Input must be greater than 1.")
+    end
+    
+    # Step 2: Find the largest divisor
+    for i in n-1:-1:2
+        if n % i == 0
+            return i  # Found the largest divisor smaller than n
+        end
+    end
+    
+    # Step 3: Handle edge case for prime numbers
+    return 1  # If no divisor found, return 1 (for prime numbers)
+end
+```
+
+This function iterates from `n-1` down to 2, checking for divisibility with `n`. It returns the first divisor found, which is the largest possible divisor smaller than `n`. If no such divisor is found (which would only happen for prime numbers), it returns 1.

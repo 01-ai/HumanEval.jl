@@ -1,0 +1,46 @@
+### Step-by-Step Outline
+
+1. **Split the Input String**: First, we need to split the input string by spaces to separate each group of nested parentheses.
+
+2. **Initialize an Output Vector**: We will initialize an empty vector to store the maximum depth of each group.
+
+3. **Iterate Through Each Group**: For each group of parentheses obtained from step 1, we will:
+    - Initialize a counter to keep track of the current depth of nesting.
+    - Initialize a variable to keep track of the maximum depth found in the current group.
+    - Iterate through each character of the group. If the character is an opening parenthesis `'('`, we increase the depth counter by 1. If the character is a closing parenthesis `')'`, we decrease the depth counter by 1.
+    - Update the maximum depth variable whenever the current depth exceeds it.
+    - After finishing the iteration for the current group, append the maximum depth found to the output vector.
+
+4. **Return the Output Vector**: After processing all groups, return the output vector containing the maximum depth of nesting for each group.
+
+### Julia Code Implementation
+
+```julia
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    # Step 1: Split the input string by spaces
+    groups = split(paren_string)
+    
+    # Step 2: Initialize an output vector
+    max_depths = Int[]
+    
+    # Step 3: Iterate through each group
+    for group in groups
+        current_depth = 0
+        max_depth = 0
+        for char in group
+            if char == '('
+                current_depth += 1
+                max_depth = max(max_depth, current_depth)
+            elseif char == ')'
+                current_depth -= 1
+            end
+        end
+        push!(max_depths, max_depth)
+    end
+    
+    # Step 4: Return the output vector
+    return max_depths
+end
+```
+
+This function follows the outlined steps to calculate the maximum depth of nesting for each group of parentheses in the input string and returns a vector of these depths.

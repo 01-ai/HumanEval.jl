@@ -1,0 +1,38 @@
+### Step-by-Step Outline
+
+1. **Parse the Input**: Convert the input string to a floating-point number to work with its decimal part.
+2. **Identify the Closest Integers**: Determine the two closest integers to the floating-point number. These would be the floor and ceiling values of the number.
+3. **Calculate Distances**: Calculate the distance of the floating-point number from the two closest integers.
+4. **Determine Equidistance**: Check if the number is equidistant from the two closest integers.
+5. **Apply Rounding Logic**:
+    - If the number is not equidistant, round it to the nearest integer using the standard rounding method.
+    - If the number is equidistant, round it away from zero as per the requirement.
+6. **Return the Result**: Convert the result back to an integer and return it.
+
+### Julia Code Implementation
+
+```julia
+function closest_integer(value::String)::Int
+    # Step 1: Parse the input
+    num = parse(Float64, value)
+    
+    # Step 2: Identify the closest integers
+    floor_val = floor(num)
+    ceil_val = ceil(num)
+    
+    # Step 3: Calculate distances
+    dist_to_floor = num - floor_val
+    dist_to_ceil = ceil_val - num
+    
+    # Step 4 & 5: Determine equidistance and apply rounding logic
+    if dist_to_floor == dist_to_ceil
+        # Step 4 & 5: If equidistant, round away from zero
+        return num > 0 ? ceil_val : floor_val
+    else
+        # Step 5: If not equidistant, round to the nearest integer
+        return round(Int, num)
+    end
+end
+```
+
+This implementation follows the outlined steps to ensure that the function behaves as expected, including handling the special case of equidistant numbers by rounding them away from zero.

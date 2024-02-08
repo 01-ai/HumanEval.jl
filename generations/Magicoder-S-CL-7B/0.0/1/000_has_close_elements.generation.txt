@@ -1,0 +1,10 @@
+
+
+function has_close_elements(numbers::Vector{Float64}, threshold::Float64)::Bool
+    for i in 1:length(numbers)-1
+        if abs(numbers[i] - numbers[i+1]) < threshold
+            return true
+        end
+    end
+    return false
+end

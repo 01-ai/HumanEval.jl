@@ -1,0 +1,27 @@
+Here is the Julia function that implements the given problem:
+
+```julia
+function pluck(xs::Vector{Int})::Vector{Int}
+    if isempty(xs)
+        return Int[]
+    end
+
+    min_val = typemax(Int)
+    min_idx = typemax(Int)
+
+    for (idx, val) in enumerate(xs)
+        if val % 2 == 0 && val <= min_val
+            min_val = val
+            min_idx = idx
+        end
+    end
+
+    if min_val == typemax(Int)
+        return Int[]
+    else
+        return [min_val, min_idx]
+    end
+end
+```
+
+This function first checks if the input vector is empty. If it is, it returns an empty vector. Then it initializes two variables, `min_val` and `min_idx`, to keep track of the smallest even value and its index. It then iterates over the input vector, updating `min_val` and `min_idx` whenever it finds a smaller even value. If no even value is found, it returns an empty vector. Otherwise, it returns a vector containing the smallest even value and its index.

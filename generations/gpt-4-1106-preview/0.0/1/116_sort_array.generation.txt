@@ -1,0 +1,22 @@
+Certainly! Below is the Julia function `sort_array` that sorts an array of non-negative integers based on the number of ones in their binary representation and then by their decimal value in case of a tie.
+
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    # Define a custom sorting function
+    function sort_criteria(x)
+        # Count the number of ones in the binary representation
+        ones_count = count(isequal('1'), bin(x))
+        # Return a tuple with ones count and the number itself for sorting
+        return (ones_count, x)
+    end
+    
+    # Sort the array using the custom sorting function
+    return sort(arr, by=sort_criteria)
+end
+
+# Examples
+println(sort_array([1, 5, 2, 3, 4]) == [1, 2, 4, 3, 5]) # true
+println(sort_array([1, 0, 2, 3, 4]) == [0, 1, 2, 4, 3]) # true
+```
+
+You can copy and paste this function into your Julia environment and test it with the provided examples or any other input you wish to try.

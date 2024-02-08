@@ -1,0 +1,15 @@
+Here is the implementation for the given function:
+
+```julia
+function sort_array_based_on_head_tail(xs::Vector{Int})
+    if isempty(xs)
+        return xs
+    end
+    
+    if (xs[1] + xs[end]) % 2 == 0
+        return sort(xs, rev=true)
+    else
+        return sort(xs)
+    end
+end
+```

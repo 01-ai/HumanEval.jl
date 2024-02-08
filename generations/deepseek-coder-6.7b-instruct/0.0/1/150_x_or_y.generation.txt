@@ -1,0 +1,22 @@
+Here is the Julia function that implements the logic described in the doc string:
+
+```julia
+function x_or_y(n::Int, x::Int, y::Int)::Int
+    if n == 2 || n == 3
+        return x
+    elseif n < 2
+        return y
+    else
+        for i in 2:isqrt(n)
+            if n % i == 0
+                return y
+            end
+        end
+        return x
+    end
+end
+```
+
+This function first checks if `n` is 2 or 3, in which case it returns `x`. If `n` is less than 2, it returns `y`. Otherwise, it checks if `n` is divisible by any number up to its square root. If it is, it returns `y`. If `n` is not divisible by any number up to its square root, it returns `x`.
+
+The `isqrt(n)` function is used to get the integer square root of `n`, which is the largest integer less than or equal to the square root of `n`. This is used to optimize the function by only checking divisibility up to the square root of `n`.

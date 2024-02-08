@@ -1,0 +1,19 @@
+```julia
+function closest_integer(value::String)::Int
+    # Convert the string to a floating-point number
+    num = parse(Float64, value)
+
+    # Round the number to the nearest integer
+    rounded = round(num)
+
+    # If the number is equidistant from two integers, round away from zero
+    if num - rounded == rounded - num
+        rounded = sign(num) * (abs(rounded) + 1)
+    end
+
+    # Return the rounded integer
+    return rounded
+end
+```
+
+This function first converts the string `value` to a floating-point number `num` using `parse(Float64, value)`. It then rounds `num` to the nearest integer `rounded` using `round(num)`. If `num` is equidistant from two integers, the function checks if `num - rounded == rounded - num`. If this condition is true, it means that `num` is exactly halfway between two integers, and the function rounds `rounded` away from zero by adding 1 to its absolute value and then multiplying by the sign of `num`. Finally, the rounded integer is returned.

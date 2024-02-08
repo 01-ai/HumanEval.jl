@@ -1,0 +1,22 @@
+
+```julia
+function tri(n::Int)::Vector{Int}
+    if n < 1
+        return []
+    end
+
+    tribonacci = [1]
+
+    for i in 2:n
+        if iseven(i)
+            push!(tribonacci, 1 + i / 2)
+        else
+            push!(tribonacci, tribonacci[i - 1] + tribonacci[i - 2] + tribonacci[i + 1])
+        end
+    end
+
+    return tribonacci
+end
+```
+
+This function uses a list to store the Tribonacci sequence and returns it. It starts with the base case of `n = 1`, where the Tribonacci sequence is `[1]`. Then, it iterates from `2` to `n` and adds the next element to the sequence based on the given conditions. If `n` is even, it adds `1 + n / 2` to the sequence. If `n` is odd, it adds the sum of the previous three elements to the sequence. Finally, it returns the Tribonacci sequence as a list.

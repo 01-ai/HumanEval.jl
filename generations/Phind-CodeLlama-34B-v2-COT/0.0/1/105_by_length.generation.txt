@@ -1,0 +1,36 @@
+
+
+To solve this problem, we will follow these steps:
+
+1. Filter the input array to only include integers between 1 and 9 (inclusive).
+2. Sort the filtered array in descending order.
+3. Replace each digit by its corresponding name.
+
+Here is the Julia code implementing these steps:
+
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    # Define the mapping from digits to their names
+    digit_to_name = Dict(
+        1 => "One",
+        2 => "Two",
+        3 => "Three",
+        4 => "Four",
+        5 => "Five",
+        6 => "Six",
+        7 => "Seven",
+        8 => "Eight",
+        9 => "Nine"
+    )
+
+    # Filter the input array and sort it in descending order
+    filtered_sorted = sort([x for x in xs if 1 <= x <= 9], rev=true)
+
+    # Replace each digit by its corresponding name
+    result = [digit_to_name[x] for x in filtered_sorted]
+
+    return result
+end
+```
+
+This function first creates a dictionary that maps each digit to its name. Then, it filters the input array to only include integers between 1 and 9 (inclusive) and sorts the resulting array in descending order. Finally, it replaces each digit in the sorted array with its corresponding name, producing the final result.

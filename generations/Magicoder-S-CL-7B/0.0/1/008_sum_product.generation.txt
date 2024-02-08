@@ -1,0 +1,11 @@
+
+
+function sum_product(numbers::Vector{Int})::Tuple{Int, Int}
+    sum_val = 0
+    product_val = 1
+    for num in numbers
+        sum_val += num
+        product_val *= num
+    end
+    return (sum_val, product_val)
+end

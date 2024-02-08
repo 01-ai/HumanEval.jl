@@ -1,0 +1,31 @@
+Here is a Julia function that implements the required functionality:
+
+```julia
+function skjkasdkd(xs::Vector{Int})::Int
+    function is_prime(n)
+        if n < 2
+            return false
+        end
+        for i in 2:isqrt(n)
+            if n % i == 0
+                return false
+            end
+        end
+        return true
+    end
+
+    function sum_digits(n)
+        return sum(parse.(Int, collect(string(n))))
+    end
+
+    primes = filter(is_prime, xs)
+    if isempty(primes)
+        return 0
+    end
+    return sum_digits(maximum(primes))
+end
+```
+
+This function first defines a helper function `is_prime` to check if a number is prime. Then it defines another helper function `sum_digits` to sum the digits of a number.
+
+The main function `skjkasdkd` filters the input vector to get only the prime numbers, and if there are no prime numbers, it returns 0. Otherwise, it returns the sum of the digits of the maximum prime number.

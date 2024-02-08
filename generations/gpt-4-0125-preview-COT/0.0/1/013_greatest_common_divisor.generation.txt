@@ -1,0 +1,25 @@
+### Step-by-Step Outline
+
+1. **Base Case Check**: If `b` is 0, return `a` as the greatest common divisor (GCD). This is because any number divided by 0 is undefined, and the GCD of a number and 0 is the number itself.
+2. **Recursive Step**: If `b` is not 0, recursively call the function with `b` and the remainder of `a` divided by `b`. This step is based on the Euclidean algorithm for finding the GCD, which states that the GCD of two numbers also divides their difference.
+3. **Return the GCD**: The recursion will eventually reach a point where `b` is 0, at which point the current value of `a` is the GCD of the original two numbers.
+
+### Julia Code Implementation
+
+```julia
+function greatest_common_divisor(a::Int, b::Int)::Int
+    # Base case: if b is 0, return a
+    if b == 0
+        return a
+    else
+        # Recursive step: call the function with b and the remainder of a divided by b
+        return greatest_common_divisor(b, a % b)
+    end
+end
+
+# Examples
+println(greatest_common_divisor(3, 5))  # Expected output: 1
+println(greatest_common_divisor(25, 15))  # Expected output: 5
+```
+
+This implementation follows the Euclidean algorithm for computing the greatest common divisor (GCD) of two integers. It uses recursion to iteratively apply the algorithm until the base case is reached.

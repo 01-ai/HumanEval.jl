@@ -1,0 +1,29 @@
+  Here's an implementation of the `fibfib` function in Julia:
+```
+function fibfib(n::Int)::Int
+    if n <= 2
+        return 0
+    end
+    a = 0
+    b = 0
+    c = 1
+    for i in 3:n
+        a, b, c = b, c, a + b + c
+    end
+    return c
+end
+```
+This function uses a loop to compute the `n`-th element of the FibFib sequence. It starts with the initial values `a = 0`, `b = 0`, and `c = 1`, and then iterates over the range `3:n`. At each iteration, it updates the values of `a`, `b`, and `c` using the recurrence relation `a = b + c + a`, `b = c + a + b`, and `c = a + b + c`. Finally, it returns the value of `c` as the `n`-th element of the FibFib sequence.
+
+Here are some examples of how to use the `fibfib` function:
+```
+julia> fibfib(1)
+0
+
+julia> fibfib(5)
+4
+
+julia> fibfib(8)
+24
+```
+Note that the `fibfib` function is not as efficient as the `fibonacci` function, because it uses a loop to compute the sequence. However, it is still a useful function to have in your Julia toolkit, especially if you need to work with the FibFib sequence in your code.

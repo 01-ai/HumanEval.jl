@@ -1,0 +1,14 @@
+
+
+# Outline
+1. Define the function decode_cyclic that takes a string s as input.
+2. Use Iterators.partition to split the string s into groups of three characters.
+3. For each group, if its length is three, reverse the cyclic permutation by taking the last character, then the first character, then the second character. Otherwise, the group remains unchanged.
+4. Join all the groups together into a single string and return it.
+
+# Code
+```julia
+function decode_cyclic(s::String)::String
+    join((length(x) == 3 ? x[3] * x[1] * x[2] : x for x in Iterators.partition(s, 3)))
+end
+```

@@ -1,0 +1,32 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function words_in_sentence(sentence::String)::String
+    words = split(sentence)
+    prime_words = String[]
+    for word in words
+        if is_prime(length(word))
+            push(prime_words, word)
+        end
+    end
+    return join(prime_words, " ")
+end
+
+function is_prime(n::Int)::Bool
+    if n == 1
+        return false
+    end
+    for i in 2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+```
+
+This function works by first splitting the sentence into words. Then it iterates over each word, checks if its length is a prime number, and if it is, it adds the word to the list of prime words. Finally, it joins the prime words into a string and returns it.
+
+The `is_prime` function checks if a number is prime by iterating from 2 to the square root of the number and checking if the number is divisible by any of these numbers. If it is, the number is not prime. If it isn't, the number is prime.
+
+The time complexity of this function is O(n*sqrt(m)), where n is the number of words in the sentence and m is the length of the longest word. The space complexity is O(n), where n is the number of words in the sentence.

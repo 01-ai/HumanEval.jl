@@ -1,0 +1,12 @@
+To implement the `tri` function, we will follow these steps:
+
+1. Initialize an empty vector to store the Tribonacci sequence.
+2. Check if `n` is less than or equal to 0, if so, return an empty vector.
+3. If `n` is 1, return a vector containing only the number 1.
+4. Start a loop from 1 to `n` to calculate the Tribonacci numbers.
+5. Inside the loop, check if the current index `i` is 1, then append 1 to the sequence.
+6. If `i` is even, calculate `1 + i / 2` and append it to the sequence.
+7. If `i` is odd and greater than 1, calculate `tri(i - 1) + tri(i - 2) + tri(i + 1)` using the previously calculated values in the sequence. Note that for `i + 1`, we need to handle the case where it goes beyond the current length of the sequence.
+8. After the loop, return the vector containing the Tribonacci sequence.
+
+Now, let's write the code for the `tri` function.

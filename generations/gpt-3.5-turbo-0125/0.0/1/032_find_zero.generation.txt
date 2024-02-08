@@ -1,0 +1,23 @@
+```julia
+function find_zero(xs::Vector{Int})
+    n = length(xs)
+    if n % 2 != 0
+        throw(ArgumentError("Number of coefficients must be even"))
+    end
+    
+    max_coeff = maximum(abs.(xs))
+    if max_coeff == 0
+        throw(ArgumentError("All coefficients are zero"))
+    end
+    
+    max_index = findfirst(x -> x == max_coeff, abs.(xs))
+    if xs[max_index] < 0
+        xs = -xs
+    end
+    
+    roots = roots(Polynomial(xs))
+    zero_point = findfirst(x -> imag(x) == 0, roots)
+    
+    return round(roots[zero_point].re, digits=1)
+end
+```

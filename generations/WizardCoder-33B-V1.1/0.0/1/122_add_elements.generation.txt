@@ -1,0 +1,11 @@
+
+
+Here is the Julia function that solves the problem:
+
+```julia
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    return sum(x for x in xs[1:k] if x < 100)
+end
+```
+
+This function uses a list comprehension to iterate over the first `k` elements of `xs` and adds up the elements that are less than 100. The `sum` function is used to add up the elements. 

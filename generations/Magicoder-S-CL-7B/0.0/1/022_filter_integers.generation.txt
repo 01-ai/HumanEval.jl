@@ -1,0 +1,5 @@
+
+
+function filter_integers(values::AbstractVector)::Vector{Int}
+    return filter(x -> isa(x, Int), values)
+end

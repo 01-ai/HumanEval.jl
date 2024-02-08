@@ -1,0 +1,23 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. Initialize a variable `sum` to 0. This variable will hold the sum of the elements with at most two digits.
+2. Iterate over the first `k` elements of the input array `xs`.
+3. For each element, check if it has at most two digits. You can do this by converting the element to a string and checking if the length of the string is less than or equal to 2.
+4. If the element has at most two digits, add it to `sum`.
+5. After iterating over all the elements, return `sum`.
+
+Here is the Julia code that implements this algorithm:
+
+```julia
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    sum = 0
+    for i in 1:k
+        if length(string(xs[i])) <= 2
+            sum += xs[i]
+        end
+    end
+    return sum
+end
+```
+
+This function works by iterating over the first `k` elements of the input array `xs` and checking if each element has at most two digits. If an element does have at most two digits, it is added to the `sum`. The function finally returns the `sum`.

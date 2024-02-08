@@ -1,0 +1,9 @@
+Here is the Julia function that satisfies the given doc string:
+
+```julia
+function string_sequence(n::Int)::String
+    return join(0:n, " ")
+end
+```
+
+This function uses the `join` function to convert the range of numbers from 0 to `n` into a string with space-delimited numbers.

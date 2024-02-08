@@ -1,0 +1,17 @@
+Here is the implementation for the `add_elements` function:
+
+```julia
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    total = 0
+    count = 0
+    
+    for i in 1:k
+        if xs[i] >= 10 && xs[i] <= 99
+            total += xs[i]
+            count += 1
+        end
+    end
+    
+    return total
+end
+```

@@ -1,0 +1,15 @@
+Here is the implementation of the `sorted_list_sum` function in Julia:
+
+```julia
+function sorted_list_sum(xs::Vector{String})::Vector{String}
+    # Filter out strings with odd lengths
+    filtered_list = filter(x -> length(x) % 2 == 0, xs)
+    
+    # Sort the filtered list by length and alphabetically
+    sorted_list = sort(filtered_list, by = x -> (length(x), x))
+    
+    return sorted_list
+end
+```
+
+This function takes a vector of strings `xs` as input. It filters out the strings with odd lengths using the `filter` function and a lambda function that checks if the length of a string is even. Then, it sorts the filtered list using the `sort` function, specifying the sorting criteria as the length of each string and alphabetically. Finally, it returns the sorted list.

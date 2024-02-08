@@ -1,0 +1,29 @@
+To implement the `sum_squares` function as described, we need to iterate through the vector of integers, check the index of each element, and apply the specified transformations based on the index. Remember that Julia uses 1-based indexing, so we need to adjust the conditions for checking multiples of 3 and 4 accordingly. Here's how you can do it:
+
+```julia
+function sum_squares(xs::Vector{Int})::Int
+    sum = 0
+    for (index, value) in enumerate(xs)
+        if index % 3 == 0
+            sum += value^2
+        elseif index % 4 == 0
+            sum += value^3
+        else
+            sum += value
+        end
+    end
+    return sum
+end
+
+# Examples
+println(sum_squares([1, 2, 3])) # Expected output: 12
+println(sum_squares(Int[])) # Expected output: 0
+println(sum_squares([-1, -5, 2, -1, -5])) # Expected output: -8
+```
+
+This function works as follows:
+- It initializes a sum variable to 0.
+- It iterates through the vector `xs` using `enumerate` to get both the index (adjusted for 1-based indexing) and the value of each element.
+- For each element, it checks if the index is a multiple of 3 or 4 (and not a multiple of 3) and applies the specified transformation (squaring or cubing the value, respectively).
+- If the index does not meet either condition, the value is added to the sum as is.
+- Finally, it returns the sum of all processed elements.

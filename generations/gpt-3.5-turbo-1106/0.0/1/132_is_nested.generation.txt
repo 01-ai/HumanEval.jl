@@ -1,0 +1,17 @@
+```julia
+function is_nested(s::String)::Bool
+    stack = []
+    for char in s
+        if char == '['
+            push!(stack, char)
+        elseif char == ']'
+            if isempty(stack)
+                return false
+            else
+                pop!(stack)
+            end
+        end
+    end
+    return length(stack) < length(s)
+end
+```

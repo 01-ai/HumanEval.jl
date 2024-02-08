@@ -1,0 +1,7 @@
+ function by_length(xs::Vector{Int})::Vector{String}
+    names = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    sorted_filtered = sort(filter(x -> 1 <= x <= 9, xs))
+    reversed = reverse(sorted_filtered)
+    result = [names[i] for i in reversed]
+    return result
+end

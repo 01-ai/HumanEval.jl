@@ -1,0 +1,19 @@
+ function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
+    words = split(s, ' ')
+    result = []
+
+    for word in words
+        count = 0
+        for c in word
+            if !ismatch(r"[aeiou]", c) && ismatch(r"$consonants", c)
+                count += 1
+            end
+        end
+        if count == n
+            push!(result, word)
+        end
+    end
+
+    return result
+end

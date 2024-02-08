@@ -1,0 +1,19 @@
+
+
+```julia
+function sum_squares(xs::Vector{Int})::Int
+    sum = 0
+    for (i, x) in enumerate(xs)
+        if i % 3 == 0
+            sum += x^2
+        elseif i % 4 == 0 && i % 3 != 0
+            sum += x^3
+        else
+            sum += x
+        end
+    end
+    return sum
+end
+```
+
+This function iterates through the list and checks if the index is a multiple of 3, 4, or neither. If the index is a multiple of 3, it squares the entry. If the index is a multiple of 4 and not a multiple of 3, it cubes the entry. If the index is neither a multiple of 3 nor 4, it leaves the entry unchanged. It then adds the entry to the sum. Finally, it returns the sum of all entries.

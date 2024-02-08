@@ -1,0 +1,40 @@
+
+
+# Outline
+
+1. Initialize a variable `count` to 0. This will keep track of the number of vowels.
+2. Iterate over each character in the input string.
+3. Check if the current character is a vowel. This can be done by checking if the character is in the set of vowels ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U').
+4. If the current character is a vowel, increment `count` by 1.
+5. If the current character is 'y' or 'Y' and it is the last character in the string, also increment `count` by 1.
+6. After iterating over all characters, return `count`.
+
+# Code
+
+```julia
+function vowels_count(s::String)::Int
+    # Initialize vowel count
+    count = 0
+
+    # Define vowels
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+
+    # Iterate over each character in the string
+    for c in s
+        # Check if the character is a vowel
+        if c in vowels
+            # Increment vowel count
+            count += 1
+        end
+    end
+
+    # Check if the last character is 'y' or 'Y'
+    if s[end] == 'y' || s[end] == 'Y'
+        # Increment vowel count
+        count += 1
+    end
+
+    # Return vowel count
+    return count
+end
+```

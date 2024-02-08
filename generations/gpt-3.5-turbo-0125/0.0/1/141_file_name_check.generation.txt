@@ -1,0 +1,27 @@
+```julia
+function file_name_check(file_name::String)::String
+    # Check for more than three digits
+    if count(isdigit, file_name) > 3
+        return "No"
+    end
+    
+    # Check for exactly one dot
+    if count(isequal('.'), file_name) != 1
+        return "No"
+    end
+    
+    parts = split(file_name, '.')
+    
+    # Check for non-empty substring before the dot starting with a letter
+    if length(parts) != 2 || isempty(parts[1]) || !isletter(first(parts[1]))
+        return "No"
+    end
+    
+    # Check for valid file extension
+    if parts[2] in ["txt", "exe", "dll"]
+        return "Yes"
+    else
+        return "No"
+    end
+end
+```

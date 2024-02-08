@@ -1,0 +1,13 @@
+Here is a Julia function that implements the encryption as described:
+
+```julia
+function encrypt(s::String)
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    encrypted_alphabet = alphabet[2*2+1:end] * alphabet[1:2*2]
+    return map(c -> isalpha(c) ? encrypted_alphabet[findfirst(isequal(c), alphabet)] : c, collect(s)) |> join
+end
+```
+
+This function works by first creating a string `alphabet` that contains all the lowercase letters of the alphabet. It then creates a string `encrypted_alphabet` that is the alphabet rotated by 2*2 places to the right. The `map` function is then used to replace each character in the input string `s` with the corresponding character in `encrypted_alphabet`. If a character is not a letter, it is left unchanged. The `join` function is used to convert the array of characters back into a string.
+
+Please note that this function only works with lowercase letters. If you want to handle uppercase letters as well, you would need to add them to the `alphabet` and `encrypted_alphabet` strings, and you would need to handle them separately in the `map` function.

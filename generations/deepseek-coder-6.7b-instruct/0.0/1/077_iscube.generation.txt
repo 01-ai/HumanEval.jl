@@ -1,0 +1,12 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function iscube(a::Int)::Bool
+    x = round(Int, cbrt(abs(a)))
+    return x^3 == abs(a)
+end
+```
+
+This function works by first taking the cube root of the absolute value of the input number `a`, rounding it to the nearest integer, and then checking if this integer cubed is equal to the absolute value of `a`. If it is, then `a` is a cube of some integer, and the function returns `true`. Otherwise, it returns `false`.
+
+The `cbrt` function is used to calculate the cube root, and `round` is used to round the result to the nearest integer. The `abs` function is used to handle negative numbers by taking their absolute value first.

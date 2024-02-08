@@ -1,0 +1,12 @@
+```julia
+function below_threshold(l::Vector, t::Number)::Bool
+    for num in l
+        if num >= t
+            return false
+        end
+    end
+    return true
+end
+```
+
+This function iterates through each element in the vector `l` and checks if it is greater than or equal to the threshold `t`. If any number meets or exceeds the threshold, the function immediately returns `false`. If the loop completes without finding any number that meets or exceeds the threshold, the function returns `true`, indicating all numbers in the list are below the threshold.

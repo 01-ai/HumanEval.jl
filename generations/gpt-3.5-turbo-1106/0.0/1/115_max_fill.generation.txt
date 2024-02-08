@@ -1,0 +1,10 @@
+```julia
+function max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+    total_fill = 0
+    for row in grid
+        current_fill = sum(row)
+        total_fill += current_fill
+    end
+    return ceil(total_fill / capacity)
+end
+```

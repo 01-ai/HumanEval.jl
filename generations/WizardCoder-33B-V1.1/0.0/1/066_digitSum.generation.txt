@@ -1,0 +1,17 @@
+
+
+Here is the Julia function that solves the problem:
+
+```julia
+function digitSum(s::String)::Int
+    sum = 0
+    for c in s
+        if isuppercase(c)
+            sum += Int(c)
+        end
+    end
+    return sum
+end
+```
+
+This function works by iterating over each character in the string. If the character is an uppercase letter (checked using the `isuppercase` function), it adds the ASCII code of the character to the sum. The function finally returns the sum. 

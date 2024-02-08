@@ -1,0 +1,26 @@
+Here is a Julia function that implements the given doc string:
+
+```julia
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+    if a == b
+        return nothing
+    else
+        if typeof(a) == typeof(b)
+            if typeof(a) <: AbstractString
+                a = parse(Float64, replace(a, "," => "."))
+                b = parse(Float64, replace(b, "," => "."))
+            end
+            return a > b ? a : b
+        else
+            if typeof(a) <: AbstractString
+                a = parse(Float64, replace(a, "," => "."))
+            elseif typeof(b) <: AbstractString
+                b = parse(Float64, replace(b, "," => "."))
+            end
+            return a > b ? a : b
+        end
+    end
+end
+```
+
+This function first checks if the two inputs are equal. If they are, it returns `nothing`. If they are not equal, it checks if they are of the same type. If they are, it converts them to floats if they are strings, and then returns the larger one. If they are not of the same type, it converts the non-string input to a float if it is a string, and then returns the larger one.

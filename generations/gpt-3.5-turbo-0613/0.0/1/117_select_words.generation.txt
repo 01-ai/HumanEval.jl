@@ -1,0 +1,19 @@
+Here is the implementation of the `select_words` function in Julia:
+
+```julia
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    words = split(s)
+    result = AbstractString[]
+    
+    for word in words
+        consonants = count(c -> c ∈ "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ", word)
+        if consonants == n
+            push!(result, word)
+        end
+    end
+    
+    return result
+end
+```
+
+This function splits the input string `s` into individual words using the `split` function. It then iterates over each word and counts the number of consonants in it using the `count` function and a lambda function that checks if a character is a consonant. If the number of consonants in a word matches the input `n`, the word is added to the `result` array using the `push!` function. Finally, the function returns the `result` array.

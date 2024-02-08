@@ -1,0 +1,21 @@
+Here is a Julia function that implements the requested functionality:
+
+```julia
+function find_closest_elements(numbers::Vector{Float64})::Tuple{Float64, Float64}
+    sorted_numbers = sort(numbers)
+    min_diff = Inf
+    closest_pair = (0.0, 0.0)
+    for i in 1:(length(sorted_numbers)-1)
+        diff = sorted_numbers[i+1] - sorted_numbers[i]
+        if diff < min_diff
+            min_diff = diff
+            closest_pair = (sorted_numbers[i], sorted_numbers[i+1])
+        end
+    end
+    return closest_pair
+end
+```
+
+This function first sorts the input list of numbers. Then it iterates over the sorted list, calculating the difference between each pair of consecutive numbers. If the difference is smaller than the current minimum difference, it updates the minimum difference and the pair of numbers that are the closest to each other. Finally, it returns the pair of numbers that are the closest to each other.
+
+Please note that if there are multiple pairs of numbers that are the closest to each other, this function will return the first pair it encounters.

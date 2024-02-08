@@ -1,0 +1,34 @@
+Certainly! Below is the Julia function `make_a_pile` that follows the doc string description:
+
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    # Initialize the pile with the first level of n stones
+    pile = [n]
+    
+    # Calculate the number of stones for each subsequent level
+    for i in 1:n-1
+        # Determine the last stone count
+        last_stone_count = pile[end]
+        
+        # Calculate the next stone count based on the parity of the last count
+        next_stone_count = last_stone_count + (last_stone_count % 2 == 0 ? 1 : 2)
+        
+        # Add the next stone count to the pile
+        push!(pile, next_stone_count)
+    end
+    
+    return pile
+end
+```
+
+You can test this function with the provided example:
+
+```julia
+julia> make_a_pile(3)
+3-element Vector{Int64}:
+ 3
+ 5
+ 7
+```
+
+This function starts with a pile of `n` stones and then iteratively adds the next odd or even number of stones to the pile depending on the last number of stones added. It continues this process until the pile has `n` levels.

@@ -1,0 +1,20 @@
+```julia
+function simplify(x::String, n::String)::Bool
+    # Step 1: Convert strings to rational numbers
+    x_num, x_denom = map(Int, split(x, "/"))
+    n_num, n_denom = map(Int, split(n, "/"))
+
+    # Step 2: Check if the denominators are equal
+    if x_denom != n_denom
+        return false
+    end
+
+    # Step 3: Calculate the product of the numerators
+    product_num = x_num * n_num
+
+    # Step 4: Check if the product is a whole number
+    return product_num % x_denom == 0
+end
+```
+
+This function first converts the strings `x` and `n` to rational numbers by splitting them on the `"/"` character and converting the resulting numerator and denominator to integers. It then checks if the denominators are equal. If they are not, the function returns `false`. If they are, it calculates the product of the numerators and checks if the product is a whole number by ensuring that the remainder when divided by the common denominator is zero.

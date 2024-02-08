@@ -1,0 +1,16 @@
+### Outline
+
+To implement the `select_words` function, we will follow these steps:
+
+1. Define the function `select_words` with the appropriate signature.
+2. Check if the input string `s` is empty. If it is, return an empty list.
+3. Split the string `s` into words using whitespace as the delimiter.
+4. Initialize an empty list to store words with exactly `n` consonants.
+5. Iterate over each word in the list of words.
+6. For each word, count the number of consonants.
+7. If the number of consonants is equal to `n`, add the word to the list of selected words.
+8. Return the list of selected words.
+
+### Code
+
+Now, let's write the code for the `select_words` function.

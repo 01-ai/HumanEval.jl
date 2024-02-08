@@ -1,0 +1,20 @@
+Here is the implementation for the `parse_music` function:
+
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    notes = split(music_string)
+    durations = []
+    for note in notes
+        if note == "o"
+            push!(durations, 4)
+        elseif note == "o|"
+            push!(durations, 2)
+        elseif note == ".|"
+            push!(durations, 1)
+        end
+    end
+    return durations
+end
+```
+
+This function splits the input string into individual notes and then checks each note to determine its duration. The corresponding duration is then added to the `durations` array. Finally, the `durations` array is returned as the result.

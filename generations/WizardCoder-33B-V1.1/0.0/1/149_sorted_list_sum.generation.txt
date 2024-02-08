@@ -1,0 +1,15 @@
+
+
+Here is the Julia function that implements the given problem:
+
+```julia
+function sorted_list_sum(xs::Vector{String})::Vector{String}
+    # Filter out strings with even length
+    xs = filter(x -> length(x) % 2 == 0, xs)
+
+    # Sort the list by length and then alphabetically
+    sort(xs, by = x -> (length(x), x))
+end
+```
+
+This function first filters out the strings with odd lengths using the `filter` function. Then it sorts the list by length and then alphabetically using the `sort` function with a tuple as the `by` argument. The `length` function is used to get the length of each string and the `x` function is used to get the string itself for sorting. 

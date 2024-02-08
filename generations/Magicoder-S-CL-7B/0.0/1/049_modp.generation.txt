@@ -1,0 +1,5 @@
+
+
+function modp(n::Int, p::Int)::Int
+    return (2^n) % p
+end

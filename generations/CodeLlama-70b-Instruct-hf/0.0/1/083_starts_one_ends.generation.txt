@@ -1,0 +1,12 @@
+
+```julia
+function starts_one_ends(n::Int)::Int
+    if n < 1
+        return 0
+    end
+    if n == 1
+        return 1
+    end
+    return 2 * (10^(n - 2) - 1) + 2
+end
+```

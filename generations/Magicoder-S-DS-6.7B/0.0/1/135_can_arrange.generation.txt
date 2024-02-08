@@ -1,0 +1,14 @@
+Here is a Julia function that implements the required functionality:
+
+```julia
+function can_arrange(xs::Vector{Int})::Int
+    for i in length(xs):-1:2
+        if xs[i] >= xs[i-1]
+            return i-1
+        end
+    end
+    return -1
+end
+```
+
+This function iterates over the array in reverse order, starting from the end. It checks each element to see if it is greater than or equal to the previous element. If it is, it returns the index of the previous element. If it reaches the beginning of the array without finding such an element, it returns -1.

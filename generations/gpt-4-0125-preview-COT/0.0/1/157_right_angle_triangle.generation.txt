@@ -1,0 +1,29 @@
+### Step-by-Step Outline
+
+1. **Sort the sides**: Since we're dealing with a potential right-angled triangle, we need to identify the hypotenuse (the longest side) and the other two sides. Sorting the sides in ascending order will ensure the longest side (hypotenuse) is last.
+
+2. **Check for Right-Angle**: Use the Pythagorean theorem to check if the triangle is right-angled. According to the theorem, for a right-angled triangle with sides `a`, `b`, and hypotenuse `c`, the equation `a^2 + b^2 = c^2` must hold true.
+
+3. **Return Result**: If the condition from step 2 is met, return `true`, indicating the sides form a right-angled triangle. Otherwise, return `false`.
+
+### Julia Code Implementation
+
+```julia
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    # Step 1: Sort the sides
+    sides = sort([a, b, c])
+    
+    # Step 2: Check for Right-Angle using Pythagorean theorem
+    if sides[1]^2 + sides[2]^2 == sides[3]^2
+        return true
+    else
+        return false
+    end
+end
+
+# Examples
+println(right_angle_triangle(3, 4, 5))  # Expected: true
+println(right_angle_triangle(1, 2, 3))  # Expected: false
+```
+
+This implementation first sorts the sides to easily identify the hypotenuse and then applies the Pythagorean theorem to determine if the triangle is right-angled.

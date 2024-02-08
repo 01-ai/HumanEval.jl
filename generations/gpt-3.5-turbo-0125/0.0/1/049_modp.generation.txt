@@ -1,0 +1,5 @@
+```julia
+function modp(n::Int, p::Int)::Int
+    return BigInt(2)^n % p
+end
+```

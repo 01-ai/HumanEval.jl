@@ -1,0 +1,18 @@
+
+
+function get_closest_vowel(word::String)::String
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    word = reverse(word)
+    for i in 2:length(word)-1
+        if word[i] in vowels && word[i-1] ∉ vowels && word[i+1] ∉ vowels
+            return string(word[i])
+        end
+    end
+    return ""
+end
+
+# Test cases
+println(get_closest_vowel("yogurt"))  # "u"
+println(get_closest_vowel("FULL"))    # "U"
+println(get_closest_vowel("quick"))   # ""
+println(get_closest_vowel("ab"))      # ""

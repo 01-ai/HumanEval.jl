@@ -1,0 +1,19 @@
+```julia
+function is_prime(n::Int)
+    if n <= 1
+        return false
+    end
+    for i in 2:isqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+function words_in_sentence(sentence::String)::String
+    words = split(sentence)
+    prime_words = filter(word -> is_prime(length(word)), words)
+    return join(prime_words, " ")
+end
+```

@@ -1,0 +1,10 @@
+
+
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    # Check if the triangle is right-angled
+    if a^2 + b^2 == c^2 || a^2 + c^2 == b^2 || b^2 + c^2 == a^2
+        return true
+    else
+        return false
+    end
+end

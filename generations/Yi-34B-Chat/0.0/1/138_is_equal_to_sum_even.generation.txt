@@ -1,0 +1,28 @@
+```julia
+function is_equal_to_sum_even(n::Int)::Bool
+    # Your code goes here
+    return false
+end
+```
+
+This is a placeholder function that you need to implement. To determine whether a number `n` can be written as the sum of exactly 4 positive even numbers, you can check if `n` is divisible by 4 and then check if it can be expressed as the sum of two pairs of consecutive even numbers. For example, for `n = 8`, we can express it as the sum of the pairs (2, 4) and (6, 8), where 2 + 4 + 6 + 8 = 20, which is the desired sum.
+
+Here's a possible implementation:
+
+```julia
+function is_equal_to_sum_even(n::Int)::Bool
+    if n % 4 != 0
+        return false
+    end
+
+    # Find the two pairs of consecutive even numbers whose sum is n
+    # You can use a loop or a more efficient method like a binary search
+    # to find these pairs
+
+    # Check if the sum of these pairs is equal to n
+
+    return true
+end
+```
+
+Please note that the implementation above is a starting point and may not be the most efficient or elegant solution. You can refine the function to improve its performance or readability.

@@ -1,0 +1,14 @@
+
+
+function total_match(xs::Vector{String}, ys::Vector{String})::Vector{String}
+    x_chars = sum(length, xs)
+    y_chars = sum(length, ys)
+
+    if x_chars < y_chars
+        return xs
+    elseif y_chars < x_chars
+        return ys
+    else
+        return xs
+    end
+end

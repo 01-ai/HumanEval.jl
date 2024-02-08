@@ -1,0 +1,18 @@
+
+
+```julia
+function prime_length(s::String)::Bool
+    n = length(s)
+    if n <= 1
+        return false
+    end
+    for i in 2:floor(Int, sqrt(n))
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+```
+
+This function first checks if the length of the string is less than or equal to 1. If it is, it returns false because 1 is not a prime number. If the length is greater than 1, it iterates through all numbers from 2 to the square root of the length and checks if the length is divisible by any of them. If it is, it returns false because the length is not prime. If it reaches the end of the loop without finding a divisor, it returns true because the length is prime.

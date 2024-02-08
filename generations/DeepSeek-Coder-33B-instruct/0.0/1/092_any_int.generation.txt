@@ -1,0 +1,12 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function any_int(x::Number, y::Number, z::Number)::Bool
+    if !(typeof(x) <: Integer) || !(typeof(y) <: Integer) || !(typeof(z) <: Integer)
+        return false
+    end
+    return x + y == z || x + z == y || y + z == x
+end
+```
+
+This function first checks if all the inputs are integers. If not, it returns `false`. Then it checks if any of the numbers is equal to the sum of the other two. If so, it returns `true`. Otherwise, it returns `false`.

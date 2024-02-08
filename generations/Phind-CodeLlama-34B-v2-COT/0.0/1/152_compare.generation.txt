@@ -1,0 +1,28 @@
+
+
+Here is the step-by-step outline:
+
+1. Initialize an empty Vector to store the results.
+2. Iterate over each element in the input arrays.
+3. For each pair of elements, calculate the absolute difference and append it to the results array.
+4. Return the results array.
+
+Here is the Julia code implementing the above outline:
+
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    # Initialize an empty Vector to store the results
+    results = Vector{Int}(undef, length(game))
+
+    # Iterate over each element in the input arrays
+    for i in 1:length(game)
+        # Calculate the absolute difference and append it to the results array
+        results[i] = abs(game[i] - guess[i])
+    end
+
+    # Return the results array
+    return results
+end
+```
+
+This function takes two vectors as input, `game` and `guess`, both of which contain integers. It returns a vector of integers, where each element is the absolute difference between the corresponding elements of `game` and `guess`. If the guess was correct, the difference is 0.

@@ -1,0 +1,15 @@
+Here is a step-by-step outline of how to implement the `sum_to_n` function:
+
+1. Define a function `sum_to_n` that takes an integer `n` as input.
+2. Inside the function, use the formula `n*(n+1)/2` to calculate the sum of numbers from `1` to `n`.
+3. Return the calculated sum.
+
+Here is the Julia code that implements the `sum_to_n` function:
+
+```julia
+function sum_to_n(n::Int)::Int
+    return n * (n + 1) � 2
+end
+```
+
+This function uses the formula `n*(n+1)/2` to calculate the sum of numbers from `1` to `n`. The `�` operator is used for integer division, which discards the fractional part and returns an integer.

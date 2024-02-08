@@ -1,0 +1,13 @@
+```julia
+function rolling_max(numbers::Vector{Int})::Vector{Int}
+    max_so_far = Int[]
+    current_max = numbers[1]
+    for i in 2:length(numbers)
+        current_max = max(current_max, numbers[i])
+        push!(max_so_far, current_max)
+    end
+    return max_so_far
+end
+```
+
+This function takes a vector of integers `numbers` and returns a vector of the rolling maximum elements found up to that point in the sequence. It does this by maintaining a running maximum `current_max` and appending it to the `max_so_far` vector at each iteration.

@@ -1,0 +1,14 @@
+
+
+function get_row(xs::Vector{Vector{Int}}, x::Int)::Vector{Tuple{Int, Int}}
+    result = Tuple{Int, Int}[]
+    for (row, row_data) in enumerate(xs)
+        for (col, value) in enumerate(row_data)
+            if value == x
+                push!(result, (row, col))
+            end
+        end
+    end
+    sort!(result, by = x -> (x[1], -x[2]))
+    return result
+end

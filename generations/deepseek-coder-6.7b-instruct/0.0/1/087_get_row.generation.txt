@@ -1,0 +1,19 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function get_row(xs::Vector{Vector{Int}}, x::Int)::Vector{Tuple{Int, Int}}
+    coords = Tuple{Int, Int}[]
+    for (i, row) in enumerate(xs)
+        for (j, val) in enumerate(row)
+            if val == x
+                push(coords, (i + 1, j + 1))
+            end
+        end
+    end
+    sort(coords, by=t->(t[1], -t[2]))
+end
+```
+
+This function iterates over each row in `xs`, and for each row, it iterates over each value. If the value is equal to `x`, it adds a tuple of the row and column indices to `coords`. The tuples are sorted first by row in ascending order, and then by column in descending order. The `+1` is used to make the indices start from 1 as per the problem statement.
+
+The function returns a sorted list of tuples. If `xs` is an empty list, the function returns an empty list.

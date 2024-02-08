@@ -1,0 +1,16 @@
+
+
+```julia
+function odd_count(xs::Vector{String})::Vector{String}
+    result = String[]
+    for (i, x) in enumerate(xs)
+        odd_count = count(isodd, parse(Int, x))
+        sentence = "the number of odd elements $odd_count in the string $x of the input."
+        sentence = replace(sentence, "$i" => "$odd_count")
+        push!(result, sentence)
+    end
+    return result
+end
+```
+
+This function iterates over each string in the input vector, counts the number of odd digits in the string, and creates a sentence with the number of odd digits replaced in the sentence.

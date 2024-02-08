@@ -1,0 +1,28 @@
+Here is a step-by-step outline of how you can implement this function:
+
+1. Check if `y` is less than `x`. If it is, return -1 as there's no number in the range.
+2. If `y` is greater than or equal to `x`, check if `y` is even. If it is, return `y`.
+3. If `y` is odd, subtract 1 from `y` and then check if the new `y` is even. If it is, return `y`.
+4. If `y` is still odd, subtract 2 from `y` and then check if the new `y` is even. If it is, return `y`.
+5. Repeat steps 3 and 4 until `y` is even or `y` becomes less than `x`.
+6. If `y` becomes less than `x`, return -1 as there's no number in the range.
+
+Here is the Julia code that implements the above steps:
+
+```julia
+function choose_num(x::Int, y::Int)::Int
+    if y < x
+        return -1
+    end
+    while y >= x
+        if y % 2 == 0
+            return y
+        else
+            y -= 1
+        end
+    end
+    return -1
+end
+```
+
+This function works by first checking if `y` is less than `x`. If it is, it returns -1 as there's no number in the range. If `y` is greater than or equal to `x`, it enters a while loop that continues until `y` is less than `x`. Inside the loop, it checks if `y` is even. If it is, it returns `y`. If `y` is odd, it subtracts 1 from `y` and then checks if the new `y` is even. If it is, it returns `y`. If `y` is still odd, it subtracts 2 from `y` and then checks if the new `y` is even. If it is, it returns `y`. If `y` becomes less than `x`, it returns -1 as there's no number in the range.

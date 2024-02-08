@@ -1,0 +1,15 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function pairs_sum_to_zero(l::Vector{Int})::Bool
+    set = Set(l)
+    for i in l
+        if -i in set
+            return true
+        end
+    end
+    return false
+end
+```
+
+This function works by creating a set from the input list. Then it iterates over the list and checks if the negation of the current element is in the set. If it is, it means that there are two distinct elements in the list that sum to zero, so it returns `true`. If it iterates over the entire list without finding such elements, it returns `false`.

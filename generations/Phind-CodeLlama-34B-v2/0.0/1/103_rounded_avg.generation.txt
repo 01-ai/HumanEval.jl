@@ -1,0 +1,10 @@
+
+
+function rounded_avg(n::Int, m::Int)::Union{Int, String}
+    if n > m
+        return -1
+    else
+        avg = round(Int, (n + m) / 2)
+        return string(avg, base = 2)
+    end
+end

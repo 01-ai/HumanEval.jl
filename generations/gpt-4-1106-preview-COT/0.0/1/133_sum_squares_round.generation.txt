@@ -1,0 +1,35 @@
+Let's outline the steps we need to take to implement the `sum_squares_round` function:
+
+1. Define the function `sum_squares_round` that takes a vector `xs` as an argument.
+2. Initialize a variable to keep track of the sum of squared numbers.
+3. Iterate over each element in the vector `xs`.
+4. For each element, apply the ceiling function to round it to the nearest integer greater than or equal to the element.
+5. Square the rounded number.
+6. Add the squared number to the sum.
+7. After iterating through all elements, return the sum.
+
+Now, let's implement the code based on the outline:
+
+```julia
+function sum_squares_round(xs::Vector)::Int
+    # Step 2: Initialize the sum variable
+    sum_squared = 0
+    
+    # Step 3: Iterate over each element in the vector
+    for x in xs
+        # Step 4: Round the element to the upper integer
+        rounded_x = ceil(Int, x)
+        
+        # Step 5: Square the rounded number
+        squared_x = rounded_x^2
+        
+        # Step 6: Add the squared number to the sum
+        sum_squared += squared_x
+    end
+    
+    # Step 7: Return the sum
+    return sum_squared
+end
+```
+
+This function should work as expected for the given examples. Let's test it with the provided examples to ensure it's correct.

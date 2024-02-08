@@ -1,0 +1,4 @@
+function n_digits_in_binary(N::Int)::String
+    binary_string = string(N, base=2)
+    return binary_string
+end

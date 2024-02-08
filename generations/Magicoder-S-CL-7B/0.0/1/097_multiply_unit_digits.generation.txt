@@ -1,0 +1,5 @@
+
+
+function multiply_unit_digits(a::Int, b::Int)::Int
+    # Your code here
+end

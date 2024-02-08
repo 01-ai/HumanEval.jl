@@ -1,0 +1,10 @@
+ function will_it_fly(q::Vector{Int}, w::Int)::Bool
+    # Check if the list is palindromic
+    is_palindrome(q) = q == reverse(q)
+
+    # Check if the sum of the list is less than or equal to the maximum possible weight
+    sum(q) <= w
+
+    # Check if the list is balanced (palindromic) and the sum of its elements is less than or equal to the maximum possible weight
+    return is_palindrome(q) && sum(q) <= w
+end

@@ -1,0 +1,19 @@
+```julia
+function special_factorial(n::Int)::BigInt
+    # Base case: if n is 0 or 1, the special factorial is 1
+    if n <= 1
+        return 1
+    end
+
+    # Calculate the factorial of n and each previous number
+    factorials = [BigInt(i) for i in 1:n]
+    result = factorials[n]
+    for i in n-1:-1:1
+        result *= factorials[i]
+    end
+
+    return result
+end
+```
+
+This function calculates the Brazilian factorial of a positive integer `n` by multiplying together the factorials of `n` and all previous numbers down to 1. It uses a list comprehension to create a list of factorials, and then multiplies them together in a loop. The base case is handled by returning 1 if `n` is 0 or 1.

@@ -1,0 +1,18 @@
+  Here's the Julia implementation of the `encode_cyclic` and `decode_cyclic` functions based on the given doc strings:
+```julia
+function encode_cyclic(s::String)::String
+    join((length(x) == 3 ? x[2] * x[3] * x[1] : x for x in Iterators.partition(s, 3)))
+end
+
+function decode_cyclic(s::String)::String
+    join((length(x) == 3 ? x[3] * x[1] * x[2] : x for x in Iterators.partition(s, 3)))
+end
+```
+Here's an example usage of the functions:
+```julia
+julia> encode_cyclic("hello")
+"hlello"
+
+julia> decode_cyclic("hlello")
+"hello"
+```

@@ -1,0 +1,20 @@
+
+
+```julia
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    # Create a dictionary to store the sum of digits of each number
+    sum_dict = Dict{Int, Int}()
+
+    # Calculate the sum of digits for each number
+    for num in nums
+        sum_dict[num] = sum(digits(num))
+    end
+
+    # Sort the numbers based on their sum of digits
+    sorted_nums = sort(nums, by=x -> sum_dict[x])
+
+    return sorted_nums
+end
+```
+
+This function first creates a dictionary to store the sum of digits of each number in the given list. Then, it calculates the sum of digits for each number and stores it in the dictionary. Finally, it sorts the numbers based on their sum of digits and returns the sorted list.

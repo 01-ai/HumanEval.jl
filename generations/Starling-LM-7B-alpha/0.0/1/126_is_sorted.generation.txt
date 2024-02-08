@@ -1,0 +1,9 @@
+ function is_sorted(xs::Vector{Int})::Bool
+    n = length(xs)
+    for i in 1:(n-1)
+        if xs[i] > xs[i+1]
+            return false
+        end
+    end
+    return true
+end

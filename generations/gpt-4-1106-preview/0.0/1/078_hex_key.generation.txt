@@ -1,0 +1,22 @@
+Here's the Julia function `hex_key` that implements the given specification:
+
+```julia
+function hex_key(num::String)::Int
+    # Define the set of prime hexadecimal digits
+    prime_hex_digits = Set(['2', '3', '5', '7', 'B', 'D'])
+
+    # Count the number of prime hexadecimal digits in the input string
+    prime_count = sum([c in prime_hex_digits for c in num])
+
+    return prime_count
+end
+
+# Examples
+println(hex_key("AB"))         # Output: 1
+println(hex_key("1077E"))      # Output: 2
+println(hex_key("ABED1A33"))   # Output: 4
+println(hex_key("123456789ABCDEF0")) # Output: 6
+println(hex_key("2020"))       # Output: 2
+```
+
+This function iterates over each character in the input string, checks if it is in the set of prime hexadecimal digits, and counts the number of times a prime digit appears. The `sum` function is used to add up the Boolean values (converted to 1 for `true` and 0 for `false`) to get the total count of prime digits.

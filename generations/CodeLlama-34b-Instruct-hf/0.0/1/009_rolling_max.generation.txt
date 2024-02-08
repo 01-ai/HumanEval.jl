@@ -1,0 +1,29 @@
+  Here's one way to implement the `rolling_max` function in Julia:
+```
+function rolling_max(numbers::Vector{Int})::Vector{Int}
+    max_val = 0
+    result = Int[]
+    for num in numbers
+        if num > max_val
+            max_val = num
+        end
+        push!(result, max_val)
+    end
+    return result
+end
+```
+This function uses a loop to iterate over the input vector of integers, and maintains a running maximum value as it goes. Each time a new number is encountered, it is compared to the current maximum value, and if it is greater, the maximum value is updated. The updated maximum value is then pushed onto the result vector.
+
+Here's an example usage of the function:
+```
+julia> rolling_max([1, 2, 3, 2, 3, 4, 2])
+7-element Vector{Int64}:
+ 1
+ 2
+ 3
+ 3
+ 3
+ 4
+ 4
+```
+This output shows the rolling maximum values for each element in the input vector.

@@ -1,0 +1,29 @@
+To implement the `triangle_area` function in Julia, we will follow these steps:
+
+1. Define the function `triangle_area` that takes two arguments: `a` (the length of a side) and `h` (the height of the triangle).
+2. Calculate the area of the triangle using the formula: area = (a * h) / 2.
+3. Return the calculated area.
+
+Now, let's write the code for the function:
+
+```julia
+"""
+    triangle_area(a, h)
+
+Given length of a side and height, return area for a triangle.
+
+# Examples
+
+```jldoctest
+julia> triangle_area(5, 3)
+7.5
+```
+"""
+function triangle_area(a, h)
+    # Calculate the area of the triangle
+    area = (a * h) / 2
+    return area
+end
+```
+
+You can now test this function with the provided example or other values to ensure it works correctly.

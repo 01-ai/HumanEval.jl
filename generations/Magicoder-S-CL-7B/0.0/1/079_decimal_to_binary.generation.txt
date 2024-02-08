@@ -1,0 +1,6 @@
+
+
+function decimal_to_binary(decimal::Int)::String
+    binary = string(decimal, base = 2)
+    return "db" * binary * "db"
+end

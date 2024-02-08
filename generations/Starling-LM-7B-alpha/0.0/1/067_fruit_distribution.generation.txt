@@ -1,0 +1,11 @@
+ function fruit_distribution(s::String, n::Int)
+    # Split the string into apples and oranges
+    apples_oranges = split(s, " and ")
+    apples = parse(Int, apples_oranges[1][1:end-1])
+    oranges = parse(Int, apples_oranges[2][1:end-1])
+
+    # Calculate the number of mangoes
+    mangoes = n - apples - oranges
+
+    return mangoes
+end

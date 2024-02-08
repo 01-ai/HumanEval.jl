@@ -1,0 +1,47 @@
+To implement the `encode_swap` function as described, we need to follow these steps:
+
+1. Swap the case of all letters in the message.
+2. Replace all vowels in the message with the letter that appears 2 places after that vowel in the English alphabet. For this purpose, we consider 'a', 'e', 'i', 'o', 'u' as vowels, and their uppercase counterparts for case swapping.
+3. Return the modified message.
+
+Here's how you can implement the `encode_swap` function in Julia:
+
+```julia
+function encode_swap(message::String)::String
+    # Define a dictionary to map vowels to their respective replacements
+    vowel_replacements = Dict(
+        'a' => 'c', 'A' => 'C',
+        'e' => 'g', 'E' => 'G',
+        'i' => 'k', 'I' => 'K',
+        'o' => 'q', 'O' => 'Q',
+        'u' => 'w', 'U' => 'W'
+    )
+
+    # Function to swap case
+    function swap_case(c::Char)::Char
+        if islower(c)
+            return uppercase(c)
+        else
+            return lowercase(c)
+        end
+    end
+
+    # Encode the message
+    encoded_message = map(message) do c
+        if isletter(c)
+            swapped_c = swap_case(c)
+            return get(vowel_replacements, swapped_c, swapped_c)  # Replace if vowel, else keep the swapped character
+        else
+            return c
+        end
+    end
+
+    return join(encoded_message)
+end
+
+# Example usage
+println(encode_swap("test"))  # Expected: "TGST"
+println(encode_swap("This is a message"))  # Expected: "tHKS KS C MGSSCGG"
+```
+
+This implementation first defines a dictionary to map each vowel to its replacement. It then defines a helper function `swap_case` to swap the case of a character. The main part of the function maps over each character in the message, swapping its case and replacing it if it's a vowel, according to the `vowel_replacements` dictionary. Finally, it joins the modified characters back into a string and returns the result.

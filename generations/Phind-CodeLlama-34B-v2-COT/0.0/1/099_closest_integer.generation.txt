@@ -1,0 +1,27 @@
+
+
+To solve this problem, we will first convert the string to a float, then we will round it to the nearest integer. However, we need to round it away from zero, so we will use the `round` function with the `RoundAwayFromZero` rounding mode.
+
+Here is the step-by-step outline:
+
+1. Define the function `closest_integer` that takes a string `value` as input.
+2. Convert the string `value` to a float using the `parse` function.
+3. Use the `round` function with the `RoundAwayFromZero` rounding mode to round the float to the nearest integer.
+4. Return the rounded integer.
+
+And here is the Julia code:
+
+```julia
+function closest_integer(value::String)::Int
+    # Convert the string to a float
+    num = parse(Float64, value)
+    
+    # Round the float to the nearest integer away from zero
+    rounded_num = round(num, RoundAwayFromZero)
+    
+    # Return the rounded integer
+    return rounded_num
+end
+```
+
+This function should work for all valid inputs according to the problem description. However, it may throw an error if the input string cannot be converted to a float.

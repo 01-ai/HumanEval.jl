@@ -1,0 +1,19 @@
+
+
+```julia
+function common(l1::Vector, l2::Vector)::Vector
+    # Create a set of unique elements from l1
+    s1 = Set(l1)
+
+    # Create a set of unique elements from l2
+    s2 = Set(l2)
+
+    # Find the intersection of s1 and s2
+    common_elements = intersect(s1, s2)
+
+    # Sort and return the common elements as a vector
+    return sort(collect(common_elements))
+end
+```
+
+This function takes two vectors `l1` and `l2` as input and returns a sorted vector of unique common elements between them. It first creates two sets `s1` and `s2` from the input vectors, which contain only unique elements. Then, it uses the `intersect` function to find the common elements between the two sets. Finally, it sorts and collects the common elements into a vector and returns it.

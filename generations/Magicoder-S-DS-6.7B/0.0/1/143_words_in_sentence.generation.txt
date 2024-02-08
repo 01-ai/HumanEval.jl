@@ -1,0 +1,12 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function words_in_sentence(sentence::String)::String
+    words = split(sentence)
+    primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+    prime_words = [word for word in words if length(word) in primes]
+    return join(prime_words, " ")
+end
+```
+
+This function first splits the sentence into words. Then it checks each word's length against a list of prime numbers. If the length is a prime number, the word is added to the list of prime words. Finally, it joins the prime words into a single string with spaces between each word and returns the result.

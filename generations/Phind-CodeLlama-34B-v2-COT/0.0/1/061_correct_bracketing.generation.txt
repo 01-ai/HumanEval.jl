@@ -1,0 +1,29 @@
+
+
+# Outline
+
+1. Initialize an empty stack to keep track of the brackets.
+2. Iterate through the string.
+3. If the current character is an opening bracket, push it to the stack.
+4. If the current character is a closing bracket, check if the stack is not empty and the top of the stack is a corresponding opening bracket. If it is, pop the stack. If it's not, return false.
+5. After iterating through the string, check if the stack is empty. If it is, return true. If it's not, return false.
+
+# Code
+
+```julia
+function correct_bracketing(brackets::String)::Bool
+    stack = []
+    for bracket in brackets
+        if bracket == '('
+            push!(stack, bracket)
+        elseif bracket == ')'
+            if isempty(stack) || stack[end] != '('
+                return false
+            else
+                pop!(stack)
+            end
+        end
+    end
+    return isempty(stack)
+end
+```

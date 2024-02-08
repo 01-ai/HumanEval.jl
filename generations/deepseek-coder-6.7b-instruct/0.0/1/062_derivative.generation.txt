@@ -1,0 +1,10 @@
+Here is the Julia function that calculates the derivative of a polynomial:
+
+```julia
+function derivative(xs::Vector{T}) where T <: Number
+    length(xs) <= 1 && return T[0]
+    return [xs[i] * i for i in 2:length(xs)]
+end
+```
+
+This function works by iterating over the coefficients of the polynomial, starting from the second one (index 2). For each coefficient, it multiplies it by its index (which is the power of the variable in the original polynomial), and stores the result in the new vector. The first coefficient (index 1) is ignored because its derivative is always 0. If the input vector has only one element (which is the case for the constant polynomial), the function returns a vector with a single zero element.

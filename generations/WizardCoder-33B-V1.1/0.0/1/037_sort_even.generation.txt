@@ -1,0 +1,20 @@
+
+
+Here is the Julia function that implements the above doc string:
+
+```julia
+function sort_even(l::Vector)::Vector
+    even_indices = [l[i] for i in 1:2:length(l)]
+    sort(even_indices)
+    sorted_even_indices = sort(even_indices)
+    result = copy(l)
+    j = 1
+    for i in 2:2:length(l)
+        result[i] = sorted_even_indices[j]
+        j += 1
+    end
+    return result
+end
+```
+
+This function first extracts the elements at even indices, sorts them, and then replaces the elements at even indices in the original list with the sorted elements. 

@@ -1,0 +1,18 @@
+
+
+Here is a Julia function that implements the factorize function as described in the docstring:
+
+```julia
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    for i in 2:n
+        while n % i == 0
+            push!(factors, i)
+            n = div(n, i)
+        end
+    end
+    return factors
+end
+```
+
+This function works by iterating over all integers from 2 to n (inclusive) and checking if n is divisible by the current integer. If it is, the current integer is a factor of n, and it is added to the list of factors. The value of n is then divided by the current integer to reduce the problem size for the next iteration. This process continues until n is no longer divisible by the current integer, at which point the next integer is checked. The loop terminates when n becomes 1, at which point all of its factors have been found.

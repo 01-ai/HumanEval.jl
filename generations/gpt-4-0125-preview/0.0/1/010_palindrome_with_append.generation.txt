@@ -1,0 +1,37 @@
+To implement the `palindrome_with_append` function in Julia, we can follow these steps:
+
+1. **Identify the longest palindromic suffix**: We iterate from the end of the string towards the beginning, checking at each step if the substring from the current position to the end is a palindrome. The first such substring we find will be the longest palindromic suffix since we are moving from the longest possible substring towards the shortest.
+
+2. **Append the reverse of the prefix**: Once we have identified the longest palindromic suffix, we know that the rest of the string (the prefix not included in this suffix) needs to be reversed and appended to the end of the original string to form the shortest palindrome that starts with the given string.
+
+Here's how the function can be implemented:
+
+```julia
+function palindrome_with_append(s::String)::String
+    # Function to check if a given string is a palindrome
+    is_palindrome(str::String)::Bool = str == reverse(str)
+
+    n = length(s)
+    # If the string is empty or already a palindrome, it is its own shortest palindrome
+    if n == 0 || is_palindrome(s)
+        return s
+    end
+
+    # Find the longest palindromic suffix
+    for i in 1:n
+        # Substring from i to end
+        suffix = s[i:end]
+        if is_palindrome(suffix)
+            # Found the longest palindromic suffix, prepare the prefix to append
+            prefix_to_append = reverse(s[1:i-1])
+            return s * prefix_to_append
+        end
+    end
+
+    # If no palindromic suffix is found, which should not happen given the logic,
+    # return the original string appended with its reverse (excluding the last character to avoid duplication)
+    return s * reverse(s[1:end-1])
+end
+```
+
+This function first checks if the input string is empty or already a palindrome, in which case it returns the string itself. Then, it iterates through the string to find the longest palindromic suffix. Once found, it appends the reverse of the prefix (the part of the string not included in the palindromic suffix) to the original string. If, for some reason, no palindromic suffix is found (which should not happen with the given logic), it defaults to appending the reverse of the entire string (excluding the last character to avoid duplication) to itself.

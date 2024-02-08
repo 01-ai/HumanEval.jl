@@ -1,0 +1,17 @@
+Here is one possible implementation of the `largest_prime_factor` function:
+
+```julia
+function largest_prime_factor(n::Int)::Int
+    factor = 2
+    while n > factor
+        if n % factor == 0
+            n = n / factor
+        else
+            factor += 1
+        end
+    end
+    return factor
+end
+```
+
+This implementation uses a while loop to iterate through all possible factors of `n`. It starts with the smallest prime factor, which is 2, and checks if `n` is divisible by the current factor. If it is, it divides `n` by the factor and continues. If it's not divisible, it increments the factor and continues. This process continues until `n` is equal to the current factor, at which point the current factor is the largest prime factor of the original `n`.

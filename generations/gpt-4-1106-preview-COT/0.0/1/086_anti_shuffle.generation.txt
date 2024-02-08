@@ -1,0 +1,33 @@
+To implement the `anti_shuffle` function, we will follow these steps:
+
+1. Split the input string `s` into words based on spaces.
+2. For each word, split it into characters, sort the characters, and then join them back into a string.
+3. Join the sorted words back into a single string, preserving the original order of the words and spaces.
+4. Return the resulting string.
+
+Now, let's write the code for the `anti_shuffle` function following the outline:
+
+```julia
+function anti_shuffle(s::String)::String
+    # Split the string into words
+    words = split(s, ' ', keepempty=true)
+    
+    # Sort the characters in each word
+    sorted_words = [join(sort(collect(word))) for word in words]
+    
+    # Join the sorted words back into a single string
+    sorted_string = join(sorted_words, ' ')
+    
+    return sorted_string
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(anti_shuffle("Hi")) # Should return "Hi"
+println(anti_shuffle("hello")) # Should return "ehllo"
+println(anti_shuffle("Hello World!!!")) # Should return "Hello !!!Wdlor"
+```
+
+Note that in the last example, the punctuation "!!!" is considered part of the word "World!!!", so it is sorted along with the letters. If the punctuation should be treated separately, additional logic would be needed to handle that case.

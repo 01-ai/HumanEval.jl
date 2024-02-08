@@ -1,0 +1,10 @@
+
+
+function largest_divisor(n::Int)::Int
+    for i in reverse(1:n-1)
+        if n % i == 0
+            return i
+        end
+    end
+    return 1
+end

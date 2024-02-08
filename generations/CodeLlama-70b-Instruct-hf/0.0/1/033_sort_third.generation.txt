@@ -1,0 +1,17 @@
+
+
+```julia
+function sort_third(l::Vector)
+    # Create a copy of the input list
+    l_copy = copy(l)
+
+    # Iterate through the list and sort the values at indicies divisible by 3
+    for i in 1:3:length(l_copy)
+        l_copy[i] = sort(l_copy[i])
+    end
+
+    return l_copy
+end
+```
+
+This function takes a list `l` and returns a list `l_copy` such that `l_copy` is identical to `l` in the indices that are not divisible by three, while its values at the indices that are divisible by three are equal to the values of the corresponding indices of `l`, but sorted.

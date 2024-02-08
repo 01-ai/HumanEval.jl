@@ -1,0 +1,36 @@
+### Step-by-Step Outline
+
+1. **Input Validation**: Check if the input `n` is less than 2. If so, return `false` because 1 and all negative numbers are not prime.
+2. **Special Cases**: If `n` is 2 or 3, return `true` because these are the first two prime numbers.
+3. **Efficient Prime Checking**:
+    - Iterate from 2 to the square root of `n` (inclusive). The reason for only going up to the square root is that if `n` has a factor greater than its square root, then it must also have a smaller factor, and we would have already found it by then.
+    - For each number `i` in this range, check if `n` is divisible by `i` (i.e., `n % i == 0`). If it is, then `n` is not prime, so return `false`.
+4. **Return True**: If no divisors are found in the above steps, then `n` is prime, and we return `true`.
+
+### Julia Code Implementation
+
+```julia
+function is_prime(n::Int)
+    # Step 1: Input validation
+    if n < 2
+        return false
+    end
+
+    # Step 2: Special cases
+    if n == 2 || n == 3
+        return true
+    end
+
+    # Step 3: Efficient prime checking
+    for i in 2:isqrt(n)  # isqrt(n) computes the integer square root of n
+        if n % i == 0
+            return false
+        end
+    end
+
+    # Step 4: Return true if no divisors found
+    return true
+end
+```
+
+This implementation efficiently checks if a number is prime by reducing the number of checks needed, especially for large numbers, by only iterating up to the square root of the number.

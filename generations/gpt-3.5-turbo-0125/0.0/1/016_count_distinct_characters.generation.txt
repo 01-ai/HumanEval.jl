@@ -1,0 +1,5 @@
+```julia
+function count_distinct_characters(s::String)::Int
+    return length(Set(lowercase(s)))
+end
+```

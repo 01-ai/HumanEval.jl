@@ -1,0 +1,21 @@
+```julia
+function count_nums(xs::Vector{Int})::Int
+    # Initialize counter
+    count = 0
+
+    # Loop through the array and count the numbers with sum of digits > 0
+    for x in xs
+        # Calculate the sum of digits
+        sum_digits = sum(digits(x))
+
+        # If the sum is greater than 0, increment the counter
+        if sum_digits > 0
+            count += 1
+        end
+    end
+
+    return count
+end
+```
+
+This function defines a `count_nums` function that takes a vector of integers `xs` and returns the number of elements whose sum of digits is greater than 0. It does this by iterating through the vector and checking the sum of digits for each element, incrementing a counter when the sum is greater than 0.

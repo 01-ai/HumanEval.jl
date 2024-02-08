@@ -1,0 +1,18 @@
+  Here's one way to implement the `multiply_unit_digits` function in Julia:
+```
+function multiply_unit_digits(a::Int, b::Int)::Int
+    return (a % 10) * (b % 10)
+end
+```
+Explanation:
+
+* The `%` operator in Julia is the modulo operator, which returns the remainder of dividing the first operand by the second operand.
+* In this case, we use the modulo operator to get the unit digit of each number by dividing it by 10 and taking the remainder.
+* We then multiply the unit digits together to get the product of the unit digits.
+
+Here are some examples of how the function works:
+
+* `multiply_unit_digits(148, 412)` returns `16`, because the unit digits of 148 and 412 are 8 and 2, respectively, and 8 \* 2 = 16.
+* `multiply_unit_digits(19, 28)` returns `72`, because the unit digits of 19 and 28 are 9 and 8, respectively, and 9 \* 8 = 72.
+* `multiply_unit_digits(2020, 1851)` returns `0`, because the unit digits of 2020 and 1851 are 0 and 1, respectively, and 0 \* 1 = 0.
+* `multiply_unit_digits(14, -15)` returns `20`, because the unit digits of 14 and -15 are 4 and 5, respectively, and 4 \* 5 = 20.

@@ -1,0 +1,25 @@
+```julia
+function count_digits(n::Int)::Int
+    # Initialize the product of odd digits to 0
+    odd_digits_product = 0
+
+    # Loop through the digits of the number
+    while n > 0
+        # Get the last digit of the number
+        digit = n % 10
+
+        # If the digit is odd, add it to the product
+        if digit % 2 != 0
+            odd_digits_product *= digit
+        end
+
+        # Move to the next digit
+        n //= 10
+    end
+
+    # Return the product of the odd digits
+    return odd_digits_product
+end
+```
+
+This function works by iteratively removing the last digit of the number `n` and checking if it is odd. If it is, the function multiplies the current product of odd digits by that digit. After all digits have been processed, the function returns the final product. If all digits are even, the function returns 0.

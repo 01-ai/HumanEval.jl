@@ -1,0 +1,10 @@
+
+
+function rolling_max(numbers::Vector{Int})::Vector{Int}
+    max_numbers = Vector{Int}(undef, length(numbers))
+    max_numbers[1] = numbers[1]
+    for i in 2:length(numbers)
+        max_numbers[i] = max(max_numbers[i-1], numbers[i])
+    end
+    return max_numbers
+end

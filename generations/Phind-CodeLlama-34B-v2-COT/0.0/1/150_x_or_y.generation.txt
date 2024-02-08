@@ -1,0 +1,38 @@
+
+
+# Outline
+
+1. Define the function `x_or_y(n::Int, x::Int, y::Int)::Int`.
+2. Check if `n` is a prime number.
+3. If `n` is prime, return `x`.
+4. If `n` is not prime, return `y`.
+
+# Code
+
+```julia
+function x_or_y(n::Int, x::Int, y::Int)::Int
+    # Check if n is a prime number
+    if n <= 1
+        return y
+    elseif n <= 3
+        return x
+    elseif n % 2 == 0 || n % 3 == 0
+        return y
+    end
+
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return y
+        end
+        i += 6
+    end
+
+    # If n is prime, return x
+    return x
+end
+```
+
+# Explanation
+
+This function checks whether a given number `n` is prime or not. If `n` is prime, it returns `x`. Otherwise, it returns `y`. The function uses a simple algorithm to check for primality: it divides `n` by all numbers up to its square root. If `n` is divisible by any of these numbers, it is not prime and the function returns `y`. Otherwise, `n` is prime and the function returns `x`.

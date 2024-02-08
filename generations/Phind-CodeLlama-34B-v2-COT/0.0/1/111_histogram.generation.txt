@@ -1,0 +1,45 @@
+
+
+To solve this problem, we will follow these steps:
+
+1. Initialize an empty dictionary to store the frequency of each letter.
+2. Split the input string into individual letters.
+3. Iterate over the letters and increment their count in the dictionary.
+4. Find the maximum count in the dictionary.
+5. Iterate over the dictionary and add all the letters with the maximum count to the output dictionary.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function histogram(s::String)::Dict{String, Int}
+    # Step 1: Initialize an empty dictionary to store the frequency of each letter.
+    freq = Dict{String, Int}()
+
+    # Step 2: Split the input string into individual letters.
+    letters = split(s)
+
+    # Step 3: Iterate over the letters and increment their count in the dictionary.
+    for letter in letters
+        if haskey(freq, letter)
+            freq[letter] += 1
+        else
+            freq[letter] = 1
+        end
+    end
+
+    # Step 4: Find the maximum count in the dictionary.
+    max_count = maximum(values(freq), init=0)
+
+    # Step 5: Iterate over the dictionary and add all the letters with the maximum count to the output dictionary.
+    output = Dict{String, Int}()
+    for (letter, count) in freq
+        if count == max_count
+            output[letter] = count
+        end
+    end
+
+    return output
+end
+```
+
+This function works by first creating a frequency dictionary of all the letters in the input string. It then finds the maximum count and creates an output dictionary containing all the letters with that count.

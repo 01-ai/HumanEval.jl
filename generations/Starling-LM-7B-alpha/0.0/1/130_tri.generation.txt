@@ -1,0 +1,16 @@
+ function tri(n::Int)::Vector{Int}
+    if n == 0
+        return Vector{Int}()
+    end
+
+    sequence = [1]
+    for i in 2:n
+        if i % 2 == 0
+            sequence[i] = 1 + i / 2
+        else
+            sequence[i] = sequence[i-1] + sequence[i-2] + sequence[i+1]
+        end
+    end
+
+    return sequence[1:n]
+end

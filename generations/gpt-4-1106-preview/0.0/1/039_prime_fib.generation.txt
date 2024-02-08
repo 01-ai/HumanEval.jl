@@ -1,0 +1,59 @@
+To implement the `prime_fib` function, we need to generate Fibonacci numbers and check if they are prime. We will continue this process until we find the `n`-th prime Fibonacci number. Here is the Julia code for the function:
+
+```julia
+function is_prime(num::Int)::Bool
+    if num <= 1
+        return false
+    elseif num <= 3
+        return true
+    elseif num % 2 == 0 || num % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= num
+        if num % i == 0 || num % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+
+function fib(n::Int)::Int
+    a, b = 0, 1
+    for i in 1:n
+        a, b = b, a + b
+    end
+    return a
+end
+
+function prime_fib(n::Int)::Int
+    count = 0
+    i = 1
+    while true
+        fib_num = fib(i)
+        if is_prime(fib_num)
+            count += 1
+            if count == n
+                return fib_num
+            end
+        end
+        i += 1
+    end
+end
+
+# Example usage:
+println(prime_fib(1)) # 2
+println(prime_fib(2)) # 3
+println(prime_fib(3)) # 5
+println(prime_fib(4)) # 13
+println(prime_fib(5)) # 89
+```
+
+This code defines three functions:
+
+1. `is_prime(num::Int)::Bool` - checks if a number is prime.
+2. `fib(n::Int)::Int` - generates the `n`-th Fibonacci number.
+3. `prime_fib(n::Int)::Int` - finds the `n`-th number that is both a Fibonacci number and prime.
+
+Please note that the `fib` function as implemented above is not efficient for large `n` because it recalculates all previous Fibonacci numbers each time it is called. For a more efficient implementation, you could use memoization or an iterative approach that only calculates each Fibonacci number once. However, the provided implementation should work for the purpose of finding the first few prime Fibonacci numbers as requested.

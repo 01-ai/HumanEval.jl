@@ -1,0 +1,16 @@
+
+
+function smallest_change(xs::Vector{Int})::Int
+    n = length(xs)
+    changes = 0
+    for i in 1:div(n, 2)
+        if xs[i] != xs[n - i + 1]
+            changes += 1
+        end
+    end
+    return changes
+end
+
+println(smallest_change([1, 2, 3, 5, 4, 7, 9, 6]))
+println(smallest_change([1, 2, 3, 4, 3, 2, 2]))
+println(smallest_change([1, 2, 3, 2, 1]))

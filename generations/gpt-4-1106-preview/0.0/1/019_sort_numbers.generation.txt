@@ -1,0 +1,28 @@
+Certainly! Below is the Julia function `sort_numbers` that takes a string of number words and returns them sorted:
+
+```julia
+function sort_numbers(numbers::String)::String
+    # Create a mapping from number words to their corresponding digits
+    num_word_to_digit = Dict(
+        "zero" => 0, "one" => 1, "two" => 2, "three" => 3, "four" => 4,
+        "five" => 5, "six" => 6, "seven" => 7, "eight" => 8, "nine" => 9
+    )
+
+    # Split the input string into individual number words
+    num_words = split(numbers)
+
+    # Convert the number words to digits, sort them, and then convert back to words
+    sorted_num_words = [kv[1] for kv in sort(collect(kv for (k, v) in num_word_to_digit if k in num_words))]
+
+    # Join the sorted number words into a single string
+    return join(sorted_num_words, " ")
+end
+```
+
+You can use this function to sort a string of number words as shown in the example. Here's how you would call the function:
+
+```julia
+println(sort_numbers("three one five"))  # Output should be "one three five"
+```
+
+Please note that this implementation assumes that the input string contains valid number words only and that each word is correctly spelled. If the input might contain invalid words or misspellings, additional error checking would be necessary.

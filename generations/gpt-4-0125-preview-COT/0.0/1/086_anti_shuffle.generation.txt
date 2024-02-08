@@ -1,0 +1,32 @@
+### Step-by-Step Outline
+
+1. **Split the String into Words**: First, we need to split the input string `s` into individual words. In this context, a word is defined as a sequence of characters separated by spaces. This step will help us process each word individually.
+
+2. **Sort Characters in Each Word**: For each word obtained from step 1, we will sort the characters in ascending order based on their ASCII values. This step is crucial for creating the "ordered version" of each word as specified in the task.
+
+3. **Reassemble the String**: After sorting the characters in each word, we will reassemble the words back into a single string. It's important to maintain the original order of the words and include the spaces between them as they were in the input string.
+
+4. **Return the Result**: Finally, the function will return the newly assembled string, which is the "ordered version" of the input string.
+
+### Julia Code Implementation
+
+```julia
+function anti_shuffle(s::String)::String
+    # Step 1: Split the string into words
+    words = split(s, ' ', keepempty=false)
+    
+    # Step 2: Sort characters in each word
+    sorted_words = [join(sort(collect(word))) for word in words]
+    
+    # Step 3: Reassemble the string
+    # To maintain original spaces, we replace the original words with their sorted versions
+    result_string = s
+    for (original, sorted) in zip(words, sorted_words)
+        result_string = replace(result_string, original => sorted, count=1)
+    end
+    
+    return result_string
+end
+```
+
+This implementation follows the outlined steps closely. Note that in step 3, we carefully replace each original word with its sorted version in the original string to maintain the exact positions of spaces and non-alphabetic characters. This approach ensures that the function works correctly even when the input string contains special characters or multiple spaces between words.

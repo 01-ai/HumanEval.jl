@@ -1,0 +1,21 @@
+```julia
+function decimal_to_binary(decimal::Int)::String
+    # Initialize the binary string with the extra 'db' characters
+    binary_str = "db"
+
+    # Loop through the decimal number, converting each digit to binary
+    while decimal > 0
+        remainder = decimal % 2
+        decimal //= 2
+        binary_str = string(remainder) * binary_str
+    end
+
+    # Append the last 'db' to the string
+    binary_str = binary_str * "db"
+
+    # Return the formatted binary string
+    return binary_str
+end
+```
+
+This function takes an integer `decimal` and converts it to a binary string with the specified format. It uses a loop to divide the decimal number by 2 and append the corresponding binary digits to the string. The extra 'db' characters at the beginning and end of the string are added to maintain the format as described in the doc string.

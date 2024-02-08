@@ -1,0 +1,5 @@
+function is_bored(s::String)::Int
+    sentences = split(s, r"[.!?]")
+    boredoms = sum(startswith(strip(sentence), "I") for sentence in sentences)
+    return boredoms
+end

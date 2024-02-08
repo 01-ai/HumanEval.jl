@@ -1,0 +1,11 @@
+
+
+Here is the Julia function that implements the given doc string:
+
+```julia
+function filter_integers(values::AbstractVector)::Vector{Int}
+    return filter(x -> isa(x, Int), values)
+end
+```
+
+This function uses the `filter` function to iterate over the elements of the input vector and keep only those that are integers. The `isa` function is used to check if an element is an integer. 

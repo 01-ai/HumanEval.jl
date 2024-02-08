@@ -1,0 +1,9 @@
+
+
+function any_int(x::Number, y::Number, z::Number)::Bool
+    if x == y + z || y == x + z || z == x + y
+        return true
+    else
+        return false
+    end
+end

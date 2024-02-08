@@ -1,0 +1,18 @@
+
+
+The problem is asking to find the number of collisions between cars moving in opposite directions. Since the cars are infinitely sturdy and strong, they continue moving in their trajectory as if they did not collide. Therefore, the number of collisions will be equal to the number of cars in each direction.
+
+Here is the step-by-step outline:
+
+1. Define a function `car_race_collision(n::Int)::Int` that takes an integer `n` as an argument and returns an integer.
+2. Return `n*n` as the output.
+
+Here is the Julia code:
+
+```julia
+function car_race_collision(n::Int)::Int
+    return n*n
+end
+```
+
+This function simply returns the square of the input integer `n`, which represents the number of collisions between cars moving in opposite directions.

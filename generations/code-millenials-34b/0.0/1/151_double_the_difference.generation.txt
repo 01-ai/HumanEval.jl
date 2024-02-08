@@ -1,0 +1,17 @@
+
+
+function double_the_difference(xs::Vector)
+    sum = 0
+    for x in xs
+        if x > 0 && isinteger(x) && x % 2 != 0
+            sum += x^2
+        end
+    end
+    return sum
+end
+
+# Test cases
+println(double_the_difference([1, 3, 2, 0]))  # 10
+println(double_the_difference([-1, -2, 0]))  # 0
+println(double_the_difference([9, -2]))  # 81
+println(double_the_difference([0]))  # 0

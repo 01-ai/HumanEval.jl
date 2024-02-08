@@ -1,0 +1,16 @@
+
+
+function intersperse(numbers::Vector{Int}, delimeter::Int)::Vector{Int}
+    result = Int[]
+    for i in 1:length(numbers)
+        push!(result, numbers[i])
+        if i != length(numbers)
+            push!(result, delimeter)
+        end
+    end
+    return result
+end
+
+# Test cases
+println(intersperse(Int[], 4))
+println(intersperse([1, 2, 3], 4))

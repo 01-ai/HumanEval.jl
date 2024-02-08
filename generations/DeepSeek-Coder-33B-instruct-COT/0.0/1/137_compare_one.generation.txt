@@ -1,0 +1,31 @@
+Here is a step-by-step outline of how you can implement this function:
+
+1. Check if the inputs are of the same type. If not, return `nothing`.
+2. If the inputs are integers or floats, convert them to the same type (float) and compare them.
+3. If the inputs are strings, replace the comma with a dot, convert them to floats, and compare them.
+4. If the inputs are equal, return `nothing`.
+
+Here is the Julia code that implements this function:
+
+```julia
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+    if typeof(a) != typeof(b)
+        return nothing
+    end
+
+    if typeof(a) <: AbstractString
+        a = parse(Float64, replace(a, ',' => '.'))
+        b = parse(Float64, replace(b, ',' => '.'))
+    end
+
+    if a == b
+        return nothing
+    elseif a > b
+        return a
+    else
+        return b
+    end
+end
+```
+
+This function first checks if the inputs are of the same type. If not, it returns `nothing`. If the inputs are strings, it replaces the comma with a dot, converts them to floats, and compares them. If the inputs are equal, it returns `nothing`. Otherwise, it returns the larger value.

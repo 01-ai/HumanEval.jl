@@ -1,0 +1,33 @@
+
+
+To solve this problem, we can use a simple loop to iterate through all n-digit numbers and check whether the first or the last digit is 1.
+
+Step-by-step outline:
+1. Initialize a counter variable to store the count of numbers that start or end with 1.
+2. Use a loop to iterate through all n-digit numbers.
+3. For each number, check whether the first or the last digit is 1.
+4. If it is, increment the counter.
+5. After the loop finishes, return the counter.
+
+Now let's write the Julia code for this problem.
+
+```julia
+function starts_one_ends(n::Int)::Int
+    # Initialize the counter
+    count = 0
+
+    # Iterate through all n-digit numbers
+    for i = 10^(n-1) : 10^n - 1
+        # Check whether the first or the last digit is 1
+        if i % 10 == 1 || div(i, 10^(n-1)) == 1
+            # If it is, increment the counter
+            count += 1
+        end
+    end
+
+    # Return the counter
+    return count
+end
+```
+
+This function works by iterating through all n-digit numbers and checking whether the first or the last digit is 1. If it is, it increments a counter. After it has checked all the numbers, it returns the counter.

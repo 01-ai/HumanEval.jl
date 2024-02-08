@@ -1,0 +1,28 @@
+
+
+# Outline
+
+1. Initialize an empty Set to store distinct characters.
+2. Convert the input string to lowercase to ignore case differences.
+3. Iterate through each character in the string.
+4. For each character, add it to the set. Since it's a set, duplicate characters will be ignored.
+5. Return the length of the set, which represents the number of distinct characters.
+
+# Code
+
+```julia
+function count_distinct_characters(s::String)::Int
+    distinct_chars = Set{Char}()
+    for c in lowercase(s)
+        push!(distinct_chars, c)
+    end
+    return length(distinct_chars)
+end
+```
+
+# Test
+
+```julia
+@assert count_distinct_characters("xyzXYZ") == 3
+@assert count_distinct_characters("Jerry") == 4
+```

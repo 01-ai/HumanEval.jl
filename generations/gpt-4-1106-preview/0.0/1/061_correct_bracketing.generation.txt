@@ -1,0 +1,26 @@
+Here is the Julia function `correct_bracketing` that checks if every opening bracket has a corresponding closing bracket:
+
+```julia
+function correct_bracketing(brackets::String)::Bool
+    balance = 0
+    for bracket in brackets
+        if bracket == '('
+            balance += 1
+        elseif bracket == ')'
+            balance -= 1
+        end
+        if balance < 0
+            return false
+        end
+    end
+    return balance == 0
+end
+
+# Examples
+println(correct_bracketing("("))       # Output: false
+println(correct_bracketing("()"))      # Output: true
+println(correct_bracketing("(()())"))  # Output: true
+println(correct_bracketing(")(()"))    # Output: false
+```
+
+This function uses a simple counter (`balance`) to keep track of the number of unmatched opening brackets. If it encounters an opening bracket, it increments the counter, and if it encounters a closing bracket, it decrements the counter. If at any point the counter goes negative, it means a closing bracket has appeared without a corresponding opening bracket, so the function returns `false`. If the loop finishes and the counter is zero, it means all brackets are correctly matched, so the function returns `true`. If the counter is not zero at the end, it means there are unmatched opening brackets, so the function returns `false`.

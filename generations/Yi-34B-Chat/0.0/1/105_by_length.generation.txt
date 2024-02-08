@@ -1,0 +1,19 @@
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    # Sort the array and filter out numbers that are not between 1 and 9 inclusive
+    sorted_xs = sort(xs)
+    filtered_xs = sorted_xs[sorted_xs .>= 1]
+    filtered_xs = filtered_xs[filtered_xs .<= 9]
+
+    # Reverse the filtered array
+    reversed_xs = reverse(filtered_xs)
+
+    # Replace each digit with its corresponding name
+    names = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    names_xs = [names[x] for x in reversed_xs]
+
+    return names_xs
+end
+```
+
+This function sorts the array of integers, filters out numbers that are not between 1 and 9 inclusive, reverses the filtered array, and then replaces each digit with its corresponding name from a pre-defined string array. If the input array is empty, an empty array of strings is returned.

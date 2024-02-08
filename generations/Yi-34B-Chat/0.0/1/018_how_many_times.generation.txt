@@ -1,0 +1,19 @@
+```julia
+function how_many_times(s::String, sub_s::String)::Int
+    # Initialize count to 0
+    count = 0
+
+    # Loop through the original string
+    for i in 1:length(s)
+        # Check if the substring exists at the current position
+        if s[i:i+length(sub_s)-1] == sub_s
+            # Increment the count
+            count += 1
+        end
+    end
+
+    return count
+end
+```
+
+This function takes two strings `s` and `sub_s`, and returns the number of times `sub_s` occurs in `s`, including overlapping occurrences. The examples provided in the docstring demonstrate the expected behavior of the function.

@@ -1,0 +1,13 @@
+
+
+Here is the Julia function that implements the above doc string:
+
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    unique_xs = unique(xs)
+    length(unique_xs) < 2 && return nothing
+    sort(unique_xs)[2]
+end
+```
+
+This function works by first removing duplicates from the input list using the `unique` function. If the length of the list after removing duplicates is less than 2, it means there is no 2nd smallest element, so it returns `nothing`. Otherwise, it sorts the list and returns the 2nd element. 

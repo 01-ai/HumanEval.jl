@@ -1,0 +1,11 @@
+
+
+function flip_case(s::String)::String
+    return map(s) do c
+        if islowercase(c)
+            uppercase(c)
+        else
+            lowercase(c)
+        end
+    end
+end

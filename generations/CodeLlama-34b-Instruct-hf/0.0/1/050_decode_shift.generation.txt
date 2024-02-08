@@ -1,0 +1,20 @@
+  Here is the Julia function that implements the `encode_shift` and `decode_shift` functions based on the given doc strings:
+```
+function encode_shift(s::String)::String
+    join(((x - 'a' + 5 + 26) % 26 + 'a' for x in s))
+end
+
+function decode_shift(s::String)::String
+    join(((x - 'a' - 5 + 26) % 26 + 'a' for x in s))
+end
+```
+The `encode_shift` function takes a string `s` as input and returns a new string where every character is shifted by 5 positions in the alphabet. The `decode_shift` function takes a string `s` as input and returns the original string by shifting every character back by 5 positions in the alphabet.
+
+Here's an example usage of the functions:
+```
+julia> encode_shift("hello")
+"mjqqt"
+
+julia> decode_shift("mjqqt")
+"hello"
+```

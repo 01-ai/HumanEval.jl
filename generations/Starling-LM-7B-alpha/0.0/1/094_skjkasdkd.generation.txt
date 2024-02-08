@@ -1,0 +1,35 @@
+ function skjkasdkd(xs::Vector{Int})::Int
+    # Check if a number is prime
+    function is_prime(n::Int)::Bool
+        if n <= 1
+            return false
+        end
+        for i in 2:sqrt(Int, n)
+            if n % i == 0
+                return false
+            end
+        end
+        return true
+    end
+
+    # Sum of digits of a number
+    function sum_of_digits(n::Int)::Int
+        sum = 0
+        while n > 0
+            sum += n % 10
+            n = n ÷ 10
+        end
+        return sum
+    end
+
+    # Find the largest prime number in the vector
+    largest_prime = 0
+    for x in xs
+        if is_prime(x) && x > largest_prime
+            largest_prime = x
+        end
+    end
+
+    # Return the sum of the digits of the largest prime number
+    return sum_of_digits(largest_prime)
+end

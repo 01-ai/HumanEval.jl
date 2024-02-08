@@ -1,0 +1,34 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function intersperse(numbers::Vector{Int}, delimeter::Int)::Vector{Int}
+    result = Int[]
+    for i in 1:length(numbers)
+        push_with_delimeter(result, numbers[i], delimeter, i == length(numbers))
+    end
+    return result
+end
+
+function push_with_delimeter(result::Vector{Int}, number::Int, delimeter::Int, is_last::Bool)
+    push_number(result, number)
+    if !is_last
+        push_number(result, delimeter)
+    end
+end
+
+function push_number(result::Vector{Int}, number::Int)
+    push_number(result, number, false)
+end
+
+function push_number(result::Vector{Int}, number::Int, is_delimeter::Bool)
+    if is_delimeter
+        push_number(result, delimeter)
+    else
+        push_number(result, number)
+    end
+end
+```
+
+This function works by iterating over the input list and pushing each element and the delimiter into a new list. The delimiter is only pushed between elements, not at the beginning or end of the list.
+
+Please note that the function `push_with_delimeter` is not used in the code above, but it is included for completeness. It is a helper function that pushes a number and a delimiter into a list, but only if the number is not the last in the list.

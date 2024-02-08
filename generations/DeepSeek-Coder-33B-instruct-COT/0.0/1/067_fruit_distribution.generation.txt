@@ -1,0 +1,27 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. Split the string into two parts: the number of apples and the number of oranges.
+2. Convert these two parts into integers.
+3. Subtract the total number of apples and oranges from the total number of fruits.
+4. Return the result.
+
+Here is the Julia code that implements this solution:
+
+```julia
+function fruit_distribution(s::String, n::Int)::Int
+    # Split the string into two parts
+    parts = split(s, " and ")
+
+    # Convert the two parts into integers
+    apples = parse(Int, split(parts[1])[1])
+    oranges = parse(Int, split(parts[2])[1])
+
+    # Subtract the total number of apples and oranges from the total number of fruits
+    mangoes = n - apples - oranges
+
+    # Return the result
+    return mangoes
+end
+```
+
+This function works by first splitting the input string into two parts: the number of apples and the number of oranges. It then converts these two parts into integers and subtracts them from the total number of fruits to find the number of mangoes.

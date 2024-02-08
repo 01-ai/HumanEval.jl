@@ -1,0 +1,26 @@
+### Step-by-Step Outline
+
+1. **Normalize the case**: Convert the input string to either all lowercase or all uppercase to ensure that character comparison is case-insensitive.
+2. **Create a set of characters**: Iterate through the normalized string and add each character to a set. Sets inherently contain only unique elements, so this will automatically filter out any duplicates.
+3. **Count the distinct characters**: Determine the number of elements in the set, which represents the count of distinct characters in the original string.
+4. **Return the count**: Return the number of distinct characters.
+
+### Julia Code Implementation
+
+```julia
+function count_distinct_characters(s::String)::Int
+    # Step 1: Normalize the case
+    normalized_string = lowercase(s)
+    
+    # Step 2: Create a set of characters
+    char_set = Set{Char}()
+    for char in normalized_string
+        push!(char_set, char)
+    end
+    
+    # Step 3 & 4: Count the distinct characters and return the count
+    return length(char_set)
+end
+```
+
+This function should work as expected for the given examples and any other string input, counting distinct characters without considering their case.

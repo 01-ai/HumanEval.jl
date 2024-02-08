@@ -1,0 +1,38 @@
+### Step-by-Step Outline
+
+1. **Initialize Variables**: Create a variable to keep track of the word with the maximum number of unique characters found so far and its count of unique characters.
+
+2. **Iterate Through Words**: Loop through each word in the input list.
+
+    a. **Count Unique Characters**: For each word, calculate the number of unique characters it contains. This can be done by converting the word into a set of characters and measuring the size of the set.
+    
+    b. **Update Maximum**: Compare the count of unique characters of the current word with the maximum found so far. If the current word has more unique characters, update the maximum count and the word. If the count is the same but the current word is lexicographically smaller, also update the word.
+    
+3. **Return Result**: After iterating through all words, return the word that has the maximum number of unique characters or is lexicographically first among those with the maximum number of unique characters.
+
+### Julia Code
+
+```julia
+function find_max(words::Vector{String})::String
+    # Step 1: Initialize variables
+    max_word = ""
+    max_unique_chars = 0
+    
+    # Step 2: Iterate through words
+    for word in words
+        # Step 2a: Count unique characters
+        unique_chars_count = length(Set(word))
+        
+        # Step 2b: Update maximum
+        if unique_chars_count > max_unique_chars || (unique_chars_count == max_unique_chars && word < max_word)
+            max_word = word
+            max_unique_chars = unique_chars_count
+        end
+    end
+    
+    # Step 3: Return result
+    return max_word
+end
+```
+
+This function follows the outlined steps to ensure that it correctly identifies the word with the maximum number of unique characters, considering the lexicographical order in case of ties.

@@ -1,0 +1,49 @@
+### Step-by-Step Outline
+
+1. **Initialize Variables**: Create a list to hold the separated groups of parentheses. Also, initialize a variable to keep track of the depth of nested parentheses and a variable to accumulate characters for the current group.
+
+2. **Preprocess Input**: Remove spaces from the input string to simplify processing.
+
+3. **Iterate Through Characters**: Loop through each character in the preprocessed string.
+
+    a. **Open Parenthesis**: If the character is an open parenthesis `'('`, increment the depth counter. If the depth is 1, it indicates the start of a new group, so start accumulating characters for this group.
+
+    b. **Close Parenthesis**: If the character is a close parenthesis `')'`, decrement the depth counter. Always add the close parenthesis to the current group. If the depth reaches 0, it indicates the end of a current group, so add the accumulated group to the list and reset the accumulator.
+
+4. **Return Result**: After processing all characters, return the list of separated groups.
+
+### Julia Code Implementation
+
+```julia
+function separate_paren_groups(paren_string::String)::Vector{String}
+    # Step 1: Initialize variables
+    separated_groups = Vector{String}()
+    current_group = ""
+    depth = 0
+
+    # Step 2: Preprocess input
+    clean_string = replace(paren_string, " " => "")
+
+    # Step 3: Iterate through characters
+    for char in clean_string
+        if char == '('
+            # Step 3a: Open parenthesis
+            depth += 1
+            current_group *= char
+        elseif char == ')'
+            # Step 3b: Close parenthesis
+            depth -= 1
+            current_group *= char
+            if depth == 0
+                push!(separated_groups, current_group)
+                current_group = ""
+            end
+        end
+    end
+
+    # Step 4: Return result
+    return separated_groups
+end
+```
+
+This implementation follows the outlined steps to process the input string and separate the groups of nested parentheses, ignoring spaces and ensuring that each group is balanced and not nested within another group.

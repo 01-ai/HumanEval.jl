@@ -1,0 +1,52 @@
+To implement the `is_multiply_prime` function, we will follow these steps:
+
+1. Define the function `is_multiply_prime` that takes an integer `a` as input.
+2. Check if `a` is less than 100, if not, return `false`.
+3. Create a helper function `is_prime` to check if a number is prime.
+4. Use the `is_prime` function to find all prime numbers less than `a`.
+5. Iterate through the list of prime numbers and for each prime number `p`, check if there are two other primes that multiply with `p` to give `a`. If such primes are found, return `true`.
+6. If no such combination of three primes is found, return `false`.
+
+Now, let's write the code for the `is_multiply_prime` function and the helper `is_prime` function:
+
+```julia
+# Helper function to check if a number is prime
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    end
+    for i in 2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+# Main function to check if the number is a multiplication of 3 prime numbers
+function is_multiply_prime(a::Int)::Bool
+    # Check if the number is less than 100
+    if a >= 100
+        return false
+    end
+
+    # Find all prime numbers less than `a`
+    primes = [p for p in 2:a-1 if is_prime(p)]
+
+    # Check for a combination of three primes that multiply to `a`
+    for i in 1:length(primes)
+        for j in i:length(primes)
+            for k in j:length(primes)
+                if primes[i] * primes[j] * primes[k] == a
+                    return true
+                end
+            end
+        end
+    end
+
+    # If no combination is found, return false
+    return false
+end
+```
+
+This code defines the `is_multiply_prime` function that uses a helper function `is_prime` to check for prime numbers and then iterates through the combinations of three primes to see if they multiply to the given number `a`. If such a combination is found, it returns `true`; otherwise, it returns `false`.

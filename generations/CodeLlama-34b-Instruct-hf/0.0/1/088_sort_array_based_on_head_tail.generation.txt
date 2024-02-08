@@ -1,0 +1,17 @@
+  Here's an implementation of the `sort_array_based_on_head_tail` function in Julia:
+```julia
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    if sum(xs[1], xs[end]) % 2 == 0
+        return sort(xs, rev=true)
+    else
+        return sort(xs)
+    end
+end
+```
+Explanation:
+
+The function takes a vector of non-negative integers `xs` as input and returns a sorted copy of the input vector. The sorting is done based on the sum of the first and last elements of the input vector. If the sum is even, the vector is sorted in descending order, otherwise it is sorted in ascending order.
+
+The function first checks if the sum of the first and last elements is even by using the modulo operator `%`. If the result is 0, it means the sum is even, and the function sorts the input vector in descending order using the `sort` function with the `rev` argument set to `true`. Otherwise, it means the sum is odd, and the function sorts the input vector in ascending order using the `sort` function with the `rev` argument set to `false`.
+
+The function returns the sorted vector as output.

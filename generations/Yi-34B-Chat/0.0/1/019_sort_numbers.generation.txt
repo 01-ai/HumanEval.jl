@@ -1,0 +1,16 @@
+```julia
+function sort_numbers(numbers::String)::String
+    # Split the input string into a vector of numbers
+    numbers_vec = split(numbers, " ")
+    
+    # Sort the vector of numbers
+    sorted_numbers_vec = sort(numbers_vec)
+    
+    # Join the sorted numbers back into a string
+    sorted_numbers_str = join(sorted_numbers_vec, " ")
+    
+    return sorted_numbers_str
+end
+```
+
+This function takes a string `numbers` containing space-delimited numbers from "zero" to "nine" and returns the string with those numbers sorted from smallest to largest. The function first splits the input string into a vector of numbers, then sorts the vector, and finally joins the sorted numbers back into a string.

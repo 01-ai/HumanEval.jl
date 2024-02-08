@@ -1,0 +1,25 @@
+To solve this problem, we can break it down into two parts: counting the numbers that start with 1 and counting the numbers that end with 1. However, we need to be careful not to double-count the numbers that both start and end with 1.
+
+1. **Numbers that start with 1**: For an n-digit number to start with 1, there are 9 options (1-9) for each of the remaining (n-1) digits. Therefore, there are \(9^{(n-1)}\) such numbers. However, since we are specifically interested in numbers starting with 1, we actually have \(1 \times 10^{(n-1)}\) options (considering the leading 1 and any combination of the following digits).
+
+2. **Numbers that end with 1**: Any n-digit number can end with 1, and the first (n-1) digits can be any digit from 0 to 9, giving us \(10^{(n-1)}\) options.
+
+3. **Numbers that both start and end with 1**: These are counted in both of the above categories, so we need to subtract them once to avoid double-counting. There are \(10^{(n-2)}\) such numbers (considering the fixed 1s at both ends and any combination of the middle digits).
+
+Therefore, the total count is \(10^{(n-1)} + 10^{(n-1)} - 10^{(n-2)}\).
+
+Here's the Julia function implementing the above logic:
+
+```julia
+function starts_one_ends(n::Int)::Int
+    if n == 1
+        # Special case: If n is 1, the only number that satisfies the condition is 1 itself.
+        return 1
+    else
+        # Calculate the total count as per the logic described above.
+        return 2 * 10^(n-1) - 10^(n-2)
+    end
+end
+```
+
+This function first checks if `n` is 1, in which case it returns 1, as the only 1-digit number that starts or ends with 1 is 1 itself. For other cases, it calculates the total count using the formula derived from our analysis.

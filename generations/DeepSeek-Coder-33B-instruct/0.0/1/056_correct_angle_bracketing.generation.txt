@@ -1,0 +1,21 @@
+Here is a Julia function that implements the given doc string:
+
+```julia
+function correct_angle_bracketing(brackets::String)::Bool
+    open_brackets = 0
+    for bracket in brackets
+        if bracket == '<'
+            open_brackets += 1
+        elseif bracket == '>'
+            if open_brackets == 0
+                return false
+            else
+                open_brackets -= 1
+            end
+        end
+    end
+    return open_brackets == 0
+end
+```
+
+This function works by iterating over each character in the input string. If it encounters an opening bracket "<", it increments a counter. If it encounters a closing bracket ">", it decrements the counter. If at any point the counter goes negative (indicating a closing bracket without a corresponding opening bracket), it returns false. If it finishes iterating over the string and the counter is not zero (indicating an opening bracket without a corresponding closing bracket), it also returns false. Otherwise, it returns true.

@@ -1,0 +1,27 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function prod_signs(xs::Vector{Int})::Union{Nothing,Int}
+    if isempty(xs)
+        return nothing
+    end
+
+    sign_product = 1
+    magnitude_sum = 0
+
+    for x in xs
+        sign_product *= sign(x)
+        magnitude_sum += abs(x)
+    end
+
+    return sign_product * magnitude_sum
+end
+```
+
+This function first checks if the input vector is empty. If it is, the function returns `nothing`.
+
+Then, it initializes two variables, `sign_product` and `magnitude_sum`, to 1 and 0, respectively.
+
+The function then iterates over each number in the vector. For each number, it multiplies `sign_product` by the sign of the number (1 for positive numbers, -1 for negative numbers, and 0 for zeros) and adds the absolute value of the number to `magnitude_sum`.
+
+Finally, the function returns the product of `sign_product` and `magnitude_sum`.

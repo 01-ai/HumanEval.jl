@@ -1,0 +1,53 @@
+### Step-by-Step Outline
+
+1. **Check for Prime Numbers**: Implement a helper function to check if a number is prime. This function will be used to verify if the factors of the given number are prime.
+
+2. **Find Prime Factors**: Implement a function to find all prime factors of the given number. This function will use the prime-checking function to ensure only prime factors are considered.
+
+3. **Count Prime Factors**: Count the number of prime factors of the given number. If the count is exactly 3, return `true`; otherwise, return `false`.
+
+4. **Optimization for Small Numbers**: Given that `a` is less than 100, we can optimize the algorithm by limiting the search for factors and primes to numbers less than 100.
+
+### Julia Code Implementation
+
+```julia
+# Step 1: Check if a number is prime
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    end
+    for i in 2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+# Step 2 & 3: Find prime factors and count them
+function is_multiply_prime(a::Int)::Bool
+    if a < 2
+        return false
+    end
+    
+    prime_factors_count = 0
+    for i in 2:a
+        # Check if i is a prime factor of a
+        if a % i == 0 && is_prime(i)
+            prime_factors_count += 1
+            # Divide a by i to reduce the number and possibly find other factors
+            while a % i == 0
+                a = a ÷ i
+            end
+        end
+    end
+    
+    # Check if the number of prime factors is exactly 3
+    return prime_factors_count == 3
+end
+
+# Examples
+println(is_multiply_prime(30))  # Should return true
+```
+
+This implementation first checks if a number is prime, then iterates through possible factors to find prime factors, counting them along the way. If the count of prime factors is exactly 3, it returns `true`; otherwise, it returns `false`. Given the constraint that `a` is less than 100, this approach is efficient and straightforward for the problem at hand.

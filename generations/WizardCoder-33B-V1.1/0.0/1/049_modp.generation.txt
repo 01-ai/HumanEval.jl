@@ -1,0 +1,12 @@
+
+
+function modp(n::Int, p::Int)::Int
+    return powermod(2, n, p)
+end
+
+# Test cases
+println(modp(3, 5)) # 3
+println(modp(1101, 101)) # 2
+println(modp(0, 101)) # 1
+println(modp(3, 11)) # 8
+println(modp(100, 101)) # 1 

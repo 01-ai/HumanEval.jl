@@ -1,0 +1,28 @@
+  Here's an implementation of the `sort_numbers` function in Julia:
+```
+function sort_numbers(numbers::String)::String
+    # Split the input string into an array of numberals
+    numberals = split(numbers, " ")
+
+    # Sort the array of numberals using the `sort` function
+    sorted_numberals = sort(numberals)
+
+    # Join the sorted array of numberals into a string
+    sorted_numbers = join(sorted_numberals, " ")
+
+    return sorted_numbers
+end
+```
+Here's an explanation of the code:
+
+1. The function takes a string `numbers` as input, which is a space-delimited string of numberals from "zero" to "nine".
+2. The `split` function is used to split the input string into an array of numberals.
+3. The `sort` function is used to sort the array of numberals.
+4. The `join` function is used to join the sorted array of numberals into a string.
+5. The sorted string is returned as the output of the function.
+
+Here's an example usage of the function:
+```
+julia> sort_numbers("three one five")
+"one three five"
+```

@@ -1,0 +1,35 @@
+### Step-by-Step Outline
+
+1. **Split the input string into sentences**: Use the regular expression to split the input string into sentences based on the delimiters '.', '?', and '!'. This will give us an array of sentences.
+
+2. **Trim and Normalize Sentences**: Iterate through the array of sentences, trimming any leading or trailing whitespace from each sentence and converting them to lowercase (or uppercase, but consistently one). This step ensures that the comparison in the next step is case-insensitive and not affected by leading or trailing spaces.
+
+3. **Count Boredoms**: Initialize a counter to 0. For each sentence, check if it starts with the lowercase (or uppercase, if you converted to uppercase in step 2) word "i". If it does, increment the counter.
+
+4. **Return the Counter**: After iterating through all sentences, return the counter as the number of boredoms.
+
+### Julia Code Implementation
+
+```julia
+function is_bored(s::String)::Int
+    # Step 1: Split the input string into sentences
+    sentences = split(s, r"[.?!]")  # Using regex to split by '.', '?', or '!'
+
+    # Step 2: Trim and Normalize Sentences
+    trimmed_sentences = [strip(sentence) for sentence in sentences]  # Trimming whitespace
+    normalized_sentences = [lowercase(sentence) for sentence in trimmed_sentences]  # Converting to lowercase
+
+    # Step 3: Count Boredoms
+    boredom_count = 0
+    for sentence in normalized_sentences
+        if startswith(sentence, "i ")  # Checking if the sentence starts with "i "
+            boredom_count += 1
+        end
+    end
+
+    # Step 4: Return the Counter
+    return boredom_count
+end
+```
+
+This function should work as expected for the given examples and similar inputs. It's important to note that the function checks for "i " (with a space after "i") to ensure it's actually the word "I" at the beginning of a sentence, not just a sentence starting with the letter "i" followed by another character without a space.

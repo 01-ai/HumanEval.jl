@@ -1,0 +1,18 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function multiply_unit_digits(a::Int, b::Int)::Int
+    return abs(a % 10) * abs(b % 10)
+end
+```
+
+This function works by using the modulus operator (%) to get the last digit of each number. The `abs` function is used to ensure that the last digit is always positive, even if the input number is negative. The product of the last digits is then returned.
+
+Let's test the function with the provided examples:
+
+```julia
+println(multiply_unit_digits(148, 412))  # Output: 16
+println(multiply_unit_digits(19, 28))  # Output: 72
+println(multiply_unit_digits(2020, 1851))  # Output: 0
+println(multiply_unit_digits(14, -15))  # Output: 20
+```

@@ -1,0 +1,24 @@
+```julia
+function move_one_ball(xs::Vector{Int})::Bool
+    # Base case: If the array is empty or has only one element, it is already sorted.
+    if isempty(xs) || length(xs) == 1
+        return true
+    end
+
+    # Loop through the array and check if we can get a non-decreasing order by
+    # performing right shift operations.
+    for i in 2:length(xs)
+        # If the current element is smaller than the previous one, we can move it
+        # to the beginning of the array by performing a right shift operation.
+        if xs[i] <= xs[i-1]
+            return true
+        end
+    end
+
+    # If we reach this point, it means that we cannot get a non-decreasing order
+    # by performing any number of right shift operations.
+    return false
+end
+```
+
+This function works by iterating through the array and checking if each element is smaller than or equal to the previous one. If it is, then we know that by performing a right shift operation, we can move that element to the beginning of the array, which would result in a non-decreasing order. If at any point we find an element that is not smaller than the previous one, we know that it is not possible to get a non-decreasing order for the entire array by performing right shift operations.

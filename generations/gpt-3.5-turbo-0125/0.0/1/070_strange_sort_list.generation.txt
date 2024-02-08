@@ -1,0 +1,13 @@
+```julia
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    sorted_xs = sort(xs)
+    result = Int[]
+    while !isempty(sorted_xs)
+        push!(result, popfirst!(sorted_xs))
+        if !isempty(sorted_xs)
+            push!(result, pop!(sorted_xs))
+        end
+    end
+    return result
+end
+```

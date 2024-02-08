@@ -1,0 +1,25 @@
+To implement the `is_simple_power` function in Julia, we need to check if there exists an integer `k` such that `n^k = x`. This can be approached by taking the `k`th root of `x` and checking if it equals `n`. However, due to potential floating-point arithmetic issues, we should be careful with direct comparisons. Instead, we can round the result and check if `n` raised to the power of this rounded value equals `x`.
+
+Here's how you can implement the `is_simple_power` function:
+
+```julia
+function is_simple_power(x::Number, n::Number)::Bool
+    # Edge case: n == 1 and x != 1
+    if n == 1
+        return x == 1
+    end
+
+    # Edge case: n == 0
+    if n == 0
+        return x == 0
+    end
+
+    # Calculate the potential exponent
+    k = log(x) / log(n)
+
+    # Check if k is an integer and n^k equals x
+    return isapprox(n^round(Int, k), x)
+end
+```
+
+This implementation first handles edge cases where `n` is 0 or 1, as these cases can lead to incorrect results if not treated separately. Then, it calculates the potential exponent `k` as the logarithm of `x` divided by the logarithm of `n`. This is based on the logarithmic identity that `log_n(x) = log(x) / log(n)`. Finally, it checks if `n` raised to the power of the rounded `k` is approximately equal to `x` using `isapprox` to account for potential floating-point inaccuracies.

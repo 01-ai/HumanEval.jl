@@ -1,0 +1,10 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function words_string(s::String)::Vector{String}
+    words = split(s, r"[, ]")
+    return filter(x -> x != "", words)
+end
+```
+
+This function uses the `split` function to split the input string `s` into words. The regular expression `r"[, ]"` is used to split the string at commas or spaces. The `filter` function is then used to remove any empty strings from the resulting array.

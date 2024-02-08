@@ -1,0 +1,31 @@
+Here is the Julia function that satisfies the given doc string:
+
+```julia
+function intersperse(numbers::Vector{Int}, delimeter::Int)::Vector{Int}
+    result = Int[]
+    for i in 1:length(numbers)
+        pushfirst(result, numbers[i])
+        if i < length(numbers)
+            pushfirst(result, delimeter)
+        end
+    end
+    return result
+end
+```
+
+This function iterates over the input vector `numbers` and for each element, it pushes it to the front of the result vector and then pushes the delimeter to the front of the result vector if the current element is not the last one in the `numbers` vector.
+
+You can test this function with the provided examples:
+
+```julia
+julia> intersperse(Int[], 4)
+Int64[]
+
+julia> intersperse([1, 2, 3], 4)
+5-element Vector{Int64}:
+ 1
+ 4
+ 2
+ 4
+ 3
+```

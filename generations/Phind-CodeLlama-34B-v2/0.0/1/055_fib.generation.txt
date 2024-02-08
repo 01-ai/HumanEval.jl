@@ -1,0 +1,19 @@
+
+
+Here is the Julia implementation of the `fib` function as per the given docstring:
+
+```julia
+function fib(n::Int)::Int
+    if n <= 1
+        return n
+    else
+        return fib(n-1) + fib(n-2)
+    end
+end
+```
+
+This function uses the recursive definition of Fibonacci numbers:
+
+- The 0-th Fibonacci number is 0.
+- The 1-st Fibonacci number is 1.
+- The n-th Fibonacci number is the sum of the (n-1)-th and (n-2)-th Fibonacci numbers.

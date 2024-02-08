@@ -1,0 +1,44 @@
+Here is the implementation for the `valid_date` function:
+
+```julia
+function valid_date(date::String)::Bool
+    # Check if the date string is empty
+    if isempty(date)
+        return false
+    end
+    
+    # Split the date string into month, day, and year
+    parts = split(date, "-")
+    
+    # Check if the date string has three parts
+    if length(parts) != 3
+        return false
+    end
+    
+    # Extract the month, day, and year
+    month = parse(Int, parts[1])
+    day = parse(Int, parts[2])
+    year = parse(Int, parts[3])
+    
+    # Check if the month is valid
+    if month < 1 || month > 12
+        return false
+    end
+    
+    # Check if the day is valid based on the month
+    if month == 2
+        # Check for leap year
+        if year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
+            return day >= 1 && day <= 29
+        else
+            return day >= 1 && day <= 28
+        end
+    elseif month == 4 || month == 6 || month == 9 || month == 11
+        return day >= 1 && day <= 30
+    else
+        return day >= 1 && day <= 31
+    end
+end
+```
+
+You can test the function with the provided examples to verify its correctness.

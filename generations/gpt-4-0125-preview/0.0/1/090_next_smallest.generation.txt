@@ -1,0 +1,28 @@
+To implement the `next_smallest` function as described, we can follow these steps:
+
+1. Check if the length of the list is less than 2. If so, return `nothing` because we cannot find a second smallest element in such a case.
+2. Remove duplicates from the list to ensure that if the smallest number appears more than once, we still get the next unique smallest number.
+3. Sort the list.
+4. Return the second element of the sorted list, which will be the second smallest unique number.
+
+Here's how the implementation looks in Julia:
+
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    # Step 1: Check if the list has less than 2 unique elements
+    if length(unique(xs)) < 2
+        return nothing
+    end
+
+    # Step 2: Remove duplicates
+    unique_xs = unique(xs)
+
+    # Step 3: Sort the list
+    sort!(unique_xs)
+
+    # Step 4: Return the second element
+    return unique_xs[2]
+end
+```
+
+This function first ensures that there are at least two unique elements to consider. It then removes duplicates to handle cases where the smallest number might appear more than once. After sorting the unique elements, it returns the second element, which is the second smallest unique number in the list.

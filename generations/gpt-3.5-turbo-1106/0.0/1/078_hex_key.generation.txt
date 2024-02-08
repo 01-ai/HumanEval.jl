@@ -1,0 +1,18 @@
+```julia
+function hex_key(num::String)::Int
+    primes = Set([2, 3, 5, 7, 11, 13, 17])
+    count = 0
+    for digit in num
+        if isdigit(digit)
+            if parse(Int, digit) in primes
+                count += 1
+            end
+        else
+            if parse(Int, digit, base=16) in primes
+                count += 1
+            end
+        end
+    end
+    return count
+end
+```

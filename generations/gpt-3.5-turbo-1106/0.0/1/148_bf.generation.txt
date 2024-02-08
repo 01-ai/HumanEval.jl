@@ -1,0 +1,15 @@
+```julia
+function bf(planet1::String, planet2::String)::NTuple
+    planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+    if planet1 in planets && planet2 in planets
+        start_idx = findfirst(x -> x == planet1, planets)
+        end_idx = findfirst(x -> x == planet2, planets)
+        if start_idx > end_idx
+            start_idx, end_idx = end_idx, start_idx
+        end
+        return tuple(planets[start_idx+1:end_idx-1]...)
+    else
+        return ()
+    end
+end
+```

@@ -1,0 +1,7 @@
+function eat(number::Int, need::Int, remaining::Int)::Vector{Int}
+    if remaining >= need
+        return [number + need, remaining - need]
+    else
+        return [number + remaining, 0]
+    end
+end

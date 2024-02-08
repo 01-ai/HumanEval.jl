@@ -1,0 +1,9 @@
+ function split_words(txt::String)::Union{Vector{<:AbstractString},Int}
+    words = split(txt, r"[ \n\r\t]")
+    if length(words) == 0
+        letters = filter(x -> x % 2 == 1, collect(1:26))
+        return length(letters)
+    else
+        return words
+    end
+end

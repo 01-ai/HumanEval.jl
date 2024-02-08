@@ -1,0 +1,34 @@
+
+
+Here is the step-by-step outline:
+
+1. Check if the input is valid.
+2. If the input is valid, use the partial sort function `partialsortperm` to find the indices of the top k elements in the array.
+3. Extract the top k elements from the array using the indices found in the previous step.
+4. Sort the extracted top k elements in descending order.
+5. Return the sorted top k elements.
+
+Here is the Julia code implementing the above outline:
+
+```julia
+function top_k(xs::Vector{Int}, k::Int)::Vector{Int}
+    # Check if the input is valid
+    if !(1 <= k <= length(xs))
+        throw(ArgumentError("k must be in the range of 1 to length(xs)"))
+    end
+
+    # Use partialsortperm to find the indices of the top k elements
+    top_k_indices = partialsortperm(xs, 1:k, rev=true)
+
+    # Extract the top k elements from the array
+    top_k_elements = xs[top_k_indices]
+
+    # Sort the extracted top k elements in descending order
+    sort!(top_k_elements, rev=true)
+
+    # Return the sorted top k elements
+    return top_k_elements
+end
+```
+
+This function first checks if the input is valid. If the input is valid, it uses the `partialsortperm` function to find the indices of the top k elements in the array. It then extracts the top k elements from the array using the indices found in the previous step. After extracting the top k elements, it sorts them in descending order. Finally, it returns the sorted top k elements.

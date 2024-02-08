@@ -1,0 +1,40 @@
+### Step-by-Step Outline
+
+1. **Check if `b` is already a substring of `a`**: This is the simplest case. If `b` is a substring of `a`, return `true` immediately.
+
+2. **Generate all rotations of `b`**:
+    - To generate all rotations of `b`, we can concatenate `b` with itself. This way, every possible rotation of `b` will appear as a substring in this concatenated string.
+    - For example, if `b = "abc"`, then `b + b = "abcabc"`, and the rotations "abc", "bca", and "cab" are all substrings of "abcabc".
+
+3. **Check if any rotation of `b` is a substring of `a`**:
+    - Iterate through all possible rotations of `b` (which we can simulate by iterating through the concatenated string `b + b` with a window of length equal to the length of `b`).
+    - For each rotation, check if it is a substring of `a`. If any rotation is found to be a substring, return `true`.
+
+4. **Return `false`**:
+    - If none of the rotations of `b` is a substring of `a`, return `false`.
+
+### Julia Code Implementation
+
+```julia
+function cycpattern_check(a::String, b::String)::Bool
+    # Step 1: Check if b is already a substring of a
+    if occursin(b, a)
+        return true
+    end
+
+    # Step 2 & 3: Generate all rotations of b and check if any is a substring of a
+    bb = b * b  # Concatenate b with itself to cover all rotations
+    len_b = length(b)
+    for i in 1:len_b
+        rotation = bb[i:i+len_b-1]  # Extract rotation of length equal to b
+        if occursin(rotation, a)
+            return true
+        end
+    end
+
+    # Step 4: Return false if no rotation of b is a substring of a
+    return false
+end
+```
+
+This implementation first checks the simplest case where `b` is directly a substring of `a`. Then, it generates all rotations of `b` by concatenating `b` with itself and checks each rotation to see if it is a substring of `a`. If any rotation is found to be a substring, it returns `true`;

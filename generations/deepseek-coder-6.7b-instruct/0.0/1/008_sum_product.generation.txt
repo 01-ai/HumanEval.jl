@@ -1,0 +1,9 @@
+function sum_product(numbers::Vector{Int})::Tuple{Int, Int}
+    sum_numbers = sum(numbers)
+    product_numbers = isempty(numbers) ? 1 : foldl(*, numbers)
+    return (sum_numbers, product_numbers)
+end
+
+# Test cases
+println(sum_product(Int[]))  # Expected output: (0, 1)
+println(sum_product([1, 2, 3, 4]))  # Expected output: (10, 24)

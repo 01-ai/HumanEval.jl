@@ -1,0 +1,17 @@
+
+
+```julia
+function fruit_distribution(s::String, n::Int)::Int
+    # Split the string into an array of words
+    words = split(s)
+
+    # Extract the number of apples and oranges from the array
+    apples = parse(Int, words[1])
+    oranges = parse(Int, words[4])
+
+    # Calculate and return the number of mango fruits
+    return n - apples - oranges
+end
+```
+
+This function takes a string `s` that represents the number of apples and oranges and an integer `n` that represents the total number of fruits in the basket. It splits the string into an array of words, extracts the number of apples and oranges from the array, and calculates the number of mango fruits by subtracting the number of apples and oranges from the total number of fruits.

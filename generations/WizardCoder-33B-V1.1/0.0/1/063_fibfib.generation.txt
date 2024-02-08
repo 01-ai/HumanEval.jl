@@ -1,0 +1,24 @@
+
+
+function fibfib(n::Int)::Int
+    if n < 0
+        throw(DomainError(n, "n must be non-negative"))
+    elseif n == 0
+        return 0
+    elseif n == 1
+        return 0
+    elseif n == 2
+        return 1
+    end
+
+    a, b, c = 0, 0, 1
+    for _ in 3:n
+        a, b, c = b, c, a + b + c
+    end
+    return c
+end
+
+# Test cases
+println(fibfib(1))  # 0
+println(fibfib(5))  # 4
+println(fibfib(8))  # 24

@@ -1,0 +1,52 @@
+```julia
+function numerical_letter_grade(grades::Vector{Float64})::Vector{String}
+    # Initialize an empty vector to store the letter grades
+    letter_grades = Vector{String}()
+
+    # Loop through each GPA and convert it to a letter grade
+    for gpa in grades
+        if gpa > 4.0
+            letter_grade = "A+"
+        elseif gpa > 3.7
+            letter_grade = "A"
+        elseif gpa > 3.3
+            letter_grade = "A-"
+        elseif gpa > 3.0
+            letter_grade = "B+"
+        elseif gpa > 2.7
+            letter_grade = "B"
+        elseif gpa > 2.3
+            letter_grade = "B-"
+        elseif gpa > 2.0
+            letter_grade = "C+"
+        elseif gpa > 1.7
+            letter_grade = "C"
+        elseif gpa > 1.3
+            letter_grade = "C-"
+        elseif gpa > 1.0
+            letter_grade = "D+"
+        elseif gpa > 0.7
+            letter_grade = "D"
+        elseif gpa <= 0.0
+            letter_grade = "E"
+        end
+
+        # Append the letter grade to the vector
+        push!(letter_grades, letter_grade)
+    end
+
+    return letter_grades
+end
+```
+
+```jldoctest
+julia> numerical_letter_grade([4.0, 3, 1.7, 2, 3.5])
+5-element Vector{String}:
+ "A"
+ "B"
+ "C-"
+ "C"
+ "A-"
+```
+```julia
+```

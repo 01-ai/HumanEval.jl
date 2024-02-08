@@ -1,0 +1,23 @@
+
+
+```julia
+function pairs_sum_to_zero(l::Vector{Int})::Bool
+    # Create a set to store the elements of the list
+    elements = Set{Int}()
+
+    # Iterate through the list
+    for num in l
+        # If the negative of the current element is in the set, return true
+        if -num in elements
+            return true
+        end
+        # Otherwise, add the current element to the set
+        push!(elements, num)
+    end
+
+    # If no pair of elements sum to zero, return false
+    return false
+end
+```
+
+This function uses a set to store the elements of the list. It iterates through the list and checks if the negative of the current element is in the set. If it is, it means that there are two distinct elements in the list that sum to zero, and the function returns true. Otherwise, it adds the current element to the set and continues iterating. If no pair of elements sum to zero, the function returns false.

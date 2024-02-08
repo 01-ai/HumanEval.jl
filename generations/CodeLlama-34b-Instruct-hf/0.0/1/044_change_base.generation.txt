@@ -1,0 +1,28 @@
+  Here is a possible implementation of the `change_base` function in Julia:
+```
+function change_base(x::Int, base::Int)::String
+    # Convert the input number to a string
+    str = string(x)
+
+    # Convert the string to the desired base
+    result = ""
+    for c in str
+        result *= string(c - '0' + 1)
+    end
+
+    # Return the result
+    return result
+end
+```
+Here's an explanation of how the function works:
+
+1. The function takes two arguments: `x`, which is the input number, and `base`, which is the desired base for the output.
+2. The function converts the input number to a string using the `string` function.
+3. The function then iterates over each character in the string and converts it to the desired base using the formula `c - '0' + 1`. This formula works because the ASCII code for the character '0' is 48, so subtracting '0' from a character gives the corresponding integer value. For example, the character '1' has an ASCII code of 49, so `c - '0' + 1` would give 1 for the character '1'.
+4. The function then concatenates the converted characters into a single string and returns it.
+
+Here are some examples of how the function works:
+
+* `change_base(8, 3)` returns "22", because 8 in base 10 is 22 in base 3.
+* `change_base(8, 2)` returns "1000", because 8 in base 10 is 1000 in base 2.
+* `change_base(7, 2)` returns "111", because 7 in base 10 is 111 in base 2.

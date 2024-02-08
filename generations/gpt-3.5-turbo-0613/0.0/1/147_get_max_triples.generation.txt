@@ -1,0 +1,20 @@
+Here is the implementation for the given function:
+
+```julia
+function get_max_triples(n::Int)::Int
+    a = [i * i - i + 1 for i in 1:n]
+    count = 0
+    for i in 1:n-2
+        for j in i+1:n-1
+            for k in j+1:n
+                if (a[i] + a[j] + a[k]) % 3 == 0
+                    count += 1
+                end
+            end
+        end
+    end
+    return count
+end
+```
+
+This function creates an array `a` of length `n` where each element `a[i]` is calculated using the formula `i * i - i + 1`. It then iterates over all possible triples `(a[i], a[j], a[k])` where `i < j < k` and checks if the sum of the elements in the triple is divisible by 3. If it is, the count is incremented. Finally, the function returns the count of valid triples.

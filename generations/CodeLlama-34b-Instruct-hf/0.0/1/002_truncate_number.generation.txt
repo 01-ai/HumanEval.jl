@@ -1,0 +1,16 @@
+  Here's one way to implement the `truncate_number` function in Julia:
+```
+function truncate_number(number::Float64)::Float64
+    integer_part = floor(number)
+    decimal_part = number - integer_part
+    return decimal_part
+end
+```
+This function first calculates the integer part of the input number using the `floor` function, which returns the largest integer less than or equal to the input number. It then calculates the decimal part of the number by subtracting the integer part from the input number. Finally, it returns the decimal part as the output of the function.
+
+Here's an example usage of the function:
+```
+julia> truncate_number(3.5)
+0.5
+```
+This returns the decimal part of the input number, which is 0.5.

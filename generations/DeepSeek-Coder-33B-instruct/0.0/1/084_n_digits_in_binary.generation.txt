@@ -1,0 +1,17 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function n_digits_in_binary(N::Int)::String
+    return string(N, base = 2)
+end
+```
+
+This function uses the `string` function with the `base` keyword argument to convert the integer `N` to a binary string. The `base` keyword argument specifies the base of the number system to use for the conversion. In this case, `2` is used to convert to binary.
+
+Here is how you can test the function:
+
+```julia
+println(n_digits_in_binary(1000))  # Output: "1111101000"
+println(n_digits_in_binary(150))   # Output: "10010110"
+println(n_digits_in_binary(147))   # Output: "10010011"
+```

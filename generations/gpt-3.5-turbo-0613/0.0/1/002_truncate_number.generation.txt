@@ -1,0 +1,9 @@
+Here is the implementation of the `truncate_number` function in Julia:
+
+```julia
+function truncate_number(number::Float64)::Float64
+    integer_part = trunc(number)
+    decimal_part = number - integer_part
+    return decimal_part
+end
+```

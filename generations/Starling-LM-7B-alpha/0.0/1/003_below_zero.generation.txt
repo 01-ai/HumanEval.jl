@@ -1,0 +1,10 @@
+ function below_zero(operations::Vector{Int})::Bool
+    balance = 0
+    for operation in operations
+        balance += operation
+        if balance < 0
+            return true
+        end
+    end
+    return false
+end

@@ -1,0 +1,5 @@
+
+
+function is_simple_power(x::Number, n::Number)::Bool
+    return x == n^round(Int, log(n, x))
+end

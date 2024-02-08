@@ -1,0 +1,18 @@
+
+
+function move_one_ball(xs::Vector{Int})::Bool
+    n = length(xs)
+    if n == 0
+        return true
+    end
+    for i in 1:n
+        if xs[i] > xs[mod1(i+1,n)]
+            return true
+        end
+    end
+    return false
+end
+
+# Test cases
+println(move_one_ball([3, 4, 5, 1, 2]))  # Expected output: true
+println(move_one_ball([3, 5, 4, 1, 2]))  # Expected output: false

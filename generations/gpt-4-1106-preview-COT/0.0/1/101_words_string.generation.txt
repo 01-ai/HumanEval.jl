@@ -1,0 +1,22 @@
+### Step-by-Step Outline:
+
+1. Define the function `words_string` that takes a single argument `s` which is a string.
+2. Use a regular expression to split the string `s` by commas or spaces. The regular expression should match any sequence of commas and/or spaces.
+3. Filter out any empty strings that may result from the split operation, as we don't want to include them in the result.
+4. Return the resulting array of words.
+
+### Julia Code:
+
+```julia
+function words_string(s::String)::Vector{String}
+    # Step 2: Split the string using a regular expression that matches commas and spaces
+    words = split(s, r"[, ]+", keepempty=false)
+    
+    # Step 3: The split function with keepempty=false option already filters out empty strings
+    
+    # Step 4: Return the array of words
+    return words
+end
+```
+
+Now, let's implement the function in Julia.

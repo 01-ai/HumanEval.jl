@@ -1,0 +1,5 @@
+ function sort_even(l::Vector)::Vector
+    even_indices = collect(2:2:length(l))
+    sorted_even_values = sort(l[even_indices])
+    return vcat(l[1:1:end], sorted_even_values)
+end

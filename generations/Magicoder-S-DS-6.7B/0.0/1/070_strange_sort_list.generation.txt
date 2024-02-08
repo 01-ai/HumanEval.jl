@@ -1,0 +1,15 @@
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    if isempty(xs)
+        return Int[]
+    end
+
+    sorted_xs = sort(xs)
+    result = Int[]
+    while !isempty(sorted_xs)
+        pushfirst(result, popfirst(sorted_xs))
+        if !isempty(sorted_xs)
+            pushfirst(result, poplast(sorted_xs))
+        end
+    end
+    return result
+end

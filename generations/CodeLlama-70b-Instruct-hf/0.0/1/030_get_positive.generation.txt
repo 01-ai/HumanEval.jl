@@ -1,0 +1,9 @@
+
+
+```julia
+function get_positive(xs::Vector)
+    return filter(x -> x > 0, xs)
+end
+```
+
+This function takes a vector of integers as input and returns a new vector containing only the positive numbers from the input vector. It uses the `filter` function to filter out the negative numbers.

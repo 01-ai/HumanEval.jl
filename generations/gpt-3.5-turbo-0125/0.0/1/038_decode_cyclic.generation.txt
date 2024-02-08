@@ -1,0 +1,5 @@
+```julia
+function decode_cyclic(s::String)::String
+    join((length(x) == 3 ? x[3] * x[1] * x[2] : x for x in Iterators.partition(s, 3)))
+end
+```

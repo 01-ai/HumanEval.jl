@@ -1,0 +1,19 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function is_sorted(xs::Vector{Int})::Bool
+    if length(xs) < 2
+        return true
+    end
+    for i in 2:length(xs)
+        if xs[i] < xs[i-1]
+            return false
+        end
+    end
+    return true
+end
+```
+
+This function works by iterating over the input vector `xs` and checking if each element is less than the previous one. If it finds an element that is not, it immediately returns `false`. If it gets through the entire vector without finding any such element, it returns `true`.
+
+The function also handles the case where the input vector has only one element by returning `true`.

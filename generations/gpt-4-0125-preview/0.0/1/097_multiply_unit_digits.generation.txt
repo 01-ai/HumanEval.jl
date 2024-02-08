@@ -1,0 +1,12 @@
+```julia
+function multiply_unit_digits(a::Int, b::Int)::Int
+    # Extract the unit digit from each number
+    unit_digit_a = abs(a) % 10
+    unit_digit_b = abs(b) % 10
+
+    # Return the product of the unit digits
+    return unit_digit_a * unit_digit_b
+end
+```
+
+This function works by first taking the absolute value of each input to ensure that it works correctly with negative numbers as well. It then uses the modulo operator `%` to extract the unit (last) digit of each number by finding the remainder when divided by 10. Finally, it returns the product of these unit digits.

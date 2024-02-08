@@ -1,0 +1,27 @@
+
+
+To solve this problem, we can use a combination of list comprehension and the `all` function. The `all` function returns `true` if all elements in a collection are `true`. We can use it to check if all digits in a number are odd.
+
+Here is the step-by-step outline:
+
+1. Define a function `is_odd_digit(n::Int)::Bool` that checks if all digits in `n` are odd.
+2. Use list comprehension to create a new list containing only the elements of `xs` for which `is_odd_digit` returns `true`.
+3. Sort the resulting list and return it.
+
+And here is the Julia code:
+
+```julia
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    function is_odd_digit(n::Int)::Bool
+        return all(isodd, digits(n))
+    end
+
+    return sort(x for x in xs if is_odd_digit(x))
+end
+```
+
+In this code, `digits(n)` returns a vector of digits of `n` in the base 10. `isodd(n)` returns `true` if `n` is odd and `false` otherwise. The `all` function checks if all elements in the collection `digits(n)` for which `isodd` returns `true`. If all elements satisfy this condition, `is_odd_digit(n)` returns `true`.
+
+The list comprehension `x for x in xs if is_odd_digit(x)` creates a new list containing only the elements of `xs` for which `is_odd_digit` returns `true`.
+
+Finally, `sort` function sorts the resulting list in increasing order and the sorted list is returned.

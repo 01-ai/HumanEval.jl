@@ -1,0 +1,40 @@
+
+```julia
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    # Check if n is positive
+    if n < 1
+        throw(DomainError(n, "Input must be a positive integer"))
+    end
+
+    # Initialize the collatz sequence
+    collatz_sequence = BigInt[]
+
+    # Start with n
+    current_number = BigInt(n)
+
+    # Iterate until we reach 1
+    while current_number != 1
+        # If the current number is odd, add it to the sequence
+        if current_number % 2 == 1
+            push!(collatz_sequence, current_number)
+        end
+
+        # Calculate the next number in the sequence
+        if current_number % 2 == 0
+            current_number = current_number ÷ 2
+        else
+            current_number = 3 * current_number + 1
+        end
+    end
+
+    # Add 1 to the sequence
+    push!(collatz_sequence, 1)
+
+    # Sort the sequence in increasing order
+    sort!(collatz_sequence)
+
+    return collatz_sequence
+end
+```
+
+This function takes a positive integer `n` as input and returns a sorted list of odd numbers in the Collatz sequence starting from `n`. It first checks if `n` is positive and throws an error if it is not. Then, it initializes an empty array to store the Collatz sequence. It starts with `n` and iterates until it reaches 1. If the current number is odd, it adds it to the sequence. It calculates the next number in the sequence based on whether the current number is even or odd. Finally, it adds 1 to the sequence and sorts it in increasing order before returning it.

@@ -1,0 +1,20 @@
+
+```julia
+function is_multiply_prime(a::Int)::Bool
+    if a < 100
+        primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+        for i in primes
+            for j in primes
+                for k in primes
+                    if i * j * k == a
+                        return true
+                    end
+                end
+            end
+        end
+    end
+    return false
+end
+```
+
+This function checks if the given number is the multiplication of 3 prime numbers. It first creates an array of prime numbers less than 100. Then, it iterates through the array and checks if the product of three primes is equal to the given number. If it finds a match, it returns `true`. Otherwise, it returns `false`.

@@ -1,0 +1,14 @@
+Here is a Julia function that implements the given problem:
+
+```julia
+function odd_count(xs::Vector{String})::Vector{String}
+    output = String[]
+    for (i, x) in enumerate(xs)
+        odd_count = sum(parse(Int, c) % 2 == 1 for c in x)
+        pushfirst(output, "the number of odd elements $(odd_count)n the str$(odd_count)ng $(i) of the $(odd_count)nput.")
+    end
+    return output
+end
+```
+
+This function iterates over the input vector of strings, for each string it counts the number of odd digits and then pushes a string to the output vector. The string is constructed by replacing all the digits with the count of odd digits and the placeholders with the corresponding values.

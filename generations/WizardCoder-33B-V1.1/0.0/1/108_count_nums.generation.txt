@@ -1,0 +1,11 @@
+
+
+Here is the Julia function that implements the given doc string:
+
+```julia
+function count_nums(xs::Vector{Int})::Int
+    count(x -> sum(digits(abs(x))) > 0, xs)
+end
+```
+
+This function uses the `count` function to count the number of elements in `xs` that satisfy the condition specified in the `count` function. The condition is defined as a lambda function `x -> sum(digits(abs(x))) > 0`, which checks if the sum of the digits of the absolute value of `x` is greater than 0. 

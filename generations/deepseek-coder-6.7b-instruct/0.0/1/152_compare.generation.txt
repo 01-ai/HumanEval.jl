@@ -1,0 +1,13 @@
+Here is the Julia function that implements the given problem:
+
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    return [abs(g - s) for (g, s) in zip(guess, game)]
+end
+```
+
+This function uses a list comprehension to iterate over the `guess` and `game` vectors simultaneously, and calculates the absolute difference between the corresponding elements. The result is a new vector of the same length as the input vectors.
+
+The `zip` function is used to iterate over the two input vectors simultaneously. The `abs` function is used to calculate the absolute difference between the corresponding elements.
+
+This function assumes that the input vectors are of the same length. If this is not the case, you may want to add some error checking to handle this situation.

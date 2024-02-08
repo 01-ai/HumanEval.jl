@@ -1,0 +1,26 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. Convert the integer `n` to a string.
+2. Initialize a variable `product` to 1.
+3. Iterate over each character in the string.
+4. Convert the character back to an integer.
+5. If the integer is odd, multiply `product` by the integer.
+6. Return `product`.
+
+Here is the Julia code that implements this outline:
+
+```julia
+function count_digits(n::Int)::Int
+    str_n = string(n)
+    product = 1
+    for char in str_n
+        digit = parse(Int, char)
+        if digit % 2 != 0
+            product *= digit
+        end
+    end
+    return product
+end
+```
+
+This function works by first converting the integer `n` to a string. It then initializes a variable `product` to 1. It then iterates over each character in the string. For each character, it converts the character back to an integer and checks if the integer is odd. If the integer is odd, it multiplies `product` by the integer. Finally, it returns `product`.

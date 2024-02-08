@@ -1,0 +1,31 @@
+```julia
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    # Initialize the strongest extension with the first extension in the list
+    strongest_ext = extensions[1]
+    strongest_str = strength(strongest_ext)
+
+    # Loop through the remaining extensions and update the strongest extension
+    # if a stronger one is found
+    for ext in extensions[2:end]
+        current_str = strength(ext)
+        if current_str > strongest_str
+            strongest_ext = ext
+            strongest_str = current_str
+        end
+    end
+
+    # Return the class name with the strongest extension
+    return "$class_name.$strongest_ext"
+end
+
+# Helper function to calculate the strength of an extension
+function strength(ext::String)
+    # Calculate the strength based on the number of uppercase and lowercase
+    # letters in the extension name
+    cap = count(x -> isuppercase(x), ext)
+    sm = count(x -> islowercase(x), ext)
+    return cap - sm
+end
+```
+
+This function `strongest_extension` takes a class name and a vector of extensions and returns the class name with the strongest extension. The strength of an extension is determined by the difference between the number of uppercase letters and the number of lowercase letters in its name. If there are multiple extensions with the same strength, the one that comes first in the list is chosen.

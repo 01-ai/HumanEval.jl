@@ -1,0 +1,29 @@
+### Step-by-Step Outline
+
+1. **Calculate the total number of characters in each list**:
+   - Iterate through each string in the first list (`xs`) and sum up their lengths.
+   - Repeat the process for the second list (`ys`).
+
+2. **Compare the total number of characters**:
+   - If the total number of characters in `xs` is less than in `ys`, return `xs`.
+   - If the total number of characters in `ys` is less than in `xs`, return `ys`.
+   - If the totals are equal, return `xs` as per the requirement.
+
+### Julia Code Implementation
+
+```julia
+function total_match(xs::Vector{String}, ys::Vector{String})::Vector{String}
+    # Calculate the total number of characters in each list
+    total_chars_xs = sum(length, xs)
+    total_chars_ys = sum(length, ys)
+    
+    # Compare and return the appropriate list
+    if total_chars_xs <= total_chars_ys
+        return xs
+    else
+        return ys
+    end
+end
+```
+
+This implementation follows the outlined steps, ensuring that the function behaves as specified in the doc string, including handling edge cases such as empty lists.

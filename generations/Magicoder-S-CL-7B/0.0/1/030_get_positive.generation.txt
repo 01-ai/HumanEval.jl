@@ -1,0 +1,5 @@
+
+
+function get_positive(xs::Vector)
+    return [x for x in xs if x > 0]
+end

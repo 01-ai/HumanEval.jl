@@ -1,0 +1,15 @@
+Here is the implementation of the `starts_one_ends` function in Julia:
+
+```julia
+function starts_one_ends(n::Int)::Int
+    count = 0
+    for i in 10^(n-1):10^n-1
+        if i % 10 == 1 || i ÷ 10^(n-1) == 1
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function iterates through all n-digit positive integers and checks if the last digit is 1 or if the first digit is 1. If either condition is true, it increments the count. Finally, it returns the count of such numbers.

@@ -1,0 +1,36 @@
+To implement the `n_digits_in_binary` function, we will follow these steps:
+
+1. Check if the input `N` is within the specified constraints (0 ≤ N ≤ 10000). If not, we should return an error or handle it accordingly.
+2. Convert the integer `N` to its binary representation as a string.
+3. Calculate the sum of the digits in the binary representation.
+4. Convert the sum back to a string and return it.
+
+Now, let's write the code for the function:
+
+```julia
+function n_digits_in_binary(N::Int)::String
+    # Step 1: Check constraints
+    if N < 0 || N > 10000
+        error("Input N is out of the allowed range (0 ≤ N ≤ 10000).")
+    end
+
+    # Step 2: Convert N to binary representation as a string
+    binary_str = string(N, base=2)
+
+    # Step 3: Calculate the sum of the digits in the binary representation
+    digit_sum = sum(parse(Int, c) for c in binary_str)
+
+    # Step 4: Convert the sum back to a string and return it
+    return string(digit_sum)
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(n_digits_in_binary(1000)) # Should print "1"
+println(n_digits_in_binary(150))  # Should print "110"
+println(n_digits_in_binary(147))  # Should print "1100"
+```
+
+Please note that the examples in the docstring seem to be incorrect, as they show the binary representation of the number rather than the sum of its digits in binary. The correct sum of digits for the binary representation of 1000 (which is "1111101000") is 6, not 1. Similarly, for 150 ("10010110") it is 4, and for 147 ("10010011") it is 5. If the docstring is indeed incorrect, the examples should be updated to reflect the correct output.

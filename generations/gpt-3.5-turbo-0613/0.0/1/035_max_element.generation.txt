@@ -1,0 +1,7 @@
+Here is the implementation of the `max_element` function in Julia:
+
+```julia
+function max_element(xs)
+    maximum(xs)
+end
+```

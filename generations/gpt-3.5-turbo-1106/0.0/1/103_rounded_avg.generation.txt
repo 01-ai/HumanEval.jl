@@ -1,0 +1,10 @@
+```julia
+function rounded_avg(n::Int, m::Int)::Union{Int, String}
+    if n > m
+        return -1
+    else
+        avg = round(Int, (n + m) / 2)
+        return string(parse(Int, string(avg), base=10), base=2)
+    end
+end
+```

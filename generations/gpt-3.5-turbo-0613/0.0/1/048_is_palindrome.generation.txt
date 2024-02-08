@@ -1,0 +1,7 @@
+Here is the implementation of the `is_palindrome` function in Julia:
+
+```julia
+function is_palindrome(text::String)::Bool
+    return text == reverse(text)
+end
+```

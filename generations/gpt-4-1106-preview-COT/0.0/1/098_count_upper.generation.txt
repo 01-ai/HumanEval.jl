@@ -1,0 +1,42 @@
+To implement the `count_upper` function, we will follow these steps:
+
+1. Initialize a counter to keep track of the number of uppercase vowels found at odd indices.
+2. Define a set or list of uppercase vowels for easy checking.
+3. Loop through the characters of the string, checking only those at odd indices (considering 1-based indexing as is standard in Julia).
+4. For each character at an odd index, check if it is an uppercase vowel.
+5. If it is an uppercase vowel, increment the counter.
+6. After the loop, return the counter value.
+
+Now, let's write the code for the `count_upper` function:
+
+```julia
+function count_upper(s::String)::Int
+    # Step 1: Initialize the counter
+    count = 0
+    
+    # Step 2: Define the set of uppercase vowels
+    uppercase_vowels = Set(['A', 'E', 'I', 'O', 'U'])
+    
+    # Step 3: Loop through the characters at odd indices
+    for i in 1:2:length(s)
+        # Step 4: Check if the character is an uppercase vowel
+        if s[i] in uppercase_vowels
+            # Step 5: Increment the counter
+            count += 1
+        end
+    end
+    
+    # Step 6: Return the counter value
+    return count
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(count_upper("aBCdEf"))  # Expected output: 1
+println(count_upper("abcdefg"))  # Expected output: 0
+println(count_upper("dBBE"))    # Expected output: 0
+```
+
+This function should work correctly according to the specification in the docstring.

@@ -1,0 +1,23 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function specialFilter(nums::Vector{Int})::Int
+    count = 0
+    for num in nums
+        if num > 10 && isodd(num % 10) && isodd(abs(num) � 10)
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function iterates over each number in the input array. It checks if the number is greater than 10 and if the last and first digits of the number are odd. If both conditions are met, it increments the count. Finally, it returns the count.
+
+The `isodd` function checks if a number is odd, and `num % 10` gives the last digit of the number, and `abs(num) � 10` gives the first digit of the number.
+
+The `abs` function is used to handle negative numbers, as the first digit of a negative number is not considered.
+
+The `�` operator is used for integer division, which discards the remainder and gives the quotient.
+
+The `%` operator is used for modulus operation, which gives the remainder of the division.

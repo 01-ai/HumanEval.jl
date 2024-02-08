@@ -1,0 +1,11 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function multiply_unit_digits(a::Int, b::Int)::Int
+    a = abs(a)
+    b = abs(b)
+    return (a % 10) * (b % 10)
+end
+```
+
+This function first takes the absolute value of the inputs to ensure that the unit digits are always positive. It then uses the modulus operator (%) to get the unit digit of each number by taking the remainder when divided by 10. Finally, it multiplies these unit digits together and returns the result.

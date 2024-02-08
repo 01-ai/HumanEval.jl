@@ -1,0 +1,30 @@
+
+
+Here is the Julia function that implements the required functionality:
+
+```julia
+function encode_swap(message::String)::String
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    result = ""
+    for char in message
+        if char in vowels
+            if char in ['a', 'e', 'i', 'o', 'u']
+                result *= uppercase(Char(Int(char) + 2))
+            else
+                result *= lowercase(Char(Int(char) + 2))
+            end
+        elseif isletter(char)
+            if islowercase(char)
+                result *= uppercase(char)
+            else
+                result *= lowercase(char)
+            end
+        else
+            result *= char
+        end
+    end
+    return result
+end
+```
+
+This function works by iterating over each character in the input string. If the character is a vowel, it is replaced with the character two places after it in the alphabet. If the character is a consonant, it is simply swapped to uppercase or lowercase. Non-letter characters are left unchanged. 

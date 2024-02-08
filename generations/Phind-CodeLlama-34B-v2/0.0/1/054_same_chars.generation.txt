@@ -1,0 +1,11 @@
+
+
+Here is the Julia function that implements the `same_chars` function based on the given docstring:
+
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    return sort(collect(s0)) == sort(collect(s1))
+end
+```
+
+This function works by first converting each string `s0` and `s1` into a vector of characters, then sorting these vectors. If the sorted vectors are equal, it means that `s0` and `s1` have the same characters, and the function returns `true`. Otherwise, it returns `false`.

@@ -1,0 +1,19 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function search(numbers::Vector)::Int
+    counts = Dict{Int, Int}()
+    for num in numbers
+        counts[num] = get(counts, num, 0) + 1
+    end
+    max_num = -1
+    for (num, count) in counts
+        if num == count
+            max_num = max(max_num, num)
+        end
+    end
+    return max_num
+end
+```
+
+This function first counts the frequency of each number in the input list using a dictionary. Then it iterates over the dictionary and checks if the number is equal to its frequency. If it is, it updates the maximum number if the number is greater than the current maximum. If no such number is found, it returns -1.

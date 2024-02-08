@@ -1,0 +1,8 @@
+```julia
+function fruit_distribution(s::String, n::Int)::Int
+    apples, oranges = match(r"(\d+) apples and (\d+) oranges", s).captures
+    apples = parse(Int, apples)
+    oranges = parse(Int, oranges)
+    return n - apples - oranges
+end
+```

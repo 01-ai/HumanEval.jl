@@ -1,0 +1,33 @@
+
+
+Here is the Julia function that implements the logic described in the doc string:
+
+```julia
+function x_or_y(n::Int, x::Int, y::Int)::Int
+    function is_prime(num::Int)::Bool
+        if num <= 1
+            return false
+        elseif num <= 3
+            return true
+        elseif num % 2 == 0 || num % 3 == 0
+            return false
+        end
+        i = 5
+        while i * i <= num
+            if num % i == 0 || num % (i + 2) == 0
+                return false
+            end
+            i += 6
+        end
+        return true
+    end
+
+    if is_prime(n)
+        return x
+    else
+        return y
+    end
+end
+```
+
+This function first defines a helper function `is_prime` to check if a number is prime. Then it uses this helper function to determine which value to return. 

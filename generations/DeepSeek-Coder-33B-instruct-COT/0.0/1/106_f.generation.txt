@@ -1,0 +1,26 @@
+Here is a step-by-step outline of how you can implement the function `f`:
+
+1. Initialize an empty vector `result` of size `n`.
+2. Iterate over the range from 1 to `n`.
+3. For each `i`, check if `i` is even.
+4. If `i` is even, calculate the factorial of `i` and append it to `result`.
+5. If `i` is not even, calculate the sum of numbers from 1 to `i` and append it to `result`.
+6. Return `result`.
+
+Here is the Julia code that implements the above steps:
+
+```julia
+function f(n::Int)::Vector{Int}
+    result = Vector{Int}(undef, n)
+    for i in 1:n
+        if i % 2 == 0
+            result[i] = factorial(i)
+        else
+            result[i] = sum(1:i)
+        end
+    end
+    return result
+end
+```
+
+This function uses the `factorial` function from the `Base` module to calculate the factorial of a number, and the `sum` function to calculate the sum of numbers from 1 to `i`. The `%` operator is used to check if `i` is even.

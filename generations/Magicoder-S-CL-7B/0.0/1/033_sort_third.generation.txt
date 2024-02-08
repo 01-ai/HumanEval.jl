@@ -1,0 +1,10 @@
+
+
+function sort_third(l::Vector)
+    third_indices = [i for i in 1:length(l) if i % 3 == 0]
+    third_values = l[third_indices]
+    sort!(third_values)
+    l_sorted = copy(l)
+    l_sorted[third_indices] = third_values
+    return l_sorted
+end

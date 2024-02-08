@@ -1,0 +1,5 @@
+```julia
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    return sum(xs[i] for i in 1:2:length(xs) if xs[i] % 2 != 0)
+end
+```

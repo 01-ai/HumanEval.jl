@@ -1,0 +1,35 @@
+To implement the `count_distinct_characters` function in Julia, you can follow these steps:
+
+1. Convert the input string to lowercase or uppercase to ensure that character comparison is case-insensitive.
+2. Use a data structure that allows for efficient checking of whether a character has already been encountered. A set is a good choice for this purpose.
+3. Iterate through each character in the string, adding each unique character to the set.
+4. Return the size of the set, which represents the number of distinct characters in the string.
+
+Here's how you can implement this:
+
+```julia
+function count_distinct_characters(s::String)::Int
+    # Convert the string to lowercase to make the function case-insensitive
+    lowercase_s = lowercase(s)
+    
+    # Initialize an empty set to store unique characters
+    unique_chars = Set{Char}()
+    
+    # Iterate through each character in the string
+    for char in lowercase_s
+        # Add the character to the set
+        push!(unique_chars, char)
+    end
+    
+    # Return the number of unique characters
+    return length(unique_chars)
+end
+```
+
+This function works as follows:
+- It first converts the input string to lowercase to ensure that the comparison is case-insensitive.
+- It then initializes an empty set to keep track of unique characters.
+- As it iterates through each character in the string, it adds each character to the set. Since sets automatically handle duplicates, only unique characters will be stored.
+- Finally, it returns the number of unique characters by returning the size of the set.
+
+This implementation meets the requirements specified in the doc string and provides the correct output for the given examples.

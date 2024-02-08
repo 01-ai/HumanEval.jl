@@ -1,0 +1,38 @@
+To implement the `all_prefixes` function in Julia, we will follow these steps:
+
+1. Initialize an empty vector of strings to store the prefixes.
+2. Loop over the indices of the input string.
+3. In each iteration, extract the substring from the beginning of the input string up to the current index.
+4. Append the extracted substring to the vector of prefixes.
+5. After the loop, return the vector containing all the prefixes.
+
+Now, let's write the code for the `all_prefixes` function:
+
+```julia
+"""
+    all_prefixes(s::String)::Vector{String}
+
+Return list of all prefixes from shortest to longest of the input string.
+
+# Examples
+
+```jldoctest
+julia> all_prefixes("abc") == ["a", "ab", "abc"]
+true
+```
+"""
+function all_prefixes(s::String)::Vector{String}
+    prefixes = String[]
+    for i in 1:length(s)
+        push!(prefixes, s[1:i])
+    end
+    return prefixes
+end
+```
+
+This function can be tested with the provided example to ensure it works as expected:
+
+```julia
+julia> all_prefixes("abc") == ["a", "ab", "abc"]
+true
+```

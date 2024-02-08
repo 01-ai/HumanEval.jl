@@ -1,0 +1,20 @@
+  Here's one way to implement the `starts_one_ends` function in Julia:
+```
+function starts_one_ends(n::Int)::Int
+    count = 0
+    for i in 1:n
+        if i == 1 || i == n
+            count += 1
+        end
+    end
+    return count
+end
+```
+This function uses a loop to iterate over the digits of the input number `n`. For each digit, it checks if it is either the first or last digit of the number. If it is, it increments the `count` variable. Finally, it returns the `count` variable, which represents the number of numbers that start or end with 1.
+
+Here's an example usage of the function:
+```
+julia> starts_one_ends(123)
+2
+```
+This returns 2, which is the number of numbers that start or end with 1 in the 3-digit number 123 (namely, 1 and 3).

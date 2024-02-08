@@ -1,0 +1,55 @@
+To implement the `count_digits` function, we will follow these steps:
+
+1. Initialize a variable `product` to 1. This will hold the product of the odd digits.
+2. Check if the input `n` is a positive integer. If not, return an error or handle the case accordingly.
+3. Convert the integer `n` to a string to iterate over its digits.
+4. Iterate over each character in the string representation of `n`.
+5. For each character, convert it back to an integer to check if it's odd.
+6. If the digit is odd, multiply it with the `product`.
+7. After the loop, check if the `product` is still 1, which means there were no odd digits. If so, return 0.
+8. Otherwise, return the `product`.
+
+Now, let's write the code for the `count_digits` function:
+
+```julia
+function count_digits(n::Int)::Int
+    # Step 1: Initialize the product of odd digits
+    product = 1
+    
+    # Step 2: Check if n is positive
+    if n <= 0
+        throw(ArgumentError("Input must be a positive integer"))
+    end
+    
+    # Step 3: Convert the integer to a string
+    n_str = string(n)
+    
+    # Step 4: Iterate over each character in the string
+    for digit_char in n_str
+        # Step 5: Convert character to integer and check if it's odd
+        digit = parse(Int, digit_char)
+        if digit % 2 != 0
+            # Step 6: Multiply the odd digit with the product
+            product *= digit
+        end
+    end
+    
+    # Step 7: Check if the product is still 1 (no odd digits found)
+    if product == 1
+        return 0
+    end
+    
+    # Step 8: Return the product of odd digits
+    return product
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(count_digits(1))  # Should return 1
+println(count_digits(4))  # Should return 0
+println(count_digits(235)) # Should return 15
+```
+
+This function should now work as expected for the given task.

@@ -1,0 +1,16 @@
+
+
+Here is the Julia function that solves the problem:
+
+```julia
+function largest_divisor(n::Int)::Int
+    for i in reverse(2:n-1)
+        if n % i == 0
+            return i
+        end
+    end
+    return 1
+end
+```
+
+This function works by iterating from `n-1` down to `2` and checking if `n` is divisible by the current number `i`. If it is, it returns `i`. If no divisor is found, it returns `1`. 

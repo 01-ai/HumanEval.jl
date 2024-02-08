@@ -1,0 +1,28 @@
+### Step-by-Step Outline:
+
+1. Define the function `fruit_distribution(s::String, n::Int)::Int` that takes a string `s` and an integer `n`.
+2. Parse the string `s` to extract the number of apples and oranges. This can be done by:
+   - Splitting the string by spaces.
+   - Identifying the elements that are digits and converting them to integers.
+3. Calculate the number of mangoes by subtracting the number of apples and oranges from the total number of fruits `n`.
+4. Return the calculated number of mangoes.
+
+### Julia Code:
+
+```julia
+function fruit_distribution(s::String, n::Int)::Int
+    # Split the string by spaces
+    parts = split(s)
+    
+    # Extract the number of apples and oranges
+    num_apples = parse(Int, parts[1])
+    num_oranges = parse(Int, parts[4])
+    
+    # Calculate the number of mangoes
+    num_mangoes = n - num_apples - num_oranges
+    
+    return num_mangoes
+end
+```
+
+Now, let's implement the function in Julia.

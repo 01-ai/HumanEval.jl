@@ -1,0 +1,9 @@
+```julia
+function sort_even(l::Vector)::Vector
+    even_indices = collect(2:2:length(l))
+    sorted_even_values = sort(l[even_indices])
+    l_prime = copy(l)
+    l_prime[even_indices] = sorted_even_values
+    return l_prime
+end
+```

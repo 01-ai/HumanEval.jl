@@ -1,0 +1,39 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. First, we need to create a helper function to check if a number is prime.
+2. Then, we need to iterate over all possible combinations of 3 prime numbers that can multiply to give `a`.
+3. For each combination, we check if the product of the three numbers equals `a`.
+4. If we find a combination that works, we return `true`.
+5. If we don't find any combination that works, we return `false`.
+
+Here is the Julia code that implements this algorithm:
+
+```julia
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    end
+    for i in 2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+function is_multiply_prime(a::Int)::Bool
+    primes = [i for i in 2:100 if is_prime(i)]
+    for i in 1:length(primes)
+        for j in i:length(primes)
+            for k in j:length(primes)
+                if primes[i] * primes[j] * primes[k] == a
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end
+```
+
+This code first creates a list of all prime numbers less than 100. Then it checks all combinations of three prime numbers to see if their product equals `a`. If it finds a combination that works, it returns `true`. If it doesn't find any combination that works, it returns `false`.

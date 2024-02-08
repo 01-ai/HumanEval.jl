@@ -1,0 +1,12 @@
+
+
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    words = split(s, " ")
+    result = Vector{String}()
+    for word in words
+        if count(c -> isletter(c) && !islower(c) && !isupper(c), word) == n
+            push!(result, word)
+        end
+    end
+    return result
+end

@@ -1,0 +1,31 @@
+To implement the `rounded_avg` function as described, we need to follow these steps:
+
+1. Check if `n` is greater than `m`. If so, return `-1`.
+2. Calculate the sum of all integers from `n` to `m` inclusive. This can be done efficiently by using the formula for the sum of an arithmetic series: \(\frac{(m - n + 1) \times (n + m)}{2}\), where \(m\) and \(n\) are the bounds of the series.
+3. Calculate the average by dividing the sum by the number of elements, which is \(m - n + 1\).
+4. Round the average to the nearest integer.
+5. Convert the rounded average to binary and return it as a string.
+
+Here is the Julia implementation:
+
+```julia
+function rounded_avg(n::Int, m::Int)::Union{Int, String}
+    # Step 1: Check if n is greater than m
+    if n > m
+        return -1
+    end
+
+    # Step 2: Calculate the sum of integers from n to m
+    sum_of_series = ((m - n + 1) * (n + m)) ÷ 2
+
+    # Step 3: Calculate the average
+    avg = sum_of_series ÷ (m - n + 1)
+
+    # Step 4: Round the average (Note: The division above ensures it's already an integer)
+
+    # Step 5: Convert to binary and return
+    return string(avg, base=2)
+end
+```
+
+This function first checks if `n` is greater than `m`, returning `-1` if true. It then calculates the sum of the series using the arithmetic series sum formula, computes the average, and finally converts the rounded average to a binary string representation. Note that in Julia, integer division automatically rounds towards zero, so the average calculation inherently takes care of the rounding step.

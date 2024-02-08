@@ -1,0 +1,10 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function decimal_to_binary(decimal::Int)::String
+    binary = string(base(decimal, 2))
+    return "db" * binary * "db"
+end
+```
+
+In this function, we use the `base` function to convert the decimal number to binary. The `base` function takes two arguments: the number to be converted and the base to which it should be converted. In this case, we use 2 as the base to convert the decimal number to binary. The result is a string representation of the binary number. We then add the 'db' characters at the beginning and end of this string and return the result.

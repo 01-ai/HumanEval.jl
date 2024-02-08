@@ -1,0 +1,36 @@
+  Here's one way to implement the `vowels_count` function in Julia:
+```
+function vowels_count(s::String)::Int
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    count = 0
+    for c in s
+        if c in vowels
+            count += 1
+        end
+    end
+    return count
+end
+```
+Here's an explanation of how the function works:
+
+1. The function takes a string `s` as input and returns an integer representing the number of vowels in the string.
+2. The `vowels` array contains all the vowels that we want to count, including both uppercase and lowercase versions.
+3. The `count` variable is initialized to 0 and will be incremented for each vowel found in the input string.
+4. The `for` loop iterates over each character `c` in the input string `s`.
+5. If the character `c` is found in the `vowels` array, we increment the `count` variable by 1.
+6. After the loop finishes, we return the final value of `count`, which represents the number of vowels found in the input string.
+
+Here are some examples of how to use the `vowels_count` function:
+```
+julia> vowels_count("abcde")
+2
+
+julia> vowels_count("ACEDY")
+3
+
+julia> vowels_count("hello")
+2
+
+julia> vowels_count("y")
+1
+```

@@ -1,0 +1,7 @@
+Here is the implementation of the `sum_to_n` function in Julia:
+
+```julia
+function sum_to_n(n::Int)::Int
+    return sum(1:n)
+end
+```

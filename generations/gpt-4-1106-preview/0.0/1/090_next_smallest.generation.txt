@@ -1,0 +1,23 @@
+Here is the Julia function `next_smallest` that implements the functionality described in the doc string:
+
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    # Remove duplicates and sort the list
+    unique_sorted_xs = sort(unique(xs))
+    
+    # Check if there is a 2nd smallest element
+    if length(unique_sorted_xs) < 2
+        return nothing
+    else
+        return unique_sorted_xs[2]
+    end
+end
+
+# Examples
+println(next_smallest([1, 2, 3, 4, 5])) # Should print 2
+println(next_smallest([5, 1, 4, 3, 2])) # Should print 2
+println(next_smallest(Int[])) # Should print nothing
+println(next_smallest([1, 1])) # Should print nothing
+```
+
+This function first removes duplicates from the list and sorts it. Then, it checks if there are at least two unique elements. If there are, it returns the second one; otherwise, it returns `nothing`.

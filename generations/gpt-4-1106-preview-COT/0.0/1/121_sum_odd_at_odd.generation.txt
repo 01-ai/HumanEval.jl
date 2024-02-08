@@ -1,0 +1,38 @@
+To implement the `sum_odd_at_odd` function, we will follow these steps:
+
+1. Initialize a variable to keep track of the sum of odd elements at odd positions.
+2. Iterate over the elements of the input vector, using an index to keep track of the position.
+3. Check if the current position is odd (1-based index) and if the element at that position is odd.
+4. If both conditions are met, add the element to the sum.
+5. Return the sum after the iteration is complete.
+
+Now, let's write the code for the function:
+
+```julia
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    # Step 1: Initialize the sum variable
+    sum = 0
+    
+    # Step 2: Iterate over the elements with their indices
+    for (index, value) in enumerate(xs)
+        # Step 3: Check if the index is odd (1-based) and the value is odd
+        if index % 2 == 1 && value % 2 == 1
+            # Step 4: Add the value to the sum
+            sum += value
+        end
+    end
+    
+    # Step 5: Return the sum
+    return sum
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(sum_odd_at_odd([5, 8, 7, 1])) # Should output 12
+println(sum_odd_at_odd([3, 3, 3, 3, 3])) # Should output 9
+println(sum_odd_at_odd([30, 13, 24, 321])) # Should output 0
+```
+
+This function should work correctly based on the problem statement.

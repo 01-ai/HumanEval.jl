@@ -1,0 +1,24 @@
+
+
+function get_row(xs::Vector{Vector{Int}}, x::Int)::Vector{Tuple{Int, Int}}
+    result = []
+    for (i, row) in enumerate(xs)
+        for (j, val) in enumerate(row)
+            if val == x
+                push!(result, (i+1, j+1))
+            end
+        end
+    end
+    sort!(result, by=(x -> x[1]))
+    for i in 1:length(result)
+        if result[i][1] != result[i-1][1]
+            sort!(result[i:end], by=(x -> -x[2]))
+        end
+    end
+    return result
+end
+
+# Test cases
+println(get_row([[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 1, 6], [1, 2, 3, 4, 5, 1]], 1))
+println(get_row(Vector{Int}[], 1))
+println(get_row(Vector{Int}[Int[], [1], [1, 2, 3]], 3))

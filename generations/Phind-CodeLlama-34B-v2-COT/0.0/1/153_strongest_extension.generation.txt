@@ -1,0 +1,41 @@
+
+
+To solve this problem, we will first create a function that calculates the strength of an extension. Then, we will iterate through the list of extensions, calculating their strength and comparing it to the current strongest. If an extension has a greater strength, it becomes the new strongest. Finally, we return the class name and the strongest extension name.
+
+Here is the step-by-step outline:
+
+1. Define a function `strength(extension::String)::Int` that calculates the strength of an extension.
+2. Define the main function `strongest_extension(class_name::String, extensions::Vector{String})::String`.
+3. Initialize a variable `strongest_strength` to `Int` and set it to `-Inf` and a variable `strongest_extension` to `String` and set it to an empty string.
+4. Iterate over each extension in the extensions list.
+5. For each extension, calculate its strength using the `strength` function.
+6. Compare the strength of the current extension with `strongest_strength`.
+7. If the current extension's strength is greater, update `strongest_strength` and `strongest_extension`.
+8. After the loop, return the class name and the strongest extension name in the required format.
+
+Here is the Julia code:
+
+```julia
+function strength(extension::String)::Int
+    CAP = count(isuppercase, extension)
+    SM = count(islowercase, extension)
+    return CAP - SM
+end
+
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    strongest_strength = -Inf
+    strongest_extension = ""
+
+    for extension in extensions
+        current_strength = strength(extension)
+        if current_strength > strongest_strength
+            strongest_strength = current_strength
+            strongest_extension = extension
+        end
+    end
+
+    return "$class_name.$strongest_extension"
+end
+```
+
+This code should solve the problem as expected. It calculates the strength of each extension and finds the one with the greatest strength. If there are multiple extensions with the same strength, it chooses the first one as required by the problem statement.

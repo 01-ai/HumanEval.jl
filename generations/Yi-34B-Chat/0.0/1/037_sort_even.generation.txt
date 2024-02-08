@@ -1,0 +1,24 @@
+```julia
+function sort_even(l::Vector)::Vector
+    # Initialize an output vector with the same length as the input vector
+    out = Vector{eltype(l)}(undef, length(l))
+
+    # Loop over the odd indices and copy the values to the output vector
+    for i in 1:length(l) - 1:2
+        out[i] = l[i]
+    end
+
+    # Sort the even indices of the input vector and copy the sorted values to the
+    # output vector
+    even_indices = 2:2:length(l)
+    even_sorted = sort(l[even_indices])
+    for i in even_indices
+        out[i] = even_sorted[i - 1]
+    end
+
+    # Return the output vector
+    return out
+end
+```
+
+This function works by first initializing an output vector with the same length as the input vector. It then loops over the odd indices of the input vector and copies the values to the corresponding indices in the output vector. For the even indices, it sorts the values and then copies the sorted values to the output vector. Finally, it returns the output vector.

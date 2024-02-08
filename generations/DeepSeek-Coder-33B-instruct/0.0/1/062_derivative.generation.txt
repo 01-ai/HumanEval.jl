@@ -1,0 +1,12 @@
+Here is the Julia function that implements the doc string:
+
+```julia
+function derivative(xs::Vector)::Vector
+    n = length(xs)
+    return [i * xs[i+1] for i in 1:n-1]
+end
+```
+
+This function works by iterating over the indices of the input vector `xs` (excluding the first one, which is the constant term and doesn't contribute to the derivative), and for each index `i`, it multiplies `i` by the coefficient at index `i+1` (since the derivative of `x^i` is `ix^(i-1)`). The result is a new vector that represents the coefficients of the derivative of the polynomial.
+
+For example, if `xs = [3, 1, 2, 4, 5]`, the function will return `[1, 4, 12, 20]`, which represents the polynomial `1 + 4x + 12x^2 + 20x^3`.

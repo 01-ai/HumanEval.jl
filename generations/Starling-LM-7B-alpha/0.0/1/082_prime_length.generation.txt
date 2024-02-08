@@ -1,0 +1,14 @@
+ function prime_length(s::String)
+    length = length(s)
+    if length == 1 || length == 2
+        return true
+    end
+
+    for i in 2:sqrt(Int, length)
+        if length % i == 0
+            return false
+        end
+    end
+
+    return true
+end

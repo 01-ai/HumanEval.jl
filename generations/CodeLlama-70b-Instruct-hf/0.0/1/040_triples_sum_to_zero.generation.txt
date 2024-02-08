@@ -1,0 +1,44 @@
+
+
+```julia
+function triples_sum_to_zero(l::Vector{Int})::Bool
+    # Check if the list has less than 3 elements
+    if length(l) < 3
+        return false
+    end
+
+    # Sort the list in ascending order
+    sort!(l)
+
+    # Iterate through the list
+    for i in 1:length(l) - 2
+        # Initialize the left and right pointers
+        left = i + 1
+        right = length(l)
+
+        # While the left pointer is less than the right pointer
+        while left < right
+            # Calculate the sum of the current triple
+            triple_sum = l[i] + l[left] + l[right]
+
+            # If the sum is zero, return true
+            if triple_sum == 0
+                return true
+            end
+
+            # If the sum is greater than zero, move the right pointer to the left
+            if triple_sum > 0
+                right -= 1
+            # Otherwise, move the left pointer to the right
+            else
+                left += 1
+            end
+        end
+    end
+
+    # If no triple sum to zero is found, return false
+    return false
+end
+```
+
+This function uses a three-pointer approach to solve the problem. It sorts the list in ascending order and then iterates through the list. For each element, it initializes two pointers, one to the right of the current element and one to the end of the list. It then checks if the sum of the current element, the element at the left pointer, and the element at the right pointer is zero. If it is, it returns true. If not, it moves the left pointer to the right or the right pointer to the left depending on the sum. If no triple sum to zero is found, it returns false.

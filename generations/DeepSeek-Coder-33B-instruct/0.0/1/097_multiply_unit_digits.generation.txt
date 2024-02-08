@@ -1,0 +1,9 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function multiply_unit_digits(a::Int, b::Int)::Int
+    return abs(a % 10) * abs(b % 10)
+end
+```
+
+This function works by using the modulus operator (`%`) to get the last digit of each number (the unit digit). The `abs` function is used to ensure that the digits are positive, even if the input numbers are negative. The product of the unit digits is then returned.

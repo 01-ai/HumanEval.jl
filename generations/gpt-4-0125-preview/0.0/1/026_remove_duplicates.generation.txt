@@ -1,0 +1,29 @@
+To implement the `remove_duplicates` function as described, we can follow these steps:
+
+1. Iterate through the list of numbers while keeping track of the count of each number.
+2. Create a new list to store numbers that only appear once, based on the counts.
+3. Return the new list.
+
+Here's how you can do it in Julia:
+
+```julia
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    # Step 1: Count the occurrences of each number
+    counts = Dict{Int, Int}()
+    for num in numbers
+        counts[num] = get(counts, num, 0) + 1
+    end
+
+    # Step 2: Create a new list for numbers that appear only once
+    unique_numbers = Int[]
+    for num in numbers
+        if counts[num] == 1
+            push!(unique_numbers, num)
+        end
+    end
+
+    return unique_numbers
+end
+```
+
+This function works by first counting how many times each number appears in the input vector. Then, it iterates through the input vector again, this time adding numbers to the result vector only if they appear exactly once in the input, as determined by the counts dictionary. This approach maintains the order of elements as required.

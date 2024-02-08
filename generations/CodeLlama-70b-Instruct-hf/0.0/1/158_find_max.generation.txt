@@ -1,0 +1,29 @@
+
+
+```julia
+function find_max(words::Vector{String})::String
+    # Initialize the maximum number of unique characters and the result string
+    max_unique_chars = 0
+    result = ""
+
+    # Iterate through each word in the list
+    for word in words
+        # Count the unique characters in the word
+        unique_chars = length(unique(word))
+
+        # If the current word has more unique characters than the previous maximum, update the result
+        if unique_chars > max_unique_chars
+            max_unique_chars = unique_chars
+            result = word
+        # If the current word has the same number of unique characters as the previous maximum, update the result if it comes first in lexicographical order
+        elseif unique_chars == max_unique_chars && word < result
+            result = word
+        end
+    end
+
+    # Return the result
+    return result
+end
+```
+
+This function iterates through each word in the list, counts the unique characters in each word, and updates the result if the current word has more unique characters than the previous maximum or if it has the same number of unique characters but comes first in lexicographical order.

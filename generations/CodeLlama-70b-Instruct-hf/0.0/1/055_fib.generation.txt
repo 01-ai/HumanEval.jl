@@ -1,0 +1,27 @@
+
+
+```julia
+function fib(n::Int)::Int
+    # Base cases
+    if n == 0
+        return 0
+    elseif n == 1
+        return 1
+    end
+
+    # Initialize variables
+    a = 0
+    b = 1
+
+    # Iterate n times to calculate the n-th Fibonacci number
+    for _ in 2:n
+        c = a + b
+        a = b
+        b = c
+    end
+
+    return b
+end
+```
+
+This function uses a simple iterative approach to calculate the n-th Fibonacci number. It initializes two variables `a` and `b` to store the previous two Fibonacci numbers. In each iteration, it calculates the next Fibonacci number and updates `a` and `b`. Finally, it returns the n-th Fibonacci number.

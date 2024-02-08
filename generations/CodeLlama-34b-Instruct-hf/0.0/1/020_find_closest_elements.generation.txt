@@ -1,0 +1,37 @@
+  Here's one way to implement the `find_closest_elements` function in Julia:
+```
+function find_closest_elements(numbers::Vector{Float64})::Tuple{Float64, Float64}
+    # Sort the input vector in ascending order
+    sorted_numbers = sort(numbers)
+
+    # Initialize the closest pair of numbers
+    closest_pair = (sorted_numbers[1], sorted_numbers[2])
+
+    # Iterate over the sorted vector and find the closest pair of numbers
+    for i in 2:length(sorted_numbers)
+        # If the current number is closer to the previous number than the current closest pair,
+        # update the closest pair
+        if abs(sorted_numbers[i] - sorted_numbers[i-1]) < abs(closest_pair[1] - closest_pair[2])
+            closest_pair = (sorted_numbers[i-1], sorted_numbers[i])
+        end
+    end
+
+    return closest_pair
+end
+```
+Here's an explanation of the code:
+
+1. The function takes a vector of floating-point numbers as input and returns a tuple of two floating-point numbers.
+2. The first step is to sort the input vector in ascending order using the `sort` function.
+3. The `closest_pair` variable is initialized to the first two elements of the sorted vector.
+4. The function then iterates over the sorted vector and checks if the current number is closer to the previous number than the current closest pair. If it is, the `closest_pair` variable is updated with the new closest pair.
+5. The function returns the `closest_pair` variable at the end.
+
+Here are some examples of how to use the function:
+```
+julia> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2])
+(2.0, 2.2)
+
+julia> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0])
+(2.0, 2.0)
+```

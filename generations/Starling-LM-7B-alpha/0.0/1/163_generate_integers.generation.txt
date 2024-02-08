@@ -1,0 +1,9 @@
+ function generate_integers(a::Int, b::Int)::Vector{Int}
+    even_numbers = Vector{Int}()
+    for i in a:b
+        if mod(i, 2) == 0
+            push!(even_numbers, i)
+        end
+    end
+    return sort(even_numbers)
+end

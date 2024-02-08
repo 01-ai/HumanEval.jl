@@ -1,0 +1,8 @@
+```julia
+function multiply_unit_digits(a::Int, b::Int)::Int
+    # Your code here
+    # Example: if a = 148 and b = 412, return 16 (because 8 * 2 = 16)
+end
+```
+
+This is a placeholder for the actual implementation of the `multiply_unit_digits` function. To complete the function, you need to write the code that calculates the product of the unit digits of the two integers `a` and `b`. The examples provided in the docstring illustrate how the function should behave for different input values.

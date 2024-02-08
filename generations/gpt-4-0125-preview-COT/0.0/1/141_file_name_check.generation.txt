@@ -1,0 +1,39 @@
+### Step-by-Step Outline
+
+1. **Check for the number of dots**: Count the number of dots in the file name. If it is not exactly one, return "No".
+2. **Split the file name**: Split the file name by the dot to separate the name and the extension.
+3. **Check the file name part**:
+   - Ensure the file name part is not empty.
+   - Check if the first character of the file name part is a letter (either lowercase or uppercase).
+   - Count the number of digits in the file name part. If there are more than three digits, return "No".
+4. **Check the file extension part**: Verify if the extension is one of the allowed ones: "txt", "exe", or "dll". If not, return "No".
+5. **Return "Yes"**: If all checks pass, return "Yes".
+
+### Julia Code Implementation
+
+```julia
+function file_name_check(file_name::String)::String
+    # Step 1: Check for the number of dots
+    if count(c -> c == '.', file_name) != 1
+        return "No"
+    end
+
+    # Step 2: Split the file name
+    name_part, extension_part = split(file_name, '.', limit=2)
+
+    # Step 3: Check the file name part
+    if isempty(name_part) || !isletter(name_part[1]) || count(isdigit, name_part) > 3
+        return "No"
+    end
+
+    # Step 4: Check the file extension part
+    if extension_part ∉ ["txt", "exe", "dll"]
+        return "No"
+    end
+
+    # Step 5: Return "Yes"
+    return "Yes"
+end
+```
+
+This function implements the specified requirements by sequentially checking each condition and returning "No" as soon as any condition is not met. If all conditions are satisfied, it returns "Yes".

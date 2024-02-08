@@ -1,0 +1,52 @@
+### Step-by-Step Outline
+
+1. **Swap Case**: For each character in the message, check if it is a letter. If it is, swap its case (i.e., if it's uppercase, convert it to lowercase, and vice versa).
+
+2. **Replace Vowels**: After swapping the case, check if the character is a vowel. If it is, replace it with the letter that appears 2 places after it in the English alphabet. For this purpose, consider the vowels 'a', 'e', 'i', 'o', 'u' for lowercase and their uppercase counterparts. The mapping after shifting 2 places would be:
+   - 'a' -> 'c'
+   - 'e' -> 'g'
+   - 'i' -> 'k'
+   - 'o' -> 'q'
+   - 'u' -> 'w'
+   - And the same mapping for uppercase vowels.
+
+3. **Construct the Encoded Message**: As you process each character, append it to a new string that will become the encoded message.
+
+4. **Return the Encoded Message**: Once all characters have been processed, return the new string as the encoded message.
+
+### Julia Code Implementation
+
+```julia
+function encode_swap(message::String)::String
+    # Define a mapping for vowels to their corresponding characters after shifting
+    vowel_map = Dict('a' => 'c', 'e' => 'g', 'i' => 'k', 'o' => 'q', 'u' => 'w',
+                     'A' => 'C', 'E' => 'G', 'I' => 'K', 'O' => 'Q', 'U' => 'W')
+    
+    # Initialize an empty string to hold the encoded message
+    encoded_message = ""
+    
+    # Iterate through each character in the message
+    for char in message
+        # Check if the character is a letter and swap its case
+        if isletter(char)
+            if islower(char)
+                char = uppercase(char)
+            else
+                char = lowercase(char)
+            end
+            
+            # Check if the character is a vowel and replace it if necessary
+            if char in keys(vowel_map)
+                char = vowel_map[char]
+            end
+        end
+        
+        # Append the processed character to the encoded message
+        encoded_message *= char
+    end
+    
+    return encoded_message
+end
+```
+
+This function follows the outlined steps to swap the case of letters, replace vowels with their corresponding

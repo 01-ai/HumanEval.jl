@@ -1,0 +1,13 @@
+```julia
+function fruit_distribution(s::String, n::Int)::Int
+    apples, oranges = 0, 0
+    for word in split(s)
+        if word == "apples"
+            apples = parse(Int, splitprev(s, word))
+        elseif word == "oranges"
+            oranges = parse(Int, splitprev(s, word))
+        end
+    end
+    return n - apples - oranges
+end
+```

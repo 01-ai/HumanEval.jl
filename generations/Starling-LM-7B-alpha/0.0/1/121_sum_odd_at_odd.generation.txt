@@ -1,0 +1,9 @@
+ function sum_odd_at_odd(xs::Vector{Int})::Int
+    sum = 0
+    for i in 1:length(xs)
+        if mod(i, 2) == 1 && mod(xs[i], 2) == 1
+            sum += xs[i]
+        end
+    end
+    return sum
+end

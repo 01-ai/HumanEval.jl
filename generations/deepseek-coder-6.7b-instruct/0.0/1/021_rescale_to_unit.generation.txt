@@ -1,0 +1,11 @@
+Here is the Julia function that implements the described behavior:
+
+```julia
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    min_val = minimum(numbers)
+    max_val = maximum(numbers)
+    return [(n - min_val) / (max_val - min_val) for n in numbers]
+end
+```
+
+This function first calculates the minimum and maximum values of the input vector. Then it applies a linear transformation to each element of the vector, rescaling it to the range [0, 1] according to the formula `(n - min_val) / (max_val - min_val)`.

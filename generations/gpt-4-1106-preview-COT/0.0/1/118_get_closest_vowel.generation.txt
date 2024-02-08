@@ -1,0 +1,39 @@
+To implement the `get_closest_vowel` function, we will follow these steps:
+
+1. Define a set or list of vowels for easy checking.
+2. Iterate over the word from right to left, skipping the first and last characters.
+3. Check if the current character is a vowel and is surrounded by consonants.
+4. If such a vowel is found, return it as a string.
+5. If no such vowel is found by the end of the iteration, return an empty string.
+
+Now, let's write the code for the function:
+
+```julia
+function get_closest_vowel(word::String)::String
+    # Step 1: Define the vowels
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    
+    # Step 2: Iterate over the word from right to left, skipping the first and last characters
+    for i in length(word)-1:-1:2
+        # Step 3: Check if the current character is a vowel and is surrounded by consonants
+        if word[i] in vowels && !(word[i-1] in vowels) && !(word[i+1] in vowels)
+            # Step 4: Return the vowel as a string
+            return string(word[i])
+        end
+    end
+    
+    # Step 5: Return an empty string if no vowel is found
+    return ""
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(get_closest_vowel("yogurt")) # Should return "u"
+println(get_closest_vowel("FULL"))   # Should return "U"
+println(get_closest_vowel("quick"))  # Should return ""
+println(get_closest_vowel("ab"))     # Should return ""
+```
+
+This function should work correctly for the given task.

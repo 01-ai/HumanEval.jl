@@ -1,0 +1,24 @@
+  Here's an implementation of the `fib` function in Julia based on the given docstring:
+```
+function fib(n::Int)::Int
+    if n <= 1
+        return n
+    else
+        return fib(n-1) + fib(n-2)
+    end
+end
+```
+This function uses a recursive approach to calculate the n-th Fibonacci number. It first checks if `n` is less than or equal to 1, in which case it returns `n` directly. Otherwise, it calls itself recursively with `n-1` and `n-2` as arguments, and returns the sum of the two results.
+
+Here are some examples of how to use the `fib` function:
+```
+julia> fib(10)
+55
+
+julia> fib(1)
+1
+
+julia> fib(8)
+21
+```
+Note that the `fib` function is not optimized for large values of `n`, and it may become slow for very large values of `n`. If you need to calculate Fibonacci numbers for large values of `n`, you may want to consider using a more efficient algorithm, such as the matrix exponentiation method.

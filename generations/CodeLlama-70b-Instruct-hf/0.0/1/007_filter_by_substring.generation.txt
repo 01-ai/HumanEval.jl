@@ -1,0 +1,9 @@
+
+
+```julia
+function filter_by_substring(strings::Vector{String}, substring::AbstractString)::Vector{String}
+    return filter(s -> occursin(substring, s), strings)
+end
+```
+
+This function takes a vector of strings and a substring as input and returns a vector of strings that contain the given substring. It uses the `filter` function to filter the input vector based on the condition that the substring occurs in each string.

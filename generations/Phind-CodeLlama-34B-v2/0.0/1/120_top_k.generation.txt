@@ -1,0 +1,25 @@
+
+
+function top_k(xs::Vector{Int}, k::Int)::Vector{Int}
+    # Check if k is greater than the length of the array
+    if k > length(xs)
+        k = length(xs)
+    end
+
+    # Initialize a priority queue with the first k elements
+    pq = PriorityQueue{Int, Int}()
+    for i in 1:k
+        enqueue!(pq, xs[i], i)
+    end
+
+    # Iterate over the rest of the array
+    for i in k+1:length(xs)
+        if xs[i] > first(pq)[1]
+            dequeue!(pq)
+            enqueue!(pq, xs[i], i)
+        end
+    end
+
+    # Return the top k elements in descending order
+    return [x for (x, _) in reverse(collect(pq))]
+end

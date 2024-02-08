@@ -1,0 +1,27 @@
+Here is the Julia function based on the given doc string:
+
+```julia
+using MD5
+
+function string_to_md5(text::String)::Union{Nothing,String}
+    if text == ""
+        return nothing
+    else
+        return bytes2hex(md5(text))
+    end
+end
+```
+
+This function works as follows:
+
+1. It first checks if the input string `text` is an empty string. If it is, it returns `nothing`.
+2. If `text` is not an empty string, it calculates the MD5 hash of `text` using the `md5` function from the `MD5` module.
+3. The `md5` function returns a byte array, which is then converted to a hexadecimal string using the `bytes2hex` function.
+4. The hexadecimal string is returned as the output.
+
+You can test this function with the following code:
+
+```julia
+println(string_to_md5("Hello world"))  # Output: "3e25960a79dbc69b674cd4ec67a72c62"
+println(string_to_md5(""))  # Output: nothing
+```

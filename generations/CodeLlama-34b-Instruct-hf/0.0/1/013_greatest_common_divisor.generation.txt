@@ -1,0 +1,20 @@
+  Here's an implementation of the `greatest_common_divisor` function in Julia:
+```
+function greatest_common_divisor(a::Int, b::Int)::Int
+    while b != 0
+        a, b = b, a % b
+    end
+    return a
+end
+```
+This function uses the Euclidean algorithm to find the greatest common divisor of two integers. The algorithm works by repeatedly subtracting the smaller number from the larger number until the smaller number is 0, at which point the remaining number is the greatest common divisor.
+
+Here's an example of how to use the function:
+```
+julia> greatest_common_divisor(3, 5)
+1
+
+julia> greatest_common_divisor(25, 15)
+5
+```
+Note that the function assumes that the input arguments are integers. If the input arguments are not integers, the function will throw an error.

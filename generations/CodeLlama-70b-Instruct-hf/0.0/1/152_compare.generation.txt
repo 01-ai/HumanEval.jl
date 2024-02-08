@@ -1,0 +1,18 @@
+
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    if length(game) != length(guess)
+        throw(DimensionMismatch("The game and guess vectors must be of the same length"))
+    end
+
+    result = zeros(Int, length(game))
+
+    for i in 1:length(game)
+        result[i] = abs(game[i] - guess[i])
+    end
+
+    return result
+end
+```
+
+This function takes two vectors, `game` and `guess`, as input and returns a vector of the same length, where each element represents the absolute difference between the corresponding elements in `game` and `guess`. If the elements are equal, the difference is 0.

@@ -1,0 +1,42 @@
+
+
+# Outline
+
+1. Initialize an empty stack to keep track of the brackets.
+2. Iterate through the string.
+3. If the current character is an opening bracket ("<"), push it to the stack.
+4. If the current character is a closing bracket (">"), check if the stack is empty.
+5. If the stack is not empty, pop the last bracket from the stack.
+6. If the stack is empty after checking for a closing bracket, return false.
+7. After iterating through the entire string, check if the stack is empty.
+8. If the stack is not empty, return false. Otherwise, return true.
+
+# Code
+
+```julia
+function correct_angle_bracketing(brackets::String)::Bool
+    # Initialize an empty stack to keep track of the brackets
+    stack = []
+
+    # Iterate through the string
+    for bracket in brackets
+        # If the current character is an opening bracket ("<"), push it to the stack
+        if bracket == '<'
+            push!(stack, bracket)
+        # If the current character is a closing bracket (">"), check if the stack is empty
+        elseif bracket == '>'
+            # If the stack is not empty, pop the last bracket from the stack
+            if !isempty(stack)
+                pop!(stack)
+            # If the stack is empty after checking for a closing bracket, return false
+            else
+                return false
+            end
+        end
+    end
+
+    # After iterating through the entire string, check if the stack is empty
+    # If the stack is not empty, return false. Otherwise, return true
+    return isempty(stack)
+end
+```

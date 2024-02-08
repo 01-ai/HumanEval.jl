@@ -1,0 +1,16 @@
+To implement the `is_equal_to_sum_even` function in Julia, we need to determine if a given integer `n` can be expressed as the sum of exactly four positive even numbers. Since the smallest positive even number is 2, the smallest sum we can achieve with four even numbers is \(2 + 2 + 2 + 2 = 8\). Therefore, any number less than 8 cannot be expressed as such a sum. For numbers greater than or equal to 8, we can check if they are even because an even number can be divided into even parts. Here's how you can implement this function:
+
+```julia
+function is_equal_to_sum_even(n::Int)::Bool
+    # Check if n is less than the smallest possible sum of four even numbers
+    if n < 8
+        return false
+    end
+
+    # Since we are looking for a sum of exactly four even numbers,
+    # n must be even to be expressible in such a way.
+    return n % 2 == 0
+end
+```
+
+This implementation leverages the fact that any even number greater than or equal to 8 can be expressed as the sum of four even numbers. For example, 8 itself can be expressed as \(2 + 2 + 2 + 2\), and any larger even number can adjust one of these components to reach the target sum.

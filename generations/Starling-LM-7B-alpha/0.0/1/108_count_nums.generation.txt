@@ -1,0 +1,14 @@
+ function count_nums(xs::Vector{Int})::Int
+    count = 0
+    for x in xs
+        sum_digits = 0
+        while x > 0
+            sum_digits += mod(x, 10)
+            x = floor(x / 10)
+        end
+        if sum_digits > 0
+            count += 1
+        end
+    end
+    return count
+end

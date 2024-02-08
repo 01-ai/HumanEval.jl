@@ -1,0 +1,16 @@
+  Here is an implementation of the `filter_by_prefix` function in Julia:
+```
+function filter_by_prefix(xs::Vector{String}, prefix::String)::Vector{String}
+    return filter(x -> startswith(x, prefix), xs)
+end
+```
+This function uses the `filter` function from the `Base` module to filter the input vector `xs` based on the `startswith` function, which checks if a string starts with a given prefix. The `startswith` function is called with the `prefix` argument as the first argument and the current element of the vector as the second argument. If the element starts with the prefix, it is included in the resulting vector.
+
+Here is an example usage of the function:
+```
+julia> filter_by_prefix(["abc", "bcd", "cde", "array"], "a")
+2-element Vector{String}:
+ "abc"
+ "array"
+```
+This returns a vector containing only the elements that start with the prefix "a", which are "abc" and "array".

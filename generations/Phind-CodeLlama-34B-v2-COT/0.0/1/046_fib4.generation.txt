@@ -1,0 +1,29 @@
+
+
+# Outline
+
+1. Define the function `fib4(n::Int)::Int`.
+2. Initialize an array `fib4_values` of size 4 with all elements as 0. This will be used to store the first four elements of the fib4 sequence.
+3. If `n` is less than or equal to 3, return the corresponding element from `fib4_values`.
+4. Initialize a variable `result` to 0. This will store the n-th element of the fib4 sequence.
+5. Iterate over the range 4 to n and for each `i`, calculate `result` as the sum of `result`, `fib4_values[1]`, `fib4_values[2]`, and `fib4_values[3]`. Then, shift the elements of `fib4_values` to the right and store `result` in the first position of `fib4_values`.
+6. After the loop, `result` will hold the n-th element of the fib4 sequence. Return `result`.
+
+# Code
+
+```julia
+function fib4(n::Int)::Int
+    fib4_values = [0, 0, 2, 0]
+    if n <= 3
+        return fib4_values[n + 1]
+    end
+    result = 0
+    for i in 4:n
+        result = fib4_values[1] + fib4_values[2] + fib4_values[3] + fib4_values[4]
+        fib4_values = [fib4_values[2], fib4_values[3], fib4_values[4], result]
+    end
+    return result
+end
+```
+
+This function computes the n-th element of the fib4 sequence in O(n) time and O(1) space.

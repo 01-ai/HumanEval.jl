@@ -1,0 +1,47 @@
+### Step-by-Step Outline:
+
+1. Define the function `get_odd_collatz(n::Int)::Vector{BigInt}` that takes an integer `n` as input.
+2. Initialize an empty list to store the odd numbers in the Collatz sequence.
+3. Use a loop to generate the Collatz sequence starting from `n`. For each number in the sequence:
+   - Convert the number to `BigInt` to avoid overflow.
+   - Check if the number is odd.
+   - If it is odd, add it to the list of odd numbers.
+   - Apply the Collatz rule to generate the next number in the sequence:
+     - If the current number is even, divide it by 2.
+     - If the current number is odd, multiply it by 3 and add 1.
+4. Continue the loop until the sequence reaches 1.
+5. Sort the list of odd numbers in increasing order.
+6. Return the sorted list of odd numbers.
+
+### Julia Code:
+
+```julia
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    # Step 2: Initialize an empty list for odd numbers
+    odd_numbers = BigInt[]
+
+    # Step 3: Generate the Collatz sequence
+    current = BigInt(n)
+    while current != 1
+        # Check if the current number is odd
+        if current % 2 != 0
+            push!(odd_numbers, current)
+        end
+        # Apply the Collatz rule
+        current = current % 2 == 0 ? current ÷ 2 : 3*current + 1
+    end
+
+    # Add the final number 1 to the list if it's not already there
+    if 1 ∉ odd_numbers
+        push!(odd_numbers, BigInt(1))
+    end
+
+    # Step 5: Sort the list of odd numbers
+    sort!(odd_numbers)
+
+    # Step 6: Return the sorted list
+    return odd_numbers
+end
+```
+
+This function will generate the Collatz sequence for a given `n`, extract the odd numbers, sort them, and return the sorted list.

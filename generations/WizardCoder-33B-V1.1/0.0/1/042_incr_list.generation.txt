@@ -1,0 +1,11 @@
+
+
+Here is the Julia function that implements the given doc string:
+
+```julia
+function incr_list(xs::Vector)::Vector
+    return xs .+ 1
+end
+```
+
+This function uses broadcasting to add 1 to each element in the input vector. The `.+` operator is a broadcasted operation that applies the `+` function element-wise across the input vectors. 

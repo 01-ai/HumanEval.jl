@@ -1,0 +1,36 @@
+### Step-by-Step Outline
+
+1. **Check for Letters**: Determine if the string contains any letters. This can be done by iterating through the string and checking if any character is a letter using the `isletter` function.
+
+2. **Reverse Case or String**:
+   - If the string contains letters, iterate through each character of the string. For each character, check if it is a letter.
+     - If it is a letter, reverse its case. This can be done by checking if the letter is uppercase or lowercase using `isupper` or `islower` functions, then converting it to the opposite case using `uppercase` or `lowercase` functions.
+     - If it is not a letter, keep it as it is.
+   - If the string does not contain any letters, reverse the string. This can be done using the `reverse` function.
+
+3. **Return Result**: Return the modified string as the result.
+
+### Julia Code Implementation
+
+```julia
+function reverse_string(s::String)::String
+    # Step 1: Check for letters
+    contains_letters = any(isletter, s)
+    
+    # Step 2: Reverse case or string
+    if contains_letters
+        # Reverse case for letters, keep others as is
+        return join([isletter(c) ? (islower(c) ? uppercase(c) : lowercase(c)) : c for c in s])
+    else
+        # Reverse the string if no letters are present
+        return reverse(s)
+    end
+end
+
+# Examples
+println(reverse_string("1234"))  # Expected: "4321"
+println(reverse_string("ab"))    # Expected: "AB"
+println(reverse_string("#a@C"))  # Expected: "#A@c"
+```
+
+This implementation follows the outlined steps, first checking for the presence of letters, then either reversing the case of letters or reversing the entire string based on that check, and finally returning the modified string.

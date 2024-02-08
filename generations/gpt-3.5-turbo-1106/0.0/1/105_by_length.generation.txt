@@ -1,0 +1,9 @@
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    filtered = filter(x -> 1 <= x <= 9, xs)
+    sorted_reversed = reverse(sort(filtered))
+    names = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    result = [names[i] for i in sorted_reversed]
+    return result
+end
+```

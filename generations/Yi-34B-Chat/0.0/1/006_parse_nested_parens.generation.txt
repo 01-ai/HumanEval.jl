@@ -1,0 +1,24 @@
+```julia
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    # Initialize an empty vector to store the levels of nesting
+    nested_levels = Vector{Int}()
+
+    # Loop over the string, character by character
+    for i in 1:length(paren_string)
+        # If the current character is an opening parenthesis '('
+        if paren_string[i] == '('
+            # Push a 1 to the vector to indicate the start of a new level
+            push!(nested_levels, 1)
+        # If the current character is a closing parenthesis ')'
+        elseif paren_string[i] == ')'
+            # Pop the last element from the vector to decrement the level
+            pop!(nested_levels)
+        end
+    end
+
+    # Convert the vector to an array and return it
+    return nested_levels
+end
+```
+
+This function works by keeping track of the level of nesting for each group of parentheses. It does this by pushing a 1 to the vector for each opening parenthesis and popping the last element for each closing parenthesis. The resulting vector contains the deepest level of nesting for each group of parentheses.

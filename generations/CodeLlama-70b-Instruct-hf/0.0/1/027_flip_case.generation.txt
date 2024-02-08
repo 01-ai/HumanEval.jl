@@ -1,0 +1,19 @@
+
+
+```julia
+function flip_case(s::String)::String
+    result = ""
+    for char in s
+        if islowercase(char)
+            result *= uppercase(char)
+        elseif isuppercase(char)
+            result *= lowercase(char)
+        else
+            result *= char
+        end
+    end
+    return result
+end
+```
+
+This function iterates through each character in the string and checks if it is lowercase or uppercase. If it is lowercase, it converts it to uppercase and appends it to the result. If it is uppercase, it converts it to lowercase and appends it to the result. If it is neither, it simply appends the character to the result. Finally, it returns the result.

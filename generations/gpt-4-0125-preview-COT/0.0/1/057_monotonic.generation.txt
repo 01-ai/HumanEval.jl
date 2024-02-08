@@ -1,0 +1,49 @@
+### Step-by-Step Outline
+
+1. **Check if the list is empty or has a single element**: If the list `l` has 0 or 1 element, it is trivially monotonic. Return `true` in this case.
+
+2. **Determine the direction of monotonicity**:
+   - Compare the first two different elements in the list to determine if the sequence is intended to be increasing or decreasing.
+   - If all elements are the same, the list is also considered monotonic, so return `true`.
+
+3. **Check for monotonicity**:
+   - Iterate through the list, comparing each element with the next one to ensure the sequence either consistently increases or decreases based on the direction determined in step 2.
+   - If any pair of elements violates the determined direction of monotonicity, return `false`.
+
+4. **Return true if the end of the list is reached without finding any violations**, indicating the list is monotonic.
+
+### Julia Code Implementation
+
+```julia
+function monotonic(l::Vector)::Bool
+    # Step 1: Check for trivial cases
+    length(l) <= 1 && return true
+
+    # Step 2: Determine the direction of monotonicity
+    direction = 0  # 1 for increasing, -1 for decreasing, 0 for undecided
+    for i in 1:length(l)-1
+        if l[i] < l[i+1]
+            direction = 1
+            break
+        elseif l[i] > l[i+1]
+            direction = -1
+            break
+        end
+    end
+
+    # If direction remains 0, all elements are the same
+    direction == 0 && return true
+
+    # Step 3: Check for monotonicity
+    for i in 1:length(l)-1
+        if direction == 1 && l[i] > l[i+1] || direction == -1 && l[i] < l[i+1]
+            return false
+        end
+    end
+
+    # Step 4: Return true if no violations found
+    return true
+end
+```
+
+This function first determines the intended direction of monotonicity by comparing the first pair of different elements. It then checks each subsequent pair of elements to ensure they follow the determined direction, returning `false` upon finding any violation.

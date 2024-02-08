@@ -1,0 +1,29 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. Define a function `order_by_points` that takes a vector of integers as input.
+2. Inside the function, calculate the sum of the digits of each integer in the vector.
+3. Create a new vector of tuples where each tuple contains the original integer, its index in the original vector, and the sum of its digits.
+4. Sort this new vector of tuples first by the sum of the digits and then by the index.
+5. Extract the original integers from the sorted vector of tuples and return them as a new vector.
+
+Here is the Julia code that implements this outline:
+
+```julia
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    # Calculate the sum of the digits of each integer
+    sums = [sum(digits(abs(n))) for n in nums]
+
+    # Create a new vector of tuples
+    nums_with_sums = [(n, i, s) for (i, (n, s)) in enumerate(zip(nums, sums))]
+
+    # Sort the vector of tuples
+    sorted_nums_with_sums = sort(nums_with_sums, by=x -> (x[3], x[2]))
+
+    # Extract the original integers from the sorted vector of tuples
+    sorted_nums = [n for (n, _, _) in sorted_nums_with_sums]
+
+    return sorted_nums
+end
+```
+
+This function works by first calculating the sum of the digits of each integer in the input vector. It then creates a new vector of tuples, where each tuple contains the original integer, its index in the original vector, and the sum of its digits. This vector is then sorted first by the sum of the digits and then by the index. Finally, the original integers are extracted from the sorted vector of tuples and returned as a new vector.

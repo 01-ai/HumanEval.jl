@@ -1,0 +1,21 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. Create a new list `l'` that is a copy of `l`.
+2. Extract the elements at the even indices of `l`.
+3. Sort these elements.
+4. Replace the elements at the even indices of `l'` with the sorted elements.
+5. Return `l'`.
+
+Here is the Julia code that implements this outline:
+
+```julia
+function sort_even(l::Vector)::Vector
+    l′ = copy(l)
+    even_elements = l[2:2:end]
+    sort_even_elements = sort(even_elements)
+    l′[2:2:end] = sort_even_elements
+    return l′
+end
+```
+
+This function works by first creating a copy of the input list `l`. It then extracts the elements at the even indices of `l`, sorts them, and replaces the elements at the even indices of `l'` with the sorted elements. Finally, it returns `l'`.

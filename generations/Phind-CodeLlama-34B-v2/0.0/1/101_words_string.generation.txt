@@ -1,0 +1,7 @@
+
+
+function words_string(s::String)::Vector{String}
+    words = split(s, r"[ ,\n]")
+    filter!(x -> !isempty(x), words)
+    return words
+end

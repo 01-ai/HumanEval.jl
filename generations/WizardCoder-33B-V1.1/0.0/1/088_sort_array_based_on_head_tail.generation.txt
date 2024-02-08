@@ -1,0 +1,21 @@
+
+
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    if isempty(xs)
+        return Int[]
+    end
+
+    sum_head_tail = xs[1] + xs[end]
+
+    if sum_head_tail % 2 == 0
+        return sort(xs, rev=true)
+    else
+        return sort(xs)
+    end
+end
+
+# Test cases
+println(sort_array_based_on_head_tail(Int[]))
+println(sort_array_based_on_head_tail([5]))
+println(sort_array_based_on_head_tail([2, 4, 3, 0, 1, 5]))
+println(sort_array_based_on_head_tail([2, 4, 3, 0, 1, 5, 6])) 

@@ -1,0 +1,25 @@
+
+
+function even_odd_palindrome(n::Int)::Tuple{Int, Int}
+    even_count = 0
+    odd_count = 0
+    for i in 1:n
+        if ispalindrome(i)
+            if i % 2 == 0
+                even_count += 1
+            else
+                odd_count += 1
+            end
+        end
+    end
+    return (even_count, odd_count)
+end
+
+function ispalindrome(n::Int)::Bool
+    str = string(n)
+    return str == reverse(str)
+end
+
+# Test cases
+@assert even_odd_palindrome(3) == (1, 2)
+@assert even_odd_palindrome(12) == (4, 6)

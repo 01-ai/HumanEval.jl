@@ -1,0 +1,13 @@
+Certainly! Below is the Julia function `all_prefixes` that takes a string `s` as input and returns a vector of all its prefixes from shortest to longest.
+
+```julia
+function all_prefixes(s::String)::Vector{String}
+    prefixes = String[]
+    for i in 1:length(s)
+        push!(prefixes, s[1:i])
+    end
+    return prefixes
+end
+```
+
+This function initializes an empty vector of strings. It then iterates through the length of the input string, progressively taking slices of the string from the first character up to the current index `i`, and adds each slice to the vector. Finally, it returns the vector containing all the prefixes.

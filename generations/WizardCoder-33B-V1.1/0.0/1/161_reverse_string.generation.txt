@@ -1,0 +1,15 @@
+
+
+Here is the Julia function that implements the given problem:
+
+```julia
+function reverse_string(s::String)::String
+    if any(isletter, s)
+        return map(c -> isletter(c) ? (isuppercase(c) ? lowercase(c) : uppercase(c)) : c, s)
+    else
+        return reverse(s)
+    end
+end
+```
+
+This function works by checking if the string `s` contains any letters using the `any` function and `isletter`. If it does, it uses the `map` function to iterate over each character in the string. If the character is a letter, it changes its case using the `isuppercase` and `lowercase` or `uppercase` functions. If the character is not a letter, it leaves it as is. If the string does not contain any letters, it simply reverses the string using the `reverse` function. 

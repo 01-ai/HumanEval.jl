@@ -1,0 +1,20 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. Create a function named `common` that takes two vectors as input.
+2. Use the `intersect` function to find the common elements between the two vectors.
+3. Use the `unique` function to remove any duplicate common elements.
+4. Use the `sort` function to sort the unique common elements.
+5. Return the sorted unique common elements.
+
+Here is the Julia code that implements this outline:
+
+```julia
+function common(l1::Vector, l2::Vector)::Vector
+    common_elements = intersect(l1, l2)
+    unique_common_elements = unique(common_elements)
+    sorted_unique_common_elements = sort(unique_common_elements)
+    return sorted_unique_common_elements
+end
+```
+
+This function will return the sorted unique common elements between two vectors.

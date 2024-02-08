@@ -1,0 +1,46 @@
+### Step-by-Step Outline
+
+1. **Normalize the Input**: Convert the input string to lowercase to simplify the comparison process, as we need to count vowels irrespective of their case.
+
+2. **Define the Vowels**: Create a list or set of vowels ('a', 'e', 'i', 'o', 'u') for easy checking. Since 'y' is conditionally a vowel, it will be handled separately.
+
+3. **Initialize a Counter**: Start a counter at 0 to keep track of the number of vowels found in the string.
+
+4. **Iterate Through the String**: Go through each character in the string.
+
+    a. **Check for Vowels**: If the character is in the vowels list, increment the counter by 1.
+    
+    b. **Special Case for 'y'**: If the character is 'y' and it is the last character in the string, also increment the counter by 1.
+
+5. **Return the Counter**: After iterating through the entire string, return the counter value, which represents the number of vowels in the string.
+
+### Julia Code Implementation
+
+```julia
+function vowels_count(s::String)::Int
+    # Step 1: Normalize the input
+    s_lower = lowercase(s)
+    
+    # Step 2: Define the vowels
+    vowels = Set(['a', 'e', 'i', 'o', 'u'])
+    
+    # Step 3: Initialize a counter
+    count = 0
+    
+    # Step 4: Iterate through the string
+    for (i, char) in enumerate(s_lower)
+        # Step 4a: Check for vowels
+        if char in vowels
+            count += 1
+        # Step 4b: Special case for 'y'
+        elseif char == 'y' && i == length(s_lower)
+            count += 1
+        end
+    end
+    
+    # Step 5: Return the counter
+    return count
+end
+```
+
+This implementation follows the outlined steps to count the vowels in a given string, taking into account the special condition for 'y'.

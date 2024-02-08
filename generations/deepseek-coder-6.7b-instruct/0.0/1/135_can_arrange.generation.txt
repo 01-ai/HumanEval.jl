@@ -1,0 +1,14 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function can_arrange(xs::Vector{Int})::Int
+    for i in length(xs):-1:2
+        if xs[i] < xs[i-1]
+            return i-1
+        end
+    end
+    return -1
+end
+```
+
+This function iterates over the array in reverse order, starting from the end. It checks each pair of elements, if the current element is less than the previous one, it returns the index of the previous element. If no such pair is found after checking all elements, it returns -1.

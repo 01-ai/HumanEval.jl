@@ -1,0 +1,35 @@
+
+
+# Outline
+
+1. Create a function `tri(n::Int)::Vector{Int}` that takes a non-negative integer `n` as input and returns a vector of integers.
+2. Initialize an empty vector `result` to store the Tribonacci sequence.
+3. If `n` is 0 or 1, return `result` immediately.
+4. Add 1 to the first element of `result`.
+5. If `n` is even, add `n / 2` to the first element of `result` and return `result`.
+6. If `n` is odd, calculate the Tribonacci numbers for `n - 1`, `n - 2`, and `n + 1` recursively and add them to the first element of `result`.
+7. Return `result`.
+
+# Code
+
+```julia
+function tri(n::Int)::Vector{Int}
+    result = Int[]
+    if n == 0 || n == 1
+        return result
+    end
+    push!(result, 1)
+    if n % 2 == 0
+        push!(result, 1 + n / 2)
+    else
+        push!(result, tri(n - 1)[1] + tri(n - 2)[1] + tri(n + 1)[1])
+    end
+    return result
+end
+```
+
+# Test
+
+```julia
+println(tri(3))  # [1, 2, 6]
+```

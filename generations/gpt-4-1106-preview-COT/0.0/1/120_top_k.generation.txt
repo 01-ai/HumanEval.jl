@@ -1,0 +1,33 @@
+### Step-by-Step Outline:
+
+1. Check if `k` is zero, and if so, return an empty vector since there are no elements to select.
+2. Sort the input vector `xs` in descending order. This will place the largest elements at the beginning of the vector.
+3. Slice the first `k` elements from the sorted vector to get the top `k` elements.
+4. Return the sliced vector containing the top `k` elements.
+
+### Julia Code:
+
+```julia
+function top_k(xs::Vector{Int}, k::Int)::Vector{Int}
+    # Step 1: Check if k is zero
+    if k == 0
+        return Int[]
+    end
+    
+    # Step 2: Sort the vector in descending order
+    sorted_xs = sort(xs, rev=true)
+    
+    # Step 3: Slice the first k elements
+    top_k_elements = sorted_xs[1:k]
+    
+    # Step 4: Return the top k elements
+    return top_k_elements
+end
+
+# Examples
+println(top_k([-3, -4, 5], 3)) # Output: [5, -3, -4]
+println(top_k([4, -4, 4], 2))  # Output: [4, 4]
+println(top_k([-3, 2, 1, 2, -1, -2, 1], 1)) # Output: [2]
+```
+
+This function will return the top `k` elements in descending order as required. Note that the sorting function `sort` is used with the `rev=true` argument to sort the array in descending order. The slicing operation `sorted_xs[1:k]` is used to get the first `k` elements of the sorted array.

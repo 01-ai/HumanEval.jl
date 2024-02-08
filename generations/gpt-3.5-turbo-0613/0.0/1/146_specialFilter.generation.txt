@@ -1,0 +1,15 @@
+Here is the implementation of the `specialFilter` function in Julia:
+
+```julia
+function specialFilter(nums::Vector{Int})::Int
+    count = 0
+    for num in nums
+        if num > 10 && isodd(num % 10) && isodd(num ÷ 10^(int(log10(abs(num)))))
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function iterates over each number in the input array `nums`. It checks if the number is greater than 10 and if both the first and last digits of the number are odd. If both conditions are true, it increments the `count` variable. Finally, it returns the `count` variable as the result.

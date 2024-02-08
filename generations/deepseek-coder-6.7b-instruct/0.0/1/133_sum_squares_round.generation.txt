@@ -1,0 +1,9 @@
+Here is the Julia function that implements the given problem:
+
+```julia
+function sum_squares_round(xs::Vector)::Int
+    return sum(round.(Int, x)^2 for x in xs)
+end
+```
+
+This function uses a comprehension to iterate over each element in the input vector `xs`, rounding it to the nearest integer using the `round` function and then squaring it using the `^` operator. The `sum` function then adds up all the squared and rounded numbers.

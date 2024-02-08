@@ -1,0 +1,29 @@
+
+
+```julia
+function find_zero(xs::Vector{Int})
+    # Check if the input vector is valid
+    if length(xs) % 2 != 0 || xs[end] == 0
+        error("Invalid input vector")
+    end
+
+    # Find the zero point using the Newton-Raphson method
+    x = 1.0
+    while abs(poly(xs, x)) > 1e-10
+        x = x - poly(xs, x) / (poly(xs, x) - poly(xs, x - 1))
+    end
+
+    return x
+end
+
+# Test the function
+xs = [1, 2]
+x = find_zero(xs)
+println("The zero point is: ", x)
+
+xs = [-6, 11, -6, 1]
+x = find_zero(xs)
+println("The zero point is: ", x)
+```
+
+This function uses the Newton-Raphson method to find the zero point of the polynomial. It starts with an initial guess of `x = 1.0` and iteratively updates `x` until `poly(xs, x)` is close to zero.

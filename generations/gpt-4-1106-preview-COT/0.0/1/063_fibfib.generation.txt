@@ -1,0 +1,46 @@
+To implement the `fibfib` function efficiently, we will use dynamic programming to avoid redundant calculations that occur with a naive recursive approach. Here's an outline of the steps we'll follow:
+
+1. Check if the input `n` is less than 3 and return the base cases accordingly.
+2. Initialize an array to store computed values of the FibFib sequence up to `n`.
+3. Set the initial values for `fibfib(0)`, `fibfib(1)`, and `fibfib(2)` in the array.
+4. Iterate from 3 to `n` and calculate `fibfib(i)` using the formula `fibfib(i) = fibfib(i-1) + fibfib(i-2) + fibfib(i-3)`.
+5. Store each computed value in the array to use in subsequent calculations.
+6. Return the value of `fibfib(n)` from the array.
+
+Now, let's write the code for the `fibfib` function:
+
+```julia
+function fibfib(n::Int)::Int
+    # Step 1: Base cases
+    if n == 0
+        return 0
+    elseif n == 1
+        return 0
+    elseif n == 2
+        return 1
+    end
+
+    # Step 2: Initialize an array to store computed values
+    fibfib_values = zeros(Int, n+1)
+
+    # Step 3: Set initial values
+    fibfib_values[1] = 0  # fibfib(0)
+    fibfib_values[2] = 0  # fibfib(1)
+    fibfib_values[3] = 1  # fibfib(2)
+
+    # Step 4: Calculate fibfib(i) for i = 3 to n
+    for i in 4:n+1
+        fibfib_values[i] = fibfib_values[i-1] + fibfib_values[i-2] + fibfib_values[i-3]
+    end
+
+    # Step 6: Return the value of fibfib(n)
+    return fibfib_values[n+1]
+end
+```
+
+This function should now compute the `n`-th element of the FibFib sequence efficiently. Let's test it with the provided examples:
+
+```julia
+println(fibfib(1))  # Expected output: 0
+println(fibfib(5))  # Expected output: 4
+println(fibfib(8))  #

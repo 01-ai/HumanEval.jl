@@ -1,0 +1,17 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function min_sub_array_sum(nums::Vector{Int})::Int
+    min_sum = nums[1]
+    cur_sum = 0
+    for num in nums
+        cur_sum = min(num, cur_sum + num)
+        min_sum = min(min_sum, cur_sum)
+    end
+    return min_sum
+end
+```
+
+This function uses the Kadane's algorithm to find the minimum sum of any non-empty sub-array. The algorithm works by iterating over the array and keeping track of the current sum and the minimum sum. If the current sum becomes less than the current number, it resets the current sum to the current number. If the current sum is less than the minimum sum, it updates the minimum sum.
+
+The time complexity of this function is O(n), where n is the length of the input array.

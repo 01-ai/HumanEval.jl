@@ -1,0 +1,20 @@
+To implement the `find_zero` function, we will follow these steps:
+
+1. Validate the input:
+   - Ensure that the input `xs` is a vector of integers.
+   - Check that the number of coefficients is even.
+   - Check that the largest coefficient is non-zero.
+
+2. Find the zero of the polynomial:
+   - Since the polynomial is guaranteed to have a zero due to the constraints, we can use a numerical method to find a zero. We will use the Newton-Raphson method for root-finding.
+
+3. Implement the Newton-Raphson method:
+   - Choose an initial guess for `x`. A reasonable starting point could be 0.
+   - Define the polynomial function `f(x)` using the given coefficients.
+   - Define the derivative of the polynomial function `f'(x)`.
+   - Iterate the Newton-Raphson formula `x = x - f(x)/f'(x)` until convergence.
+   - Check for convergence by seeing if the absolute value of `f(x)` is below a certain threshold (e.g., 1e-7).
+
+4. Return the found zero of the polynomial.
+
+Now, let's write the code for the `find_zero` function.

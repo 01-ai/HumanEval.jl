@@ -1,0 +1,29 @@
+```julia
+function skjkasdkd(xs::Vector{Int})::Int
+    function is_prime(n)
+        if n <= 1
+            return false
+        end
+        for i in 2:isqrt(n)
+            if n % i == 0
+                return false
+            end
+        end
+        return true
+    end
+
+    largest_prime = 0
+    for x in xs
+        if is_prime(x) && x > largest_prime
+            largest_prime = x
+        end
+    end
+
+    if largest_prime == 0
+        return 0
+    end
+
+    sum_of_digits = sum(digits(largest_prime))
+    return sum_of_digits
+end
+```

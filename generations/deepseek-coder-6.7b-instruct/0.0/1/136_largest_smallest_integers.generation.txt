@@ -1,0 +1,20 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing,Int}}
+    neg_max = nothing
+    pos_min = nothing
+
+    for x in xs
+        if x < 0 && (neg_max === nothing || x > neg_max)
+            neg_max = x
+        elseif x > 0 && (pos_min === nothing || x < pos_min)
+            pos_min = x
+        end
+    end
+
+    return (neg_max, pos_min)
+end
+```
+
+This function iterates over the input vector and checks each element. If the element is negative and greater than the current maximum negative number, it becomes the new maximum. If the element is positive and smaller than the current minimum positive number, it becomes the new minimum. If no negative or positive numbers are found, the respective variables remain `nothing`.

@@ -1,0 +1,19 @@
+To implement the `same_chars` function in Julia, we can follow these steps:
+
+1. Convert each string into a set of characters. This will automatically remove duplicates and allow us to compare the unique characters in each string.
+2. Compare the sets of characters from both strings to check if they are equal.
+
+Here's how the implementation would look:
+
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    # Convert strings to sets of characters
+    set_s0 = Set(s0)
+    set_s1 = Set(s1)
+    
+    # Compare the sets for equality
+    return set_s0 == set_s1
+end
+```
+
+This function works by leveraging the `Set` data structure in Julia, which stores unique elements. By converting the strings to sets, we effectively ignore the order and frequency of characters, focusing solely on their presence. The equality check between the sets then determines if the two strings have the same characters.

@@ -1,0 +1,34 @@
+
+
+function is_prime(n::Int)
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+
+function words_in_sentence(sentence::String)::String
+    words = split(sentence)
+    prime_words = String[]
+    for word in words
+        if is_prime(length(word))
+            push!(prime_words, word)
+        end
+    end
+    return join(prime_words, " ")
+end
+
+# Test cases
+@assert words_in_sentence("This is a test") == "is"
+@assert words_in_sentence("lets go for swimming") == "go for"

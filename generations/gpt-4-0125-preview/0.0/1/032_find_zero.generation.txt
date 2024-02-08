@@ -1,0 +1,39 @@
+To implement the `find_zero` function as described, we need to solve the polynomial equation `poly(xs, x) = 0` for `x`. Given the constraints that `find_zero` only works with polynomials with an even number of coefficients and the largest non-zero coefficient, we can use numerical methods to find a root of the polynomial. One common approach is to use the Newton-Raphson method or other root-finding algorithms available in numerical libraries.
+
+However, Julia does not have a built-in function specifically for finding polynomial roots directly in its standard library, but we can use the `Roots` package to find the roots of a polynomial. If you prefer not to use external packages, a simple implementation using a numerical method like bisection or Newton's method could be provided, but it might not be as efficient or robust for all cases.
+
+Here's how you can implement `find_zero` using the `Roots` package for a more robust solution:
+
+```julia
+using Roots
+
+"""
+    poly(xs::Vector, x::Float64)
+
+Evaluates polynomial with coefficients `xs` at point `x`. Return `xs[1] + xs[2] * x + xs[3] * x^2 + .... xs[n] * x^n`.
+"""
+poly(xs::Vector, x::Float64) = sum(coeff * (x^(i - 1)) for (i, coeff) in enumerate(xs))
+
+"""
+    find_zero(xs::Vector{Int})
+
+Finds `x` such that `poly(xs, x) = 0`. Assumes `xs` has an even number of coefficients and the largest non-zero coefficient, guaranteeing a solution.
+"""
+function find_zero(xs::Vector{Int})
+    # Ensure the polynomial has an even number of coefficients
+    if length(xs) % 2 != 0
+        error("The polynomial must have an even number of coefficients.")
+    end
+
+    # Define the polynomial function based on the coefficients
+    p(x) = poly(xs, x)
+
+    # Find a root of the polynomial. This example uses the `find_zero` function from the `Roots` package.
+    # Note: This approach finds one root, which might not be the only one.
+    root = find_zero(p, (-1000.0, 1000.0)) # You might need to adjust the search interval based on the expected range of roots.
+
+    return root
+end
+```
+
+Please note, the `find_zero` function from

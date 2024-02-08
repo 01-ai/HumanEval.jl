@@ -1,0 +1,35 @@
+Here's the Julia function `cycpattern_check` that implements the functionality described in the doc string:
+
+```julia
+function cycpattern_check(a::String, b::String)::Bool
+    # Check if b is already a substring of a
+    if occursin(b, a)
+        return true
+    end
+
+    # Check all rotations of b to see if any is a substring of a
+    len_b = length(b)
+    for i in 1:len_b
+        rotated_b = b[i:end] * b[1:i-1]
+        if occursin(rotated_b, a)
+            return true
+        end
+    end
+
+    # If none of the rotations is a substring, return false
+    return false
+end
+```
+
+You can test this function with the examples provided in the doc string. Here's how you would call the function and check its output:
+
+```julia
+println(cycpattern_check("abcd", "abd")) # false
+println(cycpattern_check("hello", "ell")) # true
+println(cycpattern_check("whassup", "psus")) # false
+println(cycpattern_check("abab", "baa")) # true
+println(cycpattern_check("efef", "eeff")) # false
+println(cycpattern_check("himenss", "simen")) # true
+```
+
+This function first checks if `b` is a substring of `a` without any rotation. If not, it then generates all possible rotations of `b` and checks if any of those rotations is a substring of `a`. If any rotation is found to be a substring, the function returns `true`; otherwise, it returns `false`.

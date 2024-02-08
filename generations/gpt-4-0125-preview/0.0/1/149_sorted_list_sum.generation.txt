@@ -1,0 +1,26 @@
+To implement the `sorted_list_sum` function as described, we need to follow these steps:
+
+1. Filter out strings with odd lengths from the input list.
+2. Sort the remaining strings first by their lengths and then alphabetically if they have the same length.
+
+Here's how you can do it in Julia:
+
+```julia
+function sorted_list_sum(xs::Vector{String})::Vector{String}
+    # Step 1: Filter out strings with odd lengths
+    even_length_strings = filter(s -> length(s) % 2 == 0, xs)
+    
+    # Step 2: Sort the strings first by length, then alphabetically
+    sort!(even_length_strings, by = s -> (length(s), s))
+    
+    return even_length_strings
+end
+
+# Examples
+println(sorted_list_sum(["aa", "a", "aaa"])) # ["aa"]
+println(sorted_list_sum(["ab", "a", "aaa", "cd"])) # ["ab", "cd"]
+```
+
+This function works as follows:
+- It uses the `filter` function to keep only those strings in the list whose lengths are even.
+- It then uses the `sort!` function with a custom sorting criterion. The `by` argument is a function that returns a tuple for each string: the first element of the tuple is the length of the string, and the second is the string itself. This ensures that the primary sorting criterion is the length of the strings, and the secondary criterion (used when lengths are equal) is the alphabetical order of the strings.

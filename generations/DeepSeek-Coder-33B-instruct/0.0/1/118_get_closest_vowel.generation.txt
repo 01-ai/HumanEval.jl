@@ -1,0 +1,15 @@
+Here is a Julia function that implements the given problem:
+
+```julia
+function get_closest_vowel(word::String)::String
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    for i in length(word)-1:-1:2
+        if word[i] in vowels && word[i-1] in vowels && word[i+1] in vowels
+            return string(word[i])
+        end
+    end
+    return ""
+end
+```
+
+This function works by iterating over the word from right to left, checking each character to see if it is a vowel and if the characters before and after it are also vowels. If it finds such a character, it returns it as a string. If it doesn't find any such character, it returns an empty string.

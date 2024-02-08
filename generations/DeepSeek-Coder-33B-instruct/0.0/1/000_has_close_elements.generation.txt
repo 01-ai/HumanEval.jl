@@ -1,0 +1,16 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function has_close_elements(numbers::Vector{Float64}, threshold::Float64)::Bool
+    for i in 1:length(numbers)
+        for j in i+1:length(numbers)
+            if abs(numbers[i] - numbers[j]) < threshold
+                return true
+            end
+        end
+    end
+    return false
+end
+```
+
+This function works by iterating over all pairs of numbers in the input list. If it finds a pair of numbers that are closer to each other than the threshold, it returns `true`. If it checks all pairs and does not find any such pair, it returns `false`.

@@ -1,0 +1,34 @@
+### Step-by-step Outline:
+
+1. Define the function `generate_integers` that takes two integer arguments `a` and `b`.
+2. Ensure that `a` is less than or equal to `b`. If `a` is greater than `b`, swap the values of `a` and `b`.
+3. Initialize an empty vector `even_digits` to store the even digits.
+4. Iterate from `a` to `b` (inclusive).
+5. For each number in the range, check if it is even.
+6. If the number is even, append it to the `even_digits` vector.
+7. Return the `even_digits` vector.
+
+### Julia Code:
+
+```julia
+function generate_integers(a::Int, b::Int)::Vector{Int}
+    # Ensure a is less than or equal to b
+    if a > b
+        a, b = b, a
+    end
+    
+    # Initialize an empty vector to store even digits
+    even_digits = Int[]
+    
+    # Iterate from a to b and collect even digits
+    for num in a:b
+        if num % 2 == 0
+            push!(even_digits, num)
+        end
+    end
+    
+    return even_digits
+end
+```
+
+Now, let's implement the function in Julia.

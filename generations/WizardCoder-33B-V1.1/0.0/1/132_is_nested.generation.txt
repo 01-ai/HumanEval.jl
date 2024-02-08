@@ -1,0 +1,25 @@
+
+
+function is_nested(s::String)::Bool
+    stack = []
+    for bracket in s
+        if bracket == '['
+            pushfirst(stack, bracket)
+        elseif bracket == ']'
+            if isempty(stack)
+                return false
+            else
+                popfirst(stack)
+            end
+        end
+    end
+    return !isempty(stack)
+end
+
+# Test cases
+println(is_nested("[[]]")) # true
+println(is_nested("[]]]]][[[[[")) # false
+println(is_nested("[][]")) # false
+println(is_nested("[]")) # false
+println(is_nested("[[][]]")) # true
+println(is_nested("[[]][[")) # true 

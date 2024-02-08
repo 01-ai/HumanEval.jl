@@ -1,0 +1,35 @@
+To implement the `greatest_common_divisor` function in Julia, we will use the Euclidean algorithm, which is a well-known method for computing the greatest common divisor (GCD) of two integers. Here's an outline of the steps we'll follow:
+
+1. Check if either `a` or `b` is zero. If one of them is zero, return the other number as the GCD, because the GCD of any number and zero is the number itself.
+2. Use the Euclidean algorithm to find the GCD:
+   - While `b` is not zero, do the following:
+     - Compute the remainder of the division of `a` by `b`.
+     - Assign the value of `b` to `a`.
+     - Assign the computed remainder to `b`.
+3. When `b` becomes zero, `a` will contain the GCD of the original pair of numbers.
+4. Return the value of `a` as the GCD.
+
+Now, let's write the code for the `greatest_common_divisor` function:
+
+```julia
+function greatest_common_divisor(a::Int, b::Int)::Int
+    # Step 1: If either number is zero, return the other number
+    if a == 0
+        return abs(b)
+    elseif b == 0
+        return abs(a)
+    end
+
+    # Step 2: Use the Euclidean algorithm to find the GCD
+    while b != 0
+        remainder = a % b
+        a = b
+        b = remainder
+    end
+
+    # Step 3: `a` now contains the GCD
+    return abs(a)  # Return the absolute value in case of negative inputs
+end
+```
+
+This function should now work correctly for the examples provided and for any other pair of integers. Note that we use the absolute value function `abs` to ensure that the GCD is always a non-negative number, even if the input integers are negative.

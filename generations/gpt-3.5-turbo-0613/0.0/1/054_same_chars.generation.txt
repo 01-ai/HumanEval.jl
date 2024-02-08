@@ -1,0 +1,14 @@
+Here is the implementation of the `same_chars` function in Julia:
+
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    # Convert the strings to sets of characters
+    set0 = Set(s0)
+    set1 = Set(s1)
+    
+    # Check if the sets are equal
+    return set0 == set1
+end
+```
+
+This function converts the input strings `s0` and `s1` into sets of characters using the `Set` function. It then checks if the sets are equal using the `==` operator and returns the result.

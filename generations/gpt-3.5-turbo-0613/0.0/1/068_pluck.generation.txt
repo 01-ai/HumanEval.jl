@@ -1,0 +1,13 @@
+Here is the implementation for the `pluck` function:
+
+```julia
+function pluck(xs::Vector{Int})::Vector{Int}
+    even_values = filter(x -> x % 2 == 0, xs)
+    if isempty(even_values)
+        return []
+    end
+    smallest_even_value = minimum(even_values)
+    smallest_even_value_index = findfirst(x -> x == smallest_even_value, xs)
+    return [smallest_even_value, smallest_even_value_index]
+end
+```

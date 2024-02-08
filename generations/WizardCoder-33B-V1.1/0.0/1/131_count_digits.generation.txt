@@ -1,0 +1,18 @@
+
+
+Here is the Julia function that solves the problem:
+
+```julia
+function count_digits(n::Int)::Int
+    digits = reverse(digit.(n))
+    product = 1
+    for digit in digits
+        if digit % 2 != 0
+            product *= digit
+        end
+    end
+    return product == 1 ? 0 : product
+end
+```
+
+This function works by first converting the integer into an array of its digits, then iterating over the digits. If a digit is odd, it multiplies the current product by the digit. If the product remains 1 after all digits have been checked, it means all digits were even, so it returns 0. Otherwise, it returns the product. 

@@ -1,0 +1,19 @@
+ function correct_angle_bracketing(brackets::String)::Bool
+    opening_bracket = "<"
+    closing_bracket = ">"
+    stack = []
+
+    for char in brackets
+        if char == opening_bracket
+            push!(stack, char)
+        elseif char == closing_bracket
+            if isempty(stack) || stack[end] != opening_bracket
+                return false
+            else
+                pop!(stack)
+            end
+        end
+    end
+
+    return isempty(stack)
+end

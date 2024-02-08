@@ -1,0 +1,29 @@
+
+
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    # Define a dictionary to map integers to their names
+    num_dict = Dict(
+        1 => "One",
+        2 => "Two",
+        3 => "Three",
+        4 => "Four",
+        5 => "Five",
+        6 => "Six",
+        7 => "Seven",
+        8 => "Eight",
+        9 => "Nine"
+    )
+
+    # Filter the array to keep only integers between 1 and 9
+    filtered_xs = filter(x -> 1 <= x <= 9, xs)
+
+    # Sort and reverse the filtered array
+    sorted_xs = sort(filtered_xs, rev=true)
+
+    # Map each integer to its corresponding name and return the result
+    return map(x -> num_dict[x], sorted_xs)
+end
+```
+
+This function first defines a dictionary to map integers to their names. Then, it filters the input array to keep only integers between 1 and 9. Next, it sorts and reverses the filtered array. Finally, it maps each integer to its corresponding name and returns the result.

@@ -1,0 +1,16 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function words_in_sentence(sentence::String)::String
+    words = split(sentence, " ")
+    isprime(n) = n ≠ 1 && all(n .% 1:n-1 .≠ 0)
+    primes = filter(isprime, [length(word) for word in words])
+    return join(words[i] for i in primes)
+end
+```
+
+This function first splits the sentence into words. Then it creates a list of the lengths of the words. It filters this list to only include prime numbers. Finally, it joins the words whose lengths are prime numbers into a string, maintaining the original order.
+
+The `isprime` function checks if a number is prime by checking if it is not divisible by any number up to itself. The `filter` function is used to get the words whose lengths are prime numbers. The `join` function is used to create the final string.
+
+This function assumes that the sentence contains only letters and spaces. If the sentence contains punctuation, it should be removed before calling this function.

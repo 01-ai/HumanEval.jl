@@ -1,0 +1,37 @@
+  Here is a possible implementation of the `pluck` function in Julia:
+```
+function pluck(xs::Vector{Int})::Vector{Int}
+    # Check if the input array is empty
+    if isempty(xs)
+        return Int[]
+    end
+
+    # Find the smallest even value in the array
+    smallest_even_value = typemax(Int)
+    for i in eachindex(xs)
+        if xs[i] % 2 == 0 && xs[i] < smallest_even_value
+            smallest_even_value = xs[i]
+        end
+    end
+
+    # If there are no even values, return an empty array
+    if smallest_even_value == typemax(Int)
+        return Int[]
+    end
+
+    # Find the index of the smallest even value
+    smallest_even_index = findfirst(isequal(smallest_even_value), xs)
+
+    # Return the smallest even value and its index
+    return [smallest_even_value, smallest_even_index]
+end
+```
+Here's an explanation of the code:
+
+1. The function first checks if the input array is empty. If it is, it returns an empty array.
+2. Next, it finds the smallest even value in the array using a loop. It starts with the maximum possible value for an integer (`typemax(Int)`) and checks each element of the array to see if it is even and smaller than the current smallest even value. If it finds a smaller even value, it updates the `smallest_even_value` variable.
+3. If there are no even values in the array, the function returns an empty array.
+4. Otherwise, it finds the index of the smallest even value using the `findfirst` function.
+5. Finally, it returns a vector containing the smallest even value and its index.
+
+Note that the `isequal` function is used to check for equality between the current element and the smallest even value. This is because the `==` operator would not work correctly for arrays of integers, as it would compare the memory addresses of the arrays rather than their contents.

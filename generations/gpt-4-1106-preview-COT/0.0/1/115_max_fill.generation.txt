@@ -1,0 +1,44 @@
+### Step-by-Step Outline:
+
+1. **Understand the problem**: We need to calculate the number of times we need to lower buckets into wells to extract water. Each well is represented by a row in the grid, and each unit of water is represented by a `1`. All buckets have the same capacity.
+
+2. **Initialize a counter**: We need a variable to keep track of the number of times we lower the buckets.
+
+3. **Iterate over each well**: We will loop through each row in the grid, which represents a well.
+
+4. **Count the water units in the well**: For each well, we count the number of `1`s, which represent the units of water.
+
+5. **Calculate the number of bucket lowerings for the well**: We divide the number of water units by the capacity of the bucket to determine how many times we need to lower the bucket for that well. If there is a remainder, we need an additional lowering.
+
+6. **Update the counter**: Add the number of bucket lowerings for the current well to the counter.
+
+7. **Return the total number of bucket lowerings**: After iterating through all wells, return the counter.
+
+### Julia Code:
+
+```julia
+function max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+    # Step 2: Initialize a counter
+    bucket_lowerings = 0
+
+    # Step 3: Iterate over each well
+    for well in grid
+        # Step 4: Count the water units in the well
+        water_units = sum(well)
+
+        # Step 5: Calculate the number of bucket lowerings for the well
+        lowerings_for_well = div(water_units, capacity)
+        if water_units % capacity != 0
+            lowerings_for_well += 1
+        end
+
+        # Step 6: Update the counter
+        bucket_lowerings += lowerings_for_well
+    end
+
+    # Step 7: Return the total number of bucket lowerings
+    return bucket_lowerings
+end
+```
+
+Let's implement the function in Julia.

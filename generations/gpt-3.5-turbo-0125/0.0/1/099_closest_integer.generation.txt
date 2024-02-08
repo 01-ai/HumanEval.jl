@@ -1,0 +1,10 @@
+```julia
+function closest_integer(value::String)::Int
+    num = parse(Float64, value)
+    if num >= 0
+        return ceil(num)
+    else
+        return floor(num)
+    end
+end
+```

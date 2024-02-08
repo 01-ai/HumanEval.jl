@@ -1,0 +1,11 @@
+The problem is asking for the number of collisions between two sets of cars moving in opposite directions. Since the cars are moving at the same speed, they will always collide with each other. The number of collisions will be equal to the number of cars.
+
+Here is the Julia function:
+
+```julia
+function car_race_collision(n::Int)::Int
+    return n
+end
+```
+
+This function simply returns the input `n`, which represents the number of cars. Since the cars are moving at the same speed and in opposite directions, they will always collide with each other. Therefore, the number of collisions is equal to the number of cars.

@@ -1,0 +1,26 @@
+Here is the implementation for the `histogram` function in Julia:
+
+```julia
+function histogram(s::String)::Dict{String, Int}
+    counts = Dict{String, Int}()
+    for letter in split(s)
+        counts[letter] = get(counts, letter, 0) + 1
+    end
+    
+    max_count = maximum(values(counts))
+    result = Dict{String, Int}()
+    for (letter, count) in counts
+        if count == max_count
+            result[letter] = count
+        end
+    end
+    
+    return result
+end
+```
+
+This function takes a string `s` as input and initializes an empty dictionary `counts` to store the count of each letter. It then iterates over each letter in the string, updating the count in the dictionary.
+
+After counting the occurrences of each letter, it finds the maximum count using the `maximum` function. It then creates a new dictionary `result` and adds all letters with the maximum count to it.
+
+Finally, it returns the `result` dictionary containing the letter(s) with the most repetition and their corresponding count.

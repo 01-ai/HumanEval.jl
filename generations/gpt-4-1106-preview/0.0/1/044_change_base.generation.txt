@@ -1,0 +1,25 @@
+Certainly! Below is the Julia function `change_base` that converts an integer `x` to a string representation in the specified `base`:
+
+```julia
+function change_base(x::Int, base::Int)::String
+    if base < 2 || base > 10
+        throw(ArgumentError("Base must be between 2 and 10"))
+    end
+
+    result = ""
+    while x > 0
+        digit = x % base
+        result = string(digit) * result
+        x ÷= base
+    end
+
+    return result == "" ? "0" : result
+end
+
+# Examples
+println(change_base(8, 3))  # Output: "22"
+println(change_base(8, 2))  # Output: "1000"
+println(change_base(7, 2))  # Output: "111"
+```
+
+This function works by repeatedly dividing the number `x` by the `base` and prepending the remainder to the result string. It continues this process until `x` is reduced to zero. If the input number `x` is zero, it returns "0". Note that this function assumes that the base is between 2 and 10, as per the doc string. If the base is outside this range, it throws an `ArgumentError`.

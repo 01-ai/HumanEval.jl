@@ -1,0 +1,15 @@
+Here is the implementation for the `make_a_pile` function:
+
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    pile = [n]
+    for i in 2:n
+        if isodd(pile[i-1])
+            push!(pile, pile[i-1] + 1)
+        else
+            push!(pile, pile[i-1] + 2)
+        end
+    end
+    return pile
+end
+```

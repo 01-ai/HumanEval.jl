@@ -1,0 +1,25 @@
+The function `find_zero` is not provided in Julia's standard library. However, you can use the `Roots.jl` package to find roots of a polynomial. Here is how you can implement `find_zero`:
+
+```julia
+using Roots
+
+function find_zero(xs::Vector{Int})
+    n = length(xs)
+    @assert n % 2 == 0 "The number of coefficients must be even"
+    @assert xs[end] != 0 "The largest coefficient must be non-zero"
+
+    f(x) = poly(xs, x)
+    roots = find_zero(f, 0.0)
+    return roots
+end
+```
+
+In this code, `poly` is the function you implemented earlier. The `find_zero` function from the `Roots.jl` package is used to find the roots of the polynomial. The initial guess for the root is 0.0.
+
+Please note that `find_zero` from `Roots.jl` package returns all roots, not just one. If you only need one root, you can return the first one:
+
+```julia
+return roots[1]
+```
+
+Also, note that `find_zero` from `Roots.jl` package uses a numerical method to find roots, so the results may not be exact.

@@ -1,0 +1,14 @@
+Here is a Julia function that implements the `max_fill` function as described in the problem:
+
+```julia
+function max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+    total_water = sum(sum(grid, dims=2))
+    return div(total_water, capacity)
+end
+```
+
+This function works by first summing all the water in the grid (`total_water`), and then dividing this total by the capacity of the bucket to get the number of times you need to lower the bucket.
+
+The `div` function is used to perform integer division, which is necessary because you can't have a fraction of a bucket.
+
+This function assumes that the grid is a rectangular grid of wells, and that each well is represented by a 1 in the grid. The capacity of the bucket is given as an integer.

@@ -1,0 +1,18 @@
+
+```julia
+function bf(planet1::String, planet2::String)::NTuple
+    planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+    if planet1 ∉ planets || planet2 ∉ planets
+        return ()
+    end
+    planet1_index = findfirst(isequal(planet1), planets)
+    planet2_index = findfirst(isequal(planet2), planets)
+    if planet1_index < planet2_index
+        return (planets[planet1_index+1:planet2_index-1]...,)
+    else
+        return (planets[planet2_index+1:planet1_index-1]...,)
+    end
+end
+```
+
+This function first checks if the input planets are valid names. If they are not, it returns an empty tuple. If they are valid, it finds the indices of the planets in the `planets` array. Then, it checks if `planet1` is before or after `planet2` in the array. If `planet1` is before `planet2`, it returns a tuple containing the planets between `planet1` and `planet2`. If `planet2` is before `planet1`, it returns a tuple containing the planets between `planet2` and `planet1`.

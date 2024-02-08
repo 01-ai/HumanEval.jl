@@ -1,0 +1,13 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function starts_one_ends(n::Int)::Int
+    if n == 1
+        return 2
+    else
+        return 2 * 9^(n-1)
+    end
+end
+```
+
+This function works by first checking if `n` is 1. If `n` is 1, it returns 2 because there are only two 1-digit numbers that start or end with 1 (1 and 1). If `n` is greater than 1, it calculates the number of n-digit numbers that start or end with 1 by multiplying 2 (for the 1 at the start and end) by 9 raised to the power of (n-1). This is because for each of the remaining positions in the number, there are 9 possible digits (0-9, excluding 1), so the total number of n-digit numbers that start or end with 1 is 2 * 9^(n-1).

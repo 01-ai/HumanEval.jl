@@ -1,0 +1,11 @@
+
+
+Here is the Julia function that implements the above doc string:
+
+```julia
+function max_element(xs)
+    maximum(xs)
+end
+```
+
+This function uses the built-in `maximum` function in Julia, which returns the maximum value of an iterable collection. 

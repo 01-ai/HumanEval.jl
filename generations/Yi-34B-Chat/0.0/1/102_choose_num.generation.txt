@@ -1,0 +1,24 @@
+```julia
+function choose_num(x::Int, y::Int)::Int
+    # Check if x and y are positive
+    if x <= 0 || y <= 0
+        error("x and y must be positive numbers")
+    end
+
+    # Loop through numbers from x to y
+    for i in x:y
+        # Check if the number is even
+        if i % 2 == 0
+            # If it's the biggest even number in the range, return it
+            if i > x && i < y || i == x || i == y # Check if it's the first or last number
+                return i
+            end
+        end
+    end
+
+    # If no even number is found, return -1
+    return -1
+end
+```
+
+This function defines a `choose_num` function that takes two integer arguments `x` and `y`. It checks if both `x` and `y` are positive, and if not, it throws an error. If `x` and `y` are positive, it loops through the range from `x` to `y` inclusive, checking if each number is even. If an even number is found and it's the biggest even number in the range, the function returns that number. If no even number is found, the function returns `-1`.

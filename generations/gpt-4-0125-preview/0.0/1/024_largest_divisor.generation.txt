@@ -1,0 +1,16 @@
+To implement the `largest_divisor` function in Julia, we can start by iterating from `n-1` down to 1, checking for the first number that divides `n` evenly. This first such number will be the largest divisor of `n` that is smaller than `n` itself. Here's how you can do it:
+
+```julia
+function largest_divisor(n::Int)::Int
+    for i in n-1:-1:1
+        if n % i == 0
+            return i
+        end
+    end
+end
+
+# Example usage
+println(largest_divisor(15))  # Expected output: 5
+```
+
+This function works by starting from `n-1` and decrementing down to 1, checking if `n` modulo `i` equals 0, which means `i` divides `n` evenly. The first such `i` found is returned as the largest divisor.

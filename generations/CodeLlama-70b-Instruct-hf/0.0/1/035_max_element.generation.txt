@@ -1,0 +1,20 @@
+
+
+```julia
+function max_element(xs)
+    # Initialize the maximum element with the first element of the list
+    max_element = xs[1]
+
+    # Iterate through the list and update the maximum element if a larger element is found
+    for x in xs
+        if x > max_element
+            max_element = x
+        end
+    end
+
+    # Return the maximum element
+    return max_element
+end
+```
+
+This function iterates through the list `xs` and updates the `max_element` variable if it finds a larger element. Finally, it returns the maximum element.

@@ -1,0 +1,29 @@
+### Step-by-Step Outline
+
+1. **Filter Characters**: Create a new string from `s` by removing all characters that appear in `c`. This can be done by iterating through each character in `s` and checking if it is not in `c`, then appending it to a new string.
+
+2. **Check Palindrome**: Check if the resulting string from step 1 is a palindrome. This can be done by comparing the string to its reverse. If they are equal, the string is a palindrome.
+
+3. **Return Result**: Return a tuple containing the filtered string from step 1 and the result of the palindrome check from step 2.
+
+### Julia Code Implementation
+
+```julia
+function reverse_delete(s::String, c::String)::Tuple{String, Bool}
+    # Step 1: Filter characters
+    filtered_s = filter(ch -> !(ch in c), s)
+    
+    # Step 2: Check palindrome
+    is_palindrome = filtered_s == reverse(filtered_s)
+    
+    # Step 3: Return result
+    return (filtered_s, is_palindrome)
+end
+
+# Examples
+println(reverse_delete("abcde", "ae"))  # ("bcd", false)
+println(reverse_delete("abcdef", "b"))  # ("acdef", false)
+println(reverse_delete("abcdedcba", "ab"))  # ("cdedc", true)
+```
+
+This implementation follows the outlined steps to achieve the desired functionality. It uses Julia's `filter` function to create a new string without the characters in `c`, and then checks if this new string is a palindrome by comparing it to its reverse. Finally, it returns the filtered string and the result of the palindrome check as a tuple.

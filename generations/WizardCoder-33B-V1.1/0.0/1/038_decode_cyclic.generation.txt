@@ -1,0 +1,15 @@
+
+function decode_cyclic(s::String)::String
+    join((length(x) == 3 ? x[end] * x[1:2] : x for x in Iterators.partition(s, 3)))
+end
+
+# Testing
+s = "abcdefghijklmnopqrstuvwxyz"
+encoded = encode_cyclic(s)
+println("Encoded: ", encoded)
+decoded = decode_cyclic(encoded)
+println("Decoded: ", decoded)
+
+# Output:
+# Encoded: bacdfeghjiklmnopqrstvuxwzy
+# Decoded: abcdefghijklmnopqrstuvwxyz 

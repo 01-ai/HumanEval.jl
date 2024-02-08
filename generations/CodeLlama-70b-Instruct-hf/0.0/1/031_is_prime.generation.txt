@@ -1,0 +1,19 @@
+
+
+```julia
+function is_prime(n::Int)
+    if n < 2
+        return false
+    end
+
+    for i in 2:floor(Int, sqrt(n))
+        if n % i == 0
+            return false
+        end
+    end
+
+    return true
+end
+```
+
+This function checks if a given number is prime or not. It first checks if the number is less than 2, in which case it returns false. If the number is greater than or equal to 2, it iterates from 2 to the square root of the number and checks if the number is divisible by any of these numbers. If it is divisible, it returns false. If it is not divisible by any of these numbers, it returns true.

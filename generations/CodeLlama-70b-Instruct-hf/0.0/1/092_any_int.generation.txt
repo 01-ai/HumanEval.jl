@@ -1,0 +1,16 @@
+
+
+```julia
+function any_int(x::Number, y::Number, z::Number)::Bool
+    # Check if any of the numbers is equal to the sum of the other two
+    if (x == y + z) || (y == x + z) || (z == x + y)
+        # Check if all numbers are integers
+        if isinteger(x) && isinteger(y) && isinteger(z)
+            return true
+        end
+    end
+    return false
+end
+```
+
+This function first checks if any of the numbers is equal to the sum of the other two. If so, it checks if all numbers are integers. If both conditions are met, it returns `true`. Otherwise, it returns `false`.

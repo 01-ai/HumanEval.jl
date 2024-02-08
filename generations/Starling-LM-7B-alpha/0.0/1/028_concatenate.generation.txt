@@ -1,0 +1,3 @@
+ function concatenate(xs::Vector{String})::String
+    return join(xs)
+end

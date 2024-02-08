@@ -1,0 +1,13 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    # Sort the sides in ascending order
+    sides = sort([a, b, c])
+
+    # Check if the square of the largest side is equal to the sum of the squares of the other two sides
+    return sides[3]^2 == sides[1]^2 + sides[2]^2
+end
+```
+
+This function first sorts the sides of the triangle in ascending order. Then it checks if the square of the largest side (`sides[3]`) is equal to the sum of the squares of the other two sides (`sides[1]` and `sides[2]`). If it is, then the triangle is a right-angled triangle and the function returns `true`. Otherwise, it returns `false`.

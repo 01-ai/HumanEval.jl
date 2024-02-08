@@ -1,0 +1,14 @@
+```julia
+function get_closest_vowel(word::String)::String
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    consonants = Set(['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'])
+    
+    word = reverse(word)
+    for i in 1:length(word)-1
+        if word[i] in consonants && word[i+1] in vowels
+            return string(word[i+1])
+        end
+    end
+    return ""
+end
+```

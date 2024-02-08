@@ -1,0 +1,11 @@
+```julia
+function string_sequence(n::Int)::String
+    # Create a range from 0 to n
+    num_range = 0:n
+    
+    # Convert each number in the range to a string and join them with spaces
+    return join(string.(num_range), " ")
+end
+```
+
+This function starts by creating a range from 0 to `n` inclusive. It then converts each number in this range to a string using the `string` function. Finally, it joins these string representations with spaces to form the final result.

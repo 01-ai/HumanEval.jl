@@ -1,0 +1,23 @@
+
+
+Here is the Julia implementation of the function based on the given docstring:
+
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    # Calculate the number of ones in binary representation of each number
+    # and use it as a key for sorting
+    sort(arr, by = x -> (count_ones(x), x))
+end
+```
+
+This function uses the `count_ones` function to count the number of ones in the binary representation of each number and the `sort` function to sort the array based on the count of ones and the decimal value of the numbers.
+
+Here is how you can test the function:
+
+```julia
+julia> sort_array([1, 5, 2, 3, 4])
+[1, 2, 4, 3, 5]
+
+julia> sort_array([1, 0, 2, 3, 4])
+[0, 1, 2, 4, 3]
+```

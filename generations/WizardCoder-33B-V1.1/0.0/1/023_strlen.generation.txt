@@ -1,0 +1,11 @@
+
+
+Here is the Julia function that implements the `strlen` function:
+
+```julia
+function strlen(x::String)::Int
+    return length(x)
+end
+```
+
+This function uses the built-in `length` function in Julia to return the length of the string. 

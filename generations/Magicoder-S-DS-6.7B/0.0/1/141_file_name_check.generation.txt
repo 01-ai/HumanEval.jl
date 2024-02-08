@@ -1,0 +1,36 @@
+Here is a Julia function that implements the above specification:
+
+```julia
+function file_name_check(file_name::String)::String
+    # Check if there are more than three digits in the file name
+    if count(isdigit, file_name) > 3
+        return "No"
+    end
+
+    # Check if the file name contains exactly one dot
+    if count(==('.'), file_name) != 1
+        return "No"
+    end
+
+    # Split the file name into two parts before and after the dot
+    parts = split(file_name, ".")
+    if length(parts) != 2
+        return "No"
+    end
+
+    # Check if the substring before the dot starts with a letter and is not empty
+    if !isletter(parts[1][1]) || isempty(parts[1])
+        return "No"
+    end
+
+    # Check if the substring after the dot is one of the allowed extensions
+    if !(parts[2] in ["txt", "exe", "dll"])
+        return "No"
+    end
+
+    # If all checks pass, the file name is valid
+    return "Yes"
+end
+```
+
+This function first checks if the file name contains more than three digits, exactly one dot, and if the parts before and after the dot are not empty. Then it checks if the part before the dot starts with a letter and if the part after the dot is one of the allowed extensions. If all checks pass, the function returns "Yes", otherwise it returns "No".

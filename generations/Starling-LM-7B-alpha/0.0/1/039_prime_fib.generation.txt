@@ -1,0 +1,44 @@
+ Here's a Julia function that implements the `prime_fib` function as described in the docstring:
+
+```julia
+function prime_fib(n::Int)::Int
+    fib_nums = [2, 3]
+    fib_index = 2
+    while length(fib_nums) < n
+        fib_num = fib_nums[fib_index] + fib_nums[fib_index-1]
+        push!(fib_nums, fib_num)
+        fib_index += 1
+    end
+
+    for fib_num in fib_nums
+        if isprime(fib_num)
+            return fib_num
+        end
+    end
+end
+```
+
+This function first initializes an array `fib_nums` with the first two Fibonacci numbers, 2 and 3. It also initializes a counter `fib_index` to keep track of the current Fibonacci number being generated. 
+
+The function then enters a loop that continues until the length of `fib_nums` is equal to the input `n`. In each iteration of the loop, it calculates the next Fibonacci number by adding the last two numbers in `fib_nums` and appends it to the array. It also increments `fib_index` to keep track of the current Fibonacci number.
+
+After the loop, the function iterates through the `fib_nums` array and checks if each number is prime using the `isprime` function. Once it finds a prime number, it returns that number as the `n`-th Fibonacci number that is also prime.
+
+Here are some examples of how to use the `prime_fib` function:
+
+```julia
+julia> prime_fib(1)
+2
+
+julia> prime_fib(2)
+3
+
+julia> prime_fib(3)
+5
+
+julia> prime_fib(4)
+13
+
+julia> prime_fib(5)
+89
+```

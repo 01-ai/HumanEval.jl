@@ -1,0 +1,38 @@
+### Outline for Implementing `sum_to_n`
+
+1. **Function Definition**: Start by defining the function `sum_to_n` that takes an integer `n` as its argument and returns an integer.
+
+2. **Input Validation**: Although not explicitly mentioned, it's good practice to ensure that the input `n` is a positive integer. If `n` is less than 1, the function can return 0 or throw an error, depending on the desired behavior. For simplicity, we'll assume `n` is always positive in this implementation.
+
+3. **Summation Logic**:
+    - The simplest approach to sum numbers from `1` to `n` is to use a loop that iterates from `1` to `n`, adding each number to a sum variable.
+    - Alternatively, we can use the formula for the sum of the first `n` natural numbers: `n * (n + 1) / 2`. This formula provides a more efficient way to calculate the sum without the need for iteration.
+
+4. **Return the Result**: After calculating the sum, return the result.
+
+5. **Testing**: Finally, test the function with the provided examples to ensure it works as expected.
+
+### Julia Code Implementation
+
+```julia
+"""
+    sum_to_n(n::Int)::Int
+
+`sum_to_n` is a function that sums numbers from `1` to `n`.
+"""
+function sum_to_n(n::Int)::Int
+    # Step 2: Input validation (assuming n is always positive for this implementation)
+    
+    # Step 3: Use the formula for the sum of the first n natural numbers
+    return n * (n + 1) ÷ 2  # Using ÷ for integer division
+end
+
+# Step 5: Testing the function with provided examples
+println(sum_to_n(30))  # Expected output: 465
+println(sum_to_n(100)) # Expected output: 5050
+println(sum_to_n(5))   # Expected output: 15
+println(sum_to_n(10))  # Expected output: 55
+println(sum_to_n(1))   # Expected output: 1
+```
+
+This implementation uses the formula approach for its efficiency and simplicity.

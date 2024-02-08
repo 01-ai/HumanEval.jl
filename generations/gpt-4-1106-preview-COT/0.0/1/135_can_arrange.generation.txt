@@ -1,0 +1,38 @@
+To implement the `can_arrange` function, we will follow these steps:
+
+1. Initialize a variable to store the largest index where the condition is met. We can call this variable `largest_index` and set it to -1 initially, as we assume no such element exists until we find one.
+
+2. Iterate through the given vector `xs` starting from the second element (index 1) to the end of the vector.
+
+3. For each element, compare it with the element immediately before it.
+
+4. If the current element is not greater than or equal to the previous element, update `largest_index` with the current index.
+
+5. After the loop, return the value of `largest_index`.
+
+Now, let's write the code for the `can_arrange` function:
+
+```julia
+function can_arrange(xs::Vector{Int})::Int
+    largest_index = -1  # Step 1: Initialize the largest_index to -1
+    
+    # Step 2: Iterate through the vector starting from the second element
+    for i in 2:length(xs)
+        # Step 3: Compare the current element with the previous one
+        if xs[i] < xs[i-1]
+            # Step 4: Update the largest_index if the condition is met
+            largest_index = i
+        end
+    end
+    
+    # Step 5: Return the largest_index
+    return largest_index
+end
+```
+
+Let's test the function with the provided examples to ensure it works correctly:
+
+```julia
+println(can_arrange([1, 2, 4, 3, 5]))  # Expected output: 4
+println(can_arrange([1, 2, 3]))        # Expected output: -1
+```

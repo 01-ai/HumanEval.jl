@@ -1,0 +1,37 @@
+### Step-by-Step Outline
+
+1. **Initialize an empty list** to store the coordinates of the occurrences of `x`.
+2. **Iterate through the given 2D list (`xs`)**, keeping track of the row index.
+   - For each row, iterate through its elements, keeping track of the column index.
+   - If the current element matches `x`, append the tuple `(row_index, column_index)` to the list of coordinates.
+3. **Sort the list of coordinates** based on the requirements:
+   - First, by row in ascending order.
+   - Then, by column in descending order for coordinates within the same row.
+4. **Return the sorted list of coordinates**.
+
+### Julia Code Implementation
+
+```julia
+function get_row(xs::Vector{Vector{Int}}, x::Int)::Vector{Tuple{Int, Int}}
+    # Step 1: Initialize an empty list for coordinates
+    coordinates = Tuple{Int, Int}[]
+
+    # Step 2: Iterate through xs to find occurrences of x
+    for (row_idx, row) in enumerate(xs)
+        for (col_idx, value) in enumerate(row)
+            if value == x
+                push!(coordinates, (row_idx, col_idx))
+            end
+        end
+    end
+
+    # Step 3: Sort the coordinates
+    # Sort by row in ascending order and then by column in descending order within the same row
+    sort!(coordinates, by = t -> (t[1], -t[2]))
+
+    # Step 4: Return the sorted list of coordinates
+    return coordinates
+end
+```
+
+This function follows the outlined steps to find and return the coordinates of `x` in the given 2D list, sorted according to the specified criteria.

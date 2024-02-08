@@ -1,0 +1,18 @@
+
+
+Here is the Julia function that implements the described functionality:
+
+```julia
+function intersperse(numbers::Vector{Int}, delimeter::Int)::Vector{Int}
+    result = Int[]
+    for (i, num) in enumerate(numbers)
+        pushfirst(result, num)
+        if i < length(numbers)
+            pushfirst(result, delimeter)
+        end
+    end
+    reverse(result)
+end
+```
+
+This function works by iterating over the input list `numbers` and for each element, it first adds the element to the beginning of the result list, and then if the element is not the last one in the list, it adds the delimiter to the beginning of the result list as well. Finally, it reverses the result list to get the correct order. 

@@ -1,0 +1,15 @@
+
+
+function encrypt(s::String)
+    encrypted_string = ""
+    for c in s
+        if islower(c)
+            encrypted_string *= Char(((c - 'a' + 4) % 26) + 'a')
+        elseif isupper(c)
+            encrypted_string *= Char(((c - 'A' + 4) % 26) + 'A')
+        else
+            encrypted_string *= c
+        end
+    end
+    return encrypted_string
+end

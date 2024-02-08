@@ -1,0 +1,21 @@
+  Here is a possible implementation of the `same_chars` function in Julia:
+```
+function same_chars(s0::String, s1::String)::Bool
+    return all(c in s0 for c in s1) && all(c in s1 for c in s0)
+end
+```
+Explanation:
+
+* The function takes two string arguments `s0` and `s1`.
+* It returns `true` if all characters in `s0` are also in `s1`, and all characters in `s1` are also in `s0`.
+* The `all` function is used to check if all elements in a collection satisfy a condition. In this case, the condition is `c in s0` for `c` in `s1`, and `c in s1` for `c` in `s0`.
+* The `&&` operator is used to combine the two conditions. If both conditions are true, the function returns `true`, otherwise it returns `false`.
+
+Here are some examples of how the function works:
+
+* `same_chars("eabcdzzzz", "dddzzzzzzzddeddabc")` returns `true` because all characters in "eabcdzzzz" are also in "dddzzzzzzzddeddabc", and all characters in "dddzzzzzzzddeddabc" are also in "eabcdzzzz".
+* `same_chars("abcd", "dddddddabc")` returns `true` because all characters in "abcd" are also in "dddddddabc", and all characters in "dddddddabc" are also in "abcd".
+* `same_chars("dddddddabc", "abcd")` returns `true` because all characters in "dddddddabc" are also in "abcd", and all characters in "abcd" are also in "dddddddabc".
+* `same_chars("eabcd", "dddddddabc")` returns `false` because the character "e" is not in "dddddddabc".
+* `same_chars("abcd", "dddddddabce")` returns `false` because the character "e" is not in "abcd".
+* `same_chars("eabcdzzzz", "dddzzzzzzzddddabc")` returns `false` because the character "e" is not in "dddzzzzzzzddddabc".

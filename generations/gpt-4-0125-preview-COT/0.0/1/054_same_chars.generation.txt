@@ -1,0 +1,28 @@
+### Step-by-Step Outline
+
+1. **Normalize Inputs**: Convert both input strings `s0` and `s1` into a collection that makes it easier to compare their characters. A good choice is to use a `Set` since it automatically removes duplicates and allows for easy comparison of contained elements.
+
+2. **Convert Strings to Sets**: 
+    - Convert `s0` to a set of characters, let's call it `set_s0`.
+    - Convert `s1` to a set of characters, let's call it `set_s1`.
+
+3. **Compare Sets**:
+    - Check if `set_s0` is equal to `set_s1`. If they are equal, it means both strings have the same unique characters, regardless of the order or frequency of those characters.
+
+4. **Return Result**:
+    - Return the result of the comparison as a boolean value.
+
+### Julia Code Implementation
+
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    # Step 2: Convert strings to sets of characters
+    set_s0 = Set(s0)
+    set_s1 = Set(s1)
+    
+    # Step 3: Compare sets and return the result
+    return set_s0 == set_s1
+end
+```
+
+This implementation follows the outlined steps to ensure that the function checks if two words have the same characters by converting the strings into sets and comparing these sets. This approach efficiently handles duplicates and the order of characters, focusing solely on the unique characters present in each string.

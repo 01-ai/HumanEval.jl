@@ -1,0 +1,19 @@
+Here is a Julia function that implements the strange sorting algorithm:
+
+```julia
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    sorted_xs = sort(xs)
+    result = Int[]
+    while !isempty(sorted_xs)
+        min_val = popfirst(sorted_xs)
+        pushfirst(result, min_val)
+        if !isempty(sorted_xs)
+            max_val = poplast(sorted_xs)
+            pushfirst(result, max_val)
+        end
+    end
+    return reverse(result)
+end
+```
+
+This function works by first sorting the input list in ascending order. Then it iteratively pops the smallest and largest values from the sorted list and appends them to the result list. If the sorted list is empty after popping the smallest value, it means that all values have been processed, so it stops the loop. Finally, it reverses the result list to get the strange sorted list.

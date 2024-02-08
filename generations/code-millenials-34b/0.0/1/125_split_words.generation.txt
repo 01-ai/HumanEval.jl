@@ -1,0 +1,16 @@
+
+
+function split_words(txt::String)::Union{Vector{<:AbstractString},Int}
+    if occursin(" ", txt)
+        return split(txt)
+    elseif occursin(",", txt)
+        return split(txt, ",")
+    else
+        return count(c -> 'a' <= c <= 'z' && isodd(ord(c) - ord('a')), txt)
+    end
+end
+
+# Test cases
+println(split_words("Hello world!"))
+println(split_words("Hello,world!"))
+println(split_words("abcdef"))

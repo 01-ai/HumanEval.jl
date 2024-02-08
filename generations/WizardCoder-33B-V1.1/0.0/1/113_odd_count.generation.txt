@@ -1,0 +1,11 @@
+
+
+Here is the Julia function that implements the above doc string:
+
+```julia
+function odd_count(xs::Vector{String})::Vector{String}
+    return ["the number of odd elements $(count(isodd, parse(Int, x)))n the str$(length(x))ng $(length(x)) of the $(length(x))nput." for x in xs]
+end
+```
+
+This function uses list comprehension to iterate over each string in the input list. For each string, it counts the number of odd digits by converting the string to an integer, then using the `count` function with `isodd` as the predicate. The result is then formatted into the desired string format. 

@@ -1,0 +1,30 @@
+```julia
+function sum_squares(xs::Vector{Int})::Int
+    # Initialize the sum to zero
+    sum_val = 0
+
+    # Loop through the list, squaring or cubing entries as necessary
+    for i in eachindex(xs)
+        if i % 3 == 0
+            xs[i] = xs[i]^2
+        elseif i % 4 == 0 && i % 3 != 0
+            xs[i] = xs[i]^3
+        end
+        sum_val += xs[i]
+    end
+
+    # Return the sum of all entries
+    return sum_val
+end
+```
+
+This function works as follows:
+
+1. It initializes a variable `sum_val` to zero.
+2. It iterates through each index `i` of the vector `xs` using `eachindex(xs)`.
+3. For each index, it checks if it is a multiple of 3. If so, it squares the entry at that index and adds it to the sum.
+4. It also checks if the index is a multiple of 4 and not a multiple of 3. If so, it cubes the entry and adds it to the sum.
+5. For all other indices, it does not modify the entry and simply adds it to the sum.
+6. Finally, it returns the total sum of all entries.
+
+The examples provided in the docstring demonstrate the function's behavior for different input vectors.

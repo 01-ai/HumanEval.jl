@@ -1,0 +1,11 @@
+
+
+Here is the Julia function that implements the given doc string:
+
+```julia
+function all_prefixes(s::String)::Vector{String}
+    return [s[1:i] for i in 1:length(s)]
+end
+```
+
+This function uses a list comprehension to generate all prefixes of the input string. It takes a slice of the string from the first character to the current index for each index in the range of the length of the string. The resulting list is returned. 

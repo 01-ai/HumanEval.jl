@@ -1,0 +1,24 @@
+  Here's one way to implement the `largest_prime_factor` function in Julia:
+```
+function largest_prime_factor(n::Int)::Int
+    if n <= 1
+        return 1
+    end
+    for i in 2:n
+        if n % i == 0
+            return i
+        end
+    end
+end
+```
+This function uses a loop to iterate from 2 to `n`, checking if `n` is divisible by each number in that range. If a divisor is found, the function returns it. If no divisor is found, the function returns 1.
+
+Here's an example of how to use the function:
+```
+julia> largest_prime_factor(13195)
+29
+
+julia> largest_prime_factor(2048)
+2
+```
+Note that this implementation assumes that `n` is a positive integer greater than 1. If `n` is not a positive integer, the function will return an error.

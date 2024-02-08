@@ -1,0 +1,13 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    sort(arr, by = x -> (count_ones(x), x))
+end
+```
+
+This function uses the `sort` function in Julia, which sorts an array. The `by` keyword argument is used to specify a function that is applied to each element of the array before comparison. In this case, the function `x -> (count_ones(x), x)` is applied to each element. This function returns a tuple, where the first element is the number of ones in the binary representation of the number, and the second element is the number itself. The `sort` function sorts the array based on this tuple.
+
+The `count_ones` function is a built-in function in Julia that counts the number of ones in the binary representation of a number.
+
+The `sort_array` function returns the sorted array.

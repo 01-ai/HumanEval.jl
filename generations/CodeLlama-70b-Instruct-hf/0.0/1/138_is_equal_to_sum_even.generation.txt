@@ -1,0 +1,15 @@
+
+
+```julia
+function is_equal_to_sum_even(n::Int)::Bool
+    if n < 8
+        return false
+    end
+    if n % 4 != 0
+        return false
+    end
+    return true
+end
+```
+
+This function first checks if the input number is less than 8. If it is, it cannot be written as the sum of 4 positive even numbers. Then, it checks if the input number is divisible by 4. If it is not, it cannot be written as the sum of 4 positive even numbers. If both checks pass, it returns true, indicating that the input number can be written as the sum of 4 positive even numbers.

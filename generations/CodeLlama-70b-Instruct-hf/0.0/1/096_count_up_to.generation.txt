@@ -1,0 +1,26 @@
+
+```julia
+function count_up_to(n::Int)::Vector{Int}
+    if n < 0
+        throw(DomainError(n, "Input must be non-negative"))
+    end
+
+    primes = Int[]
+    for i = 2:n
+        is_prime = true
+        for j = 2:(i - 1)
+            if i % j == 0
+                is_prime = false
+                break
+            end
+        end
+        if is_prime
+            push!(primes, i)
+        end
+    end
+
+    return primes
+end
+```
+
+This function iterates through all integers from 2 to n and checks if each number is prime. If it is, it adds it to the primes array. The function returns the primes array.

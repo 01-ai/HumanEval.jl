@@ -1,0 +1,32 @@
+
+
+function intersection(interval1::Vector{Int}, interval2::Vector{Int})::String
+    # Calculate the intersection of the two intervals
+    intersection_start = max(interval1[1], interval2[1])
+    intersection_end = min(interval1[2], interval2[2])
+
+    # If the intersection is empty, return "NO"
+    if intersection_start > intersection_end
+        return "NO"
+    end
+
+    # Calculate the length of the intersection
+    intersection_length = intersection_end - intersection_start + 1
+
+    # Check if the length of the intersection is a prime number
+    if intersection_length == 1
+        return "NO"
+    else
+        for i in 2:intersection_length-1
+            if intersection_length % i == 0
+                return "NO"
+            end
+        end
+        return "YES"
+    end
+end
+
+# Test the function
+println(intersection([1, 2], [2, 3]))  # "NO"
+println(intersection([-1, 1], [0, 4]))  # "NO"
+println(intersection([-3, -1], [-5, 5]))  # "YES" 

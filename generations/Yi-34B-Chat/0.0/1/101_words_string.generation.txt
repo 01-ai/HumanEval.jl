@@ -1,0 +1,7 @@
+```julia
+function words_string(s::String)::Vector{String}
+    # Split the string into a vector of words, removing empty strings
+    words = split(s, [',', ' '])
+    return filter(word -> !isempty(word), words)
+end
+```

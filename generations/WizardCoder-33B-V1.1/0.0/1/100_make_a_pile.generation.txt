@@ -1,0 +1,11 @@
+
+
+Here is the Julia function that implements the given doc string:
+
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    return [n + 2i for i in 0:(n-1)]
+end
+```
+
+This function uses a list comprehension to generate the sequence of numbers. The `2i` part of the expression is used to generate the next odd or even number depending on whether `n` is odd or even. 

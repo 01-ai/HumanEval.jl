@@ -1,0 +1,12 @@
+```julia
+function smallest_change(xs::Vector{Int})::Int
+    n = length(xs)
+    changes = 0
+    for i in 1:div(n, 2)
+        if xs[i] != xs[n-i+1]
+            changes += 1
+        end
+    end
+    return changes
+end
+```

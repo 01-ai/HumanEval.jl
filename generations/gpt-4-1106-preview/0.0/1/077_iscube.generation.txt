@@ -1,0 +1,22 @@
+Certainly! Below is the Julia function `iscube` that checks if an integer is a cube of some integer number:
+
+```julia
+function iscube(a::Int)::Bool
+    # A cube root of a number should be an integer if the number is a perfect cube.
+    # We use cbrt to get the cube root and round it to the nearest integer.
+    cube_root = round(cbrt(a))
+    
+    # We then cube the rounded cube root and check if it equals the original number.
+    return cube_root^3 == a
+end
+
+# Examples
+println(iscube(1))   # true
+println(iscube(2))   # false
+println(iscube(-1))  # true
+println(iscube(64))  # true
+println(iscube(0))   # true
+println(iscube(180)) # false
+```
+
+This function uses the `cbrt` function from Julia's standard library to compute the cube root of the input integer `a`. It then rounds the result to the nearest integer and checks if the cube of this rounded value equals the original number. If it does, the function returns `true`, indicating that `a` is a perfect cube; otherwise, it returns `false`.

@@ -1,0 +1,20 @@
+
+
+# Step-by-step outline:
+# 1. Check if the length of the input vector is less than 2. If it is, return nothing because there is no 2nd smallest element.
+# 2. If the length of the input vector is 2 or more, sort the vector in ascending order.
+# 3. Return the 2nd element of the sorted vector.
+
+# Julia code:
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    # Check if the length of the input vector is less than 2
+    if length(xs) < 2
+        return nothing
+    end
+
+    # Sort the vector in ascending order
+    sorted_xs = sort(xs)
+
+    # Return the 2nd element of the sorted vector
+    return sorted_xs[2]
+end

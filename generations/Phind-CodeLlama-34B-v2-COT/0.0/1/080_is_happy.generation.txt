@@ -1,0 +1,41 @@
+
+
+To solve this problem, we will iterate over the string and check if every 3 consecutive letters are distinct. We will use a sliding window approach to do this.
+
+Step-by-step outline:
+1. Check if the length of the string is less than 3. If it is, return false.
+2. Initialize a variable `prev` to store the previous character and a variable `curr` to store the current character.
+3. Iterate over the string.
+4. For each character, check if it is equal to `prev` or `curr`. If it is, return false.
+5. Update `prev` and `curr` to the next two characters.
+6. If we have iterated over the entire string, return true.
+
+Here is the Julia code implementing the above outline:
+
+```julia
+function is_happy(s::String)::Bool
+    # Check if the length of the string is less than 3
+    length(s) < 3 && return false
+
+    # Initialize variables to store the previous and current characters
+    prev = s[1]
+    curr = s[2]
+
+    # Iterate over the string
+    for i in 3:length(s)
+        # Check if the current character is equal to prev or curr
+        if s[i] == prev || s[i] == curr
+            return false
+        end
+
+        # Update prev and curr to the next two characters
+        prev = curr
+        curr = s[i]
+    end
+
+    # If we have iterated over the entire string, return true
+    return true
+end
+```
+
+This function works by checking each 3 consecutive characters in the string to see if they are distinct. If any set of 3 characters are not distinct, it returns false. If it iterates over the entire string without finding any non-distinct sets of 3 characters, it returns true.

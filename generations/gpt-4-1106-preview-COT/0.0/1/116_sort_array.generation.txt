@@ -1,0 +1,36 @@
+To implement the `sort_array` function, we will follow these steps:
+
+1. Define the function `sort_array` that takes a vector of integers as input.
+2. Create a custom sorting function that:
+   - Counts the number of ones in the binary representation of each number.
+   - Compares the count of ones first; if they are equal, it compares the numbers themselves.
+3. Use the built-in `sort` function with the custom sorting function to sort the array.
+4. Return the sorted array.
+
+Now, let's write the code for the `sort_array` function:
+
+```julia
+# Step 1: Define the function
+function sort_array(arr::Vector{Int})::Vector{Int}
+    # Step 2: Create a custom sorting function
+    function sort_criteria(x, y)
+        # Count the number of ones in the binary representation
+        x_ones = count(isequal('1'), bin(x))
+        y_ones = count(isequal('1'), bin(y))
+        # Compare based on the number of ones, then by value
+        if x_ones == y_ones
+            return x < y
+        else
+            return x_ones < y_ones
+        end
+    end
+    
+    # Step 3: Use the built-in `sort` function with the custom sorting function
+    sorted_arr = sort(arr, by=x -> (count(isequal('1'), bin(x)), x))
+    
+    # Step 4: Return the sorted array
+    return sorted_arr
+end
+```
+
+This function should now work as expected, sorting the array based on the number of ones in the binary representation and then by the decimal value for similar counts of ones.

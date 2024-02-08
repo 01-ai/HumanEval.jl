@@ -1,0 +1,34 @@
+### Step-by-Step Outline
+
+1. **Find the Minimum and Maximum Values**: Determine the smallest and largest numbers in the input vector. These will be used to calculate the scale and shift needed to rescale the numbers.
+
+2. **Calculate Scale and Shift**: The scale is determined by the difference between the maximum and minimum values. The shift is simply the minimum value. These will be used to transform each number in the vector.
+
+3. **Transform the Numbers**: Apply the linear transformation to each number in the vector. The formula for the transformation is `(number - min) / (max - min)`, where `min` and `max` are the minimum and maximum values found in step 1.
+
+4. **Return the Transformed Vector**: The result of the transformation from step 3 is a new vector where the smallest number has been scaled to 0 and the largest to 1, as required.
+
+### Julia Code Implementation
+
+```julia
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    # Step 1: Find the Minimum and Maximum Values
+    min_val = minimum(numbers)
+    max_val = maximum(numbers)
+
+    # Ensure there are at least two distinct elements
+    if min_val == max_val
+        error("Input vector must contain at least two distinct elements.")
+    end
+
+    # Step 2: No explicit calculation for scale and shift needed, directly apply in transformation
+
+    # Step 3: Transform the Numbers
+    transformed_numbers = ((numbers .- min_val) ./ (max_val - min_val))
+
+    # Step 4: Return the Transformed Vector
+    return transformed_numbers
+end
+```
+
+This function first checks that the input vector meets the requirement of having at least two distinct elements by ensuring the minimum and maximum values are not the same. It then applies the linear transformation to scale the smallest number to 0 and the largest to 1, returning the transformed vector.

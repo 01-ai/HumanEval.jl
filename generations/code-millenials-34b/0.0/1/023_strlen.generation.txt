@@ -1,0 +1,8 @@
+
+
+function strlen(x::String)::Int
+    return length(x)
+end
+
+println(strlen(""))
+println(strlen("abc"))

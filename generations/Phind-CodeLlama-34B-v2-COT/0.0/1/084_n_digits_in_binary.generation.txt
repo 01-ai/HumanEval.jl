@@ -1,0 +1,35 @@
+
+
+# Step-by-step outline:
+
+1. First, we need to convert the given integer N into a string to easily access each digit.
+2. Then, we will initialize a variable `binary_sum` to store the sum of the digits in binary.
+3. We will iterate over each character in the string representation of N.
+4. For each character, we will convert it back to an integer and calculate its binary representation.
+5. We will add this binary representation to `binary_sum`.
+6. After the loop ends, we will return `binary_sum`.
+
+# Code:
+
+```julia
+function n_digits_in_binary(N::Int)::String
+    # Convert N to a string
+    N_str = string(N)
+    
+    # Initialize binary_sum
+    binary_sum = ""
+    
+    # Iterate over each character in N_str
+    for digit in N_str
+        # Convert digit back to an integer and calculate its binary representation
+        binary_digit = string(digits(parse(Int, digit), base=2, pad=3))[end-2:end]
+        
+        # Add binary_digit to binary_sum
+        binary_sum *= binary_digit
+    end
+    
+    return binary_sum
+end
+```
+
+This function works by converting the input integer N to a string, then iterating over each character in the string. For each character, it converts the character back to an integer, calculates its binary representation, and adds this binary representation to a running total `binary_sum`. The function finally returns `binary_sum`.

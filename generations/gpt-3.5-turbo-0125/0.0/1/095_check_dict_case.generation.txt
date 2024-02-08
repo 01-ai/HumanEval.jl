@@ -1,0 +1,12 @@
+```julia
+function check_dict_case(d::Dict{String})::Bool
+    if isempty(d)
+        return false
+    end
+    
+    lower_keys = all(isequal(lowercase, k) for k in keys(d))
+    upper_keys = all(isequal(uppercase, k) for k in keys(d))
+    
+    return lower_keys || upper_keys
+end
+```

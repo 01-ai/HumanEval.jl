@@ -1,0 +1,33 @@
+
+
+# Step-by-step outline:
+# 1. Initialize an empty list to store the coordinates.
+# 2. Iterate over the rows of the given nested list.
+# 3. For each row, iterate over the elements and check if the element is equal to `x`.
+# 4. If the element is equal to `x`, add a tuple of the current row and column index to the coordinates list.
+# 5. After iterating over all rows, sort the coordinates list first by rows in ascending order and then by columns in descending order.
+# 6. Return the sorted coordinates list.
+
+# Code:
+function get_row(xs::Vector{Vector{Int}}, x::Int)::Vector{Tuple{Int, Int}}
+    # Initialize an empty list to store the coordinates
+    coordinates = Tuple{Int, Int}[]
+
+    # Iterate over the rows of the given nested list
+    for (row_index, row) in enumerate(xs)
+        # Iterate over the elements of the current row
+        for (col_index, col) in enumerate(row)
+            # Check if the element is equal to `x`
+            if col == x
+                # Add a tuple of the current row and column index to the coordinates list
+                push!(coordinates, (row_index, col_index))
+            end
+        end
+    end
+
+    # Sort the coordinates list first by rows in ascending order and then by columns in descending order
+    sort!(coordinates, by = ((row, col),) -> (row, -col))
+
+    # Return the sorted coordinates list
+    return coordinates
+end

@@ -1,0 +1,9 @@
+Here is the implementation of the `incr_list` function in Julia:
+
+```julia
+function incr_list(xs::Vector{T}) where T<:Number
+    return [x + 1 for x in xs]
+end
+```
+
+This function takes a vector `xs` as input and returns a new vector with each element incremented by 1. The list comprehension `[x + 1 for x in xs]` is used to create the new vector. The type parameter `T<:Number` ensures that the function works for vectors of any numeric type.

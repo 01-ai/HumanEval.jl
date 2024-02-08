@@ -1,0 +1,21 @@
+```julia
+function largest_prime_factor(n::Int)::Int
+    # Base case: n is a prime number
+    if isprime(n)
+        return n
+    end
+
+    # Iterate over the square root of n to find the largest prime factor
+    for i in 2:sqrt(n)
+        if n % i == 0
+            # If i is a factor of n, return the larger of i and n/i
+            return max(i, n // i)
+        end
+    end
+
+    # If no factor is found, n must be a prime square
+    return n
+end
+```
+
+This function uses the fact that if `n` is not a prime, then one of its factors must be less than or equal to the square root of `n`. It iterates over all numbers from 2 to the square root of `n` and checks if `n` is divisible by them. If a factor is found, the function returns the larger of the factor and `n` divided by the factor. If no factor is found, `n` must be a prime square, and the function returns `n` itself.

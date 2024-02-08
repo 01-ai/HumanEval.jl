@@ -1,0 +1,21 @@
+Here is a Julia function that implements the given doc string:
+
+```julia
+function is_nested(s::String)::Bool
+    stack = []
+    for bracket in s
+        if bracket == '['
+            pushfirst(stack, bracket)
+        elseif bracket == ']'
+            if isempty(stack) || popfirst(stack) != '['
+                return true
+            end
+        end
+    end
+    return false
+end
+```
+
+This function uses a stack to keep track of the brackets. When it encounters an opening bracket, it pushes it onto the stack. When it encounters a closing bracket, it checks if the top of the stack is an opening bracket. If it is, it pops the opening bracket from the stack. If it is not, it returns `true` because it found a closing bracket that is not nested. If it finishes processing the string and the stack is not empty, it returns `false` because it found an opening bracket without a corresponding closing bracket.
+
+Please note that this function assumes that the input string only contains square brackets. If the input string can contain other characters, you may need to add error checking code to handle those cases.

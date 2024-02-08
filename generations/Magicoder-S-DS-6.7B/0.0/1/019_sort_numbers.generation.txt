@@ -1,0 +1,31 @@
+Here is a Julia function that implements the `sort_numbers` function as described in the problem:
+
+```julia
+function sort_numbers(numbers::String)::String
+    # Define a dictionary to map string numbers to their corresponding integer values
+    number_dict = Dict("zero" => 0, "one" => 1, "two" => 2, "three" => 3, "four" => 4, "five" => 5, "six" => 6, "seven" => 7, "eight" => 8, "nine" => 9)
+
+    # Split the input string into an array of words
+    words = split(numbers)
+
+    # Convert each word to its corresponding integer value and store in a new array
+    numbers_int = [number_dict[word] for word in words]
+
+    # Sort the array of integers
+    sort_numbers_int = sort(numbers_int)
+
+    # Convert each integer back to its corresponding word and join them into a string
+    sorted_numbers = join([[k for k in keys(number_dict) if number_dict[k] == i][1] for i in sort_numbers_int], " ")
+
+    return sorted_numbers
+end
+```
+
+You can test this function with the provided examples:
+
+```julia
+julia> sort_numbers("three one five")
+"one three five"
+```
+
+This function works by first creating a dictionary that maps the string numbers to their corresponding integer values. It then splits the input string into an array of words, converts each word to its corresponding integer value, sorts the array of integers, converts each integer back to its corresponding word, and joins them into a string.

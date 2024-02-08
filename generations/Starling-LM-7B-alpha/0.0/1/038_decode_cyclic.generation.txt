@@ -1,0 +1,4 @@
+ function decode_cyclic(s::String)::String
+    groups = split(s, "")
+    return join(groups[2:end-1] .* groups[1:end-2])
+end

@@ -1,0 +1,9 @@
+Here is the implementation of the `compare` function in Julia:
+
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    return abs.(game .- guess)
+end
+```
+
+This function takes in two arrays, `game` and `guess`, and returns an array of the same length denoting how far off each guess was. If the guess is correct, the value is 0, and if not, the value is the absolute difference between the guess and the score. The `abs.` function is used to apply the absolute value element-wise to the resulting array.

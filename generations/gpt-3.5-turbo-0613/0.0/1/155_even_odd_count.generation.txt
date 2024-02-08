@@ -1,0 +1,28 @@
+Here is the implementation for the `even_odd_count` function:
+
+```julia
+function even_odd_count(num::Int)::Tuple{Int, Int}
+    even_count = 0
+    odd_count = 0
+    
+    # Convert the number to a string
+    num_str = string(num)
+    
+    # Iterate over each character in the string
+    for digit in num_str
+        # Convert the character back to an integer
+        digit_int = parse(Int, digit)
+        
+        # Check if the digit is even or odd
+        if digit_int % 2 == 0
+            even_count += 1
+        else
+            odd_count += 1
+        end
+    end
+    
+    return (even_count, odd_count)
+end
+```
+
+This function first initializes `even_count` and `odd_count` variables to 0. It then converts the input number to a string using the `string` function. Next, it iterates over each character in the string and converts it back to an integer using the `parse` function. It checks if the digit is even or odd by checking if it is divisible by 2. If it is even, it increments the `even_count` variable, otherwise it increments the `odd_count` variable. Finally, it returns a tuple containing the `even_count` and `odd_count` variables.

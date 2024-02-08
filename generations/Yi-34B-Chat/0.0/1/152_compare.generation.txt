@@ -1,0 +1,22 @@
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    # Initialize an array to store the differences
+    diffs = Vector{Int}(undef, length(game))
+
+    # Loop over the arrays and calculate the differences
+    for i in eachindex(game)
+        if game[i] == guess[i]
+            # If the guess is correct, the difference is 0
+            diffs[i] = 0
+        else
+            # Otherwise, calculate the absolute difference
+            diffs[i] = abs(game[i] - guess[i])
+        end
+    end
+
+    # Return the array of differences
+    return diffs
+end
+```
+
+This function takes two vectors of equal length, `game` and `guess`, and returns a vector of the same length containing the absolute differences between the guesses and the actual scores, or 0 if the guess is correct.

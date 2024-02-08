@@ -1,0 +1,18 @@
+Here is the Julia function that implements the encoding described in the doc string:
+
+```julia
+function encode_swap(message::String)::String
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    encoded_message = ""
+    for char in message
+        if char in vowels
+            encoded_message *= Char(char + 2)
+        else
+            encoded_message *= islowercase(char) ? uppercase(char) : lowercase(char)
+        end
+    end
+    return encoded_message
+end
+```
+
+This function iterates over each character in the input message. If the character is a vowel, it adds 2 to its ASCII value to get the ASCII value of the character that appears 2 places after the vowel in the English alphabet. If the character is not a vowel, it simply swaps the case of the character. The encoded message is then returned.

@@ -1,0 +1,18 @@
+Here is the implementation for the `is_nested` function:
+
+```julia
+function is_nested(s::String)::Bool
+    stack = []
+    for c in s
+        if c == '['
+            push!(stack, c)
+        elseif c == ']'
+            if isempty(stack)
+                return true
+            end
+            pop!(stack)
+        end
+    end
+    return !isempty(stack)
+end
+```

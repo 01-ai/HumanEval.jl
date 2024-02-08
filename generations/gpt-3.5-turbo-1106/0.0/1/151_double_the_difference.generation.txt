@@ -1,0 +1,11 @@
+```julia
+function double_the_difference(xs::Vector)
+    total = 0
+    for x in xs
+        if x > 0 && x % 2 != 0 && x == floor(x)
+            total += x^2
+        end
+    end
+    return total * 2
+end
+```

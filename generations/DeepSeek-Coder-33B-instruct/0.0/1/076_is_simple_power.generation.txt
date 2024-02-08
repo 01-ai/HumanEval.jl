@@ -1,0 +1,15 @@
+Here is a Julia function that implements the given doc string:
+
+```julia
+function is_simple_power(x::Number, n::Number)::Bool
+    if n == 1
+        return x == 1
+    elseif x == 1
+        return true
+    else
+        return n^round(Int, log(n, x)) == x
+    end
+end
+```
+
+This function works by taking the logarithm of `x` to the base `n`, rounding it to the nearest integer, and then raising `n` to that power. If the result is equal to `x`, then `x` is a simple power of `n`. If `n` is 1, then `x` must also be 1 for `x` to be a simple power of `n`. If `x` is 1, then `x` is a simple power of any `n`.

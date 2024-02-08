@@ -1,0 +1,33 @@
+
+
+# Outline
+
+1. Define the function `modp(n::Int, p::Int)::Int`.
+2. Calculate `2^n` using the `Base.power_by_squaring` method.
+3. Calculate `2^n modulo p` using the `Base.mod` method.
+4. Return the result.
+
+# Code
+
+```julia
+function modp(n::Int, p::Int)::Int
+    # Calculate 2^n using the power_by_squaring method
+    two_to_n = Base.power_by_squaring(2, n)
+
+    # Calculate 2^n modulo p using the mod method
+    result = Base.mod(two_to_n, p)
+
+    # Return the result
+    return result
+end
+```
+
+# Test
+
+```julia
+@assert modp(3, 5) == 3
+@assert modp(1101, 101) == 2
+@assert modp(0, 101) == 1
+@assert modp(3, 11) == 8
+@assert modp(100, 101) == 1
+```

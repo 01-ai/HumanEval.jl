@@ -1,0 +1,27 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. Sort the list of numbers in ascending order.
+2. Initialize two variables, `min_diff` and `closest_pair`, to keep track of the smallest difference between two numbers and the pair of numbers that have this difference, respectively.
+3. Iterate over the sorted list of numbers, starting from the second number. For each number, calculate the difference with the previous number.
+4. If the difference is smaller than `min_diff`, update `min_diff` and `closest_pair`.
+5. Return `closest_pair`.
+
+Here is the Julia code that implements this algorithm:
+
+```julia
+function find_closest_elements(numbers::Vector{Float64})::Tuple{Float64, Float64}
+    sorted_numbers = sort(numbers)
+    min_diff = Inf
+    closest_pair = (0.0, 0.0)
+    for i in 2:length(sorted_numbers)
+        diff = sorted_numbers[i] - sorted_numbers[i-1]
+        if diff < min_diff
+            min_diff = diff
+            closest_pair = (sorted_numbers[i-1], sorted_numbers[i])
+        end
+    end
+    return closest_pair
+end
+```
+
+This function works by first sorting the input list of numbers. It then initializes `min_diff` to a large number and `closest_pair` to a pair of zeros. It then iterates over the sorted list of numbers, starting from the second number. For each number, it calculates the difference with the previous number. If this difference is smaller than `min_diff`, it updates `min_diff` and `closest_pair`. Finally, it returns `closest_pair`.

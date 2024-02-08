@@ -1,0 +1,36 @@
+To implement the `truncate_number` function, we can follow these steps:
+
+1. Extract the integer part of the number by using the `floor` function, which returns the greatest integer less than or equal to the given number.
+2. Subtract the integer part from the original number to get the decimal part.
+3. Return the decimal part.
+
+Now, let's write the code for the `truncate_number` function:
+
+```julia
+"""
+    truncate_number(number::Float64)::Float64
+
+Given a positive floating point number, it can be decomposed into integer part
+(largest integer smaller than given number) and decimals (leftover part always
+smaller than 1). Return the decimal part of the number.
+
+# Examples
+
+```jldoctest
+julia> truncate_number(3.5)
+0.5
+```
+"""
+function truncate_number(number::Float64)::Float64
+    # Step 1: Extract the integer part
+    integer_part = floor(number)
+    
+    # Step 2: Calculate the decimal part
+    decimal_part = number - integer_part
+    
+    # Step 3: Return the decimal part
+    return decimal_part
+end
+```
+
+This function should work as expected for positive floating point numbers. Note that the function assumes the input is a positive floating point number as per the doc string. If you want to handle negative numbers as well, you would need to use `abs` to get the absolute value before extracting the integer part and then apply the sign of the original number to the decimal part.

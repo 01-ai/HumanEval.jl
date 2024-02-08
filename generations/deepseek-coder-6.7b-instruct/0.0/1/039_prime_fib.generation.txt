@@ -1,0 +1,42 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function prime_fib(n::Int)::Int
+    function is_prime(x::Int)::Bool
+        if x == 2 || x == 3
+            return true
+        elseif x < 2 || x % 2 == 0
+            return false
+        end
+        for i in 3:2:isqrt(x)
+            if x % i == 0
+                return false
+            end
+        end
+        return true
+    end
+
+    function fib(n::Int)::Int
+        a, b = 0, 1
+        for _ in 1:n
+            a, b = b, a + b
+        end
+        return b
+    end
+
+    i = 1
+    count = 0
+    while count < n
+        f = fib(i)
+        if is_prime(f)
+            count += 1
+        end
+        i += 1
+    end
+    return fib(i - 1)
+end
+```
+
+This function first defines two helper functions: `is_prime` and `fib`. The `is_prime` function checks if a number is prime, and the `fib` function calculates the n-th Fibonacci number.
+
+The main function `prime_fib` then uses these helper functions to find the n-th Fibonacci number that is also prime. It starts from the first Fibonacci number and checks each one to see if it's prime. If it is, it increments a counter. The function continues this process until the counter reaches n, at which point it returns the last Fibonacci number it checked.

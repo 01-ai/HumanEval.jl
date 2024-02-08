@@ -1,0 +1,34 @@
+```julia
+function factorize(n::Int)::Vector{Int}
+    # Initialize an empty vector to store the prime factors
+    factors = Vector{Int}()
+
+    # Loop through the numbers starting from 2 to sqrt(n)
+    for i in 2:sqrt(n)
+        # If n is divisible by i, then i is a factor of n
+        while n % i == 0
+            # Add i to the vector of factors
+            push!(factors, i)
+            # Update n by removing the factor i
+            n = n // i
+            # If n is now divisible by i^2, then i^2 is also a factor
+            if n % i == 0
+                # Add i again to the vector of factors
+                push!(factors, i)
+                # Update n by removing the factor i^2
+                n = n // i^2
+            }
+        end
+    end
+
+    # If n is greater than 1, it means we have a prime factor greater than sqrt(n)
+    if n > 1
+        push!(factors, n)
+    end
+
+    # Return the vector of prime factors
+    return factors
+end
+```
+
+This function works by iteratively finding divisors of the number `n` and adding them to a vector. It starts by checking for divisibility by 2, then moves on to check for divisibility by 3, 4, 5, and so on, up to the square root of `n`. If a factor is found, it is added to the vector, and the number `n` is divided by that factor. If the division results in a number that is still divisible by the factor, indicating that the factor is a prime factor that appears more than once, it is added to the vector again. After checking all factors up to the square root of `n`, if `n` is still greater than 1, it means we have a prime factor greater than the square root of `n`, and it is added to the vector as well.

@@ -1,0 +1,22 @@
+### Step-by-Step Outline:
+
+1. Define the function `same_chars` that takes two string arguments `s0` and `s1`.
+2. Convert both strings `s0` and `s1` into sets of characters to eliminate duplicates and to make comparison order-independent.
+3. Compare the sets of characters from both strings.
+4. Return `true` if the sets are equal, indicating that both strings contain the same characters (ignoring frequency and order).
+5. Return `false` otherwise.
+
+### Julia Code:
+
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    # Step 2: Convert strings to sets of characters
+    set_s0 = Set(s0)
+    set_s1 = Set(s1)
+    
+    # Step 3 and 4: Compare the sets and return the result
+    return set_s0 == set_s1
+end
+```
+
+Now, let's implement the function in Julia.

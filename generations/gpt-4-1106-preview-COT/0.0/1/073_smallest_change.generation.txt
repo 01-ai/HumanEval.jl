@@ -1,0 +1,32 @@
+### Step-by-Step Outline:
+
+1. Define the function `smallest_change(xs::Vector{Int})::Int` that takes a vector of integers as input.
+2. Initialize a variable to keep track of the number of changes needed, starting at 0.
+3. Use two pointers to iterate over the array from both ends towards the center.
+4. Compare the elements at the two pointers:
+   - If they are the same, no change is needed, and both pointers are moved towards the center.
+   - If they are different, increment the change counter by 1 and move both pointers towards the center.
+5. Continue this process until the pointers meet or cross each other.
+6. Return the change counter as the result, which represents the minimum number of changes needed to make the array palindromic.
+
+### Julia Code:
+
+```julia
+function smallest_change(xs::Vector{Int})::Int
+    changes_needed = 0
+    left = 1
+    right = length(xs)
+
+    while left < right
+        if xs[left] != xs[right]
+            changes_needed += 1
+        end
+        left += 1
+        right -= 1
+    end
+
+    return changes_needed
+end
+```
+
+Now, let's implement the function in Julia.

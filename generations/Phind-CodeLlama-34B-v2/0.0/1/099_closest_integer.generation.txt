@@ -1,0 +1,16 @@
+
+
+Here is the Julia implementation of the `closest_integer` function based on the provided docstring:
+
+```julia
+function closest_integer(value::String)::Int
+    num = parse(Float64, value)
+    if num >= 0
+        return floor(Int, num + 0.5)
+    else
+        return ceil(Int, num - 0.5)
+    end
+end
+```
+
+This function first converts the input string to a floating-point number using the `parse` function. Then, it rounds the number to the nearest integer using the `floor` and `ceil` functions, with the rounding direction determined by the sign of the number. The `floor` function is used for positive numbers and the `ceil` function is used for negative numbers. In each case, the function rounds halfway cases away from zero, as required by the problem statement. The result is then returned as an integer.

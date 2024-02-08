@@ -1,0 +1,29 @@
+Certainly! Below is the Julia function `prod_signs` that implements the described functionality:
+
+```julia
+function prod_signs(xs::Vector{Int})::Union{Nothing,Int}
+    if isempty(xs)
+        return nothing
+    end
+
+    sign_product = 1
+    sum_magnitudes = 0
+
+    for x in xs
+        sum_magnitudes += abs(x)
+        sign_product *= sign(x)
+    end
+
+    return sign_product * sum_magnitudes
+end
+```
+
+This function first checks if the input vector `xs` is empty and returns `nothing` if it is. Otherwise, it initializes `sign_product` to 1 and `sum_magnitudes` to 0. It then iterates over each element in the vector, updating the sum of magnitudes and the product of signs accordingly. Finally, it returns the product of the sum of magnitudes and the product of signs.
+
+You can test the function with the provided examples:
+
+```julia
+println(prod_signs([1, 2, 2, -4])) # Should print -9
+println(prod_signs([0, 1]))        # Should print 0
+println(prod_signs([]))            # Should print nothing
+```

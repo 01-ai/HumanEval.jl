@@ -1,0 +1,36 @@
+### Step-by-Step Outline
+
+1. **Check for Valid Triangle**: First, we need to check if the given sides `a`, `b`, and `c` can form a valid triangle. This is true if and only if the sum of any two sides is greater than the third side. This means we need to check if all of the following conditions are true:
+   - `a + b > c`
+   - `a + c > b`
+   - `b + c > a`
+   If any of these conditions is not met, the function should return `-1`.
+
+2. **Calculate the Area**: If the triangle is valid, we calculate its area. The most efficient way to do this without knowing the angles is to use Heron's formula. Heron's formula states that the area of a triangle whose sides have lengths `a`, `b`, and `c` is:
+   \[ \text{Area} = \sqrt{s(s-a)(s-b)(s-c)} \]
+   where \( s = \frac{a + b + c}{2} \) is the semi-perimeter of the triangle.
+
+3. **Return the Result**: Calculate the area using Heron's formula, round it to 2 decimal points, and return the result.
+
+### Julia Code Implementation
+
+```julia
+function triangle_area3(a::Number, b::Number, c::Number)::Number
+    # Step 1: Check for a valid triangle
+    if a + b > c && a + c > b && b + c > a
+        # Step 2: Calculate the semi-perimeter
+        s = (a + b + c) / 2
+        
+        # Step 3: Calculate the area using Heron's formula
+        area = sqrt(s * (s - a) * (s - b) * (s - c))
+        
+        # Step 4: Return the area rounded to 2 decimal points
+        return round(area, digits=2)
+    else
+        # If not a valid triangle, return -1
+        return -1
+    end
+end
+```
+
+This function first checks if the input sides can form a valid triangle. If they can, it proceeds to calculate the area using Heron's formula and returns the rounded result. If not, it returns `-1` as specified.

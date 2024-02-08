@@ -1,0 +1,6 @@
+ function max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+    m, n = size(grid)
+    total_water = sum(sum(grid))
+    total_buckets = ceil(Int, total_water / capacity)
+    return total_buckets
+end

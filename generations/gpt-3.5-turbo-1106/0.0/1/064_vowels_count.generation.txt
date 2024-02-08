@@ -1,0 +1,15 @@
+```julia
+function vowels_count(s::String)::Int
+    count = 0
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    for c in s
+        if c in vowels
+            count += 1
+        end
+    end
+    if endswith(s, 'y') || endswith(s, 'Y')
+        count += 1
+    end
+    return count
+end
+```

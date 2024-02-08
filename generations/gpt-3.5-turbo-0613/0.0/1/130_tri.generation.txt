@@ -1,0 +1,30 @@
+Here is the implementation of the `tri` function in Julia:
+
+```julia
+function tri(n::Int)::Vector{Int}
+    if n < 1
+        throw(ArgumentError("n must be a non-negative integer"))
+    end
+    
+    if n == 1
+        return [1]
+    end
+    
+    if n == 2
+        return [1, 2]
+    end
+    
+    sequence = [1, 2]
+    for i in 3:n
+        if i % 2 == 0
+            push!(sequence, 1 + i ÷ 2)
+        else
+            push!(sequence, sequence[i-1] + sequence[i-2] + sequence[i+1])
+        end
+    end
+    
+    return sequence
+end
+```
+
+This function first checks if `n` is less than 1, and throws an `ArgumentError` if it is. Then, it handles the base cases where `n` is 1 or 2, and returns the corresponding sequences [1] or [1, 2]. For larger values of `n`, it iteratively calculates the Tribonacci sequence according to the given recurrence relation and stores the values in the `sequence` vector. Finally, it returns the `sequence` vector.

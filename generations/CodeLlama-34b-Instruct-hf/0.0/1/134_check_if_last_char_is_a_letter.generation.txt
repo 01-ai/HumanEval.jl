@@ -1,0 +1,35 @@
+  Here's one way to implement the `check_if_last_char_is_a_letter` function in Julia:
+```
+function check_if_last_char_is_a_letter(s::String)::Bool
+    # Check if the last character of the string is an alphabetical character
+    if isalpha(s[end])
+        # Check if the last character is not part of a word
+        if !isalpha(s[end-1])
+            return true
+        end
+    end
+    return false
+end
+```
+Here's an explanation of the code:
+
+1. The function takes a single argument `s`, which is a string.
+2. The `isalpha` function is used to check if the last character of the string is an alphabetical character. If it is, the function proceeds to the next step.
+3. The `isalpha` function is also used to check if the last character is not part of a word. If it is not, the function returns `true`.
+4. If the last character is part of a word, the function returns `false`.
+
+Here are some examples of how the function can be used:
+```
+julia> check_if_last_char_is_a_letter("apple pie")
+false
+
+julia> check_if_last_char_is_a_letter("apple pi e")
+false
+
+julia> check_if_last_char_is_a_letter("apple pi e ")
+false
+
+julia> check_if_last_char_is_a_letter("")
+false
+```
+Note that the function returns `false` for an empty string, as there is no last character to check.

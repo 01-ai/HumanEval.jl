@@ -1,0 +1,17 @@
+```julia
+function isprime(n)
+    if n <= 1
+        return false
+    end
+    for i in 2:isqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+function prime_length(s::String)::Bool
+    return isprime(length(s))
+end
+```

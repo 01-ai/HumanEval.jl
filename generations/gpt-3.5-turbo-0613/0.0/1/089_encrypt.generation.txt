@@ -1,0 +1,20 @@
+Here is the implementation of the `encrypt` function in Julia:
+
+```julia
+function encrypt(s::String)
+    alphabet = collect('a':'z')
+    encrypted = ""
+    for char in s
+        if char in alphabet
+            index = findfirst(isequal(char), alphabet)
+            encrypted_char = alphabet[mod(index + 2 * 2, 26)]
+            encrypted *= encrypted_char
+        else
+            encrypted *= char
+        end
+    end
+    return encrypted
+end
+```
+
+This function takes a string `s` as input and initializes an empty string `encrypted`. It then iterates over each character in `s`. If the character is in the alphabet, it finds the index of the character in the alphabet and calculates the index of the encrypted character by adding 2 multiplied by 2 to the index and taking the modulus of 26. The encrypted character is then appended to the `encrypted` string. If the character is not in the alphabet, it is directly appended to the `encrypted` string. Finally, the `encrypted` string is returned as the result.

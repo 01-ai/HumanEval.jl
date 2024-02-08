@@ -1,0 +1,8 @@
+
+
+function max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+    nrows = length(grid)
+    ncols = length(grid[1])
+    total_water = sum(grid)
+    return div(total_water, capacity)
+end

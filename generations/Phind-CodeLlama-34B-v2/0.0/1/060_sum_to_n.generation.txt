@@ -1,0 +1,11 @@
+
+
+Here is the Julia implementation of the `sum_to_n` function based on the provided docstring:
+
+```julia
+function sum_to_n(n::Int)::Int
+    return div(n * (n + 1), 2)
+end
+```
+
+This function uses the formula for the sum of an arithmetic series `n * (n + 1) / 2` to compute the sum of numbers from `1` to `n`. The `div` function is used to perform integer division, as the problem statement does not require a floating-point result.

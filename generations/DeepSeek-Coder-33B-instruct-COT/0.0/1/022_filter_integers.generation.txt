@@ -1,0 +1,23 @@
+Here is a step-by-step outline of how to implement the function:
+
+1. Initialize an empty vector to store the integers.
+2. Iterate over the input vector.
+3. For each element, check if it is an integer.
+4. If it is an integer, add it to the result vector.
+5. Return the result vector.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function filter_integers(values::AbstractVector)::Vector{Int}
+    result = Int[]
+    for value in values
+        if isa(value, Integer)
+            push(result, value)
+        end
+    end
+    return result
+end
+```
+
+This function works by iterating over the input vector and checking if each element is an integer using the `isa` function. If the element is an integer, it is added to the result vector using the `push` function. The function finally returns the result vector.

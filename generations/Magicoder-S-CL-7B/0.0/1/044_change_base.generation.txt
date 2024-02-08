@@ -1,0 +1,18 @@
+
+
+function change_base(x::Int, base::Int)::String
+    if base < 2 || base > 9
+        error("Base must be between 2 and 9")
+    end
+
+    digits = "0123456789"
+    result = ""
+
+    while x > 0
+        digit = x % base
+        result = string(digits[digit+1], result)
+        x = floor(Int, x / base)
+    end
+
+    return result
+end

@@ -1,0 +1,24 @@
+
+
+Here is the step-by-step outline:
+
+1. Define a function `sum_squares_round` that takes a vector `xs` as input and returns an integer.
+2. Create a new empty vector `rounded_xs` to store the rounded elements of `xs`.
+3. Iterate over each element `x` in `xs`.
+4. For each `x`, use the `ceil` function to round `x` to the upper integer, and append the result to `rounded_xs`.
+5. After the loop, use the `sum` function to calculate the sum of the squared elements in `rounded_xs`.
+6. Return the result.
+
+Here is the Julia code implementing the above outline:
+
+```julia
+function sum_squares_round(xs::Vector)::Int
+    rounded_xs = Int[]
+    for x in xs
+        push!(rounded_xs, ceil(Int, x))
+    end
+    return sum(x^2 for x in rounded_xs)
+end
+```
+
+This function works by first rounding each element in the input list to the nearest upper integer, then squaring these values and summing them. The use of the `ceil` function ensures that the rounding is always upwards, as required by the problem statement. The `sum` function then calculates the total of these squared values.

@@ -1,0 +1,35 @@
+  Here's one way to implement the `sum_squares` function in Julia:
+```
+function sum_squares(xs::Vector{Int})::Int
+    result = 0
+    for (i, x) in enumerate(xs)
+        if i % 3 == 0
+            result += x^2
+        elseif i % 4 == 0
+            result += x^3
+        else
+            result += x
+        end
+    end
+    return result
+end
+```
+Here's an explanation of how the function works:
+
+1. The function takes a vector of integers `xs` as input.
+2. It initializes a variable `result` to 0.
+3. It iterates over the elements of `xs` using the `enumerate` function, which returns both the index and the value of each element.
+4. For each element, it checks whether the index is a multiple of 3 or 4. If it is, it squares or cubes the element, respectively, and adds the result to `result`. If the index is not a multiple of 3 or 4, it simply adds the element to `result`.
+5. After iterating over all elements, the function returns `result`.
+
+The examples in the docstring are tested using the `@test` macro. Here's an example of how to use the function:
+```
+julia> sum_squares([1, 2, 3])
+12
+
+julia> sum_squares(Int[])
+0
+
+julia> sum_squares([-1, -5, 2, -1, -5])
+-8
+```

@@ -1,0 +1,11 @@
+
+
+The function `car_race_collision(n::Int)::Int` can be implemented as follows:
+
+```julia
+function car_race_collision(n::Int)::Int
+    return n * (n - 1) � 2
+end
+```
+
+This function works by calculating the number of pairs of cars that can collide. Since each car can collide with `n - 1` other cars (since it can collide with all the cars except itself), and there are `n` cars, the total number of collisions is `n * (n - 1) / 2`. The `�` operator is used for integer division in Julia. 

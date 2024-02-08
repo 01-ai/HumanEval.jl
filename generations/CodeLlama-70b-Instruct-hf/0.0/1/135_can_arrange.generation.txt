@@ -1,0 +1,21 @@
+
+
+```julia
+function can_arrange(xs::Vector{Int})::Int
+    if length(xs) == 0
+        return -1
+    end
+
+    max_index = 1
+    for i in 2:length(xs)
+        if xs[i] < xs[i - 1]
+            max_index = i - 1
+            break
+        end
+    end
+
+    return max_index
+end
+```
+
+This function iterates through the array `xs` and checks if the current element is less than the previous element. If it is, it updates the `max_index` to the current index. If no such element is found, it returns -1.

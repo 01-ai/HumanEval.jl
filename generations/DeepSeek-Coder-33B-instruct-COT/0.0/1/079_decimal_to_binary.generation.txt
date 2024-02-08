@@ -1,0 +1,18 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. Convert the decimal number to binary.
+2. Convert the binary number to a string.
+3. Add the 'db' characters at the beginning and at the end of the string.
+
+Here is the Julia code that implements this solution:
+
+```julia
+function decimal_to_binary(decimal::Int)::String
+    binary = string(decimal, base=2)  # Convert decimal to binary
+    return "db" * binary * "db"  # Add 'db' characters at the beginning and at the end
+end
+```
+
+This function works by first converting the decimal number to binary using the `string` function with `base=2`. This gives us a string representation of the binary number. Then, it adds the 'db' characters at the beginning and at the end of the string using the `*` operator.
+
+For example, if you call `decimal_to_binary(15)`, it will return `"db1111db"`.

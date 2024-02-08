@@ -1,0 +1,16 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function longest(xs::Vector{String})::Union{Nothing, String}
+    isempty(xs) && return nothing
+    longest_string = xs[1]
+    for x in xs
+        if length(x) > length(longest_string)
+            longest_string = x
+        end
+    end
+    return longest_string
+end
+```
+
+This function works by first checking if the input list is empty. If it is, it returns `nothing`. If it's not, it initializes `longest_string` to the first string in the list. Then it iterates over the rest of the list, updating `longest_string` whenever it finds a string that's longer than the current `longest_string`. Finally, it returns `longest_string`.

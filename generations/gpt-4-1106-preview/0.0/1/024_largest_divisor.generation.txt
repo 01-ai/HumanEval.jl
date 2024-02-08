@@ -1,0 +1,19 @@
+Certainly! Below is the Julia function `largest_divisor` that implements the functionality described in the doc string:
+
+```julia
+function largest_divisor(n::Int)::Int
+    # Start from n-1 and go down to find the largest divisor
+    for i in reverse(2:n-1)
+        if n % i == 0
+            return i
+        end
+    end
+    # If no divisor is found other than 1, return 1
+    return 1
+end
+
+# Example usage:
+# println(largest_divisor(15)) # Should print 5
+```
+
+This function iterates from `n-1` down to `2` and checks if the current number divides `n` evenly. If it finds such a number, it returns it as the largest divisor. If no divisor other than 1 is found, it returns 1.

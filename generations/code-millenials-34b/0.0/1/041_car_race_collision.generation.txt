@@ -1,0 +1,5 @@
+
+
+function car_race_collision(n::Int)::Int
+    return n
+end

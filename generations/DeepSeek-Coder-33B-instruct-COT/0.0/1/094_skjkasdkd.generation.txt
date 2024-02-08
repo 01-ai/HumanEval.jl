@@ -1,0 +1,41 @@
+Here is a step-by-step outline of the solution:
+
+1. Define a helper function `is_prime(n)` that checks if a number `n` is prime.
+2. Iterate over the input list `xs` and for each number, check if it is prime using the `is_prime` function.
+3. If the number is prime, convert it to a string and sum the digits.
+4. Keep track of the maximum sum of digits found so far.
+5. Return the maximum sum of digits.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function is_prime(n)
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+
+function skjkasdkd(xs::Vector{Int})::Int
+    max_sum = 0
+    for x in xs
+        if is_prime(x)
+            max_sum = max(max_sum, sum(parse(Int, i) for i in string(x)))
+        end
+    end
+    return max_sum
+end
+```
+
+This code first defines a helper function `is_prime` that checks if a number is prime. It then iterates over the input list `xs`, checks if each number is prime, and if it is, it converts the number to a string, sums the digits, and keeps track of the maximum sum found so far. Finally, it returns the maximum sum.

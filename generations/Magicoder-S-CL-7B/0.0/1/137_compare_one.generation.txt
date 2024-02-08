@@ -1,0 +1,11 @@
+
+
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+    if a == b
+        return nothing
+    elseif a > b
+        return a
+    else
+        return b
+    end
+end

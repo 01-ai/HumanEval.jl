@@ -1,0 +1,44 @@
+
+
+function min_path(grid::Vector{Vector{Int}}, k::Int)::Vector{Int}
+    N = length(grid)
+    dp = [[[typemax(Int) for _ in 1:N] for _ in 1:N] for _ in 1:k+1]
+    for i in 1:N, j in 1:N
+        dp[1][i][j] = grid[i][j]
+    end
+    for l in 2:k
+        for i in 1:N
+            for j in 1:N
+                for di in -1:1, dj in -1:1
+                    if di == 0 && dj == 0
+                        continue
+                    end
+                    ni, nj = i + di, j + dj
+                    if 1 <= ni <= N && 1 <= nj <= N
+                        dp[l][i][j] = min(dp[l][i][j], dp[l-1][ni][nj])
+                    end
+                end
+            end
+        end
+    end
+    path = Vector{Int}()
+    i, j = 1, 1
+    for l in k:-1:1
+        path = [grid[i][j], path...]
+        for di in -1:1, dj in -1:1
+            if di == 0 && dj == 0
+                continue
+            end
+            ni, nj = i + di, j + dj
+            if 1 <= ni <= N && 1 <= nj <= N && dp[l][i][j] == dp[l-1][ni][nj]
+                i, j = ni, nj
+                break
+            end
+        end
+    end
+    return path
+end
+
+# Test cases
+println(min_path([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 3))  # [1, 2, 1]
+println(min_path([[5, 9, 3], [4, 1, 6], [7, 8, 2]], 1))  # [1]

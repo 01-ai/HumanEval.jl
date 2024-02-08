@@ -1,0 +1,27 @@
+
+
+To solve this problem, we will first check if the string contains any whitespace or commas. If it does, we will split the string on these characters. If it doesn't, we will count the number of lower-case letters with odd order in the alphabet.
+
+Here is the step-by-step outline:
+
+1. Check if the string contains any whitespace.
+2. If it does, split the string on whitespace and return the resulting array of substrings.
+3. If it doesn't, check if the string contains any commas.
+4. If it does, split the string on commas and return the resulting array of substrings.
+5. If it doesn't, count the number of lower-case letters with odd order in the alphabet and return this count.
+
+Here is the Julia code implementing this outline:
+
+```julia
+function split_words(txt::String)::Union{Vector{<:AbstractString},Int}
+    if occursin(" ", txt)
+        return split(txt, " ")
+    elseif occursin(",", txt)
+        return split(txt, ",")
+    else
+        return count(c -> 'a' <= c <= 'z' && isodd(c - 'a'), txt)
+    end
+end
+```
+
+This function uses the `occursin` function to check if the string contains a specific character, the `split` function to split the string on a specific character, and the `count` function to count the number of elements in the string that satisfy a specific condition. The condition here is that the character is a lower-case letter with odd order in the alphabet, which is checked using the `isodd` function and the observation that the difference between the ASCII value of a character and the ASCII value of 'a' is equal to its order in the alphabet.

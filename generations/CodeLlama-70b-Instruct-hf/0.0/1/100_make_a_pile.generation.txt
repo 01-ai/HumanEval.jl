@@ -1,0 +1,30 @@
+
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    # Check if n is positive
+    if n < 1
+        throw(DomainError(n, "n must be positive"))
+    end
+
+    # Initialize the pile
+    pile = Int[]
+
+    # Add the first level with n stones
+    push!(pile, n)
+
+    # Iterate over the remaining levels
+    for i in 1:n-1
+        # If the current level is odd, add the next odd number
+        if pile[i] % 2 == 1
+            push!(pile, pile[i] + 2)
+        # If the current level is even, add the next even number
+        else
+            push!(pile, pile[i] + 1)
+        end
+    end
+
+    return pile
+end
+```
+
+This function takes a positive integer `n` as input and returns a vector of integers representing the pile of stones. It first checks if `n` is positive and throws an error if it is not. Then, it initializes an empty vector `pile` and adds the first level with `n` stones. Finally, it iterates over the remaining levels and adds the next odd or even number based on the current level's parity.

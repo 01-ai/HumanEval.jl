@@ -1,0 +1,9 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function incr_list(xs::Vector)::Vector
+    return [x+1 for x in xs]
+end
+```
+
+This function uses a list comprehension to create a new list where each element is incremented by 1. The `for` loop iterates over each element `x` in the input list `xs`, and the expression `x+1` increments each element by 1. The result is a new list that is returned by the function.

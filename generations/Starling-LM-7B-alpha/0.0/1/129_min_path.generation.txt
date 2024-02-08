@@ -1,0 +1,38 @@
+ function min_path(grid::Vector{Vector{Int}}, k::Int)::Vector{Int}
+    N = length(grid)
+    visited = zeros(Bool, N, N)
+    path = Vector{Int}()
+
+    function find_min_path(x::Int, y::Int, path_length::Int)
+        if path_length == k
+            push!(path, grid[x][y])
+            return nothing
+        end
+
+        for dx in [-1, 0, 1]
+            for dy in [-1, 0, 1]
+                if abs(dx) + abs(dy) == 1 && !visited[x + dx][y + dy]
+                    visited[x + dx][y + dy] = true
+                    find_min_path(x + dx, y + dy, path_length + 1)
+                    visited[x + dx][y + dy] = false
+                end
+            end
+        end
+    end
+
+    for x in 1:N, y in 1:N
+        if grid[x][y] <= N * N
+            visited[x][y] = true
+            find_min_path(x, y, 1)
+            visited[x][y] = false
+        end
+    end
+
+    return path
+end
+
+# Test cases
+@testset "min_path" begin
+    @test min_path([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 3) == [1, 2, 1]
+    @test min_path([[5, 9, 3], [4, 1, 6], [7, 8, 2]], 1) == [1]
+end

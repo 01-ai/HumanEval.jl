@@ -1,0 +1,19 @@
+```julia
+function move_one_ball(xs::Vector{Int})::Bool
+    n = length(xs)
+    if n == 0
+        return true
+    end
+    
+    sorted_xs = sort(xs)
+    
+    for i in 1:n
+        if xs == sorted_xs
+            return true
+        end
+        xs = circshift(xs, 1)
+    end
+    
+    return false
+end
+```

@@ -1,0 +1,23 @@
+  Here's one way to implement the `count_digits` function in Julia:
+```
+function count_digits(n::Int)::Int
+    product = 1
+    while n > 0
+        digit = n % 10
+        if digit % 2 == 1
+            product *= digit
+        end
+        n = n ÷ 10
+    end
+    return product
+end
+```
+This function uses a `while` loop to iterate over the digits of the input number `n`. For each digit, it checks whether it is odd by using the modulo operator (`%`) to compute the remainder when dividing the digit by 2. If the remainder is 1, the digit is odd, and the function multiplies the product by the digit. If the remainder is 0, the digit is even, and the function does nothing.
+
+After iterating over all the digits, the function returns the product of the odd digits. If all the digits were even, the product will be 1, so the function returns 0 in that case.
+
+Here are some examples of how the function works:
+
+* `count_digits(1)`: The input number is 1, which has only one digit (1). Since 1 is odd, the function returns 1.
+* `count_digits(4)`: The input number is 4, which has only one digit (4). Since 4 is even, the function returns 0.
+* `count_digits(235)`: The input number is 235, which has three digits (2, 3, and 5). The function multiplies the product by 2 (since 2 is odd), then by 3 (since 3 is odd), and finally by 5 (since 5 is odd). The final product is 15, so the function returns 15.

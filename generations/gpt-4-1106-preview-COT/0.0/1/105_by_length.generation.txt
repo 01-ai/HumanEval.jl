@@ -1,0 +1,32 @@
+### Step-by-Step Outline:
+
+1. Define the function `by_length` that takes a vector of integers as an argument.
+2. Filter the input vector to include only integers between 1 and 9.
+3. Sort the filtered vector in ascending order.
+4. Reverse the sorted vector.
+5. Map each integer in the reversed vector to its corresponding name ("One" through "Nine").
+6. Return the resulting vector of strings.
+
+### Julia Code:
+
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    # Step 2: Filter the input vector to include only integers between 1 and 9
+    filtered_xs = filter(x -> 1 <= x <= 9, xs)
+    
+    # Step 3: Sort the filtered vector in ascending order
+    sorted_xs = sort(filtered_xs)
+    
+    # Step 4: Reverse the sorted vector
+    reversed_xs = reverse(sorted_xs)
+    
+    # Step 5: Map each integer to its corresponding name
+    names = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    result = map(x -> names[x], reversed_xs)
+    
+    # Step 6: Return the resulting vector of strings
+    return result
+end
+```
+
+This function should work as expected based on the provided doc string and examples.

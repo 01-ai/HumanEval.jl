@@ -1,0 +1,13 @@
+
+
+Here is the Julia function that solves the problem:
+
+```julia
+function anti_shuffle(s::String)::String
+    words = split(s)
+    ordered_words = [join(sort(collect(word))) for word in words]
+    return join(ordered_words, ' ')
+end
+```
+
+This function works by first splitting the input string into words. Then, for each word, it sorts the characters in ascending order based on their ASCII values. Finally, it joins the ordered words back into a string, with a space between each word. 

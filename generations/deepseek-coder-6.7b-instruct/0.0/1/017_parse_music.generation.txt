@@ -1,0 +1,24 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    notes = split(music_string)
+    beats = Int[]
+
+    for note in notes
+        if note == "o"
+            push!!(beats, 4)
+        elseif note == "o|"
+            push!!(beats, 2)
+        elseif note == ".|"
+            push!!(beats, 1)
+        end
+    end
+
+    return beats
+end
+```
+
+This function splits the input string into a vector of notes, then iterates over each note. If the note is a whole note (`"o"`), it pushes `4` to the `beats` vector. If the note is a half note (`"o|"`), it pushes `2` to the `beats` vector. If the note is a quater note (`".|"`), it pushes `1` to the `beats` vector. The function returns the `beats` vector at the end.
+
+Please note that `push!!` is used instead of `push` to avoid bounds checking, which can be faster. However, it's important to note that `push!!` will throw an error if the array is full, which can be a potential source of bugs. If you're sure that the array will never be full, you can use `push` instead.

@@ -1,0 +1,28 @@
+Here is a Julia function that implements the Tribonacci sequence as described in the problem:
+
+```julia
+function tri(n::Int)::Vector{Int}
+    if n < 1
+        return Int[]
+    end
+
+    result = zeros(Int, n)
+    result[1] = 1
+
+    for i in 2:n
+        if i % 2 == 0
+            result[i] = i � 2 + 1
+        else
+            result[i] = result[i-1] + result[i-2] + result[i-3]
+        end
+    end
+
+    return result
+end
+```
+
+This function first checks if the input `n` is less than 1. If it is, it returns an empty vector. Otherwise, it initializes a vector `result` of size `n` with all elements set to 0. The first element of `result` is set to 1.
+
+Then, it iterates over the range from 2 to `n`. If the current index `i` is even, it calculates the `i`-th element of the sequence as `i � 2 + 1`. If `i` is odd, it calculates the `i`-th element as the sum of the `(i-1)`-th, `(i-2)`-th, and `(i-3)`-th elements of the sequence.
+
+Finally, it returns the vector `result`.

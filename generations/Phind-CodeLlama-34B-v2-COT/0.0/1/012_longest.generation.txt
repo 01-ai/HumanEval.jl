@@ -1,0 +1,28 @@
+
+
+# Outline
+
+1. Initialize a variable `longest_string` to `nothing` and a variable `max_length` to `0`.
+2. Iterate over each string `s` in the input vector `xs`.
+3. For each string `s`, check if its length is greater than `max_length`.
+4. If it is, update `longest_string` to `s` and `max_length` to the length of `s`.
+5. After the loop, return `longest_string`.
+
+# Code
+
+```julia
+function longest(xs::Vector{String})::Union{Nothing, String}
+    longest_string = nothing
+    max_length = 0
+
+    for s in xs
+        length_s = length(s)
+        if length_s > max_length
+            longest_string = s
+            max_length = length_s
+        end
+    end
+
+    return longest_string
+end
+```

@@ -1,0 +1,40 @@
+
+
+```julia
+function words_in_sentence(sentence::String)::String
+    # Split the sentence into words
+    words = split(sentence)
+
+    # Initialize an empty string to store the result
+    result = ""
+
+    # Iterate through each word
+    for word in words
+        # Check if the length of the word is a prime number
+        if is_prime(length(word))
+            # Append the word to the result
+            result *= " " * word
+        end
+    end
+
+    # Remove the leading space and return the result
+    return strip(result)
+end
+
+# Function to check if a number is prime
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    end
+
+    for i in 2:floor(Int, sqrt(n))
+        if n % i == 0
+            return false
+        end
+    end
+
+    return true
+end
+```
+
+In this function, we first split the sentence into words using the `split` function. Then, we iterate through each word and check if its length is a prime number using the `is_prime` function. If the length is a prime number, we append the word to the result string. Finally, we remove the leading space from the result string and return it. The `is_prime` function checks if a number is prime by iterating through all numbers from 2 to the square root of the number and checking if the number is divisible by any of them. If it is, the number is not prime.

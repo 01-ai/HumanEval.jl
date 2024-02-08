@@ -1,0 +1,25 @@
+
+
+```julia
+function change_base(x::Int, base::Int)::String
+    if base < 2 || base > 10
+        throw(DomainError("Base must be between 2 and 10"))
+    end
+
+    if x == 0
+        return "0"
+    end
+
+    digits = "0123456789"
+    result = ""
+
+    while x > 0
+        result = digits[x % base + 1] * result
+        x = div(x, base)
+    end
+
+    return result
+end
+```
+
+This function converts the input number `x` to the specified base `base` and returns the string representation of the converted number. It uses the `div` function to repeatedly divide the number by the base and append the remainder to the result string.

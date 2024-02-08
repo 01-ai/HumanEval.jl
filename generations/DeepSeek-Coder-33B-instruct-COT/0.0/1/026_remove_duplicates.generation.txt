@@ -1,0 +1,28 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. Initialize an empty dictionary to keep track of the count of each number in the input list.
+2. Iterate over the input list. For each number, if it is not already in the dictionary, add it with a count of 1. If it is already in the dictionary, increment its count.
+3. Iterate over the input list again. For each number, if its count in the dictionary is 1, add it to the output list.
+4. Return the output list.
+
+Here is the Julia code that implements this algorithm:
+
+```julia
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    counts = Dict{Int, Int}()
+    for num in numbers
+        counts[num] = get(counts, num, 0) + 1
+    end
+    output = Int[]
+    for num in numbers
+        if counts[num] == 1
+            push_end_vector(output, num)
+        end
+    end
+    return output
+end
+```
+
+This function works by first counting the occurrences of each number in the input list, then iterating over the list again and only adding numbers that occur exactly once to the output list. The `get` function is used to handle the case where a number is not yet in the dictionary.
+
+Note: The `push_end_vector` function is not a built-in Julia function. It is a hypothetical function that would add an element to the end of a vector. In Julia, you can use the `push_end_vector` function like this: `push_end_vector(output, num)`.

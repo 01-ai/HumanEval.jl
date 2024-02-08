@@ -1,0 +1,42 @@
+```julia
+function smallest_change(xs::Vector{Int})::Int
+    # Base case: array is already palindromic
+    if ispalindrome(xs)
+        return 0
+    end
+
+    # Initialize the minimum number of changes needed
+    min_changes = Int(length(xs) / 2)
+
+    # Loop through the array and check if we can make it palindromic by
+    # changing the first half with the second half
+    for i in 1:min_changes
+        if ispalindrome(xs[1:i] ∪ xs[end - i + 1:end])
+            return i
+        end
+    end
+
+    # If we didn't find a solution with the first half, try with the second half
+    for i in min_changes:-1:1
+        if ispalindrome(xs[1:i] ∪ xs[end - i + 1:end])
+            return i
+        end
+    end
+
+    # If we didn't find a solution with the first or second half, we need to
+    # change the entire array
+    return length(xs)
+end
+
+# Helper function to check if an array is palindromic
+function ispalindrome(xs::Vector{Int})
+    for i in 1:length(xs)÷2
+        if xs[i] != xs[length(xs) - i + 1]
+            return false
+        end
+    end
+    return true
+end
+```
+
+This function `smallest_change` takes a vector of integers `xs` and returns the minimum number of elements that need to be changed to make the array palindromic. It uses a helper function `ispalindrome` to check if an array is palindromic. The algorithm works by trying to make the array palindromic by changing the first half with the second half, and if that doesn't work, by changing the second half with the first half. If neither of these strategies works, it means we need to change every element in the array to make it palindromic.

@@ -1,0 +1,12 @@
+
+
+function mean_absolute_deviation(numbers::Vector{Float64})::Float64
+    mean = sum(numbers) / length(numbers)
+    abs_diffs = abs.(numbers .- mean)
+    return sum(abs_diffs) / length(abs_diffs)
+end
+
+# Test the function
+numbers = [1.0, 2.0, 3.0, 4.0]
+mad = mean_absolute_deviation(numbers)
+println("Mean Absolute Deviation: ", mad)

@@ -1,0 +1,22 @@
+  Here's one possible implementation of the `car_race_collision` function in Julia:
+```
+function car_race_collision(n::Int)::Int
+    # Initialize the number of collisions to 0
+    collisions = 0
+
+    # Loop through each pair of cars
+    for i in 1:n
+        # Check if the cars are moving in opposite directions
+        if i % 2 == 0
+            # If they are, increment the number of collisions
+            collisions += 1
+        end
+    end
+
+    # Return the number of collisions
+    return collisions
+end
+```
+This function uses a simple loop to iterate through each pair of cars and checks if they are moving in opposite directions. If they are, it increments the number of collisions. The function returns the total number of collisions.
+
+Note that this implementation assumes that the cars are infinitely sturdy and strong, as described in the problem statement. If the cars were not infinitely sturdy, the function would need to be modified to account for the possibility of damage or destruction of the cars.

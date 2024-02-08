@@ -1,0 +1,17 @@
+Certainly! Below is the Julia function `sorted_list_sum` that implements the described functionality:
+
+```julia
+function sorted_list_sum(xs::Vector{String})::Vector{String}
+    # Filter out strings with odd lengths
+    even_length_strings = filter(s -> length(s) % 2 == 0, xs)
+    
+    # Sort the remaining strings first by length, then alphabetically
+    sort(even_length_strings, by = s -> (length(s), s))
+end
+
+# Examples
+println(sorted_list_sum(["aa", "a", "aaa"])) # Output: ["aa"]
+println(sorted_list_sum(["ab", "a", "aaa", "cd"])) # Output: ["ab", "cd"]
+```
+
+This function uses the `filter` function to remove strings with odd lengths and then sorts the remaining strings using the `sort` function with a custom sorting key that sorts primarily by string length and secondarily alphabetically.

@@ -1,0 +1,9 @@
+Here is the Julia function that removes vowels from a string:
+
+```julia
+function remove_vowels(text::String)::String
+    return filter(c -> !(c in "aeiouAEIOU"), text)
+end
+```
+
+This function uses the `filter` function to iterate over each character in the string. The `in` operator is used to check if the character is a vowel. If it is, the character is not included in the new string. If it is not a vowel, it is included. The function is case-insensitive, so both lowercase and uppercase vowels are removed.

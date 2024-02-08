@@ -1,0 +1,15 @@
+function largest_prime_factor(n::Int)::Int
+    i = 2
+    while i * i <= n
+        if n % i == 0
+            n = n / i
+        else
+            i += 1
+        end
+    end
+    return n
+end
+
+# Test cases
+println(largest_prime_factor(13195)) # should print 29
+println(largest_prime_factor(2048)) # should print 2

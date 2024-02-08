@@ -1,0 +1,17 @@
+
+
+Here is a possible implementation of the `remove_duplicates` function in Julia:
+
+```julia
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    unique_numbers = Int[]
+    for number in numbers
+        if count(x -> x == number, numbers) == 1
+            push!(unique_numbers, number)
+        end
+    end
+    return unique_numbers
+end
+```
+
+This function works by iterating over each number in the input vector. For each number, it counts how many times it occurs in the input vector using the `count` function. If it occurs only once, it is added to the `unique_numbers` vector using the `push!` function. Finally, the `unique_numbers` vector is returned.

@@ -1,0 +1,19 @@
+```julia
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    levels = []
+    for group in split(paren_string, " ")
+        max_level = 0
+        current_level = 0
+        for char in group
+            if char == '('
+                current_level += 1
+                max_level = max(max_level, current_level)
+            elseif char == ')'
+                current_level -= 1
+            end
+        end
+        push!(levels, max_level)
+    end
+    return levels
+end
+```

@@ -1,0 +1,15 @@
+
+
+function reverse_string(s::String)::String
+    letters = isletter.(s)
+    if any(letters)
+        return join([isletter(s[i]) ? (islower(s[i]) ? uppercase(s[i]) : lowercase(s[i])) : s[i] for i in 1:length(s)])
+    else
+        return reverse(s)
+    end
+end
+
+# Test cases
+println(reverse_string("1234"))  # Output: "4321"
+println(reverse_string("ab"))  # Output: "AB"
+println(reverse_string("#a@C"))  # Output: "#A@c"

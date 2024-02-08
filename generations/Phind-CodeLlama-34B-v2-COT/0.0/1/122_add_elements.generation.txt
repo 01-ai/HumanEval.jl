@@ -1,0 +1,30 @@
+
+
+# Outline
+
+1. Initialize a variable `sum` to 0. This will hold the sum of the elements with at most two digits from the first k elements of `xs`.
+2. Iterate over the first k elements of `xs` using a for loop.
+3. For each element, check if it has at most two digits. This can be done by converting the element to a string and checking its length.
+4. If the element has at most two digits, add it to `sum`.
+5. After the loop, return `sum`.
+
+# Code
+
+```julia
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    sum = 0
+    for i in 1:k
+        if length(string(xs[i])) <= 2
+            sum += xs[i]
+        end
+    end
+    return sum
+end
+```
+
+# Test
+
+```julia
+julia> add_elements([111, 21, 3, 4000, 5, 6, 7, 8, 9], 4)
+24
+```

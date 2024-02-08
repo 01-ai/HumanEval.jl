@@ -1,0 +1,12 @@
+```julia
+function exchange(lst1::Vector{Int}, lst2::Vector{Int})::String
+    sum_odd = sum(x -> x % 2 != 0, lst1)
+    sum_even = sum(x -> x % 2 == 0, lst2)
+    
+    if sum_odd <= sum_even
+        return "YES"
+    else
+        return "NO"
+    end
+end
+```

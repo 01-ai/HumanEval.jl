@@ -1,0 +1,5 @@
+```julia
+function monotonic(l::Vector)::Bool
+    return all(diff(l) .>= 0) || all(diff(l) .<= 0)
+end
+```

@@ -1,0 +1,22 @@
+
+
+```julia
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    # Initialize the sum to 0
+    sum = 0
+
+    # Iterate through the vector
+    for i in 1:2:length(xs)
+        # Check if the element at the current index is odd
+        if xs[i] % 2 == 1
+            # If it is odd, add it to the sum
+            sum += xs[i]
+        end
+    end
+
+    # Return the sum
+    return sum
+end
+```
+
+This function iterates through the vector, skipping every other element. For each element, it checks if it is odd. If it is, it adds it to the sum. Finally, it returns the sum.

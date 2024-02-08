@@ -1,0 +1,19 @@
+```julia
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    # Initialize an output vector with the same length as the input vector
+    output = Vector{Int}(undef, length(numbers))
+    
+    # Loop through the input vector and add elements to the output vector
+    # only if they are not present in the output vector already
+    for i in 1:length(numbers)
+        if !(numbers[i] in output)
+            output[findfirst(==(numbers[i]), output) + 1] = numbers[i]
+        end
+    end
+    
+    # Return the output vector
+    return output
+end
+```
+
+This function works by iterating over the input vector and checking if each element is not present in the output vector yet. If it is not, it is added to the output vector at the next available position. The `findfirst` function is used to find the first occurrence of the element in the output vector, and the next position is calculated by adding 1 to the position of the first occurrence. If the element is already present in the output vector, the loop continues to the next element without adding it again.

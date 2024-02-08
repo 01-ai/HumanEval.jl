@@ -1,0 +1,11 @@
+Here is a Julia function that implements the same_chars function based on the doc string:
+
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    s0_chars = sort(collect(s0))
+    s1_chars = sort(collect(s1))
+    return s0_chars == s1_chars
+end
+```
+
+This function works by first converting the input strings to character arrays, sorting them, and then comparing the sorted arrays. If the sorted arrays are equal, the function returns true, indicating that the two words have the same characters. If the sorted arrays are not equal, the function returns false, indicating that the two words do not have the same characters.

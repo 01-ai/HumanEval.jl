@@ -1,0 +1,32 @@
+
+```julia
+function int_to_mini_roman(number::Int)::String
+    # Check if the number is within the valid range
+    if number < 1 || number > 1000
+        throw(DomainError(number, "Number must be between 1 and 1000"))
+    end
+
+    # Define a dictionary to map roman numerals to their integer values
+    roman_map = Dict("i" => 1, "v" => 5, "x" => 10, "l" => 50, "c" => 100, "d" => 500, "m" => 1000)
+
+    # Initialize an empty string to store the roman numeral
+    roman_numeral = ""
+
+    # Iterate through the roman numerals in descending order
+    for numeral in ["m", "c", "l", "x", "v", "i"]
+        # Calculate the number of times the current numeral can be used
+        count = div(number, roman_map[numeral])
+
+        # Add the numeral to the roman numeral string
+        roman_numeral *= numeral ^ count
+
+        # Update the number by subtracting the value of the current numeral
+        number -= count * roman_map[numeral]
+    end
+
+    # Return the roman numeral in lowercase
+    return lowercase(roman_numeral)
+end
+```
+
+This function first checks if the input number is within the valid range (1 to 1000). If it is not, it throws a `DomainError`. If the number is valid, it defines a dictionary (`roman_map`) to map roman numerals to their integer values. It then initializes an empty string (`roman_numeral`) to store the roman numeral. It iterates through the roman numerals in descending order and calculates the number of times the current numeral can be used. It adds the numeral to the roman numeral string and updates the number by subtracting the value of the current numeral. Finally, it returns the roman numeral in lowercase.

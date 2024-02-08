@@ -1,0 +1,42 @@
+  Here's one possible implementation of the `match_parens` function in Julia:
+```
+function match_parens(lst::Vector{String})::String
+    # Initialize a counter to keep track of the number of open parentheses
+    open_parens = 0
+
+    # Iterate over the strings in the list
+    for str in lst
+        # Iterate over the characters in the string
+        for c in str
+            # If the character is an open parenthesis, increment the counter
+            if c == '('
+                open_parens += 1
+            # If the character is a close parenthesis, decrement the counter
+            elseif c == ')'
+                open_parens -= 1
+            end
+        end
+    end
+
+    # If the counter is zero, the strings are balanced and we can return "Yes"
+    if open_parens == 0
+        return "Yes"
+    else
+        return "No"
+    end
+end
+```
+Here's an explanation of how the function works:
+
+1. We initialize a counter `open_parens` to keep track of the number of open parentheses.
+2. We iterate over the strings in the list using a `for` loop.
+3. For each string, we iterate over its characters using another `for` loop.
+4. If we encounter an open parenthesis, we increment the counter. If we encounter a close parenthesis, we decrement the counter.
+5. After iterating over all the characters in all the strings, we check the value of the counter. If it is zero, the strings are balanced and we can return "Yes". Otherwise, we return "No".
+
+Here are some examples of how the function works:
+
+* `match_parens(["()(", ")"])` returns "Yes" because the strings are balanced.
+* `match_parens([")", ")"])` returns "No" because the strings are not balanced.
+* `match_parens(["(", ")"])` returns "Yes" because the strings are balanced.
+* `match_parens(["(", "()"])` returns "No" because the strings are not balanced.

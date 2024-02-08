@@ -1,0 +1,15 @@
+
+
+function split_words(txt::String)::Union{Vector{<:AbstractString},Int}
+    if occursin(' ', txt)
+        return split(txt, ' ')
+    elseif occursin(',', txt)
+        return split(txt, ',')
+    else
+        lower_case_letters = filter(islowercase, txt)
+        odd_order_letters = filter(lower_case_letters) do letter
+            ord(letter) % 2 == 1
+        end
+        return length(odd_order_letters)
+    end
+end

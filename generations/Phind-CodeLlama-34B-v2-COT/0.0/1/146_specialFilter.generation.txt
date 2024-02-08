@@ -1,0 +1,36 @@
+
+
+To solve this problem, we will first write a function that checks if a number has both its first and last digits as odd. Then we will iterate through the input array and count the numbers that are greater than 10 and satisfy the condition.
+
+Here is the step-by-step outline:
+
+1. Define a function `isSpecial` that takes an integer as input and returns a boolean value.
+2. In the `isSpecial` function, convert the input integer to a string.
+3. Check if the first and last characters of the string are odd digits. If so, return true. Otherwise, return false.
+4. Define the main function `specialFilter` that takes a vector of integers as input and returns an integer.
+5. Initialize a counter to 0.
+6. Iterate through the input vector.
+7. For each element, check if it is greater than 10 and if it is special using the `isSpecial` function.
+8. If both conditions are satisfied, increment the counter.
+9. After the loop, return the counter.
+
+Here is the Julia code that implements the above outline:
+
+```julia
+function isSpecial(num::Int)::Bool
+    str_num = string(abs(num))  # Convert the number to a string
+    return isodd(parse(Int, str_num[1])) && isodd(parse(Int, str_num[end]))
+end
+
+function specialFilter(nums::Vector{Int})::Int
+    count = 0
+    for num in nums
+        if num > 10 && isSpecial(num)
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This code should work for all valid inputs as required by the problem statement. Note that we are using the `abs` function to make sure that we are dealing with positive numbers when converting them to strings, because `-` is not considered a digit.

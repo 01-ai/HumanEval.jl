@@ -1,0 +1,16 @@
+Here is a Julia function that implements the required functionality:
+
+```julia
+function hex_key(num::String)::Int
+    hex_digits = Dict('2' => 2, '3' => 3, '5' => 5, '7' => 7, 'B' => 11, 'D' => 13)
+    count = 0
+    for digit in num
+        if haskey(hex_digits, digit)
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function works by creating a dictionary that maps each hexadecimal digit to its corresponding prime number. It then iterates over each character in the input string, checks if the character is a key in the dictionary, and increments a counter if it is. Finally, it returns the counter, which represents the number of hexadecimal digits that are primes.

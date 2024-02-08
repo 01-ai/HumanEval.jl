@@ -1,0 +1,12 @@
+Here is the Julia function that calculates the Mean Absolute Deviation (MAD) of a given list of numbers:
+
+```julia
+function mean_absolute_deviation(numbers::Vector{Float64})::Float64
+    mean_val = sum(numbers) / length(numbers)
+    abs_diffs = abs.(numbers .- mean_val)
+    mad_val = sum(abs_diffs) / length(numbers)
+    return mad_val
+end
+```
+
+In this function, we first calculate the mean of the numbers. Then, we calculate the absolute differences between each number and the mean. Finally, we calculate the mean of these absolute differences, which is the Mean Absolute Deviation.

@@ -1,0 +1,17 @@
+
+
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    sides = [a, b, c]
+    sides_squared = [x^2 for x in sides]
+    for i in 1:3
+        other_sides = [sides_squared[j] for j in 1:3 if j != i]
+        if sum(other_sides) == sides_squared[i]
+            return true
+        end
+    end
+    return false
+end
+
+# Test cases
+@assert right_angle_triangle(3, 4, 5) == true
+@assert right_angle_triangle(1, 2, 3) == false

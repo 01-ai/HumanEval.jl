@@ -1,0 +1,12 @@
+
+```julia
+function largest_divisor(n::Int)::Int
+    for i in n-1:-1:2
+        if n % i == 0
+            return i
+        end
+    end
+end
+```
+
+This function iterates through all numbers from `n-1` to `2` and checks if each number is a divisor of `n`. If it finds a divisor, it returns that number.

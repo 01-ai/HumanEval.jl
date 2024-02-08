@@ -1,0 +1,28 @@
+### Step-by-Step Outline
+
+1. **Filter Elements**: Iterate through the list `xs` and filter out the elements that contain any even digit.
+    - To do this, convert each number to a string or an array of digits.
+    - Check each digit to determine if it is even. If any digit is even, exclude the number from the result.
+2. **Sort the Result**: Sort the filtered list in increasing order.
+3. **Return the Result**: Return the sorted list of numbers that do not contain any even digits.
+
+### Julia Code Implementation
+
+```julia
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    # Step 1: Filter elements without any even digit
+    filtered_xs = filter(x -> all(d -> parse(Int, d) % 2 != 0, string(x)), xs)
+    
+    # Step 2: Sort the filtered list
+    sorted_xs = sort(filtered_xs)
+    
+    # Step 3: Return the sorted list
+    return sorted_xs
+end
+
+# Examples
+println(unique_digits([15, 33, 1422, 1]))  # Expected: [1, 15, 33]
+println(unique_digits([152, 313, 1422, 10]))  # Expected: [313]
+```
+
+This implementation follows the outlined steps, ensuring that the function `unique_digits` filters out numbers with even digits, sorts the remaining numbers, and returns the sorted list as specified in the doc string.

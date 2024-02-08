@@ -1,0 +1,7 @@
+ function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    if sum(xs[1], xs[end]) % 2 == 0
+        return sort(xs, rev=true)
+    else
+        return sort(xs)
+    end
+end

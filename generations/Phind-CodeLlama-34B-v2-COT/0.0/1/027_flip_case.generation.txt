@@ -1,0 +1,32 @@
+
+
+# Outline
+
+1. Initialize an empty string `result` to store the result.
+2. Iterate over each character `c` in the input string `s`.
+3. If `c` is uppercase, convert it to lowercase and append to `result`.
+4. If `c` is lowercase, convert it to uppercase and append to `result`.
+5. Return `result`.
+
+# Code
+
+```julia
+function flip_case(s::String)::String
+    result = ""
+    for c in s
+        if islowercase(c)
+            append!(result, uppercase(c))
+        else
+            append!(result, lowercase(c))
+        end
+    end
+    return result
+end
+```
+
+# Test
+
+```julia
+julia> flip_case("Hello")
+"hELLO"
+```

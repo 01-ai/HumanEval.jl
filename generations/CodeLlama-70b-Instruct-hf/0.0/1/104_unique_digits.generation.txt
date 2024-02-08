@@ -1,0 +1,37 @@
+
+
+```julia
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    # Create an empty list to store the unique elements
+    unique_elements = Int[]
+
+    # Iterate through each element in the list
+    for x in xs
+        # Convert the element to a string
+        x_str = string(x)
+
+        # Check if the element has any even digits
+        has_even_digit = false
+        for char in x_str
+            digit = parse(Int, char)
+            if digit % 2 == 0
+                has_even_digit = true
+                break
+            end
+        end
+
+        # If the element doesn't have any even digits, add it to the unique_elements list
+        if !has_even_digit
+            push!(unique_elements, x)
+        end
+    end
+
+    # Sort the unique_elements list in increasing order
+    sort!(unique_elements)
+
+    # Return the unique_elements list
+    return unique_elements
+end
+```
+
+This function iterates through each element in the list, converts it to a string, and checks if it has any even digits. If it doesn't, it adds the element to a list of unique elements. Finally, it sorts the list and returns it.

@@ -1,0 +1,38 @@
+To implement the `count_nums` function as described, we need to follow these steps:
+
+1. Iterate through each number in the input vector.
+2. For each number, calculate the sum of its digits, taking into account the sign of the number.
+3. Count how many numbers have a sum of digits greater than 0.
+
+Here's how you can implement this in Julia:
+
+```julia
+function count_nums(xs::Vector{Int})::Int
+    # Function to calculate the sum of digits of a number, considering the sign
+    function sum_of_digits(n::Int)::Int
+        is_negative = n < 0
+        sum = 0
+        while n != 0
+            digit = abs(n % 10)  # Get the last digit and make sure it's positive
+            sum += is_negative ? -digit : digit  # Subtract if the number is negative
+            n ÷= 10  # Remove the last digit
+        end
+        return sum
+    end
+
+    # Count numbers with a sum of digits greater than 0
+    count = 0
+    for num in xs
+        if sum_of_digits(num) > 0
+            count += 1
+        end
+    end
+
+    return count
+end
+```
+
+This function works as follows:
+- The `sum_of_digits` inner function calculates the sum of digits for each number, considering its sign. If the number is negative, it subtracts each digit from the sum instead of adding it.
+- The outer function iterates through each number in the input vector, uses `sum_of_digits` to calculate the sum of its digits, and increments the `count` if the sum is greater than 0.
+- Finally, it returns the count of numbers with a sum of digits greater than 0.

@@ -1,0 +1,5 @@
+
+
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    return abs.(game .- guess)
+end

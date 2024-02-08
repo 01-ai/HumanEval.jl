@@ -1,0 +1,32 @@
+To implement the `search` function as described, we can follow these steps:
+
+1. Count the frequency of each integer in the list.
+2. Iterate through the unique integers in the list in descending order.
+3. Check if the frequency of the current integer is greater than or equal to the integer itself.
+4. If such an integer is found, return it.
+5. If no such integer is found after checking all, return -1.
+
+Here's how you can implement it in Julia:
+
+```julia
+function search(numbers::Vector)::Int
+    # Step 1: Count the frequency of each integer
+    freq = Dict{Int, Int}()
+    for num in numbers
+        freq[num] = get(freq, num, 0) + 1
+    end
+
+    # Step 2: Iterate through the unique integers in descending order
+    for num in sort(collect(keys(freq)), rev=true)
+        # Step 3: Check if the frequency is greater than or equal to the integer itself
+        if freq[num] >= num
+            return num
+        end
+    end
+
+    # Step 5: Return -1 if no such integer is found
+    return -1
+end
+```
+
+This function first creates a frequency dictionary to count how many times each number appears in the input vector. Then, it iterates through the unique numbers in descending order to find the first number whose frequency is greater than or equal to its value. If such a number is found, it is returned; otherwise, the function returns -1.

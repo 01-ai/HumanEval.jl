@@ -1,0 +1,25 @@
+Certainly! Below is the Julia function `sort_even` that fulfills the requirements specified in the doc string:
+
+```julia
+function sort_even(l::Vector)::Vector
+    # Extract the elements at even indices (1-based indexing in Julia)
+    even_indices_elements = l[2:2:end]
+    
+    # Sort the elements at even indices
+    sorted_even_elements = sort(even_indices_elements)
+    
+    # Create a copy of the original list to modify
+    l_prime = copy(l)
+    
+    # Replace the elements at even indices with the sorted elements
+    l_prime[2:2:end] = sorted_even_elements
+    
+    return l_prime
+end
+
+# Examples
+println(sort_even([1, 2, 3]) == [1, 2, 3]) # true
+println(sort_even([5, 6, 3, 4]) == [5, 4, 3, 6]) # true
+```
+
+You can copy this function into your Julia environment and test it with the provided examples or other lists to verify its correctness.

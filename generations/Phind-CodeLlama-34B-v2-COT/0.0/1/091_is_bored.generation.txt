@@ -1,0 +1,34 @@
+
+
+To solve this problem, we can use the following steps:
+
+1. Split the input string into sentences using the delimiters '.', '?', and '!'.
+2. Initialize a counter to store the number of boredoms.
+3. Iterate over the sentences.
+4. For each sentence, check if it starts with the word "I". If it does, increment the counter.
+5. Return the counter.
+
+Here is the Julia code implementing the above steps:
+
+```julia
+function is_bored(s::String)::Int
+    # Step 1: Split the input string into sentences
+    sentences = split(s, ['.', '?', '!'])
+
+    # Step 2: Initialize a counter
+    boredom_count = 0
+
+    # Step 3: Iterate over the sentences
+    for sentence in sentences
+        # Step 4: Check if the sentence starts with "I"
+        if startswith(strip(sentence), "I")
+            # Step 5: Increment the counter
+            boredom_count += 1
+        end
+    end
+
+    return boredom_count
+end
+```
+
+This function works by first splitting the input string into sentences using the `split` function. It then initializes a counter to store the number of boredoms. It then iterates over each sentence, checking if it starts with the word "I" using the `startswith` function. If a sentence does start with "I", it increments the counter. Finally, it returns the counter.

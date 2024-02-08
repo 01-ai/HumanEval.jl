@@ -1,0 +1,24 @@
+```julia
+function change_base(x::Int, base::Int)::String
+    # Check if base is valid
+    if base < 2 || base > 10
+        throw(DomainError(base, "Base must be between 2 and 10"))
+    end
+
+    # Initialize result string
+    result = ""
+
+    # Loop through digits of x in reverse order
+    while x > 0
+        remainder = x % base
+        x //= base
+
+        # Append remainder to result string
+        result = string(remainder) * result
+    end
+
+    return result
+end
+```
+
+This function `change_base` takes two integer arguments: `x`, the number to be converted, and `base`, the new base to convert to. It checks that `base` is between 2 and 10, inclusive, and then uses a loop to convert the number `x` into its base `base` representation. The loop works by repeatedly finding the remainder of `x` divided by `base` and appending that remainder to the result string in reverse order. Once the loop finishes, the result string is reversed to get the correct order, and then returned.

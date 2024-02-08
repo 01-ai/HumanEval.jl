@@ -1,0 +1,28 @@
+
+
+```julia
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    groups = split(paren_string)
+    max_depths = Int[]
+
+    for group in groups
+        depth = 0
+        max_depth = 0
+
+        for char in group
+            if char == '('
+                depth += 1
+                max_depth = max(max_depth, depth)
+            elseif char == ')'
+                depth -= 1
+            end
+        end
+
+        push!(max_depths, max_depth)
+    end
+
+    return max_depths
+end
+```
+
+This function first splits the input string into groups using the `split` function. Then, for each group, it iterates over the characters and keeps track of the current depth and the maximum depth reached so far. If a '(' is encountered, the depth is increased by 1, and if a ')' is encountered, the depth is decreased by 1. The maximum depth is updated whenever the current depth is greater than the maximum depth so far. After iterating over all characters in the group, the maximum depth is added to the `max_depths` array. Finally, the `max_depths` array is returned.

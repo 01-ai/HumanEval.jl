@@ -1,0 +1,16 @@
+```julia
+function correct_angle_bracketing(brackets::String)::Bool
+    count = 0
+    for char in brackets
+        if char == '<'
+            count += 1
+        elseif char == '>'
+            count -= 1
+            if count < 0
+                return false
+            end
+        end
+    end
+    return count == 0
+end
+```

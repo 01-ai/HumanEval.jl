@@ -1,0 +1,33 @@
+
+
+# Outline
+
+1. First, we need to find the minimum and maximum values in the input vector.
+2. Then, we calculate the range of the input data, which is the difference between the maximum and minimum.
+3. Next, we create a new empty vector to store the rescaled numbers.
+4. We iterate over the input vector and for each number, we subtract the minimum, divide by the range, and store the result in the new vector.
+5. Finally, we return the new vector with the rescaled numbers.
+
+# Code
+
+```julia
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    # Find the minimum and maximum values
+    min_value = minimum(numbers)
+    max_value = maximum(numbers)
+
+    # Calculate the range of the input data
+    range_value = max_value - min_value
+
+    # Create a new vector to store the rescaled numbers
+    rescaled_numbers = similar(numbers)
+
+    # Iterate over the input vector and rescale each number
+    for i in eachindex(numbers)
+        rescaled_numbers[i] = (numbers[i] - min_value) / range_value
+    end
+
+    # Return the vector with the rescaled numbers
+    return rescaled_numbers
+end
+```

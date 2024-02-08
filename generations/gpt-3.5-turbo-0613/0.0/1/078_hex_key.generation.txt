@@ -1,0 +1,14 @@
+Here is the implementation for the `hex_key` function:
+
+```julia
+function hex_key(num::String)::Int
+    primes = [2, 3, 5, 7, 11, 13, 17]
+    count = 0
+    for digit in num
+        if digit in ["2", "3", "5", "7", "B", "D"]
+            count += 1
+        end
+    end
+    return count
+end
+```

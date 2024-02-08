@@ -1,0 +1,54 @@
+### Outline for Implementing `count_digits` Function
+
+1. **Initialize** a variable to store the product of odd digits. Let's call it `product` and initialize it with 1. This is because we will be multiplying the odd digits, and starting with 1 ensures that the multiplication works correctly.
+
+2. **Check if the input number is 0**. If `n` is 0, return 0 because there are no digits to process.
+
+3. **Loop through each digit in the number**:
+    - Convert the number to a string or directly work with the number by repeatedly dividing it by 10 to get each digit.
+    - For each digit, check if it is odd.
+    - If the digit is odd, multiply it with `product`.
+    - If no odd digit is found by the end of the loop, `product` will remain 1.
+
+4. **Check the value of `product`**:
+    - If `product` is still 1 after the loop, it means no odd digits were found, so return 0.
+    - Otherwise, return the `product`.
+
+5. **Return the result**.
+
+### Julia Code Implementation
+
+```julia
+function count_digits(n::Int)::Int
+    # Step 1: Initialize the product variable
+    product = 1
+    
+    # Step 2: Check if n is 0
+    if n == 0
+        return 0
+    end
+    
+    # Variable to track if at least one odd digit is found
+    found_odd = false
+    
+    # Step 3: Loop through each digit
+    while n > 0
+        digit = n % 10  # Get the last digit
+        if digit % 2 != 0  # Check if the digit is odd
+            product *= digit  # Multiply the odd digit with the product
+            found_odd = true
+        end
+        n = n ÷ 10  # Remove the last digit
+    end
+    
+    # Step 4: Check the value of product
+    if !found_odd
+        return 0  # Return 0 if no odd digit was found
+    end
+    
+    # Step 5: Return the result
+    return product
+end
+```
+
+This function works by iterating over each digit of the input number, checking if it's odd, and multiplying it to the `product` if it is. If no odd digits are found, it returns 0.

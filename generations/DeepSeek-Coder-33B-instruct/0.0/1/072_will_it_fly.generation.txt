@@ -1,0 +1,9 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function will_it_fly(q::Vector{Int}, w::Int)::Bool
+    return q == reverse(q) && sum(q) <= w
+end
+```
+
+This function works by first checking if the list `q` is a palindrome (i.e., it's the same forwards and backwards). It does this by comparing `q` to its reverse. If `q` is a palindrome, it then checks if the sum of its elements is less than or equal to `w`. If both conditions are true, the function returns `true`, indicating that the object will fly. Otherwise, it returns `false`.

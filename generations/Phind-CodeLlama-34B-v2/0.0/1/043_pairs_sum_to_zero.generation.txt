@@ -1,0 +1,18 @@
+
+
+Here is a possible implementation of the `pairs_sum_to_zero` function in Julia:
+
+```julia
+function pairs_sum_to_zero(l::Vector{Int})::Bool
+    seen = Set{Int}()
+    for num in l
+        if num in seen
+            return true
+        end
+        push!(seen, -num)
+    end
+    return false
+end
+```
+
+This function works by maintaining a set of the numbers seen so far. For each number in the input list, it checks if the number is already in the set. If it is, then there are two numbers in the list that sum to zero (the current number and the number in the set). If the number is not in the set, it adds the negation of the number to the set. After checking all the numbers in the list, if no pair sums to zero, the function returns false.

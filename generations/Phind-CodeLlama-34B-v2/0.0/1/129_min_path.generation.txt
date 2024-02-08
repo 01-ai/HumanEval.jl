@@ -1,0 +1,45 @@
+
+
+Here is a possible implementation of the `min_path` function in Julia:
+
+```julia
+using DataStructures
+
+function min_path(grid::Vector{Vector{Int}}, k::Int)::Vector{Int}
+    N = length(grid)
+    visited = falses(N, N)
+    dists = PriorityQueue{Tuple{Int,Int,Int},Int}()
+    enqueue!(dists, (grid[1][1], 0, 0), 1)
+    prev = Dict{Tuple{Int,Int},Tuple{Int,Int}}()
+
+    function neighbors(r, c)
+        for dr in [-1, 0, 1], dc in [-1, 0, 1]
+            if !(dr == 0 && dc == 0) && 1 <= r + dr <= N && 1 <= c + dc <= N
+                yield(r + dr, c + dc)
+            end
+        end
+    end
+
+    while !isempty(dists)
+        (val, d, (r, c)), _ = dequeue_pair!(dists)
+        if d == k - 1
+            path = Int[]
+            rc = (r, c)
+            for _ in 1:k
+                push!(path, grid[rc[1]][rc[2]])
+                rc = prev[rc]
+            end
+            return reverse(path)
+        end
+        for nr, nc in neighbors(r, c)
+            if !visited[nr, nc]
+                visited[nr, nc] = true
+                enqueue!(dists, (grid[nr][nc], d + 1, (nr, nc)), grid[nr][nc])
+                prev[(nr, nc)] = (r, c)
+            end
+        end
+    end
+end
+```
+
+This function uses a priority queue to store the cells to visit next, ordered by their value. It keeps track of the previous cell for each cell, so that the path can be reconstructed at the end. The `neighbors` function generates all neighboring cells of a given cell. The function iterates until it finds a path of length `k`, and then returns this path.

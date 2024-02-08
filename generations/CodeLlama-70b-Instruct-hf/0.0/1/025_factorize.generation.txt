@@ -1,0 +1,18 @@
+
+```julia
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    i = 2
+    while i <= n
+        if n % i == 0
+            push!(factors, i)
+            n = n ÷ i
+        else
+            i += 1
+        end
+    end
+    return factors
+end
+```
+
+This function uses a trial division method to find the prime factors of a given integer. It starts with the smallest prime number 2 and checks if it is a factor of the input number. If it is, it adds it to the list of factors and divides the input number by 2. It continues this process until the input number is reduced to 1. The function returns the list of prime factors in ascending order.

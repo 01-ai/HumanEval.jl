@@ -1,0 +1,29 @@
+ function file_name_check(file_name::String)::String
+    # Check if the file name contains more than three digits
+    if count(x -> x in '0':'9', file_name) > 3
+        return "No"
+    end
+
+    # Check if the file name contains exactly one dot
+    if count(x -> x == '.', file_name) != 1
+        return "No"
+    end
+
+    # Get the substring before the dot
+    before_dot = file_name[1:find(x -> x == '.', file_name) - 1]
+
+    # Check if the substring before the dot is not empty and starts with a latin alphapet letter
+    if length(before_dot) == 0 || !(before_dot[1] in 'a':'z' && before_dot[1] in 'A':'Z')
+        return "No"
+    end
+
+    # Get the substring after the dot
+    after_dot = file_name[find(x -> x == '.', file_name) + 1:end]
+
+    # Check if the substring after the dot is one of ["txt", "exe", "dll"]
+    if after_dot != "txt" && after_dot != "exe" && after_dot != "dll"
+        return "No"
+    end
+
+    return "Yes"
+end

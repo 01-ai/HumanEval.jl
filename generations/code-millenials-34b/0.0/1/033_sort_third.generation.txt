@@ -1,0 +1,14 @@
+
+
+function sort_third(l::Vector)
+    sorted_indices = sort(1:length(l), by=i -> l[i])
+    sorted_indices = [i for i in sorted_indices if i % 3 == 0]
+    for i in sorted_indices
+        l[i] = l[i]
+    end
+    return l
+end
+
+# Test cases
+@assert sort_third([1, 2, 3]) == [1, 2, 3]
+@assert sort_third([5, 6, 3, 4, 8, 9, 2]) == [5, 6, 3, 4, 8, 9, 2]

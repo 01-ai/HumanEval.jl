@@ -1,0 +1,7 @@
+function concatenate(xs::Vector{String})::String
+    return join(xs, "")
+end
+
+# Test cases
+println(concatenate(String[]))  # ""
+println(concatenate(["a", "b", "c"]))  # "abc"

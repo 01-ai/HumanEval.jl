@@ -1,0 +1,27 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    words = split(s)
+    consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z']
+    selected_words = String[]
+
+    for word in words
+        count = 0
+        for letter in word
+            if lowercase(letter) ∈ consonants
+                count += 1
+            end
+        end
+        if count == n
+            push(selected_words, word)
+        end
+    end
+
+    return selected_words
+end
+```
+
+This function splits the input string into words and then iterates over each word. For each word, it counts the number of consonants. If the count is equal to `n`, it adds the word to the list of selected words. Finally, it returns the list of selected words.
+
+Please note that this function is case-insensitive, meaning it treats 'a' and 'A' as the same letter. If you want it to be case-sensitive, you can remove the `lowercase` function.

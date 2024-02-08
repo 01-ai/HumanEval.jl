@@ -1,0 +1,18 @@
+```julia
+function skjkasdkd(xs::Vector{Int})::Int
+    # Initialize the largest prime value to the first element of the list
+    largest_prime = xs[1]
+    
+    # Loop through the list and find the largest prime value
+    for x in xs[2:end]
+        if isprime(x) && x > largest_prime
+            largest_prime = x
+        end
+    end
+    
+    # Return the sum of the digits of the largest prime value
+    return sum(digits(largest_prime))
+end
+```
+
+This function defines a `skjkasdkd` function that takes a vector of integers `xs` and returns the sum of the digits of the largest prime value in the list. It initializes the largest prime value to the first element of the list and then iterates through the rest of the list, updating the largest prime value if a prime number greater than the current largest prime is encountered. Finally, it returns the sum of the digits of the largest prime value found.

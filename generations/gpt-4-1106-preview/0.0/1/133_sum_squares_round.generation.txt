@@ -1,0 +1,16 @@
+Here is the Julia function `sum_squares_round` that implements the described functionality:
+
+```julia
+function sum_squares_round(xs::Vector)::Int
+    return sum(ceil(Int, x)^2 for x in xs)
+end
+
+# Examples
+println(sum_squares_round([1, 2, 3])) # 14
+println(sum_squares_round([1, 4, 9])) # 98
+println(sum_squares_round([1, 3, 5, 7])) # 84
+println(sum_squares_round([1.4, 4.2, 0])) # 29
+println(sum_squares_round([-2.4, 1, 1])) # 6
+```
+
+This function takes a vector of numbers, rounds each number up to the nearest integer using `ceil(Int, x)`, squares it, and then sums all the squared numbers to return the result.

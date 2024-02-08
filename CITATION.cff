@@ -1,0 +1,17 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: HumanEval.jl
+message: Evaluate LLM-synthesized JuliaLang code.
+type: software
+authors:
+  - email: yi@01.ai
+    name: Yi Team
+    website: 'https://www.01.ai/'
+repository-code: 'https://github.com/01-ai/HumanEval.jl'
+keywords:
+  - LLM
+license: MIT
+version: '1'
+date-released: '2024-02-18'

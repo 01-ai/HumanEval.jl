@@ -1,0 +1,25 @@
+To implement the `add_elements` function, we will follow these steps:
+
+1. Initialize a variable `sum` to 0 to keep track of the sum of elements with at most two digits.
+2. Iterate over the first `k` elements of the input vector `xs`.
+3. For each element, check if it has at most two digits. This can be done by checking if the element is greater than or equal to 1 and less than 100.
+4. If the element has at most two digits, add it to the `sum`.
+5. After the loop, return the `sum`.
+
+Now, let's write the code for the function:
+```julia
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    sum = 0
+    for i in 1:k
+        if xs[i] >= 1 && xs[i] < 100
+            sum += xs[i]
+        end
+    end
+    return sum
+end
+```
+
+Let's test the function with the provided example:
+```julia
+add_elements([111, 21, 3, 4000, 5, 6, 7, 8, 9], 4)  # Expected output: 24
+```

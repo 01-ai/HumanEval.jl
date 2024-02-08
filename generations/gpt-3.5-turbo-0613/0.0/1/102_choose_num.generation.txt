@@ -1,0 +1,13 @@
+Here is the implementation of the `choose_num` function in Julia:
+
+```julia
+function choose_num(x::Int, y::Int)::Int
+    max_even = -1
+    for num in x:y
+        if num % 2 == 0 && num > max_even
+            max_even = num
+        end
+    end
+    return max_even
+end
+```

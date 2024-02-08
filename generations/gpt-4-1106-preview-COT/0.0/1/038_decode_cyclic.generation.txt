@@ -1,0 +1,29 @@
+To implement the `decode_cyclic` function, we will follow these steps:
+
+1. Partition the input string into groups of three characters. Since the encoding process cycles groups of three characters, we expect that the encoded string will have a length that is a multiple of three. If the length is not a multiple of three, the last group will have fewer than three characters and should not be altered.
+
+2. For each group of three characters, reverse the cyclic shift that was applied during encoding. This means that for each group, we will take the last character and move it to the front, restoring the original order of the characters.
+
+3. Join the groups back together to form the decoded string.
+
+4. Return the decoded string.
+
+Now, let's implement the `decode_cyclic` function in Julia:
+
+```julia
+function decode_cyclic(s::String)::String
+    # Step 1: Partition the string into groups of three characters
+    groups = Iterators.partition(s, 3)
+    
+    # Step 2: Reverse the cyclic shift for each group
+    decoded_groups = (length(x) == 3 ? x[3] * x[1] * x[2] : x for x in groups)
+    
+    # Step 3: Join the groups to form the decoded string
+    decoded_string = join(decoded_groups)
+    
+    # Step 4: Return the decoded string
+    return decoded_string
+end
+```
+
+This function should correctly decode strings that were encoded with the `encode_cyclic` function provided.

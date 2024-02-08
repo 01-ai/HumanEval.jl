@@ -1,0 +1,39 @@
+### Step-by-Step Outline:
+
+1. Define the function `strongest_extension` with the parameters `class_name` as a `String` and `extensions` as a `Vector{String}`.
+2. Initialize a variable to keep track of the strongest extension found so far and its strength.
+3. Iterate over each extension in the `extensions` vector.
+4. For each extension, calculate the strength by counting the uppercase letters (CAP) and subtracting the number of lowercase letters (SM).
+5. Compare the calculated strength with the current strongest strength.
+6. If the calculated strength is greater, update the strongest extension and its strength.
+7. If the calculated strength is equal to the current strongest strength, keep the first one encountered (as per the instructions).
+8. After iterating through all extensions, return the string in the format `ClassName.StrongestExtensionName`.
+
+### Julia Code:
+
+```julia
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    # Initialize the strongest extension and its strength
+    strongest_ext = ""
+    strongest_strength = -Inf  # Start with negative infinity to ensure any strength will be greater
+
+    # Iterate over each extension
+    for ext in extensions
+        # Calculate the strength of the extension
+        CAP = count(isuppercase, ext)
+        SM = count(islowercase, ext)
+        strength = CAP - SM
+
+        # Update the strongest extension if necessary
+        if strength > strongest_strength
+            strongest_ext = ext
+            strongest_strength = strength
+        end
+    end
+
+    # Return the result in the required format
+    return class_name * "." * strongest_ext
+end
+```
+
+Now, let's implement the function in Julia.

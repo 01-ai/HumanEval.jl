@@ -1,0 +1,18 @@
+
+
+```julia
+function decimal_to_binary(decimal::Int)::String
+    # Convert the decimal number to binary format
+    binary = string(bin(decimal))
+
+    # Remove the "0b" prefix
+    binary = binary[3:end]
+
+    # Add the extra characters at the beginning and end
+    binary = "db" * binary * "db"
+
+    return binary
+end
+```
+
+This function takes an integer as input and converts it to a binary string representation. It first converts the decimal number to binary using the `bin()` function, which returns a string with a "0b" prefix. The prefix is removed using array indexing, and then the extra characters are added to the beginning and end of the string. The function returns the final binary string.

@@ -1,0 +1,17 @@
+Here is a step-by-step outline of how to implement the function:
+
+1. First, we need to calculate 2^n. We can use the built-in function `BigInt(2)^n` to do this.
+2. Then, we need to calculate the modulo p of the result. We can use the built-in function `mod(result, p)` to do this.
+3. Finally, we return the result.
+
+Here is the Julia code that implements this:
+
+```julia
+function modp(n::Int, p::Int)::Int
+    result = BigInt(2)^n
+    result = mod(result, p)
+    return result
+end
+```
+
+This function works by first calculating 2^n using the `BigInt` function to handle large numbers, then it calculates the modulo p of the result using the `mod` function, and finally it returns the result.

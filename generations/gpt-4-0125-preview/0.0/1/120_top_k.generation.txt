@@ -1,0 +1,11 @@
+```julia
+function top_k(xs::Vector{Int}, k::Int)::Vector{Int}
+    # Sort the array in descending order
+    sorted_xs = sort(xs, rev=true)
+    
+    # Return the first k elements
+    return sorted_xs[1:k]
+end
+```
+
+This Julia function `top_k` takes an array of integers `xs` and an integer `k`, then returns a sorted list of length `k` with the maximum `k` numbers in `xs` in descending order. It first sorts the array `xs` in descending order using the `sort` function with the `rev=true` argument to reverse the sorting order. Then, it slices the first `k` elements from the sorted array and returns them.

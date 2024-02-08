@@ -1,0 +1,29 @@
+
+
+To solve this problem, we can use the built-in function `digits` in Julia, which converts a given number to an array of its digits. Then, we can map each digit to its binary representation and join them together.
+
+Here is the step-by-step outline:
+
+1. Use the `digits` function to convert the decimal number to an array of its digits.
+2. Map each digit to its binary representation using the `string` function and `base` argument.
+3. Join the binary digits together using the `join` function.
+4. Add "db" at the beginning and end of the resulting string.
+
+And here is the Julia code:
+
+```julia
+function decimal_to_binary(decimal::Int)::String
+    # Convert the decimal number to an array of its digits
+    digits_array = digits(decimal)
+
+    # Map each digit to its binary representation and join them together
+    binary_string = join(map(x -> string(x, base = 2, pad = 4), digits_array))
+
+    # Add "db" at the beginning and end of the string
+    result = "db" * binary_string * "db"
+
+    return result
+end
+```
+
+This function works by first converting the decimal number to an array of its digits. Then, it maps each digit to its binary representation and joins them together into a string. Finally, it adds "db" at the beginning and end of the string and returns the result.

@@ -1,0 +1,13 @@
+Here is the implementation for the `double_the_difference` function:
+
+```julia
+function double_the_difference(xs::Vector)
+    sum_of_squares = 0
+    for x in xs
+        if x > 0 && isinteger(x) && isodd(x)
+            sum_of_squares += x^2
+        end
+    end
+    return sum_of_squares * 2
+end
+```

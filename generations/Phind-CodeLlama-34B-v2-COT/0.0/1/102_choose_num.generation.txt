@@ -1,0 +1,42 @@
+
+
+# Outline
+
+1. Check if the inputs are valid (positive integers).
+2. If x > y, return -1 as there's no valid range.
+3. If x and y are the same, check if it's even. If yes, return it. If not, return -1.
+4. If x < y, iterate from y to x in reverse order.
+5. For each number in the range, check if it's even. If yes, return it.
+6. If no even number is found, return -1.
+
+# Code
+
+```julia
+function choose_num(x::Int, y::Int)::Int
+    # Check if the inputs are valid (positive integers)
+    if x <= 0 || y <= 0
+        throw(DomainError("Inputs must be positive integers"))
+    end
+
+    # If x > y, return -1 as there's no valid range
+    if x > y
+        return -1
+    end
+
+    # If x and y are the same, check if it's even
+    if x == y
+        return x % 2 == 0 ? x : -1
+    end
+
+    # If x < y, iterate from y to x in reverse order
+    for i in y:-1:x
+        # Check if the number is even
+        if i % 2 == 0
+            return i
+        end
+    end
+
+    # If no even number is found, return -1
+    return -1
+end
+```

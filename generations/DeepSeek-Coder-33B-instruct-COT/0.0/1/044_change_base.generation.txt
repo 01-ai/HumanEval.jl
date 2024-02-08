@@ -1,0 +1,24 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. Create an empty string to store the result.
+2. While the input number is greater than 0, do the following:
+    a. Calculate the remainder of the number divided by the base.
+    b. Convert the remainder to a string and append it to the result string.
+    c. Divide the number by the base and round down to the nearest integer.
+3. Reverse the result string and return it.
+
+Here is the Julia code that implements this algorithm:
+
+```julia
+function change_base(x::Int, base::Int)::String
+    result = ""
+    while x > 0
+        remainder = x % base
+        result *= string(remainder)
+        x = div(x, base)
+    end
+    return reverse(result)
+end
+```
+
+This function works by repeatedly dividing the input number by the base and appending the remainder to the result string. The remainder is calculated using the modulus operator (%), and the quotient is calculated using the floor division operator (div). The result string is reversed before it is returned because the remainders are appended in reverse order.

@@ -1,0 +1,50 @@
+  Here's one way to implement the `encode_swap` function in Julia:
+```
+function encode_swap(message::String)::String
+    # Create a new string to store the encoded message
+    encoded_message = ""
+
+    # Iterate over each character in the message
+    for c in message
+        # If the character is a letter, swap its case
+        if isletter(c)
+            encoded_message *= swapcase(c)
+        # If the character is a vowel, replace it with the letter that appears 2 places after it in the English alphabet
+        elseif isvowel(c)
+            encoded_message *= next_letter(c, 2)
+        # Otherwise, leave the character as is
+        else
+            encoded_message *= c
+        end
+    end
+
+    return encoded_message
+end
+
+# Helper function to get the next letter in the English alphabet
+function next_letter(c::Char, n::Int)::Char
+    # Get the index of the current letter in the English alphabet
+    index = findfirst(isequal(c), 'a':'z')
+
+    # If the index is not found, return the original letter
+    if index == 0
+        return c
+    end
+
+    # Get the index of the next letter in the English alphabet
+    next_index = mod(index + n, 26)
+
+    # Return the letter at the next index
+    return 'a' + next_index
+end
+```
+Here's an explanation of how the function works:
+
+1. The `encode_swap` function takes a string `message` as input and returns a new string `encoded_message`.
+2. The function iterates over each character in the `message` string using a `for` loop.
+3. For each character `c`, the function checks if it is a letter using the `isletter` function. If it is a letter, the function swaps its case using the `swapcase` function.
+4. If the character is a vowel, the function replaces it with the letter that appears 2 places after it in the English alphabet using the `next_letter` function.
+5. If the character is not a letter or a vowel, the function leaves it as is.
+6. The function returns the `encoded_message` string.
+
+The `next_letter` function is a helper function that takes a character `c` and an integer `n` as input, and returns the letter that appears `n` places after `c` in the English alphabet. The function uses the `findfirst` function to get the index of `c` in the English alphabet, and then uses the `mod` function to get the index of the next letter. Finally, the function returns the letter at the next index using the `+` operator.

@@ -1,0 +1,17 @@
+```julia
+function triangle_area3(a::Number, b::Number, c::Number)::Number
+    # Check if the triangle is valid
+    if (a + b > c) && (a + c > b) && (b + c > a)
+        # Use the Heron's formula to calculate the area
+        s = (a + b + c) / 2
+        area = sqrt(s * (s - a) * (s - b) * (s - c))
+        # Round the area to 2 decimal points
+        area = round(area, digits=2)
+        return area
+    else
+        return -1
+    end
+end
+```
+
+This function calculates the area of a triangle using Heron's formula if the triangle is valid, and returns -1 if the triangle is not valid. The area is rounded to two decimal points for better readability.

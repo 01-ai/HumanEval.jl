@@ -1,0 +1,24 @@
+```julia
+function split_words(txt::String)::Union{Vector{<:AbstractString},Int}
+    # Check if the text contains any whitespace or comma
+    if occursin(' ', txt) || occursin(',', txt)
+        # Split the text on whitespace or comma
+        words = split(txt)
+        # Return the list of words
+        return words
+    else
+        # If no whitespace or comma is found, count the number of lower-case
+        # letters with odd order in the alphabet
+        letter_count = 0
+        for letter in txt
+            if islower(letter)
+                letter_count += 1
+            end
+        end
+        # Return the count of odd-order lower-case letters
+        return letter_count
+    end
+end
+```
+
+This function `split_words` takes a `String` as input and returns a `Vector` of `AbstractString` if the text contains whitespace or comma, or an `Int` representing the count of lower-case letters with odd order in the alphabet if the text does not contain any whitespace or comma.

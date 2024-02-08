@@ -1,0 +1,33 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. Initialize an empty string `encoded_message`.
+2. Iterate over each character `c` in the input `message`.
+3. If `c` is a vowel, find the character that appears 2 places after `c` in the English alphabet. If `c` is 'y' or 'Y', replace it with 'a' or 'A' respectively.
+4. If `c` is a consonant, swap its case.
+5. Append the encoded character to `encoded_message`.
+6. Return `encoded_message`.
+
+Here is the Julia code that implements the above steps:
+
+```julia
+function encode_swap(message::String)::String
+    encoded_message = ""
+    for c in message
+        if isletter(c)
+            if c in "aeiouAEIOU"
+                if c in "yY"
+                    c = c == 'y' ? 'a' : 'A'
+                else
+                    c = Char(Int(c) + 2)
+                end
+            else
+                c = islowercase(c) ? uppercase(c) : lowercase(c)
+            end
+        end
+        encoded_message *= string(c)
+    end
+    return encoded_message
+end
+```
+
+This function works by iterating over each character in the input message. If the character is a vowel, it replaces it with the character that appears two places after it in the English alphabet. If the character is 'y' or 'Y', it replaces it with 'a' or 'A' respectively. If the character is a consonant, it swaps its case. The encoded character is then appended to the `encoded_message` string. The function finally returns the `encoded_message` string.

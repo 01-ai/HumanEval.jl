@@ -1,0 +1,24 @@
+Here is a Julia function that implements the `triples_sum_to_zero` function as described in the problem:
+
+```julia
+function triples_sum_to_zero(l::Vector{Int})::Bool
+    n = length(l)
+    if n < 3
+        return false
+    end
+    for i in 1:n-2
+        for j in i+1:n-1
+            for k in j+1:n
+                if l[i] + l[j] + l[k] == 0
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end
+```
+
+This function works by iterating over all possible triplets of distinct elements in the list. If any triplet sums to zero, it returns `true`. If no such triplet is found after checking all possible triplets, it returns `false`.
+
+The time complexity of this function is O(n^3), where n is the length of the input list. This is because there are n*(n-1)*(n-2) triplets to check.

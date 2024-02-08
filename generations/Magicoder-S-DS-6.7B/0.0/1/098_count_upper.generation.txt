@@ -1,0 +1,9 @@
+function count_upper(s::String)::Int
+    count = 0
+    for (i, c) in enumerate(s)
+        if i % 2 == 1 && c in "AEIOU"
+            count += 1
+        end
+    end
+    return count
+end

@@ -1,0 +1,26 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    groups = split(paren_string, " ")
+    max_nesting_levels = Int[]
+    for group in groups
+        count = 0
+        max_count = 0
+        for char in group
+            if char == '('
+                count += 1
+                if count > max_count
+                    max_count = count
+                end
+            elseif char == ')'
+                count -= 1
+            end
+        end
+        push(max_nesting_levels, max_count)
+    end
+    return max_nesting_levels
+end
+```
+
+This function splits the input string into groups of parentheses separated by spaces. For each group, it counts the maximum number of nested parentheses by iterating over each character in the group. If it encounters an opening parenthesis, it increments the count and updates the maximum count if the count is greater. If it encounters a closing parenthesis, it decrements the count. The maximum count is the maximum level of nesting in the group. The function returns a vector of these maximum counts.

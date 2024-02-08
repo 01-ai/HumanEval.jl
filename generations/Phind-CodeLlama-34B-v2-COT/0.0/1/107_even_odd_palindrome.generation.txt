@@ -1,0 +1,38 @@
+
+
+To solve this problem, we will iterate over the range from 1 to n and check if each number is a palindrome. If it is, we will check if it is even or odd and increment the respective counter.
+
+Here is the step-by-step outline:
+
+1. Initialize two counters, `even_count` and `odd_count`, both initially set to 0.
+2. Iterate over the range from 1 to n (inclusive).
+3. For each number, check if it is a palindrome.
+4. If it is a palindrome, check if it is even or odd and increment the respective counter.
+5. After the loop, return the tuple of `even_count` and `odd_count`.
+
+Here is the Julia code implementing the above outline:
+
+```julia
+function even_odd_palindrome(n::Int)::Tuple{Int, Int}
+    even_count = 0
+    odd_count = 0
+
+    for i in 1:n
+        if is_palindrome(i)
+            if i % 2 == 0
+                even_count += 1
+            else
+                odd_count += 1
+            end
+        end
+    end
+
+    return (even_count, odd_count)
+end
+
+function is_palindrome(n::Int)::Bool
+    return string(n) == reverse(string(n))
+end
+```
+
+In the above code, `is_palindrome` is a helper function that checks if a given number is a palindrome by converting it to a string and comparing it with its reverse.

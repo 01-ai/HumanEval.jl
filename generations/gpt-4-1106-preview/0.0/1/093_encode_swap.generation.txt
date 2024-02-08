@@ -1,0 +1,45 @@
+Certainly! Below is the Julia function `encode_swap` that performs the encoding as described in the doc string:
+
+```julia
+function encode_swap(message::String)::String
+    # Define a dictionary to map vowels to the letter two places after them
+    vowel_shift = Dict('a' => 'c', 'e' => 'g', 'i' => 'k', 'o' => 'q', 'u' => 'w',
+                       'A' => 'C', 'E' => 'G', 'I' => 'K', 'O' => 'Q', 'U' => 'W')
+
+    # Initialize an empty string to store the encoded message
+    encoded_message = ""
+
+    # Iterate through each character in the message
+    for char in message
+        # Check if the character is a vowel and replace it accordingly
+        if char in keys(vowel_shift)
+            encoded_message *= vowel_shift[char]
+        # If not a vowel, swap the case and append to the encoded message
+        else
+            if islower(char)
+                encoded_message *= uppercase(char)
+            else
+                encoded_message *= lowercase(char)
+            end
+        end
+    end
+
+    return encoded_message
+end
+
+# Helper function to check if a character is lowercase
+function islower(c::Char)::Bool
+    return 'a' <= c <= 'z'
+end
+
+# Helper function to check if a character is uppercase
+function isupper(c::Char)::Bool
+    return 'A' <= c <= 'Z'
+end
+
+# Examples
+println(encode_swap("test")) # Output: "TGST"
+println(encode_swap("This is a message")) # Output: "tHKS KS C MGSSCGG"
+```
+
+This function uses a dictionary to map vowels to their corresponding shifted characters and then iterates through the message, applying the transformations as specified. It also includes helper functions `islower` and `isupper` to check the case of a character.

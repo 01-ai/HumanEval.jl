@@ -1,0 +1,8 @@
+Here is the implementation for the `n_digits_in_binary` function:
+
+```julia
+function n_digits_in_binary(N::Int)::String
+    binary_sum = sum(digits(N, base=2))
+    return string(binary_sum)
+end
+```

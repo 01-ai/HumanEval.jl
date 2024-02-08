@@ -1,0 +1,8 @@
+
+
+function string_sequence(n::Int)::String
+    return join(string.(0:n))
+end
+
+println(string_sequence(0))
+println(string_sequence(5))

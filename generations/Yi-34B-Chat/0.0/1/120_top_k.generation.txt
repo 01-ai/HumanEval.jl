@@ -1,0 +1,9 @@
+```julia
+function top_k(xs::Vector{Int}, k::Int)::Vector{Int}
+    # Sort the array in descending order
+    sorted_xs = sort(xs, by=abs, rev=true)
+    
+    # Take the first k elements
+    return sorted_xs[1:k]
+end
+```

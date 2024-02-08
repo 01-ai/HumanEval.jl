@@ -1,0 +1,28 @@
+To solve this problem, we can iterate over each well in the grid and check if it contains water. If it does, we subtract the capacity of the bucket from the well and count the number of times we need to lower the bucket. Finally, we return the total count.
+
+Here is the implementation of the `max_fill` function in Julia:
+
+```julia
+function max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+    count = 0
+    for well in grid
+        for i in 1:length(well)
+            if well[i] == 1
+                well[i] -= capacity
+                count += 1
+            end
+        end
+    end
+    return count
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(max_fill([[0, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 1]], 1))  # Output: 6
+println(max_fill([[0, 0, 1, 1], [0, 0, 0, 0], [1, 1, 1, 1], [0, 1, 1, 1]], 2))  # Output: 5
+println(max_fill([[0, 0, 0], [0, 0, 0]], 5))  # Output: 0
+```
+
+The function should return the expected outputs.

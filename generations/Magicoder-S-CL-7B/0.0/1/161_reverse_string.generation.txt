@@ -1,0 +1,13 @@
+
+
+function reverse_string(s::String)::String
+    result = ""
+    for char in s
+        if isletter(char)
+            result *= uppercase(char)
+        else
+            result *= char
+        end
+    end
+    return reverse(result)
+end

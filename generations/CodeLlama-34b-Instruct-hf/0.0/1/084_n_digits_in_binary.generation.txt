@@ -1,0 +1,35 @@
+  Here's one way to implement the `n_digits_in_binary` function in Julia:
+```
+function n_digits_in_binary(N::Int)::String
+    # Convert N to a binary string
+    binary_string = string(N, base=2)
+
+    # Sum the digits of the binary string
+    sum = 0
+    for c in binary_string
+        sum += parse(Int, c)
+    end
+
+    # Return the sum as a string
+    return string(sum)
+end
+```
+Here's an explanation of how the function works:
+
+1. The function takes a single argument `N`, which is a positive integer.
+2. The function converts `N` to a binary string using the `string` function with the `base` argument set to `2`. This gives us a string representation of `N` in binary.
+3. The function then iterates over the characters of the binary string and sums the digits using the `parse` function to convert each character to an integer.
+4. The function returns the sum as a string using the `string` function.
+
+Here are some examples of how to use the function:
+```
+julia> n_digits_in_binary(1000)
+"1"
+
+julia> n_digits_in_binary(150)
+"110"
+
+julia> n_digits_in_binary(147)
+"1100"
+```
+Note that the function assumes that the input `N` is a positive integer. If `N` is negative or not an integer, the function will throw an error.

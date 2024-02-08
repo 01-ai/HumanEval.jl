@@ -1,0 +1,9 @@
+ Here's the Julia function `sum_to_n` based on the provided documentation:
+
+```julia
+function sum_to_n(n::Int)::Int
+    return sum(1:n)
+end
+```
+
+This function takes an integer `n` as input and returns the sum of numbers from 1 to `n`. The `sum` function in Julia is used to calculate the sum of a range of numbers, and in this case, it is applied to the range `1:n`.

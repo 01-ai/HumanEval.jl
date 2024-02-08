@@ -1,0 +1,29 @@
+Here is the implementation of the `strange_sort_list` function in Julia:
+
+```julia
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    sorted_xs = sort(xs)
+    n = length(sorted_xs)
+    result = Vector{Int}(undef, n)
+    i = 1
+    j = n
+    k = 1
+    while i <= j
+        result[k] = sorted_xs[i]
+        k += 1
+        i += 1
+        if i <= j
+            result[k] = sorted_xs[j]
+            k += 1
+            j -= 1
+        end
+    end
+    return result
+end
+```
+
+This function first sorts the input list `xs` in ascending order using the `sort` function. Then, it initializes an empty result vector of the same length as `xs`. It uses three indices `i`, `j`, and `k` to keep track of the current positions in the sorted list, the result vector, and the strange sorted list, respectively.
+
+The function iterates over the sorted list from both ends, starting with the minimum value and the maximum value. It assigns the minimum value to the `k`-th position in the result vector and increments `k` and `i`. If there are still elements remaining, it assigns the maximum value to the `k`-th position in the result vector and increments `k` and decrements `j`. This process continues until all elements have been assigned to the result vector.
+
+Finally, the function returns the result vector.

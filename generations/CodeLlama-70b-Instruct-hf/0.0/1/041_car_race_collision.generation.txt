@@ -1,0 +1,8 @@
+
+```julia
+function car_race_collision(n::Int)::Int
+    return n * (n - 1) ÷ 2
+end
+```
+
+This function calculates the number of collisions that will occur in a car race with `n` cars. The number of collisions is calculated using the formula `n * (n - 1) ÷ 2`, which is the sum of the first `n - 1` natural numbers. This is because each car on the left will collide with every car on the right, and vice versa.

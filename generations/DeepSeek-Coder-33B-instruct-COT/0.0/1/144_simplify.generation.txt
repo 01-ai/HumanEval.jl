@@ -1,0 +1,24 @@
+Here is a step-by-step outline of how you can implement the function:
+
+1. Parse the input strings into numerator and denominator parts.
+2. Multiply the numerators and denominators.
+3. Check if the result is a whole number.
+
+Here is the Julia code that implements the above steps:
+
+```julia
+function simplify(x::String, n::String)::Bool
+    # Parse the input strings into numerator and denominator parts
+    x_num, x_den = parse.(Int, split(x, '/'))
+    n_num, n_den = parse.(Int, split(n, '/'))
+
+    # Multiply the numerators and denominators
+    result_num = x_num * n_num
+    result_den = x_den * n_den
+
+    # Check if the result is a whole number
+    return result_den % result_num == 0
+end
+```
+
+This function works by first splitting the input strings into numerator and denominator parts, converting these parts to integers, and then multiplying the numerators and denominators. It then checks if the denominator is a multiple of the numerator, which would indicate that the result is a whole number.

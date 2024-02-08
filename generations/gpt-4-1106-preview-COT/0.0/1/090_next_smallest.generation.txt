@@ -1,0 +1,43 @@
+To implement the `next_smallest` function, we will follow these steps:
+
+1. Check if the length of the list `xs` is less than 2. If it is, return `nothing` because there cannot be a second smallest element.
+2. Initialize two variables, `smallest` and `second_smallest`, to `Inf` (infinity) and `Inf` respectively.
+3. Loop through each element `x` in the list `xs`.
+   - If `x` is less than `smallest`, update `second_smallest` to `smallest` and then update `smallest` to `x`.
+   - Else if `x` is less than `second_smallest` and not equal to `smallest`, update `second_smallest` to `x`.
+4. After the loop, check if `second_smallest` is still `Inf`. If it is, it means there was no second smallest element, so return `nothing`.
+5. Otherwise, return `second_smallest`.
+
+Now, let's write the code for the function:
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    # Step 1: Check if there are at least two elements
+    if length(xs) < 2
+        return nothing
+    end
+
+    # Step 2: Initialize smallest and second smallest
+    smallest = Inf
+    second_smallest = Inf
+
+    # Step 3: Loop through the elements to find the smallest and second smallest
+    for x in xs
+        if x < smallest
+            second_smallest = smallest
+            smallest = x
+        elseif x < second_smallest && x != smallest
+            second_smallest = x
+        end
+    end
+
+    # Step 4: Check if second smallest was found
+    if second_smallest == Inf
+        return nothing
+    end
+
+    # Step 5: Return the second smallest element
+    return second_smallest
+end
+```
+
+This function should work correctly according to the specification in the doc string.

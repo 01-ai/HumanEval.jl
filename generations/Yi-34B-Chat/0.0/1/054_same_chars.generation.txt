@@ -1,0 +1,18 @@
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    # Initialize a set to store characters from the first string
+    char_set = Set(s0)
+    
+    # Check if all characters from the first string are present in the second string
+    for c in s1
+        if !(c in char_set)
+            return false
+        end
+    end
+    
+    # If we reach this point, all characters from the first string are present in the second string
+    return true
+end
+```
+
+This function works by first creating a set of unique characters from the first string `s0`. It then iterates over the second string `s1` and checks if each character is present in the set. If at any point a character is not found in the set, the function returns `false`. If all characters from `s1` are found in the set, the function returns `true`, indicating that the two strings have the same characters.

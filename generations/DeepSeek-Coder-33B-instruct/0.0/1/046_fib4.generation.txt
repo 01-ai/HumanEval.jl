@@ -1,0 +1,29 @@
+Here is a Julia function that computes the n-th element of the fib4 number sequence without using recursion.
+
+```julia
+function fib4(n::Int)::Int
+    if n < 0
+        throw(DomainError(n, "n must be non-negative"))
+    elseif n < 4
+        return [0, 0, 2, 0][n+1]
+    end
+
+    fibs = zeros(Int, 4)
+    fibs[1] = 0
+    fibs[2] = 0
+    fibs[3] = 2
+    fibs[4] = 0
+
+    for i in 5:n
+        fibs[i%4+1] = sum(fibs)
+    end
+
+    return fibs[n%4+1]
+end
+```
+
+This function uses an array `fibs` to store the last four elements of the sequence. It then iterates from 5 to `n`, updating the array with the sum of the elements. The result is the `n`-th element of the sequence.
+
+The modulo operation `n%4+1` is used to ensure that the index of `fibs` is always between 1 and 4. This is because Julia uses 1-based indexing, so we need to adjust the index to match the 1-based indexing of `fibs`.
+
+The function also checks if `n` is negative and throws a `DomainError` if it is. This is because the fib4 sequence is only defined for non-negative integers.

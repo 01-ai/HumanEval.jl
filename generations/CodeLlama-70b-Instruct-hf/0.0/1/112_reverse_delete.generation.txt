@@ -1,0 +1,16 @@
+
+
+```julia
+function reverse_delete(s::String, c::String)::Tuple{String, Bool}
+    # Remove all characters in s that are equal to any character in c
+    result = replace(s, Regex("[$c]"), "")
+
+    # Check if the result string is palindrome
+    is_palindrome = result == reverse(result)
+
+    # Return a tuple containing the result string and true/false for the check
+    return (result, is_palindrome)
+end
+```
+
+This function first removes all characters in `s` that are equal to any character in `c` using the `replace` function. It then checks if the resulting string is a palindrome by comparing it to its reverse. Finally, it returns a tuple containing the result string and a boolean indicating whether the string is a palindrome.

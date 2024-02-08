@@ -1,0 +1,17 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. Create a function `sum_squares_round` that takes a vector `xs` as input.
+2. Use the `ceil` function to round each element in the vector to the upper int.
+3. Square each element in the vector.
+4. Sum all the squared elements.
+5. Return the sum.
+
+Here is the Julia code that implements the above steps:
+
+```julia
+function sum_squares_round(xs::Vector)::Int
+    return sum(x -> ceil(x)^2, xs)
+end
+```
+
+This function uses Julia's `sum` function with a generator expression to square each element in the vector and sum them up. The `ceil` function is used to round each element in the vector to the upper int. The `::Int` annotation at the end of the function definition specifies that the function should return an integer.

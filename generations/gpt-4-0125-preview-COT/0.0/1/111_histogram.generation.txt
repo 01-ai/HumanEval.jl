@@ -1,0 +1,47 @@
+### Step-by-Step Outline
+
+1. **Split the input string**: Convert the input string into a list of letters by splitting it based on spaces.
+   
+2. **Count occurrences**: Create a dictionary to count the occurrences of each letter. Iterate through the list of letters and update the count in the dictionary.
+
+3. **Find the maximum count**: Determine the maximum count of occurrences among all letters.
+
+4. **Filter letters with maximum count**: Iterate through the dictionary of letter counts and select only those letters that have the maximum count. This step is necessary because there might be multiple letters with the same maximum count.
+
+5. **Return the result**: Return the filtered dictionary containing only the letters with the maximum count and their counts.
+
+### Julia Code Implementation
+
+```julia
+function histogram(s::String)::Dict{String, Int}
+    # Step 1: Split the input string into a list of letters
+    letters = split(s)
+    
+    # Step 2: Count occurrences of each letter
+    letter_counts = Dict{String, Int}()
+    for letter in letters
+        letter_counts[letter] = get(letter_counts, letter, 0) + 1
+    end
+    
+    # Return an empty dictionary if the input string is empty
+    if isempty(letter_counts)
+        return letter_counts
+    end
+    
+    # Step 3: Find the maximum count
+    max_count = maximum(values(letter_counts))
+    
+    # Step 4: Filter letters with maximum count
+    max_letters = Dict{String, Int}()
+    for (letter, count) in letter_counts
+        if count == max_count
+            max_letters[letter] = count
+        end
+    end
+    
+    # Step 5: Return the result
+    return max_letters
+end
+```
+
+This implementation follows the outlined steps to ensure that the function behaves as expected, handling cases with single or multiple letters having the maximum count, as well as the case of an empty input string.

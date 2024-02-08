@@ -1,0 +1,29 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function rounded_avg(n::Int, m::Int)::Union{Int, String}
+    if n > m
+        return -1
+    else
+        avg = round(Int, (n + m) / 2)
+        return bin(avg)
+    end
+end
+
+function bin(n::Int)::String
+    if n == 0
+        return "0"
+    else
+        bin_str = ""
+        while n > 0
+            bin_str = string(n % 2, bin_str)
+            n = div(n, 2)
+        end
+        return bin_str
+    end
+end
+```
+
+The `rounded_avg` function first checks if `n` is greater than `m`. If it is, it returns `-1`. Otherwise, it calculates the average of `n` and `m`, rounds it to the nearest integer, and converts it to binary using the `bin` function.
+
+The `bin` function converts an integer to binary. It does this by repeatedly dividing the number by 2 and appending the remainder to the binary string. It continues this process until the number is 0. If the number is 0, it returns "0" as the binary representation.

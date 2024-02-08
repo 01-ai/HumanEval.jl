@@ -1,0 +1,11 @@
+
+
+function reverse_delete(s::String, c::String)::Tuple{String, Bool}
+    s = replace(s, c => "")
+    return (s, s == reverse(s))
+end
+
+# Test cases
+@assert reverse_delete("abcde", "ae") == ("bcd", false)
+@assert reverse_delete("abcdef", "b") == ("acdef", false)
+@assert reverse_delete("abcdedcba", "ab") == ("cdedc", true)

@@ -1,0 +1,13 @@
+
+
+```julia
+function x_or_y(n::Int, x::Int, y::Int)::Int
+    if isprime(n)
+        return x
+    else
+        return y
+    end
+end
+```
+
+This function checks if the number `n` is prime using the `isprime` function. If it is, it returns the value of `x`, otherwise it returns the value of `y`.

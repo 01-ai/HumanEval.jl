@@ -1,0 +1,20 @@
+  Here's an implementation of the `how_many_times` function in Julia:
+```
+function how_many_times(s::String, sub_s::String)::Int
+    count = 0
+    for i in 1:length(s)
+        if s[i:i+length(sub_s)-1] == sub_s
+            count += 1
+        end
+    end
+    return count
+end
+```
+This function uses a loop to iterate over the characters of the original string `s`, and for each character, it checks if the substring `sub_s` is present in the remaining characters of `s` starting from that position. If it is, the count is incremented. The function returns the final count.
+
+Here's an example usage of the function:
+```
+julia> how_many_times("hello", "ll")
+2
+```
+This will return `2` because the substring `"ll"` appears twice in the string `"hello"`.

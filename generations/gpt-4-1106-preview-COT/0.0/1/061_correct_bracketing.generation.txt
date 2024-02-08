@@ -1,0 +1,30 @@
+To implement the `correct_bracketing` function, we can follow these steps:
+
+1. Initialize a counter to keep track of the balance of brackets.
+2. Iterate over each character in the input string.
+3. If the current character is an opening bracket `"("`, increment the counter.
+4. If the current character is a closing bracket `")"`, decrement the counter.
+5. If at any point the counter becomes negative, return `false` because a closing bracket has appeared without a corresponding opening bracket.
+6. After the iteration, if the counter is zero, return `true` because all opening brackets have been matched with closing brackets.
+7. If the counter is not zero, return `false` because there are unmatched opening brackets.
+
+Now, let's write the code for the function:
+
+```julia
+function correct_bracketing(brackets::String)::Bool
+    balance = 0
+    for bracket in brackets
+        if bracket == '('
+            balance += 1
+        elseif bracket == ')'
+            balance -= 1
+            if balance < 0
+                return false
+            end
+        end
+    end
+    return balance == 0
+end
+```
+
+This function will return `true` if the brackets are correctly balanced and `false` otherwise, as per the examples provided in the doc string.

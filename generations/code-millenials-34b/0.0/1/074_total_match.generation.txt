@@ -1,0 +1,16 @@
+
+
+function total_match(xs::Vector{String}, ys::Vector{String})::Vector{String}
+    if sum(length, xs) < sum(length, ys)
+        return xs
+    else
+        return ys
+    end
+end
+
+# Test cases
+println(total_match(String[], String[])) # should return String[]
+println(total_match(["hi", "admin"], ["hI", "Hi"])) # should return ["hI", "Hi"]
+println(total_match(["hi", "admin"], ["hi", "hi", "admin", "project"])) # should return ["hi", "admin"]
+println(total_match(["hi", "admin"], ["hI", "hi", "hi"])) # should return ["hI", "hi", "hi"]
+println(total_match(["4"], ["1", "2", "3", "4", "5"])) # should return ["4"]

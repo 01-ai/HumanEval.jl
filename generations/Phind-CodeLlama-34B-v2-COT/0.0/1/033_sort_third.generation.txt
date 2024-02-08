@@ -1,0 +1,39 @@
+
+
+# Outline
+
+1. Create a new empty vector `sorted_indices` to store the values at the indices that are divisible by 3.
+2. Iterate over the input list `l` with a for loop and an index `i`.
+3. Check if `i` is divisible by 3. If it is, push the value at index `i` of `l` into `sorted_indices`.
+4. After the loop, sort `sorted_indices` in ascending order.
+5. Create a new vector `result` with the same length as `l`.
+6. Iterate over `l` again with a for loop and an index `i`.
+7. If `i` is divisible by 3, set the value at index `i` of `result` to the next value in the sorted `sorted_indices`. Otherwise, set the value at index `i` of `result` to the value at index `i` of `l`.
+8. After the loop, return `result`.
+
+# Code
+
+```julia
+function sort_third(l::Vector)
+    sorted_indices = Int[]
+    for i in 1:length(l)
+        if i % 3 == 0
+            push!(sorted_indices, l[i])
+        end
+    end
+    sort!(sorted_indices)
+
+    result = similar(l)
+    sorted_index = 1
+    for i in 1:length(l)
+        if i % 3 == 0
+            result[i] = sorted_indices[sorted_index]
+            sorted_index += 1
+        else
+            result[i] = l[i]
+        end
+    end
+
+    return result
+end
+```

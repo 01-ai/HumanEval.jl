@@ -1,0 +1,26 @@
+Here is a step-by-step outline of how you can implement this function:
+
+1. Initialize a variable `result` to `true`. This variable will keep track of whether all numbers in the list are below the threshold.
+
+2. Iterate over each number `n` in the list `l`.
+
+3. If `n` is greater than or equal to `t`, set `result` to `false` and break the loop.
+
+4. After the loop, return `result`.
+
+Here is the Julia code that implements this outline:
+
+```julia
+function below_threshold(l::Vector, t::Number)::Bool
+    result = true
+    for n in l
+        if n >= t
+            result = false
+            break
+        end
+    end
+    return result
+end
+```
+
+This function works by iterating over each number in the list and checking if it is greater than or equal to the threshold. If it is, it sets `result` to `false` and breaks the loop. If no such number is found, `result` remains `true`.

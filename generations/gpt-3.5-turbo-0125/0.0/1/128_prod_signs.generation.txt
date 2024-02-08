@@ -1,0 +1,17 @@
+```julia
+function prod_signs(xs::Vector{Int})::Union{Nothing,Int}
+    if isempty(xs)
+        return nothing
+    end
+    
+    sign_product = 1
+    magnitude_sum = 0
+    
+    for x in xs
+        sign_product *= sign(x)
+        magnitude_sum += abs(x)
+    end
+    
+    return sign_product * magnitude_sum
+end
+```

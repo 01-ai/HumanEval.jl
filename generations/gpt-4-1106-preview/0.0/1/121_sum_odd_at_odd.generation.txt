@@ -1,0 +1,20 @@
+Certainly! Below is the Julia function `sum_odd_at_odd` that implements the functionality described in the doc string:
+
+```julia
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    sum = 0
+    for (index, value) in enumerate(xs)
+        if index % 2 != 0 && value % 2 != 0
+            sum += value
+        end
+    end
+    return sum
+end
+
+# Examples
+println(sum_odd_at_odd([5, 8, 7, 1])) # Output: 12
+println(sum_odd_at_odd([3, 3, 3, 3, 3])) # Output: 9
+println(sum_odd_at_odd([30, 13, 24, 321])) # Output: 0
+```
+
+This function iterates over the elements of the input vector `xs` along with their indices using `enumerate`. It checks if both the index and the value are odd, and if so, adds the value to the sum. Finally, it returns the computed sum.

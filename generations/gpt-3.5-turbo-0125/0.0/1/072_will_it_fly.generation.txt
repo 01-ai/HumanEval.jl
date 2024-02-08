@@ -1,0 +1,13 @@
+```julia
+function will_it_fly(q::Vector{Int}, w::Int)::Bool
+    if q != reverse(q)
+        return false
+    end
+    
+    if sum(q) <= w
+        return true
+    else
+        return false
+    end
+end
+```

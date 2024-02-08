@@ -1,0 +1,35 @@
+Certainly! Below is the Julia function `encrypt` that takes a string `s` and returns the encrypted string with the specified rotation.
+
+```julia
+function encrypt(s::String)
+    # Define the alphabet and the rotation factor
+    alphabet = 'a':'z'
+    rotation_factor = 2 * 2
+
+    # Helper function to rotate a single character
+    function rotate_char(c)
+        if c in alphabet
+            # Find the index of the character in the alphabet
+            index = findfirst(isequal(c), alphabet)
+            # Calculate the new index after rotation
+            new_index = mod1(index + rotation_factor, length(alphabet))
+            # Return the character at the new index
+            return alphabet[new_index]
+        else
+            # If the character is not in the alphabet, return it unchanged
+            return c
+        end
+    end
+
+    # Apply the rotation to each character in the string
+    return join(map(rotate_char, s))
+end
+
+# Example usage
+println(encrypt("hi"))       # Output: "lm"
+println(encrypt("asdfghjkl")) # Output: "ewhjklnop"
+println(encrypt("gf"))       # Output: "kj"
+println(encrypt("et"))       # Output: "ix"
+```
+
+This function works by defining a helper function `rotate_char` that rotates a single character. The `encrypt` function then maps this helper function over each character in the input string and joins the results to form the encrypted string. The rotation factor is set to 4 (2 multiplied by 2), and the `mod1` function is used to handle the wrap-around at the end of the alphabet.

@@ -1,0 +1,38 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function separate_paren_groups(paren_string::String)::Vector{String}
+    paren_string = replace(paren_string, " " => "")
+    groups = String[]
+    start = 0
+    count = 0
+    for (i, c) in enumerate(paren_string)
+        if c == '('
+            if count == 0
+                start = i
+            end
+            count += 1
+        elseif c == ')'
+            count -= 1
+            if count == 0
+                pushfirst(groups, paren_string[start:i])
+            end
+        end
+    end
+    return groups
+end
+```
+
+This function works by iterating over the string and keeping track of the current group depth. When it encounters an opening parenthesis, it checks if the depth is 0, which means it's the start of a new group. When it encounters a closing parenthesis, it checks if the depth is 0, which means it's the end of a group, and it adds the group to the list of groups.
+
+The `replace` function is used to remove spaces from the string before processing it.
+
+Here is how you can test the function:
+
+```julia
+julia> separate_paren_groups("( ) (( )) (( )( ))")
+3-element Vector{String}:
+ "()"
+ "(())"
+ "(()())"
+```

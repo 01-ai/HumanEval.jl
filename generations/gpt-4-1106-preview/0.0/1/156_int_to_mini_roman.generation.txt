@@ -1,0 +1,36 @@
+Certainly! Below is the Julia function `int_to_mini_roman` that converts an integer to its lowercase Roman numeral equivalent:
+
+```julia
+function int_to_mini_roman(number::Int)::String
+    # Define the Roman numeral mappings
+    roman_numerals = Dict(
+        1 => "i", 4 => "iv", 5 => "v", 9 => "ix",
+        10 => "x", 40 => "xl", 50 => "l", 90 => "xc",
+        100 => "c", 400 => "cd", 500 => "d", 900 => "cm",
+        1000 => "m"
+    )
+
+    # Sort the keys in descending order
+    keys_sorted = sort(collect(keys(roman_numerals)), rev=true)
+
+    # Initialize the result string
+    result = ""
+
+    # Convert the number to Roman numeral
+    for key in keys_sorted
+        while number >= key
+            number -= key
+            result *= roman_numerals[key]
+        end
+    end
+
+    return result
+end
+
+# Examples
+println(int_to_mini_roman(19))   # Output: "xix"
+println(int_to_mini_roman(152))  # Output: "clii"
+println(int_to_mini_roman(426))  # Output: "cdxxvi"
+```
+
+This function uses a dictionary to map the integer values to their corresponding Roman numeral symbols. It then iterates through the sorted keys of this dictionary in descending order, subtracting the key value from the number and appending the corresponding Roman numeral to the result string until the number is reduced to zero. The resulting Roman numeral is returned in lowercase.

@@ -1,0 +1,39 @@
+### Outline for `modp` Function
+
+1. **Input Validation**: Check if the inputs `n` and `p` are integers. If not, throw an appropriate error.
+2. **Base Case Handling**: If `n` is 0, return 1 since 2^0 is always 1, regardless of `p`.
+3. **Modular Exponentiation**: Since directly computing 2^n can result in very large numbers that might not be handled efficiently by the system, use modular exponentiation to compute 2^n modulo `p`. This method reduces the intermediate results by taking modulo `p` at each step, thus keeping the numbers within manageable limits.
+4. **Return Result**: Return the result of the modular exponentiation.
+
+### Julia Code for `modp`
+
+```julia
+function modp(n::Int, p::Int)::Int
+    # Input validation is implicitly handled by type annotations in function definition
+    
+    # Base case
+    if n == 0
+        return 1
+    end
+    
+    # Initialize result
+    result = 1
+    base = 2
+    
+    # Modular exponentiation
+    while n > 0
+        # If n is odd, multiply base with result
+        if n % 2 == 1
+            result = (result * base) % p
+        end
+        # n is made even
+        n = div(n, 2)
+        # Square the base
+        base = (base * base) % p
+    end
+    
+    return result
+end
+```
+
+This implementation uses the concept of modular exponentiation, which is efficient for large exponents and moduli. It iteratively squares the base (which is 2 in this case), and multiplies it to the result when the exponent is odd, reducing the exponent by half in each iteration. This way, it only deals with numbers as large as `p`, avoiding overflow or excessive computational resources.

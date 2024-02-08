@@ -1,0 +1,16 @@
+Here is a Julia function that implements the problem:
+
+```julia
+function exchange(lst1::Vector{Int}, lst2::Vector{Int})::String
+    odd_in_lst1 = sum(x -> x % 2 != 0, lst1)
+    even_in_lst2 = sum(x -> x % 2 == 0, lst2)
+
+    if odd_in_lst1 <= even_in_lst2
+        return "YES"
+    else
+        return "NO"
+    end
+end
+```
+
+This function works by first counting the number of odd numbers in lst1 and even numbers in lst2. If the number of odd numbers in lst1 is less than or equal to the number of even numbers in lst2, it means it is possible to exchange elements between lst1 and lst2 to make all the elements of lst1 to be even, so it returns "YES". Otherwise, it returns "NO".

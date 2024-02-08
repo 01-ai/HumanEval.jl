@@ -1,0 +1,13 @@
+
+
+function largest_prime_factor(n::Int)::Int
+    i = 2
+    while i * i <= n
+        if n % i:
+            i += 1
+        else:
+            n ÷= i
+        end
+    end
+    return n
+end

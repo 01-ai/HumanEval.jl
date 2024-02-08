@@ -1,0 +1,39 @@
+To implement the `count_distinct_characters` function, we can follow these steps:
+
+1. Convert the input string `s` to lowercase to ensure that character comparison is case-insensitive.
+2. Create a set to store distinct characters.
+3. Iterate over each character in the lowercase string.
+4. Add each character to the set.
+5. After the iteration, the size of the set will represent the number of distinct characters.
+6. Return the size of the set.
+
+Now, let's write the code for the function:
+
+```julia
+function count_distinct_characters(s::String)::Int
+    # Step 1: Convert the string to lowercase
+    lowercase_s = lowercase(s)
+    
+    # Step 2: Create a set to store distinct characters
+    distinct_chars = Set{Char}()
+    
+    # Step 3: Iterate over each character in the lowercase string
+    for char in lowercase_s
+        # Step 4: Add each character to the set
+        push!(distinct_chars, char)
+    end
+    
+    # Step 5: The size of the set represents the number of distinct characters
+    # Step 6: Return the size of the set
+    return length(distinct_chars)
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(count_distinct_characters("xyzXYZ")) # Expected output: 3
+println(count_distinct_characters("Jerry"))  # Expected output: 4
+```
+
+This function should work correctly for the given examples and other test cases.

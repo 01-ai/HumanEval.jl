@@ -1,0 +1,25 @@
+Here is a Julia function that implements the given doc string:
+
+```julia
+function check_dict_case(d::Dict{String})::Bool
+    if isempty(d)
+        return false
+    end
+
+    lower_case = true
+    upper_case = true
+
+    for key in keys(d)
+        if !all(islower, key)
+            lower_case = false
+        end
+        if !all(isupper, key)
+            upper_case = false
+        end
+    end
+
+    return lower_case || upper_case
+end
+```
+
+This function first checks if the dictionary is empty. If it is, it returns `false`. Then it iterates over the keys of the dictionary. If it finds a key that is not all lower case, it sets `lower_case` to `false`. If it finds a key that is not all upper case, it sets `upper_case` to `false`. Finally, it returns the logical OR of `lower_case` and `upper_case`. If either `lower_case` or `upper_case` is `true`, it means that all keys are either all lower case or all upper case, so the function returns `true`. If both `lower_case` and `upper_case` are `false`, it means that some keys are not all lower case and some are not all upper case, so the function returns `false`.

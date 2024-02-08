@@ -1,0 +1,20 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    strongest_ext = extensions[1]
+    strongest_strength = count(isupper, strongest_ext) - count(islower, strongest_ext)
+
+    for ext in extensions[2:end]
+        strength = count(isupper, ext) - count(islower, ext)
+        if strength > strongest_strength
+            strongest_ext = ext
+            strongest_strength = strength
+        end
+    end
+
+    return "$class_name.$strongest_ext"
+end
+```
+
+This function iterates over the list of extensions, calculating the strength of each one. If the strength of the current extension is greater than the current strongest extension, it updates the strongest extension and its strength. Finally, it returns a string in the required format.

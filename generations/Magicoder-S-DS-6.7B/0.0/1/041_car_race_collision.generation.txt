@@ -1,0 +1,12 @@
+Here is a Julia function that calculates the number of collisions:
+
+```julia
+function car_race_collision(n::Int)::Int
+    # The number of collisions is equal to the sum of the first n natural numbers.
+    # This is because each car in the left-to-right group will collide with each car in the right-to-left group.
+    # The number of collisions is n + (n-1) + (n-2) + ... + 1 = n*(n+1)/2
+    return div(n*(n+1), 2)
+end
+```
+
+This function works by using the formula for the sum of an arithmetic series. The sum of the first n natural numbers is n*(n+1)/2. This formula is derived from the formula for the sum of an arithmetic series, which is (n/2)*(first term + last term). In this case, the first term is 1 and the last term is n, so the formula simplifies to n*(n+1)/2.

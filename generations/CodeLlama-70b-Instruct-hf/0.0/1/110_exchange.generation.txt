@@ -1,0 +1,18 @@
+
+
+```julia
+function exchange(lst1::Vector{Int}, lst2::Vector{Int})::String
+    # Count the number of odd numbers in lst1
+    odd_count = count(x -> x % 2 == 1, lst1)
+
+    # If there are an odd number of odd numbers, it's not possible to make all the elements of lst1 even
+    if odd_count % 2 == 1
+        return "NO"
+    end
+
+    # If there are an even number of odd numbers, it's possible to make all the elements of lst1 even
+    return "YES"
+end
+```
+
+This function first counts the number of odd numbers in `lst1`. If there are an odd number of odd numbers, it's not possible to make all the elements of `lst1` even. If there are an even number of odd numbers, it's possible to make all the elements of `lst1` even.

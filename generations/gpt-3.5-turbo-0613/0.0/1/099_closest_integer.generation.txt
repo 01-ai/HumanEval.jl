@@ -1,0 +1,12 @@
+Here is the implementation for the `closest_integer` function:
+
+```julia
+function closest_integer(value::String)::Int
+    num = parse(Float64, value)
+    if num >= 0
+        return ceil(num)
+    else
+        return floor(num)
+    end
+end
+```

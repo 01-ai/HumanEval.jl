@@ -1,0 +1,23 @@
+Here is a step-by-step outline of how you can implement this function:
+
+1. Initialize an empty vector `positive_numbers` to store the positive numbers.
+2. Iterate over each element `x` in the input vector `xs`.
+3. Check if `x` is greater than 0.
+4. If `x` is greater than 0, append `x` to `positive_numbers`.
+5. After iterating over all elements in `xs`, return `positive_numbers`.
+
+Here is the Julia code that implements this function:
+
+```julia
+function get_positive(xs::Vector)
+    positive_numbers = Int64[]
+    for x in xs
+        if x > 0
+            push_positive_numbers(positive_numbers, x)
+        end
+    end
+    return positive_numbers
+end
+```
+
+This function uses a for loop to iterate over each element in the input vector `xs`. If the element is greater than 0, it is added to the `positive_numbers` vector using the `push_positive_numbers` function. Finally, the function returns the `positive_numbers` vector.

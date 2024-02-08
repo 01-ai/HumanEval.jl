@@ -1,0 +1,9 @@
+
+
+```julia
+function truncate_number(number::Float64)::Float64
+    return number - floor(number)
+end
+```
+
+This function takes a positive floating point number as input and returns the decimal part of the number. It uses the `floor` function to find the largest integer smaller than the given number and subtracts it from the original number to get the decimal part.

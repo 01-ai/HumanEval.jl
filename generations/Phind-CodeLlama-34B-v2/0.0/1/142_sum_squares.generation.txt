@@ -1,0 +1,18 @@
+
+
+Here is the Julia implementation of the `sum_squares` function based on the provided docstring:
+
+```julia
+function sum_squares(xs::Vector{Int})::Int
+    for i in eachindex(xs)
+        if i % 3 == 0
+            xs[i] = xs[i]^2
+        elseif i % 4 == 0
+            xs[i] = xs[i]^3
+        end
+    end
+    return sum(xs)
+end
+```
+
+This function iterates over the indices of the input vector `xs`. If the index is a multiple of 3, the corresponding element is squared. If the index is a multiple of 4 and not a multiple of 3, the corresponding element is cubed. The function then returns the sum of all elements in the modified vector `xs`.

@@ -1,0 +1,30 @@
+  Here's one way to implement the `sum_odd_at_odd` function in Julia:
+```
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    # Initialize the sum to 0
+    sum = 0
+
+    # Iterate over the elements of the vector
+    for (i, x) in enumerate(xs)
+        # Check if the element is odd and in an odd position
+        if x % 2 == 1 && i % 2 == 1
+            # Add the element to the sum
+            sum += x
+        end
+    end
+
+    # Return the sum
+    return sum
+end
+```
+Here's an explanation of how the function works:
+
+1. The function takes a single argument `xs`, which is a vector of integers.
+2. It initializes a variable `sum` to 0.
+3. It iterates over the elements of the vector using the `enumerate` function, which returns both the index and the value of each element.
+4. For each element, it checks if the element is odd (i.e., its remainder when divided by 2 is 1) and if the index is odd. If both conditions are true, it adds the element to the sum.
+5. After iterating over all elements, it returns the sum.
+
+The function uses the modulo operator (`%`) to check if a number is odd. The modulo operator returns the remainder when dividing one number by another. For example, `5 % 2` returns 1, because 5 divided by 2 has a remainder of 1. Similarly, `7 % 2` returns 1, because 7 divided by 2 has a remainder of 1.
+
+The function also uses the `enumerate` function to iterate over the elements of the vector. The `enumerate` function returns a tuple containing the index and the value of each element. For example, if `xs` is the vector `[1, 2, 3, 4, 5]`, then `enumerate(xs)` would return the tuple `(1, 1), (2, 2), (3, 3), (4, 4), (5, 5)`. The `for` loop then iterates over this tuple, using the index and value of each element to determine whether it should be added to the sum.

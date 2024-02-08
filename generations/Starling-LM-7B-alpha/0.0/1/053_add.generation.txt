@@ -1,0 +1,17 @@
+ Here's the Julia function `add` based on the provided documentation:
+
+```julia
+function add(x::Int, y::Int)
+    return x + y
+end
+```
+
+You can use this function to add two integer numbers `x` and `y`. Here are some examples of how to use the function:
+
+```julia
+julia> add(2, 3)
+5
+
+julia> add(5, 7)
+12
+```

@@ -1,0 +1,30 @@
+Certainly! Below is the Julia function `is_simple_power` that checks if `x` is a simple power of `n`:
+
+```julia
+function is_simple_power(x::Number, n::Number)::Bool
+    # If n is 1, then x must be 1 to be a simple power of n
+    if n == 1
+        return x == 1
+    end
+
+    # If x is 0 or 1, it is a simple power of any n
+    if x == 0 || x == 1
+        return true
+    end
+
+    # If n is 0, x must be 0 to be a simple power of n
+    if n == 0
+        return x == 0
+    end
+
+    # Calculate the integer power that would give x if it exists
+    power = log(x) / log(n)
+
+    # Check if the calculated power is an integer and if n raised to that power equals x
+    return isinteger(power) && n^round(Int, power) == x
+end
+```
+
+This function uses logarithms to find the power and checks if it is an integer. If the power is an integer and `n` raised to that power equals `x`, the function returns `true`. Otherwise, it returns `false`.
+
+You can test the function with the provided examples to verify its correctness.

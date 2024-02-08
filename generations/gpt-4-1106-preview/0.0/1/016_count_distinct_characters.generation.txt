@@ -1,0 +1,23 @@
+Certainly! Below is the Julia function `count_distinct_characters` that takes a string `s` as input and returns the number of distinct characters, ignoring case:
+
+```julia
+function count_distinct_characters(s::String)::Int
+    # Convert the string to lowercase to ignore case
+    lower_s = lowercase(s)
+    # Create a set to store distinct characters
+    distinct_chars = Set{Char}()
+    # Iterate over each character in the string
+    for c in lower_s
+        # Add the character to the set
+        push!(distinct_chars, c)
+    end
+    # Return the number of distinct characters
+    return length(distinct_chars)
+end
+
+# Examples
+println(count_distinct_characters("xyzXYZ")) # Output: 3
+println(count_distinct_characters("Jerry"))  # Output: 4
+```
+
+This function uses a `Set` to keep track of distinct characters. Since sets do not allow duplicate elements, adding characters to the set will automatically ensure that only distinct characters are counted. Converting the string to lowercase before processing ensures that the function is case-insensitive.

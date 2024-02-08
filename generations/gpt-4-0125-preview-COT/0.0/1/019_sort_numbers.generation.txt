@@ -1,0 +1,40 @@
+### Step-by-Step Outline
+
+1. **Define a mapping** from number words ("zero" to "nine") to their corresponding numeric values (0 to 9). This will be used to convert the input string into a list of numeric values that can be easily sorted.
+
+2. **Split the input string** into a list of words. The input string is space-delimited, so splitting by spaces will give us the individual number words.
+
+3. **Convert the list of number words to numeric values** using the mapping defined in step 1. This step transforms the problem from sorting words to sorting numbers, which is straightforward.
+
+4. **Sort the list of numeric values**. This can be done using Julia's built-in sorting functions.
+
+5. **Convert the sorted list of numeric values back to number words** using the inverse of the mapping defined in step 1. This step transforms the sorted numeric values back into the format expected for the output.
+
+6. **Join the sorted list of number words into a single string**. The output should be a space-delimited string of number words, so we'll join the list with spaces.
+
+7. **Return the sorted string**.
+
+### Julia Code Implementation
+
+```julia
+function sort_numbers(numbers::String)::String
+    # Step 1: Define the mapping from number words to numeric values
+    word_to_num = Dict("zero" => 0, "one" => 1, "two" => 2, "three" => 3, "four" => 4,
+                       "five" => 5, "six" => 6, "seven" => 7, "eight" => 8, "nine" => 9)
+
+    # Step 2: Split the input string into a list of words
+    words = split(numbers)
+
+    # Step 3: Convert the list of number words to numeric values
+    nums = map(word -> word_to_num[word], words)
+
+    # Step 4: Sort the list of numeric values
+    sorted_nums = sort(nums)
+
+    # Step 5: Convert the sorted list of numeric values back to number words
+    # Inverse the mapping for easier conversion
+    num_to_word = Dict(value => key for (key, value) in word_to_num)
+    sorted_words = map(num -> num_to_word[num], sorted_nums)
+
+    # Step 6: Join the sorted list of number words into a single string
+    sorted_string = join(sorted_words,

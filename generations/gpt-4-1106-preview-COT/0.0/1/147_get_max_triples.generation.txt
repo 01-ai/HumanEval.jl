@@ -1,0 +1,11 @@
+To implement the `get_max_triples` function, we will follow these steps:
+
+1. Initialize an array `a` of length `n`.
+2. Populate the array `a` with the formula `a[i] = i * i - i + 1` for each `i` from 1 to `n`.
+3. Initialize a counter `triples_count` to 0 to keep track of the number of valid triples.
+4. Iterate over all possible triples `(a[i], a[j], a[k])` where `i < j < k` using nested loops.
+5. For each triple, check if the sum `a[i] + a[j] + a[k]` is a multiple of 3.
+6. If the sum is a multiple of 3, increment the `triples_count`.
+7. After checking all possible triples, return the `triples_count`.
+
+Now, let's write the code for the `get_max_triples` function in Julia.

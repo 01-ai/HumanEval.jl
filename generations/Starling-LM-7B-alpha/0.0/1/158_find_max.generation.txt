@@ -1,0 +1,18 @@
+ function find_max(words::Vector{String})::String
+    max_word = ""
+    max_count = 0
+
+    for word in words
+        unique_chars = unique(word)
+        count = length(unique_chars)
+
+        if count > max_count
+            max_count = count
+            max_word = word
+        elseif count == max_count && word < max_word
+            max_word = word
+        end
+    end
+
+    return max_word
+end

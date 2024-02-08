@@ -1,0 +1,18 @@
+
+
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    if length(xs) < 2
+        return nothing
+    end
+    smallest = typemax(Int)
+    next_smallest = typemax(Int)
+    for x in xs
+        if x < smallest
+            next_smallest = smallest
+            smallest = x
+        elseif x < next_smallest && x > smallest
+            next_smallest = x
+        end
+    end
+    return next_smallest == typemax(Int) ? nothing : next_smallest
+end

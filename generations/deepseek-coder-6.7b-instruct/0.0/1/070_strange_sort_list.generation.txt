@@ -1,0 +1,21 @@
+Here is the Julia function that implements the strange sorting:
+
+```julia
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    if isempty(xs)
+        return Int[]
+    end
+
+    sorted_xs = sort(xs)
+    result = Int[]
+    while !isempty(sorted_xs)
+        pushfirst(result, popfirst(sorted_xs))  # take minimum
+        if !isempty(sorted_xs)
+            pushfirst(result, poplast(sorted_xs))  # take maximum
+        end
+    end
+    return result
+end
+```
+
+This function first sorts the input vector. Then it alternately takes the minimum and maximum from the sorted vector and pushes them to the result. If the sorted vector is not empty after taking the maximum, it repeats the process. If the sorted vector becomes empty, it returns the result.

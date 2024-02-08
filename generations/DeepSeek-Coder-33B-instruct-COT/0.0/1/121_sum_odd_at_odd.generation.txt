@@ -1,0 +1,22 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. Initialize a variable `sum` to 0. This variable will hold the sum of all odd elements at odd positions.
+2. Iterate over the list `xs` with an index `i`.
+3. Check if the index `i` is odd. If it is, check if the element at that position is odd. If it is, add it to `sum`.
+4. Return `sum`.
+
+Here is the Julia code that implements this algorithm:
+
+```julia
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    sum = 0
+    for (i, x) in enumerate(xs)
+        if i % 2 == 1 && x % 2 == 1
+            sum += x
+        end
+    end
+    return sum
+end
+```
+
+This function works by iterating over the list `xs` with an index `i`. The `enumerate` function is used to get both the index `i` and the element `x` at that position. If `i` is odd (`i % 2 == 1`) and `x` is odd (`x % 2 == 1`), `x` is added to `sum`. Finally, `sum` is returned.

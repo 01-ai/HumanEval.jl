@@ -1,0 +1,28 @@
+Here is the implementation of the `palindrome_with_append` function in Julia:
+
+```julia
+function palindrome_with_append(s::String)::String
+    n = length(s)
+    if n == 0
+        return ""
+    end
+    
+    i = n
+    while i > 1
+        if s[1:i] == reverse(s[1:i])
+            break
+        end
+        i -= 1
+    end
+    
+    return s * reverse(s[1:i-1])
+end
+```
+
+You can test the function with the provided examples:
+
+```julia
+println(palindrome_with_append(""))  # Output: ""
+println(palindrome_with_append("cat"))  # Output: "catac"
+println(palindrome_with_append("cata"))  # Output: "catac"
+```

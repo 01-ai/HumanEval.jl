@@ -1,0 +1,17 @@
+function tri(n::Int)::Vector{Int}
+    if n == 1
+        return [1]
+    elseif n == 2
+        return [1, 2]
+    else
+        seq = [1, 2, 6]
+        for i in 3:n
+            if i % 2 == 0
+                pushfirst(seq, 1 + i � 2)
+            else
+                pushfirst(seq, seq[1] + seq[2] + seq[3])
+            end
+        end
+        return seq[1:n]
+    end
+end

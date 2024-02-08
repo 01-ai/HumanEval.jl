@@ -1,0 +1,5 @@
+```julia
+function truncate_number(number::Float64)::Float64
+    return number - floor(number)
+end
+```

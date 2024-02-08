@@ -1,0 +1,23 @@
+
+
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    groups = split(paren_string)
+    nesting_levels = Int[]
+    for group in groups
+        current_level = 0
+        max_level = 0
+        for char in group
+            if char == '('
+                current_level += 1
+                max_level = max(max_level, current_level)
+            elseif char == ')'
+                current_level -= 1
+            end
+        end
+        push!(nesting_levels, max_level)
+    end
+    return nesting_levels
+end
+
+# Test cases
+println(parse_nested_parens("(()()) ((())) () ((())()())"))

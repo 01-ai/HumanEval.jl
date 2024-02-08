@@ -1,0 +1,18 @@
+Here is the Julia function that implements the doc string:
+
+```julia
+function sort_third(l::Vector)
+    divisible_by_three = [l[i] for i in 1:3:length(l)]
+    sort(divisible_by_three)
+    j = 1
+    for i in 1:3:length(l)
+        l[i] = divisible_by_three[j]
+        j += 1
+    end
+    return l
+end
+```
+
+This function first creates a list of elements at indices divisible by three. It then sorts this list. After that, it replaces the elements at the indices divisible by three in the original list with the sorted elements.
+
+Please note that this function modifies the original list. If you want to keep the original list unchanged, you should make a copy of it before calling this function.

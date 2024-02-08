@@ -1,0 +1,12 @@
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    unique_numbers = Int[]
+    for num in numbers
+        if !(num in unique_numbers)
+            pushfirst(unique_numbers, num)
+        end
+    end
+    return unique_numbers
+end
+
+# Test the function
+println(remove_duplicates([1, 2, 3, 2, 4]))

@@ -1,0 +1,11 @@
+
+
+using MD5
+
+function string_to_md5(text::String)::Union{Nothing,String}
+    if isempty(text)
+        return nothing
+    else
+        return bytes2hex(MD5.md5(text))
+    end
+end

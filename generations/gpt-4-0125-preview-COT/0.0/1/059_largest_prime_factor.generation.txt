@@ -1,0 +1,37 @@
+### Step-by-Step Outline
+
+1. **Initialize Variables**: Start with two variables, `factor` set to 2 (the smallest prime number) and `largest_factor` set to 1 (to store the largest prime factor found).
+
+2. **Divide `n` by the Smallest Factor**: While `n` is divisible by `factor`, divide `n` by `factor` and update `largest_factor` to `factor`. This step removes the smallest factors first, ensuring that when we can no longer divide `n` by `factor`, `factor` is either a prime number or 1.
+
+3. **Increment `factor`**: If `n` is no longer divisible by `factor`, increment `factor`. If `factor` equals 2, increment by 1 to check the next prime (3). For any `factor` greater than 2, increment by 2 to skip even numbers, which are not prime (except for 2).
+
+4. **Repeat Steps 2 and 3**: Continue the process until `factor` squared is greater than `n`. At this point, if `n` is not 1, it means `n` itself is a prime number and is the largest prime factor.
+
+5. **Return the Largest Prime Factor**: If `n` is greater than 1 after the loop, it means the remaining `n` is the largest prime factor. Otherwise, return `largest_factor`.
+
+### Julia Code Implementation
+
+```julia
+function largest_prime_factor(n::Int)::Int
+    factor = 2
+    largest_factor = 1
+
+    while factor * factor <= n
+        if n % factor == 0
+            largest_factor = factor
+            n ÷= factor
+        else
+            factor == 2 ? factor += 1 : factor += 2
+        end
+    end
+
+    if n > 1
+        largest_factor = n
+    end
+
+    return largest_factor
+end
+```
+
+This function iteratively divides `n` by the smallest factors, efficiently finding the largest prime factor by ensuring that once it cannot divide by smaller primes, any remaining `n` is the largest prime factor. Incrementing the factor by 2 after 2 skips non-prime even numbers, optimizing the search for prime factors.

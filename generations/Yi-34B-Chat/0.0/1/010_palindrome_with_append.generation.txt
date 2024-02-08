@@ -1,0 +1,43 @@
+```julia
+function palindrome_with_append(s::String)::String
+    # Find the longest postfix of the string that is a palindrome
+    palindrome_length = find_longest_palindrome_suffix(s)
+    
+    # If the entire string is a palindrome, return it
+    if palindrome_length == length(s)
+        return s
+    end
+    
+    # Find the prefix that comes before the palindromic suffix
+    prefix_length = length(s) - palindrome_length
+    prefix = s[1:prefix_length]
+    
+    # Reverse the prefix and append it to the end of the string
+    reversed_prefix = reverse(prefix)
+    return s[1:palindrome_length] * reversed_prefix
+end
+
+# Helper function to find the longest palindrome suffix
+function find_longest_palindrome_suffix(s::String)
+    length_s = length(s)
+    for i in 1:length_s
+        if ispalindrome(s[i:end])
+            return i
+        end
+    end
+    return 0
+end
+
+# Check if a string is a palindrome
+function ispalindrome(s::String)
+    length_s = length(s)
+    for i in 1:length_s // 2
+        if s[i] != s[length_s - i + 1]
+            return false
+        end
+    end
+    return true
+end
+```
+
+This function works by finding the longest suffix of the string that is a palindrome. If the entire string is a palindrome, it simply returns the string. Otherwise, it finds the prefix that comes before the palindromic suffix and reverses it. Finally, it appends the reversed prefix to the end of the string to create a palindrome.

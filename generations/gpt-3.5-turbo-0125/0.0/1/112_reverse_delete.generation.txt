@@ -1,0 +1,7 @@
+```julia
+function reverse_delete(s::String, c::String)::Tuple{String, Bool}
+    result = filter(x -> !in(x, c), s)
+    is_palindrome = result == reverse(result)
+    return result, is_palindrome
+end
+```

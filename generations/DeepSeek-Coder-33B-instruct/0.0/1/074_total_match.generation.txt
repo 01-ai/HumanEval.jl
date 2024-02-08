@@ -1,0 +1,39 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function total_match(xs::Vector{String}, ys::Vector{String})::Vector{String}
+    xs_total = sum(length.(xs))
+    ys_total = sum(length.(ys))
+    return xs_total < ys_total ? xs : ys
+end
+```
+
+This function works by first calculating the total number of characters in each list by summing the lengths of all strings in each list. It then compares these totals and returns the list with the smaller total. If the totals are equal, it returns the first list.
+
+Let's test the function with the provided examples:
+
+```julia
+println(total_match(String[], String[]))
+println(total_match(["hi", "admin"], ["hI", "Hi"]))
+println(total_match(["hi", "admin"], ["hi", "hi", "admin", "project"]))
+println(total_match(["hi", "admin"], ["hI", "hi", "hi"]))
+println(total_match(["4"], ["1", "2", "3", "4", "5"]))
+```
+
+This should output:
+
+```
+String[]
+2-element Vector{String}:
+ "hI"
+ "Hi"
+2-element Vector{String}:
+ "hi"
+ "admin"
+3-element Vector{String}:
+ "hI"
+ "hi"
+ "hi"
+1-element Vector{String}:
+ "4"
+```

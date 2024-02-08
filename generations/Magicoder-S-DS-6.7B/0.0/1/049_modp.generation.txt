@@ -1,0 +1,7 @@
+function modp(n::Int, p::Int)::Int
+    if n == 0
+        return 1
+    else
+        return (2 * modp(n - 1, p)) % p
+    end
+end

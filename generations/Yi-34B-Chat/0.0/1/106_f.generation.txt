@@ -1,0 +1,22 @@
+```julia
+function f(n::Int)::Vector{Int}
+    # Initialize an empty vector to store the results
+    result = Vector{Int}(undef, n)
+    
+    # Loop through each index from 1 to n
+    for i in 1:n
+        # If the index is even, calculate the factorial
+        if i % 2 == 0
+            result[i] = factorial(i)
+        # If the index is odd, calculate the sum of numbers from 1 to i
+        else
+            result[i] = sum(1:i)
+        end
+    end
+    
+    # Return the result vector
+    return result
+end
+```
+
+This function defines a `f` function that takes an integer `n` as input and returns a vector of length `n`. For even indices, it calculates the factorial of the index, and for odd indices, it calculates the sum of numbers from 1 to the index. The `factorial` function is used to compute the factorial of a number, and the `sum` function is used to compute the sum of a range of numbers.

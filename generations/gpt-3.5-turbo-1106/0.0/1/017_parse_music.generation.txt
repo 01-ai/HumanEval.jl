@@ -1,0 +1,8 @@
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    notes = split(music_string, " ")
+    durations = Dict("o"=>4, "o|"=>2, ".|"=>1)
+    result = [durations[note] for note in notes]
+    return result
+end
+```

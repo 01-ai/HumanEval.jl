@@ -1,0 +1,13 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function rounded_avg(n::Int, m::Int)::Union{Int, String}
+    if n > m
+        return -1
+    end
+    avg = round(Int, (n + m) / 2)
+    return string(avg, base = 2)
+end
+```
+
+This function first checks if `n` is greater than `m`. If it is, it returns `-1`. Otherwise, it calculates the average of `n` and `m`, rounds it to the nearest integer, and converts it to binary. The `string` function is used to convert the binary number to a string.

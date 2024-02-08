@@ -1,0 +1,23 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. Initialize a variable `sum` to 0. This variable will hold the sum of the ASCII codes of the uppercase characters.
+2. Iterate over each character in the string.
+3. Check if the character is uppercase. You can do this by comparing the ASCII value of the character with the ASCII values of 'A' and 'Z'. If the ASCII value of the character is between the ASCII values of 'A' and 'Z', then it is an uppercase character.
+4. If the character is uppercase, add its ASCII value to `sum`.
+5. After iterating over all characters in the string, return `sum`.
+
+Here is the Julia code that implements the above steps:
+
+```julia
+function digitSum(s::String)::Int
+    sum = 0
+    for c in s
+        if 'A' <= c <= 'Z'
+            sum += Int(c)
+        end
+    end
+    return sum
+end
+```
+
+This function works by iterating over each character in the string `s`. If the character is an uppercase letter (i.e., its ASCII value is between the ASCII values of 'A' and 'Z'), it adds the ASCII value of the character to `sum`. Finally, it returns `sum`, which is the sum of the ASCII values of the uppercase characters in `s`.

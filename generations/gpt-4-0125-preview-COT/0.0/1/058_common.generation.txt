@@ -1,0 +1,26 @@
+### Step-by-Step Outline
+
+1. **Find Common Elements**: Identify the common elements between the two input vectors `l1` and `l2`. This can be done by using set intersection or by filtering elements that are present in both lists.
+
+2. **Remove Duplicates**: Ensure that the resulting list of common elements does not contain duplicates. This can be naturally achieved if using set operations in step 1, as sets inherently do not contain duplicates.
+
+3. **Sort the Result**: Sort the list of common elements in ascending order to meet the requirement of returning a sorted list.
+
+4. **Return the Result**: Return the sorted list of unique common elements.
+
+### Julia Code Implementation
+
+```julia
+function common(l1::Vector, l2::Vector)::Vector
+    # Step 1 & 2: Find common elements and remove duplicates by converting lists to sets
+    common_elements = intersect(Set(l1), Set(l2))
+    
+    # Step 3: Sort the result
+    sorted_common_elements = sort(collect(common_elements))
+    
+    # Step 4: Return the sorted list of unique common elements
+    return sorted_common_elements
+end
+```
+
+This implementation leverages Julia's built-in `intersect` function to find common elements between two sets, which inherently takes care of removing duplicates (Step 1 & 2). The `sort` function is then used to sort the resulting collection of common elements (Step 3), and the sorted list is returned (Step 4).

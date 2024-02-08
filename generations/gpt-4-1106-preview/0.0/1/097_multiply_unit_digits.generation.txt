@@ -1,0 +1,36 @@
+Certainly! Below is the Julia function `multiply_unit_digits` that takes two integers and returns the product of their unit digits:
+
+```julia
+"""
+    multiply_unit_digits(a::Int, b::Int)::Int
+
+Complete the function that takes two integers and returns the product of their
+unit digits. Assume the input is always valid.
+
+# Examples
+
+```jldoctest
+julia> multiply_unit_digits(148, 412)
+16
+
+julia> multiply_unit_digits(19, 28)
+72
+
+julia> multiply_unit_digits(2020, 1851)
+0
+
+julia> multiply_unit_digits(14, -15)
+20
+```
+"""
+function multiply_unit_digits(a::Int, b::Int)::Int
+    # Get the unit digit of each number by taking the remainder when divided by 10
+    unit_digit_a = abs(a) % 10
+    unit_digit_b = abs(b) % 10
+
+    # Return the product of the unit digits
+    return unit_digit_a * unit_digit_b
+end
+```
+
+This function uses the modulus operator `%` to extract the unit (last) digit of each integer by taking the remainder after division by 10. It also uses the `abs` function to ensure that the sign of the integers does not affect the calculation of the unit digit. The product of the unit digits is then returned.

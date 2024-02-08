@@ -1,0 +1,17 @@
+function fib(n::Int)::Int
+    if n <= 0
+        return 0
+    elseif n == 1
+        return 1
+    else
+        a, b = 0, 1
+        for _ in 2:n
+            a, b = b, a + b
+        end
+        return b
+    end
+end
+
+println(fib(10))
+println(fib(1))
+println(fib(8))

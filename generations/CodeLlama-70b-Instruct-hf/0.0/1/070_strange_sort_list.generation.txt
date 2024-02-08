@@ -1,0 +1,26 @@
+
+
+```julia
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    if length(xs) == 0
+        return Int[]
+    end
+
+    sorted_xs = sort(xs)
+    result = Int[]
+
+    while length(sorted_xs) > 0
+        append!(result, sorted_xs[1])
+        sorted_xs = sorted_xs[2:end]
+
+        if length(sorted_xs) > 0
+            append!(result, sorted_xs[end])
+            sorted_xs = sorted_xs[1:end-1]
+        end
+    end
+
+    return result
+end
+```
+
+This function first sorts the input list using the `sort` function. Then, it iterates through the sorted list, adding the minimum value to the result list, then removing it from the sorted list. If there are still elements in the sorted list, it adds the maximum value to the result list, then removes it from the sorted list. This process continues until the sorted list is empty, and the result list is returned.

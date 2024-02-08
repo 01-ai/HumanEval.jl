@@ -1,0 +1,14 @@
+```julia
+function remove_vowels(text::String)::String
+    vowels = "aeiouy"
+    result = ""
+    for c in text
+        if !(c in vowels)
+            result *= c
+        end
+    end
+    return result
+end
+```
+
+This function defines a set of vowels and iterates over the input string, `text`, adding each character to the result string `result` if it is not a vowel. The `*=` operator is used to concatenate the characters to the result string. Finally, the result string is returned.

@@ -1,0 +1,31 @@
+```julia
+function exchange(lst1::Vector{Int}, lst2::Vector{Int})::String
+    # Initialize result
+    result = "NO"
+
+    # Loop through lst1 and check if any element is odd
+    for i in lst1
+        if i % 2 != 0
+            # If there is an odd element, try to exchange it with an element from lst2
+            # until we find an even one
+            for j in lst2
+                if j % 2 == 0
+                    # Exchange the elements
+                    lst1[i], lst2[j] = lst2[j], lst1[i]
+                    # Update the result
+                    result = "YES"
+                    break
+                end
+            end
+            # If we didn't find an even element in lst2, we can't make lst1 all even
+            if result == "NO"
+                break
+            end
+        end
+    end
+
+    return result
+end
+```
+
+This function iterates through `lst1` and checks if any element is odd. If it finds an odd element, it tries to exchange it with an element from `lst2` until it finds an even one. If it succeeds in exchanging an odd element for an even one, it updates the result to "YES". The function continues to check for odd elements in `lst1` and attempts to exchange them until it reaches the end of the list or until it finds that it is not possible to make all elements of `lst1` even. If at any point it is determined that it is not possible to make `lst1` all even, the result is set to "NO" and the function returns.

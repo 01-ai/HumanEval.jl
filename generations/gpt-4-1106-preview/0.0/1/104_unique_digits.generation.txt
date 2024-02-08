@@ -1,0 +1,17 @@
+Certainly! Below is the Julia function `unique_digits` that implements the functionality described in the doc string:
+
+```julia
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    # Filter the list to include only numbers without even digits
+    filtered_xs = filter(x -> all(d -> d % 2 != 0, digits(x)), xs)
+    
+    # Sort the filtered list in increasing order
+    sort(filtered_xs)
+end
+
+# Examples
+println(unique_digits([15, 33, 1422, 1]))  # Output: [1, 15, 33]
+println(unique_digits([152, 313, 1422, 10]))  # Output: [313]
+```
+
+This function uses the `filter` function to keep only those numbers that do not contain any even digits. It checks each digit of a number using the `digits` function and the `all` function to ensure all digits are odd. Finally, it sorts the filtered list in increasing order using the `sort` function.

@@ -1,0 +1,5 @@
+
+
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    # Your code here
+end

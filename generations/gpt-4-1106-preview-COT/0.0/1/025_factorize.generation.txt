@@ -1,0 +1,30 @@
+To implement the `factorize` function, we will follow these steps:
+
+1. Initialize an empty vector to store the prime factors.
+2. Start with the smallest prime factor, which is 2.
+3. Use a loop to divide the input number `n` by the current prime factor as long as it is divisible.
+4. Each time `n` is divisible by the current prime factor, add that factor to the vector and divide `n` by the factor.
+5. Once `n` is no longer divisible by the current prime factor, increment the factor to the next prime number.
+6. Repeat steps 3-5 until the factor is greater than the square root of `n`. At this point, if `n` is not 1, it means `n` itself is a prime factor and should be added to the vector.
+7. Return the vector of prime factors.
+
+Now, let's write the code for the `factorize` function:
+```julia
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    factor = 2
+    while factor * factor <= n
+        while n % factor == 0
+            push!(factors, factor)
+            n ÷= factor
+        end
+        factor += (factor == 2 ? 1 : 2)  # Increment by 1 if factor is 2, otherwise by 2
+    end
+    if n > 1
+        push!(factors, n)
+    end
+    return factors
+end
+```
+
+This code will return the prime factors of the input number `n` in ascending order, with each factor repeated according to its multiplicity in the factorization of `n`.

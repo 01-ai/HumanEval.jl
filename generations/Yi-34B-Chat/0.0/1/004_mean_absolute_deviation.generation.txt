@@ -1,0 +1,14 @@
+```julia
+function mean_absolute_deviation(numbers::Vector{Float64})::Float64
+    # Calculate the mean of the numbers
+    mean_value = mean(numbers)
+    
+    # Calculate the absolute differences from the mean
+    differences = abs.(numbers .- mean_value)
+    
+    # Calculate the mean of the absolute differences
+    return mean(differences)
+end
+```
+
+This function calculates the mean absolute deviation of a vector of `Float64` numbers by first finding the mean of the numbers, then calculating the absolute differences between each number and the mean, and finally taking the mean of those absolute differences.

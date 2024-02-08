@@ -1,0 +1,29 @@
+Here is a Julia function that performs the XOR operation on two binary strings:
+
+```julia
+function string_xor(a::String, b::String)::String
+    if length(a) != length(b)
+        error("Input strings must be of the same length")
+    end
+
+    result = ""
+    for i in 1:length(a)
+        if a[i] == b[i]
+            result *= "0"
+        else
+            result *= "1"
+        end
+    end
+
+    return result
+end
+```
+
+This function first checks if the two input strings are of the same length. If they are not, it throws an error. Then, it iterates over each character in the strings, performing a XOR operation on the corresponding characters and appending the result to the `result` string. If the characters are the same, it appends `0` to the `result` string, otherwise it appends `1`. Finally, it returns the `result` string.
+
+You can test this function with the provided example:
+
+```julia
+julia> string_xor("010", "110")
+"100"
+```

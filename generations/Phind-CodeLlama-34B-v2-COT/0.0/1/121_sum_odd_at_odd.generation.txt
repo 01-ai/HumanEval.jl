@@ -1,0 +1,25 @@
+
+
+# Outline
+
+1. Initialize a variable `sum` to 0. This will hold the sum of all odd elements at odd positions.
+2. Iterate over the input vector `xs` with a for loop.
+3. In each iteration, check if the current index is odd and the element at that index is odd.
+4. If both conditions are met, add the element to `sum`.
+5. After the loop, return `sum`.
+
+# Code
+
+```julia
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    sum = 0
+    for i in 1:2:length(xs)  # step by 2 to consider only odd indices
+        if xs[i] % 2 != 0  # check if the element is odd
+            sum += xs[i]
+        end
+    end
+    return sum
+end
+```
+
+This function works by iterating over the elements of `xs` with a step of 2, which means it only considers odd indices. Then, for each element, it checks if it's odd and, if it is, adds it to `sum`. Finally, it returns `sum`.

@@ -1,0 +1,10 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function monotonic(l::Vector)::Bool
+    diffs = [l[i+1] - l[i] for i in 1:(length(l)-1)]
+    return all(x -> x >= 0, diffs) || all(x -> x <= 0, diffs)
+end
+```
+
+This function works by creating a list of differences between consecutive elements in the input list. If all differences are non-negative (i.e., the list is monotonically increasing), or all differences are non-positive (i.e., the list is monotonically decreasing), the function returns true. Otherwise, it returns false.

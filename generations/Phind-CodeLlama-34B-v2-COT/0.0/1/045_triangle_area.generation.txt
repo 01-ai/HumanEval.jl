@@ -1,0 +1,26 @@
+
+
+# Outline
+
+1. Define the function `triangle_area(a, h)` with two arguments, `a` and `h`.
+2. Calculate the area of the triangle using the formula `0.5 * a * h`.
+3. Return the calculated area.
+
+# Code
+
+```julia
+function triangle_area(a, h)
+    # Calculate the area of the triangle
+    area = 0.5 * a * h
+    
+    # Return the calculated area
+    return area
+end
+```
+
+# Test
+
+```julia
+julia> triangle_area(5, 3)
+7.5
+```

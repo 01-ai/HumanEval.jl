@@ -1,0 +1,40 @@
+To implement the `modp` function, we will follow these steps:
+
+1. Check if `p` is equal to 1. If so, return 0 because any number modulo 1 is 0.
+2. Initialize a variable to hold the result, starting with 1 (since 2^0 mod p is always 1).
+3. Use a loop to iterate `n` times, each time multiplying the result by 2 and taking the modulo `p` to keep the intermediate result small and avoid integer overflow.
+4. Return the result after the loop.
+
+Now, let's write the code for the `modp` function:
+
+```julia
+function modp(n::Int, p::Int)::Int
+    # Step 1: Handle the case when p is 1
+    if p == 1
+        return 0
+    end
+    
+    # Step 2: Initialize the result
+    result = 1
+    
+    # Step 3: Loop n times to calculate 2^n mod p
+    for i in 1:n
+        result = (result * 2) % p
+    end
+    
+    # Step 4: Return the result
+    return result
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(modp(3, 5))   # Expected output: 3
+println(modp(1101, 101))  # Expected output: 2
+println(modp(0, 101))  # Expected output: 1
+println(modp(3, 11))  # Expected output: 8
+println(modp(100, 101))  # Expected output: 1
+```
+
+This function should work correctly for the given examples, but be aware that for very large values of `n`, this approach might still be inefficient. In such cases, more advanced techniques like exponentiation by squaring could be used to improve performance.

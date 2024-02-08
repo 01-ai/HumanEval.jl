@@ -1,0 +1,11 @@
+
+
+function split_words(txt::String)::Union{Vector{<:AbstractString},Int}
+    if occursin(r"\s", txt)
+        return split(txt, r"\s")
+    elseif occursin(r",", txt)
+        return split(txt, ",")
+    else
+        return count(c -> islower(c) && c % 2 == 1, txt)
+    end
+end

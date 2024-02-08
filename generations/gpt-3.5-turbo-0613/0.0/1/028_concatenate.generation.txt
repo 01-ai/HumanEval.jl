@@ -1,0 +1,7 @@
+Here is the implementation of the `concatenate` function in Julia:
+
+```julia
+function concatenate(xs::Vector{String})::String
+    return join(xs)
+end
+```

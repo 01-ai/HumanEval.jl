@@ -1,0 +1,22 @@
+Certainly! Below is the Julia function `below_threshold` that checks if all numbers in the list `l` are below the threshold `t`.
+
+```julia
+function below_threshold(l::Vector, t::Number)::Bool
+    for num in l
+        if num >= t
+            return false
+        end
+    end
+    return true
+end
+```
+
+You can use this function in your Julia environment to check if all elements in a vector are below a certain threshold. Here are the examples from the docstring:
+
+```julia
+julia> below_threshold([1, 2, 4, 10], 100)
+true
+
+julia> below_threshold([1, 20, 4, 10], 5)
+false
+```

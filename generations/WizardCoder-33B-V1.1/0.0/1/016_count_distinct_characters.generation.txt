@@ -1,0 +1,8 @@
+
+function count_distinct_characters(s::String)::Int
+    return length(Set(lowercase(s)))
+end
+
+# Test the function
+println(count_distinct_characters("xyzXYZ"))  # Output: 3
+println(count_distinct_characters("Jerry"))  # Output: 4 

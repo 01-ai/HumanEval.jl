@@ -1,0 +1,21 @@
+  Here is an implementation of the `by_length` function in Julia:
+```
+function by_length(xs::Vector{Int})::Vector{String}
+    # Sort the integers that are between 1 and 9 inclusive
+    sorted_xs = sort(filter(x -> 1 <= x <= 9, xs))
+
+    # Reverse the resulting array
+    reversed_xs = reverse(sorted_xs)
+
+    # Replace each digit by its corresponding name
+    names = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    return [names[x] for x in reversed_xs]
+end
+```
+Here's an explanation of how the function works:
+
+1. First, we sort the input array `xs` using the `sort` function. We use the `filter` function to filter out any elements that are not between 1 and 9 inclusive.
+2. Next, we reverse the sorted array using the `reverse` function.
+3. Finally, we use a list comprehension to create a new array of strings, where each element is the name of the corresponding digit. We use the `names` array to map each digit to its name.
+
+The function returns the resulting array of strings. If the input array is empty, the function returns an empty array.

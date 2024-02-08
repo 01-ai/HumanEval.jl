@@ -1,0 +1,32 @@
+To implement the `even_odd_count` function in Julia, we can convert the integer to its absolute value (to handle negative numbers), then to a string to easily iterate through each digit. For each digit, we check if it's even or odd and increment the respective counters. Finally, we return a tuple containing the counts of even and odd digits.
+
+Here's how you can do it:
+
+```julia
+function even_odd_count(num::Int)::Tuple{Int, Int}
+    # Convert the number to its absolute value and then to a string
+    num_str = string(abs(num))
+    
+    # Initialize counters for even and odd digits
+    even_count = 0
+    odd_count = 0
+    
+    # Iterate through each character in the string
+    for digit_char in num_str
+        # Convert the character back to an integer
+        digit = parse(Int, digit_char)
+        
+        # Check if the digit is even or odd and increment the respective counter
+        if digit % 2 == 0
+            even_count += 1
+        else
+            odd_count += 1
+        end
+    end
+    
+    # Return a tuple with the counts of even and odd digits
+    return (even_count, odd_count)
+end
+```
+
+This function works by first ensuring that the input number is positive, making it easier to work with each digit. It then iterates through each digit, checks if it's even or odd, and updates the counters accordingly. Finally, it returns a tuple with the counts of even and odd digits.

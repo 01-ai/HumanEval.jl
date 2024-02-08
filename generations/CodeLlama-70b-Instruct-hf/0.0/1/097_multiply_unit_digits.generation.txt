@@ -1,0 +1,21 @@
+
+
+ Here is the Julia function that meets the requirements:
+
+```julia
+function multiply_unit_digits(a::Int, b::Int)::Int
+    # Get the unit digits of a and b
+    a_unit_digit = a % 10
+    b_unit_digit = b % 10
+
+    # If either a or b is 0, return 0
+    if a_unit_digit == 0 || b_unit_digit == 0
+        return 0
+    end
+
+    # Return the product of the unit digits
+    return a_unit_digit * b_unit_digit
+end
+```
+
+This function first extracts the unit digits of `a` and `b` using the modulo operator (`%`). It then checks if either of the unit digits is 0. If so, it returns 0. If not, it returns the product of the unit digits.

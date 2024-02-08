@@ -1,0 +1,25 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function smallest_change(xs::Vector{Int})::Int
+    n = length(xs)
+    dp = zeros(Int, n, n)
+    for gap in 1:n
+        for i in 1:n-gap
+            j = i + gap
+            if gap == 1
+                dp[i, j] = 0
+            elseif gap == 2
+                dp[i, j] = xs[i] == xs[j] ? 0 : 1
+            else
+                dp[i, j] = min(dp[i+1, j-1] + (xs[i] == xs[j] ? 0 : 1),
+                                dp[i+1, j] + 1,
+                                dp[i, j-1] + 1)
+            end
+        end
+    end
+    return dp[1, n]
+end
+```
+
+This function uses dynamic programming to solve the problem. It first initializes a 2D array `dp` where `dp[i, j]` is the minimum number of changes needed to make the subarray `xs[i:j]` palindromic. It then fills in this array in a bottom-up manner, using the recurrence relation `dp[i, j] = min(dp[i+1, j-1] + (xs[i] == xs[j] ? 0 : 1), dp[i+1, j] + 1, dp[i, j-1] + 1)`. The base cases are `dp[i, i] = 0` and `dp[i, i+1] = xs[i] == xs[i+1] ? 0 : 1`. The final result is `dp[1, n]`, where `n` is the length of `xs`.

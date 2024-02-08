@@ -1,0 +1,27 @@
+```julia
+function min_path(grid::Vector{Vector{Int}}, k::Int)::Vector{Int}
+    n = length(grid)
+    start_cell = argmin(grid)
+    path = [grid[start_cell]]
+    current_cell = start_cell
+    while length(path) < k
+        neighbors = []
+        if current_cell[1] > 1
+            push!(neighbors, (current_cell[1]-1, current_cell[2]))
+        end
+        if current_cell[1] < n
+            push!(neighbors, (current_cell[1]+1, current_cell[2]))
+        end
+        if current_cell[2] > 1
+            push!(neighbors, (current_cell[1], current_cell[2]-1))
+        end
+        if current_cell[2] < n
+            push!(neighbors, (current_cell[1], current_cell[2]+1))
+        end
+        next_cell = argmin([grid[cell] for cell in neighbors if grid[cell] ∉ path])
+        push!(path, grid[next_cell])
+        current_cell = next_cell
+    end
+    return path
+end
+```

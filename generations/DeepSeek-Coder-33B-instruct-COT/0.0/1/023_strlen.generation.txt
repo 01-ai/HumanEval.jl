@@ -1,0 +1,16 @@
+Here is the Julia function based on the given doc string:
+
+```julia
+function strlen(x::String)::Int
+    return length(x)
+end
+```
+
+This function takes a string as input and returns the length of the string. The `length` function in Julia returns the number of characters in a string.
+
+You can test this function with the following code:
+
+```julia
+println(strlen("")) # should print 0
+println(strlen("abc")) # should print 3
+```

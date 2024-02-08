@@ -1,0 +1,30 @@
+```julia
+function generate_integers(a::Int, b::Int)::Vector{Int}
+    # Check if a and b are positive integers
+    if a <= 0 || b <= 0
+        throw(DomainError("a and b must be positive integers"))
+    end
+
+    # Initialize an empty vector to store the even digits
+    even_digits = Vector{Int}()
+
+    # Loop through the range of integers between a and b, inclusive
+    for i in a:b
+        # Check if the integer is even
+        if rem(i, 2) == 0
+            # Add the integer to the vector if it's not already present
+            if !(i in even_digits)
+                push!(even_digits, i)
+            end
+        end
+    end
+
+    # Sort the vector in ascending order
+    sort!(even_digits)
+
+    # Return the vector of even digits
+    return even_digits
+end
+```
+
+This function checks if the input parameters `a` and `b` are positive integers. If not, it throws a `DomainError`. It then iterates through the range of integers between `a` and `b`, inclusive, and adds the even integers to a vector. The vector is sorted in ascending order before being returned.

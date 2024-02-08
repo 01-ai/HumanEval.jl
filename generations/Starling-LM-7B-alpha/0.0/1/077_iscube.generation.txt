@@ -1,0 +1,3 @@
+ function iscube(a::Int)::Bool
+    return a == round(cbrt(a))^3
+end

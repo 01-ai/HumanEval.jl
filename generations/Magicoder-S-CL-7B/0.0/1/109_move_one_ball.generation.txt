@@ -1,0 +1,5 @@
+
+
+function move_one_ball(xs::Vector{Int})::Bool
+    # Your code here
+end

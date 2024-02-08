@@ -1,0 +1,24 @@
+Certainly! Below is the Julia function `concatenate` that takes a vector of strings and concatenates them into a single string.
+
+```julia
+"""
+    concatenate(xs::Vector{String})::String
+
+Concatenate list of strings into a single string.
+
+# Examples
+
+```jldoctest
+julia> concatenate(String[])
+""
+
+julia> concatenate(["a", "b", "c"])
+"abc"
+```
+"""
+function concatenate(xs::Vector{String})::String
+    return join(xs)
+end
+```
+
+This function uses the `join` function from Julia's standard library, which concatenates all elements of the input vector into a single string.

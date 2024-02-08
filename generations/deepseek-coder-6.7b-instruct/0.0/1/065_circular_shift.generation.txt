@@ -1,0 +1,16 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function circular_shift(x::Int, shift::Int)::String
+    digits_x = reverse(string(x))
+    len_x = length(digits_x)
+
+    if shift > len_x
+        return digits_x
+    else
+        return string(reverse(digits_x[1+shift:len_x]), digits_x[1:shift])
+    end
+end
+```
+
+This function first converts the integer `x` to a string and reverses it to get the digits in the correct order. Then it checks if `shift` is greater than the number of digits. If it is, it simply returns the reversed digits. If not, it slices the reversed digits into two parts: the part that will be at the beginning after the shift and the part that will be at the end. It then concatenates these two parts in the correct order to get the final result.

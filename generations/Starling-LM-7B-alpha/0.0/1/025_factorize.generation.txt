@@ -1,0 +1,23 @@
+ Here's a Julia function that implements the factorization of an integer into its prime factors:
+
+```julia
+function factorize(n::Int)::Vector{Int}
+    factors = []
+    d = 2
+    while d*d <= n
+        while n % d == 0
+            push!(factors, d)
+            n ÷= d
+        end
+        d += 1
+    end
+    if n > 1
+        push!(factors, n)
+    end
+    return factors
+end
+```
+
+This function works by iterating through all integers from 2 to the square root of the input number `n`. For each integer `d`, it checks if `n` is divisible by `d`. If it is, it adds `d` to the `factors` vector and divides `n` by `d`. This process continues until `n` is no longer divisible by `d`. Finally, if `n` is greater than 1, it means that `n` itself is a prime factor, so it is added to the `factors` vector.
+
+The function returns a vector of prime factors in ascending order, with each factor listed as many times as it appears in the factorization.

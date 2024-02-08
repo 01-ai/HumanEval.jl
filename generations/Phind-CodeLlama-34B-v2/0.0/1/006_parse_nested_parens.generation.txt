@@ -1,0 +1,30 @@
+
+
+Here is a Julia function that implements the `parse_nested_parens` function as described in the docstring:
+
+```julia
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    groups = split(paren_string)
+    nesting_levels = Int[]
+
+    for group in groups
+        current_level = 0
+        max_level = 0
+
+        for char in group
+            if char == '('
+                current_level += 1
+                max_level = max(max_level, current_level)
+            elseif char == ')'
+                current_level -= 1
+            end
+        end
+
+        push!(nesting_levels, max_level)
+    end
+
+    return nesting_levels
+end
+```
+
+This function first splits the input string into groups of parentheses. Then, for each group, it iterates through the characters, keeping track of the current nesting level and the maximum nesting level seen so far. Finally, it appends the maximum nesting level of each group to the `nesting_levels` vector, which it returns at the end.

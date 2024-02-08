@@ -1,0 +1,18 @@
+```julia
+function filter_integers(values::AbstractVector)::Vector{Int}
+    # Initialize an empty vector to hold the integers
+    integers = Vector{Int}()
+
+    # Iterate over the values and filter out the integers
+    for value in values
+        if isinteger(value)
+            push!(integers, value)
+        end
+    end
+
+    # Return the filtered vector of integers
+    return integers
+end
+```
+
+This function takes a vector of any values and filters out all the integers from it. It returns a vector containing only the integers found in the original vector.

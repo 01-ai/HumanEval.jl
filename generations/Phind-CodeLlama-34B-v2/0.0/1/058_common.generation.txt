@@ -1,0 +1,17 @@
+
+
+Here is the Julia function that implements the above docstring:
+
+```julia
+function common(l1::Vector, l2::Vector)::Vector
+    # Find common elements between the two lists
+    common_elements = intersect(l1, l2)
+
+    # Sort the common elements
+    sort!(common_elements)
+
+    return common_elements
+end
+```
+
+This function uses the `intersect` function to find the common elements between the two input vectors, and the `sort!` function to sort the resulting vector in-place.

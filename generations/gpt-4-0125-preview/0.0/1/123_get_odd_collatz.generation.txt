@@ -1,0 +1,40 @@
+To implement the `get_odd_collatz` function in Julia, we will follow these steps:
+
+1. Initialize an empty list to store the odd numbers in the Collatz sequence.
+2. Use a loop to generate the Collatz sequence starting from `n`, and at each step, check if the current number is odd. If it is, add it to the list.
+3. Once the sequence reaches 1, break out of the loop.
+4. Sort the list of odd numbers in increasing order.
+5. Return the sorted list.
+
+Here is the Julia code that implements these steps:
+
+```julia
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    # Initialize an empty list to store odd numbers
+    odd_numbers = BigInt[]
+
+    # Convert n to BigInt to avoid overflow
+    current = BigInt(n)
+
+    # Generate the Collatz sequence and collect odd numbers
+    while true
+        if current % 2 != 0  # Check if the current number is odd
+            push!(odd_numbers, current)
+        end
+        if current == 1
+            break
+        elseif current % 2 == 0
+            current ÷= 2
+        else
+            current = 3*current + 1
+        end
+    end
+
+    # Sort the list of odd numbers in increasing order
+    sort!(odd_numbers)
+
+    return odd_numbers
+end
+```
+
+This function starts with the given positive integer `n` and iteratively applies the rules of the Collatz sequence. It checks for odd numbers in the sequence and adds them to a list. After the sequence reaches 1, it sorts the list of collected odd numbers and returns it.

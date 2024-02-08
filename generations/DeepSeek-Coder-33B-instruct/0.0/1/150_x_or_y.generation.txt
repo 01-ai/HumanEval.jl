@@ -1,0 +1,33 @@
+Here is a Julia function that implements the logic described in the doc string:
+
+```julia
+function x_or_y(n::Int, x::Int, y::Int)::Int
+    if isprime(n)
+        return x
+    else
+        return y
+    end
+end
+
+function isprime(n::Int)::Bool
+    if n ≤ 1
+        return false
+    elseif n ≤ 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i ≤ n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+```
+
+This function first checks if `n` is a prime number by calling the `isprime` function. If `n` is a prime number, it returns `x`. Otherwise, it returns `y`.
+
+The `isprime` function checks if a number is prime by checking if it is less than or equal to 1, if it is, it returns `false`. If `n` is less than or equal to 3, it returns `true`. If `n` is divisible by 2 or 3, it returns `false`. Then it checks if `n` is divisible by any number from 5 to the square root of `n`. If `n` is divisible by any of these numbers, it returns `false`. Otherwise, it returns `true`.

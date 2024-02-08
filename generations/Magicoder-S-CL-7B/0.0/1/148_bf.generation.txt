@@ -1,0 +1,17 @@
+
+
+function bf(planet1::String, planet2::String)::NTuple
+    planets = ("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune")
+    index1 = findfirst(isequal(planet1), planets)
+    index2 = findfirst(isequal(planet2), planets)
+
+    if index1 === nothing || index2 === nothing
+        return ()
+    end
+
+    if index1 > index2
+        return planets[index2+1:index1]
+    else
+        return planets[index1+1:index2]
+    end
+end

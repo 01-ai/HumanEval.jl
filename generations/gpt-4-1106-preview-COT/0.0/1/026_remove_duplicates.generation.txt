@@ -1,0 +1,29 @@
+### Step-by-step Outline:
+
+1. Initialize an empty `Vector{Int}` to store the unique elements.
+2. Initialize an empty `Set{Int}` to keep track of the elements that have been seen.
+3. Iterate through each element in the input `numbers` vector.
+4. For each element, check if it is already in the set.
+   - If it is not in the set, add it to both the set and the unique elements vector.
+   - If it is in the set, continue to the next element without adding it to the unique elements vector.
+5. Return the vector containing the unique elements.
+
+### Julia Code:
+
+```julia
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    unique_elements = Vector{Int}()
+    seen = Set{Int}()
+    
+    for number in numbers
+        if !(number in seen)
+            push!(seen, number)
+            push!(unique_elements, number)
+        end
+    end
+    
+    return unique_elements
+end
+```
+
+Now, let's implement the function in Julia.

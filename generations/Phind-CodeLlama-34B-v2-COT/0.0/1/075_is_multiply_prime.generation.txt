@@ -1,0 +1,32 @@
+
+
+# Outline
+
+1. Define the function `is_multiply_prime(a::Int)::Bool`.
+2. Initialize a variable `factors` as an empty array.
+3. Iterate over the range 2:a to find the factors of `a`.
+4. For each factor, check if it is prime.
+5. If the factor is prime, add it to the `factors` array.
+6. After the loop, check if the length of `factors` is 3.
+7. If it is, return `true`. Otherwise, return `false`.
+
+# Code
+
+```julia
+function is_multiply_prime(a::Int)::Bool
+    factors = Int[]
+    for i in 2:a
+        if a % i == 0
+            push!(factors, i)
+        end
+    end
+    return length(factors) == 3
+end
+```
+
+# Test
+
+```julia
+julia> is_multiply_prime(30)
+true
+```

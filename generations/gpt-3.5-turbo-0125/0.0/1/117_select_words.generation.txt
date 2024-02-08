@@ -1,0 +1,7 @@
+```julia
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    words = split(s)
+    result = filter(word -> count(c -> c in "aeiouAEIOU", word) == length(word), words)
+    return result
+end
+```

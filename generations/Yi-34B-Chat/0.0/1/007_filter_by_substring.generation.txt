@@ -1,0 +1,20 @@
+```julia
+function filter_by_substring(strings::Vector{String}, substring::AbstractString)::Vector{String}
+    # Initialize an empty vector to store the filtered strings
+    filtered_strings = Vector{String}()
+    
+    # Iterate over the input strings
+    for str in strings
+        # Check if the current string contains the substring
+        if occursin(substring, str)
+            # If so, add it to the filtered list
+            push!(filtered_strings, str)
+        end
+    end
+    
+    # Return the filtered list of strings
+    return filtered_strings
+end
+```
+
+This function takes a vector of strings `strings` and a substring `substring` as inputs. It filters the `strings` vector by only keeping the strings that contain the `substring`. If no strings contain the substring, an empty vector is returned.

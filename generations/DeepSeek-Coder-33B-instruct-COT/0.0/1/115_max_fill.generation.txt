@@ -1,0 +1,20 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+    m, n = size(grid)
+    buckets = 0
+    for j in 1:n
+        filled = 0
+        for i in 1:m
+            filled += grid[i][j]
+        end
+        buckets += div(filled, capacity) + (filled % capacity > 0 ? 1 : 0)
+    end
+    return buckets
+end
+```
+
+This function works by iterating over each column (well) in the grid. For each well, it counts the number of filled units of water. Then, it calculates the number of buckets needed to empty the well by dividing the number of filled units by the bucket capacity and adding 1 if there is a remainder. This is done for all wells and the total number of buckets is returned.
+
+The time complexity of this function is O(m*n), where m is the number of rows and n is the number of columns in the grid. The space complexity is O(1), as no additional space is used that scales with the size of the input.

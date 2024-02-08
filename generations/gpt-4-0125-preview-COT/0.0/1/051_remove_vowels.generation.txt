@@ -1,0 +1,33 @@
+### Step-by-Step Outline
+
+1. **Define the function** `remove_vowels` that takes a single argument, `text`, which is a string.
+2. **Identify vowels**: Create a list or string of vowels to be removed. Consider both uppercase and lowercase vowels to ensure the function works regardless of the case.
+3. **Remove vowels from the text**: Iterate through each character in the input string and check if it is not a vowel. If it is not a vowel, it should be included in the result.
+4. **Return the result**: After removing all vowels from the input string, return the modified string as the result.
+5. **Test the function** with the provided examples to ensure it works as expected.
+
+### Julia Code Implementation
+
+```julia
+function remove_vowels(text::String)::String
+    # Step 2: Define vowels
+    vowels = "aeiouAEIOU"
+    
+    # Step 3: Remove vowels from the text
+    # Use a comprehension to filter out vowels and join the result into a string
+    result = join([char for char in text if !(char in vowels)])
+    
+    # Step 4: Return the result
+    return result
+end
+
+# Step 5: Testing the function with provided examples
+println(remove_vowels(""))  # Expected: ""
+println(remove_vowels("abcdef\nghijklm"))  # Expected: "bcdf\nghjklm"
+println(remove_vowels("abcdef"))  # Expected: "bcdf"
+println(remove_vowels("aaaaa"))  # Expected: ""
+println(remove_vowels("aaBAA"))  # Expected: "B"
+println(remove_vowels("zbcd"))  # Expected: "zbcd"
+```
+
+This implementation follows the outlined steps to ensure that the function `remove_vowels` works as specified in the doc string, removing all vowels from the input string and returning the modified string.

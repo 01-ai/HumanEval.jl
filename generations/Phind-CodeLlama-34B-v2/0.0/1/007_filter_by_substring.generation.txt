@@ -1,0 +1,5 @@
+
+
+function filter_by_substring(strings::Vector{String}, substring::AbstractString)::Vector{String}
+    return filter(str -> occursin(substring, str), strings)
+end

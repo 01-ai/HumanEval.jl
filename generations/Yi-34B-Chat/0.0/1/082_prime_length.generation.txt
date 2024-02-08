@@ -1,0 +1,7 @@
+```julia
+function prime_length(s::String)::Bool
+    length_s = length(s)
+    isprime(length_s) || return false
+    true
+end
+```

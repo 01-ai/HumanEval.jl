@@ -1,0 +1,33 @@
+Here is a Julia function that separates the parentheses groups:
+
+```julia
+function separate_paren_groups(paren_string::String)::Vector{String}
+    paren_string = replace(paren_string, " " => "")  # remove spaces
+    groups = String[]
+    stack = Int[]
+    start = 1
+    for (i, c) in enumerate(paren_string)
+        if c == '('
+            pushfirst(stack, i)
+        elseif c == ')'
+            start = popfirst(stack) + 1
+            pushfirst(groups, paren_string[start:i])
+        end
+    end
+    return groups
+end
+```
+
+This function works by iterating over the characters in the string. It uses a stack to keep track of the positions of the open parentheses. When it encounters a closed parenthesis, it pops the position of the corresponding open parenthesis from the stack, and uses this position to slice the string to get the group of parentheses. It then adds this group to the list of groups.
+
+The function returns the list of groups as a vector of strings.
+
+Here is how you can use this function:
+
+```julia
+julia> separate_paren_groups("( ) (( )) (( )( ))")
+3-element Vector{String}:
+ "()"
+ "(())"
+ "(()())"
+```

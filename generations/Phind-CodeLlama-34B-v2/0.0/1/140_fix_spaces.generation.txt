@@ -1,0 +1,9 @@
+
+
+function fix_spaces(s::String)::String
+    # Replace all spaces with underscores
+    new_s = replace(s, " " => "_")
+
+    # Replace two or more consecutive underscores with -
+    return replace(new_s, "_+" => "-")
+end

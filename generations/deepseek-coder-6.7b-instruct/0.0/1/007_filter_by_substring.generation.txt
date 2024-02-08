@@ -1,0 +1,27 @@
+Here is the Julia function that filters an input list of strings based on a given substring:
+
+```julia
+function filter_by_substring(strings::Vector{String}, substring::AbstractString)::Vector{String}
+    return filter(s -> contains(s, substring), strings)
+end
+```
+
+This function uses the built-in `filter` function in Julia, which takes a function and a collection, and returns a new collection containing only the elements for which the function returns `true`. The function `contains(s, substring)` checks if the string `s` contains the substring `substring`.
+
+You can use this function as follows:
+
+```julia
+strings = ["abc", "bacd", "cde", "array"]
+substring = "a"
+filtered_strings = filter_by_substring(strings, substring)
+println(filtered_strings)
+```
+
+This will output:
+
+```
+3-element Vector{String}:
+ "abc"
+ "bacd"
+ "array"
+```

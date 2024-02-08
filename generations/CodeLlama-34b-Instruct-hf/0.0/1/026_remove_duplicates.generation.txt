@@ -1,0 +1,20 @@
+  Here's one way to implement the `remove_duplicates` function in Julia:
+```
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    unique_numbers = Set{Int}()
+    for number in numbers
+        if !(number in unique_numbers)
+            push!(unique_numbers, number)
+        end
+    end
+    return collect(unique_numbers)
+end
+```
+Here's an explanation of how the function works:
+
+1. We define a new set `unique_numbers` to store the unique elements of the input vector `numbers`.
+2. We iterate over the elements of `numbers` using a `for` loop.
+3. For each element `number` in `numbers`, we check if it is already in `unique_numbers` using the `in` operator. If it is not, we add it to `unique_numbers`.
+4. After the loop finishes, we return the elements of `unique_numbers` as a vector using the `collect` function.
+
+Note that the `Set` type in Julia is a hash set, which means that it can efficiently check for the presence of an element in constant time. This makes the `in` operator very fast, even for large sets.

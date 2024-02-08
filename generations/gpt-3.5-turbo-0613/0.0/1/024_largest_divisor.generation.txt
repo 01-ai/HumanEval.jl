@@ -1,0 +1,13 @@
+Here is the implementation of the `largest_divisor` function in Julia:
+
+```julia
+function largest_divisor(n::Int)::Int
+    for i = n-1:-1:1
+        if n % i == 0
+            return i
+        end
+    end
+end
+```
+
+This function iterates from `n-1` down to `1` and checks if `n` is divisible by `i`. If it is, then `i` is the largest divisor of `n` and the function returns `i`.

@@ -1,0 +1,25 @@
+```julia
+function is_prime(n::Int)
+    # Base cases: 1 and 0 are not prime
+    if n <= 1
+        return false
+    end
+
+    # Check if n is divisible by 2
+    if n % 2 == 0
+        return false
+    end
+
+    # Check if n is divisible by any prime number from 3 to sqrt(n)
+    for i in 3:2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+
+    # If we reach this point, n is prime
+    return true
+end
+```
+
+This function checks if a given number `n` is prime by using a basic primality test. It handles the base cases where `n` is less than or equal to 1, and also checks if `n` is divisible by 2. If neither of these conditions are met, the function checks if `n` is divisible by any prime number from 3 to the square root of `n`. If `n` is not divisible by any of these prime numbers, it is considered prime.

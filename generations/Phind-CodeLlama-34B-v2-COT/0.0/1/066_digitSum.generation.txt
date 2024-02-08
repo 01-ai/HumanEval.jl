@@ -1,0 +1,25 @@
+
+
+# Outline
+
+1. Initialize a variable `sum` to 0. This will hold the sum of the ASCII values of uppercase characters.
+2. Iterate over each character in the input string.
+3. Check if the character is uppercase.
+4. If it is, add its ASCII value to `sum`.
+5. After the loop finishes, return `sum`.
+
+# Code
+
+```julia
+function digitSum(s::String)::Int
+    sum = 0
+    for c in s
+        if isuppercase(c)
+            sum += Int(c)
+        end
+    end
+    return sum
+end
+```
+
+This function works by iterating over each character in the input string. If the character is uppercase (determined by the `isuppercase` function), its ASCII value is added to `sum`. After all characters have been checked, `sum` is returned.

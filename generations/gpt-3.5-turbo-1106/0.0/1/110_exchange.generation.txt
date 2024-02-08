@@ -1,0 +1,17 @@
+```julia
+function exchange(lst1::Vector{Int}, lst2::Vector{Int})::String
+    # Check if lst1 already contains only even numbers
+    if all(x -> x % 2 == 0, lst1)
+        return "YES"
+    end
+    
+    # Check if there are odd numbers in lst2 that can be exchanged with lst1
+    for num in lst2
+        if num % 2 == 0
+            return "YES"
+        end
+    end
+    
+    return "NO"
+end
+```

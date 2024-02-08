@@ -1,0 +1,25 @@
+Here is a Julia function that implements the `pairs_sum_to_zero` function as described in the problem:
+
+```julia
+function pairs_sum_to_zero(l::Vector{Int})::Bool
+    # Create a set to store the numbers we've seen so far
+    seen = Set{Int}()
+
+    # Iterate over the list
+    for num in l
+        # If the negation of the current number is in the set, we've found a pair that sums to zero
+        if -num in seen
+            return true
+        end
+        # Otherwise, add the current number to the set
+        pushfirst(seen, num)
+    end
+
+    # If we've gone through the entire list and haven't found a pair that sums to zero, return false
+    return false
+end
+```
+
+This function works by iterating over the input list. For each number, it checks if its negation is in a set of numbers we've seen so far. If it is, we've found a pair of numbers that sum to zero, so we return true. If we've gone through the entire list and haven't found such a pair, we return false.
+
+The `pushfirst` function is used to add the current number to the set of seen numbers, ensuring that the most recent number is always at the start of the set. This is necessary because we want to check for pairs that sum to zero, and we want to do this as soon as possible, so we want to check the most recent pair as soon as possible.

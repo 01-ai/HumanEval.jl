@@ -1,0 +1,32 @@
+```julia
+function anti_shuffle(s::String)::String
+    # Split the string into a vector of words and spaces
+    words = split(s, " ")
+    
+    # Initialize an empty string to store the result
+    result = ""
+    
+    # Loop through each word and reverse it
+    for word in words
+        # Get the characters of the word
+        chars = collect(word)
+        
+        # Sort the characters in ascending order
+        chars = sort(chars)
+        
+        # Join the sorted characters back into a string
+        sorted_word = join(chars)
+        
+        # Append the sorted word to the result
+        result *= sorted_word * " "
+    end
+    
+    # Remove the trailing space if any
+    result = strip(result)
+    
+    # Return the ordered version of the string
+    return result
+end
+```
+
+This function takes a string `s` and splits it into a vector of words and spaces using `split`. It then iterates through each word, sorts the characters in ascending order, and joins them back into a string. Finally, it appends the sorted word to an empty string and removes the trailing space if any. The result is then returned as the ordered version of the original string.

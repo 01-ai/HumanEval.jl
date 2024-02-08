@@ -1,0 +1,20 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. First, you need to split the string into words. You can do this by using the `split` function in Julia. This function splits a string into an array of substrings based on a specified delimiter. In this case, the delimiters are either a comma or a space.
+
+2. The `split` function returns an array of strings, but it may contain empty strings if there are multiple consecutive delimiters in the original string. To remove these empty strings, you can use the `filter` function to only keep the non-empty strings.
+
+Here is the Julia code that implements these steps:
+
+```julia
+function words_string(s::String)::Vector{String}
+    words = split(s, r"[, ]")
+    return filter(x -> x != "", words)
+end
+```
+
+This function first splits the input string `s` into an array of words using the `split` function with a regular expression `r"[, ]"` as the delimiter. This regular expression matches either a comma or a space.
+
+Then, it filters out any empty strings from the array of words using the `filter` function. The `filter` function takes two arguments: a function that returns `true` for the elements you want to keep and `false` for the elements you want to discard, and an array of elements to filter. In this case, the function is `x -> x != ""`, which returns `true` for any non-empty string and `false` for an empty string.
+
+Finally, it returns the filtered array of words.

@@ -1,0 +1,36 @@
+
+```julia
+function f(n::Int)::Vector{Int}
+    # Check if n is a positive integer
+    if n < 1
+        throw(DomainError(n, "n must be a positive integer"))
+    end
+
+    # Initialize an empty list to store the results
+    result = Int[]
+
+    # Iterate from 1 to n
+    for i = 1:n
+        # If i is even, calculate the factorial
+        if i % 2 == 0
+            factorial = 1
+            for j = 1:i
+                factorial *= j
+            end
+            push!(result, factorial)
+        # If i is odd, calculate the sum of numbers from 1 to i
+        else
+            sum = 0
+            for j = 1:i
+                sum += j
+            end
+            push!(result, sum)
+        end
+    end
+
+    # Return the result list
+    return result
+end
+```
+
+This function will take `n` as a parameter and return a list of size `n`, where the value of the element at index `i` is the factorial of `i` if `i` is even or the sum of numbers from 1 to `i` otherwise.

@@ -1,0 +1,36 @@
+```julia
+function circular_shift(x::Int, shift::Int)::String
+    # Get the digits of the integer x as a string
+    digits = string(x)
+    
+    # If shift is greater than the length of the digits,
+    # return the digits reversed
+    if shift > length(digits)
+        return reverse(digits)
+    end
+    
+    # Create an array to hold the shifted digits
+    shifted_digits = Array{Char, 1}(undef, length(digits))
+    
+    # Loop over the digits and shift them to the right
+    for i in 1:length(digits)
+        # If the current position is greater than the shift,
+        # add the digit to the end of the array
+        if i > shift
+            shifted_digits[end] = digits[i]
+        else
+            # Otherwise, add the digit to the beginning of the array
+            shifted_digits[1] = digits[i]
+            # Shift the rest of the array one position to the right
+            for j in 2:length(shifted_digits)
+                shifted_digits[j] = shifted_digits[j-1]
+            end
+        end
+    end
+    
+    # Join the array of characters back into a string
+    return join(shifted_digits)
+end
+```
+
+This function takes an integer `x` and an integer `shift`, and it circularly shifts the digits of `x` by `shift` positions to the right. If `shift` is greater than the number of digits in `x`, the function returns the digits of `x` reversed. The function returns the result as a string.

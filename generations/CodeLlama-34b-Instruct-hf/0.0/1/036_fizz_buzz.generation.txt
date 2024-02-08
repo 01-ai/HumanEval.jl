@@ -1,0 +1,26 @@
+  Here's one way to implement the `fizz_buzz` function in Julia:
+```
+function fizz_buzz(n::Int)
+    count = 0
+    for i in 1:n
+        if i % 11 == 0 || i % 13 == 0
+            count += 1
+        end
+    end
+    return count
+end
+```
+This function uses a loop to iterate over the integers from 1 to `n`, and for each integer `i`, it checks if `i` is divisible by 11 or 13. If it is, the function increments the `count` variable. Finally, the function returns the value of `count`.
+
+Here are some examples of how the function can be used:
+```
+julia> fizz_buzz(50)
+0
+
+julia> fizz_buzz(78)
+2
+
+julia> fizz_buzz(79)
+3
+```
+Note that the function assumes that `n` is a positive integer. If `n` is negative or zero, the function will return an error.

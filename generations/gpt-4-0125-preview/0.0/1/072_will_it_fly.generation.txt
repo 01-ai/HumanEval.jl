@@ -1,0 +1,14 @@
+```julia
+function will_it_fly(q::Vector{Int}, w::Int)::Bool
+    # Check if the list is a palindrome
+    is_palindrome = q == reverse(q)
+    
+    # Calculate the sum of the elements in the list
+    sum_of_elements = sum(q)
+    
+    # Check if the object is balanced and the sum is less than or equal to the maximum weight
+    return is_palindrome && sum_of_elements <= w
+end
+```
+
+This function first checks if the input list `q` is a palindrome by comparing it with its reverse. Then, it calculates the sum of its elements. Finally, it returns `true` if both conditions (being a palindrome and having a sum less than or equal to `w`) are met, and `false` otherwise.

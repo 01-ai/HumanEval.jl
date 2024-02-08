@@ -1,0 +1,9 @@
+Here is the Julia function for `decode_cyclic`:
+
+```julia
+function decode_cyclic(s::String)::String
+    join((length(x) == 3 ? x[end] * x[1:2] : x for x in Iterators.partition(s, 3)))
+end
+```
+
+This function works by partitioning the input string into groups of three characters. If a group has three characters, it reverses the order of the characters. If a group has less than three characters, it leaves the group as is. The `join` function is then used to combine the groups back into a single string.

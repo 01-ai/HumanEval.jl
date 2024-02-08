@@ -1,0 +1,23 @@
+
+
+Here is a Julia function that implements the `starts_one_ends` function as described in the docstring:
+
+```julia
+function starts_one_ends(n::Int)::Int
+    if n == 1
+        return 2 # there are two numbers: 1 and 0
+    else
+        return 2 * (10^(n-1) - 1) # there are 10^(n-1) numbers starting with 1 and 10^(n-1) numbers ending with 1
+    end
+end
+```
+
+This function works by considering the possible number of n-digit numbers that start with 1 and the possible number of n-digit numbers that end with 1. Since these two sets of numbers are mutually exclusive, we can simply add their counts together to get the total count.
+
+For n-digit numbers starting with 1, there are 10^(n-1) such numbers (since there are 10 options for each of the n-1 digits).
+
+For n-digit numbers ending with 1, there are also 10^(n-1) such numbers (for the same reason).
+
+Therefore, the total count of n-digit numbers that start or end with 1 is 2 * 10^(n-1).
+
+The special case for n == 1 is handled separately, since there are only two possible 1-digit numbers: 1 and 0.

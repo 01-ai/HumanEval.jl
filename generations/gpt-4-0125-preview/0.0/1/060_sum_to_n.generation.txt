@@ -1,0 +1,8 @@
+```julia
+function sum_to_n(n::Int)::Int
+    # Using the formula for the sum of the first n natural numbers
+    return n * (n + 1) ÷ 2
+end
+```
+
+This Julia function `sum_to_n` calculates the sum of all natural numbers from `1` to `n` inclusively. It utilizes the formula for the sum of the first `n` natural numbers, which is `n * (n + 1) / 2`, to efficiently compute the result. The `÷` operator is used for integer division, ensuring the result is an integer.

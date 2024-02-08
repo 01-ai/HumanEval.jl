@@ -1,0 +1,30 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function fizz_buzz(n::Int)
+    count = 0
+    for i in 1:n-1
+        if i % 11 == 0 || i % 13 == 0
+            count += count_digit(i, 7)
+        end
+    end
+    return count
+end
+
+function count_digit(n::Int, digit::Int)
+    count = 0
+    while n > 0
+        if n % 10 == digit
+            count += 1
+        end
+        n = div(n, 10)
+    end
+    return count
+end
+```
+
+In this function, `fizz_buzz`, we iterate over all numbers less than `n` and check if they are divisible by 11 or 13. If they are, we count the number of times the digit 7 appears in the number using the `count_digit` function.
+
+The `count_digit` function takes an integer `n` and a digit `digit`, and returns the number of times `digit` appears in `n`. It does this by repeatedly dividing `n` by 10 and checking if the remainder is equal to `digit`. If it is, it increments a counter.
+
+The `div` function is used to perform integer division, which discards the remainder. This is used to "chop off" the last digit of `n` in each iteration of the while loop.

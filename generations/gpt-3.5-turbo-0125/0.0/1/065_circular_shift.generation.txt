@@ -1,0 +1,14 @@
+```julia
+function circular_shift(x::Int, shift::Int)::String
+    str_x = string(x)
+    n = length(str_x)
+    shift = shift % n
+    if shift == 0
+        return str_x
+    elseif shift == n
+        return reverse(str_x)
+    else
+        return string(reverse(str_x[1:end-shift]), reverse(str_x[end-shift+1:end]))
+    end
+end
+```

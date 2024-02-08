@@ -1,0 +1,21 @@
+
+
+Here is the Julia function that implements the above description:
+
+```julia
+function sum_squares(xs::Vector{Int})::Int
+    sum = 0
+    for (i, x) in enumerate(xs)
+        if i % 3 == 0 && i % 4 != 0
+            sum += x^2
+        elseif i % 4 == 0
+            sum += x^3
+        else
+            sum += x
+        end
+    end
+    return sum
+end
+```
+
+This function works by iterating over the input vector `xs` with `enumerate`, which returns both the index `i` and the value `x` at that index. It then checks the index `i` to see if it is a multiple of 3 and not a multiple of 4, in which case it squares `x` and adds it to `sum`. If `i` is a multiple of 4 and not a multiple of 3, it cubes `x` and adds it to `sum`. If `i` is neither a multiple of 3 nor a multiple of 4, it simply adds `x` to `sum`. The function finally returns `sum`. 

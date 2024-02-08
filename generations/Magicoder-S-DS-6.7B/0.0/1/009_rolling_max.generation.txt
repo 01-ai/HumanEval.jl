@@ -1,0 +1,11 @@
+function rolling_max(numbers::Vector{Int})::Vector{Int}
+    max_numbers = Int[]
+    current_max = typemin(Int)
+    for number in numbers
+        if number > current_max
+            current_max = number
+        end
+        pushfirst(max_numbers, current_max)
+    end
+    return max_numbers
+end

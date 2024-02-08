@@ -1,0 +1,15 @@
+Here is a Julia function that implements the given problem:
+
+```julia
+function cycpattern_check(a::String, b::String)::Bool
+    for i in 1:length(b)
+        if occursin(b, a)
+            return true
+        end
+        b = b[end:end] * b[1:end-1]
+    end
+    return false
+end
+```
+
+This function works by iterating over the length of the second string `b`. For each iteration, it checks if `b` is a substring of `a`. If it is, it returns `true`. If not, it rotates `b` by moving the last character to the front of the string. This is done by taking the last character of `b` and appending it to the front of `b`. This process is repeated until all rotations of `b` have been checked. If none of the rotations of `b` are substrings of `a`, the function returns `false`.

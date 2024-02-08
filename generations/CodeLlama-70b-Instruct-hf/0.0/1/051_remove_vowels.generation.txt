@@ -1,0 +1,10 @@
+
+
+```julia
+function remove_vowels(text::String)::String
+    vowels = "aeiouAEIOU"
+    return replace(text, Regex("[$vowels]"), "")
+end
+```
+
+This function takes a string as input and returns a string with all vowels removed. It first defines a string of vowels, then uses the `replace` function to replace all occurrences of vowels with an empty string.

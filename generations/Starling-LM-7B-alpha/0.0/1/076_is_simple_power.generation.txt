@@ -1,0 +1,41 @@
+ Here's a Julia function that implements the `is_simple_power` function as described in the docstring:
+
+```julia
+function is_simple_power(x::Number, n::Number)::Bool
+    if x == 1
+        return true
+    end
+
+    while x % n == 0
+        x ÷= n
+    end
+
+    return x == 1
+end
+```
+
+This function first checks if `x` is equal to 1, in which case it returns `true` since any number raised to the power of 1 is itself. If `x` is not equal to 1, the function repeatedly divides `x` by `n` as long as the result is divisible by `n`. If the final result is 1, the function returns `true`, indicating that `x` is a simple power of `n`. Otherwise, it returns `false`.
+
+Here are some examples of the function in action:
+
+```julia
+julia> is_simple_power(1, 4)
+true
+
+julia> is_simple_power(2, 2)
+true
+
+julia> is_simple_power(8, 2)
+true
+
+julia> is_simple_power(3, 2)
+false
+
+julia> is_simple_power(3, 1)
+false
+
+julia> is_simple_power(5, 3)
+false
+```
+
+These examples demonstrate that the function correctly identifies whether a number is a simple power of another number.

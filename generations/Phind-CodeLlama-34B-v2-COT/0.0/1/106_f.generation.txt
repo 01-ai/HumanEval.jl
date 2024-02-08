@@ -1,0 +1,28 @@
+
+
+# Outline
+
+1. Initialize an empty vector `result` of size `n`.
+2. Iterate over the range 1 to `n`.
+3. For each iteration, check if the current index `i` is even.
+4. If `i` is even, calculate the factorial of `i` and append it to `result`.
+5. If `i` is not even, calculate the sum of numbers from 1 to `i` and append it to `result`.
+6. Return `result`.
+
+# Code
+
+```julia
+function f(n::Int)::Vector{Int}
+    result = Vector{Int}(undef, n)
+    for i in 1:n
+        if i % 2 == 0
+            result[i] = factorial(i)
+        else
+            result[i] = sum(1:i)
+        end
+    end
+    return result
+end
+```
+
+This function works by first initializing a vector `result` of size `n`. Then, it iterates over the range 1 to `n`. For each index `i`, it checks if `i` is even. If `i` is even, it calculates the factorial of `i` and appends it to `result`. If `i` is not even, it calculates the sum of numbers from 1 to `i` and appends it to `result`. Finally, it returns `result`.

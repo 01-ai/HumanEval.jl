@@ -1,0 +1,16 @@
+
+
+Here is the Julia function that implements the required functionality:
+
+```julia
+function fix_spaces(s::String)::String
+    s = replace(s, " " => "_")
+    s = replace(s, "__" => "-")
+    if s[1] == '_'
+        s = s[2:end]
+    end
+    return s
+end
+```
+
+This function works by first replacing all spaces with underscores, then replacing all double underscores with a single dash. If the first character of the resulting string is an underscore, it is removed. 

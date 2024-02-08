@@ -1,0 +1,24 @@
+```julia
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    # Check if there are at least two elements in the vector
+    if length(numbers) < 2
+        throw(ArgumentError("The vector must contain at least two elements."))
+    end
+
+    # Find the minimum and maximum values in the vector
+    min_val = minimum(numbers)
+    max_val = maximum(numbers)
+
+    # Create an empty vector to hold the rescaled numbers
+    rescaled_numbers = Vector{Float64}(undef, length(numbers))
+
+    # Rescale each number in the vector
+    for (i, num) in enumerate(numbers)
+        rescaled_numbers[i] = (num - min_val) / (max_val - min_val)
+    end
+
+    return rescaled_numbers
+end
+```
+
+This function takes a vector of `Float64` numbers and rescales it such that the smallest number becomes 0 and the largest number becomes 1. It does this by finding the minimum and maximum values in the vector and then calculating the fractional position of each number relative to the range from the minimum to the maximum.

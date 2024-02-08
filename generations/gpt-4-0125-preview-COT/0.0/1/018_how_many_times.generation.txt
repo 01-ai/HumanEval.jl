@@ -1,0 +1,39 @@
+### Outline for `how_many_times` Function
+
+1. **Initialize a counter**: Start with a counter set to 0. This will keep track of the number of times the substring is found in the string.
+
+2. **Check for empty string or substring**: If either the main string `s` or the substring `sub_s` is empty, return 0 immediately, as an empty substring cannot be found, and searching in an empty string will also yield 0 occurrences.
+
+3. **Search for the substring in the string**:
+    - Use a loop to iterate through the string `s`.
+    - For each position in `s`, check if the substring starting at that position matches `sub_s`.
+    - If a match is found, increment the counter.
+    - Continue searching from the next position, even if the previous position was a match, to ensure overlapping cases are counted.
+
+4. **Return the counter**: After the loop completes, return the counter as the total number of times the substring was found in the string.
+
+### Julia Code for `how_many_times`
+
+```julia
+function how_many_times(s::String, sub_s::String)::Int
+    # Step 1: Initialize a counter
+    count = 0
+
+    # Step 2: Check for empty string or substring
+    if isempty(s) || isempty(sub_s)
+        return 0
+    end
+
+    # Step 3: Search for the substring in the string
+    for i in 1:length(s) - length(sub_s) + 1
+        if s[i:i+length(sub_s)-1] == sub_s
+            count += 1
+        end
+    end
+
+    # Step 4: Return the counter
+    return count
+end
+```
+
+This function iterates through the string `s`, checking for occurrences of `sub_s` at each position, including overlapping cases, and counts the total number of occurrences.

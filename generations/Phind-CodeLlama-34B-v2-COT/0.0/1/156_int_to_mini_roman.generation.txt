@@ -1,0 +1,58 @@
+
+
+To solve this problem, we can use a lookup table to map the integer values to their roman numeral equivalents. We can then iterate over the lookup table in decreasing order of the integer values, subtracting the integer value from the input number each time we find a match. We append the corresponding roman numeral to the result string each time we find a match.
+
+Here is the step-by-step outline:
+
+1. Define a lookup table mapping integer values to roman numerals.
+2. Initialize an empty string `result` to store the final roman numeral.
+3. Iterate over the lookup table in reverse order.
+4. For each pair in the lookup table, while the input number is greater than or equal to the integer value:
+   - Subtract the integer value from the input number.
+   - Append the roman numeral to `result`.
+5. Return `result`.
+
+And here is the Julia code implementing this algorithm:
+
+```julia
+function int_to_mini_roman(number::Int)::String
+    lookup = [
+        (1000, "m"),
+        (900, "cm"),
+        (500, "d"),
+        (400, "cd"),
+        (100, "c"),
+        (90, "xc"),
+        (50, "l"),
+        (40, "xl"),
+        (10, "x"),
+        (9, "ix"),
+        (5, "v"),
+        (4, "iv"),
+        (1, "i"),
+    ]
+
+    result = ""
+    for (value, numeral) in lookup
+        while number >= value
+            number -= value
+            result *= numeral
+        end
+    end
+
+    return result
+end
+```
+
+This function should now work as expected:
+
+```julia
+julia> int_to_mini_roman(19)
+"xix"
+
+julia> int_to_mini_roman(152)
+"clii"
+
+julia> int_to_mini_roman(426)
+"cdxxvi"
+```

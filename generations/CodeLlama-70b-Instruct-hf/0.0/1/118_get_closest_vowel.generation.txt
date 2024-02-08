@@ -1,0 +1,17 @@
+
+
+```julia
+function get_closest_vowel(word::String)::String
+    vowels = "aeiouAEIOU"
+    vowel_index = 0
+    for i in reverse(eachindex(word))
+        if word[i] in vowels && i > 1 && i < length(word)
+            vowel_index = i
+            break
+        end
+    end
+    return vowel_index > 0 ? word[vowel_index] : ""
+end
+```
+
+This function iterates through the word in reverse order, checking each character to see if it is a vowel. If it is a vowel and is not at the beginning or end of the word, it sets the `vowel_index` to the index of that vowel. If no vowel is found, `vowel_index` remains 0. The function then returns the character at the `vowel_index` if it is greater than 0, or an empty string if it is 0.

@@ -1,0 +1,45 @@
+
+
+```julia
+function smallest_change(xs::Vector{Int})::Int
+    n = length(xs)
+    if n == 0
+        return 0
+    end
+
+    # Find the middle element(s) of the array
+    if n % 2 == 0
+        mid = n ÷ 2
+    else
+        mid = (n + 1) ÷ 2
+    end
+
+    # Initialize a dictionary to store the frequency of each element in the first half of the array
+    freq = Dict{Int, Int}()
+    for i = 1:mid
+        freq[xs[i]] = get(freq, xs[i], 0) + 1
+    end
+
+    # Initialize the number of changes required
+    changes = 0
+
+    # Iterate through the second half of the array
+    for i = mid+1:n
+        # If the current element is not present in the first half, increase the number of changes
+        if !haskey(freq, xs[i])
+            changes += 1
+        else
+            # If the current element is present in the first half, decrease its frequency
+            freq[xs[i]] -= 1
+            # If the frequency becomes zero, remove the element from the dictionary
+            if freq[xs[i]] == 0
+                delete!(freq, xs[i])
+            end
+        end
+    end
+
+    return changes
+end
+```
+
+This function works by finding the middle element(s) of the array and then iterating through the second half of the array. For each element in the second half, it checks if it is present in the first half. If it is not present, it increases the number of changes required. If it is present, it decreases the frequency of the element in the first half. If the frequency becomes zero, it removes the element from the dictionary.

@@ -1,0 +1,11 @@
+
+
+function anti_shuffle(s::String)::String
+    words = split(s, ' ')
+    result = ""
+    for word in words
+        sorted_word = sort(collect(word))
+        result *= join(sorted_word) * " "
+    end
+    return result
+end

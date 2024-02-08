@@ -1,0 +1,20 @@
+  Here's an implementation of the `bf` function in Julia:
+```julia
+function bf(planet1::String, planet2::String)::NTuple
+    planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+    idx1 = findfirst(planets, planet1)
+    idx2 = findfirst(planets, planet2)
+    if idx1 === nothing || idx2 === nothing
+        return ()
+    end
+    return planets[idx1+1:idx2-1]
+end
+```
+Here's an explanation of the code:
+
+1. The function takes two string arguments `planet1` and `planet2`.
+2. It defines a list of all the planets in our solar system, in order of their proximity to the Sun.
+3. It uses the `findfirst` function to find the index of `planet1` and `planet2` in the list of planets. If either planet is not found, the function returns an empty tuple.
+4. It returns a tuple containing all the planets between the indices of `planet1` and `planet2`, inclusive.
+
+Note that the function assumes that the planets are listed in order of their proximity to the Sun, which is not always the case in astronomy. However, this is a common convention in astronomy and is used in the example code you provided.

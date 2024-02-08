@@ -1,0 +1,32 @@
+Here is a step-by-step outline of how to solve this problem:
+
+1. Initialize an empty vector to store the beats.
+2. Split the input string into individual notes using the `split` function.
+3. Iterate over each note in the split string.
+4. For each note, check if it is a whole note (`"o"`), half note (`"o|"`), or quarter note (`".|"`).
+5. Depending on the note, append the corresponding number of beats to the vector.
+6. Return the vector of beats.
+
+Here is the Julia code that implements this algorithm:
+
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    beats = Int[]
+    notes = split(music_string)
+    for note in notes
+        if note == "o"
+            push_beats = 4
+        elseif note == "o|"
+            push_beats = 2
+        elseif note == ".|"
+            push_beats = 1
+        else
+            error("Invalid note: $note")
+        end
+        push_beats = push_beats
+    end
+    return beats
+end
+```
+
+This function will throw an error if it encounters an invalid note. You can modify this behavior as needed.

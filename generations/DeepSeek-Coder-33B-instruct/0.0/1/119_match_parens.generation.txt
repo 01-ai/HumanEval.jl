@@ -1,0 +1,36 @@
+Here is a Julia function that solves the problem:
+
+```julia
+function match_parens(lst::Vector{String})::String
+    function is_balanced(s::String)
+        count = 0
+        for c in s
+            if c == '('
+                count += 1
+            elseif c == ')'
+                count -= 1
+            end
+            if count < 0
+                return false
+            end
+        end
+        return count == 0
+    end
+
+    for perm in Iterators.product(lst, lst)
+        if is_balanced(perm[1] * perm[2])
+            return "Yes"
+        end
+    end
+    return "No"
+end
+```
+
+This function first defines a helper function `is_balanced` that checks if a string is balanced. It then iterates over all pairs of strings in the input list, concatenates them and checks if the resulting string is balanced. If it finds a balanced string, it returns "Yes". If it doesn't find any balanced string, it returns "No".
+
+Here is how you can test this function:
+
+```julia
+println(match_parens(["()(", ")"]))  # "Yes"
+println(match_parens([")", ")"]))  # "No"
+```

@@ -1,0 +1,11 @@
+
+
+function by_length(xs::Vector{Int})::Vector{String}
+    # filter out numbers not between 1 and 9
+    filtered = filter(x -> x >= 1 && x <= 9, xs)
+    # sort the filtered numbers
+    sorted = sort(filtered, rev=true)
+    # replace each digit by its corresponding name
+    names = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    return map(x -> names[x], sorted)
+end

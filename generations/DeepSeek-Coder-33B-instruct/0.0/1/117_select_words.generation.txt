@@ -1,0 +1,19 @@
+Here is a Julia function that implements the given doc string:
+
+```julia
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    words = split(s)
+    selected_words = String[]
+    for word in words
+        consonants = filter(x -> x ∉ "aeiouAEIOU", word)
+        if length(consonants) == n
+            pushfirst(selected_words, word)
+        end
+    end
+    return selected_words
+end
+```
+
+This function works by splitting the input string into words, then iterating over each word. For each word, it filters out the consonants and checks if the number of consonants is equal to `n`. If it is, the word is added to the `selected_words` list. The function finally returns the `selected_words` list.
+
+Please note that this function is case-sensitive, so it treats uppercase and lowercase letters as different characters. If you want it to be case-insensitive, you can modify the function to convert the word to lowercase before filtering the consonants.

@@ -1,0 +1,11 @@
+
+
+function anti_shuffle(s::String)::String
+    words = split(s)
+    ordered_words = [sort(word) for word in words]
+    return join(ordered_words)
+end
+
+println(anti_shuffle("Hi"))
+println(anti_shuffle("hello"))
+println(anti_shuffle("Hello World!!!"))

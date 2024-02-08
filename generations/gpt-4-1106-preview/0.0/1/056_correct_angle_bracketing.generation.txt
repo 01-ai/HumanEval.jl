@@ -1,0 +1,29 @@
+Certainly! Below is the Julia function `correct_angle_bracketing` that checks if every opening angle bracket has a corresponding closing bracket:
+
+```julia
+function correct_angle_bracketing(brackets::String)::Bool
+    # Initialize a counter for the brackets
+    bracket_counter = 0
+
+    # Iterate through each character in the string
+    for bracket in brackets
+        # If it's an opening bracket, increment the counter
+        if bracket == '<'
+            bracket_counter += 1
+        # If it's a closing bracket, decrement the counter
+        elseif bracket == '>'
+            bracket_counter -= 1
+        end
+
+        # If at any point the counter goes negative, return false
+        if bracket_counter < 0
+            return false
+        end
+    end
+
+    # If the counter is zero, all brackets are correctly matched
+    return bracket_counter == 0
+end
+```
+
+You can test this function with the provided examples to ensure it works as expected.

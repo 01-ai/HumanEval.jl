@@ -1,0 +1,33 @@
+```julia
+function is_prime(n::Int)
+    if n <= 1
+        return false
+    end
+    for i in 2:isqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+function intersection(interval1::Vector{Int}, interval2::Vector{Int})::String
+    start1, end1 = interval1
+    start2, end2 = interval2
+    
+    if end1 < start2 || end2 < start1
+        return "NO"
+    end
+    
+    intersection_start = max(start1, start2)
+    intersection_end = min(end1, end2)
+    
+    intersection_length = intersection_end - intersection_start + 1
+    
+    if is_prime(intersection_length)
+        return "YES"
+    else
+        return "NO"
+    end
+end
+```

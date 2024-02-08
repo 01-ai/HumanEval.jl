@@ -1,0 +1,24 @@
+To implement the `cycpattern_check` function in Julia, we can follow these steps:
+
+1. Check if the length of `b` is greater than `a`. If it is, return `false` immediately because `b` or any of its rotations cannot be a substring of `a`.
+2. Concatenate `a` with itself. This way, we can easily check for any rotation of `b` being a substring of `a` because any rotation of `b` that could be a substring of `a` will appear in the concatenated string.
+3. Use the `occursin` function to check if `b` is a substring of the concatenated string of `a`. If it is, return `true`; otherwise, return `false`.
+
+Here is the implementation:
+
+```julia
+function cycpattern_check(a::String, b::String)::Bool
+    # Step 1: Early return if `b` is longer than `a`
+    if length(b) > length(a)
+        return false
+    end
+    
+    # Step 2: Concatenate `a` with itself
+    double_a = a * a
+    
+    # Step 3: Check if `b` is a substring of the concatenated string
+    return occursin(b, double_a)
+end
+```
+
+This function should work as expected for the examples provided in the doc string. It efficiently checks for any rotation of `b` being a substring of `a` by leveraging the `occursin` function on a concatenated version of `a`.

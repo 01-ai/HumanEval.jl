@@ -1,0 +1,25 @@
+To implement the `rescale_to_unit` function as described, we need to follow these steps:
+
+1. Identify the minimum and maximum values in the input vector.
+2. Subtract the minimum value from each element in the vector to ensure the smallest number becomes 0.
+3. Divide each element by the difference between the maximum and minimum values to ensure the largest number becomes 1.
+4. Return the transformed vector.
+
+Here's how you can implement this in Julia:
+
+```julia
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    # Step 1: Find the minimum and maximum values
+    min_val = minimum(numbers)
+    max_val = maximum(numbers)
+
+    # Step 2 & 3: Subtract the minimum and divide by the range (max - min)
+    # to rescale numbers to the unit interval [0, 1]
+    return [(x - min_val) / (max_val - min_val) for x in numbers]
+end
+
+# Example usage
+println(rescale_to_unit([1.0, 2.0, 3.0, 4.0, 5.0]))
+```
+
+This function first calculates the minimum and maximum values in the input vector. Then, it uses a list comprehension to iterate over each element `x` in the input vector, subtracting the minimum value and dividing by the range (maximum - minimum) to scale the values to the unit interval [0, 1].

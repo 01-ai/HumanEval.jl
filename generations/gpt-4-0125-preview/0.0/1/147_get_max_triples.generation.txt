@@ -1,0 +1,32 @@
+To solve this problem, we can follow these steps:
+
+1. Generate the array `a` as per the given formula.
+2. Count the number of elements in `a` that are congruent to 0, 1, and 2 modulo 3, since for any three numbers to sum up to a multiple of 3, they either all have to be multiples of 3, or they have to be one of each residue class modulo 3.
+3. Use combinatorics to find the number of valid triples. There are two cases:
+    - All three numbers are multiples of 3. The number of such triples is given by the combination formula `C(n, 3)`, where `n` is the count of numbers in `a` that are multiples of 3.
+    - One number from each residue class modulo 3. The number of such triples is the product of the counts of numbers in `a` that are congruent to 0, 1, and 2 modulo 3.
+
+Let's implement this in Julia:
+
+```julia
+function get_max_triples(n::Int)::Int
+    # Step 1: Generate the array and count residues modulo 3
+    counts = zeros(Int, 3)
+    for i in 1:n
+        # Calculate the value as per the given formula
+        value = i * i - i + 1
+        # Increment the count for the residue class of value modulo 3
+        counts[value % 3 + 1] += 1
+    end
+
+    # Step 2: Calculate the number of valid triples
+    # Case 1: All three numbers are multiples of 3
+    triples = counts[1] * (counts[1] - 1) * (counts[1] - 2) ÷ 6
+    # Case 2: One number from each residue class modulo 3
+    triples += counts[1] * counts[2] * counts[3]
+
+    return triples
+end
+```
+
+This function first calculates the counts of numbers in `a` that are congruent to 0, 1, and 2 modulo 3, and then it calculates the number of valid triples using combinatorial logic. Note that in Julia, array indexing is 1-based, so we adjust the modulo operation result by adding 1 when accessing `counts`.

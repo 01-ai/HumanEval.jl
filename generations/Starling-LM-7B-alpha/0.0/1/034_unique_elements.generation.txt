@@ -1,0 +1,5 @@
+ function unique_elements(l::Vector)
+    unique_set = unique(l)
+    sorted_unique = sort(unique_set)
+    return sorted_unique
+end

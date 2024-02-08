@@ -1,0 +1,29 @@
+Here's the Julia function `closest_integer` that implements the described functionality:
+
+```julia
+function closest_integer(value::String)::Int
+    # Parse the string to a floating-point number
+    num = parse(Float64, value)
+    
+    # Get the floor and ceiling of the number
+    floor_num = floor(num)
+    ceil_num = ceil(num)
+    
+    # Check if the number is equidistant from the floor and ceiling
+    if num - floor_num == ceil_num - num
+        # Round away from zero
+        return num > 0 ? ceil_num : floor_num
+    else
+        # Round to the nearest integer
+        return round(Int, num)
+    end
+end
+
+# Examples
+println(closest_integer("10"))    # Output: 10
+println(closest_integer("15.3"))  # Output: 15
+println(closest_integer("14.5"))  # Output: 15
+println(closest_integer("-14.5")) # Output: -15
+```
+
+This function first parses the input string to a floating-point number. It then calculates the floor and ceiling values of the number to determine if it is equidistant from two integers. If it is equidistant, the function rounds away from zero. Otherwise, it uses the `round` function to round to the nearest integer.

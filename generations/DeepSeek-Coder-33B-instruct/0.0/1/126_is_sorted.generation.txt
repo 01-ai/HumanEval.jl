@@ -1,0 +1,11 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function is_sorted(xs::Vector{Int})::Bool
+    return issorted(xs) && length(xs) == length(unique(xs))
+end
+```
+
+This function works by first checking if the input vector `xs` is sorted in ascending order using the `issorted` function. If `xs` is not sorted, the function immediately returns `false`.
+
+If `xs` is sorted, the function then checks if there are any duplicate numbers in `xs`. It does this by comparing the length of `xs` to the length of the unique elements in `xs`. If the lengths are equal, it means that there are no duplicate numbers, and the function returns `true`. If the lengths are not equal, it means that there are duplicate numbers, and the function returns `false`.

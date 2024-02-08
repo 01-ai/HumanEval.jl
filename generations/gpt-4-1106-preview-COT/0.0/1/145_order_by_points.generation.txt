@@ -1,0 +1,29 @@
+### Step-by-step Outline:
+
+1. Define the function `order_by_points` that takes a vector of integers as an argument.
+2. Create a helper function `digit_sum` that calculates the sum of the digits of an integer.
+3. Use the `sort` function with a custom sorting key that uses the `digit_sum` function to sort the numbers by the sum of their digits.
+4. Ensure that if two numbers have the same digit sum, they are sorted based on their original index in the list.
+5. Return the sorted vector.
+
+### Julia Code:
+
+```julia
+# Define the helper function to calculate the sum of digits of an integer
+function digit_sum(n::Int)::Int
+    return sum(abs.(digits(n)))
+end
+
+# Define the main function to sort the numbers
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    # Sort the numbers using a custom key based on the sum of their digits
+    # and their original index to break ties
+    sort(nums, by = (x -> (digit_sum(x), findfirst(isequal(x), nums))))
+end
+
+# Examples
+println(order_by_points([1, 11, -1, -11, -12]))  # Output: [-1, -11, 1, -12, 11]
+println(order_by_points(Int[]))                  # Output: Int64[]
+```
+
+This code will sort the integers in the vector `nums` according to the sum of their digits, and in case of a tie, based on their original index in the list.

@@ -1,0 +1,14 @@
+
+```julia
+function iscube(a::Int)::Bool
+    if a == 0
+        return true
+    end
+    if a < 0
+        a = -a
+    end
+    return (round(cbrt(a)) ^ 3) == a
+end
+```
+
+This function first checks if the input is 0, in which case it returns true. If the input is negative, it takes the absolute value of the input. Then, it checks if the cube root of the input, rounded to the nearest integer, cubed is equal to the input. If it is, it returns true, otherwise it returns false.

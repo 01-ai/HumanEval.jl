@@ -1,0 +1,39 @@
+To implement the `longest` function, we will follow these steps:
+
+1. Check if the input vector `xs` is empty. If it is, return `nothing`.
+2. Initialize a variable to keep track of the longest string found so far. We can start with the first string in the vector.
+3. Initialize a variable to keep track of the maximum length found so far. We can start with the length of the first string in the vector.
+4. Iterate over the strings in the vector starting from the second string.
+5. For each string, check if its length is greater than the maximum length found so far.
+6. If it is, update the longest string and the maximum length with the current string and its length.
+7. After the iteration, return the longest string found.
+
+Now, let's write the code for the `longest` function:
+
+```julia
+function longest(xs::Vector{String})::Union{Nothing, String}
+    # Step 1: Check if the input vector is empty
+    if isempty(xs)
+        return nothing
+    end
+
+    # Step 2 and 3: Initialize variables for the longest string and its length
+    longest_str = xs[1]
+    max_length = length(longest_str)
+
+    # Step 4: Iterate over the strings in the vector
+    for str in xs[2:end]
+        # Step 5: Check if the current string is longer than the longest found so far
+        if length(str) > max_length
+            # Step 6: Update the longest string and its length
+            longest_str = str
+            max_length = length(str)
+        end
+    end
+
+    # Step 7: Return the longest string
+    return longest_str
+end
+```
+
+This function should work as expected based on the provided doc string and examples.

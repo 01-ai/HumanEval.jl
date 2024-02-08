@@ -1,0 +1,21 @@
+
+
+# Outline
+
+1. Define the function `greatest_common_divisor(a::Int, b::Int)::Int`.
+2. Check if `b` is equal to 0.
+3. If `b` is equal to 0, return `a` as the greatest common divisor.
+4. If `b` is not equal to 0, recursively call the `greatest_common_divisor` function with `b` and the remainder of `a` divided by `b`.
+5. Return the result of the recursive call.
+
+# Code
+
+```julia
+function greatest_common_divisor(a::Int, b::Int)::Int
+    if b == 0
+        return a
+    else
+        return greatest_common_divisor(b, a % b)
+    end
+end
+```

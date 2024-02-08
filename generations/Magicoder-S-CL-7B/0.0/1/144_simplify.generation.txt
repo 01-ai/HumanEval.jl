@@ -1,0 +1,16 @@
+
+
+function simplify(x::String, n::String)::Bool
+    x_num, x_den = split(x, '/')
+    n_num, n_den = split(n, '/')
+
+    x_num = parse(Int, x_num)
+    x_den = parse(Int, x_den)
+    n_num = parse(Int, n_num)
+    n_den = parse(Int, n_den)
+
+    result = x_num * n_den
+    result = result * n_num
+
+    return result % x_den == 0
+end

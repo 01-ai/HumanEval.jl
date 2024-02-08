@@ -1,0 +1,19 @@
+
+
+function is_simple_power(x::Number, n::Number)::Bool
+    if x == 1
+        return true
+    elseif n == 1
+        return false
+    else
+        return x ≈ n^(round(Int, log(n, x)))
+    end
+end
+
+# Test cases
+println(is_simple_power(1, 4)) # true
+println(is_simple_power(2, 2)) # true
+println(is_simple_power(8, 2)) # true
+println(is_simple_power(3, 2)) # false
+println(is_simple_power(3, 1)) # false
+println(is_simple_power(5, 3)) # false 

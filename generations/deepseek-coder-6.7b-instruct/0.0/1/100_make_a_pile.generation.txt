@@ -1,0 +1,21 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    if n <= 0
+        error("Input must be a positive integer")
+    end
+
+    stones = Int[]
+    for i in 1:n
+        if n % 2 == 0
+            pushfirst(stones, n + 2i - 1)
+        else
+            pushfirst(stones, n + 2i - 1)
+        end
+    end
+    return stones
+end
+```
+
+This function first checks if the input is a positive integer. If not, it throws an error. Then, it creates an empty vector `stones` to store the number of stones in each level. The for loop iterates from 1 to n, and for each iteration, it calculates the number of stones in the next level using the formula `n + 2i - 1` (where `i` is the current level). This formula ensures that the number of stones in the next level is either the next odd number if n is odd, or the next even number if n is even. The calculated number of stones is then added to the beginning of the `stones` vector. Finally, the function returns the `stones` vector.

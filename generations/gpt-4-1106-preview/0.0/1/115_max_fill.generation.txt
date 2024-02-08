@@ -1,0 +1,23 @@
+Certainly! Below is the Julia function `max_fill` that implements the logic described in the doc string:
+
+```julia
+function max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+    # Calculate the number of times each well needs to be emptied
+    bucket_lowers = 0
+    for well in grid
+        # Count the number of units of water in the well
+        units_of_water = sum(well)
+        # Calculate the number of times the bucket needs to be lowered for this well
+        # and add it to the total count
+        bucket_lowers += ceil(units_of_water / capacity)
+    end
+    return Int(bucket_lowers)
+end
+
+# Examples
+println(max_fill([[0, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 1]], 1)) # Output: 6
+println(max_fill([[0, 0, 1, 1], [0, 0, 0, 0], [1, 1, 1, 1], [0, 1, 1, 1]], 2)) # Output: 5
+println(max_fill([[0, 0, 0], [0, 0, 0]], 5)) # Output: 0
+```
+
+This function iterates over each well in the grid, counts the number of units of water in each well, and calculates the number of times the bucket needs to be lowered to empty the well based on the bucket's capacity. It then sums these counts to get the total number of bucket lowers needed to empty all wells.

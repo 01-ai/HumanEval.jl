@@ -1,0 +1,26 @@
+Here is a step-by-step outline of how you can implement the function:
+
+1. Initialize an empty vector to store the words that contain exactly `n` consonants.
+2. Split the input string `s` into words.
+3. For each word, count the number of consonants it contains.
+4. If the number of consonants equals `n`, add the word to the result vector.
+5. Return the result vector.
+
+Here is the Julia code that implements the above steps:
+
+```julia
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    result = String[]
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    words = split(s)
+    for word in words
+        count = sum(c -> !(c in vowels) && isletter(c), word)
+        if count == n
+            push(result, word)
+        end
+    end
+    return result
+end
+```
+
+This function works by first splitting the input string into words. Then, for each word, it counts the number of consonants it contains by checking each character. If the number of consonants equals `n`, the word is added to the result vector. Finally, the function returns the result vector.

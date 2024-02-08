@@ -1,0 +1,28 @@
+
+
+Here is the Julia function that solves the problem:
+
+```julia
+function digitSum(s::String)::Int
+    sum = 0
+    for c in s
+        if isuppercase(c)
+            sum += Int(c)
+        end
+    end
+    return sum
+end
+```
+
+This function iterates over each character in the input string. If the character is uppercase, it adds its ASCII code (obtained by converting the character to an `Int`) to the sum. The function finally returns the sum.
+
+You can test this function using the provided examples:
+
+```julia
+@assert digitSum("") == 0
+@assert digitSum("abAB") == 131
+@assert digitSum("abcCd") == 67
+@assert digitSum("helloE") == 69
+@assert digitSum("woArBld") == 131
+@assert digitSum("aAaaaXa") == 153
+```

@@ -1,0 +1,15 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. Convert the string to lowercase. This is to ensure that the function treats 'a' and 'A' as the same character.
+2. Convert the string to a set. In Julia, a set is a collection of unique elements. By converting the string to a set, we automatically remove any duplicate characters.
+3. Return the length of the set. This is the number of distinct characters in the string.
+
+Here is the Julia code that implements this solution:
+
+```julia
+function count_distinct_characters(s::String)::Int
+    return length(Set(lowercase(s)))
+end
+```
+
+This function works by first converting the input string to lowercase, then converting it to a set, and finally returning the length of the set. The length of a set is the number of unique elements it contains, which in this case are the distinct characters in the string.

@@ -1,0 +1,15 @@
+```julia
+function is_bored(s::String)::Int
+    # Count the number of times "I" appears at the beginning of a sentence
+    # (delimited by '.', '?' or '!')
+    boredoms = 0
+    for i in eachindex(s)
+        if s[i] == 'I' && (s[i+1] in ['.', '?', '!'])
+            boredoms += 1
+        end
+    end
+    return boredoms
+end
+```
+
+This function defines a new function `is_bored` that takes a `String` as input and returns an `Int` representing the number of times the word "I" appears at the beginning of a sentence, as defined by the delimiters `'.'`, `'?'`, or `'!'`. The function iterates over each character in the string using `eachindex` and checks if the current character is an "I" and the next character is one of the delimiters. If both conditions are met, the count of boredoms is incremented. Finally, the function returns the total count of boredoms.

@@ -1,0 +1,5 @@
+```julia
+function below_threshold(l::Vector, t::Number)::Bool
+    return all(x -> x < t, l)
+end
+```

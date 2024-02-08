@@ -1,0 +1,5 @@
+function sum_product(numbers::Vector{Int})::Tuple{Int, Int}
+    sum_numbers = sum(numbers)
+    product_numbers = prod(numbers)
+    return (sum_numbers, product_numbers)
+end

@@ -1,0 +1,29 @@
+ function reverse_delete(s::String, c::String)::Tuple{String, Bool}
+    # Create a set of characters to delete from the string
+    delete_set = Set(c)
+
+    # Initialize result string and palindrome flag
+    result = ""
+    palindrome = true
+
+    # Iterate through the input string
+    for char in s
+        # Check if the character is in the delete set
+        if char in delete_set
+            continue
+        else
+            # Append the character to the result string
+            result *= char
+        end
+    end
+
+    # Check if the result string is a palindrome
+    if result == reverse(result)
+        palindrome = true
+    else
+        palindrome = false
+    end
+
+    # Return the result string and palindrome flag as a tuple
+    return (result, palindrome)
+end

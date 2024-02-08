@@ -1,0 +1,42 @@
+To implement the `find_zero` function, we need to find a root of the polynomial with the given coefficients. Since the problem statement specifies that `find_zero` only takes a list of coefficients with an even number of elements and the largest non-zero coefficient, this implies that the polynomial has at least one real root.
+
+We can use numerical methods to find a root of the polynomial. One common method is the Newton-Raphson method, which is an iterative method for finding successively better approximations to the roots (or zeroes) of a real-valued function.
+
+However, the Newton-Raphson method requires the derivative of the polynomial, which we would need to calculate. Alternatively, we can use a root-finding algorithm provided by Julia, such as `find_zero` from the `Roots` package.
+
+First, let's implement the `poly` function as given:
+
+```julia
+"""
+Evaluates polynomial with coefficients `xs` at point `x`. Return `xs[1] + xs[2] * x + xs[3] * x^2 + .... xs[n] * x^n`.
+"""
+function poly(xs::Vector, x::Float64)
+    return sum(coeff * (x^(i - 1)) for (i, coeff) in enumerate(xs))
+end
+```
+
+Now, let's implement the `find_zero` function using the `Roots` package:
+
+```julia
+using Roots  # Make sure to add the Roots package using Pkg.add("Roots")
+
+"""
+    find_zero(xs::Vector{Int})
+
+`xs` are coefficients of a polynomial. `find_zero` finds `x` such that `poly(x) = 0`. `find_zero` returns only one zero point, even if there are many. Moreover,
+`find_zero` only takes list xs having an even number of coefficients and largest
+non zero coefficient as it guarantees a solution.
+"""
+function find_zero(xs::Vector{Int})
+    # Check if the number of coefficients is even and the last coefficient is non-zero
+    if length(xs) % 2 != 0 || xs[end] == 0
+        error("The list of coefficients must have an even number of elements and the last coefficient must be non-zero.")
+    end
+
+    # Define the polynomial function
+    f(x) = poly(xs, x)
+
+    # Find a zero of the polynomial function
+    zero = find_zero(f, 0.0)  # Starting at x=0.0
+
+   

@@ -1,0 +1,5 @@
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    return sort(arr, by = x -> (count_ones(x), x))
+end
+```

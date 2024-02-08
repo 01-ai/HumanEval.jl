@@ -1,0 +1,23 @@
+To implement the `simplify` function as described, we need to parse the fractions from the string inputs, multiply them, and then check if the result is a whole number. Here's how you can do it in Julia:
+
+```julia
+function simplify(x::String, n::String)::Bool
+    # Parse the fractions
+    x_num, x_den = parse.(Int, split(x, "/"))
+    n_num, n_den = parse.(Int, split(n, "/"))
+    
+    # Multiply the fractions
+    result_num = x_num * n_num
+    result_den = x_den * n_den
+    
+    # Check if the result is a whole number
+    return result_num % result_den == 0
+end
+
+# Examples
+println(simplify("1/5", "5/1"))  # true
+println(simplify("1/6", "2/1"))  # false
+println(simplify("7/10", "10/2"))  # false
+```
+
+This function works by first splitting the input strings by the "/" character to separate the numerator and denominator of each fraction. It then parses these values into integers. After that, it multiplies the numerators together and the denominators together to get the result of the multiplication as a new fraction. Finally, it checks if the numerator of the resulting fraction is divisible by its denominator without a remainder, which would mean the result is a whole number, and returns `true` or `false` accordingly.

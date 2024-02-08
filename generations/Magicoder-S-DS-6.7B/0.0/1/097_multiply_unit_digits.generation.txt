@@ -1,0 +1,7 @@
+function multiply_unit_digits(a::Int, b::Int)::Int
+    a = abs(a)
+    b = abs(b)
+    a_unit_digit = a % 10
+    b_unit_digit = b % 10
+    return a_unit_digit * b_unit_digit
+end

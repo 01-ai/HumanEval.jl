@@ -1,0 +1,18 @@
+ function move_one_ball(xs::Vector{Int})::Bool
+    # Check if the array is empty
+    if length(xs) == 0
+        return true
+    end
+
+    # Sort the array
+    sorted_xs = sort(xs)
+
+    # Check if the original array can be obtained by performing right shift operations
+    for i in 1:length(xs)
+        if xs[i] != sorted_xs[i]
+            return false
+        end
+    end
+
+    return true
+end

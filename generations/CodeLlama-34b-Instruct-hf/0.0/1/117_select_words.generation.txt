@@ -1,0 +1,39 @@
+  Here is an implementation of the `select_words` function in Julia:
+```
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    words = split(s)
+    result = Vector{SubString{String}}()
+    for word in words
+        if length(word) == n
+            push!(result, word)
+        end
+    end
+    return result
+end
+```
+This function first splits the input string `s` into individual words using the `split` function. It then iterates over each word and checks if its length is equal to `n`. If it is, the word is added to the `result` vector. Finally, the `result` vector is returned.
+
+Note that the `SubString{String}` type is used to represent the words in the `result` vector. This is because the `split` function returns a vector of `SubString{String}` objects, and we want to preserve this type in the output.
+
+Here are some examples of how the function can be used:
+```
+julia> select_words("Mary had a little lamb", 4)
+1-element Vector{SubString{String}}:
+ "little"
+
+julia> select_words("Mary had a little lamb", 3)
+2-element Vector{SubString{String}}:
+ "Mary"
+ "lamb"
+
+julia> select_words("simple white space", 2)
+SubString{String}[]
+
+julia> select_words("Hello world", 4)
+1-element Vector{SubString{String}}:
+ "world"
+
+julia> select_words("Uncle sam", 3)
+1-element Vector{SubString{String}}:
+ "Uncle"
+```

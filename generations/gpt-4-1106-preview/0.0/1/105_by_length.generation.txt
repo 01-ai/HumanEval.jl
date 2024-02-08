@@ -1,0 +1,22 @@
+Here's the Julia function `by_length` that implements the specified behavior:
+
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    # Define a dictionary to map integers to their corresponding names
+    num_to_name = Dict(1 => "One", 2 => "Two", 3 => "Three", 4 => "Four",
+                       5 => "Five", 6 => "Six", 7 => "Seven", 8 => "Eight", 9 => "Nine")
+    
+    # Filter the array to include only integers between 1 and 9
+    filtered_sorted = sort(filter(x -> 1 <= x <= 9, xs))
+    
+    # Reverse the array
+    reversed_array = reverse(filtered_sorted)
+    
+    # Replace each digit by its corresponding name
+    named_array = [num_to_name[x] for x in reversed_array]
+    
+    return named_array
+end
+```
+
+You can test this function with the provided examples to ensure it works as expected.

@@ -1,0 +1,14 @@
+
+
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    collatz_sequence = [n]
+    while n != 1
+        if n % 2 == 0
+            n = n ÷ 2
+        else
+            n = 3n + 1
+        end
+        push!(collatz_sequence, n)
+    end
+    return sort!(unique(collatz_sequence))
+end

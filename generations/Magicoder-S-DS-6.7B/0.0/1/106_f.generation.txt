@@ -1,0 +1,17 @@
+Here is a Julia function that implements the `f` function as described in the problem:
+
+```julia
+function f(n::Int)::Vector{Int}
+    result = zeros(Int, n)
+    for i in 1:n
+        if i % 2 == 0
+            result[i] = factorial(i)
+        else
+            result[i] = sum(1:i)
+        end
+    end
+    return result
+end
+```
+
+This function creates a vector of zeros of size `n` and then iterates over the indices from 1 to `n`. For each index `i`, it checks if `i` is even. If `i` is even, it calculates the factorial of `i` and stores it in the `i`-th position of the result vector. If `i` is odd, it calculates the sum of numbers from 1 to `i` and stores it in the `i`-th position of the result vector. Finally, it returns the result vector.

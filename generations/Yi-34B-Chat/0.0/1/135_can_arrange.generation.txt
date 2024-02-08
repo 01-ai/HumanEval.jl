@@ -1,0 +1,20 @@
+```julia
+function can_arrange(xs::Vector{Int})::Int
+    # Initialize the result to -1, indicating no such element exists
+    result = -1
+
+    # Iterate over the array, looking for an element that is not greater than or equal to
+    # the previous element
+    for i in 2:length(xs)
+        if xs[i] <= xs[i-1]
+            # If we find such an element, update the result
+            result = i - 1
+        end
+    end
+
+    # Return the result
+    return result
+end
+```
+
+This function iterates over the array `xs` starting from the second element (index 2) because the first element does not have a preceding element to compare against. For each element, it checks if it is not greater than or equal to the previous element. If such an element is found, the index of the element is stored in `result`. The function then returns `result`. If no such element is found, `result` remains -1, indicating that there is no element that is not greater than or equal to the element immediately preceding it.

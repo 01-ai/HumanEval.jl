@@ -1,0 +1,21 @@
+Here is the Julia function that solves the problem:
+
+```julia
+function count_distinct_characters(s::String)::Int
+    return length(unique(lowercase(s)))
+end
+```
+
+This function works by first converting the string to lowercase using the `lowercase` function, then using the `unique` function to get an array of unique characters, and finally using the `length` function to count the number of elements in this array.
+
+You can test this function with the examples you provided:
+
+```julia
+julia> count_distinct_characters("xyzXYZ")
+3
+
+julia> count_distinct_characters("Jerry")
+4
+```
+
+These will return `3` and `4` respectively, which are the number of distinct characters in the strings "xyzXYZ" and "Jerry".

@@ -1,0 +1,21 @@
+
+
+```julia
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    # Check if the triangle is valid
+    if a <= 0 || b <= 0 || c <= 0 || a + b <= c || a + c <= b || b + c <= a
+        return false
+    end
+
+    # Check if the triangle is a right-angled triangle
+    if a^2 + b^2 == c^2 || a^2 + c^2 == b^2 || b^2 + c^2 == a^2
+        return true
+    else
+        return false
+    end
+end
+```
+
+This function first checks if the triangle is valid by checking if any of the sides is negative or if the sum of any two sides is less than or equal to the third side. If any of these conditions is true, it returns `false`.
+
+If the triangle is valid, it checks if the triangle is a right-angled triangle by checking if the sum of the squares of any two sides is equal to the square of the third side. If any of these conditions is true, it returns `true`. Otherwise, it returns `false`.

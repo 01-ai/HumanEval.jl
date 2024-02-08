@@ -1,0 +1,22 @@
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    # Base case: an empty list has no 2nd smallest element
+    if length(xs) == 0
+        return nothing
+    end
+
+    # Find the smallest element and remove it from the list
+    smallest = xs[1]
+    xs = xs[2:end]
+
+    # If the list now has zero elements, there is no 2nd smallest element
+    if length(xs) == 0
+        return nothing
+    end
+
+    # Find the 2nd smallest element and return it
+    return minimum(xs)
+end
+```
+
+This function works by first finding the smallest element in the list and removing it. If the resulting list is empty, there is no 2nd smallest element, so `nothing` is returned. If the list is not empty, the smallest element is the 2nd smallest element of the original list, so it is returned.

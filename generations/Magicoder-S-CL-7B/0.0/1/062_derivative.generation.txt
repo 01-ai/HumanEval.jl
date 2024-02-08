@@ -1,0 +1,10 @@
+
+
+function derivative(xs::Vector)::Vector
+    n = length(xs)
+    derivative = zeros(n-1)
+    for i in 2:n
+        derivative[i-1] = i * xs[i]
+    end
+    return derivative
+end

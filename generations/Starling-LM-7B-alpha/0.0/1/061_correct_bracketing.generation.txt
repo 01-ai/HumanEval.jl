@@ -1,0 +1,37 @@
+ Here's a Julia function that implements the `correct_bracketing` function based on the provided documentation:
+
+```julia
+function correct_bracketing(brackets::String)::Bool
+    stack = []
+    for char in brackets
+        if char == '('
+            push!(stack, char)
+        elseif char == ')' && !isempty(stack)
+            pop!(stack)
+        else
+            return false
+        end
+    end
+    return isempty(stack)
+end
+```
+
+This function uses a stack to keep track of opening brackets encountered. It iterates through the input string and pushes opening brackets onto the stack. When it encounters a closing bracket, it checks if the stack is not empty. If the stack is not empty, it pops the top element from the stack, indicating that the opening and closing brackets form a pair. If the stack is empty at the end, the function returns `true`, indicating that all opening brackets have a corresponding closing bracket. Otherwise, it returns `false`.
+
+Here are some examples to demonstrate the usage of the function:
+
+```julia
+julia> correct_bracketing("(")
+false
+
+julia> correct_bracketing("()")
+true
+
+julia> correct_bracketing("(()())")
+true
+
+julia> correct_bracketing(")(()")
+false
+```
+
+These examples show that the function correctly identifies whether the input string has properly bracketed parentheses or not.

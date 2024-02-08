@@ -1,0 +1,39 @@
+### Step-by-Step Outline
+
+1. **Check if `n` is greater than `m`:** If `n` is greater than `m`, return `-1` as per the function's specification.
+
+2. **Calculate the average:** If `n` is not greater than `m`, calculate the average of the integers from `n` through `m` (inclusive). This can be done efficiently by using the formula for the sum of an arithmetic series and then dividing by the number of terms.
+
+3. **Round the average:** Round the calculated average to the nearest integer. Julia has built-in functions to handle rounding.
+
+4. **Convert to binary:** Convert the rounded average to its binary representation. Julia provides a function to convert integers to their binary string representation.
+
+5. **Return the binary string:** Return the binary string representation of the rounded average.
+
+### Julia Code Implementation
+
+```julia
+function rounded_avg(n::Int, m::Int)::Union{Int, String}
+    # Step 1: Check if n is greater than m
+    if n > m
+        return -1
+    end
+
+    # Step 2: Calculate the average
+    # The sum of an arithmetic series: sum = (n + m) * (m - n + 1) / 2
+    # Number of terms: m - n + 1
+    # Average: sum / number of terms = (n + m) / 2
+    avg = (n + m) / 2
+
+    # Step 3: Round the average
+    rounded_avg = round(Int, avg)
+
+    # Step 4: Convert to binary
+    binary_representation = string(rounded_avg, base=2)
+
+    # Step 5: Return the binary string
+    return binary_representation
+end
+```
+
+This implementation follows the outlined steps to ensure that the function behaves as specified in the doc string, including handling the case where `n` is greater than `m` and converting the rounded average to a binary string.

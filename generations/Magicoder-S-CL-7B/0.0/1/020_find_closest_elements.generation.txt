@@ -1,0 +1,17 @@
+
+
+function find_closest_elements(numbers::Vector{Float64})::Tuple{Float64, Float64}
+    min_diff = Inf
+    min_num1 = min_num2 = 0.0
+    for i in 1:length(numbers)-1
+        for j in (i+1):length(numbers)
+            diff = abs(numbers[i] - numbers[j])
+            if diff < min_diff
+                min_diff = diff
+                min_num1 = min(numbers[i], numbers[j])
+                min_num2 = max(numbers[i], numbers[j])
+            end
+        end
+    end
+    return (min_num1, min_num2)
+end

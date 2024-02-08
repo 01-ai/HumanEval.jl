@@ -1,0 +1,44 @@
+```julia
+function do_algebra(operator::Vector{String}, operand::Vector{Int})
+    # Check if the length of operator is one less than the length of operand
+    @assert length(operator) == length(operand) - 1 "The length of operator list should be one less than the length of operand list."
+    
+    # Check if operand contains only non-negative integers
+    for i in operand
+        @assert i >= 0 "Operand list should contain only non-negative integers."
+    end
+    
+    # Check if operator list is not empty and operand list has at least two operands
+    @assert length(operator) > 0 "Operator list should have at least one operator."
+    @assert length(operand) >= 2 "Operand list should have at least two operands."
+    
+    # Initialize the result to the first operand
+    result = operand[1]
+    
+    # Iterate through the operator list and perform the operations
+    for (i, op) in enumerate(operator)
+        # Get the operands for the current operation
+        a = operand[i+1]
+        b = operand[i+2]
+        
+        # Perform the operation based on the operator
+        if op == "+"
+            result += a
+        elseif op == "-"
+            result -= a
+        elseif op == "*"
+            result *= a
+        elseif op == "÷"
+            result = div(result, a)
+        elseif op == "^"
+            result = result ^ a
+        else
+            throw(ErrorException("Unknown operator: $op"))
+        end
+    end
+    
+    return result
+end
+```
+
+This function `do_algebra` takes two lists, `operator` and `operand`, and uses them to build an algebraic expression. It then evaluates the expression and returns the result. The function checks that the length of `operator` is one less than the length of `operand`, that `operand` contains only non-negative integers, and that `operator` is not empty and `operand` has at least two operands. It then iterates through the `operator` list and performs the corresponding operation on the `operand` list, updating the result at each step.

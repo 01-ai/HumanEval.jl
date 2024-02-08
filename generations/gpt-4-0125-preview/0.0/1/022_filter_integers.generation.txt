@@ -1,0 +1,10 @@
+To implement the `filter_integers` function as described in the doc string, you can use the `filter` function in Julia, which allows you to specify a condition to filter elements in a collection. In this case, the condition is that the element is an integer (`Int`). Here's how you can do it:
+
+```julia
+function filter_integers(values::AbstractVector)::Vector{Int}
+    # Use the filter function to select only integers from the input vector
+    return filter(x -> isa(x, Int), values)
+end
+```
+
+This function iterates over each element in the `values` vector, checks if the element is an integer using the `isa` function, and includes it in the output if the condition is true. The result is a vector of integers (`Vector{Int}`) as specified.

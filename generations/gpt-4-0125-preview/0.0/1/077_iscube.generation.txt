@@ -1,0 +1,29 @@
+To implement the `iscube` function in Julia, we can follow these steps:
+
+1. Check if the input integer `a` is 0. If so, return `true` because 0 is the cube of 0.
+2. If `a` is positive, find the cube root of `a` and round it to the nearest integer. Then, check if the cube of this rounded integer equals `a`.
+3. If `a` is negative, apply the same logic as for positive `a`, but with the absolute value of `a`. This is because the cube root of a negative number is the negative of the cube root of its absolute value.
+4. Return `true` if the cube of the rounded cube root equals `a`; otherwise, return `false`.
+
+Here is the Julia function implementing the above logic:
+
+```julia
+function iscube(a::Int)::Bool
+    # Handle the case where a is 0
+    if a == 0
+        return true
+    end
+    
+    # Calculate the cube root of the absolute value of a
+    cube_root = round(cbrt(abs(a)))
+    
+    # Check if the cube of the rounded cube root equals the absolute value of a
+    if cube_root^3 == abs(a)
+        return true
+    else
+        return false
+    end
+end
+```
+
+This function works for both positive and negative integers, including 0, by leveraging the properties of cube roots and the `cbrt` function in Julia, which computes the cube root of a number.

@@ -1,0 +1,28 @@
+Here is the implementation for the `parse_nested_parens` function:
+
+```julia
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    levels = []
+    current_level = 0
+    max_level = 0
+    
+    for char in paren_string
+        if char == '('
+            current_level += 1
+            max_level = max(max_level, current_level)
+        elseif char == ')'
+            current_level -= 1
+        elseif char == ' '
+            push!(levels, max_level)
+            current_level = 0
+            max_level = 0
+        end
+    end
+    
+    push!(levels, max_level)
+    
+    return levels
+end
+```
+
+This function iterates over each character in the input string. If the character is an opening parenthesis, the current level is incremented and the maximum level is updated if necessary. If the character is a closing parenthesis, the current level is decremented. If the character is a space, the maximum level is added to the `levels` array and the current level and maximum level are reset to zero. Finally, the maximum level is added to the `levels` array after the loop ends. The `levels` array is then returned as the result.

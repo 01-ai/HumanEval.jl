@@ -1,0 +1,19 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function change_base(x::Int, base::Int)::String
+    if base < 2 || base > 10
+        throw(DomainError(base, "base must be between 2 and 10"))
+    end
+    result = ""
+    while x > 0
+        result = string(x % base) * result
+        x = div(x, base)
+    end
+    return result
+end
+```
+
+This function works by repeatedly dividing the input number `x` by the base and appending the remainder to the result string. The remainder is the digit in the new base. The process is repeated until `x` is 0. The result string is then returned.
+
+Please note that this function only works for bases between 2 and 10. If a base outside this range is given, a `DomainError` is thrown.

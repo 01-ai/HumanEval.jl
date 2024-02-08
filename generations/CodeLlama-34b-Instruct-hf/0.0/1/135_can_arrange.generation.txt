@@ -1,0 +1,22 @@
+  Here's one way to implement the `can_arrange` function in Julia:
+```
+function can_arrange(xs::Vector{Int})::Int
+    for i in length(xs):-1:1
+        if xs[i] >= xs[i-1]
+            return i
+        end
+    end
+    return -1
+end
+```
+This function uses a for loop to iterate over the elements of the input vector in reverse order. For each element, it checks if the current element is greater than or equal to the previous element. If it is, the function returns the index of the current element. If no such element is found, the function returns -1.
+
+Here's an example of how to use the `can_arrange` function:
+```
+julia> can_arrange([1, 2, 4, 3, 5])
+4
+
+julia> can_arrange([1, 2, 3])
+-1
+```
+Note that the `can_arrange` function assumes that the input vector does not contain duplicate values. If the input vector contains duplicate values, the function may not work correctly.

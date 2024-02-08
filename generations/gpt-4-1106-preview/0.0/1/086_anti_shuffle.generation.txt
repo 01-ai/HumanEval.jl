@@ -1,0 +1,27 @@
+Here's the Julia function `anti_shuffle` that implements the described functionality:
+
+```julia
+function anti_shuffle(s::String)::String
+    # Split the string into words based on spaces
+    words = split(s, ' ', keepempty=true)
+    
+    # Sort the characters in each word and join them back into a string
+    sorted_words = [join(sort(collect(word))) for word in words]
+    
+    # Join the sorted words back into a single string with spaces
+    return join(sorted_words, ' ')
+end
+
+# Examples
+println(anti_shuffle("Hi")) # "Hi"
+println(anti_shuffle("hello")) # "ehllo"
+println(anti_shuffle("Hello World!!!")) # "Hello !!!Wdlor"
+```
+
+This function works as follows:
+1. It splits the input string `s` into words, preserving empty strings that represent multiple spaces.
+2. It sorts the characters in each word according to their ASCII values.
+3. It joins the sorted characters back into words.
+4. It joins the sorted words back into a single string, using a space as the separator.
+
+The examples provided in the docstring are used to demonstrate the function's behavior.

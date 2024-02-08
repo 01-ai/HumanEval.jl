@@ -1,0 +1,22 @@
+
+
+# Solution
+
+function hex_key(num::String)::Int
+    primes = Set(["2", "3", "5", "7", "B", "D"])
+    count = 0
+    for c in num
+        if c in primes
+            count += 1
+        end
+    end
+    return count
+end
+
+# Test cases
+
+@assert hex_key("AB") == 1
+@assert hex_key("1077E") == 2
+@assert hex_key("ABED1A33") == 4
+@assert hex_key("123456789ABCDEF0") == 6
+@assert hex_key("2020") == 2

@@ -1,0 +1,23 @@
+```julia
+function hex_key(num::String)::Int
+    # Initialize count of prime digits to 0
+    prime_digits_count = 0
+
+    # Loop through each character in the hexadecimal string
+    for c in num
+        # Convert the character to its integer value (A=10, B=11, ..., F=15)
+        digit = parse(Int, c)
+
+        # Check if the digit is a prime number
+        if isprime(digit) || (10 <= digit <= 15 && isprime(digit - 10))
+            # Increment the count of prime digits
+            prime_digits_count += 1
+        end
+    end
+
+    # Return the count of prime digits
+    return prime_digits_count
+end
+```
+
+This function defines a `hex_key` function that takes a `String` as input and returns an `Int` representing the number of prime digits in the hexadecimal number. It uses a `for` loop to iterate over each character in the string, converting it to its integer value and then checking if that value or the corresponding decimal value (subtracting 10 for A, B, C, D, E, F) is a prime number. If it is, the count of prime digits is incremented.

@@ -1,0 +1,35 @@
+### Step-by-Step Outline
+
+1. **Filter the Array**: Start by filtering the input array to only include integers between 1 and 9, inclusive. This step ensures that we only work with the digits that we can convert to their corresponding names.
+
+2. **Sort the Filtered Array**: Sort the filtered array in ascending order. This step organizes the digits in a sequence from the smallest to the largest.
+
+3. **Reverse the Sorted Array**: Reverse the sorted array so that the digits are in descending order. This step prepares the array for the final conversion to their names.
+
+4. **Convert Digits to Names**: Map each digit in the reversed array to its corresponding name. Use a predefined mapping from digits to their names for this conversion.
+
+5. **Return the Result**: Return the final array of names.
+
+### Julia Code Implementation
+
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    # Step 1: Filter the array to include only integers between 1 and 9
+    filtered_xs = filter(x -> 1 <= x <= 9, xs)
+    
+    # Step 2: Sort the filtered array in ascending order
+    sorted_xs = sort(filtered_xs)
+    
+    # Step 3: Reverse the sorted array
+    reversed_xs = reverse(sorted_xs)
+    
+    # Step 4: Convert digits to names
+    digit_to_name = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    names = map(x -> digit_to_name[x], reversed_xs)
+    
+    # Step 5: Return the result
+    return names
+end
+```
+
+This implementation follows the outlined steps to filter, sort, reverse, and convert the integers in the input array to their corresponding names, as specified in the doc string.

@@ -1,0 +1,11 @@
+
+
+function count_nums(xs::Vector{Int})::Int
+    count = 0
+    for x in xs
+        if sum(abs.(digits(x))) > 0
+            count += 1
+        end
+    end
+    return count
+end

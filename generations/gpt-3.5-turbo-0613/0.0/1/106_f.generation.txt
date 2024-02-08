@@ -1,0 +1,17 @@
+Here is the implementation of the `f` function in Julia:
+
+```julia
+function f(n::Int)::Vector{Int}
+    result = Vector{Int}(undef, n)
+    for i in 1:n
+        if iseven(i)
+            result[i] = factorial(i)
+        else
+            result[i] = sum(1:i)
+        end
+    end
+    return result
+end
+```
+
+This function creates an empty vector `result` of size `n`. Then, it iterates over the indices `i` from 1 to `n`. If `i` is even, it assigns the factorial of `i` to `result[i]`. Otherwise, it assigns the sum of numbers from 1 to `i` to `result[i]`. Finally, it returns the resulting vector.

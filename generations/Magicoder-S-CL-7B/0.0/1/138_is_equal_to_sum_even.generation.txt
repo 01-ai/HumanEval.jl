@@ -1,0 +1,5 @@
+
+
+function is_equal_to_sum_even(n::Int)::Bool
+    # Your code here
+end

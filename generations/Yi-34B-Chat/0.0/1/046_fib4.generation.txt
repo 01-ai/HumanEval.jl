@@ -1,0 +1,19 @@
+```julia
+function fib4(n::Int)::Int
+    # Initialize the first four elements of the sequence
+    a, b, c, d = 0, 0, 2, 0
+
+    # Loop through the sequence until the n-th element is reached
+    for _ in 1:n-3
+        # Calculate the next element using the current four elements
+        d = a + b + c + d
+        # Shift the elements to the left
+        a, b, c, d = b, c, d, a
+    end
+
+    # Return the n-th element
+    return d
+end
+```
+
+This function defines a loop that iteratively calculates the next element of the `fib4` sequence by adding the current four elements. It does this until the `n-th` element is reached. The loop shifts the elements to the left after each iteration, so that the next iteration can use the current values of `a`, `b`, `c`, and `d`.

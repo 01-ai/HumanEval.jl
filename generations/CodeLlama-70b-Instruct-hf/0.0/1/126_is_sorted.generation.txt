@@ -1,0 +1,19 @@
+
+
+```julia
+function is_sorted(xs::Vector{Int})::Bool
+    if length(xs) == 1
+        return true
+    end
+
+    for i in 2:length(xs)
+        if xs[i] < xs[i - 1]
+            return false
+        end
+    end
+
+    return true
+end
+```
+
+This function iterates through the list and checks if each element is greater than or equal to the previous element. If it finds an element that is less than the previous element, it returns false. If it reaches the end of the list without finding an out-of-order element, it returns true.

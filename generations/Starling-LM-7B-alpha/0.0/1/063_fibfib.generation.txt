@@ -1,0 +1,21 @@
+ Here's a Julia function that efficiently computes the n-th element of the FibFib number sequence:
+
+```julia
+function fibfib(n::Int)::Int
+    if n == 0 || n == 1
+        return 0
+    elseif n == 2
+        return 1
+    else
+        a = 0
+        b = 0
+        c = 1
+        for i in 3:n
+            a, b, c = b, c, a + b + c
+        end
+        return c
+    end
+end
+```
+
+This function first checks if `n` is 0, 1, or 2, and returns the corresponding FibFib number. For `n` greater than 2, it uses a loop to calculate the FibFib number at index `n` using the recurrence relation `fibfib(n) = fibfib(n-1) + fibfib(n-2) + fibfib(n-3)`. The loop initializes three variables `a`, `b`, and `c` to store the previous three FibFib numbers, and updates them in each iteration until it reaches the desired index `n`. Finally, it returns the FibFib number at index `n`.

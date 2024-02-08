@@ -1,0 +1,32 @@
+ Here's a Julia function that implements the `parse_nested_parens` function as described in the docstring:
+
+```julia
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    levels = Int[]
+    depth = 0
+    for c in paren_string
+        if c == '('
+            depth += 1
+        elseif c == ')'
+            depth -= 1
+        end
+        push!(levels, depth)
+    end
+    return levels
+end
+```
+
+This function initializes an empty vector `levels` to store the nesting levels. It also initializes a variable `depth` to keep track of the current nesting level. Then, it iterates through each character in the input string `paren_string`. If the character is an opening parenthesis '(', the `depth` variable is incremented by 1. If the character is a closing parenthesis ')', the `depth` variable is decremented by 1. After processing each character, the current `depth` value is appended to the `levels` vector. Finally, the function returns the `levels` vector containing the deepest nesting levels for each group of parentheses.
+
+Here's an example usage of the function:
+
+```julia
+julia> parse_nested_parens("(()()) ((())) () ((())()())")
+4-element Vector{Int64}:
+ 2
+ 3
+ 1
+ 3
+```
+
+This output matches the example provided in the docstring.

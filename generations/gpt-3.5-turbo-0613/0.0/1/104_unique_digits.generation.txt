@@ -1,0 +1,22 @@
+Here is the implementation for the `unique_digits` function:
+
+```julia
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    unique_nums = Int[]
+    for x in xs
+        has_even_digit = false
+        for digit in digits(x)
+            if digit % 2 == 0
+                has_even_digit = true
+                break
+            end
+        end
+        if !has_even_digit
+            push!(unique_nums, x)
+        end
+    end
+    return sort(unique_nums)
+end
+```
+
+This function iterates over each element in the input vector `xs`. For each element, it checks if any of its digits are even. If none of the digits are even, the element is added to the `unique_nums` array. Finally, the `unique_nums` array is sorted and returned.

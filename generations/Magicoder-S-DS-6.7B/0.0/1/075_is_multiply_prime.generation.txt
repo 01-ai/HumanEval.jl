@@ -1,0 +1,37 @@
+Here is a Julia function that implements the `is_multiply_prime` function as described in the problem:
+
+```julia
+function is_multiply_prime(a::Int)::Bool
+    if a < 2
+        return false
+    end
+
+    function is_prime(n::Int)::Bool
+        if n < 2
+            return false
+        end
+        for i in 2:isqrt(n)
+            if n % i == 0
+                return false
+            end
+        end
+        return true
+    end
+
+    factors = Int[]
+    for i in 2:a
+        if a % i == 0 && is_prime(i)
+            pushfirst(factors, i)
+            a = a � i
+        end
+    end
+
+    return length(factors) == 3 && prod(factors) == a
+end
+```
+
+This function first checks if the number is less than 2, in which case it returns `false`. Then it defines a helper function `is_prime` to check if a number is prime.
+
+The main function then iterates over all numbers from 2 to `a`, checking if they are factors of `a` and if they are prime. If they are, they are added to the `factors` array and `a` is divided by the factor.
+
+Finally, the function checks if the length of `factors` is 3 (i.e., `a` was the product of exactly 3 prime numbers) and if the product of the factors equals `a` (i.e., `a` was the product of exactly 3 prime numbers). If both conditions are met, the function returns `true`; otherwise, it returns `false`.

@@ -1,0 +1,21 @@
+name: Run tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v1
+        with:
+          version: "1"
+          arch: "x64"
+      - uses: julia-actions/julia-buildpkg@v1
+      - run: echo "RETESTITEMS_NWORKERS=2" >> $GITHUB_ENV
+      - run: echo "RETESTITEMS_TESTITEM_TIMEOUT=15" >> $GITHUB_ENV
+      - uses: julia-actions/julia-runtest@v1

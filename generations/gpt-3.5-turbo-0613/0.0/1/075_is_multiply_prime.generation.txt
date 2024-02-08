@@ -1,0 +1,16 @@
+Here is the implementation of the `is_multiply_prime` function in Julia:
+
+```julia
+function is_multiply_prime(a::Int)::Bool
+    primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+    factors = []
+    for prime in primes
+        if a % prime == 0
+            push!(factors, prime)
+        end
+    end
+    return length(factors) == 3
+end
+```
+
+This function checks if the given number `a` is divisible by exactly 3 prime numbers. It does this by iterating over a list of prime numbers less than 100 and checking if `a` is divisible by each prime number. If `a` is divisible by a prime number, it is added to the `factors` list. Finally, the function returns `true` if the length of the `factors` list is equal to 3, indicating that `a` is the multiplication of 3 prime numbers. Otherwise, it returns `false`.

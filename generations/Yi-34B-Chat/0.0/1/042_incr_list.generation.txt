@@ -1,0 +1,16 @@
+```julia
+function incr_list(xs::Vector)::Vector
+    # Initialize an empty vector to hold the incremented list
+    incremented_xs = Vector{Int64}()
+    
+    # Iterate over the original list and increment each element by 1
+    for x in xs
+        push!(incremented_xs, x + 1)
+    end
+    
+    # Return the incremented list
+    return incremented_xs
+end
+```
+
+This function takes a vector `xs` of integers and returns a new vector where each element is incremented by 1. The `jldoctest` block demonstrates the expected output for several input vectors.

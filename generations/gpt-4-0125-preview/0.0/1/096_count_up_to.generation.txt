@@ -1,0 +1,29 @@
+To implement the `count_up_to` function as described, we first need a helper function to check if a number is prime. Then, we can iterate through numbers from 2 up to (but not including) `n`, checking each for primality and collecting those that are prime. Here's how you can do it in Julia:
+
+```julia
+# Check if a number is prime
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    end
+    for i in 2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+# Function to return the first n prime numbers less than n
+function count_up_to(n::Int)::Vector{Int}
+    primes = Int[]
+    for i in 2:n-1
+        if is_prime(i)
+            push!(primes, i)
+        end
+    end
+    return primes
+end
+```
+
+This implementation defines a helper function `is_prime` to check the primality of a given number by attempting to divide it by all numbers from 2 up to its square root. If any division results in a remainder of 0, the number is not prime. The `count_up_to` function then iterates through numbers from 2 up to `n-1`, using the `is_prime` function to check each number. If a number is prime, it is added to the `primes` array, which is returned at the end.

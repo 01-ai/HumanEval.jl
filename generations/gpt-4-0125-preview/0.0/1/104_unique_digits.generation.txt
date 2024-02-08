@@ -1,0 +1,20 @@
+To implement the `unique_digits` function as described, we need to filter the input list `xs` to include only those numbers that do not contain any even digits. After filtering, we sort the resulting list in increasing order before returning it. Here's how you can do it in Julia:
+
+```julia
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    # Filter the list to include only numbers without even digits
+    filtered_xs = filter(x -> all(d -> d % 2 != 0, digits(x)), xs)
+    
+    # Sort the filtered list in increasing order
+    sort(filtered_xs)
+end
+
+# Examples
+println(unique_digits([15, 33, 1422, 1]))  # Output: [1, 15, 33]
+println(unique_digits([152, 313, 1422, 10]))  # Output: [313]
+```
+
+This function works as follows:
+1. It uses the `filter` function to keep only those numbers in `xs` that satisfy a certain condition. The condition is defined by a lambda function that checks if all digits of a number are odd. This is done by converting each number to its digits (`digits(x)`) and then checking if each digit `d` is not even (`d % 2 != 0`).
+2. After filtering, the `sort` function is used to sort the remaining numbers in increasing order.
+3. The sorted list is then returned.

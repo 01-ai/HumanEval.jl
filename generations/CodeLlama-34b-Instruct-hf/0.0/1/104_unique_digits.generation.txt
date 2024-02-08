@@ -1,0 +1,27 @@
+  Here's one way to implement the `unique_digits` function in Julia:
+```
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    # Create a set to store the unique digits
+    unique_digits = Set{Int}()
+
+    # Iterate over the elements of xs
+    for x in xs
+        # Check if x has any even digits
+        if any(isodd, digits(x))
+            # If x has any even digits, add it to the set
+            push!(unique_digits, x)
+        end
+    end
+
+    # Return the sorted list of unique digits
+    return sort(collect(unique_digits))
+end
+```
+Here's an explanation of how the function works:
+
+1. We create a set `unique_digits` to store the unique digits.
+2. We iterate over the elements of `xs` using a `for` loop.
+3. For each element `x` in `xs`, we check if `x` has any even digits using the `any` function and the `isodd` function. If `x` has any even digits, we add it to the set `unique_digits`.
+4. After iterating over all elements of `xs`, we return the sorted list of unique digits using the `sort` function and the `collect` function.
+
+Note that the `digits` function is used to extract the digits of a number. The `isodd` function is used to check if a number is odd. The `any` function is used to check if any element of a collection satisfies a condition.

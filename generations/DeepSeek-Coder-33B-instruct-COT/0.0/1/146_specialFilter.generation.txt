@@ -1,0 +1,28 @@
+Here is a step-by-step outline of how you can solve this problem:
+
+1. Initialize a counter variable to 0. This will keep track of the number of elements that satisfy the conditions.
+2. Iterate over each number in the input array.
+3. For each number, check if it is greater than 10 and if its first and last digits are odd.
+4. If the number satisfies both conditions, increment the counter.
+5. After iterating over all numbers, return the counter.
+
+Here is the Julia code that implements the above steps:
+
+```julia
+function specialFilter(nums::Vector{Int})::Int
+    counter = 0
+    for num in nums
+        if num > 10
+            num_str = string(abs(num))
+            first_digit = parse(Int, num_str[1])
+            last_digit = parse(Int, num_str[end])
+            if first_digit in [1, 3, 5, 7, 9] && last_digit in [1, 3, 5, 7, 9]
+                counter += 1
+            end
+        end
+    end
+    return counter
+end
+```
+
+This function works by first converting each number to a string, then checking the first and last characters of the string to see if they are odd digits. The `abs` function is used to ensure that negative numbers are handled correctly. The `parse` function is used to convert the characters back into integers. The `in` function is used to check if a digit is in the list of odd digits. The `counter` is incremented if both conditions are met.

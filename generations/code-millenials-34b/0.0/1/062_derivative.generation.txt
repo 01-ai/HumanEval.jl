@@ -1,0 +1,14 @@
+
+
+function derivative(xs::Vector)::Vector
+    if length(xs) < 2
+        return []
+    end
+    return [(i+1)*xs[i+1] for i in 0:(length(xs)-2)]
+end
+
+# Test cases
+@assert derivative([3, 1, 2, 4, 5]) == [1, 4, 12, 20]
+@assert derivative([1, 2, 3]) == [2, 6]
+@assert derivative([1]) == []
+@assert derivative([]) == []

@@ -1,0 +1,10 @@
+
+
+function sum_squares_round(xs::Vector)::Int
+    sum_squares = 0
+    for x in xs
+        rounded_x = ceil(Int, x)
+        sum_squares += rounded_x^2
+    end
+    return sum_squares
+end

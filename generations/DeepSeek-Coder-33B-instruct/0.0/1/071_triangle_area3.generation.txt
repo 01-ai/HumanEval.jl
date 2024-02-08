@@ -1,0 +1,15 @@
+Here is the Julia function that implements the given doc string:
+
+```julia
+function triangle_area3(a::Number, b::Number, c::Number)::Number
+    if a + b > c && a + c > b && b + c > a
+        s = (a + b + c) / 2
+        area = sqrt(s * (s - a) * (s - b) * (s - c))
+        return round(area, digits=2)
+    else
+        return -1
+    end
+end
+```
+
+This function first checks if the given sides form a valid triangle. If they do, it calculates the semi-perimeter of the triangle, then uses Heron's formula to calculate the area. The area is then rounded to 2 decimal points and returned. If the sides do not form a valid triangle, the function returns -1.

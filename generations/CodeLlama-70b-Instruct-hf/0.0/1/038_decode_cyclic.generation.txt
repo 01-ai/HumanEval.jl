@@ -1,0 +1,8 @@
+
+```julia
+function decode_cyclic(s::String)::String
+    join((length(x) == 3 ? x[3] * x[1] * x[2] : x for x in Iterators.partition(s, 3)))
+end
+```
+
+This function decodes the string encoded with the `encode_cyclic` function. It iterates through the string in groups of three characters and rearranges the characters in each group to their original positions.

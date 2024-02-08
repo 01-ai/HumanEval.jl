@@ -1,0 +1,27 @@
+### Step-by-Step Outline
+
+1. **Define the function** `sort_array` that takes a vector of integers as input.
+2. **Convert each integer to binary** and count the number of ones in its binary representation. This can be done using Julia's built-in functions.
+3. **Sort the array** based on the number of ones in the binary representation. If two numbers have the same number of ones, they should be sorted based on their decimal value.
+4. **Return the sorted array**.
+
+### Julia Code Implementation
+
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    # Step 2 & 3: Sort the array based on the number of ones in binary representation,
+    # and then by their decimal value if the number of ones is the same.
+    sort(arr, by = x -> (count_ones(x), x))
+end
+
+# Helper function to count the number of ones in the binary representation of an integer
+function count_ones(x::Int)::Int
+    count(i -> i == '1', bitstring(x))
+end
+
+# Example usage
+println(sort_array([1, 5, 2, 3, 4]))  # Output: [1, 2, 4, 3, 5]
+println(sort_array([1, 0, 2, 3, 4]))  # Output: [0, 1, 2, 4, 3]
+```
+
+This implementation defines the `sort_array` function which sorts the input array according to the problem statement. It uses Julia's `sort` function with a custom sorting criterion. The criterion is a tuple where the first element is the number of ones in the binary representation (calculated using the `count_ones` helper function), and the second element is the number itself, ensuring that ties are broken based on the decimal value.

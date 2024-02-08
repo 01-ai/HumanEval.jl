@@ -1,0 +1,11 @@
+
+
+Here is the Julia function based on the given doc string:
+
+```julia
+function truncate_number(number::Float64)::Float64
+    return number - floor(number)
+end
+```
+
+This function works by subtracting the integer part of the number (obtained by calling `floor(number)`) from the original number, thus returning only the decimal part.

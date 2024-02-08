@@ -1,0 +1,23 @@
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    # Initialize the pile with the first level
+    pile = [n]
+    
+    # Loop through the levels, adding the next odd or even number
+    while length(pile) < n
+        if n % 2 == 1
+            # If n is odd, add the next odd number
+            push!(pile, n + 2)
+            n += 2
+        else
+            # If n is even, add the next even number
+            push!(pile, n + 1)
+            n += 1
+        end
+    end
+    
+    return pile
+end
+```
+
+This function takes a positive integer `n` and returns a vector of integers representing the pile of stones. The first level has `n` stones, and each subsequent level has the next odd or even number depending on whether `n` is odd or even. The function continues to add levels until there are `n` levels in the pile.

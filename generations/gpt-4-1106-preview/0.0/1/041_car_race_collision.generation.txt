@@ -1,0 +1,15 @@
+To implement the `car_race_collision` function, we need to consider that each car moving left to right will eventually collide with each car moving right to left, given that all cars are moving at the same speed and the road is infinitely long.
+
+Since there are `n` cars moving left to right and `n` cars moving right to left, each car from one direction will collide with each car from the other direction exactly once. Therefore, the total number of collisions will be `n * n`, which is `n^2`.
+
+Here is the implementation of the `car_race_collision` function in Julia:
+
+```julia
+function car_race_collision(n::Int)::Int
+    # Since each car from one direction will collide with each car from the other direction,
+    # the total number of collisions is n * n, which is n^2.
+    return n^2
+end
+```
+
+This function simply calculates the square of `n` and returns it as the number of collisions.

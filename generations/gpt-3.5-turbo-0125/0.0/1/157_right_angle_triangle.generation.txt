@@ -1,0 +1,8 @@
+```julia
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    sides = [a, b, c]
+    max_side = maximum(sides)
+    sum_of_squares = sum(x -> x^2, deleteat!(copy(sides), findfirst(isequal(max_side), sides)))
+    return max_side^2 == sum_of_squares
+end
+```

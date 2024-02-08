@@ -1,0 +1,38 @@
+To implement the `string_xor` function, we will follow these steps:
+
+1. Check if the input strings `a` and `b` are of the same length. If not, return an error or handle the discrepancy according to the desired behavior (e.g., by padding the shorter string with leading zeros).
+2. Initialize an empty string `result` that will hold the XOR result.
+3. Iterate over the characters of both strings `a` and `b` simultaneously.
+4. For each pair of characters, perform the XOR operation:
+   - If the characters are the same (`'0'` with `'0'` or `'1'` with `'1'`), append `'0'` to `result`.
+   - If the characters are different (`'0'` with `'1'` or `'1'` with `'0'`), append `'1'` to `result`.
+5. After iterating through all characters, return the `result` string.
+
+Now, let's write the code for the `string_xor` function:
+
+```julia
+function string_xor(a::String, b::String)::String
+    # Step 1: Check if strings are of the same length
+    if length(a) != length(b)
+        error("Input strings must be of the same length")
+    end
+
+    # Step 2: Initialize the result string
+    result = ""
+
+    # Step 3: Iterate over the characters of both strings
+    for i in 1:length(a)
+        # Step 4: Perform XOR operation and append to result
+        if a[i] == b[i]
+            result *= '0'
+        else
+            result *= '1'
+        end
+    end
+
+    # Step 5: Return the result
+    return result
+end
+```
+
+This function can now be used to perform binary XOR on two strings of equal length containing only `1`s and `0`s. If the strings are not of equal length, it will raise an error.

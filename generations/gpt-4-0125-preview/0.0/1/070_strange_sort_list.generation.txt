@@ -1,0 +1,34 @@
+To implement the `strange_sort_list` function as described, we can follow these steps:
+
+1. Initialize an empty vector to store the result.
+2. While the input vector is not empty, repeat the following steps:
+   - Find the minimum value in the vector, append it to the result vector, and remove it from the input vector.
+   - If the input vector is not empty after removing the minimum value, find the maximum value, append it to the result vector, and remove it from the input vector.
+3. Return the result vector.
+
+Here's how you can implement this in Julia:
+
+```julia
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    sorted_xs = Int[]  # Initialize an empty vector for the result
+    while !isempty(xs)
+        # Find and append the minimum value
+        min_val = minimum(xs)
+        push!(sorted_xs, min_val)
+        deleteat!(xs, findfirst(==(min_val), xs))  # Remove the first occurrence of min_val
+        
+        # Check if the list is empty before finding the maximum
+        if isempty(xs)
+            break
+        end
+        
+        # Find and append the maximum value
+        max_val = maximum(xs)
+        push!(sorted_xs, max_val)
+        deleteat!(xs, findfirst(==(max_val), xs))  # Remove the first occurrence of max_val
+    end
+    return sorted_xs
+end
+```
+
+This function works by alternating between finding and removing the minimum and maximum values from the input vector until it becomes empty, effectively creating a new vector sorted in the "strange" order described.

@@ -1,0 +1,41 @@
+### Step-by-Step Outline
+
+1. **Initialize an empty list** to store the parsed beats as integers.
+2. **Iterate through the music string** to identify each note and its corresponding beat value.
+    - Since the notes can have different lengths (e.g., "o" vs "o|" vs ".|"), we need to be careful about how we iterate through the string to ensure we correctly identify each note.
+3. **Identify each note and its beat value**:
+    - If the current character is `"o"`:
+        - Check if the next character is `"|"`. If yes, it's a half note (`"o|"`), add `2` to the list, and skip the next character in the iteration.
+        - If the next character is not `"|"`, it's a whole note (`"o"`), add `4` to the list.
+    - If the current character is `"."`:
+        - Check if the next character is `"|"`. If yes, it's a quarter note (`".|"`), add `1` to the list, and skip the next character in the iteration.
+        - This scenario assumes that a dot not followed by a bar is not a valid note in this context, based on the provided legend.
+4. **Return the list of integers** representing the beats of each note.
+
+### Julia Code Implementation
+
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    beats = Int[]  # Initialize an empty list to store the beats
+    i = 1  # Initialize a counter to iterate through the string
+    
+    while i <= length(music_string)
+        current_char = music_string[i]
+        
+        if current_char == 'o'
+            if i < length(music_string) && music_string[i+1] == '|'
+                push!(beats, 2)  # Half note
+                i += 2  # Skip the next character
+            else
+                push!(beats, 4)  # Whole note
+                i += 1
+            end
+        elseif current_char == '.'
+            if i < length(music_string) && music_string[i+1] == '|'
+                push!(beats, 1)  # Quarter note
+                i += 2  # Skip the next character
+            else
+                # Assuming a dot not followed by a bar is not a valid note
+                i += 1
+            end
+        else

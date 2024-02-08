@@ -1,0 +1,40 @@
+### Step-by-Step Outline
+
+1. **Check for List Length**: First, check if the list has fewer than 3 elements. If it does, return `false` immediately since it's impossible to find three distinct elements that sum to zero in a list with fewer than three elements.
+
+2. **Sort the List**: Sort the list in ascending order. This step will make it easier to navigate through the list and apply the two-pointer technique.
+
+3. **Iterate through the List**: Use a loop to iterate through the list. For each element in the list (considered as the first element of a potential triplet), apply the two-pointer technique to find if there exists a pair in the remaining part of the list that sums up to the negative value of the current element.
+
+4. **Two-Pointer Technique**:
+    - Initialize two pointers: one at the element immediately after the current element (`left`) and the other at the end of the list (`right`).
+    - While `left` is less than `right`, check if the sum of the elements at `left`, `right`, and the current element is zero.
+        - If the sum is zero, return `true` because we've found a triplet that sums to zero.
+        - If the sum is less than zero, move the `left` pointer one step to the right (increment `left`) to increase the sum.
+        - If the sum is greater than zero, move the `right` pointer one step to the left (decrement `right`) to decrease the sum.
+    - If no such pair is found for the current element, continue to the next element in the list.
+
+5. **Return False**: If the loop completes without finding any triplet that sums to zero, return `false`.
+
+### Julia Code Implementation
+
+```julia
+function triples_sum_to_zero(l::Vector{Int})::Bool
+    # Step 1: Check for list length
+    if length(l) < 3
+        return false
+    end
+
+    # Step 2: Sort the list
+    sort!(l)
+
+    # Step 3: Iterate through the list
+    for i in 1:length(l)-2
+        # Step 4: Two-Pointer Technique
+        left, right = i+1, length(l)
+        while left < right
+            sum = l[i] + l[left] + l[right]
+            if sum == 0
+                return true
+            elseif sum < 0
+                left

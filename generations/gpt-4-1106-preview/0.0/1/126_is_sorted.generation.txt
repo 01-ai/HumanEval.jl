@@ -1,0 +1,27 @@
+Here is the Julia function `is_sorted` that matches the doc string:
+
+```julia
+function is_sorted(xs::Vector{Int})::Bool
+    # Check if the vector is empty or has only one element
+    if length(xs) <= 1
+        return true
+    end
+    
+    # Iterate through the vector to check if it is sorted and has no duplicates
+    for i in 2:length(xs)
+        # If the current element is less than the previous one, it's not sorted
+        if xs[i] < xs[i-1]
+            return false
+        end
+        # If the current element is equal to the previous one, it has duplicates
+        if xs[i] == xs[i-1]
+            return false
+        end
+    end
+    
+    # If the loop completes without returning false, the vector is sorted
+    return true
+end
+```
+
+This function checks if the vector is sorted in ascending order and also ensures that there are no duplicates by comparing each element with its predecessor. If any element is not greater than the previous one, it returns `false`. If the loop completes without finding any such case, it returns `true`.

@@ -1,0 +1,13 @@
+Here is a Julia function that implements the pluck function as described:
+
+```julia
+function pluck(xs::Vector{Int})::Vector{Int}
+    even_nums = filter(x -> x % 2 == 0, xs)
+    isempty(even_nums) && return Int[]
+    smallest_even = minimum(even_nums)
+    smallest_index = findfirst(isequal(smallest_even), xs)
+    return [smallest_even, smallest_index]
+end
+```
+
+This function first filters out the even numbers from the input array. If there are no even numbers, it returns an empty array. Otherwise, it finds the smallest even number and its index in the original array, and returns them as a vector.

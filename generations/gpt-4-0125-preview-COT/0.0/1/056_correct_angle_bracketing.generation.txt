@@ -1,0 +1,37 @@
+### Step-by-Step Outline
+
+1. Initialize a counter to keep track of the balance between opening and closing brackets. Set it to 0.
+2. Iterate through each character in the input string.
+   - If the character is an opening bracket ("<"), increment the counter.
+   - If the character is a closing bracket (">"), decrement the counter.
+   - If at any point the counter becomes negative, return `false` immediately. This indicates that there is a closing bracket without a corresponding opening bracket before it.
+3. After the iteration, check the counter's value.
+   - If the counter is 0, return `true`, indicating that every opening bracket has a corresponding closing bracket.
+   - If the counter is not 0, return `false`, indicating that there are unmatched opening brackets.
+
+### Julia Code Implementation
+
+```julia
+function correct_angle_bracketing(brackets::String)::Bool
+    # Step 1: Initialize the counter
+    balance_counter = 0
+
+    # Step 2: Iterate through each character in the string
+    for bracket in brackets
+        if bracket == '<'
+            balance_counter += 1
+        elseif bracket == '>'
+            balance_counter -= 1
+            # If the counter becomes negative, return false immediately
+            if balance_counter < 0
+                return false
+            end
+        end
+    end
+
+    # Step 3: Check the final value of the counter
+    return balance_counter == 0
+end
+```
+
+This function correctly implements the logic to determine if every opening angle bracket has a corresponding closing angle bracket in the given string.

@@ -1,0 +1,16 @@
+```julia
+function double_the_difference(xs::Vector)
+    # Initialize the result to 0
+    result = 0
+
+    # Loop through the list, adding the square of each odd number to the result
+    for x in xs
+        if x > 0 && x % 2 == 1  # Check if x is positive and odd
+            result += x^2  # Add the square of x to the result
+        end
+    end
+
+    # Return the result
+    return result
+end
+```

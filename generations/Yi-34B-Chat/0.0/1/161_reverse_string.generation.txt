@@ -1,0 +1,28 @@
+```julia
+function reverse_string(s::String)::String
+    # Initialize an empty string to store the reversed string
+    reversed_string = ""
+
+    # Loop through the original string
+    for c in s
+        # If the character is a letter, reverse its case
+        if isletter(c)
+            # Use uppercase or lowercase depending on the original case
+            c = isupper(c) ? lowercase(c) : uppercase(c)
+        end
+
+        # Append the character to the reversed string
+        reversed_string *= c
+    end
+
+    # If the original string contains no letters, reverse it
+    if !all(isletter, s)
+        reversed_string = reverse(s)
+    end
+
+    # Return the reversed string
+    return reversed_string
+end
+```
+
+This function works by iterating over the original string and for each character, it checks if it is a letter. If it is, it reverses its case (uppercase to lowercase or vice versa). If the original string contains no letters, the function simply reverses the string.

@@ -1,0 +1,46 @@
+### Step-by-Step Outline:
+
+1. Define the function `remove_vowels` that takes a single argument `text` of type `String`.
+2. Create a string or a set of characters that represents all vowels (both uppercase and lowercase).
+3. Iterate over each character in the input string `text`.
+4. Check if the current character is not a vowel.
+5. If it is not a vowel, append it to a new string.
+6. After iterating through all characters, return the new string which contains the input string without vowels.
+
+### Julia Code:
+
+```julia
+"""
+    remove_vowels(text::String)::String
+
+`remove_vowels` is a function that takes string and returns string without vowels.
+
+# Examples
+
+```jldoctest
+julia> remove_vowels("")
+""
+
+julia> remove_vowels("abcdef\\nghijklm")
+"bcdf\\nghjklm"
+
+julia> remove_vowels("abcdef")
+"bcdf"
+
+julia> remove_vowels("aaaaa")
+""
+
+julia> remove_vowels("aaBAA")
+"B"
+
+julia> remove_vowels("zbcd")
+"zbcd"
+```
+"""
+function remove_vowels(text::String)::String
+    vowels = "aeiouAEIOU"
+    return join(filter(c -> !(c in vowels), text))
+end
+```
+
+This function uses the `filter` function to remove all characters from `text` that are in the `vowels` string and then joins the resulting characters back into a string. The `in` operator is used to check if a character is a vowel, and the `!` operator negates the condition.

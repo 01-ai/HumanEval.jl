@@ -1,0 +1,30 @@
+
+```julia
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    # Check if the input array is empty or not
+    if length(xs) == 0
+        throw(ArgumentError("Input array cannot be empty."))
+    end
+
+    # Check if k is within the range of the input array
+    if k < 1 || k > length(xs)
+        throw(ArgumentError("k must be within the range of the input array."))
+    end
+
+    # Initialize the sum
+    sum = 0
+
+    # Iterate through the first k elements of the array
+    for i in 1:k
+        # Check if the element has at most two digits
+        if xs[i] < 100
+            # Add the element to the sum
+            sum += xs[i]
+        end
+    end
+
+    return sum
+end
+```
+
+This function iterates through the first k elements of the array and checks if each element has at most two digits. If it does, it adds the element to the sum. Finally, it returns the sum.

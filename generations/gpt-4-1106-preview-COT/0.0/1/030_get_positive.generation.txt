@@ -1,0 +1,29 @@
+### Step-by-Step Outline
+
+1. Define a function `get_positive` that takes a single argument `xs`, which is a vector of integers.
+2. Use a list comprehension or the `filter` function to iterate over the elements of `xs`.
+3. In the iteration, check if each element is greater than zero.
+4. Collect all the elements that are greater than zero into a new vector.
+5. Return the new vector containing only the positive elements.
+
+### Julia Code
+
+```julia
+function get_positive(xs::Vector)
+    # Use a list comprehension to filter out only positive numbers
+    positive_xs = [x for x in xs if x > 0]
+    return positive_xs
+end
+```
+
+Alternatively, you can use the `filter` function:
+
+```julia
+function get_positive(xs::Vector)
+    # Use the filter function to achieve the same result
+    positive_xs = filter(x -> x > 0, xs)
+    return positive_xs
+end
+```
+
+Both implementations will yield the same result. Let's proceed with the list comprehension approach for the actual code implementation.

@@ -1,0 +1,28 @@
+Here is the Julia function that removes duplicates from a vector of integers:
+
+```julia
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    counts = Dict{Int, Int}()
+    result = Int[]
+
+    for num in numbers
+        if haskey(counts, num)
+            counts[num] += 1
+        else
+            counts[num] = 1
+        end
+    end
+
+    for num in numbers
+        if counts[num] == 1
+            pushfirst(result, num)
+        else
+            counts[num] -= 1
+        end
+    end
+
+    return result
+end
+```
+
+This function works by first counting the occurrences of each number in the input vector. Then it iterates over the input vector again, adding each number to the result vector if it occurs exactly once. The order of the numbers in the result vector is the same as in the input vector.

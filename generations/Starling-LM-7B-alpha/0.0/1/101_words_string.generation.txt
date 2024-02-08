@@ -1,0 +1,10 @@
+ function words_string(s::String)::Vector{String}
+    # Split the string into words using regular expression
+    words = split(s, r"[ ,]+")
+
+    # Remove any empty strings from the result
+    words = filter(!isempty, words)
+
+    # Return the array of words
+    return words
+end

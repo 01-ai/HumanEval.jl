@@ -1,0 +1,11 @@
+
+
+function specialFilter(nums::Vector{Int})::Int
+    count = 0
+    for num in nums
+        if num > 10 && (num % 10 == 1 || num % 10 == 3 || num % 10 == 5 || num % 10 == 7 || num % 10 == 9) && (num % 100 % 10 == 1 || num % 100 % 10 == 3 || num % 100 % 10 == 5 || num % 100 % 10 == 7 || num % 100 % 10 == 9)
+            count += 1
+        end
+    end
+    return count
+end

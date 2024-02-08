@@ -1,0 +1,21 @@
+```julia
+function unique_elements(l::Vector)
+    # Sort the list
+    sorted_list = sort(l)
+
+    # Initialize the unique list
+    unique_list = Vector{eltype(l)}(undef, 0)
+
+    # Loop through the sorted list and add unique elements to the unique list
+    for i in 1:length(sorted_list)
+        if i == 1 || sorted_list[i] != sorted_list[i-1]
+            push!(unique_list, sorted_list[i])
+        end
+    end
+
+    # Return the unique list
+    return unique_list
+end
+```
+
+This function takes a vector `l` as input and returns a sorted vector of unique elements from `l`. It first sorts the list to make the uniqueness check more efficient. Then, it iterates through the sorted list and adds each element to the unique list if it is different from the previous one. The `eltype` function is used to get the element type of the input vector, and `Vector{eltype(l)}(undef, 0)` is used to initialize an empty vector with the same element type as `l`. The `push!` function is used to add elements to the unique list.

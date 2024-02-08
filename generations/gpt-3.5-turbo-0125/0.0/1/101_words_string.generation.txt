@@ -1,0 +1,7 @@
+```julia
+function words_string(s::String)::Vector{String}
+    words = split(s, [' ', ','])
+    filter!(x -> x != "", words)
+    return words
+end
+```

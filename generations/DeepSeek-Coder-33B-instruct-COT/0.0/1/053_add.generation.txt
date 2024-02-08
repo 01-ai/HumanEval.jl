@@ -1,0 +1,19 @@
+Here is the step-by-step outline:
+
+1. Define a function named `add` that takes two arguments `x` and `y`.
+2. Inside the function, add `x` and `y` and return the result.
+
+Here is the Julia code:
+
+```julia
+function add(x::Int, y::Int)
+    return x + y
+end
+```
+
+You can test the function with the following code:
+
+```julia
+println(add(2, 3))  # Output: 5
+println(add(5, 7))  # Output: 12
+```

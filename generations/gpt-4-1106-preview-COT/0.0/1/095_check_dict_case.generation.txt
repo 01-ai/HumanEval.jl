@@ -1,0 +1,48 @@
+### Step-by-step Outline:
+
+1. Check if the dictionary is empty. If it is, return `false`.
+2. Initialize two boolean variables, `all_lower` and `all_upper`, to `true`.
+3. Iterate over the keys of the dictionary.
+4. For each key, check if it is a string. If not, return `false`.
+5. Check if the key is in lower case. If it is not, set `all_lower` to `false`.
+6. Check if the key is in upper case. If it is not, set `all_upper` to `false`.
+7. After the loop, if either `all_lower` or `all_upper` is `true`, return `true`.
+8. If neither `all_lower` nor `all_upper` is `true`, return `false`.
+
+### Julia Code:
+
+```julia
+function check_dict_case(d::Dict{String})::Bool
+    # Step 1: Check if the dictionary is empty
+    if isempty(d)
+        return false
+    end
+
+    # Step 2: Initialize boolean variables
+    all_lower = true
+    all_upper = true
+
+    # Step 3: Iterate over the keys of the dictionary
+    for key in keys(d)
+        # Step 4: Check if the key is a string (should always be true based on Dict{String} type)
+        if !isa(key, String)
+            return false
+        end
+
+        # Step 5: Check if the key is in lower case
+        if key != lowercase(key)
+            all_lower = false
+        end
+
+        # Step 6: Check if the key is in upper case
+        if key != uppercase(key)
+            all_upper = false
+        end
+    end
+
+    # Step 7 and 8: Return true if either all_lower or all_upper is true, else false
+    return all_lower || all_upper
+end
+```
+
+Note: The type annotation `Dict{String}` ensures that all keys are strings, so step 4 is technically not necessary, but it's included for completeness. If the dictionary type is not guaranteed to be `Dict{String}`, then step 4 becomes necessary to ensure type safety.

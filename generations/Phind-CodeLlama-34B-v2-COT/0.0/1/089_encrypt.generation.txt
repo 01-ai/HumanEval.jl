@@ -1,0 +1,32 @@
+
+
+To solve this problem, we will create a function named `encrypt` that takes a string as an argument. The function will iterate over each character in the string, check if the character is a letter and if it is, shift it down by two multiplied to two places in the alphabet.
+
+Here is the step-by-step outline of the function:
+
+1. Define the function `encrypt` that takes a string `s` as an argument.
+2. Initialize an empty string `encrypted` to store the encrypted string.
+3. Iterate over each character `c` in the string `s`.
+4. Check if the character `c` is a letter using the `isletter` function.
+5. If the character `c` is a letter, shift it down by two multiplied to two places in the alphabet using the `Char` function and the ASCII values of the characters.
+6. If the character `c` is not a letter, add it to the `encrypted` string without any changes.
+7. After the loop ends, return the `encrypted` string.
+
+Here is the Julia code for the function:
+
+```julia
+function encrypt(s::String)
+    encrypted = ""
+    for c in s
+        if isletter(c)
+            # Shift the character down by two multiplied to two places
+            encrypted *= Char(Int(c) + 2*2)
+        else
+            encrypted *= c
+        end
+    end
+    return encrypted
+end
+```
+
+This function works by shifting the ASCII values of the characters down by two multiplied to two places. This will effectively rotate the alphabet such that the letters shift down by four places. The `isletter` function is used to check if a character is a letter, and if it is, the character is shifted down by four places; if it's not, the character is added to the encrypted string without any changes.

@@ -1,0 +1,11 @@
+
+
+function palindrome_with_append(s::String)::String
+    n = length(s)
+    for i in n:-1:1
+        if s[1:i] == reverse(s[1:i])
+            return s * reverse(s[1:i-1])
+        end
+    end
+    return s
+end

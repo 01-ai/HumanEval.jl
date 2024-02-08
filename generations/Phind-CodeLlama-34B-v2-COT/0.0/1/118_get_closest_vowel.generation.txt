@@ -1,0 +1,29 @@
+
+
+To solve this problem, we will iterate over the string from the right side, and check if the current character is a vowel and its both neighbors are consonants. If we find such a vowel, we return it. If we don't find any, we return an empty string.
+
+Here is the step-by-step outline:
+
+1. Iterate over the string from the right side.
+2. For each character, check if it is a vowel.
+3. If it is a vowel, check if its left and right neighbors are consonants.
+4. If the conditions in step 3 are met, return the vowel.
+5. If we finish iterating over the string, return an empty string.
+
+Now let's write the code:
+
+```julia
+function get_closest_vowel(word::String)::String
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    for i in length(word):-1:2
+        if word[i] in vowels
+            if word[i-1] not in vowels && word[i+1] not in vowels
+                return string(word[i])
+            end
+        end
+    end
+    return ""
+end
+```
+
+This function works by iterating over the string from the right side (except the last character). For each character, it checks if it is a vowel. If it is, it checks if its left and right neighbors are consonants. If the conditions are met, it returns the vowel. If it finishes iterating over the string without finding a vowel that meets the conditions, it returns an empty string.

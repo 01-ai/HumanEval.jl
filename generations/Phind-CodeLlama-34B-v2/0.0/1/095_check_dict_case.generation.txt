@@ -1,0 +1,12 @@
+
+
+function check_dict_case(d::Dict{String})::Bool
+    if isempty(d)
+        return false
+    end
+
+    all_lower = all(islower, first(k) for k in keys(d))
+    all_upper = all(isupper, first(k) for k in keys(d))
+
+    return all_lower || all_upper
+end

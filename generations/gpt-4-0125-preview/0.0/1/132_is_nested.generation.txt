@@ -1,0 +1,23 @@
+To implement the `is_nested` function, we can use a simple counter to keep track of the depth of nesting of the brackets. We increment the counter for each opening bracket `[` and decrement it for each closing bracket `]`. If at any point the counter is greater than 1, it means we have a nested bracket. We also need to ensure that the counter never goes below 0 at any point before the end of the string, as this would indicate an invalid sequence of brackets (a closing bracket before an opening one). Here's how you can implement it:
+
+```julia
+function is_nested(s::String)::Bool
+    depth = 0  # Initialize depth counter
+    for c in s
+        if c == '['
+            depth += 1  # Increment depth for opening bracket
+        elseif c == ']'
+            depth -= 1  # Decrement depth for closing bracket
+        end
+        if depth > 1
+            return true  # Found a nested bracket
+        end
+        if depth < 0
+            return false  # Invalid sequence, closing before opening
+        end
+    end
+    return false  # No nested brackets found
+end
+```
+
+This function iterates through each character in the string, adjusting the depth based on whether the character is an opening or closing bracket. It checks for nested brackets (depth > 1) and invalid sequences (depth < 0) during the iteration. If it completes the iteration without finding a nested bracket or encountering an invalid sequence, it returns `false`.
