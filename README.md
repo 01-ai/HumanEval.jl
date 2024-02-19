@@ -80,8 +80,8 @@ Once finished, the results will be displayed. You may find more details under th
 ## Related Work
 
 - [nuprl/MultiPL-E](https://github.com/nuprl/MultiPL-E/blob/main/prompts/humaneval-jl-transform.jsonl) contains Julia version prompts transformed from the original Python version [HumanEval](https://github.com/openai/human-eval). However, based on my limited Julia programming experience, the prompts are not that accurate and conventional.
-- [Julia-LLM-Leaderboard](https://github.com/svilupp/Julia-LLM-Leaderboard), which focused on practicality and simplicity.
-- [EvalPlus Leaderboard](https://evalplus.github.io/leaderboard.html) 
+- [Julia-LLM-Leaderboard](https://github.com/svilupp/Julia-LLM-Leaderboard), which focuses on practicality and simplicity.
+- [EvalPlus Leaderboard](https://evalplus.github.io/leaderboard.html)
 
 ## Future Work
 
@@ -90,6 +90,19 @@ Once finished, the results will be displayed. You may find more details under th
 - Explore advanced techniques to improve LLM's performance with code in general.
 
 We're hiring! If you're interested in working on code LLM at [01.ai](https://01.ai/), please contact [yi@01.ai](mailto:yi@01.ai).
+
+
+## FAQ
+
+- [What are the differences compared to the original Python version?](https://github.com/01-ai/HumanEval.jl/discussions/1)
+- [What are the limitations of this project?](https://github.com/01-ai/HumanEval.jl/discussions/2)
+- [How do LLMs perform compared to human?](https://github.com/01-ai/HumanEval.jl/discussions/3)
+- [How difficult is each problem?](https://github.com/01-ai/HumanEval.jl/discussions/4)
+- [Is GPT4 good enough?](https://github.com/01-ai/HumanEval.jl/discussions/5)
+- [How to make this evaluation higher quality?](https://github.com/01-ai/HumanEval.jl/discussions/6)
+- [How should we measure hallucinations?](https://github.com/01-ai/HumanEval.jl/discussions/7)
+- [Are there any other metrics we should care beyond pass@k?](https://github.com/01-ai/HumanEval.jl/discussions/8)
+- [Why does Yi-34B-Chat perform so poor?](https://github.com/01-ai/HumanEval.jl/discussions/9)
 
 ## Acknowledgement
 
