@@ -44,7 +44,7 @@ docker run -it --rm \
   -e RETESTITEMS_NWORKERS=16 \
   -e RETESTITEMS_TESTITEM_TIMEOUT=15 \
   -e MODEL=gpt-3.5-turbo-0613 \
-  ghcr.io/01-ai/humaneval-jl:latest
+  ghcr.io/01-ai/humaneval.jl:latest
 ```
 
 - `/PATH/TO/SAVE/RESULTS/generations`, this folder will contain raw responses from the model, extracted julia code snippets, and unit test results.
