@@ -32,7 +32,7 @@ By default, all results are calculated by <code>pass@1</code> using greedy decod
 
 ## Getting Started
 
-First, deploy the model you'd like to evaluate with a OpenAI compatiable endpoint, like [vLLM](https://docs.vllm.ai/en/latest/getting_started/quickstart.html#openai-compatible-server) or [Ollama](https://ollama.com/blog/openai-compatibility). We'll need the `OPENAI_API_KEY` and `OPENAI_BASE_URL` in the next step.
+First, deploy the model you'd like to evaluate with a OpenAI compatible endpoint, like [vLLM](https://docs.vllm.ai/en/latest/getting_started/quickstart.html#openai-compatible-server) or [Ollama](https://ollama.com/blog/openai-compatibility). We'll need the `OPENAI_API_KEY` and `OPENAI_BASE_URL` in the next step.
 
 ### Evaluate with docker
 
