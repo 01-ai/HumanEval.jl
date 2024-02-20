@@ -85,9 +85,9 @@ Once finished, the results will be displayed. You may find more details under th
 
 ## Future Work
 
-- Open source Julia related training dataset.
-- Julia specific LLM training/finetuning. 
-- Explore advanced techniques to improve LLM's performance with code in general.
+- Explore advanced techniques to improve LLM's performance with code in general. Especially how to iteratively refine code.
+- Julia specific LLM training/finetuning. We want to know the minimum requirement to train a code LLM.
+- Improve Yi series models' performance with code.
 
 We're hiring! If you're interested in working on code LLM at [01.ai](https://01.ai/), please contact [yi@01.ai](mailto:yi@01.ai).
 
