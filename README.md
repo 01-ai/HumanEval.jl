@@ -9,10 +9,14 @@ This project is a julia version of [HumanEval](https://github.com/openai/human-e
 |---------------------------------|----------|---------|
 |              gpt-4-0125-preview |    0.774 |   0.823 |
 |                     gpt-4-turbo |    0.756 |   0.823 |
+|     mistral-large-instruct-2407 |    0.744 |   0.823 |
 |                          gpt-4o |    0.738 |   0.817 |
+|      claude-3-5-sonnet-20240620 |     0.72 |   0.823 |
 |              gpt-4-1106-preview |     0.72 |   0.805 |
 |      DeepSeek-Coder-V2-Instruct |    0.695 |   0.774 |
 |                DeepSeek-V2-Chat |    0.689 |   0.756 |
+|         Llama-3.1-405B-Instruct |    0.628 |   0.744 |
+|          claude-3-opus-20240229 |     0.61 |   0.689 |
 |              Qwen2-72B-Instruct |    0.598 |   0.665 |
 |          Phind-CodeLlama-34B-v2 |    0.591 |   0.659 |
 |              gpt-3.5-turbo-0125 |    0.591 |   0.652 |
