@@ -46,6 +46,8 @@ By default, all results are calculated by <code>pass@1</code> using greedy decod
 
 First, deploy the model you'd like to evaluate with a OpenAI compatible endpoint, like [vLLM](https://docs.vllm.ai/en/latest/getting_started/quickstart.html#openai-compatible-server) or [Ollama](https://ollama.com/blog/openai-compatibility). We'll need the `OPENAI_API_KEY` and `OPENAI_BASE_URL` in the next step.
 
+To test models from Anthropic, you should set `ANTHROPIC_API_KEY` and `ANTHROPIC_BASE_URL` instead.
+
 ### Evaluate with docker
 
 ```bash
