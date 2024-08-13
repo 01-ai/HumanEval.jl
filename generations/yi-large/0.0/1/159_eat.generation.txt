@@ -1,0 +1,15 @@
+function eat(number::Int, need::Int, remaining::Int)::Vector{Int}
+    # Calculate the total number of carrots you will eat
+    total_eaten = min(number + need, remaining)
+    # Calculate the number of carrots left after eating as much as you can
+    left_after_eating = remaining - total_eaten
+    
+    # Return the result as an array
+    return [total_eaten, left_after_eating]
+end
+
+# Example usage:
+# println(eat(5, 6, 10))
+# println(eat(4, 8, 9))
+# println(eat(1, 10, 10))
+# println(eat(2, 11, 5))

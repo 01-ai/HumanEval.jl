@@ -1,0 +1,49 @@
+Here's a Julia function that solves the problem as described:
+
+```julia
+function find_max(words::Vector{String})::String
+    max_unique = 0
+    max_word = ""
+
+    for word in words
+        unique_chars = length(Set(word))
+        if unique_chars > max_unique || (unique_chars == max_unique && word < max_word)
+            max_unique = unique_chars
+            max_word = word
+        end
+    end
+
+    return max_word
+end
+```
+
+Let's break down how this function works:
+
+1. We initialize `max_unique` to keep track of the maximum number of unique characters found so far, and `max_word` to store the word with the maximum unique characters.
+
+2. We iterate through each word in the input vector `words`.
+
+3. For each word, we count the number of unique characters using `Set(word)`, which creates a set of unique characters in the word. The `length` of this set gives us the count of unique characters.
+
+4. We then check if the current word has more unique characters than the previous maximum (`unique_chars > max_unique`).
+
+5. If it does, we update `max_unique` and `max_word`.
+
+6. If the number of unique characters is equal to the current maximum (`unique_chars == max_unique`), we compare the current word lexicographically with the stored `max_word` using `word < max_word`. If the current word comes first lexicographically, we update `max_word`.
+
+7. After checking all words, we return `max_word`, which will be the word with the maximum number of unique characters, or in case of a tie, the lexicographically first one among those with the maximum unique characters.
+
+This function correctly handles all the given example cases:
+
+```julia
+julia> find_max(["name", "of", "string"])
+"string"
+
+julia> find_max(["name", "enam", "game"])
+"enam"
+
+julia> find_max(["aaaaaaa", "bb", "cc"])
+"aaaaaaa"
+```
+
+The function satisfies all the requirements: it accepts a vector of strings, returns a string, finds the word with the maximum number of unique characters, and in case of ties, returns the lexicographically first word.

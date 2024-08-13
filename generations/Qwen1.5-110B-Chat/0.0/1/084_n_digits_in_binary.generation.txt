@@ -1,0 +1,10 @@
+```julia
+function n_digits_in_binary(N::Int)::String
+    # Convert the integer to binary and then count the sum of '1's to represent the total sum of its digits in binary
+    binary_representation = string(bin(N))
+    sum_of_digits_in_binary = sum(d -> d == '1', binary_representation)
+    return string(sum_of_digits_in_binary)
+end
+```
+
+This function first converts the given integer `N` into its binary representation as a string using `bin(N)`. Then, it uses `sum` along with a generator expression to count the number of '1's in the binary string, which effectively gives the sum of its digits in the binary context. Finally, it converts this count back to a string and returns it.

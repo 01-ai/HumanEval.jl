@@ -1,0 +1,21 @@
+Sure, here is a possible implementation of the `encrypt` function in Julia:
+
+```julia
+function encrypt(s::String)
+    encrypted_string = ""
+    for c in s
+        if 'a' <= c <= 'z'
+            encrypted_char = Char(mod(Int(c) + 2 * 2 - Int('a'), 26) + Int('a'))
+            encrypted_string *= encrypted_char
+        elseif 'A' <= c <= 'Z'
+            encrypted_char = Char(mod(Int(c) + 2 * 2 - Int('A'), 26) + Int('A'))
+            encrypted_string *= encrypted_char
+        else
+            encrypted_string *= c
+        end
+    end
+    return encrypted_string
+end
+```
+
+This function works by iterating over each character in the input string. If the character is a lowercase or uppercase letter, it calculates the corresponding encrypted character by shifting it down by 2 * 2 places in the alphabet. The `mod` function is used to handle the case where the shift goes beyond 'z' or 'Z'. If the character is not a letter, it is simply added to the encrypted string as is.

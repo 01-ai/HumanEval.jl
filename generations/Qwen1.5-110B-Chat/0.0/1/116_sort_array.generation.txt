@@ -1,0 +1,6 @@
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    sort(arr, by=x -> (count_ones(x), x))
+end
+```
+This Julia function sorts an array of non-negative integers based on the number of ones in their binary representation first, and then by their decimal value if the number of ones is the same. The `count_ones` function from Julia's standard library is used to count the number of ones in the binary representation of each number. The `sort` function is then used with a custom sorting key, which is a tuple `(count_ones(x), x)` to achieve the required sorting behavior.

@@ -1,0 +1,19 @@
+Sure, here is the Julia function based on your description:
+
+```julia
+function bf(planet1::String, planet2::String)::NTuple
+    planets = ("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune")
+
+    idx1 = findfirst(x -> x == planet1, planets)
+    idx2 = findfirst(x -> x == planet2, planets)
+
+    if idx1 === nothing || idx2 === nothing
+        return ()
+    elseif idx1 < idx2
+        return planets[idx1+1:idx2-1]
+    else
+        return reverse(planets[idx2+1:idx1-1])
+    end
+end
+```
+This function first defines a tuple of all planets in order from the Sun. It then finds the indices of the input planets in this tuple. If either planet is not found, it returns an empty tuple. If the first planet is closer to the Sun than the second, it returns a tuple of all planets between them (excluding the input planets). If the second planet is closer to the Sun, it does the same but reverses the order of the planets in the returned tuple.

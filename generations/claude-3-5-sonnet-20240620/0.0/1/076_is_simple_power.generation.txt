@@ -1,0 +1,74 @@
+Here's a Julia function that implements the `is_simple_power` functionality as described:
+
+```julia
+function is_simple_power(x::Number, n::Number)::Bool
+    if x == 1
+        return true  # 1 is a simple power of any number
+    elseif n == 1 || x < 1 || n < 1
+        return false  # n^anything = 1 only when n = 1, and we handled x = 1 case above
+    end
+
+    # Convert to floating-point for the logarithm operation
+    log_x = log(abs(x))
+    log_n = log(abs(n))
+
+    # Calculate the potential exponent
+    potential_exponent = log_x / log_n
+
+    # Check if the potential exponent is very close to an integer
+    return isapprox(round(potential_exponent), potential_exponent, atol=1e-10)
+end
+```
+
+Let's break down how this function works:
+
+1. We first handle some edge cases:
+   - If `x` is 1, it's always true because any number raised to the 0 power is 1.
+   - If `n` is 1, it's false unless `x` is also 1 (which we've already handled).
+   - If `x` or `n` is less than 1, we return false to avoid complex numbers in the logarithm.
+
+2. We use the logarithm property that if x = n^m, then log(x) = m * log(n).
+
+3. We calculate log(x) / log(n), which should give us the exponent if x is indeed a simple power of n.
+
+4. We check if this result is very close to an integer using `isapprox`. We use `round` to get the nearest integer and compare with a small tolerance (1e-10) to account for floating-point inaccuracies.
+
+This function will correctly handle the examples given:
+
+```julia
+julia> is_simple_power(1, 4)
+true
+
+julia> is_simple_power(2, 2)
+true
+
+julia> is_simple_power(8, 2)
+true
+
+julia> is_simple_power(3, 2)
+false
+
+julia> is_simple_power(3, 1)
+false
+
+julia> is_simple_power(5, 3)
+false
+```
+
+The function also works for other cases, including larger numbers and floating-point inputs:
+
+```julia
+julia> is_simple_power(1024, 2)
+true
+
+julia> is_simple_power(9, 3)
+true
+
+julia> is_simple_power(9.0, 3.0)
+true
+
+julia> is_simple_power(10, 2)
+false
+```
+
+This implementation should be robust for a wide range of inputs while handling potential floating-point inaccuracies.

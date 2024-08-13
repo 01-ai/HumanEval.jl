@@ -1,0 +1,42 @@
+To solve this problem, we need to create a sorting function that considers two criteria:
+
+1. The number of ones in the binary representation of each number
+2. The decimal value of the number (for tie-breaking)
+
+Here's a Julia implementation that satisfies the requirements:
+
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    # Define a helper function to count the number of ones in binary representation
+    count_ones = x -> count(==('1'), bitstring(x))
+    
+    # Sort the array using a custom comparison function
+    sort(arr, by = x -> (count_ones(x), x))
+end
+```
+
+Let's break down the solution:
+
+1. We define a helper function `count_ones` using a lambda expression. This function takes a number `x`, converts it to its binary string representation using `bitstring(x)`, and then counts the occurrences of '1' in that string.
+
+2. We use Julia's `sort` function with a custom `by` parameter. The `by` parameter allows us to specify a function that returns a value to be used for comparison.
+
+3. Our custom comparison function is `x -> (count_ones(x), x)`. This creates a tuple for each element where:
+   - The first element is the count of ones in the binary representation
+   - The second element is the original decimal value
+
+4. Julia's sort function will use these tuples for comparison, first comparing the count of ones, and then the decimal value if the counts are equal.
+
+This implementation satisfies the requirements because:
+- It sorts the array based on the number of ones in the binary representation.
+- For numbers with the same count of ones, it sorts based on the decimal value.
+- It returns a new sorted array without modifying the original input.
+
+You can test this function with the provided examples:
+
+```julia
+println(sort_array([1, 5, 2, 3, 4]) == [1, 2, 4, 3, 5])  # true
+println(sort_array([1, 0, 2, 3, 4]) == [0, 1, 2, 4, 3])  # true
+```
+
+Both of these should return `true`, confirming that the function works as expected.

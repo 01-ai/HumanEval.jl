@@ -1,0 +1,25 @@
+To determine if a triangle with sides \(a\), \(b\), and \(c\) is a right-angled triangle, we can use the Pythagorean theorem. The theorem states that for a right-angled triangle, the square of the length of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the lengths of the other two sides.
+
+Given three sides \(a\), \(b\), and \(c\), we need to check if any one of them can be the hypotenuse. This means we need to check the following conditions:
+1. \(a^2 + b^2 = c^2\)
+2. \(a^2 + c^2 = b^2\)
+3. \(b^2 + c^2 = a^2\)
+
+If any of these conditions hold true, then the triangle is a right-angled triangle.
+
+Here is the implementation of the function in Julia:
+
+```julia
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    return a^2 + b^2 == c^2 || a^2 + c^2 == b^2 || b^2 + c^2 == a^2
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(right_angle_triangle(3, 4, 5))  # should return true
+println(right_angle_triangle(1, 2, 3))  # should return false
+```
+
+This function checks all three possible configurations to determine if the given sides form a right-angled triangle.

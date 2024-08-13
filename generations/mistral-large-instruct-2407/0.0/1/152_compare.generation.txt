@@ -1,0 +1,54 @@
+ Certainly! Below is the implementation of the `compare` function in Julia based on the provided docstring:
+
+```julia
+"""
+    compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+
+I think we all remember that feeling when the result of some long-awaited event
+is finally known. The feelings and thoughts you have at that moment are
+definitely worth noting down and comparing. Your task is to determine if a
+person correctly guessed the results of a number of matches. You are given two
+arrays of scores and guesses of equal length, where each index shows a match.
+Return an array of the same length denoting how far off each guess was. If they
+have guessed correctly, the value is 0, and if not, the value is the absolute
+difference between the guess and the score.
+
+# Examples
+
+```jldoctest
+julia> compare([1, 2, 3, 4, 5, 1], [1, 2, 3, 4, 2, -2])
+6-element Vector{Int64}:
+ 0
+ 0
+ 0
+ 0
+ 3
+ 3
+
+julia> compare([0, 5, 0, 0, 0, 4], [4, 1, 1, 0, 0, -2])
+6-element Vector{Int64}:
+ 4
+ 4
+ 1
+ 0
+ 0
+ 6
+```
+"""
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    @assert length(game) == length(guess) "Vectors must be of the same length"
+    return abs.(game .- guess)
+end
+```
+
+### Explanation:
+1. **Function Signature**: The function `compare` takes two vectors of integers, `game` and `guess`, and returns a vector of integers.
+2. **Assertion**: The function first checks that the lengths of the two input vectors are the same using `@assert`.
+3. **Element-wise Operation**: It then computes the absolute difference between corresponding elements of the two vectors using the `abs` function combined with broadcasting (`.`).
+4. **Return**: The result is a vector of the same length as the input vectors, where each element is the absolute difference between the corresponding elements of `game` and `guess`.
+
+### Examples:
+- For `compare([1, 2, 3, 4, 5, 1], [1, 2, 3, 4, 2, -2])`, the output is `[0, 0, 0, 0, 3, 3]`.
+- For `compare([0, 5, 0, 0, 0, 4], [4, 1, 1, 0, 0, -2])`, the output is `[4, 4, 1, 0, 0, 6]`.
+
+This implementation should work correctly for the given problem statement and examples.

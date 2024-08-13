@@ -1,0 +1,32 @@
+Here is the Julia function that implements the logic described in the docstring:
+```julia
+function check_dict_case(d::Dict{String})::Bool
+    # Return false if the dictionary is empty
+    isempty(d) && return false
+
+    # Get the case of the first key
+    first_key = first(keys(d))
+    all_lower = islowercase(first_key)
+    all_upper = isuppercase(first_key)
+
+    # Check if all keys have the same case
+    for key in keys(d)
+        if all_lower && !islowercase(key)
+            return false
+        elseif all_upper && !isuppercase(key)
+            return false
+        end
+    end
+
+    # If we reach here, all keys have the same case
+    return true
+end
+```
+Here's an explanation of the code:
+
+1. We first check if the dictionary is empty, and if so, return `false`.
+2. We get the case of the first key in the dictionary using the `islowercase` and `isuppercase` functions.
+3. We then iterate over all keys in the dictionary, checking if each key has the same case as the first key. If we find a key with a different case, we immediately return `false`.
+4. If we reach the end of the loop without finding any keys with a different case, we return `true`.
+
+You can test this function using the examples provided in the docstring to verify that it works as expected.

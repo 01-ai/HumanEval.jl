@@ -1,0 +1,9 @@
+```julia
+function double_the_difference(xs::Vector)
+    # Filter out non-integer and negative numbers, then filter out even numbers
+    filtered_xs = filter(x -> x > 0 && x == floor(Int, x) && x % 2 != 0, xs)
+    # Calculate the sum of squares of the filtered list
+    return sum(x -> x^2, filtered_xs)
+end
+```
+This function first filters the input vector to keep only positive, integer, and odd numbers. Then, it calculates the sum of squares of these numbers.

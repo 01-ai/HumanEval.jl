@@ -1,0 +1,53 @@
+To implement the `x_or_y` function, we need to determine if the given integer `n` is a prime number. If `n` is prime, the function should return `x`; otherwise, it should return `y`.
+
+Here's the implementation:
+
+```julia
+# Helper function to check if a number is prime
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+
+# Main function
+function x_or_y(n::Int, x::Int, y::Int)::Int
+    if is_prime(n)
+        return x
+    else
+        return y
+    end
+end
+
+# Examples
+println(x_or_y(7, 34, 12))  # Output: 34
+println(x_or_y(15, 8, 5))   # Output: 5
+```
+
+### Explanation:
+1. **is_prime Function**:
+   - This function checks if a number `n` is prime.
+   - Numbers less than or equal to 1 are not prime.
+   - Numbers 2 and 3 are prime.
+   - If `n` is divisible by 2 or 3, it is not prime.
+   - For numbers greater than 3, the function checks divisibility from 5 onwards, skipping even numbers and multiples of 3.
+
+2. **x_or_y Function**:
+   - This function uses `is_prime` to check if `n` is prime.
+   - If `n` is prime, it returns `x`; otherwise, it returns `y`.
+
+### Examples:
+- `x_or_y(7, 34, 12)` returns `34` because 7 is a prime number.
+- `x_or_y(15, 8, 5)` returns `5` because 15 is not a prime number.

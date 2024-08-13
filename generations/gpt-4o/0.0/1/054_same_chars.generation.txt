@@ -1,0 +1,31 @@
+To implement the `same_chars` function in Julia, we need to check if two strings contain the same set of characters, regardless of their frequency. This can be achieved by converting each string to a set of characters and then comparing these sets.
+
+Here's the implementation:
+
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    # Convert each string to a set of characters
+    set0 = Set(s0)
+    set1 = Set(s1)
+    
+    # Compare the sets
+    return set0 == set1
+end
+```
+
+This function works as follows:
+1. Convert each input string to a set of characters. This removes any duplicate characters and only keeps unique characters.
+2. Compare the two sets. If they are equal, it means both strings contain the same characters.
+
+Let's test the function with the provided examples:
+
+```julia
+println(same_chars("eabcdzzzz", "dddzzzzzzzddeddabc"))  # true
+println(same_chars("abcd", "dddddddabc"))              # true
+println(same_chars("dddddddabc", "abcd"))              # true
+println(same_chars("eabcd", "dddddddabc"))             # false
+println(same_chars("abcd", "dddddddabce"))             # false
+println(same_chars("eabcdzzzz", "dddzzzzzzzddddabc"))  # false
+```
+
+This should produce the expected results as described in the docstring.

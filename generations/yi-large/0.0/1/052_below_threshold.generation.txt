@@ -1,0 +1,10 @@
+```julia
+function below_threshold(l::Vector, t::Number)::Bool
+    for elem in l
+        if elem >= t
+            return false
+        end
+    end
+    return true
+end
+```

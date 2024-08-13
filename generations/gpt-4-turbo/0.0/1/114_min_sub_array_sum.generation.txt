@@ -1,0 +1,25 @@
+To solve the problem of finding the minimum sum of any non-empty sub-array, we can utilize a variation of Kadane's algorithm, which is typically used to find the maximum sum sub-array. For the minimum sum, we can adapt the algorithm to keep track of the minimum sum instead.
+
+Here's the implementation of the `min_sub_array_sum` function:
+
+```julia
+function min_sub_array_sum(nums::Vector{Int})::Int
+    # Initialize the current minimum sum and global minimum sum with the first element
+    current_min = nums[1]
+    global_min = nums[1]
+    
+    # Iterate through the array starting from the second element
+    for i in 2:length(nums)
+        # Update the current minimum sum
+        current_min = min(nums[i], current_min + nums[i])
+        # Update the global minimum sum if the current minimum is smaller
+        global_min = min(global_min, current_min)
+    end
+    
+    return global_min
+end
+```
+
+This function initializes the `current_min` and `global_min` with the first element of the array. It then iterates through the rest of the array, updating the `current_min` to be either the current element itself (if starting a new sub-array from this element yields a smaller sum) or the sum of `current_min` and the current element (if continuing the current sub-array is more optimal). The `global_min` is updated whenever a new minimum sum is found.
+
+This approach ensures that we find the minimum sum of any sub-array in O(n) time complexity, where n is the number of elements in the input array.

@@ -1,0 +1,39 @@
+Here's a Julia function that implements the `get_positive` functionality as described:
+
+```julia
+function get_positive(xs::Vector)
+    return filter(x -> x > 0, xs)
+end
+```
+
+This function does the following:
+
+1. It takes a vector `xs` as input.
+2. It uses the `filter` function, which creates a new vector containing only the elements for which the given condition is true.
+3. The condition `x -> x > 0` is a lambda function that returns `true` for positive numbers (greater than 0) and `false` otherwise.
+4. The `filter` function applies this condition to each element of `xs` and keeps only the elements that satisfy the condition.
+5. The resulting vector of positive numbers is returned.
+
+This implementation will work for vectors of any numeric type (integers, floats, etc.). It will return a new vector containing only the positive numbers from the input vector, preserving their order.
+
+You can use this function exactly as shown in the examples:
+
+```julia
+julia> get_positive([-1, 2, -4, 5, 6])
+3-element Vector{Int64}:
+ 2
+ 5
+ 6
+
+julia> get_positive([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])
+7-element Vector{Int64}:
+   5
+   3
+   2
+   3
+   9
+ 123
+   1
+```
+
+Note that this function considers 0 as non-positive, which is consistent with the examples provided.

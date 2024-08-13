@@ -1,0 +1,12 @@
+Here's the implementation of the `top_k` function in Julia:
+
+```julia
+function top_k(xs::Vector{Int}, k::Int)::Vector{Int}
+    # Sort the array in descending order
+    sorted_xs = sort(xs, rev=true)
+    # Return the first k elements of the sorted array
+    return sorted_xs[1:k]
+end
+```
+
+This function sorts the input array `xs` in descending order and then returns the first `k` elements of the sorted array. The `sort` function with the `rev=true` argument ensures that the array is sorted in descending order. The slicing operation `[1:k]` then extracts the top `k` elements from the sorted array.

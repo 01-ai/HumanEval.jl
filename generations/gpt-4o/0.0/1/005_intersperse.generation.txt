@@ -1,0 +1,34 @@
+Here's the implementation of the `intersperse` function in Julia:
+
+```julia
+function intersperse(numbers::Vector{Int}, delimeter::Int)::Vector{Int}
+    if isempty(numbers)
+        return Int[]
+    end
+
+    result = Vector{Int}()
+    for i in 1:length(numbers)
+        push!(result, numbers[i])
+        if i < length(numbers)
+            push!(result, delimeter)
+        end
+    end
+
+    return result
+end
+```
+
+This function works as follows:
+1. It first checks if the input vector `numbers` is empty. If it is, it returns an empty vector.
+2. It initializes an empty vector `result` to store the final interspersed elements.
+3. It iterates through each element in the `numbers` vector.
+4. For each element, it adds the element to the `result` vector.
+5. If the current element is not the last one, it also adds the `delimeter` to the `result` vector.
+6. Finally, it returns the `result` vector.
+
+You can test the function with the provided examples:
+
+```julia
+println(intersperse(Int[], 4))  # Output: Int64[]
+println(intersperse([1, 2, 3], 4))  # Output: [1, 4, 2, 4, 3]
+```

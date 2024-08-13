@@ -1,0 +1,12 @@
+```julia
+function fruit_distribution(s::String, n::Int)::Int
+    # Extract the number of apples and oranges from the string
+    apple_count = parse(Int, match(r"\d+(?= apples)", s).match)
+    orange_count = parse(Int, match(r"\d+(?= oranges)", s).match)
+    
+    # Calculate the number of mangoes
+    mango_count = n - apple_count - orange_count
+    
+    return mango_count
+end
+```

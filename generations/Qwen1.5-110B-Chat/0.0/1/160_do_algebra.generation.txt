@@ -1,0 +1,17 @@
+```julia
+function do_algebra(operator::Vector{String}, operand::Vector{Int})
+    # Mapping string operators to Julia's equivalent operators
+    op_map = Dict("+"=>+, "-"=>-, "*"=>*, "÷"=>÷, "^"=>^)
+    
+    # Initialize the result with the first operand
+    result = operand[1]
+    
+    # Apply the operators in sequence
+    for i in 1:length(operator)
+        result = op_map[operator[i]](result, operand[i+1])
+    end
+    
+    return result
+end
+```
+This function `do_algebra` follows the given specifications by iterating through the `operator` vector, applying each operation to the accumulated result and the next value from `operand`. It uses a dictionary `op_map` to convert the string representations of the operations into Julia's corresponding functions.

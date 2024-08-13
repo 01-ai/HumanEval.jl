@@ -1,0 +1,15 @@
+```julia
+function sum_squares(xs::Vector{Int})::Int
+    total = 0
+    for (i, x) in enumerate(xs)
+        if i % 3 == 0
+            total += x^2
+        elseif i % 4 == 0
+            total += x^3
+        else
+            total += x
+        end
+    end
+    return total
+end
+```

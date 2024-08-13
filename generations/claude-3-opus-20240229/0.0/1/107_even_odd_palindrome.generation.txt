@@ -1,0 +1,54 @@
+Here's an implementation of the `even_odd_palindrome` function in Julia:
+
+```julia
+function is_palindrome(n::Int)
+    n_str = string(n)
+    reverse_str = reverse(n_str)
+    return n_str == reverse_str
+end
+
+function even_odd_palindrome(n::Int)::Tuple{Int, Int}
+    even_count = 0
+    odd_count = 0
+    
+    for i in 1:n
+        if is_palindrome(i)
+            if i % 2 == 0
+                even_count += 1
+            else
+                odd_count += 1
+            end
+        end
+    end
+    
+    return (even_count, odd_count)
+end
+```
+
+Here's how the code works:
+
+1. The `is_palindrome` function takes an integer `n` and checks if it's a palindrome by converting it to a string, reversing the string, and comparing it with the original string.
+
+2. The `even_odd_palindrome` function takes an integer `n` and initializes two variables `even_count` and `odd_count` to keep track of the number of even and odd palindromes, respectively.
+
+3. It iterates over the range `1:n` using a `for` loop.
+
+4. For each number `i` in the range, it checks if it's a palindrome using the `is_palindrome` function.
+
+5. If `i` is a palindrome, it checks if it's even or odd by checking the remainder when divided by 2.
+
+6. If `i` is even, it increments the `even_count` variable. If `i` is odd, it increments the `odd_count` variable.
+
+7. After iterating over the entire range, the function returns a tuple containing the `even_count` and `odd_count`.
+
+Here are some examples:
+
+```jldoctest
+julia> even_odd_palindrome(3)
+(1, 2)
+
+julia> even_odd_palindrome(12)
+(4, 6)
+```
+
+Note that this implementation has a time complexity of O(n), where n is the input number, as it iterates over all numbers from 1 to n and checks if each one is a palindrome.

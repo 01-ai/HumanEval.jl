@@ -1,0 +1,15 @@
+```julia
+function derivative(xs::Vector)::Vector
+    # Initialize an empty vector for the derivative coefficients
+    dxs = Vector{eltype(xs)}(undef, length(xs) - 1)
+    
+    # Compute the derivative by iterating over the coefficients, excluding the last one
+    for i in 1:length(dxs)
+        dxs[i] = i * xs[i+1]
+    end
+    
+    return dxs
+end
+```
+
+This function takes a vector `xs` representing the coefficients of a polynomial, and it returns a new vector representing the derivative of that polynomial. It does this by iterating over the elements of `xs`, multiplying each element (except the first) by its index to get the derivative coefficient, and storing these in a new vector.

@@ -1,0 +1,40 @@
+To solve the problem of finding the minimum path of length `k` in the grid, we can use a breadth-first search (BFS) approach. Here's a step-by-step breakdown of the approach:
+
+1. **Initialization**: Start by identifying the dimensions of the grid `N` and initializing a priority queue to manage the paths based on their lexicographical order.
+
+2. **BFS Setup**: For each cell in the grid, initiate a BFS. Use a priority queue to store the paths, where each path is represented by a tuple containing:
+   - The current path as a list of values.
+   - The current position in the grid (row, column).
+   - The length of the path so far.
+
+3. **Path Expansion**: In each step of BFS:
+   - Extract the path with the smallest lexicographical order from the priority queue.
+   - If the path length equals `k`, compare it with the current best path and update if it's better.
+   - Otherwise, expand the path by moving to neighboring cells (up, down, left, right) that are within the grid boundaries.
+   - Add the new paths back to the priority queue.
+
+4. **Termination**: Once all possible paths of length `k` have been considered, the best path found will be the answer.
+
+5. **Optimization Considerations**: Given the constraints and the nature of BFS, the algorithm should efficiently find the minimum path due to the priority queue ensuring that the smallest lexicographical paths are considered first.
+
+This approach ensures that we explore all possible paths of length `k` starting from every cell, and always expand the smallest path first, leading to an efficient discovery of the minimum path.
+
+```julia
+function min_path(grid::Vector{Vector{Int}}, k::Int)::Vector{Int}
+    import Base: PriorityQueue
+    N = size(grid, 1)
+    pq = PriorityQueue{Tuple{Vector{Int}, Int, Int}, Vector{Int}}()
+    directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+    
+    # Initialize the priority queue with all starting positions
+    for i in 1:N
+        for j in 1:N
+            push!(pq, ([grid[i][j]], i, j), [grid[i][j]])
+        end
+    end
+    
+    best_path = []
+    
+    while !isempty(pq)
+        path, i, j = dequeue!(pq)
+       

@@ -1,0 +1,16 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function simplify(x::String, n::String)::Bool
+    # Split the fractions into numerators and denominators
+    x_num, x_den = parse.(Int, split(x, "/"))
+    n_num, n_den = parse.(Int, split(n, "/"))
+
+    # Calculate the product of the fractions
+    product = (x_num * n_num) / (x_den * n_den)
+
+    # Check if the product is a whole number
+    return isinteger(product)
+end
+```
+This function first splits the string representations of the fractions into their numerators and denominators. It then calculates the product of the fractions. Finally, it checks if the product is a whole number by using the `isinteger` function. If the product is a whole number, the function returns `true`; otherwise, it returns `false`.

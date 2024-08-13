@@ -1,0 +1,12 @@
+Sure, I'll implement the decoding function for you. The decoding function will reverse the shift applied by the `encode_shift` function. Here is the implementation:
+
+```julia
+"""
+Takes as input string encoded with `encode_shift` function. Returns decoded string.
+"""
+function decode_shift(s::String)::String
+    join(((x - 'a' - 5 + 26) % 26 + 'a' for x in s))
+end
+```
+
+This function works by shifting each character in the encoded string back by 5 positions in the alphabet, effectively reversing the encoding process. The `+ 26` ensures that the result is always a non-negative integer before taking the modulo 26 operation.

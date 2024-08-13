@@ -1,0 +1,12 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function all_prefixes(s::String)::Vector{String}
+    prefixes = String[]
+    for i in 1:length(s)
+        push!(prefixes, s[1:i])
+    end
+    return prefixes
+end
+```
+This function works by iterating over the length of the input string `s`, and for each index `i`, it adds the substring from the first character to the `i`-th character to the `prefixes` array. The function then returns the `prefixes` array.

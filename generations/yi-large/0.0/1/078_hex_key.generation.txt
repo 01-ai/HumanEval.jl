@@ -1,0 +1,25 @@
+function hex_key(num::String)::Int
+    # Define a set of prime hexadecimal digits
+    prime_hex_digits = Set(["2", "3", "5", "7", "B", "D"])
+
+    # Initialize a counter for prime digits
+    prime_digit_count = 0
+
+    # Iterate over each character in the input string
+    for char in num
+        # Check if the character is a prime hexadecimal digit
+        if char in prime_hex_digits
+            # Increment the counter
+            prime_digit_count += 1
+        end
+    end
+
+    return prime_digit_count
+end
+
+# Test the function
+println(hex_key("AB"))       # Expected: 1
+println(hex_key("1077E"))    # Expected: 2
+println(hex_key("ABED1A33")) # Expected: 4
+println(hex_key("123456789ABCDEF0")) # Expected: 6
+println(hex_key("2020"))     # Expected: 2

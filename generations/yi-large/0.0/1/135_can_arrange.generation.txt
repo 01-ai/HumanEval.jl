@@ -1,0 +1,9 @@
+function can_arrange(xs::Vector{Int})::Int
+    n = length(xs)
+    for i in 2:n
+        if xs[i] < xs[i-1]
+            return i
+        end
+    end
+    return -1
+end

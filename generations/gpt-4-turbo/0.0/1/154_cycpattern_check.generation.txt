@@ -1,0 +1,18 @@
+```julia
+function cycpattern_check(a::String, b::String)::Bool
+    # Check if b or any of its rotations is a substring of a
+    n = length(b)
+    # Create a string that is a doubled version of a to handle rotations
+    doubled_a = a * a
+    # Check all possible rotations of b
+    for i in 0:(n-1)
+        # Generate the rotated version of b
+        rotated_b = b[(i+1):end] * b[1:i]
+        # Check if this rotation is a substring of the original string a
+        if occursin(rotated_b, doubled_a)
+            return true
+        end
+    end
+    return false
+end
+```

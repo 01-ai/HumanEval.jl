@@ -1,0 +1,15 @@
+```julia
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    # Helper function to calculate the sum of digits of an integer
+    function digit_sum(n::Int)
+        return sum(abs.(digits(n)))
+    end
+
+    # Sort the numbers based on the sum of their digits
+    # If two numbers have the same digit sum, they will remain in their original order
+    # because Julia's sort is stable by default
+    return sort(nums, by=digit_sum)
+end
+```
+
+This function `order_by_points` sorts a vector of integers based on the sum of their digits. It uses a helper function `digit_sum` to compute the sum of the absolute values of the digits of an integer. The main function sorts the vector using the `sort` function with a custom sorting key provided by the `digit_sum` function. The sort in Julia is stable, which means that elements with the same key value retain their relative order from the input.

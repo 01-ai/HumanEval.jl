@@ -1,0 +1,10 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function decimal_to_binary(decimal::Int)::String
+    binary = string(decimal, base=2)
+    return "db" * rpad(binary, 4, '0'; lpad=true) * "db"
+end
+```
+
+This function first converts the decimal number to binary using `string(decimal, base=2)`. Then it adds the 'db' characters at the beginning and end of the string. The `rpad` function is used to ensure that the binary number is at least 4 characters long, adding leading zeros if necessary.

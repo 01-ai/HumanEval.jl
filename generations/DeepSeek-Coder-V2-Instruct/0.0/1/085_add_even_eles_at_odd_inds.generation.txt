@@ -1,0 +1,15 @@
+ Here's the implementation of the function `add_even_eles_at_odd_inds` in Julia:
+
+```julia
+function add_even_eles_at_odd_inds(xs::Vector{Int})::Int
+    sum = 0
+    for i in 2:2:length(xs)
+        if xs[i] % 2 == 0
+            sum += xs[i]
+        end
+    end
+    return sum
+end
+```
+
+This function iterates over the elements of the vector `xs` at odd indices (which are at positions 2, 4, 6, etc., considering 1-based indexing in Julia) and adds the even elements to the sum.

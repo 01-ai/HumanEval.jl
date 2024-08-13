@@ -1,0 +1,39 @@
+To implement the `palindrome_with_append` function in Julia, we need to follow the steps outlined in the docstring. Here's the implementation:
+
+1. Find the longest postfix of the supplied string that is a palindrome.
+2. Append to the end of the string the reverse of the string prefix that comes before the palindromic suffix.
+
+Here's the code:
+
+```julia
+function palindrome_with_append(s::String)::String
+    # Helper function to check if a string is a palindrome
+    is_palindrome(str::String) = str == reverse(str)
+    
+    n = length(s)
+    
+    # Find the longest palindromic suffix
+    for i in 0:n
+        suffix = s[n-i+1:end]
+        if is_palindrome(suffix)
+            prefix = s[1:n-i]
+            return s * reverse(prefix)
+        end
+    end
+    
+    return s  # This should never be reached because the empty string is always a palindrome
+end
+```
+
+### Explanation:
+1. **Helper Function**: `is_palindrome` checks if a given string is a palindrome by comparing it to its reverse.
+2. **Loop**: We iterate from `0` to `n` (length of the string). For each iteration, we extract the suffix of the string starting from `n-i+1` to the end.
+3. **Check Palindrome**: If the suffix is a palindrome, we extract the prefix from the start of the string to `n-i`.
+4. **Construct Result**: We return the original string concatenated with the reverse of the prefix.
+5. **Edge Case**: If the loop completes without finding a palindromic suffix (which theoretically shouldn't happen), we return the original string.
+
+### Examples:
+- For the input `"cat"`, the longest palindromic suffix is `"t"`, and the prefix is `"ca"`. The result is `"cat" * reverse("ca")` which is `"catac"`.
+- For the input `"cata"`, the longest palindromic suffix is `"a"`, and the prefix is `"cat"`. The result is `"cata" * reverse("cat")` which is `"catac"`.
+
+This function should work as expected for the given examples and other similar cases.

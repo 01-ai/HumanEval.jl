@@ -1,0 +1,43 @@
+Here's a solution to calculate the area of a triangle given the lengths of its three sides, returning the area rounded to 2 decimal points if the sides form a valid triangle, or -1 otherwise:
+
+```julia
+function triangle_area3(a::Number, b::Number, c::Number)::Number
+    if a + b > c && b + c > a && c + a > b
+        s = (a + b + c) / 2
+        area = sqrt(s * (s - a) * (s - b) * (s - c))
+        return round(area, digits=2)
+    else
+        return -1
+    end
+end
+```
+
+Explanation:
+
+1. The function takes three parameters `a`, `b`, and `c`, representing the lengths of the three sides of the triangle.
+
+2. We first check if the three sides form a valid triangle by verifying that the sum of any two sides is greater than the third side. This condition is checked using the following expressions:
+   - `a + b > c`: The sum of sides `a` and `b` should be greater than side `c`.
+   - `b + c > a`: The sum of sides `b` and `c` should be greater than side `a`.
+   - `c + a > b`: The sum of sides `c` and `a` should be greater than side `b`.
+
+3. If the triangle is valid, we proceed to calculate the area using Heron's formula:
+   - We calculate the semi-perimeter `s` by adding the three sides and dividing the sum by 2.
+   - We then calculate the area using the formula: `area = sqrt(s * (s - a) * (s - b) * (s - c))`.
+   - The `sqrt` function is used to calculate the square root of the expression.
+
+4. We round the calculated area to 2 decimal points using the `round` function with the `digits=2` argument.
+
+5. If the triangle is valid, the function returns the rounded area. Otherwise, it returns -1 to indicate an invalid triangle.
+
+You can test the function with the provided examples:
+
+```julia
+julia> triangle_area3(3, 4, 5)
+6.0
+
+julia> triangle_area3(1, 2, 10)
+-1
+```
+
+The first example returns 6.0 as the area of a valid triangle with sides 3, 4, and 5. The second example returns -1 because the sides 1, 2, and 10 do not form a valid triangle.

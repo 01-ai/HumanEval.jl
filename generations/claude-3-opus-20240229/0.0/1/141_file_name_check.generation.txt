@@ -1,0 +1,65 @@
+Here's a solution to the problem using Julia:
+
+```julia
+function file_name_check(file_name::String)::String
+    # Check if the file name contains exactly one dot
+    if count(c -> c == '.', file_name) != 1
+        return "No"
+    end
+    
+    # Split the file name into two substrings
+    parts = split(file_name, '.')
+    
+    # Check if the substring before the dot is empty
+    if isempty(parts[1])
+        return "No"
+    end
+    
+    # Check if the substring before the dot starts with a letter
+    if !isletter(first(parts[1]))
+        return "No"
+    end
+    
+    # Check if there are more than three digits in the file name
+    if count(isdigit, file_name) > 3
+        return "No"
+    end
+    
+    # Check if the substring after the dot is one of the allowed extensions
+    allowed_extensions = ["txt", "exe", "dll"]
+    if !(parts[2] in allowed_extensions)
+        return "No"
+    end
+    
+    # If all conditions are met, return "Yes"
+    return "Yes"
+end
+```
+
+Explanation:
+
+1. We first check if the file name contains exactly one dot using the `count` function. If the count is not equal to 1, we return "No".
+
+2. We split the file name into two substrings using the `split` function, with the dot as the delimiter.
+
+3. We check if the substring before the dot is empty using the `isempty` function. If it is empty, we return "No".
+
+4. We check if the substring before the dot starts with a letter using the `isletter` function on the first character of the substring. If it doesn't start with a letter, we return "No".
+
+5. We count the number of digits in the file name using the `count` function with the `isdigit` function as the predicate. If there are more than three digits, we return "No".
+
+6. We define a list of allowed file extensions and check if the substring after the dot is one of the allowed extensions. If it's not, we return "No".
+
+7. If all the conditions are met, we return "Yes".
+
+You can test the function with the provided examples:
+
+```jldoctest
+julia> file_name_check("example.txt")
+"Yes"
+
+julia> file_name_check("1example.dll")
+"No"
+```
+
+The function will return "Yes" for valid file names and "No" for invalid file names based on the given conditions.

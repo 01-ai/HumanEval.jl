@@ -1,0 +1,48 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function bf(planet1::String, planet2::String)::NTuple
+    planets = ("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune")
+    
+    idx1 = findfirst(isequal(planet1), planets)
+    idx2 = findfirst(isequal(planet2), planets)
+    
+    if idx1 === nothing || idx2 === nothing
+        return ()
+    end
+    
+    if idx1 > idx2
+        idx1, idx2 = idx2, idx1
+    end
+    
+    return tuple(planets[idx1+1:idx2-1]...)
+end
+```
+
+Explanation:
+1. We define a tuple `planets` that contains the names of all the planets in the solar system, sorted by their proximity to the Sun.
+
+2. We use the `findfirst` function to find the index of `planet1` and `planet2` in the `planets` tuple. If either `planet1` or `planet2` is not a correct planet name, `findfirst` will return `nothing`.
+
+3. We check if either `idx1` or `idx2` is `nothing`. If so, it means that either `planet1` or `planet2` is not a valid planet name, and we return an empty tuple `()`.
+
+4. We compare `idx1` and `idx2`. If `idx1` is greater than `idx2`, it means `planet1` is farther from the Sun than `planet2`. In this case, we swap the values of `idx1` and `idx2` to ensure that `idx1` corresponds to the planet closer to the Sun.
+
+5. We use slicing to extract the planets between `planet1` and `planet2` from the `planets` tuple. The slice `planets[idx1+1:idx2-1]` gives us the planets whose orbits are located between the orbit of `planet1` and the orbit of `planet2`.
+
+6. Finally, we use the splat operator `...` to expand the sliced tuple into individual elements and wrap them in a new tuple using `tuple()`. This ensures that the function returns a tuple of planet names.
+
+The function satisfies the given examples:
+
+```jldoctest
+julia> bf("Jupiter", "Neptune")
+("Saturn", "Uranus")
+
+julia> bf("Earth", "Mercury")
+("Venus",)
+
+julia> bf("Mercury", "Uranus")
+("Venus", "Earth", "Mars", "Jupiter", "Saturn")
+```
+
+The function correctly returns the planets whose orbits are located between the orbits of the given planets, sorted by their proximity to the Sun. If either of the input planet names is incorrect, an empty tuple is returned.

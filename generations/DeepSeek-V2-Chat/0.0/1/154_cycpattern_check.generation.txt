@@ -1,0 +1,24 @@
+Here's the implementation of the `cycpattern_check` function in Julia:
+
+```julia
+function cycpattern_check(a::String, b::String)::Bool
+    # Check if the length of b is greater than a, return false immediately
+    if length(b) > length(a)
+        return false
+    end
+
+    # Concatenate b with itself to check all rotations
+    rotated_b = b * b
+
+    # Check if any rotation of b is a substring of a
+    for i in 1:length(b)
+        if occursin(rotated_b[i:i+length(b)-1], a)
+            return true
+        end
+    end
+
+    return false
+end
+```
+
+This function works by concatenating `b` with itself to create all possible rotations of `b`. It then checks if any of these rotations is a substring of `a` using the `occursin` function. If any rotation is found to be a substring, the function returns `true`; otherwise, it returns `false`.

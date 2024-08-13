@@ -1,0 +1,37 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function is_sorted(xs::Vector{Int})::Bool
+    if length(xs) <= 1
+        return true
+    end
+    
+    prev = xs[1]
+    for i in 2:length(xs)
+        if xs[i] < prev || xs[i] == prev
+            return false
+        end
+        prev = xs[i]
+    end
+    
+    return true
+end
+```
+
+Let's go through the code step by step:
+
+1. We first check if the length of the input vector `xs` is less than or equal to 1. If it is, we return `true` since a list with 0 or 1 element is always considered sorted.
+
+2. We initialize a variable `prev` with the first element of the vector `xs`. This variable will keep track of the previous element as we iterate through the vector.
+
+3. We start a loop from index 2 to the length of the vector `xs`. In each iteration:
+   - We compare the current element `xs[i]` with the previous element `prev`.
+   - If `xs[i]` is less than `prev`, it means the list is not sorted in ascending order, so we return `false`.
+   - If `xs[i]` is equal to `prev`, it means there is a duplicate element, which is not allowed according to the problem statement, so we return `false`.
+   - If neither of the above conditions is true, we update `prev` with the current element `xs[i]` and continue to the next iteration.
+
+4. If we complete the loop without returning `false`, it means the list is sorted in ascending order and has no duplicates, so we return `true`.
+
+The time complexity of this solution is O(n), where n is the length of the input vector `xs`, as we iterate through the vector once. The space complexity is O(1) since we only use a constant amount of extra space to store the `prev` variable.
+
+I hope this explanation helps you understand the solution!

@@ -1,0 +1,9 @@
+ Here's the implementation of the `incr_list` function in Julia:
+
+```julia
+function incr_list(xs::Vector)::Vector
+    return xs .+ 1
+end
+```
+
+This function uses the dot syntax (`.+`) to apply the increment operation to each element of the input vector `xs`.

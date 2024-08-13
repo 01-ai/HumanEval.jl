@@ -1,0 +1,20 @@
+```julia
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    n = length(xs)
+    if n == 0
+        return Int64[]
+    elseif n == 1
+        return xs
+    else
+        head_tail_sum = xs[1] + (n > 1 ? xs[end] : 0)
+        sorted_xs = copy(xs)
+        if head_tail_sum % 2 == 0
+            sort!(sorted_xs, rev=true)
+        else
+            sort!(sorted_xs)
+        end
+        return sorted_xs
+    end
+end
+```
+This Julia function follows the given specifications. It first checks the length of the array to handle empty and single-element cases. Then, it calculates the sum of the first and last elements to determine the sorting order. Based on whether the sum is even or odd, it sorts the copy of the array in descending or ascending order, respectively, and finally returns the sorted array.

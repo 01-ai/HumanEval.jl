@@ -1,0 +1,53 @@
+To implement the `count_nums` function in Julia, we need to follow these steps:
+
+1. Define a helper function to calculate the sum of the digits of a number, taking into account the sign of the first digit if the number is negative.
+2. Iterate through the input array and use the helper function to check if the sum of the digits is greater than 0.
+3. Count the number of elements that satisfy this condition and return the count.
+
+Here's the implementation:
+
+```julia
+function sum_of_digits(n::Int)::Int
+    digits = Int[]
+    if n < 0
+        n = -n
+        digits = [-Int(digit) for digit in string(n)[1]]
+        digits = vcat(digits, [Int(digit) for digit in string(n)[2:end]])
+    else
+        digits = [Int(digit) for digit in string(n)]
+    end
+    return sum(digits)
+end
+
+function count_nums(xs::Vector{Int})::Int
+    count = 0
+    for x in xs
+        if sum_of_digits(x) > 0
+            count += 1
+        end
+    end
+    return count
+end
+
+# Examples
+println(count_nums(Int[]))          # 0
+println(count_nums([-1, 11, -11]))  # 1
+println(count_nums([1, 1, 2]))      # 3
+```
+
+### Explanation:
+
+1. **sum_of_digits Function**:
+   - This function takes an integer `n` and returns the sum of its digits.
+   - If `n` is negative, the first digit is treated as negative.
+   - The digits are extracted by converting the number to a string and then back to integers.
+   - The sum of the digits is calculated and returned.
+
+2. **count_nums Function**:
+   - This function takes a vector of integers `xs` and returns the count of numbers whose sum of digits is greater than 0.
+   - It iterates through each element in the vector, uses the `sum_of_digits` function to check the sum of digits, and increments the count if the sum is greater than 0.
+
+### Examples:
+- `count_nums(Int[])` returns `0` because the input array is empty.
+- `count_nums([-1, 11, -11])` returns `1` because only `11` has a sum of digits greater than 0.
+- `count_nums([1,

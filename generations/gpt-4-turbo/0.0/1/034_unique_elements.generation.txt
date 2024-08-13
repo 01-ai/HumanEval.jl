@@ -1,0 +1,5 @@
+```julia
+function unique_elements(l::Vector)
+    return sort(unique(l))
+end
+```

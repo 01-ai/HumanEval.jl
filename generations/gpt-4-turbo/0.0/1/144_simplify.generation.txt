@@ -1,0 +1,14 @@
+```julia
+function simplify(x::String, n::String)::Bool
+    # Parse the fractions from the string format
+    num_x, den_x = parse.(Int, split(x, "/"))
+    num_n, den_n = parse.(Int, split(n, "/"))
+    
+    # Calculate the product of the two fractions
+    num_product = num_x * num_n
+    den_product = den_x * den_n
+    
+    # Check if the product is a whole number
+    return num_product % den_product == 0
+end
+```

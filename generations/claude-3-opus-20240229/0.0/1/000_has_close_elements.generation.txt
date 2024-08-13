@@ -1,0 +1,45 @@
+Here's an implementation of the `has_close_elements` function in Julia:
+
+```julia
+function has_close_elements(numbers::Vector{Float64}, threshold::Float64)::Bool
+    n = length(numbers)
+    for i in 1:n-1
+        for j in i+1:n
+            if abs(numbers[i] - numbers[j]) < threshold
+                return true
+            end
+        end
+    end
+    return false
+end
+```
+
+This function does the following:
+
+1. It takes a vector of floating-point numbers `numbers` and a threshold value `threshold` as input.
+
+2. It determines the length of the `numbers` vector and assigns it to the variable `n`.
+
+3. It uses nested loops to compare each pair of numbers in the vector.
+   - The outer loop `i` iterates from `1` to `n-1`, representing the first number in each pair.
+   - The inner loop `j` iterates from `i+1` to `n`, representing the second number in each pair.
+
+4. Inside the nested loops, it calculates the absolute difference between `numbers[i]` and `numbers[j]` using `abs(numbers[i] - numbers[j])`.
+
+5. If the absolute difference is less than the given `threshold`, it means that the two numbers are closer to each other than the threshold. In this case, the function immediately returns `true`.
+
+6. If the nested loops complete without finding any pair of numbers closer than the threshold, the function returns `false`.
+
+The function returns a Boolean value indicating whether any two numbers in the input vector are closer to each other than the given threshold.
+
+You can test the function with the provided examples:
+
+```julia
+julia> has_close_elements([1.0, 2.0, 3.0], 0.5)
+false
+
+julia> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+true
+```
+
+The time complexity of this function is O(n^2) as it uses nested loops to compare each pair of numbers. The space complexity is O(1) as it only uses a constant amount of additional space.

@@ -1,0 +1,44 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    groups = split(paren_string)
+    result = Int[]
+    
+    for group in groups
+        level = 0
+        max_level = 0
+        
+        for char in group
+            if char == '('
+                level += 1
+                max_level = max(max_level, level)
+            elseif char == ')'
+                level -= 1
+            end
+        end
+        
+        push!(result, max_level)
+    end
+    
+    return result
+end
+```
+
+Explanation:
+1. The `parse_nested_parens` function takes a string `paren_string` as input.
+2. We split the `paren_string` into separate groups using `split(paren_string)`. This gives us an array of strings, where each string represents a group of nested parentheses.
+3. We initialize an empty vector `result` to store the maximum level of nesting for each group.
+4. We iterate over each `group` in `groups`:
+   - We initialize variables `level` and `max_level` to keep track of the current level of nesting and the maximum level encountered so far, respectively.
+   - We iterate over each character `char` in the current `group`:
+     - If `char` is an opening parenthesis '(', we increment the `level` and update `max_level` if the current `level` is greater than the previous `max_level`.
+     - If `char` is a closing parenthesis ')', we decrement the `level`.
+   - After processing all the characters in the current `group`, we append the `max_level` to the `result` vector using `push!`.
+5. Finally, we return the `result` vector containing the maximum level of nesting for each group.
+
+The time complexity of this solution is O(n), where n is the total number of characters in the `paren_string`. We iterate over each character once.
+
+The space complexity is O(m), where m is the number of groups in the `paren_string`. We store the maximum level of nesting for each group in the `result` vector.
+
+I hope this helps! Let me know if you have any further questions.

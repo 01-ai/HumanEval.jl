@@ -1,0 +1,34 @@
+Here is a Julia function that implements the `next_smallest` function as described in the docstring:
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    if length(xs) < 2
+        return nothing
+    end
+    sorted_xs = sort(xs)
+    if sorted_xs[1] == sorted_xs[2]
+        return nothing
+    end
+    return sorted_xs[2]
+end
+```
+Here's an explanation of the code:
+
+1. We first check if the length of the input vector `xs` is less than 2. If it is, we return `nothing` because there is no 2nd smallest element.
+2. We sort the input vector `xs` in ascending order using the `sort` function.
+3. We check if the first two elements of the sorted vector are equal. If they are, it means that there is no 2nd smallest element (i.e., all elements are equal), so we return `nothing`.
+4. If the first two elements are not equal, we return the 2nd element of the sorted vector, which is the 2nd smallest element.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> next_smallest([1, 2, 3, 4, 5])
+2
+
+julia> next_smallest([5, 1, 4, 3, 2])
+2
+
+julia> next_smallest(Int[])
+nothing
+
+julia> next_smallest([1, 1])
+nothing
+```

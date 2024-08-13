@@ -1,0 +1,54 @@
+To implement the `select_words` function in Julia, we need to follow these steps:
+
+1. Split the input string `s` into words.
+2. Define a helper function to count the number of consonants in a word.
+3. Filter the words based on the number of consonants.
+4. Return the filtered list of words.
+
+Here's the implementation:
+
+```julia
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    # Define a set of vowels for easy checking
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    
+    # Helper function to count consonants in a word
+    function count_consonants(word::String)::Int
+        count = 0
+        for char in word
+            if !(char in vowels)
+                count += 1
+            end
+        end
+        return count
+    end
+    
+    # Split the string into words
+    words = split(s)
+    
+    # Filter words based on the number of consonants
+    result = [word for word in words if count_consonants(word) == n]
+    
+    return result
+end
+```
+
+### Explanation:
+
+1. **Vowels Set**: We define a set of vowels to easily check if a character is a vowel.
+2. **count_consonants Function**: This function takes a word and counts the number of consonants by iterating through each character and checking if it is not a vowel.
+3. **Splitting the String**: We use the `split` function to break the input string `s` into individual words.
+4. **Filtering Words**: We use a list comprehension to filter words that have exactly `n` consonants by using the `count_consonants` function.
+5. **Return Result**: The filtered list of words is returned.
+
+### Examples:
+
+```julia
+println(select_words("Mary had a little lamb", 4))  # ["little"]
+println(select_words("Mary had a little lamb", 3))  # ["Mary", "lamb"]
+println(select_words("simple white space", 2))      # []
+println(select_words("Hello world", 4))             # ["world"]
+println(select_words("Uncle sam", 3))               # ["Uncle"]
+```
+
+This implementation should work correctly for the given examples and handle the constraints specified in the docstring

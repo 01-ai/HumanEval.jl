@@ -1,0 +1,32 @@
+```julia
+function parse_nested_parens(paren_string::String)
+    # Split the input string by spaces to separate groups of parentheses
+    groups = split(paren_string)
+    depth_vector = []
+
+    for group in groups
+        # Initialize current depth and max depth for this group
+        current_depth = 0
+        max_depth = 0
+
+        # Iterate over each character in the group
+        for char in group
+            if char == '('
+                # Increase depth if an opening parenthesis is found
+                current_depth += 1
+                # Update max depth if current depth is greater
+                max_depth = max(max_depth, current_depth)
+            elseif char == ')'
+                # Decrease depth if a closing parenthesis is found
+                current_depth -= 1
+            end
+        end
+
+        # Append the max depth of the current group to the depth vector
+        push!(depth_vector, max_depth)
+    end
+
+    return depth_vector
+end
+```
+This function takes a string of groups of nested parentheses separated by spaces and returns a vector of integers representing the deepest level of nesting for each group.

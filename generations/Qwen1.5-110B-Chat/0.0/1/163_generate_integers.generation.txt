@@ -1,0 +1,15 @@
+```julia
+function generate_integers(a::Int, b::Int)::Vector{Int}
+    if a > b
+        a, b = b, a  # Swap a and b if a is greater than b
+    end
+    even_digits = []
+    for num in a:b
+        if iseven(num)
+            push!(even_digits, num)
+        end
+    end
+    return even_digits
+end
+```
+This Julia function `generate_integers` takes two positive integers `a` and `b` as input and returns a vector of even digits between `a` and `b` in ascending order. It first ensures that `a` is less than or equal to `b` by swapping them if necessary. Then, it iterates through each number in the range from `a` to `b`, checks if the number is even using the `iseven` function, and if so, adds it to the `even_digits` vector. Finally, it returns the vector of even numbers.

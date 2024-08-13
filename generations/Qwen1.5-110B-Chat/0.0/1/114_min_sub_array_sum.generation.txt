@@ -1,0 +1,15 @@
+```julia
+function min_sub_array_sum(nums::Vector{Int})::Int
+    min_sum = Inf
+    current_sum = 0
+    
+    for num in nums
+        current_sum = min(num, current_sum + num)
+        min_sum = min(min_sum, current_sum)
+    end
+    
+    return min_sum
+end
+```
+
+This Julia function iterates through the given array `nums`, maintaining a `current_sum` that represents the sum of the current sub-array. If `current_sum` becomes negative (or less than the current element when starting a new sub-array), it is reset to the current element. The function keeps track of the `min_sum` encountered during the iteration and returns it as the result.

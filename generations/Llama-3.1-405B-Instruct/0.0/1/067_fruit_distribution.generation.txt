@@ -1,0 +1,31 @@
+Here is a Julia function that implements the fruit_distribution function as described in the doc string:
+```julia
+function fruit_distribution(s::String, n::Int)::Int
+    # Extract the numbers from the string using regular expressions
+    numbers = parse.(Int, matchall(r"\d+", s))
+    
+    # Check if we found exactly two numbers
+    if length(numbers) != 2
+        error("Invalid input string. Expected 'X apples and Y oranges'")
+    end
+    
+    # Calculate the number of mango fruits
+    num_mangoes = n - sum(numbers)
+    
+    return num_mangoes
+end
+```
+Here's an explanation of the code:
+
+1. We use regular expressions to extract the numbers from the input string. The `matchall` function returns an array of all matches, and we use `parse.(Int, ...)` to convert the matches to integers.
+2. We check if we found exactly two numbers. If not, we raise an error.
+3. We calculate the number of mango fruits by subtracting the sum of the apple and orange counts from the total number of fruits.
+4. We return the result.
+
+You can test this function using the examples provided in the doc string:
+```julia
+println(fruit_distribution("5 apples and 6 oranges", 19))  # 8
+println(fruit_distribution("0 apples and 1 oranges", 3))   # 2
+println(fruit_distribution("2 apples and 3 oranges", 100)) # 95
+println(fruit_distribution("100 apples and 1 oranges", 120)) # 19
+```

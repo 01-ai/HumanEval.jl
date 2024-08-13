@@ -1,0 +1,43 @@
+Here is a high-performance implementation of the `fibfib` function in Julia:
+```julia
+function fibfib(n::Int)::Int
+    # Base cases
+    if n == 0 || n == 1
+        return 0
+    elseif n == 2
+        return 1
+    end
+
+    # Initialize memoization array
+    memo = zeros(Int, n + 1)
+    memo[2] = 1
+
+    # Compute fibfib numbers iteratively
+    for i in 3:n
+        memo[i] = memo[i-1] + memo[i-2] + memo[i-3]
+    end
+
+    # Return the n-th fibfib number
+    return memo[n]
+end
+```
+Here's an explanation of the implementation:
+
+* We first handle the base cases for `n == 0`, `n == 1`, and `n == 2`.
+* We then initialize a memoization array `memo` of size `n + 1` to store the computed fibfib numbers. We set `memo[2] = 1` since `fibfib(2) == 1`.
+* We compute the fibfib numbers iteratively from `i = 3` to `n` using the recurrence relation `fibfib(n) == fibfib(n-1) + fibfib(n-2) + fibfib(n-3)`. We store each computed value in the `memo` array.
+* Finally, we return the `n`-th fibfib number stored in `memo[n]`.
+
+This implementation has a time complexity of O(n) and a space complexity of O(n), making it efficient for large values of `n`.
+
+You can test the function using the examples provided:
+```julia
+julia> fibfib(1)
+0
+
+julia> fibfib(5)
+4
+
+julia> fibfib(8)
+24
+```

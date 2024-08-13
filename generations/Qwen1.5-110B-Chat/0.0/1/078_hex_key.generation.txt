@@ -1,0 +1,13 @@
+```julia
+function hex_key(num::String)::Int
+    primes_in_hex = ['2', '3', '5', '7', 'B', 'D']
+    count = 0
+    for digit in num
+        if digit in primes_in_hex
+            count += 1
+        end
+    end
+    return count
+end
+```
+This function iterates over each character in the input string `num`. If the character is one of the prime hexadecimal digits (2, 3, 5, 7, B, D), it increments the `count` variable. Finally, it returns the total count of prime hexadecimal digits found in the string.

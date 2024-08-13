@@ -1,0 +1,51 @@
+Here's a Julia function that counts the number of "boredoms" in a given string according to the specified rules:
+
+```julia
+function is_bored(s::String)::Int
+    # Split the string into sentences
+    sentences = split(s, r"[.!?]")
+    
+    # Count sentences starting with "I "
+    boredom_count = count(sentence -> startswith(strip(sentence), "I "), sentences)
+    
+    return boredom_count
+end
+```
+
+Let's break down how this function works:
+
+1. We use the `split` function to divide the input string `s` into sentences. The regular expression `r"[.!?]"` is used as the delimiter, which matches any of the characters '.', '!', or '?'.
+
+2. We then use the `count` function to count the number of sentences that start with "I ". The `count` function takes two arguments:
+   - A predicate function (in this case, an anonymous function)
+   - The collection to count over (in this case, our `sentences` array)
+
+3. The anonymous function `sentence -> startswith(strip(sentence), "I ")` does the following:
+   - `strip(sentence)` removes any leading or trailing whitespace from each sentence
+   - `startswith(..., "I ")` checks if the stripped sentence starts with "I " (note the space after "I")
+
+4. Finally, we return the count of boredoms.
+
+This function will correctly handle cases where there might be extra spaces before or after sentences, and it will only count sentences that start with "I" followed by a space.
+
+You can test the function with the examples you provided:
+
+```julia
+julia> is_bored("Hello world")
+0
+
+julia> is_bored("The sky is blue. The sun is shining. I love this weather")
+1
+```
+
+It will also work correctly for more complex cases:
+
+```julia
+julia> is_bored("I am bored. You are not bored. I am bored again!")
+2
+
+julia> is_bored("Am I bored? I don't think so. But I might be. I am not sure.")
+2
+```
+
+This implementation should correctly count the number of boredoms according to the specified rules.

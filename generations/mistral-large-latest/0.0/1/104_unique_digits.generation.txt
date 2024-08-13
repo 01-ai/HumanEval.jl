@@ -1,0 +1,16 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    function has_even_digit(n::Int)
+        digits = map(x -> parse(Int, x), split(string(n), ""))
+        return any(x -> x % 2 == 0, digits)
+    end
+
+    return sort(filter(x -> !has_even_digit(x), xs))
+end
+```
+
+This function first defines a helper function `has_even_digit` that checks if a number has any even digit. It does this by converting the number to a string, splitting the string into individual digits, converting each digit back to an integer, and then checking if any of these integers is even.
+
+The main function `unique_digits` then uses the `filter` function to keep only the numbers in the input vector `xs` that do not have any even digit, and finally sorts the resulting vector in increasing order.

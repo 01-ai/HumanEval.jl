@@ -1,0 +1,16 @@
+```julia
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    # Define consonants
+    consonants = Set('b':'d', 'f':'h', 'j':'n', 'p':'t', 'v':'z', 'B':'D', 'F':'H', 'J':'N', 'P':'T', 'V':'Z')
+    
+    # Split the string into words
+    words = split(s)
+    
+    # Filter words based on the number of consonants
+    selected_words = [word for word in words if count(c -> c in consonants, word) == n]
+    
+    return selected_words
+end
+```
+
+This function first defines a set of consonant characters. It then splits the input string `s` into words. Using a list comprehension, it filters out words where the count of consonant characters matches the given number `n`. The `count` function is used with a predicate that checks if a character is in the set of consonants. The result is a list of words that meet the criterion.

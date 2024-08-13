@@ -1,0 +1,39 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function words_in_sentence(sentence::String)::String
+    words = split(sentence)
+    prime_words = filter(word -> isprime(length(word)), words)
+    return join(prime_words, " ")
+end
+
+function isprime(n::Int)::Bool
+    if n < 2
+        return false
+    end
+    for i in 2:isqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+```
+
+Explanation:
+
+1. We define the `words_in_sentence` function that takes a string `sentence` as input and returns a string.
+
+2. Inside the function, we first split the `sentence` into individual words using the `split` function. This gives us an array of words.
+
+3. We then use the `filter` function to create a new array `prime_words` that contains only the words whose lengths are prime numbers. We pass an anonymous function `word -> isprime(length(word))` to `filter`, which checks if the length of each word is prime using the `isprime` function.
+
+4. Finally, we use the `join` function to concatenate the words in `prime_words` into a single string, separating them with a space.
+
+5. We also define an `isprime` function that takes an integer `n` as input and returns a boolean indicating whether `n` is prime or not. It checks for primality by iterating from 2 to the square root of `n` and checking if `n` is divisible by any number in that range.
+
+The time complexity of the `words_in_sentence` function is O(n * sqrt(m)), where n is the number of words in the sentence and m is the maximum length of a word. This is because we iterate over each word in the sentence and check for primality, which takes O(sqrt(m)) time in the worst case.
+
+The space complexity is O(n), where n is the number of words in the sentence, as we store the prime words in a separate array.
+
+I hope this helps! Let me know if you have any further questions.

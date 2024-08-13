@@ -1,0 +1,55 @@
+Here's the implementation of the `monotonic` function in Julia:
+
+```julia
+function monotonic(l::Vector)::Bool
+    n = length(l)
+    if n <= 1
+        return true
+    end
+    
+    is_increasing = l[1] <= l[2]
+    
+    for i in 2:n-1
+        if is_increasing
+            if l[i] > l[i+1]
+                return false
+            end
+        else
+            if l[i] < l[i+1]
+                return false
+            end
+        end
+    end
+    
+    return true
+end
+```
+
+Explanation:
+
+1. We first check the length of the input vector `l`. If it has 0 or 1 elements, it is considered monotonic by definition, so we return `true`.
+
+2. We determine whether the list is potentially increasing or decreasing by comparing the first two elements. If `l[1] <= l[2]`, we assume it is increasing; otherwise, we assume it is decreasing.
+
+3. We iterate over the vector starting from the second element up to the second-to-last element.
+
+4. Inside the loop, we check if the current element and the next element satisfy the monotonic condition based on whether the list is increasing or decreasing.
+   - If `is_increasing` is `true`, we check if `l[i] <= l[i+1]`. If this condition is violated, we return `false` since the list is not monotonically increasing.
+   - If `is_increasing` is `false`, we check if `l[i] >= l[i+1]`. If this condition is violated, we return `false` since the list is not monotonically decreasing.
+
+5. If we reach the end of the loop without returning `false`, it means the list is monotonic, so we return `true`.
+
+The function correctly handles the examples provided in the docstring:
+
+```jldoctest
+julia> monotonic([1, 2, 4, 20])
+true
+
+julia> monotonic([1, 20, 4, 10])
+false
+
+julia> monotonic([4, 1, 0, -10])
+true
+```
+
+The time complexity of this function is O(n), where n is the length of the input vector, as we iterate over the vector once. The space complexity is O(1) since we only use a constant amount of extra space.

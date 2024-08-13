@@ -1,0 +1,26 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    # Check if the array is non-empty and k is within the constraints
+    if isempty(xs) || k < 1 || k > length(xs)
+        throw(ArgumentError("Invalid input: k must be between 1 and length(xs)"))
+    end
+
+    # Initialize the sum
+    sum = 0
+
+    # Iterate over the first k elements
+    for i in 1:k
+        # Check if the number has at most two digits
+        if log10(abs(xs[i])) + 1 <= 2
+            # Add the number to the sum
+            sum += xs[i]
+        end
+    end
+
+    # Return the sum
+    return sum
+end
+```
+This function first checks if the input is valid. If it is, it initializes a sum to 0. It then iterates over the first k elements of the array, checks if each number has at most two digits, and if it does, adds it to the sum. Finally, it returns the sum.

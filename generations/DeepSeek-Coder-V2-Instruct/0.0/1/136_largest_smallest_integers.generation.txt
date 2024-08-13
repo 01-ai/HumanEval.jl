@@ -1,0 +1,24 @@
+ Here's the implementation of the `largest_smallest_integers` function in Julia:
+
+```julia
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing, Int}}
+    largest_negative = nothing
+    smallest_positive = nothing
+
+    for x in xs
+        if x < 0
+            if largest_negative === nothing || x > largest_negative
+                largest_negative = x
+            end
+        elseif x > 0
+            if smallest_positive === nothing || x < smallest_positive
+                smallest_positive = x
+            end
+        end
+    end
+
+    return (largest_negative, smallest_positive)
+end
+```
+
+This function iterates through the list `xs` and updates `largest_negative` and `smallest_positive` accordingly. If no negative or positive integers are found, it returns `nothing` for those respective values.

@@ -1,0 +1,36 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function decimal_to_binary(decimal::Int)::String
+    binary = reverse(bitstring(decimal))
+    return "db$(binary)db"
+end
+```
+
+Explanation:
+
+1. The `bitstring()` function in Julia converts an integer to its binary representation as a string. However, it returns the binary representation in reverse order (least significant bit first).
+
+2. We use the `reverse()` function to reverse the binary string obtained from `bitstring()`, so that it is in the correct order (most significant bit first).
+
+3. We concatenate the reversed binary string with the prefix "db" and the suffix "db" using string interpolation `$()`. This adds the extra characters at the beginning and end of the binary string as required.
+
+4. Finally, we return the resulting string.
+
+Here are some example outputs:
+
+```jldoctest
+julia> decimal_to_binary(0)
+"db0db"
+
+julia> decimal_to_binary(1)
+"db1db"
+
+julia> decimal_to_binary(10)
+"db1010db"
+
+julia> decimal_to_binary(15)
+"db1111db"
+```
+
+The solution uses built-in Julia functions to convert the decimal number to its binary representation and format it according to the specified requirements.

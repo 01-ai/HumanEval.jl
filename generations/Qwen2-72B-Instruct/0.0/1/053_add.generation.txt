@@ -1,0 +1,9 @@
+Here is the Julia function based on the given doc string:
+
+```julia
+function add(x::Int, y::Int)
+    return x + y
+end
+```
+
+This function takes two integers as arguments and returns their sum. The examples provided in the doc string demonstrate how to use this function.

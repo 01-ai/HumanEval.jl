@@ -1,0 +1,13 @@
+```julia
+function intersperse(numbers::Vector{Int}, delimeter::Int)::Vector{Int}
+    result = Int64[]
+    for (i, num) in enumerate(numbers)
+        push!(result, num)
+        if i < length(numbers) - 1
+            push!(result, delimeter)
+        end
+    end
+    return result
+end
+```
+This function takes an array of integers `numbers` and an integer `delimeter`. It iterates through `numbers`, adding each element to `result` followed by the `delimeter`, except for the last element to avoid adding a `delimeter` after the final number. The function then returns the resulting array.

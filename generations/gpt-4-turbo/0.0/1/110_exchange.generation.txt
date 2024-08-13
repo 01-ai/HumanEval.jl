@@ -1,0 +1,16 @@
+```julia
+function exchange(lst1::Vector{Int}, lst2::Vector{Int})::String
+    # Count the number of odd numbers in lst1
+    odd_count_lst1 = count(x -> x % 2 != 0, lst1)
+    
+    # Count the number of even numbers in lst2
+    even_count_lst2 = count(x -> x % 2 == 0, lst2)
+    
+    # If there are enough even numbers in lst2 to replace all odd numbers in lst1, return "YES"
+    if even_count_lst2 >= odd_count_lst1
+        return "YES"
+    else
+        return "NO"
+    end
+end
+```

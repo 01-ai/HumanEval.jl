@@ -1,0 +1,13 @@
+```julia
+function n_digits_in_binary(N::Int)::String
+    # Convert the integer to binary and then to a string
+    binary_str = string(base(2, N))
+    
+    # Sum the digits in the binary string
+    sum_digits = sum(parse(Int, digit) for digit in binary_str)
+    
+    # Return the sum as a binary string
+    return string(base(2, sum_digits))
+end
+```
+This function first converts the given integer to a binary string. Then, it sums the digits of this binary string by parsing each character back to an integer and summing them up. Finally, it converts this sum back to a binary string and returns it.

@@ -1,0 +1,20 @@
+```julia
+function f(n::Int)::Vector{Int}
+    result = Vector{Int}(undef, n)
+    for i in 1:n
+        if i % 2 == 0
+            # Calculate factorial for even i
+            factorial = 1
+            for j in 1:i
+                factorial *= j
+            end
+            result[i] = factorial
+        else
+            # Calculate sum from 1 to i for odd i
+            sum_i = sum(1:i)
+            result[i] = sum_i
+        end
+    end
+    return result
+end
+```

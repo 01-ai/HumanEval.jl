@@ -1,0 +1,20 @@
+Here's the implementation of the `rolling_max` function in Julia:
+
+```julia
+function rolling_max(numbers::Vector{Int})::Vector{Int}
+    result = Vector{Int}(undef, length(numbers))
+    current_max = numbers[1]
+    result[1] = current_max
+    
+    for i in 2:length(numbers)
+        if numbers[i] > current_max
+            current_max = numbers[i]
+        end
+        result[i] = current_max
+    end
+    
+    return result
+end
+```
+
+This function iterates through the list of integers, keeping track of the current maximum value encountered so far. It updates the `current_max` whenever a new maximum is found and stores this value in the result array at the corresponding position.

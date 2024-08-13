@@ -1,0 +1,9 @@
+Here is the Julia function that implements the functionality described in the docstring:
+
+```julia
+function get_positive(xs::Vector)
+    return filter(x -> x > 0, xs)
+end
+```
+
+This function uses the `filter` function from Julia's standard library to return a new array containing only the elements of `xs` that satisfy the condition `x > 0`.

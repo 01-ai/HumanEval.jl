@@ -1,0 +1,28 @@
+Here's the implementation of the `concatenate` function in Julia:
+
+```julia
+function concatenate(xs::Vector{String})::String
+    return join(xs)
+end
+```
+
+Explanation:
+- The function `concatenate` takes a vector of strings (`xs`) as input and returns a single string.
+- We use the built-in `join` function in Julia to concatenate the strings in the vector.
+- The `join` function takes an iterable (in this case, the vector `xs`) and returns a new string that is the concatenation of all the elements in the iterable.
+
+The given examples can be tested like this:
+
+```jldoctest
+julia> concatenate(String[])
+""
+
+julia> concatenate(["a", "b", "c"])
+"abc"
+```
+
+The first example demonstrates that when an empty vector is passed to `concatenate`, it returns an empty string.
+
+The second example shows that when a vector of strings `["a", "b", "c"]` is passed to `concatenate`, it concatenates them into a single string `"abc"`.
+
+The function signature `concatenate(xs::Vector{String})::String` specifies that the input `xs` should be a vector of strings, and the return type is a string.

@@ -1,0 +1,47 @@
+Here's the Julia function that meets the requirements:
+
+```julia
+function any_int(x::Number, y::Number, z::Number)::Bool
+    # Check if all numbers are integers
+    if !isinteger(x) || !isinteger(y) || !isinteger(z)
+        return false
+    end
+    
+    # Check if any number is equal to the sum of the other two
+    if x == y + z || y == x + z || z == x + y
+        return true
+    end
+    
+    return false
+end
+```
+
+Explanation:
+
+1. The function takes three numbers `x`, `y`, and `z` as input parameters.
+
+2. The first condition checks if all three numbers are integers using the `isinteger()` function. If any of the numbers is not an integer, the function returns `false`.
+
+3. The second condition checks if any of the numbers is equal to the sum of the other two. It checks all three possible combinations: `x == y + z`, `y == x + z`, and `z == x + y`. If any of these conditions is true, the function returns `true`.
+
+4. If none of the conditions are met, the function returns `false`.
+
+The function returns a Boolean value (`true` or `false`) based on the specified conditions.
+
+You can test the function with the provided examples:
+
+```jldoctest
+julia> any_int(5, 2, 7)
+true
+
+julia> any_int(3, 2, 2)
+false
+
+julia> any_int(3, -2, 1)
+true
+
+julia> any_int(3.6, -2.2, 2)
+false
+```
+
+The function will return the expected results for each example case.

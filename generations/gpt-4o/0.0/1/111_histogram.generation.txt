@@ -1,0 +1,54 @@
+To implement the `histogram` function in Julia, we need to follow these steps:
+
+1. Split the input string into individual characters.
+2. Count the occurrences of each character.
+3. Identify the maximum count.
+4. Collect all characters that have this maximum count.
+5. Return the result as a dictionary.
+
+Here's the implementation:
+
+```julia
+function histogram(s::String)::Dict{String, Int}
+    # Split the string by spaces to get individual characters
+    chars = split(s, " ")
+    
+    # Create a dictionary to count occurrences of each character
+    counts = Dict{String, Int}()
+    
+    for char in chars
+        if char != ""
+            counts[char] = get(counts, char, 0) + 1
+        end
+    end
+    
+    # Find the maximum count
+    max_count = maximum(values(counts), default=0)
+    
+    # Collect all characters with the maximum count
+    result = Dict{String, Int}()
+    for (char, count) in counts
+        if count == max_count
+            result[char] = count
+        end
+    end
+    
+    return result
+end
+```
+
+### Explanation:
+
+1. **Splitting the String**: We use `split(s, " ")` to split the input string `s` by spaces, resulting in an array of characters.
+2. **Counting Occurrences**: We iterate over the array of characters and use a dictionary `counts` to keep track of the number of times each character appears.
+3. **Finding the Maximum Count**: We use `maximum(values(counts), default=0)` to find the highest count of any character in the dictionary. The `default=0` ensures that if the dictionary is empty, the maximum count is considered as 0.
+4. **Collecting Characters with Maximum Count**: We create a new dictionary `result` and populate it with characters that have the maximum count.
+5. **Returning the Result**: Finally, we return the `result` dictionary.
+
+### Examples:
+
+```julia
+println(histogram("a b c"))         # Dict("a" => 1, "b" => 1, "c" => 1)
+println(histogram("a b b a"))       # Dict("a" => 2, "b" => 2)
+println(histogram("a b c a b"))     # Dict("a" => 2, "b" => 2)
+println

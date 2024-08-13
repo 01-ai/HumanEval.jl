@@ -1,0 +1,41 @@
+Here is a Julia function that implements the specified behavior:
+```julia
+function int_to_mini_roman(number::Int)::String
+    @assert 1 <= number <= 1000 "Input number must be between 1 and 1000"
+
+    roman_numerals = [
+        (1000, "m"), (900, "cm"), (500, "d"), (400, "cd"),
+        (100, "c"), (90, "xc"), (50, "l"), (40, "xl"),
+        (10, "x"), (9, "ix"), (5, "v"), (4, "iv"), (1, "i")
+    ]
+
+    result = ""
+    for (value, numeral) in roman_numerals
+        while number >= value
+            result *= numeral
+            number -= value
+        end
+    end
+
+    return result
+end
+```
+Here's an explanation of the code:
+
+1. We first assert that the input number is within the valid range of 1 to 1000.
+2. We define a list of tuples, `roman_numerals`, where each tuple contains a decimal value and its corresponding Roman numeral representation as a string.
+3. We initialize an empty string, `result`, which will store the final Roman numeral representation.
+4. We iterate through the `roman_numerals` list, and for each tuple, we check if the input number is greater than or equal to the decimal value. If it is, we append the corresponding Roman numeral to the `result` string and subtract the decimal value from the input number. We repeat this process until the input number is less than the decimal value.
+5. Finally, we return the resulting Roman numeral representation as a lowercase string.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> int_to_mini_roman(19)
+"xix"
+
+julia> int_to_mini_roman(152)
+"clii"
+
+julia> int_to_mini_roman(426)
+"cdxxvi"
+```

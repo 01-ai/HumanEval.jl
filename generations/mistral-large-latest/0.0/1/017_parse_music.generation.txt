@@ -1,0 +1,20 @@
+Sure, here is the Julia function that implements the parsing of the music string as per your requirements:
+
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    beat_values = Dict('o' => 4, 'o|' => 2, '.|' => 1)
+    beats = Vector{Int}()
+
+    for note in split(music_string)
+        if haskey(beat_values, note[1])
+            push!(beats, beat_values[note[1]])
+        else
+            error("Invalid note: $note")
+        end
+    end
+
+    return beats
+end
+```
+
+This function works by first defining a dictionary that maps each note to its corresponding number of beats. It then splits the input string into individual notes and iterates over them. For each note, it checks if it exists in the dictionary and if so, adds its corresponding number of beats to the result vector. If a note is not found in the dictionary, an error is thrown.

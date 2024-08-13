@@ -1,0 +1,16 @@
+Sure, here is a possible implementation of the `is_simple_power` function in Julia:
+
+```julia
+function is_simple_power(x::Number, n::Number)::Bool
+    int_part = isqrt(x)
+    while int_part >= 1
+        if n ^ int_part == x
+            return true
+        end
+        int_part -= 1
+    end
+    return false
+end
+```
+
+This function works by iteratively checking if `n ^ int` equals `x` for `int` from `isqrt(x)` down to 1. If it finds such an `int`, it returns `true`. If it doesn't find any, it returns `false`. The `isqrt` function is used to get the integer square root of `x`, which is a good starting point for the search because `x` cannot be a simple power of `n` for any integer greater than `isqrt(x)`.

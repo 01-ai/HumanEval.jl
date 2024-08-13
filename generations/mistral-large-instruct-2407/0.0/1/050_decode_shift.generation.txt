@@ -1,0 +1,39 @@
+ Certainly! To implement the decoding function that reverses the encoding done by the `encode_shift` function, you need to shift each character back by 5 positions in the alphabet. Here is the implementation of the `decode_shift` function in Julia:
+
+```julia
+"""
+Returns encoded string by shifting every character by 5 in the alphabet.
+"""
+function encode_shift(s::String)::String
+    join(((x - 'a' + 5 + 26) % 26 + 'a' for x in s))
+end
+
+"""
+Takes as input string encoded with `encode_shift` function. Returns decoded string.
+"""
+function decode_shift(s::String)::String
+    join(((x - 'a' - 5 + 26) % 26 + 'a' for x in s))
+end
+```
+
+### Explanation:
+
+1. **encode_shift Function**:
+   - This function shifts each character in the string `s` by 5 positions forward in the alphabet.
+   - The expression `(x - 'a' + 5 + 26) % 26 + 'a'` ensures that the shift wraps around the alphabet correctly.
+
+2. **decode_shift Function**:
+   - This function shifts each character in the string `s` by 5 positions backward in the alphabet.
+   - The expression `(x - 'a' - 5 + 26) % 26 + 'a'` ensures that the shift wraps around the alphabet correctly.
+
+### Example Usage:
+
+```julia
+encoded = encode_shift("hello")
+println(encoded)  # Output: "mjqqt"
+
+decoded = decode_shift(encoded)
+println(decoded)  # Output: "hello"
+```
+
+This implementation assumes that the input string `s` contains only lowercase alphabetic characters. If you need to handle uppercase characters or other characters, additional logic would be required.

@@ -1,0 +1,11 @@
+```julia
+using MD5
+
+function string_to_md5(text::String)::Union{Nothing,String}
+    if text == ""
+        return nothing
+    else
+        return string(md5(text))
+    end
+end
+```

@@ -1,0 +1,25 @@
+ Certainly! Below is the implementation of the `string_sequence` function in Julia based on the provided docstring:
+
+```julia
+"""
+string_sequence(n::Int)::String
+
+Return a string containing space-delimited numbers starting from 0 upto `n`
+inclusive.
+
+# Examples
+
+```jldoctest
+julia> string_sequence(0)
+"0"
+
+julia> string_sequence(5)
+"0 1 2 3 4 5"
+```
+"""
+function string_sequence(n::Int)::String
+    return join(0:n, " ")
+end
+```
+
+This function uses the `join` function to concatenate the numbers from 0 to `n` with a space delimiter. The `0:n` range creates an array of numbers from 0 to `n`, and `join` converts this array into a single string with each number separated by a space.

@@ -1,0 +1,32 @@
+Here's a Julia function that implements the described logic:
+
+```julia
+function exchange(lst1::Vector{Int}, lst2::Vector{Int})::String
+    odd_count_lst1 = count(x -> x % 2 != 0, lst1)
+    even_count_lst2 = count(x -> x % 2 == 0, lst2)
+    
+    if even_count_lst2 >= odd_count_lst1
+        return "YES"
+    else
+        return "NO"
+    end
+end
+```
+
+This function works as follows:
+
+1. We count the number of odd elements in `lst1` using the `count` function with a lambda that checks if each element is odd (not divisible by 2).
+
+2. We count the number of even elements in `lst2` using the `count` function with a lambda that checks if each element is even (divisible by 2).
+
+3. If the number of even elements in `lst2` is greater than or equal to the number of odd elements in `lst1`, then it's possible to make all elements in `lst1` even by exchanging elements. In this case, we return "YES".
+
+4. Otherwise, if there aren't enough even elements in `lst2` to replace all the odd elements in `lst1`, we return "NO".
+
+This solution works because:
+- To make all elements in `lst1` even, we need to replace all its odd elements with even elements.
+- The even elements can only come from `lst2`.
+- If `lst2` has at least as many even elements as `lst1` has odd elements, we can always make the exchange.
+- If `lst2` has fewer even elements than `lst1` has odd elements, it's impossible to make all elements in `lst1` even.
+
+This function will correctly handle non-empty input lists as specified in the problem statement.

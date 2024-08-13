@@ -1,0 +1,24 @@
+Sure, here is the implementation of the `monotonic` function in Julia:
+
+```julia
+function monotonic(l::Vector)::Bool
+    if length(l) <= 1
+        return true
+    end
+
+    increasing = true
+    decreasing = true
+
+    for i in 2:length(l)
+        if l[i] > l[i-1]
+            decreasing = false
+        elseif l[i] < l[i-1]
+            increasing = false
+        end
+    end
+
+    return increasing || decreasing
+end
+```
+
+This function checks if the elements of the list are either monotonically increasing or decreasing. It does this by iterating through the list and checking the relationship between each pair of consecutive elements. If it finds any pair that violates the monotonicity in either direction, it updates the corresponding flag (`increasing` or `decreasing`). Finally, it returns `true` if either flag remains `true`, indicating that the list is monotonic in at least one direction.

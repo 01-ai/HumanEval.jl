@@ -1,0 +1,17 @@
+```julia
+function sort_third(l::Vector)
+    # Extract elements at indices divisible by 3
+    div3_elements = l[3:3:end]
+    # Sort these elements
+    sorted_div3 = sort(div3_elements)
+    # Create a copy of the original list to modify
+    l_prime = copy(l)
+    # Replace elements at indices divisible by 3 with sorted elements
+    for i in 1:length(sorted_div3)
+        l_prime[3i] = sorted_div3[i]
+    end
+    return l_prime
+end
+```
+
+This function first extracts the elements at indices divisible by 3 from the input list `l`. It then sorts these elements and creates a copy of the original list to modify. The function then replaces the elements at indices divisible by 3 in the copy with the sorted elements, and finally returns the modified copy.

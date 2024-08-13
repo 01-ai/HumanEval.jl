@@ -1,0 +1,9 @@
+Here's the implementation of the `compare` function in Julia:
+
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    return [g == s ? 0 : abs(g - s) for (s, g) in zip(game, guess)]
+end
+```
+
+This function uses a list comprehension to iterate over pairs of scores and guesses, calculating the absolute difference if the guess is not correct, or 0 if it is. The `zip` function is used to pair up corresponding elements from the `game` and `guess` arrays.

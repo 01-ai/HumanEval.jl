@@ -1,0 +1,42 @@
+Here's a Julia function that implements the `truncate_number` functionality as described:
+
+```julia
+function truncate_number(number::Float64)::Float64
+    if number < 0
+        throw(ArgumentError("Input must be a positive number"))
+    end
+    return number - floor(number)
+end
+```
+
+This function does the following:
+
+1. It first checks if the input number is negative. If it is, it throws an `ArgumentError` with an appropriate message, as the function is specified to work with positive numbers only.
+
+2. If the number is positive, it subtracts the `floor` of the number from the number itself.
+   - `floor(number)` gives the largest integer less than or equal to `number`.
+   - Subtracting this from the original number leaves only the decimal part.
+
+3. The result is returned, which will always be a `Float64` between 0 (inclusive) and 1 (exclusive).
+
+This function correctly handles the example given:
+
+```julia
+julia> truncate_number(3.5)
+0.5
+```
+
+It will also work correctly for other positive floating-point numbers:
+
+```julia
+julia> truncate_number(10.75)
+0.75
+
+julia> truncate_number(7.0)
+0.0
+
+julia> truncate_number(0.123)
+0.123
+```
+
+Note that due to the nature of floating-point arithmetic, there might be some very small rounding errors for certain numbers, but this is inherent to floating-point representation and not a problem with the function itself.

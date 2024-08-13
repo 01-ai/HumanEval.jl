@@ -1,0 +1,36 @@
+Here's the implementation of the `is_simple_power` function in Julia:
+
+```julia
+function is_simple_power(x::Number, n::Number)::Bool
+    if n == 1
+        return x == 1
+    end
+    
+    if x < n
+        return false
+    end
+    
+    power = n
+    while power < x
+        power *= n
+    end
+    
+    return power == x
+end
+```
+
+Explanation:
+
+1. First, we handle the case when `n` is equal to 1. If `n` is 1, then `x` must also be 1 for it to be a simple power of `n`. We return `true` if `x` is 1 and `false` otherwise.
+
+2. Next, we check if `x` is less than `n`. If `x` is less than `n`, then it cannot be a simple power of `n` because the smallest power of `n` (excluding 0) is `n` itself. In this case, we return `false`.
+
+3. We initialize a variable `power` with the value of `n`. This variable will keep track of the current power of `n`.
+
+4. We start a loop that continues as long as `power` is less than `x`. Inside the loop, we multiply `power` by `n` in each iteration. This step repeatedly multiplies `n` by itself until `power` becomes greater than or equal to `x`.
+
+5. After the loop ends, we check if `power` is equal to `x`. If `power` is equal to `x`, it means that `x` is a simple power of `n`, and we return `true`. Otherwise, if `power` is not equal to `x`, it means that `x` is not a simple power of `n`, and we return `false`.
+
+The function uses the type annotation `::Number` for the input parameters `x` and `n` to indicate that they should be numeric values. It also uses the return type annotation `::Bool` to specify that the function returns a boolean value.
+
+The given examples should all pass with this implementation of the `is_simple_power` function.

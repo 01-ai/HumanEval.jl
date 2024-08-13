@@ -1,0 +1,45 @@
+To implement the `tri` function in Julia, we need to follow the rules defined in the docstring. The Tribonacci sequence has specific rules for even and odd indices, and we need to generate the first `n` numbers of this sequence.
+
+Here's the implementation:
+
+```julia
+function tri(n::Int)::Vector{Int}
+    if n == 0
+        return Int[]
+    end
+    
+    trib_seq = Vector{Int}(undef, n)
+    
+    for i in 1:n
+        if i == 1
+            trib_seq[i] = 1
+        elseif i % 2 == 0
+            trib_seq[i] = 1 + i ÷ 2
+        else
+            if i == 3
+                trib_seq[i] = trib_seq[i-1] + trib_seq[i-2] + (1 + (i+1) ÷ 2)
+            else
+                trib_seq[i] = trib_seq[i-1] + trib_seq[i-2] + trib_seq[i+1]
+            end
+        end
+    end
+    
+    return trib_seq
+end
+
+# Example usage
+println(tri(3))  # Output: [1, 2, 6]
+```
+
+### Explanation:
+1. **Base Case**: If `n` is 0, return an empty vector.
+2. **Initialization**: Create a vector `trib_seq` of length `n` to store the sequence.
+3. **Loop through 1 to n**:
+   - For `i == 1`, set `trib_seq[1]` to 1.
+   - For even `i`, calculate `trib_seq[i]` as `1 + i ÷ 2`.
+   - For odd `i`:
+     - If `i == 3`, handle it as a special case since `trib_seq[4]` is not yet defined.
+     - Otherwise, calculate `trib_seq[i]` using the recurrence relation for odd indices.
+4. **Return the sequence**.
+
+This implementation ensures that the sequence is generated correctly according to the given rules.

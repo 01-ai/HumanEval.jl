@@ -1,0 +1,27 @@
+ Certainly! Below is the implementation of the `largest_divisor` function in Julia based on the given doc string:
+
+```julia
+"""
+    largest_divisor(n::Int)::Int
+
+For a given number `n`, find the largest number that divides `n` evenly, smaller
+than `n`.
+
+```jldoctest
+julia> largest_divisor(15)
+5
+```
+"""
+function largest_divisor(n::Int)::Int
+    # Start from the largest possible divisor smaller than n
+    for i in (n-1):-1:1
+        if n % i == 0
+            return i
+        end
+    end
+    # If no divisor is found, return 1 (since 1 divides any number)
+    return 1
+end
+```
+
+This function iterates from `n-1` down to `1` and checks if each number divides `n` evenly. The first number that satisfies this condition is returned as the largest divisor. If no divisor is found (which should not happen for positive integers), it returns `1` as a fallback.

@@ -1,0 +1,13 @@
+function reverse_string(s::String)::String
+    if all(!(c in ['a':'z' 'A':'Z']) for c in s)
+        return reverse(s)
+    else
+        return join([c in ['a':'z'] ? uppercase(c) :
+                     c in ['A':'Z'] ? lowercase(c) : c for c in s])
+    end
+end
+
+# Test cases
+println(reverse_string("1234")) # Expected: "4321"
+println(reverse_string("ab"))    # Expected: "AB"
+println(reverse_string("#a@C"))  # Expected: "#A@c"

@@ -1,0 +1,27 @@
+To calculate the area of a triangle given the length of a side and the height, you can use the formula:
+
+Area = (base * height) / 2
+
+Here's the implementation of the `triangle_area` function in Julia:
+
+```julia
+function triangle_area(a, h)
+    return (a * h) / 2
+end
+```
+
+Explanation:
+- The function `triangle_area` takes two parameters: `a` representing the length of a side (base) and `h` representing the height of the triangle.
+- Inside the function, we use the formula `(a * h) / 2` to calculate the area of the triangle.
+- The calculated area is then returned as the result of the function.
+
+You can use the function like this:
+
+```julia
+julia> triangle_area(5, 3)
+7.5
+```
+
+In this example, the length of the side (base) is 5 and the height is 3. The function calculates the area using the formula `(5 * 3) / 2`, which evaluates to `7.5`.
+
+The function will work with any valid numeric values for the base and height of the triangle.

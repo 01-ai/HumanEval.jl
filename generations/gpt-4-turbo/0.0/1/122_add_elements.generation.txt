@@ -1,0 +1,16 @@
+```julia
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    # Initialize sum
+    sum_two_digit = 0
+    
+    # Iterate over the first k elements of the array
+    for i in 1:k
+        # Check if the number has at most two digits
+        if abs(xs[i]) < 100
+            sum_two_digit += xs[i]
+        end
+    end
+    
+    return sum_two_digit
+end
+```

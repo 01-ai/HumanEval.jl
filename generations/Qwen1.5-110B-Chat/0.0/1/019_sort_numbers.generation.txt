@@ -1,0 +1,8 @@
+```julia
+function sort_numbers(numbers::String)::String
+    number_order = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+    sorted_numbers = sort!(split(numbers), by=x -> number_order.indexof(x))
+    join(sorted_numbers, " ")
+end
+```
+This function `sort_numbers` takes a string of number words as input, splits the string into an array of words, sorts the array based on the predefined order of number words, and then joins the sorted words back into a string separated by spaces. The `number_order.indexof(x)` is used to get the index of each word in the predefined order, which is used for sorting.

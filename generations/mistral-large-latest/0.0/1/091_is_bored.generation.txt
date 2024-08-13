@@ -1,0 +1,24 @@
+Sure, here is the Julia function that implements the given docstring:
+
+```julia
+function is_bored(s::String)::Int
+    # Split the string into sentences
+    sentences = split(s, r"[.!?]")
+
+    # Initialize a counter for boredoms
+    boredom_count = 0
+
+    # Iterate over each sentence
+    for sentence in sentences
+        # Check if the sentence starts with "I" after stripping leading whitespace
+        if startswith(strip(sentence), "I")
+            # Increment the boredom counter
+            boredom_count += 1
+        end
+    end
+
+    # Return the total number of boredoms
+    return boredom_count
+end
+```
+This function works by first splitting the input string into sentences using the regular expression `r"[.!?]"`. It then iterates over each sentence, checking if it starts with the word "I" after stripping any leading whitespace. If it does, it increments a counter. Finally, it returns the total number of boredoms found.

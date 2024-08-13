@@ -1,0 +1,36 @@
+To implement the `fib4` function efficiently without using recursion, we can use an iterative approach. We'll maintain a list of the last four computed values and update them as we progress through the sequence. This way, we can compute the n-th element in linear time.
+
+Here's the implementation:
+
+```julia
+function fib4(n::Int)::Int
+    if n < 0
+        throw(ArgumentError("n must be a non-negative integer"))
+    end
+
+    # Base cases
+    if n == 0 || n == 1 || n == 3
+        return 0
+    elseif n == 2
+        return 2
+    end
+
+    # Initialize the first four values of the sequence
+    a, b, c, d = 0, 0, 2, 0
+
+    # Compute the sequence iteratively
+    for i in 4:n
+        next_value = a + b + c + d
+        a, b, c, d = b, c, d, next_value
+    end
+
+    return d
+end
+
+# Examples
+println(fib4(5))  # Output: 4
+println(fib4(6))  # Output: 8
+println(fib4(7))  # Output: 14
+```
+
+This function starts by handling the base cases directly. For `n` values less than 4, it returns the pre-defined values. For `n` values 4 and above, it iteratively computes the sequence by maintaining the last four values and updating them in each iteration. This ensures that the function runs efficiently in O(n) time complexity.

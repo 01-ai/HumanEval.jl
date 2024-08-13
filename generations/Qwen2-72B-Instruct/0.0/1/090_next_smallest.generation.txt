@@ -1,0 +1,9 @@
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    # Remove duplicates and sort the vector
+    unique_sorted_xs = sort(unique(xs))
+    
+    # Check if there is a second element
+    length(unique_sorted_xs) < 2 ? nothing : unique_sorted_xs[2]
+end
+```

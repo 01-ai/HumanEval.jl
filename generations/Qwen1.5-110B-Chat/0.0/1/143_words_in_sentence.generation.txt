@@ -1,0 +1,17 @@
+```julia
+function words_in_sentence(sentence::String)::String
+    # Helper function to check if a number is prime
+    isprime(n::Int) = n > 1 && all(n % d ≠ 0 for d in 2:(isqrt(n)))
+
+    # Split the sentence into words
+    words = split(sentence)
+
+    # Filter words with prime length
+    prime_length_words = filter(word -> isprime(length(word)), words)
+
+    # Join the filtered words back into a string with spaces
+    return join(prime_length_words, " ")
+end
+```
+
+This Julia function `words_in_sentence` first defines a helper function `isprime` to check if a number is prime. It then splits the input sentence into individual words and filters out those words that have a prime number length. Finally, it joins the filtered words into a new string, separated by spaces, and returns this string. The examples provided in the docstring are also valid test cases for this function.

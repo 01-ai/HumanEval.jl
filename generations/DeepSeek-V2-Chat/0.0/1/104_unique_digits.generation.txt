@@ -1,0 +1,21 @@
+Here's the implementation of the `unique_digits` function in Julia:
+
+```julia
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    # Helper function to check if a number has any even digits
+    function has_even_digit(n::Int)::Bool
+        for digit in string(n)
+            if digit in ('0', '2', '4', '6', '8')
+                return true
+            end
+        end
+        return false
+    end
+
+    # Filter out numbers with even digits and sort the remaining numbers
+    result = filter(x -> !has_even_digit(x), xs)
+    return sort(result)
+end
+```
+
+This function first defines a helper function `has_even_digit` to check if a number contains any even digits. It then filters the input list `xs` to remove any numbers that have even digits and sorts the remaining numbers in increasing order before returning the result.

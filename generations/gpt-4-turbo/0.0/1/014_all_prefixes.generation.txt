@@ -1,0 +1,15 @@
+```julia
+function all_prefixes(s::String)::Vector{String}
+    # Initialize an empty vector to store the prefixes
+    prefixes = String[]
+    
+    # Loop through each character index in the string
+    for i in 1:length(s)
+        # Extract the substring from the start to the current index
+        push!(prefixes, s[1:i])
+    end
+    
+    # Return the vector of prefixes
+    return prefixes
+end
+```

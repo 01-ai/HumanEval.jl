@@ -1,0 +1,16 @@
+```julia
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+    # Convert strings representing numbers to floats for comparison
+    a_num = a isa AbstractString ? parse(Float64, replace(a, ',', '.')) : a
+    b_num = b isa AbstractString ? parse(Float64, replace(b, ',', '.')) : b
+    
+    if a_num == b_num
+        return nothing
+    elseif a_num > b_num
+        return isa(a, AbstractString) ? a : float(a)
+    else
+        return isa(b, AbstractString) ? b : float(b)
+    end
+end
+```
+This function first converts string inputs to their float representations for comparison. It then determines the larger value and returns it in its original type, returning `nothing` if the values are equal. The `replace` function is used to handle strings with commas as decimal points, converting them to standard decimal notation before parsing.

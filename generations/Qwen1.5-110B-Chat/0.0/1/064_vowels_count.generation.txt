@@ -1,0 +1,17 @@
+```julia
+function vowels_count(s::String)::Int
+    vowels = "aeiouAEIOUY"
+    count = 0
+    for char in s
+        if char in vowels
+            count += 1
+        end
+    end
+    if endswith(s, 'y') || endswith(s, 'Y')
+        count += 1
+    end
+    return count
+end
+```
+
+This Julia function `vowels_count` iterates over each character in the input string `s`. If the character is found in the `vowels` string, it increments the `count`. It also checks if the last character is 'y' or 'Y' and increments the count if true, adhering to the specific rule for 'y' being a vowel only at the end of the word.

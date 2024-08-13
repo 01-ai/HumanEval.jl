@@ -1,0 +1,29 @@
+function histogram(s::String)::Dict{String, Int}
+    # Split the string into individual letters
+    letters = split(lowercase(s), " ")
+    
+    # Create a dictionary to store the letter counts
+    letter_counts = Dict{String, Int}()
+    
+    # Count the occurrences of each letter
+    for letter in letters
+        if letter in keys(letter_counts)
+            letter_counts[letter] += 1
+        else
+            letter_counts[letter] = 1
+        end
+    end
+    
+    # Find the maximum count
+    max_count = isempty(letter_counts) ? 0 : maximum(values(letter_counts))
+    
+    # Filter the dictionary to only include letters with the maximum count
+    return Dict(k => v for (k, v) in letter_counts if v == max_count)
+end
+
+# Examples
+println(histogram("a b c"))
+println(histogram("a b b a"))
+println(histogram("a b c a b"))
+println(histogram("b b b b a"))
+println(histogram(""))

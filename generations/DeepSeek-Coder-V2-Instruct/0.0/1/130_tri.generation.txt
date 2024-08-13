@@ -1,0 +1,26 @@
+ Here's the implementation of the `tri` function in Julia based on the provided doc string:
+
+```julia
+function tri(n::Int)::Vector{Int}
+    if n <= 0
+        return []
+    end
+
+    # Initialize the sequence with the first element
+    sequence = [1]
+
+    for i in 2:n
+        if i % 2 == 0
+            push!(sequence, 1 + i // 2)
+        else
+            push!(sequence, sequence[i - 1] + sequence[i - 2] + tri(i + 1)[1])
+        end
+    end
+
+    return sequence
+end
+```
+
+This function initializes the sequence with the first element and then iterates through the remaining elements, calculating each based on whether the index is even or odd. For even indices, it uses the formula `1 + n / 2`. For odd indices, it recursively calculates the value using the previous two elements and the value of `tri(i + 1)`.
+
+Note: The recursive call for odd indices might not be efficient due to repeated calculations. If performance becomes an issue, consider optimizing the function using memoization or dynamic programming techniques.

@@ -1,0 +1,12 @@
+```julia
+bf(planet1::String, planet2::String)::NTuple = begin
+    planets = ("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune")
+    idx1, idx2 = findfirst(isequal(planet1), planets), findfirst(isequal(planet2), planets)
+    
+    if idx1 === nothing || idx2 === nothing || idx1 > idx2
+        return ()
+    else
+        return tuple(planets[idx1+1:idx2-1]...)
+    end
+end
+```

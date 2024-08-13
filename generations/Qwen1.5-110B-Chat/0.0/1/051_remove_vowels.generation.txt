@@ -1,0 +1,6 @@
+```julia
+function remove_vowels(text::String)::String
+    vowels = "aeiouAEIOU"
+    return join(filter(c -> c ∉ vowels, text))
+end
+```

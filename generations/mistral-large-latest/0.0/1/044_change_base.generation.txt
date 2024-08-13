@@ -1,0 +1,23 @@
+Sure, here is the Julia function that satisfies the given docstring:
+
+```julia
+function change_base(x::Int, base::Int)::String
+    # Check if base is less than 10
+    if base < 2 || base > 9
+        throw(DomainError(base, "Base must be between 2 and 9"))
+    end
+
+    # Initialize result string
+    result = ""
+
+    # Convert number to new base
+    while x > 0
+        rem = x % base
+        x = div(x, base)
+        result = string(rem) * result
+    end
+
+    return result
+end
+```
+This function takes an integer `x` and a base `base` as input, and returns the string representation of `x` in base `base`. The function first checks if `base` is between 2 and 9, and throws an error if it is not. Then, it initializes an empty string `result` to store the result. It then repeatedly divides `x` by `base` and appends the remainder to the beginning of `result`, until `x` is 0. Finally, it returns `result`.

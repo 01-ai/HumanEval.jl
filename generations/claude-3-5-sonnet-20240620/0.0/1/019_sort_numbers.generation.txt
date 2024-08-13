@@ -1,0 +1,42 @@
+Here's a Julia function that solves the problem as described:
+
+```julia
+function sort_numbers(numbers::String)::String
+    # Define a dictionary to map word representations to numerical values
+    num_dict = Dict(
+        "zero" => 0, "one" => 1, "two" => 2, "three" => 3, "four" => 4,
+        "five" => 5, "six" => 6, "seven" => 7, "eight" => 8, "nine" => 9
+    )
+    
+    # Split the input string into an array of words
+    number_words = split(numbers)
+    
+    # Sort the words based on their numerical values
+    sorted_words = sort(number_words, by = word -> num_dict[word])
+    
+    # Join the sorted words back into a string
+    return join(sorted_words, " ")
+end
+```
+
+This function works as follows:
+
+1. We define a dictionary `num_dict` that maps each word representation of a number to its corresponding numerical value.
+
+2. We split the input string into an array of words using the `split()` function.
+
+3. We sort this array of words using Julia's `sort()` function. The `by` parameter specifies a function that returns the value to be used for sorting. In this case, we use the dictionary to look up the numerical value of each word.
+
+4. Finally, we join the sorted array of words back into a string, with spaces between each word.
+
+You can use this function like this:
+
+```julia
+julia> sort_numbers("three one five")
+"one three five"
+
+julia> sort_numbers("nine zero two six four")
+"zero two four six nine"
+```
+
+This function assumes that all input words are valid (i.e., they are in the dictionary). If you need to handle potential invalid inputs, you might want to add error checking.

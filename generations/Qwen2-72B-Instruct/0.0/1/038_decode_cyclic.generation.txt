@@ -1,0 +1,28 @@
+To decode a string that was encoded using the `encode_cyclic` function, we need to reverse the process of cycling groups of three characters. This involves taking groups of three characters (or less for the last group if the string length is not a multiple of three) and rearranging them so that the first character is the second character from the encoded group, the second character is the third character from the encoded group, and the third character is the first character from the encoded group.
+
+Here is the implementation of the `decode_cyclic` function:
+
+```julia
+function decode_cyclic(s::String)::String
+    join((length(x) == 3 ? x[3] * x[1] * x[2] : x for x in Iterators.partition(s, 3)))
+end
+```
+
+This function works by iterating over groups of three characters in the input string `s` using `Iterators.partition`. For each group of three characters, it rearranges them in the reverse order of the encoding process and then joins the resulting characters back into a single string.
+
+Let's test the `decode_cyclic` function with some examples to ensure it works as expected:
+
+```julia
+# Test the decode_cyclic function
+encoded_str = encode_cyclic("HelloWorld")
+println("Encoded: $encoded_str")
+
+decoded_str = decode_cyclic(encoded_str)
+println("Decoded: $decoded_str")
+
+# Check if the decoded string matches the original string
+original_str = "HelloWorld"
+println("Match: $decoded_str == $original_str")
+```
+
+This test code will print the encoded string, the decoded string, and a confirmation that the decoded string matches the original string.

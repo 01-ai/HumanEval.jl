@@ -1,0 +1,17 @@
+ Here's the implementation of the `derivative` function in Julia:
+
+```julia
+function derivative(xs::Vector)::Vector
+    n = length(xs)
+    if n <= 1
+        return []
+    end
+    result = Vector{eltype(xs)}(undef, n - 1)
+    for i in 2:n
+        result[i - 1] = xs[i] * (i - 1)
+    end
+    return result
+end
+```
+
+This function calculates the derivative of a polynomial represented by its coefficients. The derivative of a term `a_n * x^n` is `n * a_n * x^(n-1)`. The function iterates through the coefficients, multiplies each by its corresponding power (index minus one), and stores the result in a new vector.

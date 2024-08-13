@@ -1,0 +1,15 @@
+Sure, here is the Julia function that computes the median of a Vector:
+
+```julia
+function median(l::Vector)
+    sort!(l)
+    len = length(l)
+    if len % 2 == 0
+        return (l[len ÷ 2] + l[len ÷ 2 + 1]) / 2
+    else
+        return l[len ÷ 2 + 1]
+    end
+end
+```
+
+This function first sorts the input vector `l`. Then it checks if the length of `l` is even or odd. If it's even, it returns the average of the two middle numbers. If it's odd, it returns the middle number.

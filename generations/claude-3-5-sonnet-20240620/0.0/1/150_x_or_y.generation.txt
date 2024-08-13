@@ -1,0 +1,49 @@
+Here's a Julia function that implements the described behavior:
+
+```julia
+function x_or_y(n::Int, x::Int, y::Int)::Int
+    if is_prime(n)
+        return x
+    else
+        return y
+    end
+end
+
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    end
+    for i in 2:isqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+```
+
+This implementation consists of two functions:
+
+1. `x_or_y(n::Int, x::Int, y::Int)::Int`: This is the main function that takes three integer arguments:
+   - `n`: The number to check for primality
+   - `x`: The value to return if `n` is prime
+   - `y`: The value to return if `n` is not prime
+
+   It uses the `is_prime` helper function to determine whether `n` is prime and returns `x` if it is, or `y` otherwise.
+
+2. `is_prime(n::Int)::Bool`: This is a helper function that checks whether a given number `n` is prime. It returns `true` if `n` is prime, and `false` otherwise. The implementation uses a simple trial division algorithm up to the square root of `n` for efficiency.
+
+The function satisfies the given examples:
+
+```julia
+julia> x_or_y(7, 34, 12)
+34
+
+julia> x_or_y(15, 8, 5)
+5
+```
+
+In the first example, 7 is prime, so the function returns x (34).
+In the second example, 15 is not prime, so the function returns y (5).
+
+This implementation is efficient for small to medium-sized numbers. For very large numbers, more sophisticated primality testing algorithms might be necessary.

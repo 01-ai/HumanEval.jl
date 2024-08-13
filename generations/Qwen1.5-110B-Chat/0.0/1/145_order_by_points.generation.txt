@@ -1,0 +1,6 @@
+```julia
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    return sort(nums, by=x -> (sum(digit(x) for d in abs(x)), nums .== x)[2])
+end
+```
+This function sorts the input vector `nums` based on the sum of the digits of each integer in ascending order. If two integers have the same sum of digits, they are ordered by their original index in the array, as achieved by the second element in the tuple used in the `by` function. The `abs(x)` ensures that negative numbers are sorted correctly based on the absolute value of their digits.

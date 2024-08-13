@@ -1,0 +1,30 @@
+Here is the Julia function that implements the described behavior:
+```julia
+function f(n::Int)::Vector{Int}
+    result = Vector{Int}(undef, n)
+    for i in 1:n
+        if iseven(i)
+            result[i] = factorial(i)
+        else
+            result[i] = sum(1:i)
+        end
+    end
+    return result
+end
+
+# Helper function to calculate factorial
+function factorial(n::Int)::Int
+    result = 1
+    for i in 1:n
+        result *= i
+    end
+    return result
+end
+```
+Here's an explanation of the code:
+
+The `f` function initializes a vector of size `n` to store the results. It then loops through each index `i` from 1 to `n`. If `i` is even, it calculates the factorial of `i` using the `factorial` helper function and stores it in the `result` vector. If `i` is odd, it calculates the sum of numbers from 1 to `i` using the `sum` function and stores it in the `result` vector.
+
+The `factorial` helper function calculates the factorial of a given integer `n` by initializing a result variable to 1 and then multiplying it by each integer from 1 to `n` in a loop.
+
+You can test the `f` function with the example input `f(5)` to get the desired output.

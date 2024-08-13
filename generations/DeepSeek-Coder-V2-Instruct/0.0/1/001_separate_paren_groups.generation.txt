@@ -1,0 +1,30 @@
+ Here's the implementation of the `separate_paren_groups` function in Julia:
+
+```julia
+function separate_paren_groups(paren_string::String)::Vector{String}
+    # Remove spaces from the input string
+    paren_string = replace(paren_string, " " => "")
+    
+    result = Vector{String}()
+    stack = 0
+    start_index = 0
+    
+    for (i, char) in enumerate(paren_string)
+        if char == '('
+            if stack == 0
+                start_index = i
+            end
+            stack += 1
+        elseif char == ')'
+            stack -= 1
+            if stack == 0
+                push!(result, paren_string[start_index:i])
+            end
+        end
+    end
+    
+    return result
+end
+```
+
+This function works by iterating through the input string, keeping track of the balance of parentheses using a stack. When a balanced group is found (indicated by the stack returning to zero), it extracts the substring corresponding to that group and adds it to the result vector. Spaces are removed at the beginning to ensure they do not interfere with the parsing of parentheses.

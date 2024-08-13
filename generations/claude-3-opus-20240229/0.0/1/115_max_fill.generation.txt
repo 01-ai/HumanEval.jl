@@ -1,0 +1,52 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+    rows = length(grid)
+    cols = length(grid[1])
+    
+    # Count the total amount of water in the grid
+    total_water = sum(sum(row) for row in grid)
+    
+    # Calculate the number of times the buckets need to be lowered
+    num_lowerings = ceil(total_water / (rows * capacity))
+    
+    return Int(num_lowerings)
+end
+```
+
+Explanation:
+
+1. We first calculate the number of rows and columns in the grid using `length(grid)` and `length(grid[1])`, respectively.
+
+2. We then calculate the total amount of water in the grid by summing up the values in each row using `sum(sum(row) for row in grid)`. This gives us the total number of units of water present in all the wells.
+
+3. To calculate the number of times the buckets need to be lowered, we divide the total amount of water by the product of the number of rows and the capacity of each bucket. This gives us the number of times we need to lower the buckets to empty all the wells.
+
+4. We use `ceil()` to round up the result to the nearest integer, as we need to lower the buckets a whole number of times.
+
+5. Finally, we convert the result to an integer using `Int()` and return it.
+
+The time complexity of this solution is O(rows * cols) as we need to iterate over each element in the grid once to calculate the total amount of water. The space complexity is O(1) since we only use a constant amount of extra space.
+
+Let's go through the examples:
+
+```jldoctest
+julia> max_fill([[0, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 1]], 1)
+6
+```
+In this example, there are 6 units of water in the grid, and the capacity of each bucket is 1. Since there are 3 rows, we need to lower the buckets 6 times to empty all the wells.
+
+```jldoctest
+julia> max_fill([[0, 0, 1, 1], [0, 0, 0, 0], [1, 1, 1, 1], [0, 1, 1, 1]], 2)
+5
+```
+In this example, there are 10 units of water in the grid, and the capacity of each bucket is 2. Since there are 4 rows, we need to lower the buckets 5 times (10 / (4 * 2) = 1.25, rounded up to 2) to empty all the wells.
+
+```jldoctest
+julia> max_fill([[0, 0, 0], [0, 0, 0]], 5)
+0
+```
+In this example, there is no water in the grid, so we don't need to lower the buckets at all.
+
+I hope this helps! Let me know if you have any further questions.

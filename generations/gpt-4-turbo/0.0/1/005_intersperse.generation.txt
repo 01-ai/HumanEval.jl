@@ -1,0 +1,18 @@
+```julia
+function intersperse(numbers::Vector{Int}, delimeter::Int)::Vector{Int}
+    if isempty(numbers)
+        return Int[]
+    end
+    
+    # Initialize the result vector with the first element
+    result = [numbers[1]]
+    
+    # Loop through the rest of the numbers and intersperse the delimeter
+    for i in 2:length(numbers)
+        push!(result, delimeter)
+        push!(result, numbers[i])
+    end
+    
+    return result
+end
+```

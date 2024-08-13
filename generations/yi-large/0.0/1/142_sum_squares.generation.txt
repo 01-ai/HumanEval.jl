@@ -1,0 +1,18 @@
+function sum_squares(xs::Vector{Int})::Int
+    sum = 0
+    for (index, x) in enumerate(xs)
+        if index % 3 == 0
+            sum += x^2
+        elseif index % 4 == 0 && index % 3 != 0
+            sum += x^3
+        else
+            sum += x
+        end
+    end
+    return sum
+end
+
+# Test cases
+println(sum_squares([1, 2, 3])) # Expected: 12
+println(sum_squares(Int[]))     # Expected: 0
+println(sum_squares([-1, -5, 2, -1, -5])) # Expected: -8

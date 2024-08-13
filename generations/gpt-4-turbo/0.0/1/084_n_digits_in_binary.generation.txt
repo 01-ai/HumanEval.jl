@@ -1,0 +1,16 @@
+Here's the Julia function `n_digits_in_binary` that computes the sum of the digits of a given integer `N` when represented in binary:
+
+```julia
+function n_digits_in_binary(N::Int)::String
+    # Convert the number to binary
+    binary_representation = string(N, base=2)
+    
+    # Calculate the sum of the binary digits
+    sum_of_digits = sum(parse(Int, char) for char in binary_representation)
+    
+    # Convert the sum back to binary
+    return string(sum_of_digits, base=2)
+end
+```
+
+This function first converts the number `N` to its binary representation. It then computes the sum of the digits in this binary string. Finally, it converts the sum back to a binary string and returns it.

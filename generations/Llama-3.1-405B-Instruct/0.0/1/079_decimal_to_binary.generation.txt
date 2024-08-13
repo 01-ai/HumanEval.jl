@@ -1,0 +1,18 @@
+Here is the Julia function that implements the decimal to binary conversion as described in the docstring:
+```julia
+function decimal_to_binary(decimal::Int)::String
+    binary_str = string(decimal, base = 2)
+    return "db" * binary_str * "db"
+end
+```
+Here's an explanation of the code:
+
+* The `string` function is used to convert the decimal number to a binary string, with the `base = 2` argument specifying that we want a binary representation.
+* The resulting binary string is then concatenated with the extra characters "db" at the beginning and end using the `*` operator.
+
+You can test this function with the example provided in the docstring:
+```julia
+julia> decimal_to_binary(15)
+"db1111db"
+```
+I hope this meets your requirements! Let me know if you have any further requests.

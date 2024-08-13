@@ -1,0 +1,43 @@
+To solve this problem, we need to determine if there is a way to concatenate the two given strings such that the resulting string has balanced parentheses. A string with balanced parentheses means that every opening parenthesis "(" has a corresponding closing parenthesis ")".
+
+Here's a step-by-step approach to solve this:
+
+1. **Count Parentheses**: Count the number of opening and closing parentheses in both strings.
+2. **Check Balance**: For the concatenated string to be balanced, the total number of opening parentheses must equal the total number of closing parentheses.
+
+Let's implement this in the `match_parens` function:
+
+```julia
+function match_parens(lst::Vector{String})::String
+    # Extract the two strings from the list
+    str1, str2 = lst[1], lst[2]
+    
+    # Count the number of opening and closing parentheses in both strings
+    open_count1 = count(c -> c == '(', str1)
+    close_count1 = count(c -> c == ')', str1)
+    open_count2 = count(c -> c == '(', str2)
+    close_count2 = count(c -> c == ')', str2)
+    
+    # Total counts of opening and closing parentheses
+    total_open = open_count1 + open_count2
+    total_close = close_count1 + close_count2
+    
+    # Check if the total number of opening and closing parentheses are equal
+    if total_open == total_close
+        return "Yes"
+    else
+        return "No"
+    end
+end
+
+# Examples
+println(match_parens(["()(", ")"]))  # Should print "Yes"
+println(match_parens([")", ")"]))    # Should print "No"
+```
+
+### Explanation:
+- **Counting Parentheses**: We use the `count` function to count the occurrences of '(' and ')' in each string.
+- **Total Counts**: We sum the counts of opening and closing parentheses from both strings.
+- **Balance Check**: If the total number of opening parentheses equals the total number of closing parentheses, it is possible to form a balanced string by concatenation in some order, so we return "Yes". Otherwise, we return "No".
+
+This approach ensures that we correctly determine if a balanced string can be formed by concatenating the two given strings.

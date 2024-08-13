@@ -1,0 +1,21 @@
+Sure, here is the Julia function that implements the correct_angle_bracketing function based on the given docstring:
+
+```julia
+function correct_angle_bracketing(brackets::String)::Bool
+    stack = []
+    for bracket in brackets
+        if bracket == "<"
+            push!(stack, bracket)
+        elseif bracket == ">"
+            if isempty(stack)
+                return false
+            else
+                pop!(stack)
+            end
+        end
+    end
+    return isempty(stack)
+end
+```
+
+This function uses a stack to keep track of the opening brackets. It iterates over each character in the input string. If it encounters an opening bracket "<", it pushes it onto the stack. If it encounters a closing bracket ">", it checks if the stack is empty. If the stack is empty, it means there is no corresponding opening bracket, so it returns false. If the stack is not empty, it pops the top element from the stack. After iterating over all characters, if the stack is empty, it means all opening brackets have a corresponding closing bracket, so it returns true. If the stack is not empty, it means there are unmatched opening brackets, so it returns false.

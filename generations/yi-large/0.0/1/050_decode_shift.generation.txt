@@ -1,0 +1,11 @@
+function decode_shift(s::String)::String
+    join(((x - 'a' - 5 + 26) % 26 + 'a' for x in s))
+end
+
+# Example usage
+encoded_string = encode_shift("hello")
+decoded_string = decode_shift(encoded_string)
+
+println("Original string: hello")
+println("Encoded string: ", encoded_string)
+println("Decoded string: ", decoded_string)

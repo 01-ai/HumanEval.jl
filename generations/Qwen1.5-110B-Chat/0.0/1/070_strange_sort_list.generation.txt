@@ -1,0 +1,19 @@
+```julia
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    sorted_xs = sort(xs)
+    result = Int64[]
+    left, right = 1, length(sorted_xs)
+    while left ≤ right
+        if left < right
+            push!(result, sorted_xs[left])
+            push!(result, sorted_xs[right])
+        else
+            push!(result, sorted_xs[left])
+        end
+        left += 1
+        right -= 1
+    end
+    return result
+end
+```
+This Julia function implements the strange sorting order as described in the doc string. It first sorts the input vector `xs`, then iterates through the sorted list, alternately appending the minimum and maximum remaining elements to the result vector until all elements are processed.

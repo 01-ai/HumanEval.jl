@@ -1,0 +1,18 @@
+```julia
+function reverse_string(s::String)::String
+    hasletters = false
+    for c in s
+        if 'a' ≤ c ≤ 'z' || 'A' ≤ c ≤ 'Z'
+            hasletters = true
+            break
+        end
+    end
+
+    if hasletters
+        return join([c isa AbstractChar && ('a' ≤ c ≤ 'z' ? uppercase(c) : lowercase(c)) for c in s])
+    else
+        return reverse(s)
+    end
+end
+```
+This function iterates through the input string `s` to check if it contains any letters. If it does, it applies the case reversal to each letter using a list comprehension and `join`s the result back into a string. If no letters are found, it simply reverses the string. The function adheres to the specifications provided in the doc string.

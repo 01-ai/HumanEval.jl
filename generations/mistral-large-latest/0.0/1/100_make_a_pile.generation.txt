@@ -1,0 +1,19 @@
+Sure, here is the Julia function based on your description:
+
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    pile = Int[]
+    current_level = n
+    while current_level > 0
+        push!(pile, current_level)
+        if isodd(current_level)
+            current_level -= 2
+        else
+            current_level -= 1
+        end
+    end
+    return reverse(pile)
+end
+```
+
+This function starts with a pile of `n` stones and keeps adding levels of stones based on the parity of the current level. If the current level is odd, it subtracts 2 to get the next odd number. If the current level is even, it subtracts 1 to get the next even number. It continues this process until there are no more levels to add. Finally, it returns the pile of stones, which is a vector of integers. The `reverse` function is used to ensure that the levels are in the correct order, from largest to smallest.

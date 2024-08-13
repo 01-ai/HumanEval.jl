@@ -1,0 +1,35 @@
+Sure, here is a Julia function that implements the described behavior:
+
+```julia
+function match_parens(lst::Vector{String})::String
+    count1 = 0
+    count2 = 0
+    for char in lst[1]
+        if char == '('
+            count1 += 1
+        else
+            count1 -= 1
+        end
+        if count1 < 0
+            return "No"
+        end
+    end
+    for char in lst[2]
+        if char == '('
+            count2 += 1
+        else
+            count2 -= 1
+        end
+        if count2 < 0
+            return "No"
+        end
+    end
+    if count1 + count2 == 0
+        return "Yes"
+    else
+        return "No"
+    end
+end
+```
+
+This function works by first checking each string in the list separately. For each string, it iterates through the characters and keeps a running count of the number of open parentheses minus the number of closed parentheses. If this count ever goes below 0, it means there is a closed parenthesis without a corresponding open parenthesis, so it returns "No". If it gets through both strings without returning, it checks if the total count of open parentheses minus closed parentheses is 0. If it is, it means the parentheses are balanced, so it returns "Yes". Otherwise, it returns "No".

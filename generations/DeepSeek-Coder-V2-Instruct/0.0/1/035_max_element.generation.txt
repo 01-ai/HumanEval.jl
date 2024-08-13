@@ -1,0 +1,24 @@
+ Here's the implementation of the `max_element` function in Julia:
+
+```julia
+"""
+    max_element(xs)
+
+Return maximum element in the list.
+
+# Examples
+
+```jldoctest
+julia> max_element([1, 2, 3])
+3
+
+julia> max_element([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])
+123
+```
+"""
+function max_element(xs)
+    return maximum(xs)
+end
+```
+
+This function uses the built-in `maximum` function to find the maximum element in the list.

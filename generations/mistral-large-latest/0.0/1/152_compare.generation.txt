@@ -1,0 +1,9 @@
+Sure, here is the Julia function based on the given docstring:
+
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    return abs.(game .- guess)
+end
+```
+
+This function takes two vectors `game` and `guess` of equal length as input. It uses the broadcasting feature of Julia to subtract each element of `guess` from the corresponding element of `game`. The `abs` function is then used to get the absolute value of the differences. The result is a new vector of the same length as the input vectors, where each element is the absolute difference between the corresponding elements of `game` and `guess`.

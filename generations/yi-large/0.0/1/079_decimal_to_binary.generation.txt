@@ -1,0 +1,11 @@
+function decimal_to_binary(decimal::Int)::String
+    # Convert decimal to binary
+    binary_str = string(bin(decimal))
+    # Remove the leading "0b" from the binary string
+    binary_str = binary_str[3:end]
+    # Add the 'db' prefix and suffix
+    return "db" * binary_str * "db"
+end
+
+# Example usage
+println(decimal_to_binary(15))  # Output: db1111db

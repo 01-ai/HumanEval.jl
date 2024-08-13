@@ -1,0 +1,22 @@
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing, Int}
+    # Check if the vector is empty or has less than 2 unique elements
+    if length(xs) < 2
+        return nothing
+    end
+    
+    # Sort the array
+    sorted_xs = sort(xs)
+    
+    # Find the second smallest unique element
+    smallest = sorted_xs[1]
+    for i in 2:length(sorted_xs)
+        if sorted_xs[i] > smallest
+            return sorted_xs[i]
+        end
+    end
+    
+    # If no second unique smallest element is found
+    return nothing
+end
+```

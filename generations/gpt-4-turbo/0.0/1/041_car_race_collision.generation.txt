@@ -1,0 +1,11 @@
+```julia
+function car_race_collision(n::Int)::Int
+    # Each car moving left to right will inevitably collide with each car moving right to left.
+    # Since there are n cars in each direction, each car from one direction will collide with
+    # each car from the opposite direction exactly once.
+    # Therefore, the total number of collisions is simply n * n.
+    return n * n
+end
+```
+
+This function calculates the number of collisions based on the fact that each car moving in one direction will collide with each car moving in the opposite direction exactly once. Given `n` cars in each direction, the total number of collisions is `n * n`.

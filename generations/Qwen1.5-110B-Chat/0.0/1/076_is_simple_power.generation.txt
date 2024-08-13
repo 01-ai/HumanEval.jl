@@ -1,0 +1,10 @@
+```julia
+function is_simple_power(x::Number, n::Number)::Bool
+    if n == 1
+        return x == 1
+    else
+        return x > 0 && isinteger(log(x) / log(n))
+    end
+end
+```
+This function first checks if `n` is 1, in which case `x` must also be 1 to be considered a simple power. If `n` is not 1, it uses the logarithm to determine if `x` can be expressed as `n` raised to an integer power, returning `true` if it can and `false` otherwise. This solution assumes that `x` and `n` are positive numbers, as per the typical mathematical definition for such operations.

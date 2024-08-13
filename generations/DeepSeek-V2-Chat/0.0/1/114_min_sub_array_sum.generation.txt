@@ -1,0 +1,42 @@
+To solve the problem of finding the minimum sum of any non-empty sub-array of a given array `nums`, we can use a variation of the Kadane's algorithm. The standard Kadane's algorithm is typically used to find the maximum sum of a sub-array, but we can adapt it to find the minimum sum instead.
+
+Here's the implementation in Julia:
+
+```julia
+function min_sub_array_sum(nums::Vector{Int})::Int
+    # Initialize the minimum sum to a very large number
+    min_sum = typemax(Int)
+    # Initialize the current sum to 0
+    current_sum = 0
+    
+    # Iterate through each number in the array
+    for num in nums
+        # Update the current sum to be the minimum of the current sum + num and num
+        current_sum = min(current_sum + num, num)
+        # Update the minimum sum to be the minimum of the current minimum sum and the current sum
+        min_sum = min(min_sum, current_sum)
+    end
+    
+    return min_sum
+end
+```
+
+### Explanation:
+1. **Initialization**:
+   - `min_sum` is initialized to the maximum possible integer value (`typemax(Int)`) to ensure any sum we calculate will be smaller.
+   - `current_sum` is initialized to 0.
+
+2. **Iteration**:
+   - For each number in the array, we update `current_sum` to be the minimum of the current sum plus the number (`current_sum + num`) and the number itself (`num`). This step ensures that we are always considering the smallest possible sub-array sum ending at the current position.
+   - We then update `min_sum` to be the minimum of the current `min_sum` and the `current_sum`.
+
+3. **Return**:
+   - After iterating through the array, `min_sum` will hold the minimum sub-array sum.
+
+### Example Usage:
+```julia
+println(min_sub_array_sum([2, 3, 4, 1, 2, 4]))  # Output: 1
+println(min_sub_array_sum([-1, -2, -3]))       # Output: -6
+```
+
+This function efficiently computes the minimum sub-array sum in linear time, O(n), where n is the length of the input array.

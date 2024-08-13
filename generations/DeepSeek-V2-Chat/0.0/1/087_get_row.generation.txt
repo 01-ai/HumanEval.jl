@@ -1,0 +1,18 @@
+Here's the implementation of the `get_row` function in Julia:
+
+```julia
+function get_row(xs::Vector{Vector{Int}}, x::Int)::Vector{Tuple{Int, Int}}
+    result = Vector{Tuple{Int, Int}}()
+    for (row_index, row) in enumerate(xs)
+        for (col_index, value) in enumerate(row)
+            if value == x
+                push!(result, (row_index, col_index))
+            end
+        end
+    end
+    sort!(result, by = t -> (t[1], -t[2]))
+    return result
+end
+```
+
+This function iterates through each row and column of the input `xs`, checks if the value matches `x`, and if so, adds the coordinates to the result list. The result list is then sorted by row index in ascending order and by column index in descending order within each row.

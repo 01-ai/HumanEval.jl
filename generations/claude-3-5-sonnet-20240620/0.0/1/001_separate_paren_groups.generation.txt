@@ -1,0 +1,55 @@
+Here's a Julia function that implements the `separate_paren_groups` functionality as described:
+
+```julia
+function separate_paren_groups(paren_string::String)::Vector{String}
+    result = String[]
+    current_group = ""
+    depth = 0
+    
+    for char in paren_string
+        if char == '('
+            depth += 1
+            current_group *= char
+        elseif char == ')'
+            depth -= 1
+            current_group *= char
+            
+            if depth == 0
+                push!(result, current_group)
+                current_group = ""
+            end
+        elseif !isspace(char)
+            current_group *= char
+        end
+    end
+    
+    return result
+end
+```
+
+This function works as follows:
+
+1. We initialize an empty vector `result` to store the separated groups, a `current_group` string to build each group, and a `depth` counter to keep track of nested parentheses.
+
+2. We iterate through each character in the input string:
+
+   - If the character is an opening parenthesis '(', we increment the depth and add it to the current group.
+   - If it's a closing parenthesis ')', we decrement the depth and add it to the current group.
+   - If the depth reaches 0 after a closing parenthesis, it means we've completed a balanced group, so we add it to the result and reset the current group.
+   - We ignore spaces by only adding non-space characters to the current group.
+
+3. Finally, we return the `result` vector containing all separated groups.
+
+This implementation handles nested parentheses correctly and ignores spaces as required. It will separate the groups into a vector of strings, each representing a balanced parentheses group.
+
+You can test it with the example provided:
+
+```julia
+julia> separate_paren_groups("( ) (( )) (( )( ))")
+3-element Vector{String}:
+ "()"
+ "(())"
+ "(()())"
+```
+
+The function will work correctly for any valid input string containing multiple groups of nested parentheses.

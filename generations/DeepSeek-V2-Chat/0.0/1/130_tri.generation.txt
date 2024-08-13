@@ -1,0 +1,32 @@
+To implement the `tri` function as described, we need to follow the recurrence relation for the Tribonacci sequence. The function will generate the first `n` numbers of this sequence based on the given rules. Here's the implementation:
+
+```julia
+function tri(n::Int)::Vector{Int}
+    if n <= 0
+        return []
+    end
+
+    # Initialize the sequence with the first element
+    sequence = [1]
+
+    for i in 2:n
+        if i % 2 == 0
+            # If i is even, calculate using the formula 1 + i / 2
+            push!(sequence, 1 + i ÷ 2)
+        else
+            # If i is odd, calculate using the recurrence relation
+            # Ensure to handle the case where i + 1 might be out of bounds
+            next_value = if i + 1 <= length(sequence)
+                sequence[i - 1] + sequence[i - 2] + sequence[i + 1]
+            else
+                sequence[i - 1] + sequence[i - 2] + (1 + (i + 1) ÷ 2)
+            end
+            push!(sequence, next_value)
+        end
+    end
+
+    return sequence
+end
+```
+
+This function starts by checking if `n` is less than or equal to 0, in which case it returns an empty array. It then initializes the sequence with the first element as 1. For each subsequent element, it checks if the index `i` is even or odd and calculates the value accordingly. For odd indices, it uses the recurrence relation, ensuring to handle cases where `i + 1` might exceed the current length of the sequence.

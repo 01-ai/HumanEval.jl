@@ -1,0 +1,26 @@
+To count the numbers of n-digit positive integers that start or end with 1, we can use the following approach:
+
+```julia
+function starts_one_ends(n::Int)::Int
+    if n == 1
+        return 1
+    end
+    
+    total_count = 9 * 10^(n-2) * 2
+    
+    return total_count - 10^(n-2)
+end
+```
+
+Explanation:
+
+1. If `n` is 1, there is only one number that starts and ends with 1, which is 1 itself. So, we return 1.
+
+2. For `n` greater than 1, we can calculate the count as follows:
+   - The total count of n-digit numbers that start with 1 is 9 * 10^(n-2). This is because the first digit is fixed as 1, and the remaining (n-1) digits can take any value from 0 to 9, giving us 10^(n-1) possibilities. However, we need to exclude the numbers that start with 1 and have all zeros after it, which is 10^(n-2). So, the count of n-digit numbers starting with 1 is 9 * 10^(n-2).
+   - Similarly, the count of n-digit numbers ending with 1 is also 9 * 10^(n-2). The last digit is fixed as 1, and the remaining (n-1) digits can take any value from 0 to 9, giving us 10^(n-1) possibilities. Again, we exclude the numbers that end with 1 and have all zeros before it, which is 10^(n-2). So, the count of n-digit numbers ending with 1 is 9 * 10^(n-2).
+   - To get the total count, we add the counts of numbers starting with 1 and ending with 1. However, we need to subtract the count of numbers that start and end with 1, which is 10^(n-2), to avoid double counting.
+
+3. Finally, we return the total count of n-digit numbers that start or end with 1.
+
+The time complexity of this solution is O(1) since it performs constant-time arithmetic operations. The space complexity is also O(1) as it uses only a constant amount of additional space.

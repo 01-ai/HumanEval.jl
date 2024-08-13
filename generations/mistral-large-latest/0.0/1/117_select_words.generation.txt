@@ -1,0 +1,28 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function select_words(s::String, n::Int)::Vector{SubString{String}}
+    function isconsonant(c::Char)
+        return ('a' <= c <= 'z' || 'A' <= c <= 'Z') && c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u'
+    end
+
+    words = split(s)
+    result = SubString{String}[]
+
+    for word in words
+        consonant_count = 0
+        for c in word
+            if isconsonant(c)
+                consonant_count += 1
+            end
+        end
+        if consonant_count == n
+            push!(result, word)
+        end
+    end
+
+    return result
+end
+```
+
+This function first splits the input string `s` into words. Then it iterates over each word and counts the number of consonants in it. If the number of consonants in a word is equal to `n`, it adds the word to the result list. Finally, it returns the result list. The function uses a nested function `isconsonant` to determine whether a character is a consonant.

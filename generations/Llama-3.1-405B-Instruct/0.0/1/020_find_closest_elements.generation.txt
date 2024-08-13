@@ -1,0 +1,45 @@
+Here is a Julia function that implements the described behavior:
+```julia
+function find_closest_elements(numbers::Vector{Float64})::Tuple{Float64, Float64}
+    @assert length(numbers) >= 2 "Input vector must have at least two elements"
+
+    # Initialize minimum difference and closest pair
+    min_diff = Inf
+    closest_pair = (numbers[1], numbers[2])
+
+    # Iterate over all pairs of numbers
+    for i in 1:length(numbers)
+        for j in (i+1):length(numbers)
+            # Calculate absolute difference between current pair
+            diff = abs(numbers[i] - numbers[j])
+
+            # Update minimum difference and closest pair if necessary
+            if diff < min_diff
+                min_diff = diff
+                closest_pair = (min(numbers[i], numbers[j]), max(numbers[i], numbers[j]))
+            end
+        end
+    end
+
+    return closest_pair
+end
+```
+Here's an explanation of the code:
+
+1. We first assert that the input vector has at least two elements.
+2. We initialize the minimum difference `min_diff` to infinity and the closest pair `closest_pair` to the first two elements of the input vector.
+3. We iterate over all pairs of numbers in the input vector using two nested loops.
+4. For each pair, we calculate the absolute difference `diff` between the two numbers.
+5. If the current difference is smaller than the minimum difference found so far, we update `min_diff` and `closest_pair`.
+6. Finally, we return the closest pair.
+
+Note that we use the `min` and `max` functions to ensure that the smaller number comes first in the returned tuple, as required by the problem statement.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2])
+(2.0, 2.2)
+
+julia> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0])
+(2.0, 2.0)
+```

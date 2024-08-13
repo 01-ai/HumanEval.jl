@@ -1,0 +1,40 @@
+ Certainly! Below is the implementation of the function `f` in Julia based on the given docstring:
+
+```julia
+"""
+    f(n::Int)::Vector{Int}
+
+Implement the function `f` that takes `n` as a parameter, and returns a list of
+size n, such that the value of the element at index `i` is the factorial of `i`
+if `i` is even or the sum of numbers from 1 to `i` otherwise. `i` starts from 1.
+The factorial of `i` is the multiplication of the numbers from 1 to i (1 * 2 *
+... * i).
+
+# Examples
+
+```jldoctest
+julia> f(5)
+5-element Vector{Int64}:
+  1
+  2
+  6
+ 24
+ 15
+```
+"""
+function f(n::Int)::Vector{Int}
+    result = Vector{Int}(undef, n)
+
+    for i in 1:n
+        if iseven(i)
+            result[i] = factorial(i)
+        else
+            result[i] = sum(1:i)
+        end
+    end
+
+    return result
+end
+```
+
+This function iterates from 1 to `n`, and for each index `i`, it checks if `i` is even. If `i` is even, it calculates the factorial of `i`; otherwise, it calculates the sum of numbers from 1 to `i`. The results are stored in a vector which is then returned.

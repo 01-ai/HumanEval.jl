@@ -1,0 +1,43 @@
+To implement the `separate_paren_groups` function, we need to parse the input string and identify balanced groups of parentheses. We can achieve this by iterating through the string and using a stack to keep track of the parentheses. When we encounter a closing parenthesis, we can pop from the stack until we find the matching opening parenthesis, and then construct the substring representing the balanced group.
+
+Here's the implementation:
+
+```julia
+function separate_paren_groups(paren_string::String)::Vector{String}
+    result = Vector{String}()
+    stack = Vector{Char}()
+    current_group = ""
+
+    for char in paren_string
+        if char == ' '
+            continue  # Ignore spaces
+        elseif char == '('
+            stack.push(char)
+            current_group *= char
+        elseif char == ')'
+            if !isempty(stack) && stack[end] == '('
+                stack.pop()
+                current_group *= char
+                if isempty(stack)
+                    push!(result, current_group)
+                    current_group = ""
+                end
+            else
+                error("Unbalanced parentheses")
+            end
+        end
+    end
+
+    return result
+end
+```
+
+### Explanation:
+1. **Initialization**: We initialize an empty vector `result` to store the separated groups, an empty vector `stack` to keep track of the parentheses, and an empty string `current_group` to build the current group of parentheses.
+2. **Iteration**: We iterate through each character in the input string.
+   - If the character is a space, we ignore it.
+   - If the character is an opening parenthesis `(`, we push it onto the stack and append it to `current_group`.
+   - If the character is a closing parenthesis `)`, we check if the stack is not empty and the top of the stack is an opening parenthesis. If so, we pop the stack and append the closing parenthesis to `current_group`. If the stack becomes empty after popping, it means we have a complete balanced group, so we add `current_group` to `result` and reset `current_group` to an empty string.
+3. **Error Handling**: If we encounter a closing parenthesis without a matching opening parenthesis, we raise an error for unbalanced parentheses.
+
+This function should correctly separate and return the balanced groups of parentheses from the input string.

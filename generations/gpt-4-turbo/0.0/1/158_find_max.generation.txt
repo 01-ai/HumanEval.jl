@@ -1,0 +1,22 @@
+```julia
+function find_max(words::Vector{String})::String
+    # Initialize variables to track the word with the maximum unique characters
+    max_unique_count = 0
+    result_word = ""
+    
+    for word in words
+        # Calculate the number of unique characters in the current word
+        unique_chars = length(Set(word))
+        
+        # Check if this word has more unique characters or if it's lexicographically smaller with the same count
+        if unique_chars > max_unique_count || (unique_chars == max_unique_count && word < result_word)
+            max_unique_count = unique_chars
+            result_word = word
+        end
+    end
+    
+    return result_word
+end
+```
+
+This function iterates through each word in the input vector, calculates the number of unique characters using a Set, and updates the result based on the conditions specified. It ensures that if multiple words have the same number of unique characters, the lexicographically first one is chosen.

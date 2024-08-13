@@ -1,0 +1,41 @@
+Here's a Julia function that implements the `incr_list` functionality as described:
+
+```julia
+function incr_list(xs::Vector)::Vector
+    return [x + 1 for x in xs]
+end
+```
+
+This function does the following:
+
+1. It takes a single argument `xs`, which is expected to be a Vector.
+
+2. It uses a list comprehension to create a new Vector where each element is the corresponding element from the input Vector `xs` incremented by 1.
+
+3. The function is annotated to return a Vector.
+
+This implementation will work for Vectors of any numeric type (integers, floats, etc.). It creates a new Vector rather than modifying the input Vector in-place, which is generally safer and more functional in style.
+
+You can use this function as shown in the examples:
+
+```julia
+julia> incr_list([1, 2, 3])
+3-element Vector{Int64}:
+ 2
+ 3
+ 4
+
+julia> incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123])
+9-element Vector{Int64}:
+   6
+   4
+   6
+   3
+   4
+   4
+  10
+   1
+ 124
+```
+
+The function will correctly increment each element of the input Vector by 1, producing a new Vector with the results.

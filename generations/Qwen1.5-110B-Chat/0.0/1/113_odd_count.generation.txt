@@ -1,0 +1,13 @@
+```julia
+function odd_count(xs::Vector{String})::Vector{String}
+    output = []
+    for (i, x) in enumerate(xs)
+        odd_digits = count(isodd, parse.(Int, collect(x)))
+        formatted_string = "the number of odd elements $(odd_digits)n the str$(odd_digits)ng $(odd_digits) of the $(odd_digits)nput."
+        push!(output, formatted_string)
+    end
+    return output
+end
+```
+
+This function iterates through the input list of strings, converts each string into a list of integers, counts the number of odd digits, and then constructs the output string with the counted number of odd digits inserted at the appropriate places. Finally, it adds each formatted string to the output list and returns the list.

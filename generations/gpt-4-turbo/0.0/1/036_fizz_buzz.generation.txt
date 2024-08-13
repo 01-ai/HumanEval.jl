@@ -1,0 +1,13 @@
+```julia
+function fizz_buzz(n::Int)
+    count_sevens = 0
+    for i in 1:n-1
+        if i % 11 == 0 || i % 13 == 0
+            count_sevens += count('7', string(i))
+        end
+    end
+    return count_sevens
+end
+```
+
+This function iterates through all numbers from 1 to `n-1`. For each number, it checks if the number is divisible by 11 or 13. If it is, the function converts the number to a string and counts the occurrences of the digit '7' in that string, adding this count to the total count of sevens (`count_sevens`). Finally, the function returns the total count of sevens found in numbers divisible by 11 or 13.

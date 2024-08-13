@@ -1,0 +1,57 @@
+To implement the `get_odd_collatz` function in Julia, we need to follow these steps:
+
+1. Generate the Collatz sequence starting from the given integer `n`.
+2. Collect only the odd numbers from this sequence.
+3. Sort the collected odd numbers in increasing order.
+4. Return the sorted list of odd numbers as a vector of `BigInt`.
+
+Here's the implementation:
+
+```julia
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    # Ensure n is a BigInt to handle large numbers
+    n = BigInt(n)
+    
+    # Initialize an empty vector to store odd numbers
+    odd_numbers = BigInt[]
+    
+    # Generate the Collatz sequence
+    while n != 1
+        if isodd(n)
+            push!(odd_numbers, n)
+        end
+        if iseven(n)
+            n = n ÷ 2
+        else
+            n = 3 * n + 1
+        end
+    end
+    
+    # Add the final 1 to the list of odd numbers
+    push!(odd_numbers, BigInt(1))
+    
+    # Sort the odd numbers in increasing order
+    sort!(odd_numbers)
+    
+    return odd_numbers
+end
+```
+
+### Explanation:
+1. **Initialization**: Convert `n` to `BigInt` to handle large numbers and initialize an empty vector `odd_numbers` to store the odd numbers.
+2. **Collatz Sequence Generation**: Use a `while` loop to generate the Collatz sequence until `n` becomes 1. Inside the loop:
+   - Check if `n` is odd using `isodd(n)`. If it is, add it to the `odd_numbers` vector.
+   - Update `n` according to the Collatz rules: if `n` is even, divide it by 2; if `n` is odd, set `n` to `3n + 1`.
+3. **Final Step**: After the loop, add the final `1` to the `odd_numbers` vector.
+4. **Sorting**: Sort the `odd_numbers` vector in increasing order using `sort!`.
+5. **Return**: Return the sorted vector of odd numbers.
+
+### Example Usage:
+```julia
+julia> get_odd_collatz(5)
+2-element Vector{BigInt}:
+ 1
+ 5
+```
+
+This function will correctly generate the odd numbers in the Collatz sequence for any

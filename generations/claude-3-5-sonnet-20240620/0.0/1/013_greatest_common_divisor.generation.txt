@@ -1,0 +1,48 @@
+Here's a Julia function that calculates the greatest common divisor (GCD) of two integers using the Euclidean algorithm:
+
+```julia
+function greatest_common_divisor(a::Int, b::Int)::Int
+    a, b = abs(a), abs(b)  # Convert to absolute values
+    while b != 0
+        a, b = b, a % b
+    end
+    return a
+end
+```
+
+This function implements the following:
+
+1. It takes two integer inputs `a` and `b`.
+2. We first convert both inputs to their absolute values to ensure the function works with negative numbers as well.
+3. It uses a while loop to implement the Euclidean algorithm:
+   - While `b` is not zero, we repeatedly update `a` to be the current value of `b`, and `b` to be the remainder of `a` divided by `b`.
+   - This process continues until `b` becomes zero.
+4. When `b` becomes zero, `a` holds the greatest common divisor.
+5. The function returns the final value of `a`, which is the GCD.
+
+This implementation is efficient and works for all integer inputs, including negative numbers. It will return the positive GCD even if one or both inputs are negative.
+
+You can use this function as shown in your examples:
+
+```julia
+julia> greatest_common_divisor(3, 5)
+1
+
+julia> greatest_common_divisor(25, 15)
+5
+```
+
+It will also work correctly for other cases, including larger numbers and negative inputs:
+
+```julia
+julia> greatest_common_divisor(48, 18)
+6
+
+julia> greatest_common_divisor(-48, 18)
+6
+
+julia> greatest_common_divisor(1071, 462)
+21
+```
+
+This implementation satisfies the function signature you provided and should work correctly for all integer inputs.

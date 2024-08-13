@@ -1,0 +1,59 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function cycpattern_check(a::String, b::String)::Bool
+    len_a = length(a)
+    len_b = length(b)
+    
+    # Concatenate 'b' with itself to cover all rotations
+    b_concat = b * b
+    
+    # Check if 'b' or any of its rotations is a substring in 'a'
+    for i in 1:(len_b)
+        if occursin(b_concat[i:i+len_b-1], a)
+            return true
+        end
+    end
+    
+    return false
+end
+```
+
+Explanation:
+
+1. We calculate the lengths of strings `a` and `b` and store them in `len_a` and `len_b`, respectively.
+
+2. We concatenate `b` with itself and store it in `b_concat`. This is done to cover all possible rotations of `b`. For example, if `b` is `"ell"`, then `b_concat` will be `"ellell"`. This way, we can check all rotations of `b` as substrings in `a`.
+
+3. We start a loop from 1 to `len_b`. In each iteration:
+   - We extract a substring from `b_concat` starting from index `i` with a length of `len_b`. This substring represents a rotation of `b`.
+   - We use the `occursin` function to check if this substring is present in `a`.
+   - If the substring is found in `a`, we return `true` because a rotation of `b` is a substring in `a`.
+
+4. If we complete the loop without finding any rotations of `b` as substrings in `a`, we return `false`.
+
+The time complexity of this solution is O(len_a * len_b) because we are checking each rotation of `b` against `a`. The space complexity is O(len_b) due to the concatenation of `b` with itself.
+
+Here are some test cases to verify the correctness of the solution:
+
+```jldoctest
+julia> cycpattern_check("abcd", "abd")
+false
+
+julia> cycpattern_check("hello", "ell")
+true
+
+julia> cycpattern_check("whassup", "psus")
+false
+
+julia> cycpattern_check("abab", "baa")
+true
+
+julia> cycpattern_check("efef", "eeff")
+false
+
+julia> cycpattern_check("himenss", "simen")
+true
+```
+
+The solution correctly handles all the given test cases.

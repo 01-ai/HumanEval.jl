@@ -1,0 +1,46 @@
+Here's the implementation of the `sum_squares` function in Julia:
+
+```julia
+function sum_squares(xs::Vector{Int})::Int
+    result = 0
+    for i in eachindex(xs)
+        if i % 3 == 0 && i % 4 != 0
+            result += xs[i]^2
+        elseif i % 4 == 0
+            result += xs[i]^3
+        else
+            result += xs[i]
+        end
+    end
+    return result
+end
+```
+
+Explanation:
+1. The function `sum_squares` takes a vector of integers `xs` as input and returns an integer.
+2. We initialize a variable `result` to keep track of the sum of the modified entries.
+3. We use a `for` loop to iterate over the indices of `xs` using `eachindex(xs)`.
+4. Inside the loop, we check the index `i` using conditional statements:
+   - If `i` is a multiple of 3 and not a multiple of 4, we square the entry at index `i` and add it to `result`.
+   - If `i` is a multiple of 4, we cube the entry at index `i` and add it to `result`.
+   - If `i` is not a multiple of 3 or 4, we add the entry at index `i` to `result` without modifying it.
+5. After the loop ends, we return the final value of `result`.
+
+The function satisfies the given examples:
+
+```jldoctest
+julia> sum_squares([1, 2, 3])
+12
+
+julia> sum_squares(Int[])
+0
+
+julia> sum_squares([-1, -5, 2, -1, -5])
+-8
+```
+
+In the first example, the entry at index 3 (which is 3) is squared, resulting in 9. The other entries remain unchanged. The sum of the modified entries is 1 + 2 + 9 = 12.
+
+In the second example, an empty vector is passed, so the function returns 0.
+
+In the third example, the entry at index 3 (which is 2) is squared, resulting in 4. The entry at index 4 (which is -1) is cubed, resulting in -1. The other entries remain unchanged. The sum of the modified entries is -1 + -5 + 4 + -1 + -5 = -8.

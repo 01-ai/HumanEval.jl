@@ -1,0 +1,27 @@
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    stones = [n]
+    current_stones = n
+    for i = 2:n
+        if n % 2 == 0
+            current_stones += 2
+        else
+            current_stones += 2
+        end
+        push!(stones, current_stones)
+    end
+    return stones
+end
+```
+
+However, this function can be optimized by removing the if statement inside the loop since the parity of `n` does not change. Here is a more efficient version:
+
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    stones = [n]
+    for i = 2:n
+        push!(stones, stones[end] + 2)
+    end
+    return stones
+end
+```

@@ -1,0 +1,55 @@
+ Certainly! Below is the implementation of the `is_prime` function in Julia based on the given docstring:
+
+```julia
+"""
+    is_prime(n::Int)
+
+Return `true` if a given number is prime, and `false` otherwise.
+
+# Examples
+
+```jldoctest
+julia> is_prime(6)
+false
+
+julia> is_prime(101)
+true
+
+julia> is_prime(11)
+true
+
+julia> is_prime(13441)
+true
+
+julia> is_prime(61)
+true
+
+julia> is_prime(4)
+false
+
+julia> is_prime(1)
+false
+```
+"""
+function is_prime(n::Int)
+    if n <= 1
+        return false
+    end
+    if n <= 3
+        return true
+    end
+    if n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+```
+
+This function checks if a given integer `n` is a prime number. It first handles the special cases where `n` is less than or equal to 3. Then, it checks for divisibility by 2 and 3. For larger numbers, it uses a loop to check for factors up to the square root of `n`, skipping even numbers and multiples of 3 by incrementing `i` by 6 in each iteration.

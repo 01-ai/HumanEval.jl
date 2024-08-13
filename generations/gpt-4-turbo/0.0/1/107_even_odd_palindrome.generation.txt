@@ -1,0 +1,21 @@
+```julia
+function even_odd_palindrome(n::Int)::Tuple{Int, Int}
+    # Helper function to check if a number is a palindrome
+    is_palindrome = x -> x == parse(Int, reverse(string(x)))
+    
+    even_count = 0
+    odd_count = 0
+    
+    for i in 1:n
+        if is_palindrome(i)
+            if i % 2 == 0
+                even_count += 1
+            else
+                odd_count += 1
+            end
+        end
+    end
+    
+    return (even_count, odd_count)
+end
+```

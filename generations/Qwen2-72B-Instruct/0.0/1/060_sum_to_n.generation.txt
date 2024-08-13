@@ -1,0 +1,9 @@
+Here is a Julia function that implements the `sum_to_n` functionality as described in the docstring:
+
+```julia
+function sum_to_n(n::Int)::Int
+    return n * (n + 1) ÷ 2
+end
+```
+
+This function uses the formula for the sum of the first `n` natural numbers, which is `n * (n + 1) / 2`. In Julia, the division operator `÷` performs integer division, which is necessary to ensure that the return type is `Int` as specified in the docstring.

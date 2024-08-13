@@ -1,0 +1,19 @@
+function match_parens(lst::Vector{String})::String
+    # Concatenate the strings
+    s = lst[1] * lst[2]
+    
+    # Count the number of open and close parentheses
+    open_count = count(c -> c == '(', s)
+    close_count = count(c -> c == ')', s)
+    
+    # If the counts are equal, the strings can be matched
+    if open_count == close_count
+        return "Yes"
+    else
+        return "No"
+    end
+end
+
+# Examples
+println(match_parens(["()(", ")"])) # Yes
+println(match_parens([")", ")"])) # No

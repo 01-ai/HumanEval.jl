@@ -1,0 +1,50 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function search(numbers::Vector)::Int
+    freq = Dict{Int, Int}()
+    
+    # Count the frequency of each number
+    for num in numbers
+        freq[num] = get(freq, num, 0) + 1
+    end
+    
+    max_num = -1
+    
+    # Check each number and its frequency
+    for (num, count) in freq
+        if num > 0 && count >= num && num > max_num
+            max_num = num
+        end
+    end
+    
+    return max_num
+end
+```
+
+Explanation:
+
+1. We define the `search` function that takes a vector of integers (`numbers`) as input and returns an integer.
+
+2. We initialize an empty dictionary `freq` to store the frequency of each number in the list.
+
+3. We iterate over each number in the `numbers` vector using a `for` loop. For each number, we update its frequency in the `freq` dictionary. We use the `get` function with a default value of 0 to handle the case when a number is encountered for the first time.
+
+4. We initialize a variable `max_num` to -1, which will store the greatest integer that satisfies the given conditions.
+
+5. We iterate over each key-value pair in the `freq` dictionary using a `for` loop. For each number (`num`) and its frequency (`count`), we check if the following conditions are satisfied:
+   - `num` is greater than zero
+   - `count` is greater than or equal to `num`
+   - `num` is greater than the current value of `max_num`
+
+   If all the conditions are satisfied, we update `max_num` with the current `num`.
+
+6. After the loop ends, `max_num` will contain the greatest integer that meets the given criteria. If no such integer exists, `max_num` will remain as -1.
+
+7. Finally, we return the value of `max_num`.
+
+The time complexity of this solution is O(n), where n is the size of the input vector. We iterate over the vector once to count the frequencies and then iterate over the frequency dictionary once to find the greatest integer that satisfies the conditions.
+
+The space complexity is also O(n) in the worst case, as we store the frequency of each unique number in the dictionary.
+
+I hope this helps! Let me know if you have any further questions.

@@ -1,0 +1,20 @@
+```julia
+function is_bored(s::String)::Int
+    # Split the string into sentences based on '.', '?' or '!'
+    sentences = split(s, r"[.?!]")
+    boredom_count = 0
+
+    # Iterate through each sentence
+    for sentence in sentences
+        # Remove leading and trailing whitespaces
+        trimmed_sentence = strip(sentence)
+        # Check if the sentence starts with "I"
+        if startswith(trimmed_sentence, "I")
+            boredom_count += 1
+        end
+    end
+
+    return boredom_count
+end
+```
+This function takes a string `s` as input and returns the number of sentences that start with "I". It first splits the string into sentences based on '.', '?' or '!', then iterates through each sentence, checking if it starts with "I" (ignoring leading and trailing whitespaces). The count of such sentences is returned as the result.

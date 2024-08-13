@@ -1,0 +1,17 @@
+Here's the implementation of the `common` function in Julia:
+
+```julia
+function common(l1::Vector, l2::Vector)::Vector
+    # Convert both lists to sets to find the intersection
+    set1 = Set(l1)
+    set2 = Set(l2)
+    
+    # Find the common elements
+    common_elements = intersect(set1, set2)
+    
+    # Convert the set back to a sorted vector
+    return sort(collect(common_elements))
+end
+```
+
+This function first converts the input vectors to sets to easily find the intersection of the two sets. The intersection is then converted back to a vector and sorted before being returned. This ensures that the result contains unique common elements in sorted order.

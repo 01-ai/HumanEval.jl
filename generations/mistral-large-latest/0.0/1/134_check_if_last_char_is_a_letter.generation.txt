@@ -1,0 +1,18 @@
+Sure, here is the Julia function based on the given docstring:
+
+```julia
+function check_if_last_char_is_a_letter(s::String)::Bool
+    # Check if the string is empty
+    if isempty(s)
+        return false
+    end
+
+    # Check if the last character is a letter and not part of a word
+    last_char = s[end]
+    is_letter = 'a' <= last_char <= 'z' || 'A' <= last_char <= 'Z'
+    is_not_part_of_word = s[end-1] == ' ' || s[end-1] == '\t'
+
+    return is_letter && is_not_part_of_word
+end
+```
+This function first checks if the string is empty. If it is, it returns false. Then it checks if the last character is a letter and if the second to last character is a space or a tab (which means the last character is not part of a word). If both conditions are true, it returns true. Otherwise, it returns false.

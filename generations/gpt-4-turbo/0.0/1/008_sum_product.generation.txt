@@ -1,0 +1,13 @@
+```julia
+function sum_product(numbers::Vector{Int})::Tuple{Int, Int}
+    if isempty(numbers)
+        return (0, 1)
+    else
+        sum_numbers = sum(numbers)
+        product_numbers = prod(numbers)
+        return (sum_numbers, product_numbers)
+    end
+end
+```
+
+This function checks if the input vector `numbers` is empty. If it is, it returns `(0, 1)` directly. Otherwise, it calculates the sum of the numbers using `sum(numbers)` and the product using `prod(numbers)`, then returns these values as a tuple. This implementation handles both empty and non-empty lists efficiently.

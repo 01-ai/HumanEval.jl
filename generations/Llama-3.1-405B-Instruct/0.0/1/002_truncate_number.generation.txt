@@ -1,0 +1,17 @@
+Here is the Julia function that implements the behavior described in the docstring:
+```julia
+function truncate_number(number::Float64)::Float64
+    return number - floor(number)
+end
+```
+Explanation:
+
+* The `floor` function returns the largest integer less than or equal to the input number.
+* By subtracting the integer part from the original number, we are left with the decimal part.
+
+Example usage:
+```julia
+julia> truncate_number(3.5)
+0.5
+```
+This implementation is concise and efficient, and it matches the behavior described in the docstring. Let me know if you have any further requests!

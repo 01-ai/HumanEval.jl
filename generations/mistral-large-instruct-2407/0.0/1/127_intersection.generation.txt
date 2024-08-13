@@ -1,0 +1,74 @@
+ Certainly! Below is the implementation of the `intersection` function in Julia based on the given docstring:
+
+```julia
+"""
+    intersection(interval1::Vector{Int}, interval2::Vector{Int})::String
+
+You are given two intervals, where each interval is a pair of integers. For
+example, interval = (start, end) = (1, 2). The given intervals are closed which
+means that the interval (start, end) includes both start and end. For each given
+interval, it is assumed that its start is less or equal its end. Your task is to
+determine whether the length of intersection of these two intervals is a prime
+number. Example, the intersection of the intervals (1, 3), (2, 4) is (2, 3)
+which its length is 1, which not a prime number. If the length of the
+intersection is a prime number, return "YES", otherwise, return "NO". If the two
+intervals don't intersect, return "NO".
+
+# Examples
+
+```jldoctest
+julia> intersection([1, 2], [2, 3])
+"NO"
+
+julia> intersection([-1, 1], [0, 4])
+"NO"
+
+julia> intersection([-3, -1], [-5, 5])
+"YES"
+```
+"""
+function intersection(interval1::Vector{Int}, interval2::Vector{Int})::String
+    start1, end1 = interval1
+    start2, end2 = interval2
+
+    # Find the intersection
+    intersect_start = max(start1, start2)
+    intersect_end = min(end1, end2)
+
+    # Check if there is an intersection
+    if intersect_start <= intersect_end
+        # Calculate the length of the intersection
+        length_intersection = intersect_end - intersect_start + 1
+
+        # Check if the length is a prime number
+        if isprime(length_intersection)
+            return "YES"
+        end
+    end
+
+    return "NO"
+end
+
+# Helper function to check if a number is prime
+function isprime(n::Int)::Bool
+    if n <= 1
+        return false
+    end
+    if n <= 3
+        return true
+    end
+    if n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+```
+
+This implementation includes the `intersection` function that calculates the intersection of two intervals and checks if the length of the intersection is a prime number. The `isprime` helper function is used to determine if a number is prime. The function returns "YES" if the length of the intersection is a prime number, and "NO" otherwise.

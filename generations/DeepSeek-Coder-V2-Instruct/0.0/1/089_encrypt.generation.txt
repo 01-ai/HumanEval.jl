@@ -1,0 +1,24 @@
+ Here's the implementation of the `encrypt` function in Julia:
+
+```julia
+function encrypt(s::String)
+    # Define the shift amount
+    shift = 2 * 2
+
+    # Create a function to shift a single character
+    function shift_char(c::Char)
+        if 'a' <= c <= 'z'
+            return 'a' + mod((c - 'a') + shift, 26)
+        elseif 'A' <= c <= 'Z'
+            return 'A' + mod((c - 'A') + shift, 26)
+        else
+            return c
+        end
+    end
+
+    # Apply the shift to each character in the string
+    return String(map(shift_char, s))
+end
+```
+
+This function works by defining a `shift_char` function that shifts a single character by the specified amount, wrapping around the alphabet if necessary. The `map` function is then used to apply this transformation to each character in the input string.

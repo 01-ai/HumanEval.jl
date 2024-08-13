@@ -1,0 +1,43 @@
+ Here's the implementation of the `iscube` function in Julia:
+
+```julia
+"""
+    iscube(a::Int)::Bool
+
+Write a function that takes an integer `a` and returns `true` if this integer is a
+cube of some integer number.
+
+Note: you may assume the input is always valid.
+
+# Examples
+
+```jldoctest
+julia> iscube(1)
+true
+
+julia> iscube(2)
+false
+
+julia> iscube(-1)
+true
+
+julia> iscube(64)
+true
+
+julia> iscube(0)
+true
+
+julia> iscube(180)
+false
+```
+"""
+function iscube(a::Int)::Bool
+    # Calculate the cube root of the absolute value of a
+    cube_root = cbrt(abs(a))
+    
+    # Check if the cube of the rounded cube root equals the original number
+    return round(cube_root)^3 == a
+end
+```
+
+This function calculates the cube root of the absolute value of the input integer `a` and then checks if the cube of the rounded cube root equals the original number. This approach ensures that the function correctly identifies whether `a` is a perfect cube.

@@ -6,23 +6,31 @@
 This project is a julia version of [HumanEval](https://github.com/openai/human-eval). Our goal is to gain a better understanding of latest LLMs' performance with the Julia programming language.
 
 |                        model | evalplus *| basic **|
-|------------------------------|----------|---------|
-|           gpt-4-0125-preview |    0.774 |   0.823 |
-|           gpt-4-1106-preview |     0.72 |   0.805 |
-|       Phind-CodeLlama-34B-v2 |    0.591 |   0.659 |
-|           gpt-3.5-turbo-0125 |    0.591 |   0.652 |
-|           gpt-3.5-turbo-0613 |    0.567 |    0.64 |
-|           gpt-3.5-turbo-1106 |    0.555 |   0.628 |
-|  DeepSeek-Coder-33B-instruct |    0.543 |   0.598 |
-|          Magicoder-S-DS-6.7B |    0.543 |   0.616 |
-|         WizardCoder-33B-V1.1 |    0.543 |   0.604 |
-| deepseek-coder-6.7b-instruct |    0.488 |   0.549 |
-|    CodeLlama-70b-Instruct-hf |    0.457 |   0.561 |
-|          code-millenials-34b |    0.439 |     0.5 |
-|            Magicoder-S-CL-7B |    0.402 |   0.463 |
-|    CodeLlama-34b-Instruct-hf |    0.311 |   0.366 |
-|         Starling-LM-7B-alpha |    0.299 |   0.354 |
-|                  Yi-34B-Chat |    0.232 |   0.317 |
+|---------------------------------|----------|---------|
+|              gpt-4-0125-preview |    0.774 |   0.823 |
+|                     gpt-4-turbo |    0.756 |   0.823 |
+|                          gpt-4o |    0.738 |   0.817 |
+|              gpt-4-1106-preview |     0.72 |   0.805 |
+|      DeepSeek-Coder-V2-Instruct |    0.695 |   0.774 |
+|                DeepSeek-V2-Chat |    0.689 |   0.756 |
+|              Qwen2-72B-Instruct |    0.598 |   0.665 |
+|          Phind-CodeLlama-34B-v2 |    0.591 |   0.659 |
+|              gpt-3.5-turbo-0125 |    0.591 |   0.652 |
+|            mistral-large-latest |    0.573 |   0.659 |
+|              gpt-3.5-turbo-0613 |    0.567 |    0.64 |
+|              gpt-3.5-turbo-1106 |    0.555 |   0.628 |
+|     DeepSeek-Coder-33B-instruct |    0.543 |   0.598 |
+|             Magicoder-S-DS-6.7B |    0.543 |   0.616 |
+|            WizardCoder-33B-V1.1 |    0.543 |   0.604 |
+|               Qwen1.5-110B-Chat |     0.53 |   0.598 |
+|                        yi-large |    0.524 |   0.652 |
+|    deepseek-coder-6.7b-instruct |    0.488 |   0.549 |
+|       CodeLlama-70b-Instruct-hf |    0.457 |   0.561 |
+|             code-millenials-34b |    0.439 |     0.5 |
+|               Magicoder-S-CL-7B |    0.402 |   0.463 |
+|       CodeLlama-34b-Instruct-hf |    0.311 |   0.366 |
+|            Starling-LM-7B-alpha |    0.299 |   0.354 |
+|                     Yi-34B-Chat |    0.232 |   0.317 |
 
 <sub>
 <strong>* evalplus:</strong> scores are calculated based on test cases from both <a href="https://github.com/openai/human-eval">HumanEval</a> and <a href="https://github.com/evalplus/evalplus">evalplus</a>.<br>

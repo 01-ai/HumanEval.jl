@@ -1,0 +1,17 @@
+```julia
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    unique_numbers = Int[]  # Initialize an empty array to store unique elements
+    seen = Set()  # Initialize a set to keep track of seen elements
+
+    for num in numbers
+        if num ∉ seen  # Check if the element is not in the seen set
+            push!(unique_numbers, num)  # Add the element to the unique_numbers array
+            push!(seen, num)  # Add the element to the seen set
+        end
+    end
+
+    return unique_numbers
+end
+```
+
+This Julia function `remove_duplicates` takes a vector of integers as input and returns a new vector with all duplicates removed, while preserving the order of the remaining elements. It uses a set to keep track of elements that have already been encountered, ensuring that each element appears only once in the output.

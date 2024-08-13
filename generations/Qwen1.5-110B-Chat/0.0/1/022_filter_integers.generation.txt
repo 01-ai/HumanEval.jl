@@ -1,0 +1,5 @@
+```julia
+function filter_integers(values::AbstractVector)::Vector{Int}
+    return collect(filter(isinteger, values))
+end
+```

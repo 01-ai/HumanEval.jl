@@ -1,0 +1,26 @@
+Here is a Julia function that implements the `modp` function as described in the docstring:
+
+```julia
+function modp(n::Int, p::Int)::Int
+    return mod(2^n, p)
+end
+```
+
+However, it's important to note that for large values of `n`, `2^n` can become very large very quickly, potentially leading to overflow issues even for 64-bit integers. To handle this, we can use modular exponentiation, which is more efficient and avoids overflow:
+
+```julia
+function modp(n::Int, p::Int)::Int
+    result = 1
+    base = 2
+    while n > 0
+        if n % 2 == 1
+            result = mod(result * base, p)
+        end
+        base = mod(base * base, p)
+        n = div(n, 2)
+    end
+    return result
+end
+```
+
+This function uses the binary exponentiation algorithm, which is a fast way to compute large powers modulo a number. It works by squaring the base and halving the exponent at each step, using the property that `a^(2k) = (a^2)^k` and `a^(2k+1) = a * (a^2)^k`.

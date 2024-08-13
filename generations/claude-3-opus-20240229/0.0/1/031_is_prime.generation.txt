@@ -1,0 +1,56 @@
+Here's an implementation of the `is_prime` function in Julia:
+
+```julia
+function is_prime(n::Int)
+    if n < 2
+        return false
+    end
+
+    for i in 2:isqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+
+    return true
+end
+```
+
+Let's go through the code:
+
+1. We start by checking if the given number `n` is less than 2. If it is, we return `false` because prime numbers are defined as natural numbers greater than 1 that have exactly two distinct natural number divisors: 1 and the number itself.
+
+2. If `n` is greater than or equal to 2, we enter a loop that iterates from 2 to the square root of `n` (inclusive). We use `isqrt(n)` to efficiently calculate the integer square root of `n`.
+
+3. Inside the loop, we check if `n` is divisible by the current value of `i`. If it is, then `n` is not prime, so we return `false`.
+
+4. If we complete the loop without finding any divisors of `n` (other than 1 and itself), we conclude that `n` is prime and return `true`.
+
+This implementation takes advantage of the fact that if a number `n` is not prime, it must have a divisor less than or equal to its square root. By checking only up to the square root of `n`, we can efficiently determine whether `n` is prime or not.
+
+The given examples in the docstring can be used to test the `is_prime` function:
+
+```jldoctest
+julia> is_prime(6)
+false
+
+julia> is_prime(101)
+true
+
+julia> is_prime(11)
+true
+
+julia> is_prime(13441)
+true
+
+julia> is_prime(61)
+true
+
+julia> is_prime(4)
+false
+
+julia> is_prime(1)
+false
+```
+
+The function correctly determines whether the given numbers are prime or not.

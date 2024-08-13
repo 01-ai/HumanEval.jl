@@ -1,0 +1,23 @@
+ Here's the implementation of the `sort_third` function in Julia:
+
+```julia
+function sort_third(l::Vector)
+    # Extract elements at indices divisible by 3
+    divisible_by_three = l[3:3:end]
+    
+    # Sort these elements
+    sorted_divisible_by_three = sort(divisible_by_three)
+    
+    # Create a copy of the original list to modify
+    result = copy(l)
+    
+    # Replace the elements at indices divisible by 3 with the sorted elements
+    for (i, idx) in enumerate(3:3:length(l))
+        result[idx] = sorted_divisible_by_three[i]
+    end
+    
+    return result
+end
+```
+
+This function works by first extracting the elements at indices divisible by three, sorting them, and then replacing the original elements at these indices with the sorted ones, while leaving the other elements unchanged.

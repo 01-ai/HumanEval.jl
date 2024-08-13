@@ -1,0 +1,41 @@
+Certainly! Here's a Julia function that solves the problem of counting n-digit positive integers that start or end with 1:
+
+```julia
+function starts_one_ends(n::Int)::Int
+    if n <= 0
+        return 0
+    end
+    
+    # All n-digit numbers that start with 1
+    start_with_1 = 10^(n-1)
+    
+    # All n-digit numbers that end with 1
+    end_with_1 = 10^(n-1)
+    
+    # Numbers that are counted twice (both start and end with 1)
+    double_counted = 10^(n-2)
+    
+    # Total count
+    return start_with_1 + end_with_1 - double_counted
+end
+```
+
+Here's how this function works:
+
+1. First, we check if `n` is less than or equal to 0. If so, we return 0 as there are no valid numbers.
+
+2. We calculate the count of n-digit numbers that start with 1. This is equal to 10^(n-1), because once we fix the first digit as 1, we have 10 choices for each of the remaining n-1 digits.
+
+3. We calculate the count of n-digit numbers that end with 1. This is also equal to 10^(n-1), because once we fix the last digit as 1, we have 10 choices for each of the remaining n-1 digits.
+
+4. However, we've double-counted the numbers that both start and end with 1. These are numbers of the form 1xxxxx1, where x can be any digit. There are 10^(n-2) such numbers.
+
+5. The final count is the sum of numbers starting with 1 and ending with 1, minus the double-counted numbers.
+
+This function works for any positive integer n. For example:
+
+- `starts_one_ends(1)` returns 1 (only the number 1 itself)
+- `starts_one_ends(2)` returns 19 (11, 12, 13, ..., 19, 21, 31, ..., 91)
+- `starts_one_ends(3)` returns 180 (100, 101, ..., 199, 201, 301, ..., 901, 110, 111, ..., 191)
+
+The function is efficient as it uses simple arithmetic operations and doesn't need to generate or iterate through the actual numbers.

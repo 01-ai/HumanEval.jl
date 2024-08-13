@@ -1,0 +1,49 @@
+ Certainly! Below is the implementation of the `smallest_change` function in Julia based on the given docstring:
+
+```julia
+"""
+    smallest_change(xs::Vector{Int})::Int
+
+Given an array arr of integers, find the minimum number of elements that need to
+be changed to make the array palindromic. A palindromic array is an array that
+is read the same backwards and forwards. In one change, you can change one
+element to any other element.
+
+# Examples
+
+```jldoctest
+julia> smallest_change([1, 2, 3, 5, 4, 7, 9, 6])
+4
+
+julia> smallest_change([1, 2, 3, 4, 3, 2, 2])
+1
+
+julia> smallest_change([1, 2, 3, 2, 1])
+0
+```
+"""
+function smallest_change(xs::Vector{Int})::Int
+    n = length(xs)
+    changes = 0
+
+    for i in 1:div(n, 2)
+        if xs[i] != xs[n - i + 1]
+            changes += 1
+        end
+    end
+
+    return changes
+end
+```
+
+### Explanation:
+1. **Function Signature**: The function `smallest_change` takes a vector of integers `xs` and returns an integer.
+2. **Initialization**:
+   - `n` is the length of the input vector `xs`.
+   - `changes` is initialized to 0 to keep track of the number of changes needed.
+3. **Loop**:
+   - The loop runs from `1` to `div(n, 2)`, which is the halfway point of the array.
+   - For each pair of elements `xs[i]` and `xs[n - i + 1]`, if they are not equal, increment the `changes` counter.
+4. **Return**: The function returns the total number of changes needed to make the array palindromic.
+
+This implementation ensures that the minimum number of changes is calculated efficiently by only checking up to the halfway point of the array.

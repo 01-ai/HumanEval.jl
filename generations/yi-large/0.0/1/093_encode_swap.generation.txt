@@ -1,0 +1,43 @@
+Here is the implementation of the `encode_swap` function in Julia, based on the provided doc string:
+
+```julia
+function encode_swap(message::String)::String
+    # Define a dictionary for vowel replacement
+    vowel_map = Dict('a' => 'c', 'e' => 'g', 'i' => 'k', 'o' => 'q', 'u' => 'w', 'A' => 'C', 'E' => 'G', 'I' => 'K', 'O' => 'Q', 'U' => 'W')
+
+    # Initialize an empty string for the encoded message
+    encoded_message = ""
+
+    # Iterate over each character in the message
+    for char in message
+        # Check if the character is a vowel
+        if haskey(vowel_map, char)
+            # If it is a vowel, replace it with the corresponding character from the vowel_map
+            encoded_message *= vowel_map[char]
+        else
+            # If it is not a vowel, check if it is a letter and swap its case
+            if islowercase(char)
+                encoded_message *= uppercase(char)
+            elseif isuppercase(char)
+                encoded_message *= lowercase(char)
+            else
+                # If it is not a letter, just add it to the encoded message as is
+                encoded_message *= char
+            end
+        end
+    end
+
+    return encoded_message
+end
+```
+
+This function takes a string `message` as input and returns the encoded string `encoded_message`. It works by iterating over each character in the input message. For each character, it checks if it is a vowel and replaces it with the corresponding vowel that appears 2 places after in the alphabet. For non-vowel letters, it simply swaps the case. Non-letter characters are ignored.
+
+Here's how you can use the function:
+
+```jldoctest
+julia> encode_swap("test")
+"TGST"
+
+julia> encode_swap("This is a message")
+"tHKS KS C

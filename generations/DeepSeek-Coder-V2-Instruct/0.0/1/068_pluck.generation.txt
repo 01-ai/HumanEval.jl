@@ -1,0 +1,23 @@
+ Here's the implementation of the `pluck` function in Julia based on the provided doc string:
+
+```julia
+function pluck(xs::Vector{Int})::Vector{Int}
+    smallest_even_value = typemax(Int)
+    smallest_index = -1
+
+    for (index, value) in enumerate(xs)
+        if value % 2 == 0 && value < smallest_even_value
+            smallest_even_value = value
+            smallest_index = index
+        end
+    end
+
+    if smallest_index == -1
+        return Int[]
+    else
+        return [smallest_even_value, smallest_index]
+    end
+end
+```
+
+This function iterates through the array `xs`, checking each value to see if it is even and smaller than the current smallest even value found. If it finds such a value, it updates the smallest even value and its index. If no even values are found, it returns an empty array. Otherwise, it returns the smallest even value and its index in a list.

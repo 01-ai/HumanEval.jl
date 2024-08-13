@@ -1,0 +1,28 @@
+```julia
+using Primes
+
+"""
+    intersection(interval1::Vector{Int}, interval2::Vector{Int})::String
+
+Determines if the length of the intersection of two given intervals is a prime
+number. Returns "YES" if the length is prime, otherwise returns "NO". If the
+intervals do not intersect, returns "NO".
+"""
+function intersection(interval1::Vector{Int}, interval2::Vector{Int})::String
+    start_max = max(interval1[1], interval2[1])
+    end_min = min(interval1[2], interval2[2])
+    intersection_length = end_min - start_max + 1
+
+    if intersection_length > 0 && isprime(intersection_length)
+        return "YES"
+    else
+        return "NO"
+    end
+end
+```
+
+This function first calculates the maximum start point and the minimum end point
+of the two intervals to find the intersection. It then checks if the length of
+the intersection is greater than 0 and a prime number using the `isprime`
+function from the `Primes` package. If both conditions are met, it returns "YES",
+otherwise, it returns "NO".

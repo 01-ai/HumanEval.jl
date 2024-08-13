@@ -1,0 +1,47 @@
+Here's a Julia function that implements the encryption scheme you described:
+
+```julia
+function encrypt(s::String)
+    function shift_char(c::Char)
+        if !isletter(c)
+            return c
+        end
+        base = islowercase(c) ? 'a' : 'A'
+        shifted = (((c - base) + 4) % 26) + base
+        return Char(shifted)
+    end
+    
+    return join(shift_char.(collect(s)))
+end
+```
+
+This function does the following:
+
+1. We define an inner function `shift_char` that handles the shifting of individual characters:
+   - If the character is not a letter, it's returned as-is.
+   - For letters, we determine the base ('a' for lowercase, 'A' for uppercase).
+   - We shift the character by 4 positions (2 * 2 as per your description) using modular arithmetic to wrap around the alphabet.
+   - The shifted character is then returned.
+
+2. In the main `encrypt` function, we:
+   - Convert the input string to a collection of characters using `collect(s)`.
+   - Apply the `shift_char` function to each character using the dot notation for broadcasting.
+   - Join the resulting characters back into a string.
+
+This implementation will work for both uppercase and lowercase letters, leaving non-alphabetic characters unchanged. Let's test it with your examples:
+
+```julia
+julia> encrypt("hi")
+"lm"
+
+julia> encrypt("asdfghjkl")
+"ewhjklnop"
+
+julia> encrypt("gf")
+"kj"
+
+julia> encrypt("et")
+"ix"
+```
+
+The function correctly encrypts the strings according to the specified rule of shifting each letter by 4 positions (2 * 2) in the alphabet.

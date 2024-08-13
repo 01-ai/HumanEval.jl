@@ -1,0 +1,51 @@
+ Certainly! Below is the implementation of the `x_or_y` function in Julia based on the given docstring:
+
+```julia
+"""
+    x_or_y(n::Int, x::Int, y::Int)::Int
+
+A simple program which should return the value of x if n is a prime number and
+should return the value of y otherwise.
+
+# Examples
+
+```jldoctest
+julia> x_or_y(7, 34, 12)
+34
+
+julia> x_or_y(15, 8, 5)
+5
+```
+"""
+function x_or_y(n::Int, x::Int, y::Int)::Int
+    function is_prime(num::Int)::Bool
+        if num <= 1
+            return false
+        end
+        for i in 2:isqrt(num)
+            if num % i == 0
+                return false
+            end
+        end
+        return true
+    end
+
+    if is_prime(n)
+        return x
+    else
+        return y
+    end
+end
+```
+
+### Explanation:
+1. **Function Definition**: The `x_or_y` function takes three integer arguments: `n`, `x`, and `y`.
+2. **Prime Checking Helper Function**: Inside `x_or_y`, there is a helper function `is_prime` that checks if a number is prime.
+   - If the number is less than or equal to 1, it returns `false`.
+   - It iterates from 2 to the square root of the number (`isqrt(num)`), checking for divisors. If any divisor is found, it returns `false`.
+   - If no divisors are found, it returns `true`.
+3. **Conditional Return**: The `x_or_y` function uses the `is_prime` function to determine if `n` is prime. If `n` is prime, it returns `x`; otherwise, it returns `y`.
+
+### Examples:
+- `x_or_y(7, 34, 12)` returns `34` because 7 is a prime number.
+- `x_or_y(15, 8, 5)` returns `5` because 15 is not a prime number.

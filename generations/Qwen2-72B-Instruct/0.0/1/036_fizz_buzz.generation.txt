@@ -1,0 +1,13 @@
+```julia
+function fizz_buzz(n::Int)
+    count = 0
+    for i in 1:n
+        if (i % 11 == 0 || i % 13 == 0) && occursin('7', string(i))
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function iterates through all numbers less than `n`, checks if they are divisible by 11 or 13, and if they contain the digit 7. If both conditions are met, it increments the `count` variable. Finally, it returns the total count of such numbers. However, this implementation is not very efficient for large values of `n`. A more efficient approach would be to generate the numbers divisible by 11 or 13 and then count the occurrences of the digit 7. But for the sake of simplicity, this implementation should work for the given examples.

@@ -1,0 +1,35 @@
+Here is a Julia function that implements the `rolling_max` function as described in the doc string:
+```julia
+function rolling_max(numbers::Vector{Int})::Vector{Int}
+    result = Vector{Int}(undef, length(numbers))
+    max_so_far = numbers[1]
+    result[1] = max_so_far
+    
+    for i in 2:length(numbers)
+        max_so_far = max(max_so_far, numbers[i])
+        result[i] = max_so_far
+    end
+    
+    return result
+end
+```
+Here's an explanation of the code:
+
+* We create a result vector with the same length as the input vector, initialized with undefined values.
+* We initialize the `max_so_far` variable with the first element of the input vector, and set the first element of the result vector to this value.
+* We then iterate over the rest of the input vector, starting from the second element. For each element, we update `max_so_far` to be the maximum of its current value and the current element. We then set the corresponding element in the result vector to this updated `max_so_far` value.
+* Finally, we return the result vector.
+
+You can test this function with the example provided in the doc string:
+```julia
+julia> rolling_max([1, 2, 3, 2, 3, 4, 2])
+7-element Vector{Int64}:
+ 1
+ 2
+ 3
+ 3
+ 3
+ 4
+ 4
+```
+This should produce the expected output. Let me know if you have any further questions or if you'd like me to elaborate on any part of the code!

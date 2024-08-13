@@ -1,0 +1,15 @@
+Sure, here is the Julia function that fulfills the requirements:
+
+```julia
+function pairs_sum_to_zero(l::Vector{Int})::Bool
+    set = Set(l)
+    for num in l
+        if -num in set && -num != num
+            return true
+        end
+    end
+    return false
+end
+```
+
+This function works by first converting the input list into a Set for efficient lookup. Then it iterates over each number in the list, checking if its negative is also in the set. If it finds a pair of numbers that sum to zero, it immediately returns true. If it goes through the entire list without finding such a pair, it returns false. The condition `-num != num` is to avoid the case where the list contains a single zero.

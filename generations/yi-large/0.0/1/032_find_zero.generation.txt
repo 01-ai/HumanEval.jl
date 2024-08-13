@@ -1,0 +1,35 @@
+To implement the `find_zero` function in Julia, we can use the fact that the polynomial has an even number of coefficients and the largest non-zero coefficient guarantees a solution. This suggests that the polynomial is of an odd degree and thus must have at least one real root by the fundamental theorem of algebra.
+
+We can use numerical methods to find this root, such as the Newton-Raphson method. However, since we are dealing with a polynomial with an even number of coefficients and the largest non-zero coefficient, we can simplify the problem by looking for a root near the endpoints of the interval where the polynomial changes sign.
+
+Here's a simple implementation of `find_zero` using a bisection method to find a root:
+
+```julia
+using Roots
+
+function poly(xs::Vector, x::Float64)
+    return sum(coeff * (x^(i - 1)) for (i, coeff) in enumerate(xs))
+end
+
+function find_zero(xs::Vector{Int})
+    # Check if the number of coefficients is even and there is a largest non-zero coefficient
+    if iseven(length(xs)) && any(xs[i] != 0 for i in 2:length(xs)-1)
+        # Find the index of the largest coefficient
+        largest_coeff_index = findmax(xs)[2]
+        
+        # The largest coefficient is not the first or last, so we can use bisection
+        if 1 < largest_coeff_index < length(xs)
+            a, b = -1, 1  # Reasonable initial guess for the bounds
+            while poly(xs, a) * poly(xs, b) > 0
+                a -= 1
+                b += 1
+            end
+            
+            # Use bisection method to find the root
+            return find_zero(x -> poly(xs, x), a, b)
+        else
+            # If the largest coefficient is the first or last, we can directly solve for x
+            if largest_coeff_index == 1
+                return -xs[1] / xs[2]
+            elseif largest_coeff_index == length(xs)
+                return 0  # The polynomial is of the form cx^n, so x=0 is a

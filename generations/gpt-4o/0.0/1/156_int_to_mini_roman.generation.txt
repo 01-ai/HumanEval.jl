@@ -1,0 +1,41 @@
+To implement the `int_to_mini_roman` function in Julia, we need to convert a given integer to its Roman numeral representation and return it in lowercase. Here's how we can achieve this:
+
+1. Define the Roman numeral symbols and their corresponding values.
+2. Iterate through the values from largest to smallest, appending the corresponding symbols to the result string while subtracting the value from the number.
+3. Convert the result to lowercase before returning it.
+
+Here's the implementation:
+
+```julia
+function int_to_mini_roman(number::Int)::String
+    # Define the Roman numeral symbols and their corresponding values
+    roman_numerals = [
+        (1000, "M"), (900, "CM"), (500, "D"), (400, "CD"),
+        (100, "C"), (90, "XC"), (50, "L"), (40, "XL"),
+        (10, "X"), (9, "IX"), (5, "V"), (4, "IV"),
+        (1, "I")
+    ]
+    
+    result = ""
+    for (value, symbol) in roman_numerals
+        while number >= value
+            result *= symbol
+            number -= value
+        end
+    end
+    
+    return lowercase(result)
+end
+
+# Examples
+println(int_to_mini_roman(19))   # Output: "xix"
+println(int_to_mini_roman(152))  # Output: "clii"
+println(int_to_mini_roman(426))  # Output: "cdxxvi"
+```
+
+This function works as follows:
+- It iterates through the list of Roman numeral symbols and their values.
+- For each symbol, it appends the symbol to the result string as many times as the value can be subtracted from the number.
+- Finally, it converts the result string to lowercase and returns it.
+
+You can test the function with the provided examples to ensure it works correctly.

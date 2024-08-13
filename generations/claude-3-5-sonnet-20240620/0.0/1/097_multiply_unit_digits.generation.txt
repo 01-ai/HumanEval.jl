@@ -1,0 +1,33 @@
+Here's a complete implementation of the `multiply_unit_digits` function in Julia that satisfies the given requirements:
+
+```julia
+function multiply_unit_digits(a::Int, b::Int)::Int
+    # Extract the unit digits using the modulo operator
+    unit_a = abs(a) % 10
+    unit_b = abs(b) % 10
+    
+    # Multiply the unit digits and return the result
+    return unit_a * unit_b
+end
+```
+
+This function does the following:
+
+1. It takes two integer inputs `a` and `b`.
+
+2. We use the `abs()` function to get the absolute value of each input. This ensures that we handle negative numbers correctly.
+
+3. We use the modulo operator `%` with 10 to extract the unit digit (rightmost digit) of each number. The modulo operation with 10 always gives us the remainder, which is the unit digit.
+
+4. We multiply these unit digits together.
+
+5. The function returns the result of this multiplication as an integer.
+
+This implementation will work correctly for all the given examples:
+
+- `multiply_unit_digits(148, 412)` returns `8 * 2 = 16`
+- `multiply_unit_digits(19, 28)` returns `9 * 8 = 72`
+- `multiply_unit_digits(2020, 1851)` returns `0 * 1 = 0`
+- `multiply_unit_digits(14, -15)` returns `4 * 5 = 20` (note that it correctly handles the negative number)
+
+The function always returns an integer, as specified in the return type `::Int`. It also handles negative numbers correctly by taking the absolute value before extracting the unit digit.

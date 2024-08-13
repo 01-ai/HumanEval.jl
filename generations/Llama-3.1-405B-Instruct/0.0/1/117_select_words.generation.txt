@@ -1,0 +1,51 @@
+Here is a Julia function that implements the required functionality:
+```julia
+"""
+    select_words(s::String, n::Int)::Vector{<:AbstractString}
+
+Given a string `s` and a natural number `n`, returns a list of all words from string `s` that contain exactly
+`n` consonants, in order these words appear in the string `s`. If the string `s` is empty then the function should return an empty list.
+
+Note: assumes the input string contains only letters and spaces.
+"""
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    # Split the input string into words
+    words = split(s)
+
+    # Initialize an empty vector to store the result
+    result = Vector{SubString{String}}()
+
+    # Iterate over each word
+    for word in words
+        # Initialize a counter for consonants
+        consonant_count = 0
+
+        # Iterate over each character in the word
+        for char in word
+            # Check if the character is a consonant (i.e., not a vowel)
+            if lowercase(char) ∉ ['a', 'e', 'i', 'o', 'u']
+                consonant_count += 1
+            end
+        end
+
+        # If the word has exactly n consonants, add it to the result
+        if consonant_count == n
+            push!(result, word)
+        end
+    end
+
+    # Return the result
+    return result
+end
+```
+Here's an explanation of the code:
+
+1. We first split the input string into words using the `split` function.
+2. We initialize an empty vector `result` to store the words that have exactly `n` consonants.
+3. We iterate over each word in the input string.
+4. For each word, we initialize a counter `consonant_count` to count the number of consonants in the word.
+5. We iterate over each character in the word and check if it is a consonant (i.e., not a vowel). If it is, we increment the `consonant_count`.
+6. If the word has exactly `n` consonants, we add it to the `result` vector.
+7. Finally, we return the `result` vector.
+
+You can test this function using the examples provided in the docstring.

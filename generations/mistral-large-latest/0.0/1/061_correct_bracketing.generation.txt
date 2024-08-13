@@ -1,0 +1,21 @@
+Sure, here is a Julia function that implements the correct_bracketing function based on the given docstring:
+
+```julia
+function correct_bracketing(brackets::String)::Bool
+    stack = []
+    for bracket in brackets
+        if bracket == '('
+            push!(stack, bracket)
+        elseif bracket == ')'
+            if isempty(stack)
+                return false
+            else
+                pop!(stack)
+            end
+        end
+    end
+    return isempty(stack)
+end
+```
+
+This function uses a stack to keep track of the opening brackets. It iterates over each character in the string. If it encounters an opening bracket, it pushes it onto the stack. If it encounters a closing bracket, it checks if the stack is empty. If it is, it returns false because there is a closing bracket without a corresponding opening bracket. If the stack is not empty, it pops the top element from the stack. After iterating over all characters, it checks if the stack is empty. If it is, it means all opening brackets have a corresponding closing bracket, so it returns true. If the stack is not empty, it means there are opening brackets without a corresponding closing bracket, so it returns false.

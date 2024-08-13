@@ -1,0 +1,31 @@
+ Certainly! Below is the implementation of the `is_palindrome` function in Julia based on the given docstring:
+
+```julia
+"""
+    is_palindrome(text::String)::Bool
+
+Checks if given string is a palindrome
+
+# Examples
+
+```jldoctest
+julia> is_palindrome("")
+true
+
+julia> is_palindrome("aba")
+true
+
+julia> is_palindrome("aaaaa")
+true
+
+julia> is_palindrome("zbcd")
+false
+```
+"""
+function is_palindrome(text::String)::Bool
+    # Compare the string with its reverse
+    return text == reverse(text)
+end
+```
+
+This function checks if the given string `text` is a palindrome by comparing it to its reverse. If the string is equal to its reverse, it returns `true`; otherwise, it returns `false`.

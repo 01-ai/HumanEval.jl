@@ -1,0 +1,7 @@
+```julia
+function words_string(s::String)
+    # Split the string by either comma or space and filter out any empty strings
+    return filter(x -> !isempty(x), split(s, r"[,\s]+"))
+end
+```
+This function uses a regular expression to split the string by either a comma or a space, and then filters out any empty strings that may result from consecutive delimiters.

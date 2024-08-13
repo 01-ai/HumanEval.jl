@@ -1,0 +1,19 @@
+Here is the Julia function that implements the `modp` function based on the provided docstring:
+```julia
+function modp(n::Int, p::Int)::Int
+    """
+    Return 2^n modulo p (be aware of numerics).
+    """
+    return powermod(2, n, p)
+end
+```
+In this implementation, we use the built-in `powermod` function from Julia's standard library, which efficiently computes the result of `a^n mod p` without overflowing for large values of `n`. 
+
+You can test this function with the examples provided in the docstring to verify its correctness:
+```julia
+println(modp(3, 5))     # Output: 3
+println(modp(1101, 101)) # Output: 2
+println(modp(0, 101))    # Output: 1
+println(modp(3, 11))     # Output: 8
+println(modp(100, 101))  # Output: 1
+```

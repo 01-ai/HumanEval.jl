@@ -1,0 +1,13 @@
+```julia
+function sum_squares_round(xs::Vector)::Int
+    # Round each element in the list to the nearest integer (Ceiling)
+    rounded_xs = ceil.(Int, xs)
+    
+    # Square each rounded number and then sum them up
+    sum_squares = sum(rounded_xs .^ 2)
+    
+    return sum_squares
+end
+```
+
+This function first rounds each element in the input vector `xs` to the nearest integer using the `ceil` function, ensuring we follow the Ceiling rounding rule. Then, it squares each rounded number using the dot operation `.^` for element-wise exponentiation and finally calculates the sum of these squared values. The result is returned as an integer.

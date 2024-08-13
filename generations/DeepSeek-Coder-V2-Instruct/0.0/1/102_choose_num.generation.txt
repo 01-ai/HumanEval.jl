@@ -1,0 +1,22 @@
+ Here's the implementation of the `choose_num` function in Julia:
+
+```julia
+function choose_num(x::Int, y::Int)::Int
+    # Ensure x is less than or equal to y
+    if x > y
+        return -1
+    end
+
+    # Start from the largest number in the range and move downwards
+    for num in y:-1:x
+        if num % 2 == 0
+            return num
+        end
+    end
+
+    # If no even number is found, return -1
+    return -1
+end
+```
+
+This function checks each number in the range from `y` to `x` (inclusive) in descending order and returns the first even number it finds. If no even number is found, it returns `-1`.

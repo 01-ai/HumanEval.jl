@@ -1,0 +1,15 @@
+```julia
+function remove_vowels(text::String)::String
+    vowels = 'AEIOUaeiou'
+    return filter(c -> !in(c, vowels), text)
+end
+```
+
+However, the `filter` function in Julia returns an array of characters, not a string. Therefore, to return a string, we need to use the `join` function. Here is the corrected version:
+
+```julia
+function remove_vowels(text::String)::String
+    vowels = 'AEIOUaeiou'
+    return join(filter(c -> !in(c, vowels), text))
+end
+```

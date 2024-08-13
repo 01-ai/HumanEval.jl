@@ -1,0 +1,25 @@
+```julia
+function is_bored(s::String)::Int
+    # Split the string into sentences based on '.', '?', '!'
+    sentences = split(s, r"[.?!]")
+    
+    # Initialize boredom count
+    boredom_count = 0
+    
+    # Iterate through each sentence
+    for sentence in sentences
+        # Strip leading and trailing whitespace
+        trimmed_sentence = strip(sentence)
+        
+        # Check if the sentence starts with "I" followed by a space or end of sentence
+        if startswith(trimmed_sentence, "I ")
+            # Increment the boredom count
+            boredom_count += 1
+        end
+    end
+    
+    return boredom_count
+end
+```
+
+This function `is_bored` takes a string `s` and returns the count of sentences starting with "I". It splits the string into sentences using regular expressions to handle '.', '?', and '!', then iterates through each sentence. If a trimmed sentence starts with "I" followed by a space, it increments the boredom count.

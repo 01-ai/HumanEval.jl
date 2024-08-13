@@ -1,0 +1,55 @@
+Here's a solution to the problem:
+
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    if length(xs) < 2
+        return nothing
+    end
+    
+    smallest = typemax(Int)
+    next_smallest = typemax(Int)
+    
+    for x in xs
+        if x < smallest
+            next_smallest = smallest
+            smallest = x
+        elseif x < next_smallest && x != smallest
+            next_smallest = x
+        end
+    end
+    
+    return next_smallest == typemax(Int) ? nothing : next_smallest
+end
+```
+
+Explanation:
+
+1. We first check if the length of the input list `xs` is less than 2. If it is, there cannot be a 2nd smallest element, so we return `nothing`.
+
+2. We initialize two variables: `smallest` and `next_smallest` to the maximum possible value of an integer (`typemax(Int)`). This ensures that any valid integer in the list will be smaller than these initial values.
+
+3. We iterate over each element `x` in the list `xs`.
+
+4. If `x` is smaller than the current `smallest`, we update `next_smallest` to the current `smallest` value and update `smallest` to `x`. This ensures that `smallest` always holds the smallest element encountered so far.
+
+5. If `x` is smaller than the current `next_smallest` and not equal to `smallest`, we update `next_smallest` to `x`. This ensures that `next_smallest` holds the 2nd smallest element encountered so far.
+
+6. After the loop, we check if `next_smallest` is still equal to `typemax(Int)`. If it is, it means that there is no 2nd smallest element in the list, so we return `nothing`. Otherwise, we return `next_smallest`, which holds the 2nd smallest element.
+
+The function handles the given examples correctly:
+
+```julia
+julia> next_smallest([1, 2, 3, 4, 5])
+2
+
+julia> next_smallest([5, 1, 4, 3, 2])
+2
+
+julia> next_smallest(Int[])
+nothing
+
+julia> next_smallest([1, 1])
+nothing
+```
+
+The time complexity of this solution is O(n), where n is the length of the input list, as we iterate over each element once. The space complexity is O(1) since we only use a constant amount of extra space to store the `smallest` and `next_smallest` values.

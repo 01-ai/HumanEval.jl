@@ -1,0 +1,50 @@
+To implement the `modp` function in Julia, we need to compute \(2^n \mod p\). Given the potential size of \(2^n\) for large \(n\), we should use an efficient method to avoid overflow and excessive computation time. The method of choice here is **modular exponentiation**, which allows us to compute \(a^b \mod m\) efficiently.
+
+Here's the implementation of the `modp` function using modular exponentiation:
+
+```julia
+function modp(n::Int, p::Int)::Int
+    # Initialize result
+    result = 1
+    base = 2
+    
+    # Update base if it is more than or equal to p
+    base = base % p
+    
+    while n > 0
+        # If n is odd, multiply base with result
+        if n % 2 == 1
+            result = (result * base) % p
+        end
+        
+        # n must be even now
+        n = n >> 1  # equivalent to n //= 2
+        base = (base * base) % p
+    end
+    
+    return result
+end
+```
+
+### Explanation:
+1. **Initialization**: We start with `result = 1` and `base = 2`.
+2. **Base Reduction**: We reduce the base modulo `p` initially to handle cases where `p` is very small.
+3. **Loop**: We loop until `n` becomes zero:
+   - If `n` is odd, we multiply the current `result` by `base` and take modulo `p`.
+   - We then halve `n` (using bitwise right shift) and square the `base`, taking modulo `p` again.
+4. **Return**: Finally, we return the computed `result`.
+
+This method ensures that we never deal with excessively large numbers, keeping the computation efficient.
+
+### Examples:
+Let's verify the function with the provided examples:
+
+```julia
+println(modp(3, 5))    # Output: 3
+println(modp(1101, 101)) # Output: 2
+println(modp(0, 101))  # Output: 1
+println(modp(3, 11))   # Output: 8
+println(modp(100, 101)) # Output: 1
+```
+
+This implementation should work correctly for the given examples and efficiently handle large values of `n`.

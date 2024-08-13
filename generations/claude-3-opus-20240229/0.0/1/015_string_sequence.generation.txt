@@ -1,0 +1,31 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function string_sequence(n::Int)::String
+    return join(string.(0:n), " ")
+end
+```
+
+Explanation:
+
+1. The function `string_sequence` takes an integer `n` as input and returns a string.
+
+2. Inside the function, we use the range syntax `0:n` to generate a sequence of numbers starting from 0 up to `n` inclusive. This creates a range object.
+
+3. We then use the `string.()` function to convert each number in the range to a string. The `.()` notation is used for broadcasting, which applies the `string` function to each element of the range.
+
+4. Finally, we use the `join` function to concatenate all the string numbers into a single string, with a space `" "` as the delimiter between each number.
+
+5. The resulting string is returned by the function.
+
+The function satisfies the given examples:
+
+```jldoctest
+julia> string_sequence(0)
+"0"
+
+julia> string_sequence(5)
+"0 1 2 3 4 5"
+```
+
+The function correctly generates a string containing space-delimited numbers starting from 0 up to `n` inclusive.

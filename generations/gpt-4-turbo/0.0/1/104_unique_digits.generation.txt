@@ -1,0 +1,13 @@
+```julia
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    # Filter the list to include only numbers that do not contain even digits
+    filtered = filter(x -> all(d -> d in ['1', '3', '5', '7', '9'], digits(x, base=10)), xs)
+    
+    # Sort the filtered list
+    sort!(filtered)
+    
+    return filtered
+end
+```
+
+This function `unique_digits` takes a vector of integers `xs` and returns a sorted vector of integers that do not contain any even digits. The function uses the `filter` function to keep only those numbers where all digits (converted to characters for easy checking) are odd ('1', '3', '5', '7', '9'). After filtering, the list is sorted in increasing order using `sort!` before being returned.

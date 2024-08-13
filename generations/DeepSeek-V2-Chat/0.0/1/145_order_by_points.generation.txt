@@ -1,0 +1,54 @@
+To implement the `order_by_points` function, we need to follow these steps:
+
+1. Define a helper function to calculate the sum of the digits of an integer.
+2. Use the `sortperm` function to get the permutation that would sort the array based on the sum of digits.
+3. Apply this permutation to the original array to get the sorted array.
+
+Here's the implementation:
+
+```julia
+"""
+    order_by_points(nums::Vector{Int})::Vector{Int}
+
+Write a function which sorts the given list of integers in ascending order
+according to the sum of their digits. Note: if there are several items with
+similar sum of their digits, order them based on their index in original list.
+
+# Examples
+
+```jldoctest
+julia> order_by_points([1, 11, -1, -11, -12])
+5-element Vector{Int64}:
+  -1
+ -11
+   1
+ -12
+  11
+
+julia> order_by_points(Int[])
+Int64[]
+```
+"""
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    # Helper function to calculate the sum of digits of a number
+    function sum_of_digits(n::Int)::Int
+        sum(abs(n) |> string |> collect .|> Int)
+    end
+
+    # Get the permutation that would sort the array based on the sum of digits
+    perm = sortperm(nums, by = sum_of_digits)
+
+    # Apply the permutation to the original array
+    return nums[perm]
+end
+```
+
+### Explanation:
+
+1. **sum_of_digits Function**: This helper function takes an integer `n`, converts it to its absolute value, then to a string, collects the characters into an array, converts each character back to an integer, and finally sums them up. This gives the sum of the digits of the number.
+
+2. **sortperm Function**: The `sortperm` function is used to get the permutation that would sort the array `nums` based on the sum of digits. The `by` keyword argument specifies that the sorting should be done based on the sum of digits.
+
+3. **Applying the Permutation**: The permutation obtained from `sortperm` is then used to index into the original array `nums`, resulting in the sorted array.
+
+This implementation ensures that the array is sorted based on the sum of digits, and in case of ties, the original order is maintained.

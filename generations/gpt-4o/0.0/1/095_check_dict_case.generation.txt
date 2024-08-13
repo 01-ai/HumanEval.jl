@@ -1,0 +1,49 @@
+Here's the implementation of the `check_dict_case` function in Julia:
+
+```julia
+function check_dict_case(d::Dict{String})::Bool
+    # Return false if the dictionary is empty
+    if isempty(d)
+        return false
+    end
+
+    # Extract all keys from the dictionary
+    keys_list = collect(keys(d))
+
+    # Check if all keys are in lower case
+    all_lower = all(key -> key == lowercase(key), keys_list)
+    
+    # Check if all keys are in upper case
+    all_upper = all(key -> key == uppercase(key), keys_list)
+
+    # Return true if all keys are either all lower case or all upper case
+    return all_lower || all_upper
+end
+```
+
+### Explanation:
+1. **Check if the dictionary is empty**: If the dictionary is empty, the function immediately returns `false`.
+2. **Extract keys**: The keys of the dictionary are collected into a list.
+3. **Check for lower case**: The function checks if all keys are in lower case using the `all` function combined with `lowercase`.
+4. **Check for upper case**: Similarly, it checks if all keys are in upper case using the `all` function combined with `uppercase`.
+5. **Return the result**: The function returns `true` if all keys are either all lower case or all upper case, otherwise it returns `false`.
+
+### Examples:
+```julia
+julia> check_dict_case(Dict("a" => "apple", "b" => "banana"))
+true
+
+julia> check_dict_case(Dict("a" => "apple", "A" => "banana", "B" => "banana"))
+false
+
+julia> check_dict_case(Dict("a" => "apple", "8" => "banana", "a" => "apple"))
+false
+
+julia> check_dict_case(Dict("Name" => "John", "Age" => "36", "City" => "Houston"))
+false
+
+julia> check_dict_case(Dict("STATE" => "NC", "ZIP" => "12345"))
+true
+```
+
+This implementation should cover all the cases as described in the docstring.

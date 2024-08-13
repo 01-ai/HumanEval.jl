@@ -1,0 +1,69 @@
+To implement the `intersection` function in Julia, we need to follow these steps:
+
+1. Determine the intersection of the two intervals.
+2. Calculate the length of the intersection.
+3. Check if the length is a prime number.
+4. Return "YES" if the length is prime, otherwise return "NO".
+
+Here's the implementation:
+
+```julia
+# Helper function to check if a number is prime
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+
+# Main function to find the intersection and check if its length is prime
+function intersection(interval1::Vector{Int}, interval2::Vector{Int})::String
+    start1, end1 = interval1
+    start2, end2 = interval2
+    
+    # Find the intersection
+    inter_start = max(start1, start2)
+    inter_end = min(end1, end2)
+    
+    # Check if there is an intersection
+    if inter_start > inter_end
+        return "NO"
+    end
+    
+    # Calculate the length of the intersection
+    length = inter_end - inter_start + 1
+    
+    # Check if the length is a prime number
+    if is_prime(length)
+        return "YES"
+    else
+        return "NO"
+    end
+end
+
+# Examples
+println(intersection([1, 2], [2, 3]))  # "NO"
+println(intersection([-1, 1], [0, 4]))  # "NO"
+println(intersection([-3, -1], [-5, 5]))  # "YES"
+```
+
+### Explanation:
+
+1. **Intersection Calculation**:
+   - The start of the intersection is the maximum of the two interval starts.
+   - The end of the intersection is the minimum of the two interval ends.
+   - If the start of the intersection is greater than the end, there is no intersection.
+
+2. **Length Calculation**:
+   - The length of the intersection is calculated as `inter_end - inter_start + 1

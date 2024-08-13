@@ -1,0 +1,26 @@
+Here's the implementation of the `encode_swap` function in Julia:
+
+```julia
+function encode_swap(message::String)::String
+    # Define vowels and their replacements
+    vowels = Dict('a' => 'c', 'e' => 'g', 'i' => 'k', 'o' => 'q', 'u' => 'w')
+    
+    # Function to swap case
+    swap_case(c::Char) = islower(c) ? uppercase(c) : lowercase(c)
+    
+    # Function to replace vowels
+    replace_vowel(c::Char) = haskey(vowels, lowercase(c)) ? vowels[lowercase(c)] : c
+    
+    # Process each character in the message
+    encoded_message = map(c -> replace_vowel(swap_case(c)), message)
+    
+    return String(encoded_message)
+end
+```
+
+This function works as follows:
+1. It defines a dictionary `vowels` that maps each vowel to the letter that appears 2 places after it in the English alphabet.
+2. The `swap_case` function swaps the case of a given character.
+3. The `replace_vowel` function checks if a character is a vowel and replaces it with the corresponding letter from the `vowels` dictionary.
+4. The `map` function is used to apply both `swap_case` and `replace_vowel` to each character in the input message.
+5. Finally, the processed characters are converted back to a string and returned.

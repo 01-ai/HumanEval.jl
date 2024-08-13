@@ -1,0 +1,45 @@
+Here is the Julia function that meets the specified requirements:
+```julia
+function file_name_check(file_name::String)::String
+    # Check if the file name contains more than three digits
+    if sum(isdigit, file_name) > 3
+        return "No"
+    end
+
+    # Check if the file name contains exactly one dot
+    dot_index = findfirst(isequal('.'), file_name)
+    if dot_index === nothing || findnext(isequal('.'), file_name, dot_index + 1) !== nothing
+        return "No"
+    end
+
+    # Check if the substring before the dot is not empty and starts with a latin alphabet letter
+    if isempty(file_name[1:dot_index-1]) || !isletter(file_name[1])
+        return "No"
+    end
+
+    # Check if the substring after the dot is one of the allowed extensions
+    extension = file_name[dot_index+1:end]
+    if extension ∉ ["txt", "exe", "dll"]
+        return "No"
+    end
+
+    # If all checks pass, return "Yes"
+    return "Yes"
+end
+```
+Here's a breakdown of the implementation:
+
+1. We first check if the file name contains more than three digits using the `isdigit` function and `sum`.
+2. We then check if the file name contains exactly one dot using `findfirst` and `findnext`. If no dot is found or more than one dot is found, we return "No".
+3. Next, we check if the substring before the dot is not empty and starts with a latin alphabet letter using `isempty` and `isletter`.
+4. We then check if the substring after the dot is one of the allowed extensions using `∈`.
+5. If all checks pass, we return "Yes".
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> file_name_check("example.txt")
+"Yes"
+
+julia> file_name_check("1example.dll")
+"No"
+```

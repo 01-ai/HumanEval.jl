@@ -1,0 +1,16 @@
+Sure, here's a Julia function that meets the requirements specified in the docstring:
+
+```julia
+function circular_shift(x::Int, shift::Int)::String
+    digits = string(x)
+    length_digits = length(digits)
+
+    if shift > length_digits
+        return digits[end:-1:1]
+    else
+        return string(digits[mod1(shift:length_digits, length_digits)] * digits[1:mod1(shift-1, length_digits)])
+    end
+end
+```
+
+This function first converts the integer `x` into a string `digits`. If `shift` is greater than the number of digits, it returns the digits reversed. Otherwise, it uses modulo arithmetic to circularly shift the digits to the right by `shift` and returns the result as a string.

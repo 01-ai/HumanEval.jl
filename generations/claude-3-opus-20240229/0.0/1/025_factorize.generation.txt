@@ -1,0 +1,61 @@
+Here's a Julia function `factorize` that takes an integer `n` as input and returns a vector of prime factors of `n` in the order from smallest to largest, with each factor listed the number of times it appears in the factorization:
+
+```julia
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    d = 2
+    while d * d <= n
+        while n % d == 0
+            push!(factors, d)
+            n ÷= d
+        end
+        d += 1
+    end
+    if n > 1
+        push!(factors, n)
+    end
+    return factors
+end
+```
+
+Here's how the `factorize` function works:
+
+1. We initialize an empty vector called `factors` to store the prime factors of `n`.
+
+2. We start with a divisor `d` equal to 2, the smallest prime number.
+
+3. We enter a loop that continues as long as `d * d <= n`. This loop iterates over potential prime factors.
+
+4. Inside the loop, we check if `d` divides `n` evenly using the modulo operator `%`.
+   - If `d` divides `n` evenly, we add `d` to the `factors` vector using the `push!` function and update `n` by dividing it by `d` using the integer division operator `÷`.
+   - We keep dividing `n` by `d` as long as it remains divisible, capturing multiple occurrences of the same prime factor.
+
+5. If `d` does not divide `n` evenly, we increment `d` by 1 and continue the loop.
+
+6. Once the loop ends, we check if `n` is greater than 1.
+   - If `n` is greater than 1, it means that the remaining value of `n` is itself a prime factor, so we add it to the `factors` vector.
+
+7. Finally, we return the `factors` vector containing all the prime factors of `n` in the order from smallest to largest.
+
+The function correctly handles the examples provided in the docstring:
+
+```julia
+julia> factorize(8)
+3-element Vector{Int64}:
+ 2
+ 2
+ 2
+
+julia> factorize(25)
+2-element Vector{Int64}:
+ 5
+ 5
+
+julia> factorize(70)
+3-element Vector{Int64}:
+ 2
+ 5
+ 7
+```
+
+The function efficiently factorizes the input integer by iterating only up to the square root of `n` and captures multiple occurrences of the same prime factor.

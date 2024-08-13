@@ -1,0 +1,14 @@
+Here is the Julia function that implements the specified behavior:
+```julia
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    return sum(x for (i, x) in enumerate(xs) if isodd(i) && isodd(x))
+end
+```
+Explanation:
+
+* We use a generator expression to iterate over the elements of the input vector `xs`.
+* We use the `enumerate` function to get both the index `i` and the value `x` of each element.
+* We use the `isodd` function to check if the index `i` is odd and if the value `x` is odd.
+* We use the `sum` function to add up all the odd values that are in odd positions.
+
+You can test this function with the examples provided in the docstring to see that it produces the correct results. Let me know if you have any questions or need further clarification!

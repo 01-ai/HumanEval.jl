@@ -1,0 +1,28 @@
+Here's a Julia function that implements the specified behavior:
+
+```julia
+function find_max(words::Vector{String})::String
+    # Function to count unique characters in a word
+    unique_count(word::String) = length(Set(word))
+    
+    # Sort words first by unique character count (descending) and then lexicographically
+    sorted_words = sort(words, by = w -> (-unique_count(w), w))
+    
+    # Return the first word in the sorted list
+    return sorted_words[1]
+end
+
+# Examples
+println(find_max(["name", "of", "string"]))  # "string"
+println(find_max(["name", "enam", "game"]))  # "enam"
+println(find_max(["aaaaaaa", "bb", "cc"]))   # "aaaaaaa"
+```
+
+### Explanation:
+1. **Unique Character Count**: The function `unique_count` calculates the number of unique characters in a given word using a `Set`.
+2. **Sorting**: The `sort` function is used to sort the words based on two criteria:
+   - The number of unique characters in descending order (`-unique_count(w)`).
+   - Lexicographical order for words with the same number of unique characters (`w`).
+3. **Return the Result**: The first word in the sorted list is returned, which will be the word with the maximum number of unique characters, and in case of a tie, the lexicographically smallest word.
+
+This approach ensures that the function meets the requirements specified in the docstring.

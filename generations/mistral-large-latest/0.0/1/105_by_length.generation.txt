@@ -1,0 +1,13 @@
+Sure, here's a Julia function that meets the requirements specified in the docstring:
+
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    names = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    filtered_xs = filter(1 <= x <= 9, xs)
+    sorted_xs = sort(filtered_xs)
+    reversed_xs = reverse(sorted_xs)
+    return [names[i] for i in reversed_xs]
+end
+```
+
+This function first filters the input array to only include integers between 1 and 9. It then sorts the filtered array and reverses it. Finally, it replaces each integer in the reversed array with its corresponding name from the `names` array and returns the resulting array. If the input array is empty, the function will return an empty array.

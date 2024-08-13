@@ -1,0 +1,50 @@
+Here's a Julia function that implements the `strongest_extension` functionality as described:
+
+```julia
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    function extension_strength(ext::String)
+        uppercase_count = count(isuppercase, ext)
+        lowercase_count = count(islowercase, ext)
+        return uppercase_count - lowercase_count
+    end
+
+    strongest = first(extensions)
+    max_strength = extension_strength(strongest)
+
+    for ext in extensions[2:end]
+        strength = extension_strength(ext)
+        if strength > max_strength
+            strongest = ext
+            max_strength = strength
+        end
+    end
+
+    return "$class_name.$strongest"
+end
+```
+
+This function does the following:
+
+1. We define a helper function `extension_strength` that calculates the strength of an extension based on the given formula: number of uppercase letters minus number of lowercase letters.
+
+2. We initialize `strongest` with the first extension in the list and calculate its strength.
+
+3. We then iterate through the rest of the extensions, calculating the strength of each one.
+
+4. If we find an extension with a higher strength, we update `strongest` and `max_strength`.
+
+5. After checking all extensions, we return the result in the format "ClassName.StrongestExtensionName".
+
+This implementation will automatically handle the case where multiple extensions have the same strength by keeping the first one encountered, as per the requirement.
+
+You can use this function like this:
+
+```julia
+println(strongest_extension("Slices", ["SErviNGSliCes", "Cheese", "StuFfed"]))
+# Output: Slices.SErviNGSliCes
+
+println(strongest_extension("my_class", ["AA", "Be", "CC"]))
+# Output: my_class.AA
+```
+
+This solution efficiently handles the requirements, including choosing the first extension in case of a tie in strength.

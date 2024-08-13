@@ -1,0 +1,18 @@
+Here's the implementation of the `sort_third` function in Julia:
+
+```julia
+function sort_third(l::Vector)
+    # Create a copy of the input list
+    result = copy(l)
+    
+    # Iterate over the indices that are divisible by three
+    for i in 1:3:length(l)
+        # Sort the elements at these indices
+        result[i:min(i+2, length(l))] = sort(result[i:min(i+2, length(l))])
+    end
+    
+    return result
+end
+```
+
+This function works by first creating a copy of the input list to avoid modifying the original list. It then iterates over the indices that are divisible by three and sorts the elements at these indices. The `min` function is used to ensure that we do not go out of bounds when the list length is not a multiple of three.

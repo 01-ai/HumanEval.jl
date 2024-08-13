@@ -1,0 +1,36 @@
+Here's a solution to the problem of finding the closest vowel that stands between two consonants from the right side of a given word:
+
+```julia
+function get_closest_vowel(word::String)::String
+    vowels = "aeiouAEIOU"
+    consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
+    
+    n = length(word)
+    if n < 3
+        return ""
+    end
+    
+    for i in n-1:-1:2
+        if word[i] in vowels && word[i-1] in consonants && word[i+1] in consonants
+            return word[i:i]
+        end
+    end
+    
+    return ""
+end
+```
+
+Explanation:
+1. We define two constants: `vowels` containing all the vowels (both lowercase and uppercase) and `consonants` containing all the consonants (both lowercase and uppercase).
+
+2. We check if the length of the given word is less than 3. If it is, we return an empty string since there cannot be a vowel standing between two consonants in a word with length less than 3.
+
+3. We start a loop from the second-to-last character of the word (index `n-1`) and iterate backwards until the second character (index `2`). This is because we want to find the closest vowel from the right side of the word.
+
+4. Inside the loop, we check if the current character (at index `i`) is a vowel and if the characters before and after it (at indices `i-1` and `i+1`) are consonants. If this condition is satisfied, we have found the closest vowel standing between two consonants from the right side, so we return that vowel as a string (using `word[i:i]`).
+
+5. If we complete the loop without finding a vowel that meets the condition, it means there is no such vowel in the word, so we return an empty string.
+
+The time complexity of this solution is O(n), where n is the length of the word, since we iterate through the characters of the word once in the worst case. The space complexity is O(1) since we only use a constant amount of extra space for the `vowels` and `consonants` constants.
+
+I hope this helps! Let me know if you have any further questions.

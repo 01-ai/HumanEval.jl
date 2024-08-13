@@ -1,0 +1,32 @@
+Sure, here is a Julia function that implements the desired behavior:
+
+```julia
+function count_up_to(n::Int)::Vector{Int}
+    function isprime(num::Int)
+        if num < 2
+            return false
+        elseif num < 4
+            return true
+        elseif num % 2 == 0
+            return false
+        else
+            for i in 3:2:isqrt(num)
+                if num % i == 0
+                    return false
+                end
+            end
+            return true
+        end
+    end
+
+    primes = Int[]
+    for i in 2:n
+        if isprime(i)
+            push!(primes, i)
+        end
+    end
+    return primes
+end
+```
+
+This function first defines a helper function `isprime` to check if a number is prime. Then it iterates from 2 to n, checks if each number is prime, and if so, adds it to the `primes` array. Finally, it returns the `primes` array.

@@ -1,0 +1,42 @@
+```julia
+function monotonic(l::Vector)::Bool
+    # Check if the list is empty or has one element, which is trivially monotonic
+    if length(l) <= 1
+        return true
+    end
+
+    # Determine the direction of monotonicity based on the first two different elements
+    increasing = nothing
+    for i in 1:length(l)-1
+        if l[i] < l[i+1]
+            increasing = true
+            break
+        elseif l[i] > l[i+1]
+            increasing = false
+            break
+        end
+    end
+
+    # If all elements are the same, it's also monotonic
+    if increasing === nothing
+        return true
+    end
+
+    # Check the remaining elements to confirm monotonicity
+    for i in 2:length(l)-1
+        if increasing
+            if l[i] > l[i+1]
+                return false
+            end
+        else
+            if l[i] < l[i+1]
+                return false
+            end
+        end
+    end
+
+    return true
+end
+```
+
+This function first checks if the list is trivially monotonic due to having zero or one element. It then determines the direction of monotonicity by comparing the first pair of different elements. If all elements are the same, it returns true. Finally, it iterates through the list to ensure all elements conform to the determined direction of monotonicity.

@@ -1,0 +1,41 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function words_string(s::String)::Vector{String}
+    words = split(s, [',', ' '])
+    filter(!isempty, words)
+end
+```
+
+Explanation:
+
+1. The `words_string` function takes a string `s` as input and returns a vector of strings.
+
+2. We use the `split` function to split the string `s` based on the delimiters ',' and ' '. This function returns an array of substrings.
+
+3. The `split` function may include empty strings in the resulting array if there are consecutive delimiters or leading/trailing delimiters. To remove the empty strings, we use the `filter` function with the predicate `!isempty`. This predicate checks if each element of the array is not empty and keeps only the non-empty elements.
+
+4. Finally, the function returns the filtered array of words.
+
+You can test the function with the provided examples:
+
+```jldoctest
+julia> words_string("Hi, my name is John")
+5-element Vector{String}:
+ "Hi"
+ "my"
+ "name"
+ "is"
+ "John"
+
+julia> words_string("One, two, three, four, five, six")
+6-element Vector{String}:
+ "One"
+ "two"
+ "three"
+ "four"
+ "five"
+ "six"
+```
+
+The function correctly splits the input string into words and returns an array of non-empty strings.

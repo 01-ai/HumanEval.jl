@@ -1,0 +1,10 @@
+Sure, I can help with that. Here's a simple implementation of the `max_element` function in Julia based on your docstring:
+
+```julia
+function max_element(xs::Vector{<:Real})
+    isempty(xs) && error("The list cannot be empty")
+    return maximum(xs)
+end
+```
+
+This function takes a vector of real numbers as input and returns the maximum element. If the input vector is empty, it throws an error. The `maximum` function is a built-in Julia function that returns the maximum element in a collection.

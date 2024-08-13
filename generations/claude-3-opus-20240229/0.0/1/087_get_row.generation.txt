@@ -1,0 +1,33 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function get_row(xs::Vector{Vector{Int}}, x::Int)::Vector{Tuple{Int, Int}}
+    result = Tuple{Int, Int}[]
+    for i in 1:length(xs)
+        row = xs[i]
+        indices = findall(isequal(x), row)
+        for j in indices
+            push!(result, (i, j))
+        end
+    end
+    sort!(result, by = t -> (t[1], -t[2]))
+    return result
+end
+```
+
+Explanation:
+1. We initialize an empty vector `result` to store the coordinates (row, column) where `x` is found.
+
+2. We iterate over each row `row` in `xs` using a `for` loop with an index `i`.
+
+3. For each row, we use the `findall` function to find all the indices where `x` occurs in the row. The `isequal` function is used as the predicate to compare each element with `x`.
+
+4. We iterate over each index `j` in the `indices` vector.
+
+5. For each index `j`, we create a tuple `(i, j)` representing the coordinate (row, column) and add it to the `result` vector using the `push!` function.
+
+6. After processing all the rows, we sort the `result` vector using the `sort!` function. The sorting is done based on a custom comparison function `t -> (t[1], -t[2])`, which sorts the coordinates first by row in ascending order and then by column in descending order within each row.
+
+7. Finally, we return the sorted `result` vector containing the coordinates where `x` is found.
+
+The time complexity of this solution is O(n * m * log(n * m)), where n is the number of rows in `xs` and m is the maximum number of columns in any row. The space complexity is O(n * m) to store the `result` vector.

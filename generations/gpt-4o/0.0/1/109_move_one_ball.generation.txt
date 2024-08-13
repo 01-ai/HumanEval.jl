@@ -1,0 +1,48 @@
+To solve this problem, we need to determine if the given array can be sorted in non-decreasing order by performing any number of right shift operations. A right shift operation moves the last element of the array to the first position and shifts all other elements one position to the right.
+
+Here's the plan:
+1. If the array is empty, return `true`.
+2. Check if the array is already sorted in non-decreasing order.
+3. For each possible right shift, check if the resulting array is sorted in non-decreasing order.
+4. If any of the shifted arrays is sorted, return `true`.
+5. If none of the shifted arrays is sorted, return `false`.
+
+Here's the implementation in Julia:
+
+```julia
+function move_one_ball(xs::Vector{Int})::Bool
+    # Helper function to check if an array is sorted in non-decreasing order
+    is_sorted(arr::Vector{Int})::Bool = all(arr[i] <= arr[i+1] for i in 1:length(arr)-1)
+    
+    # If the array is empty, return true
+    if isempty(xs)
+        return true
+    end
+    
+    # Check if the array is already sorted
+    if is_sorted(xs)
+        return true
+    end
+    
+    # Try all possible right shifts
+    n = length(xs)
+    for shift in 1:n
+        # Perform the right shift
+        shifted_xs = vcat(xs[end-shift+1:end], xs[1:end-shift])
+        # Check if the shifted array is sorted
+        if is_sorted(shifted_xs)
+            return true
+        end
+    end
+    
+    # If no right shift results in a sorted array, return false
+    return false
+end
+```
+
+### Explanation:
+1. **is_sorted Function**: This helper function checks if a given array is sorted in non-decreasing order.
+2. **Empty Array Check**: If the input array is empty, we return `true` immediately.
+3. **Initial Sorted Check**: We first check if the array is already sorted. If it is, we return `true`.
+4. **Right Shifts**: We iterate through all possible right shifts (from 1 to the length of the array). For each shift, we create a new array that represents the array after the shift and check if it is sorted.
+5. **Return Result**: If any of the shifted arrays is sorted, we return `true`. If none of them are

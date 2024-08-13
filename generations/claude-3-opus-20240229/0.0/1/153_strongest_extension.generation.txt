@@ -1,0 +1,53 @@
+Here's the solution to the problem in Julia:
+
+```julia
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    strongest_ext = ""
+    max_strength = -Inf
+
+    for ext in extensions
+        cap = count(isuppercase, ext)
+        sm = count(islowercase, ext)
+        strength = cap - sm
+
+        if strength > max_strength
+            max_strength = strength
+            strongest_ext = ext
+        end
+    end
+
+    return "$(class_name).$(strongest_ext)"
+end
+```
+
+Explanation:
+
+1. We define the function `strongest_extension` that takes two parameters: `class_name` (a string representing the name of the class) and `extensions` (a vector of strings representing the extensions).
+
+2. We initialize two variables: `strongest_ext` (an empty string to store the name of the strongest extension) and `max_strength` (set to negative infinity to keep track of the maximum strength encountered so far).
+
+3. We iterate over each extension `ext` in the `extensions` vector.
+
+4. For each extension, we count the number of uppercase letters using `count(isuppercase, ext)` and store it in the variable `cap`. Similarly, we count the number of lowercase letters using `count(islowercase, ext)` and store it in the variable `sm`.
+
+5. We calculate the strength of the extension by subtracting `sm` from `cap` and store it in the variable `strength`.
+
+6. If the calculated `strength` is greater than the current `max_strength`, we update `max_strength` with the new strength and update `strongest_ext` with the current extension `ext`.
+
+7. After iterating through all the extensions, we have found the strongest extension.
+
+8. Finally, we return a string in the format `"ClassName.StrongestExtensionName"` using string interpolation `"$(class_name).$(strongest_ext)"`.
+
+The code follows the given logic to find the strongest extension based on the difference between the count of uppercase letters and lowercase letters in each extension's name. If there are multiple extensions with the same strength, it chooses the one that appears first in the list.
+
+You can test the function with the provided examples:
+
+```julia
+julia> strongest_extension("Slices", ["SErviNGSliCes", "Cheese", "StuFfed"])
+"Slices.SErviNGSliCes"
+
+julia> strongest_extension("my_class", ["AA", "Be", "CC"])
+"my_class.AA"
+```
+
+The function should produce the expected results.

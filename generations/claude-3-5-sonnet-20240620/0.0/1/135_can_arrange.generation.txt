@@ -1,0 +1,40 @@
+Here's a Julia function that solves the given problem:
+
+```julia
+function can_arrange(xs::Vector{Int})::Int
+    n = length(xs)
+    for i in n:-1:2
+        if xs[i] < xs[i-1]
+            return i
+        end
+    end
+    return -1
+end
+```
+
+Let's break down how this function works:
+
+1. We start by getting the length of the input vector `xs` and storing it in `n`.
+
+2. We iterate through the array from right to left, starting from the last element (index `n`) down to the second element (index 2). We use a reverse loop `for i in n:-1:2` for this purpose.
+
+3. For each element, we compare it with the element immediately preceding it:
+   - If the current element `xs[i]` is less than the preceding element `xs[i-1]`, we've found the largest index where this condition is true, so we return `i`.
+
+4. If we complete the loop without finding any such element, it means no element is less than its preceding element. In this case, we return -1.
+
+This function correctly handles the given examples:
+
+1. For `[1, 2, 4, 3, 5]`:
+   - It finds that 3 (at index 4) is less than 4 (at index 3), so it returns 4.
+
+2. For `[1, 2, 3]`:
+   - All elements are greater than or equal to their preceding elements, so it returns -1.
+
+The function satisfies the requirements:
+- It returns the largest index where an element is not greater than or equal to the preceding element.
+- It returns -1 if no such element exists.
+- It handles the case where the array is in ascending order.
+- It works correctly with the given examples.
+
+Also, this function is efficient as it only needs to traverse the array once, from right to left, giving it a time complexity of O(n), where n is the length of the input array.

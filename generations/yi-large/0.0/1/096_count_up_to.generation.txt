@@ -1,0 +1,29 @@
+function count_up_to(n::Int)::Vector{Int}
+    if n <= 0
+        return Int64[]
+    end
+
+    primes = Int64[]
+    for i in 2:n-1
+        is_prime = true
+        for j in 2:isqrt(i)
+            if i % j == 0
+                is_prime = false
+                break
+            end
+        end
+        if is_prime
+            push!(primes, i)
+        end
+    end
+
+    return primes
+end
+
+# Test the function
+println(count_up_to(5))
+println(count_up_to(11))
+println(count_up_to(0))
+println(count_up_to(20))
+println(count_up_to(1))
+println(count_up_to(18))

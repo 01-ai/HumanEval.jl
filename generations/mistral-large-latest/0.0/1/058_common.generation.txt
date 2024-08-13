@@ -1,0 +1,10 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function common(l1::Vector, l2::Vector)::Vector
+    # Return sorted unique common elements for two lists
+    intersect(l1, l2) |> sort |> unique
+end
+```
+
+This function uses the `intersect` function to find common elements, `sort` to sort them, and `unique` to ensure they are unique.

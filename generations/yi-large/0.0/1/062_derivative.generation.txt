@@ -1,0 +1,14 @@
+function derivative(xs::Vector)::Vector
+    n = length(xs)
+    if n <= 1
+        return zeros(Int, max(n-1, 0))
+    end
+
+    derivative_coefficients = zeros(Int, n-1)
+
+    for i in 2:n
+        derivative_coefficients[i-1] = i * xs[i]
+    end
+
+    return derivative_coefficients
+end

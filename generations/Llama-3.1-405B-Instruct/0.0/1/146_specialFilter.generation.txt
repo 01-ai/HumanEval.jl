@@ -1,0 +1,36 @@
+Here is the Julia function that implements the `specialFilter` function based on the provided doc string:
+```julia
+function specialFilter(nums::Vector{Int})::Int
+    count = 0
+    for num in nums
+        if num > 10
+            num_str = string(abs(num))  # convert to string and take absolute value
+            first_digit = parse(Int, num_str[1])
+            last_digit = parse(Int, num_str[end])
+            if (first_digit in [1, 3, 5, 7, 9]) && (last_digit in [1, 3, 5, 7, 9])
+                count += 1
+            end
+        end
+    end
+    return count
+end
+```
+Here's an explanation of the code:
+
+1. We initialize a counter `count` to 0.
+2. We iterate over each number `num` in the input array `nums`.
+3. We check if the number is greater than 10. If not, we skip to the next iteration.
+4. We convert the absolute value of the number to a string using `string(abs(num))`.
+5. We extract the first and last digits of the string using indexing (`num_str[1]` and `num_str[end]`).
+6. We convert the extracted digits back to integers using `parse(Int, ...)`.
+7. We check if both the first and last digits are odd (i.e., in the set `[1, 3, 5, 7, 9]`). If they are, we increment the counter `count`.
+8. Finally, we return the count of numbers that satisfy the conditions.
+
+You can test this function using the examples provided in the doc string:
+```julia
+julia> specialFilter([15, -73, 14, -15])
+1
+
+julia> specialFilter([33, -2, -3, 45, 21, 109])
+2
+```

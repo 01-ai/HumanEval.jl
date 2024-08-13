@@ -1,0 +1,26 @@
+Sure, here's a Julia function that should meet your requirements:
+
+```julia
+function triples_sum_to_zero(l::Vector{Int})::Bool
+    sort!(l)
+    for i in 1:length(l)-2
+        left = i + 1
+        right = length(l)
+        while left < right
+            sum = l[i] + l[left] + l[right]
+            if sum == 0
+                # Found a triplet that sums to zero
+                return true
+            elseif sum < 0
+                left += 1
+            else
+                right -= 1
+            end
+        end
+    end
+    # No triplet found
+    return false
+end
+```
+
+This function first sorts the input list. Then it iterates over the list and for each element, it uses a two-pointer technique to find two other elements that sum to the negative of the current element. If such a triplet is found, it returns `true`. If no such triplet is found after checking all elements, it returns `false`.

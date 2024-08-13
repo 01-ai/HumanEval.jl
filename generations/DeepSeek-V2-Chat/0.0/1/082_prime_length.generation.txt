@@ -1,0 +1,40 @@
+To implement the `prime_length` function, we need to determine if the length of the input string `s` is a prime number. A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself.
+
+Here's the step-by-step implementation:
+
+1. Define the function `prime_length` that takes a string `s`.
+2. Calculate the length of the string `s`.
+3. Check if the length is a prime number using a helper function `is_prime`.
+4. Return `true` if the length is prime, otherwise return `false`.
+
+The helper function `is_prime` will:
+- Return `false` if the number is less than 2.
+- Check divisibility from 2 up to the square root of the number (since a larger factor of the number must be a multiple of a smaller factor that has already been checked).
+
+Here's the complete implementation:
+
+```julia
+function is_prime(n::Int)::Bool
+    if n < 2
+        return false
+    end
+    for i in 2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+function prime_length(s::String)::Bool
+    return is_prime(length(s))
+end
+
+# Examples
+println(prime_length("Hello"))    # true
+println(prime_length("abcdcba"))  # true
+println(prime_length("kittens"))  # true
+println(prime_length("orange"))   # false
+```
+
+This code defines the `prime_length` function as required, using the `is_prime` helper function to determine if the length of the string is a prime number. The examples provided in the docstring are also tested to ensure the function works as expected.

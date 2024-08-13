@@ -1,0 +1,24 @@
+ Here's the implementation of the `generate_integers` function in Julia:
+
+```julia
+function generate_integers(a::Int, b::Int)::Vector{Int}
+    # Ensure a is less than or equal to b
+    a, b = min(a, b), max(a, b)
+    
+    # Initialize an empty vector to store the even digits
+    even_digits = Vector{Int}()
+    
+    # Iterate through the range from a to b
+    for num in a:b
+        # Check if the number is even
+        if num % 2 == 0
+            # Append the even number to the vector
+            push!(even_digits, num)
+        end
+    end
+    
+    return even_digits
+end
+```
+
+This function first ensures that `a` is less than or equal to `b` by swapping them if necessary. Then, it iterates through the range from `a` to `b`, checking each number to see if it is even. If a number is even, it is added to the `even_digits` vector. Finally, the function returns the vector of even digits.

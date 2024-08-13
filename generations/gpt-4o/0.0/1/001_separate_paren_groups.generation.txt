@@ -1,0 +1,47 @@
+Sure, here is the implementation of the `separate_paren_groups` function in Julia:
+
+```julia
+function separate_paren_groups(paren_string::String)::Vector{String}
+    paren_string = replace(paren_string, " " => "")  # Remove all spaces
+    groups = String[]
+    current_group = ""
+    balance = 0
+
+    for char in paren_string
+        current_group *= char
+        if char == '('
+            balance += 1
+        elseif char == ')'
+            balance -= 1
+        end
+
+        if balance == 0 && !isempty(current_group)
+            push!(groups, current_group)
+            current_group = ""
+        end
+    end
+
+    return groups
+end
+```
+
+### Explanation:
+1. **Remove Spaces**: The function first removes all spaces from the input string using `replace(paren_string, " " => "")`.
+2. **Initialize Variables**: It initializes an empty array `groups` to store the resulting groups, a `current_group` string to build the current group of parentheses, and a `balance` counter to keep track of the balance between opening and closing parentheses.
+3. **Iterate Through Characters**: It iterates through each character in the modified string.
+   - If the character is '(', it increments the `balance`.
+   - If the character is ')', it decrements the `balance`.
+   - It appends each character to `current_group`.
+4. **Check Balance**: Whenever the `balance` becomes zero, it means a complete group of balanced parentheses has been formed. It then adds `current_group` to `groups` and resets `current_group` for the next group.
+5. **Return Result**: Finally, it returns the `groups` array containing all the separated groups of balanced parentheses.
+
+### Example Usage:
+```julia
+julia> separate_paren_groups("( ) (( )) (( )( ))")
+3-element Vector{String}:
+ "()"
+ "(())"
+ "(()())"
+```
+
+This function should work correctly for the given problem statement and examples.

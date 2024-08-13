@@ -1,0 +1,34 @@
+Here is the Julia function that implements the specified behavior:
+```julia
+function sort_numbers(numbers::String)::String
+    # Define a dictionary to map number names to their corresponding integer values
+    num_dict = Dict(
+        "zero" => 0, "one" => 1, "two" => 2, "three" => 3, "four" => 4,
+        "five" => 5, "six" => 6, "seven" => 7, "eight" => 8, "nine" => 9
+    )
+
+    # Split the input string into an array of number names
+    num_names = split(numbers)
+
+    # Sort the array of number names based on their corresponding integer values
+    sorted_num_names = sort(num_names, by = x -> num_dict[x])
+
+    # Join the sorted array of number names back into a string separated by spaces
+    sorted_numbers = join(sorted_num_names, " ")
+
+    return sorted_numbers
+end
+```
+Here's an explanation of the code:
+
+1. We define a dictionary `num_dict` that maps each number name to its corresponding integer value.
+2. We split the input string into an array of number names using the `split` function.
+3. We sort the array of number names using the `sort` function, with a custom sorting key that looks up the integer value of each number name in the `num_dict` dictionary.
+4. We join the sorted array of number names back into a string using the `join` function, with spaces separating each number name.
+5. Finally, we return the sorted string.
+
+You can test this function using the example you provided:
+```julia
+julia> sort_numbers("three one five")
+"one three five"
+```

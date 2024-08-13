@@ -1,0 +1,36 @@
+Here's a Julia function that implements the `sort_third` functionality as described in the docstring:
+
+```julia
+function sort_third(l::Vector)
+    # Extract the elements at indices divisible by 3
+    third_elements = [l[i] for i in 1:length(l) if i % 3 == 0]
+    
+    # Sort these elements
+    sorted_third_elements = sort(third_elements)
+    
+    # Create a copy of the original list to modify
+    l_prime = copy(l)
+    
+    # Replace the elements at indices divisible by 3 with the sorted elements
+    j = 1
+    for i in 1:length(l)
+        if i % 3 == 0
+            l_prime[i] = sorted_third_elements[j]
+            j += 1
+        end
+    end
+    
+    return l_prime
+end
+
+# Examples
+println(sort_third([1, 2, 3]))  # Output: [1, 2, 3]
+println(sort_third([5, 6, 3, 4, 8, 9, 2]))  # Output: [5, 6, 3, 4, 8, 9, 2]
+```
+
+This function works as follows:
+1. It extracts the elements at indices divisible by 3.
+2. It sorts these extracted elements.
+3. It creates a copy of the original list.
+4. It replaces the elements at indices divisible by 3 in the copied list with the sorted elements.
+5. It returns the modified list.

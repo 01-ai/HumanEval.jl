@@ -1,0 +1,12 @@
+```julia
+function multiply_unit_digits(a::Int, b::Int)::Int
+    # Extract the unit digits of both numbers
+    unit_digit_a = a % 10
+    unit_digit_b = b % 10
+    
+    # Return the product of the unit digits
+    return unit_digit_a * unit_digit_b
+end
+```
+
+This function takes two integers, `a` and `b`, and calculates the product of their unit digits by using the modulo operator `%` to find the remainder when divided by 10, which effectively gives us the last digit of each number. Then, it multiplies these two unit digits together and returns the result.

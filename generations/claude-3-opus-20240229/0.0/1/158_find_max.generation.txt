@@ -1,0 +1,51 @@
+Here's a solution to the problem:
+
+```julia
+function find_max(words::Vector{String})::String
+    max_unique_chars = 0
+    max_word = ""
+    
+    for word in words
+        unique_chars = length(Set(word))
+        
+        if unique_chars > max_unique_chars || 
+           (unique_chars == max_unique_chars && word < max_word)
+            max_unique_chars = unique_chars
+            max_word = word
+        end
+    end
+    
+    return max_word
+end
+```
+
+Explanation:
+
+1. We define the function `find_max` that takes a vector of strings `words` and returns a string.
+
+2. We initialize two variables:
+   - `max_unique_chars`: Keeps track of the maximum number of unique characters found so far.
+   - `max_word`: Stores the word with the maximum number of unique characters.
+
+3. We iterate over each word in the `words` vector.
+
+4. For each word, we calculate the number of unique characters by converting the word to a set (`Set(word)`) and getting its length (`length(Set(word))`). The set automatically removes duplicate characters, so its length gives us the count of unique characters.
+
+5. We compare the number of unique characters in the current word with the current maximum (`max_unique_chars`). If the current word has more unique characters or if it has the same number of unique characters but comes first in lexicographical order (i.e., `word < max_word`), we update `max_unique_chars` and `max_word` accordingly.
+
+6. After iterating through all the words, we return `max_word`, which represents the word with the maximum number of unique characters. If multiple words have the same maximum count, the lexicographically smallest word will be returned.
+
+The examples you provided can be tested as follows:
+
+```julia
+julia> find_max(["name", "of", "string"])
+"string"
+
+julia> find_max(["name", "enam", "game"])
+"enam"
+
+julia> find_max(["aaaaaaa", "bb", "cc"])
+"aaaaaaa"
+```
+
+The function correctly returns the expected output for each example.

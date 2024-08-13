@@ -1,0 +1,41 @@
+Here's the implementation of the `choose_num` function in Julia:
+
+```julia
+function choose_num(x::Int, y::Int)::Int
+    if x > y || (x % 2 != 0 && y % 2 != 0)
+        return -1
+    end
+    
+    if y % 2 == 0
+        return y
+    else
+        return y - 1
+    end
+end
+```
+
+Explanation:
+
+1. The function takes two integers `x` and `y` as input and returns an integer.
+
+2. We first check if `x` is greater than `y` or if both `x` and `y` are odd numbers. If either condition is true, it means there is no even number in the range `[x, y]`, so we return `-1`.
+
+3. If the above condition is not met, we proceed to find the biggest even number in the range.
+
+4. We check if `y` is even. If it is, then `y` itself is the biggest even number in the range, so we return `y`.
+
+5. If `y` is odd, then the biggest even number in the range would be `y - 1`, so we return `y - 1`.
+
+This implementation handles the cases where `x` is greater than `y` and when there is no even number in the range by returning `-1`. It also correctly returns the biggest even number within the range `[x, y]` inclusive.
+
+You can test the function with the provided examples:
+
+```julia
+julia> choose_num(12, 15)
+14
+
+julia> choose_num(13, 12)
+-1
+```
+
+The function will return `14` for the input `(12, 15)` since it is the biggest even number in the range `[12, 15]`. For the input `(13, 12)`, the function will return `-1` because `x` is greater than `y`, and there is no valid even number in the range.

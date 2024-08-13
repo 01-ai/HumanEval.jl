@@ -1,0 +1,20 @@
+```julia
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing,Int}}
+    negative_integers = filter(isnegative, xs)
+    positive_integers = filter(ispositive, xs)
+    
+    largest_negative = nothing
+    if !isempty(negative_integers)
+        largest_negative = maximum(negative_integers)
+    end
+    
+    smallest_positive = nothing
+    if !isempty(positive_integers)
+        smallest_positive = minimum(positive_integers)
+    end
+    
+    return (largest_negative, smallest_positive)
+end
+```
+
+This function first filters out the negative and positive integers from the input list. It then checks if each filtered list is empty. If not, it calculates the maximum of the negative integers (which will be the largest negative) and the minimum of the positive integers (which will be the smallest positive). Finally, it returns a tuple containing these values, or `nothing` if the respective list is empty.

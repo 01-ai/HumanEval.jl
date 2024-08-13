@@ -1,0 +1,32 @@
+```julia
+function min_path(grid::Vector{Vector{Int}}, k::Int)::Vector{Int}
+    N = length(grid)
+    # Define the directions for moving to neighboring cells
+    directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+    # Initialize the priority queue with tuples (path value, steps left, x, y, path)
+    pq = PriorityQueue()
+    for i in 1:N
+        for j in 1:N
+            # Push the initial state of each cell into the priority queue
+            push!(pq, (grid[i][j], k-1, i, j, [grid[i][j]]))
+        end
+    end
+    while !isempty(pq)
+        value, steps, x, y, path = pop!(pq)
+        if steps == 0
+            # If no steps left, we have found the minimum path
+            return path
+        end
+        for dx, dy in directions
+            nx, ny = x + dx, y + dy
+            if 1 <= nx <= N && 1 <= ny <= N
+                # Push the new state into the priority queue
+                push!(pq, (grid[nx][ny], steps-1, nx, ny, vcat(path, grid[nx][ny])))
+            end
+        end
+    end
+    return Int[]
+end
+```
+
+This function uses a priority queue to keep track of the minimum path at each step. It starts by pushing the initial state of each cell into the priority queue. Then, it repeatedly pops the minimum state from the queue, and pushes the new states of its neighboring cells into the queue. When the path length reaches `k`, the function returns the path as the answer.

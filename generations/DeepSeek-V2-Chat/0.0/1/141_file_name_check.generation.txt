@@ -1,0 +1,37 @@
+Here's the implementation of the `file_name_check` function in Julia:
+
+```julia
+function file_name_check(file_name::String)::String
+    # Check for exactly one dot
+    dot_count = count(c -> c == '.', file_name)
+    if dot_count != 1
+        return "No"
+    end
+
+    # Split the file name into parts before and after the dot
+    parts = split(file_name, ".")
+    prefix = parts[1]
+    suffix = parts[2]
+
+    # Check if the prefix is not empty and starts with a letter
+    if isempty(prefix) || !isletter(prefix[1])
+        return "No"
+    end
+
+    # Check if the suffix is one of the allowed extensions
+    allowed_suffixes = ["txt", "exe", "dll"]
+    if suffix ∉ allowed_suffixes
+        return "No"
+    end
+
+    # Check for no more than three digits in the prefix
+    digit_count = count(c -> isdigit(c), prefix)
+    if digit_count > 3
+        return "No"
+    end
+
+    return "Yes"
+end
+```
+
+This function checks all the specified conditions for a valid file name and returns "Yes" if all conditions are met, otherwise it returns "No".

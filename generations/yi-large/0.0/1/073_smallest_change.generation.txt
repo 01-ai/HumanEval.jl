@@ -1,0 +1,32 @@
+function smallest_change(xs::Vector{Int})::Int
+    n = length(xs)
+    palindrome = true
+    changes = 0
+
+    # Check if the array is already a palindrome
+    for i in 1:div(n, 2)
+        if xs[i] != xs[n - i + 1]
+            palindrome = false
+            break
+        end
+    end
+
+    # If the array is a palindrome, no changes are needed
+    if palindrome
+        return 0
+    end
+
+    # Otherwise, calculate the minimum number of changes needed
+    for i in 1:div(n, 2)
+        if xs[i] != xs[n - i + 1]
+            changes += 1
+        end
+    end
+
+    return changes
+end
+
+# Test cases
+println(smallest_change([1, 2, 3, 5, 4, 7, 9, 6])) # Expected: 4
+println(smallest_change([1, 2, 3, 4, 3, 2, 2])) # Expected: 1
+println(smallest_change([1, 2, 3, 2, 1])) # Expected: 0

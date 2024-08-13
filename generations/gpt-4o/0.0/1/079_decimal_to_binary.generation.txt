@@ -1,0 +1,28 @@
+Sure, let's implement the `decimal_to_binary` function in Julia. This function will convert a given decimal number to its binary representation and format it with the extra characters 'db' at the beginning and end of the string.
+
+Here's the implementation:
+
+```julia
+function decimal_to_binary(decimal::Int)::String
+    # Convert the decimal number to binary string
+    binary_str = string(bin(decimal))
+    
+    # Format the string with 'db' at the beginning and end
+    formatted_str = "db" * binary_str * "db"
+    
+    return formatted_str
+end
+```
+
+Let's break down the function:
+1. `bin(decimal)`: Converts the decimal number to its binary representation.
+2. `string(bin(decimal))`: Converts the binary representation to a string.
+3. `"db" * binary_str * "db"`: Concatenates 'db' at the beginning and end of the binary string.
+
+Now, let's test the function with the provided example:
+
+```julia
+println(decimal_to_binary(15))  # Output should be "db1111db"
+```
+
+This should work as expected.

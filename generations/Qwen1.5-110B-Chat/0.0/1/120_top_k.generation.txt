@@ -1,0 +1,12 @@
+```julia
+function top_k(xs::Vector{Int}, k::Int)::Vector{Int}
+    if k == 0
+        return Int[]  # Return an empty array if k is 0
+    elseif k >= length(xs)
+        return sort(xs, rev=true)  # Return the entire sorted array in descending order if k is equal or greater than the array length
+    else
+        return sort(xs, rev=true)[1:k]  # Return the top k numbers in descending order
+    end
+end
+```
+This Julia function `top_k` takes an array `xs` of integers and an integer `k`, and returns a new array containing the `k` largest elements from `xs` in descending order. It first checks if `k` is 0, in which case it returns an empty array. If `k` is as large as or larger than the length of `xs`, it sorts the entire array in descending order and returns it. Otherwise, it sorts the array in descending order and slices out the top `k` elements.

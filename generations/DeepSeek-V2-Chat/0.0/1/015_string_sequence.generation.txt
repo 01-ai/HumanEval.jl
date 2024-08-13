@@ -1,0 +1,9 @@
+Here's the implementation of the `string_sequence` function in Julia:
+
+```julia
+function string_sequence(n::Int)::String
+    return join(0:n, " ")
+end
+```
+
+This function uses the `join` function to concatenate the numbers from 0 to `n` with a space as the delimiter. The `0:n` range generates all the numbers from 0 to `n` inclusive.

@@ -1,0 +1,19 @@
+Sure, here is a possible implementation of the `remove_duplicates` function in Julia:
+
+```julia
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    result = Int[]
+    seen = Set{Int}()
+    for number in numbers
+        if number in seen
+            continue
+        else
+            push!(result, number)
+            push!(seen, number)
+        end
+    end
+    return result
+end
+```
+
+This function works by iterating over the input vector `numbers` and for each number, it checks if it has been seen before. If it has, it skips it. If it hasn't, it adds it to the `result` vector and to the `seen` set. The `seen` set is used to keep track of the numbers that have been encountered so far. Since a set in Julia does not allow duplicate elements, it is a good choice for this purpose. The function finally returns the `result` vector.

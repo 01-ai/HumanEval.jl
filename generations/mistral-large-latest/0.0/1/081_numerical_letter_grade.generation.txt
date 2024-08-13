@@ -1,0 +1,41 @@
+Sure, here is the Julia function that implements the given docstring:
+
+```julia
+function numerical_letter_grade(grades::Vector{Float64})::Vector{String}
+    letter_grades = Vector{String}(undef, length(grades))
+
+    for (i, grade) in enumerate(grades)
+        if grade > 4.0
+            letter_grades[i] = "A+"
+        elseif grade > 3.7
+            letter_grades[i] = "A"
+        elseif grade > 3.3
+            letter_grades[i] = "A-"
+        elseif grade > 3.0
+            letter_grades[i] = "B+"
+        elseif grade > 2.7
+            letter_grades[i] = "B"
+        elseif grade > 2.3
+            letter_grades[i] = "B-"
+        elseif grade > 2.0
+            letter_grades[i] = "C+"
+        elseif grade > 1.7
+            letter_grades[i] = "C"
+        elseif grade > 1.3
+            letter_grades[i] = "C-"
+        elseif grade > 1.0
+            letter_grades[i] = "D+"
+        elseif grade > 0.7
+            letter_grades[i] = "D"
+        elseif grade > 0.0
+            letter_grades[i] = "D-"
+        else
+            letter_grades[i] = "E"
+        end
+    end
+
+    return letter_grades
+end
+```
+
+This function takes a vector of Floating point numbers representing the GPA of students and returns a vector of String representing the corresponding letter grades. The function uses a for loop to iterate over each GPA in the input vector and uses if-elseif-else statements to determine the corresponding letter grade based on the given table. The resulting letter grades are stored in a vector which is returned at the end of the function.

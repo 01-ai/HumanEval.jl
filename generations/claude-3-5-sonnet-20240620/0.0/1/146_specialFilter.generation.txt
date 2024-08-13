@@ -1,0 +1,53 @@
+Here's a Julia function that implements the specified logic:
+
+```julia
+function specialFilter(nums::Vector{Int})::Int
+    count = 0
+    for num in nums
+        if num > 10
+            str_num = string(abs(num))
+            first_digit = parse(Int, str_num[1])
+            last_digit = parse(Int, str_num[end])
+            if isOdd(first_digit) && isOdd(last_digit)
+                count += 1
+            end
+        end
+    end
+    return count
+end
+
+function isOdd(n::Int)::Bool
+    return n % 2 != 0
+end
+```
+
+Let's break down the `specialFilter` function:
+
+1. We initialize a `count` variable to keep track of the numbers that meet our criteria.
+
+2. We iterate through each number in the input array `nums`.
+
+3. For each number, we first check if it's greater than 10.
+
+4. If it is, we convert the absolute value of the number to a string. We use the absolute value to handle negative numbers correctly.
+
+5. We extract the first and last characters of the string and convert them back to integers.
+
+6. We use a helper function `isOdd` to check if both the first and last digits are odd.
+
+7. If all conditions are met (number > 10, first digit odd, last digit odd), we increment our count.
+
+8. After checking all numbers, we return the final count.
+
+The `isOdd` helper function simply checks if a number is odd by using the modulo operator.
+
+This function will correctly handle positive and negative numbers, as well as single-digit numbers (which will always return false for the "greater than 10" condition).
+
+You can test the function with the provided examples:
+
+```julia
+println(specialFilter([15, -73, 14, -15]))  # Output: 1
+println(specialFilter([33, -2, -3, 45, 21, 109]))  # Output: 2
+```
+
+These should produce the expected outputs of 1 and 2 respectively.

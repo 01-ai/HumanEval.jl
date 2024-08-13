@@ -1,0 +1,35 @@
+Here's the implementation of the `triangle_area3` function in Julia:
+
+```julia
+"""
+    triangle_area3(a::Number, b::Number, c::Number)::Number
+
+Given the lengths of the three sides of a triangle. Return the area of the
+triangle rounded to 2 decimal points if the three sides form a valid triangle.
+Otherwise return -1 Three sides make a valid triangle when the sum of any two
+sides is greater than the third side.
+
+# Examples
+
+```jldoctest
+julia> triangle_area3(3, 4, 5)
+6.0
+
+julia> triangle_area3(1, 2, 10)
+-1
+```
+"""
+function triangle_area3(a::Number, b::Number, c::Number)::Number
+    # Check if the sides form a valid triangle
+    if a + b > c && a + c > b && b + c > a
+        # Use Heron's formula to calculate the area
+        s = (a + b + c) / 2
+        area = sqrt(s * (s - a) * (s - b) * (s - c))
+        return round(area, digits=2)
+    else
+        return -1
+    end
+end
+```
+
+This function first checks if the given sides can form a valid triangle by ensuring that the sum of any two sides is greater than the third side. If the sides form a valid triangle, it calculates the area using Heron's formula and rounds the result to two decimal points. If the sides do not form a valid triangle, it returns -1.

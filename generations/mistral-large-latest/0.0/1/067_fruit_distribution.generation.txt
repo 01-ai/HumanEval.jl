@@ -1,0 +1,14 @@
+Sure, here is the Julia function based on the given docstring:
+
+```julia
+function fruit_distribution(s::String, n::Int)::Int
+    # Extract the number of apples and oranges from the string
+    apples, oranges = parse.(Int, split(s, r" apples and "))
+
+    # Calculate the number of mangoes
+    mangoes = n - apples - oranges
+
+    return mangoes
+end
+```
+This function first uses the `split` function to split the input string `s` into two parts: the number of apples and the number of oranges. The `parse` function is then used to convert these string representations of numbers into integers. Finally, the function calculates the number of mangoes by subtracting the number of apples and oranges from the total number of fruits `n`, and returns this result.

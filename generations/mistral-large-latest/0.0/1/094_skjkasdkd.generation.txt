@@ -1,0 +1,32 @@
+Sure, I can help with that. Here's a Julia function that should do what you're asking for. It first checks for prime numbers in the given vector, then finds the largest prime, and finally calculates the sum of its digits.
+
+```julia
+function isprime(n::Int)
+    if n < 2
+        return false
+    elseif n < 4
+        return true
+    elseif n % 2 == 0
+        return false
+    else
+        for d in 3:2:isqrt(n)
+            if n % d == 0
+                return false
+            end
+        end
+        return true
+    end
+end
+
+function skjkasdkd(xs::Vector{Int})::Int
+    largest_prime = 0
+    for x in xs
+        if isprime(x) && x > largest_prime
+            largest_prime = x
+        end
+    end
+    return sum(digits(largest_prime))
+end
+```
+
+This function first defines a helper function `isprime` to check if a number is prime. Then, in the main function `skjkasdkd`, it iterates over the input vector `xs`, checking each number to see if it's prime and if it's larger than the current largest prime found. If it is, it updates `largest_prime`. Finally, it returns the sum of the digits of `largest_prime` using Julia's built-in `digits` function.

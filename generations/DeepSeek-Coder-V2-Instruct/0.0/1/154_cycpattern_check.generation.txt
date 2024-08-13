@@ -1,0 +1,16 @@
+ Here's the implementation of the `cycpattern_check` function in Julia:
+
+```julia
+function cycpattern_check(a::String, b::String)::Bool
+    len_b = length(b)
+    for i in 1:len_b
+        rotated_b = b[i:end] * b[1:i-1]
+        if occursin(rotated_b, a)
+            return true
+        end
+    end
+    return false
+end
+```
+
+This function checks if any rotation of the second string `b` is a substring of the first string `a`. It does this by generating all possible rotations of `b` and checking if any of them are present in `a`. If any rotation is found in `a`, the function returns `true`; otherwise, it returns `false`.

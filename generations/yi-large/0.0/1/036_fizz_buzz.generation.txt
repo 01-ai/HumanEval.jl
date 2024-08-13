@@ -1,0 +1,14 @@
+function fizz_buzz(n::Int)
+    count = 0
+    for i in 1:n-1
+        if i % 11 == 0 || i % 13 == 0
+            count += sum(x -> x == '7', string(i))
+        end
+    end
+    return count
+end
+
+# Test cases
+for n in [50, 78, 79]
+    println("fizz_buzz($n) = $(fizz_buzz(n))")
+end

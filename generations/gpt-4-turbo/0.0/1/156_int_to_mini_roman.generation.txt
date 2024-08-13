@@ -1,0 +1,21 @@
+```julia
+function int_to_mini_roman(number::Int)::String
+    # Define Roman numeral mappings
+    values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    numerals = ["m", "cm", "d", "cd", "c", "xc", "l", "xl", "x", "ix", "v", "iv", "i"]
+    
+    # Resultant Roman numeral string
+    roman = ""
+    
+    # Convert integer to Roman numeral
+    for (value, numeral) in zip(values, numerals)
+        count = number ÷ value
+        number %= value
+        roman *= repeat(numeral, count)
+    end
+    
+    return roman
+end
+```
+
+This function `int_to_mini_roman` takes an integer and converts it to its Roman numeral representation in lowercase. It uses arrays to map the integer values to their corresponding Roman numerals. The function iterates through these mappings, determining how many times each Roman numeral fits into the number, appending the appropriate numeral to the result string, and reducing the number accordingly. The result is a string of Roman numerals in lowercase.

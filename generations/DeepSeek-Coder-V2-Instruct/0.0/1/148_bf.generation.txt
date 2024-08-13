@@ -1,0 +1,22 @@
+ Here's the implementation of the `bf` function in Julia:
+
+```julia
+function bf(planet1::String, planet2::String)::NTuple
+    planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+    
+    if !(planet1 in planets) || !(planet2 in planets)
+        return ()
+    end
+    
+    index1 = findfirst(==(planet1), planets)
+    index2 = findfirst(==(planet2), planets)
+    
+    if index1 > index2
+        index1, index2 = index2, index1
+    end
+    
+    return Tuple(planets[index1+1:index2-1])
+end
+```
+
+This function first checks if both `planet1` and `planet2` are valid planet names. If either is not, it returns an empty tuple. It then finds the indices of the two planets in the list of planets. If `planet1` is further out than `planet2`, it swaps their indices to ensure the range is correctly calculated. Finally, it returns a tuple of the planets between the two given planets, sorted by their proximity to the sun.

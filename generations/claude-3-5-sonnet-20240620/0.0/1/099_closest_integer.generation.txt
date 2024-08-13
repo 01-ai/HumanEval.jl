@@ -1,0 +1,55 @@
+Here's a Julia function that implements the `closest_integer` functionality as described:
+
+```julia
+function closest_integer(value::String)::Int
+    # Convert the string to a float
+    num = parse(Float64, value)
+    
+    # Get the integer part and fractional part
+    int_part = trunc(Int, num)
+    frac_part = abs(num - int_part)
+    
+    if frac_part < 0.5
+        # If fractional part is less than 0.5, return the integer part
+        return int_part
+    elseif frac_part > 0.5
+        # If fractional part is greater than 0.5, round away from zero
+        return num > 0 ? int_part + 1 : int_part - 1
+    else
+        # If fractional part is exactly 0.5, round away from zero
+        return num >= 0 ? int_part + 1 : int_part - 1
+    end
+end
+```
+
+This function does the following:
+
+1. It first converts the input string to a `Float64` using `parse(Float64, value)`.
+
+2. It then separates the integer part and the fractional part of the number.
+
+3. If the fractional part is less than 0.5, it returns the integer part.
+
+4. If the fractional part is greater than 0.5, it rounds away from zero (up for positive numbers, down for negative numbers).
+
+5. If the fractional part is exactly 0.5, it also rounds away from zero, following the specified rule.
+
+This function will work correctly for both positive and negative numbers, and it handles the special case of numbers equidistant from two integers by rounding away from zero.
+
+You can test it with the examples provided:
+
+```julia
+julia> closest_integer("10")
+10
+
+julia> closest_integer("15.3")
+15
+
+julia> closest_integer("14.5")
+15
+
+julia> closest_integer("-14.5")
+-15
+```
+
+This implementation satisfies all the requirements, including the special note about rounding away from zero for numbers equidistant from two integers.

@@ -1,0 +1,30 @@
+ Certainly! Below is the implementation of the `decimal_to_binary` function in Julia based on the provided docstring:
+
+```julia
+"""
+    decimal_to_binary(decimal::Int)::String
+
+You will be given a number in decimal form and your task is to convert it to
+binary format. The function should return a string, with each character
+representing a binary number. Each character in the string will be '0' or '1'.
+
+There will be an extra couple of characters 'db' at the beginning and at the end
+of the string. The extra characters are there to help with the format.
+
+# Examples
+
+```jldoctest
+julia> decimal_to_binary(15)
+"db1111db"
+```
+"""
+function decimal_to_binary(decimal::Int)::String
+    binary_str = string(decimal, base=2)
+    return "db" * binary_str * "db"
+end
+
+# Example usage
+println(decimal_to_binary(15))  # Output: "db1111db"
+```
+
+This function converts a given decimal number to its binary representation and then formats it with the extra characters 'db' at the beginning and the end of the string. The `string` function with the `base=2` argument is used to convert the decimal number to a binary string.

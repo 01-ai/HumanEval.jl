@@ -1,0 +1,47 @@
+Here's a solution to the problem:
+
+```julia
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    result = Int[]
+    for x in xs
+        if all(isodd, digits(x))
+            push!(result, x)
+        end
+    end
+    sort(result)
+end
+```
+
+Explanation:
+
+1. We initialize an empty vector `result` to store the elements that satisfy the condition.
+
+2. We iterate over each element `x` in the input vector `xs`.
+
+3. For each element `x`, we use the `digits` function to obtain a vector of its digits. The `digits` function returns the digits of a number in reverse order.
+
+4. We use the `all` function with the `isodd` function as the predicate to check if all the digits of `x` are odd. The `isodd` function returns `true` if a number is odd and `false` otherwise.
+
+5. If all the digits of `x` are odd, we append `x` to the `result` vector using the `push!` function.
+
+6. After iterating over all the elements in `xs`, we use the `sort` function to sort the `result` vector in increasing order.
+
+7. Finally, we return the sorted `result` vector.
+
+The time complexity of this solution is O(n log n), where n is the number of elements in the input vector `xs`. The space complexity is O(n) to store the `result` vector.
+
+The solution passes the given examples:
+
+```jldoctest
+julia> unique_digits([15, 33, 1422, 1])
+3-element Vector{Int64}:
+  1
+ 15
+ 33
+
+julia> unique_digits([152, 313, 1422, 10])
+1-element Vector{Int64}:
+ 313
+```
+
+I hope this helps! Let me know if you have any further questions.

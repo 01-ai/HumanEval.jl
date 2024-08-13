@@ -1,0 +1,40 @@
+```julia
+function vowels_count(s::String)::Int
+    vowels = "aeiou"
+    count = 0
+    # Check each character in the string
+    for char in s
+        # If the character is a vowel, increment the count
+        if lowercase(char) in vowels
+            count += 1
+        end
+    end
+    # Check if the last character is 'y' or 'Y', if so, increment the count
+    if endswith(s, 'y') || endswith(s, 'Y')
+        count += 1
+    end
+    return count
+end
+```
+
+However, this solution counts 'y' or 'Y' as a vowel regardless of its position in the word, which contradicts the problem statement. The correct solution should only count 'y' or 'Y' as a vowel if it is at the end of the word. Here is the corrected solution:
+
+```julia
+function vowels_count(s::String)::Int
+    vowels = "aeiou"
+    count = 0
+    # Check each character in the string except the last one
+    for char in s[1:end-1]
+        # If the character is a vowel, increment the count
+        if lowercase(char) in vowels
+            count += 1
+        end
+    end
+    # Check if the last character is a vowel or 'y'/'Y'
+    last_char = s[end]
+    if lowercase(last_char) in vowels || last_char == 'y' || last_char == 'Y'
+        count += 1
+    end
+    return count
+end
+```

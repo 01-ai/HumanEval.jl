@@ -1,0 +1,42 @@
+Here's a Julia function that converts a decimal number to binary format with the specified 'db' prefix and suffix:
+
+```julia
+function decimal_to_binary(decimal::Int)::String
+    if decimal == 0
+        return "db0db"
+    end
+
+    binary = ""
+    num = abs(decimal)
+
+    while num > 0
+        binary = string(num % 2) * binary
+        num = num ÷ 2
+    end
+
+    return "db" * binary * "db"
+end
+```
+
+This function works as follows:
+
+1. First, we handle the special case where the input is 0. In this case, we return "db0db" directly.
+
+2. We initialize an empty string `binary` to store the binary representation.
+
+3. We take the absolute value of the input `decimal` to handle negative numbers (though the problem doesn't specify how to handle negative numbers, this ensures the function doesn't crash on negative inputs).
+
+4. We enter a loop that continues as long as `num` is greater than 0:
+   - We append the least significant bit (num % 2) to the left side of our binary string.
+   - We integer-divide num by 2 to move to the next bit.
+
+5. Finally, we return the binary string with "db" added to both the beginning and end.
+
+You can test this function with the example provided:
+
+```julia
+julia> decimal_to_binary(15)
+"db1111db"
+```
+
+This function will work for any non-negative integer input. If you need to handle negative numbers in a specific way, you would need to add that logic to the function.

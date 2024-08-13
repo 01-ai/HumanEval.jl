@@ -1,0 +1,28 @@
+Here is a simple implementation of the Fibonacci function in Julia:
+
+```julia
+function fib(n::Int)::Int
+    n < 0 && return throw(DomainError(n, "Fibonacci number not defined for negative integers"))
+    n <= 2 ? return 1
+    a, b = 1, 1
+    for i in 3:n
+        a, b = b, a + b
+    end
+    return b
+end
+```
+
+This function calculates the n-th Fibonacci number using an iterative approach. It first checks if the input is a non-negative integer. If the input is less than or equal to 2, it returns 1 as the first two Fibonacci numbers are 1. Otherwise, it iterates from 3 to n, updating the two most recent Fibonacci numbers at each step. Finally, it returns the n-th Fibonacci number.
+
+You can test this function with the examples provided in the doc string:
+
+```julia
+julia> fib(10)
+55
+
+julia> fib(1)
+1
+
+julia> fib(8)
+21
+```

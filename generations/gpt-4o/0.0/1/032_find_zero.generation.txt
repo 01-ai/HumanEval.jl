@@ -1,0 +1,42 @@
+To implement the `find_zero` function, we can use a numerical method to find the root of the polynomial. One common method for finding roots of a polynomial is the Newton-Raphson method. This method requires the derivative of the polynomial, which we can compute from the coefficients.
+
+Here's the implementation of the `find_zero` function using the Newton-Raphson method:
+
+```julia
+# Function to evaluate polynomial at point x
+function poly(xs::Vector, x::Float64)
+    return sum(coeff * (x^(i - 1)) for (i, coeff) in enumerate(xs))
+end
+
+# Function to evaluate the derivative of the polynomial at point x
+function poly_derivative(xs::Vector, x::Float64)
+    return sum((i - 1) * coeff * (x^(i - 2)) for (i, coeff) in enumerate(xs) if i > 1)
+end
+
+# Function to find a zero of the polynomial using Newton-Raphson method
+function find_zero(xs::Vector{Int}; tol::Float64 = 1e-7, max_iter::Int = 1000)
+    x = 0.0  # Initial guess
+    for iter in 1:max_iter
+        f_x = poly(xs, x)
+        f_prime_x = poly_derivative(xs, x)
+        if abs(f_prime_x) < tol
+            error("Derivative too small; Newton-Raphson method fails.")
+        end
+        x_new = x - f_x / f_prime_x
+        if abs(x_new - x) < tol
+            return x_new
+        end
+        x = x_new
+    end
+    error("Maximum iterations reached; Newton-Raphson method fails.")
+end
+
+# Examples
+println(round(find_zero([1, 2]), digits = 1))  # f(x) = 1 + 2x
+println(round(find_zero([-6, 11, -6, 1]), digits = 1))  # (x - 1) * (x - 2) * (x - 3)
+```
+
+### Explanation:
+1. **poly function**: Evaluates the polynomial at a given point `x`.
+2. **poly_derivative function**: Evaluates the derivative of the polynomial at a given point `x`.
+3. **find_zero function**: Uses the Newton-Raphson method to find a root of the polynomial. It starts with an initial guess (`x = 

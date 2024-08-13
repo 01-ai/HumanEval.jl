@@ -1,0 +1,21 @@
+```julia
+function count_upper(s::String)::Int
+    # Define the set of uppercase vowels
+    uppercase_vowels = Set(['A', 'E', 'I', 'O', 'U'])
+    
+    # Initialize a counter for uppercase vowels at odd indices
+    count = 0
+    
+    # Iterate over the string, considering only odd indices (1-based in Julia)
+    for i in 1:2:length(s)
+        # Check if the character at the odd index is an uppercase vowel
+        if s[i] in uppercase_vowels
+            count += 1
+        end
+    end
+    
+    return count
+end
+```
+
+This function `count_upper` iterates through the string `s`, checking characters at odd indices (1, 3, 5, ...). It increments the counter if the character is an uppercase vowel, which is determined by membership in the set `uppercase_vowels`. The function finally returns the count of such characters.

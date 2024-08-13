@@ -1,0 +1,9 @@
+Here is the Julia function that implements the functionality described in the doc string:
+
+```julia
+function filter_by_substring(strings::Vector{String}, substring::AbstractString)::Vector{String}
+    return filter(s -> occursin(substring, s), strings)
+end
+```
+
+This function uses the `filter` function from Julia's standard library to create a new array that only contains elements from the input `strings` array for which the predicate function returns `true`. In this case, the predicate function is `s -> occursin(substring, s)`, which checks if the `substring` occurs within each string `s` in the input array.

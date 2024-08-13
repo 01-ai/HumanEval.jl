@@ -1,0 +1,64 @@
+Here's a Julia function that implements the required behavior:
+
+```julia
+function generate_integers(a::Int, b::Int)::Vector{Int}
+    # Ensure a is the smaller number
+    start, stop = minmax(a, b)
+    
+    # Initialize an empty vector to store the result
+    result = Int[]
+    
+    # Iterate through the range and add even digits
+    for num in start:stop
+        if 0 <= num <= 9 && iseven(num)
+            push!(result, num)
+        end
+    end
+    
+    # Sort the result in ascending order
+    sort!(result)
+    
+    return result
+end
+```
+
+Let's break down the function:
+
+1. We use `minmax(a, b)` to ensure that we always iterate from the smaller number to the larger one, regardless of the order of input.
+
+2. We initialize an empty vector `result` to store the even digits.
+
+3. We iterate through the range from `start` to `stop`.
+
+4. For each number in the range, we check two conditions:
+   - The number is between 0 and 9 (inclusive), as we're only interested in single digits.
+   - The number is even (using the `iseven` function).
+
+5. If both conditions are met, we add the number to our `result` vector.
+
+6. After the iteration, we sort the `result` vector in ascending order.
+
+7. Finally, we return the sorted `result` vector.
+
+This implementation will work correctly for the given examples:
+
+```julia
+julia> generate_integers(2, 8)
+4-element Vector{Int64}:
+ 2
+ 4
+ 6
+ 8
+
+julia> generate_integers(8, 2)
+4-element Vector{Int64}:
+ 2
+ 4
+ 6
+ 8
+
+julia> generate_integers(10, 14)
+Int64[]
+```
+
+The function returns an empty vector for the last example because there are no even single-digit numbers between 10 and 14.

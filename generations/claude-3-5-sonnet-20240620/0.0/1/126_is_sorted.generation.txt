@@ -1,0 +1,50 @@
+Here's a Julia function that implements the `is_sorted` functionality as described:
+
+```julia
+function is_sorted(xs::Vector{Int})::Bool
+    if length(xs) <= 1
+        return true
+    end
+
+    prev = xs[1]
+    count = 1
+
+    for i in 2:length(xs)
+        if xs[i] < prev
+            return false
+        elseif xs[i] == prev
+            count += 1
+            if count > 2
+                return false
+            end
+        else
+            prev = xs[i]
+            count = 1
+        end
+    end
+
+    return true
+end
+```
+
+This function does the following:
+
+1. If the input vector has 0 or 1 elements, it's considered sorted, so we return `true`.
+
+2. We initialize `prev` with the first element and `count` to 1.
+
+3. We iterate through the rest of the vector starting from the second element:
+
+   - If the current element is less than the previous one, the list is not sorted, so we return `false`.
+   
+   - If the current element is equal to the previous one, we increment the `count`. If `count` becomes greater than 2, we have more than two duplicates, so we return `false`.
+   
+   - If the current element is greater than the previous one, we update `prev` to the current element and reset `count` to 1.
+
+4. If we make it through the entire list without returning `false`, the list is sorted and has at most two duplicates of any number, so we return `true`.
+
+This implementation satisfies all the given requirements:
+- It checks if the numbers are in ascending order.
+- It returns `false` if there are more than two duplicates of any number.
+- It assumes no negative numbers and only integers (as per the input type `Vector{Int}`).
+- It correctly handles all the provided example cases.

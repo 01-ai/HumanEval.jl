@@ -1,0 +1,16 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function count_upper(s::String)::Int
+    count = 0
+    vowels = "AEIOU"
+    for (i, char) in enumerate(s)
+        if i % 2 != 0 && char in vowels && isuppercase(char)
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function iterates over each character in the string `s`. If the index of the character is odd, the character is an uppercase vowel, it increments the count. The function returns the count after iterating over all characters.

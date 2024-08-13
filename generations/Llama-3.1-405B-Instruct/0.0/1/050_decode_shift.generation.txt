@@ -1,0 +1,25 @@
+Here is the implementation of the decode function in Julia:
+
+```julia
+"""
+Takes as input string encoded with `encode_shift` function. Returns decoded string.
+"""
+function decode_shift(s::String)::String
+    join(((x - 'a' - 5 + 26) % 26 + 'a' for x in s))
+end
+```
+
+This function works similarly to the `encode_shift` function, but instead of adding 5 to the character code, it subtracts 5. The addition of 26 before taking the modulus ensures that the result is always non-negative, even if the character code is less than 5.
+
+You can test these functions with a sample string, like this:
+
+```julia
+s = "hello"
+encoded = encode_shift(s)
+println("Encoded: ", encoded)
+
+decoded = decode_shift(encoded)
+println("Decoded: ", decoded)
+```
+
+This should output the encoded string, and then the original string after decoding.

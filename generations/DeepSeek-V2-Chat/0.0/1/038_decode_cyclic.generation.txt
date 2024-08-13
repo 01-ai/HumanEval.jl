@@ -1,0 +1,16 @@
+To implement the `decode_cyclic` function, we need to reverse the encoding process done by `encode_cyclic`. The `encode_cyclic` function cycles groups of three characters by rearranging them as `x[2] * x[3] * x[1]`. Therefore, to decode, we need to reverse this process by rearranging each group of three characters back to their original order.
+
+Here's the implementation of the `decode_cyclic` function:
+
+```julia
+function decode_cyclic(s::String)::String
+    join((x[3] * x[1] * x[2] for x in Iterators.partition(s, 3)))
+end
+```
+
+This function works as follows:
+1. It partitions the input string `s` into groups of three characters using `Iterators.partition(s, 3)`.
+2. For each group of three characters `x`, it rearranges them back to their original order `x[3] * x[1] * x[2]`.
+3. It joins these rearranged groups back into a single string using `join`.
+
+This ensures that the encoded string is correctly decoded back to its original form.

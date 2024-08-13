@@ -1,0 +1,52 @@
+Here's a Julia function that implements the `how_many_times` functionality as described:
+
+```julia
+function how_many_times(s::String, sub_s::String)::Int
+    if isempty(sub_s)
+        return 0
+    end
+    
+    count = 0
+    i = 1
+    
+    while i <= length(s)
+        j = findfirst(sub_s, s[i:end])
+        if j === nothing
+            break
+        end
+        count += 1
+        i += j[1]
+    end
+    
+    return count
+end
+```
+
+This function does the following:
+
+1. First, it checks if the substring `sub_s` is empty. If it is, it returns 0 since an empty string is not considered a valid substring in this context.
+
+2. It initializes a counter `count` to keep track of the number of occurrences.
+
+3. It uses a while loop to iterate through the string:
+   - It uses `findfirst` to find the next occurrence of `sub_s` in the remaining part of `s`.
+   - If `findfirst` returns `nothing`, it means no more occurrences were found, so we break the loop.
+   - If an occurrence is found, we increment the `count`.
+   - We move the index `i` forward by the start position of the found substring. This allows for overlapping cases.
+
+4. Finally, it returns the total count.
+
+This implementation correctly handles the examples provided:
+
+```julia
+julia> how_many_times("", "a")
+0
+
+julia> how_many_times("aaa", "a")
+3
+
+julia> how_many_times("aaaa", "aa")
+3
+```
+
+It also correctly handles overlapping cases, such as finding "aa" in "aaaa" three times (positions 1-2, 2-3, and 3-4).

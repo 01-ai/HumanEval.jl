@@ -1,0 +1,22 @@
+```julia
+function how_many_times(s::String, sub_s::String)::Int
+    if isempty(sub_s)
+        return 0
+    end
+    
+    count = 0
+    pos = 1
+    while true
+        found_at = findnext(sub_s, s, pos)
+        if found_at === nothing
+            break
+        end
+        count += 1
+        pos = first(found_at) + 1
+    end
+    
+    return count
+end
+```
+
+This function `how_many_times` takes two strings `s` and `sub_s` as input and returns the number of times the substring `sub_s` appears in the string `s`, including overlapping occurrences. The function uses `findnext` to locate the next occurrence of `sub_s` starting from the current position `pos`. After each find, it increments the position by 1 to allow for overlapping matches. The loop continues until `findnext` returns `nothing`, indicating no further matches are found.

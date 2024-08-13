@@ -1,0 +1,16 @@
+```julia
+function reverse_string(s::String)::String
+    # Check if the string contains any letters
+    contains_letters = any(isletter, s)
+    
+    # If the string contains letters, transform each character
+    if contains_letters
+        return map(c -> isletter(c) ? (islower(c) ? uppercase(c) : lowercase(c)) : c, s) |> join
+    else
+        # If no letters, reverse the string
+        return reverse(s)
+    end
+end
+```
+
+This function first checks if the string contains any letters using the `any` function combined with `isletter`. If it contains letters, it maps over each character of the string, changing the case of letters and leaving non-letter characters unchanged. If the string contains no letters, it simply reverses the string. The `map` function is used to apply the transformation, and `join` is used to convert the resulting array of characters back into a string.

@@ -1,0 +1,17 @@
+```julia
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    d = 2
+    while d * d ≤ n
+        while n % d == 0
+            push!(factors, d)
+            n = n ÷ d
+        end
+        d = d + 1
+    end
+    if n > 1
+        push!(factors, n)
+    end
+    return factors
+end
+```

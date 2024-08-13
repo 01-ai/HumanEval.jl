@@ -1,0 +1,14 @@
+function check_dict_case(d::Dict{String})::Bool
+    if isempty(d)
+        return false
+    end
+
+    # Check if all keys are lowercase
+    all_lower = all(key -> all(islowercase, key), keys(d))
+
+    # Check if all keys are uppercase
+    all_upper = all(key -> all(isuppercase, key), keys(d))
+
+    # Return true if all keys are either all lowercase or all uppercase
+    return all_lower || all_upper
+end

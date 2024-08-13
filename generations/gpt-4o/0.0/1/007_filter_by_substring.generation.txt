@@ -1,0 +1,9 @@
+```julia
+function filter_by_substring(strings::Vector{String}, substring::AbstractString)::Vector{String}
+    return filter(s -> occursin(substring, s), strings)
+end
+
+# Examples
+println(filter_by_substring(String[], "a"))  # String[]
+println(filter_by_substring(["abc", "bacd", "cde", "array"], "a"))  # ["abc", "bacd", "array"]
+```

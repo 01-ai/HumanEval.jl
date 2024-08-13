@@ -1,0 +1,19 @@
+Sure, I can help with that. Here's a Julia function that computes the n-th element of the fib4 number sequence iteratively, as recursion can lead to performance issues for large inputs:
+
+```julia
+function fib4(n::Int)::Int
+    if n < 0
+        error("Input must be a non-negative integer")
+    elseif n <= 3
+        return [0, 0, 2, 0][n+1]
+    else
+        a, b, c, d = 0, 0, 2, 0
+        for _ in 4:n
+            a, b, c, d = b, c, d, a + b + c + d
+        end
+        return d
+    end
+end
+```
+
+This function first checks if the input is a non-negative integer. If it's not, it raises an error. If the input is less than or equal to 3, it returns the corresponding value from the initial sequence. For larger inputs, it uses a loop to compute the n-th element iteratively, keeping track of the last four elements in the sequence. The loop updates these four elements in each iteration, and finally returns the n-th element.

@@ -1,0 +1,12 @@
+```julia
+function truncate_number(number::Float64)::Float64
+    # Get the integer part of the number
+    integer_part = floor(number)
+    # Subtract the integer part from the original number to get the decimal part
+    decimal_part = number - integer_part
+    return decimal_part
+end
+
+# Example usage
+println(truncate_number(3.5))  # Output should be 0.5
+```

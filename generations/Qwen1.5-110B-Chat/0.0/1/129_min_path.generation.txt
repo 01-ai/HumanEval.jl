@@ -1,0 +1,44 @@
+```julia
+function min_path(grid::Vector{Vector{Int}}, k::Int)::Vector{Int}
+    N = length(grid)
+    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)] # right, left, down, up
+
+    function dfs(row, col, k, path)
+        if k == 0
+            return path
+        end
+        min_path = Inf
+        min_seq = []
+        for dir in directions
+            new_row, new_col = row + dir[1], col + dir[2]
+            if 1 <= new_row <= N && 1 <= new_col <= N
+                new_path = push!(path, grid[new_row][new_col])
+                current_seq = dfs(new_row, new_col, k - 1, new_path)
+                if length(current_seq) < length(min_seq) || (length(current_seq) == length(min_seq) && current_seq < min_seq)
+                    min_seq = current_seq
+                    min_path = sum(min_seq)
+                end
+                pop!(new_path) # backtrack
+            end
+        end
+        return min_seq
+    end
+
+    # Find the minimum starting point
+    min_start = Inf
+    start_path = []
+    for i in 1:N
+        for j in 1:N
+            current_path = dfs(i, j, k - 1, [grid[i][j]])
+            if length(current_path) == k && (sum(current_path) < min_start || (sum(current_path) == min_start && current_path < start_path))
+                min_start = sum(current_path)
+                start_path = current_path
+            end
+        end
+    end
+
+    return start_path
+end
+```
+
+This implementation uses a depth-first search (DFS) approach to explore all possible paths of length `k` starting from each cell in the grid. It recursively explores the grid, keeping track of the current path and backtracking when necessary. The function maintains a `min_seq` to store the lexicographically smallest path found so far and updates it whenever a smaller path is discovered. The solution ensures that the path is unique and lexicographically smallest as per the given conditions.

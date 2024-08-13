@@ -1,0 +1,18 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function double_the_difference(xs::Vector)
+    # Filter out non-integers, negative numbers and even numbers
+    filtered_xs = filter(x -> (x % 1 == 0) && (x > 0) && (x % 2 != 0), xs)
+
+    # If the filtered list is empty, return 0
+    if isempty(filtered_xs)
+        return 0
+    end
+
+    # Return the sum of squares of the filtered numbers
+    return sum(x -> x^2, filtered_xs)
+end
+```
+
+This function first filters out the numbers that are not integers, negative, or even. Then, if the filtered list is empty, it returns 0. Otherwise, it returns the sum of the squares of the remaining numbers.

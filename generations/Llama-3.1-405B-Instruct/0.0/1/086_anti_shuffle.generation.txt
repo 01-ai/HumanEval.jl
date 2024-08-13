@@ -1,0 +1,26 @@
+Here is the Julia function that implements the `anti_shuffle` functionality based on the provided docstring:
+```julia
+function anti_shuffle(s::String)::String
+    words = split(s, ' ')
+    sorted_words = [join(sort(collect(word))) for word in words]
+    return join(sorted_words, ' ')
+end
+```
+Here's a brief explanation of the implementation:
+
+1. Split the input string `s` into individual words using the `split` function with a space character `' '` as the delimiter.
+2. Use a list comprehension to iterate over each word in the `words` array. For each word, collect its characters into an array using `collect`, sort the array using `sort`, and then join the sorted characters back into a string using `join`.
+3. Join the sorted words back into a single string using `join` with a space character `' '` as the delimiter.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> anti_shuffle("Hi")
+"Hi"
+
+julia> anti_shuffle("hello")
+"ehllo"
+
+julia> anti_shuffle("Hello World!!!")
+"Hello !!!Wdlor"
+```
+I hope this implementation meets your requirements! Let me know if you have any further questions or need any modifications.

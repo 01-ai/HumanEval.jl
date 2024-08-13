@@ -1,0 +1,21 @@
+```julia
+function longest(xs::Vector{String})::Union{Nothing, String}
+    if isempty(xs)
+        return nothing
+    end
+    
+    # Initialize the longest string with the first element
+    longest_string = xs[1]
+    
+    # Iterate through the list to find the longest string
+    for x in xs
+        if length(x) > length(longest_string)
+            longest_string = x
+        end
+    end
+    
+    return longest_string
+end
+```
+
+This function checks if the input vector is empty and returns `nothing` if true. It initializes the longest string with the first element of the vector. Then, it iterates through the vector, updating the longest string if a longer string is found. The function finally returns the longest string found.

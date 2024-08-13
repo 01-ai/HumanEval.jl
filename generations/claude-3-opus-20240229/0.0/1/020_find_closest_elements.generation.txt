@@ -1,0 +1,45 @@
+Here's an implementation of the `find_closest_elements` function in Julia:
+
+```julia
+function find_closest_elements(numbers::Vector{Float64})::Tuple{Float64, Float64}
+    n = length(numbers)
+    if n < 2
+        throw(ArgumentError("The list must contain at least two numbers."))
+    end
+
+    min_diff = Inf
+    closest_pair = (0.0, 0.0)
+
+    for i in 1:n-1
+        for j in i+1:n
+            diff = abs(numbers[i] - numbers[j])
+            if diff < min_diff
+                min_diff = diff
+                closest_pair = (min(numbers[i], numbers[j]), max(numbers[i], numbers[j]))
+            end
+        end
+    end
+
+    return closest_pair
+end
+```
+
+Explanation:
+
+1. We first check if the length of the input vector `numbers` is less than 2. If so, we throw an `ArgumentError` with an appropriate message.
+
+2. We initialize `min_diff` to `Inf` (infinity) to store the minimum difference between any two numbers, and `closest_pair` to `(0.0, 0.0)` as a placeholder for the closest pair of numbers.
+
+3. We start a nested loop to compare each pair of numbers in the vector:
+   - The outer loop `i` iterates from 1 to `n-1`, where `n` is the length of the vector.
+   - The inner loop `j` iterates from `i+1` to `n` to compare each number with the numbers after it.
+
+4. For each pair of numbers `numbers[i]` and `numbers[j]`, we calculate the absolute difference `diff` using `abs(numbers[i] - numbers[j])`.
+
+5. If `diff` is smaller than the current `min_diff`, we update `min_diff` with the new difference and update `closest_pair` with the pair of numbers `(min(numbers[i], numbers[j]), max(numbers[i], numbers[j]))`. We use `min` and `max` to ensure that the numbers are returned in order (smaller number, larger number).
+
+6. After the nested loop completes, we have found the closest pair of numbers, which is stored in `closest_pair`. We return this tuple.
+
+The time complexity of this implementation is O(n^2) since we use nested loops to compare each pair of numbers. The space complexity is O(1) as we only use a constant amount of extra space to store variables.
+
+Note: This implementation assumes that the input vector `numbers` contains at least two elements. If there is a possibility of receiving an empty vector or a vector with only one element, additional error handling should be added.

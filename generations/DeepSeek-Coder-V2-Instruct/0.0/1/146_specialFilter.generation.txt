@@ -1,0 +1,40 @@
+ Here's the implementation of the `specialFilter` function in Julia:
+
+```julia
+function specialFilter(nums::Vector{Int})::Int
+    # Helper function to check if a digit is odd
+    function is_odd_digit(digit::Int)::Bool
+        return digit in [1, 3, 5, 7, 9]
+    end
+
+    # Helper function to get the first digit of a number
+    function first_digit(num::Int)::Int
+        num = abs(num)
+        while num >= 10
+            num = div(num, 10)
+        end
+        return num
+    end
+
+    # Helper function to get the last digit of a number
+    function last_digit(num::Int)::Int
+        return abs(num) % 10
+    end
+
+    count = 0
+    for num in nums
+        if num > 10 && is_odd_digit(first_digit(num)) && is_odd_digit(last_digit(num))
+            count += 1
+        end
+    end
+
+    return count
+end
+```
+
+This function defines three helper functions:
+1. `is_odd_digit` checks if a given digit is one of the odd digits (1, 3, 5, 7, 9).
+2. `first_digit` extracts the first digit of a number.
+3. `last_digit` extracts the last digit of a number.
+
+The main function then iterates over the input array, checks if each number meets the criteria (greater than 10 and both first and last digits are odd), and counts how many numbers satisfy these conditions.

@@ -1,0 +1,27 @@
+Sure, here is the implementation of the `prod_signs` function in Julia:
+
+```julia
+function prod_signs(xs::Vector{Int})::Union{Nothing, Int}
+    if isempty(xs)
+        return nothing
+    end
+
+    sum_magnitudes = sum(abs(x) for x in xs)
+    product_signs = prod(sign(x) for x in xs)
+
+    return sum_magnitudes * product_signs
+end
+```
+
+### Explanation:
+1. **Check for Empty Array**: The function first checks if the input array `xs` is empty using `isempty(xs)`. If it is empty, the function returns `nothing`.
+2. **Sum of Magnitudes**: The function calculates the sum of the magnitudes (absolute values) of the integers in the array using `sum(abs(x) for x in xs)`.
+3. **Product of Signs**: The function calculates the product of the signs of the integers in the array using `prod(sign(x) for x in xs)`. The `sign` function returns `1` for positive numbers, `-1` for negative numbers, and `0` for zero.
+4. **Return Result**: The function returns the product of the sum of magnitudes and the product of signs.
+
+### Examples:
+- `prod_signs([1, 2, 2, -4])` returns `-9` because the sum of magnitudes is `1 + 2 + 2 + 4 = 9` and the product of signs is `1 * 1 * 1 * -1 = -1`, so the result is `9 * -1 = -9`.
+- `prod_signs([0, 1])` returns `0` because the product of signs is `0` (since one of the elements is `0`), and any number multiplied by `0` is `0`.
+- `prod_signs([])` returns `nothing` because the input array is empty.
+
+You can test the function with the provided examples to ensure it works correctly.

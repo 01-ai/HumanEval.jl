@@ -1,0 +1,32 @@
+Here's the implementation of the `total_match` function in Julia:
+
+```julia
+function total_match(xs::Vector{String}, ys::Vector{String})::Vector{String}
+    total_chars_xs = sum(length(s) for s in xs)
+    total_chars_ys = sum(length(s) for s in ys)
+    
+    if total_chars_xs <= total_chars_ys
+        return xs
+    else
+        return ys
+    end
+end
+```
+
+Explanation:
+
+1. The function `total_match` takes two vectors of strings, `xs` and `ys`, as input parameters.
+
+2. We calculate the total number of characters in all the strings of `xs` using a list comprehension and the `sum` function. We store this value in the variable `total_chars_xs`.
+
+3. Similarly, we calculate the total number of characters in all the strings of `ys` and store it in the variable `total_chars_ys`.
+
+4. We compare `total_chars_xs` and `total_chars_ys` using an `if` statement:
+   - If `total_chars_xs` is less than or equal to `total_chars_ys`, we return `xs`.
+   - Otherwise, we return `ys`.
+
+5. The function returns the vector of strings that has the total number of characters less than or equal to the other vector.
+
+The function handles the case when both vectors have the same number of characters by returning the first vector (`xs`).
+
+The examples you provided can be used to test the `total_match` function, and it should produce the expected results.

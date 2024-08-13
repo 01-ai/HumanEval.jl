@@ -1,0 +1,42 @@
+Here is a Julia function that implements the `is_bored` function based on the provided doc string:
+```julia
+function is_bored(s::String)::Int
+    # Split the input string into sentences
+    sentences = split(s, ['.', '?', '!'])
+
+    # Initialize a counter for boredoms
+    boredom_count = 0
+
+    # Iterate over each sentence
+    for sentence in sentences
+        # Strip leading and trailing whitespace from the sentence
+        sentence = strip(sentence)
+
+        # Check if the sentence starts with "I" (case-sensitive)
+        if startswith(sentence, "I")
+            # If it does, increment the boredom count
+            boredom_count += 1
+        end
+    end
+
+    # Return the total boredom count
+    return boredom_count
+end
+```
+Here's an explanation of the code:
+
+1. We first split the input string into individual sentences using the `split` function with a character array containing the sentence delimiters (`['.', '?', '!']`).
+2. We initialize a counter variable `boredom_count` to keep track of the number of boredoms.
+3. We iterate over each sentence in the `sentences` array.
+4. For each sentence, we strip leading and trailing whitespace using the `strip` function.
+5. We check if the sentence starts with the word "I" using the `startswith` function. If it does, we increment the `boredom_count` variable.
+6. Finally, we return the total `boredom_count` at the end of the function.
+
+You can test this function using the examples provided in the doc string:
+```julia
+julia> is_bored("Hello world")
+0
+
+julia> is_bored("The sky is blue. The sun is shining. I love this weather")
+1
+```

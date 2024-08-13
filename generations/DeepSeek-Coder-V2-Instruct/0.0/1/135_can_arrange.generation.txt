@@ -1,0 +1,14 @@
+ Here's the implementation of the `can_arrange` function in Julia:
+
+```julia
+function can_arrange(xs::Vector{Int})::Int
+    for i in length(xs):-1:2
+        if xs[i] < xs[i - 1]
+            return i
+        end
+    end
+    return -1
+end
+```
+
+This function iterates through the array from the end to the beginning, checking if each element is less than the element immediately preceding it. If such an element is found, the function returns its index. If no such element exists, the function returns -1.

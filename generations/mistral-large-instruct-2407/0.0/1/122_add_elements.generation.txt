@@ -1,0 +1,53 @@
+ Certainly! Below is the implementation of the `add_elements` function in Julia based on the given doc string:
+
+```julia
+"""
+    add_elements(xs::Vector{Int}, k::Int)::Int
+
+Given a non-empty array of integers `xs` and an integer `k`, return the sum of
+the elements with at most two digits from the first k elements of `xs`.
+
+Constraints:
+
+ 1. 1 <= length(xs) <= 100
+ 2. 1 <= k <= length(xs)
+
+# Examples
+
+```jldoctest
+julia> add_elements([111, 21, 3, 4000, 5, 6, 7, 8, 9], 4)  # sum of 21 + 3
+24
+```
+"""
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    # Ensure k is within the valid range
+    if k < 1 || k > length(xs)
+        throw(ArgumentError("k must be between 1 and the length of xs"))
+    end
+
+    # Initialize the sum
+    sum_two_digits = 0
+
+    # Iterate over the first k elements
+    for i in 1:k
+        if -99 <= xs[i] <= 99  # Check if the element has at most two digits
+            sum_two_digits += xs[i]
+        end
+    end
+
+    return sum_two_digits
+end
+
+# Example usage
+println(add_elements([111, 21, 3, 4000, 5, 6, 7, 8, 9], 4))  # Output: 24
+```
+
+### Explanation:
+1. **Input Validation**: The function first checks if `k` is within the valid range (1 to the length of `xs`). If not, it throws an `ArgumentError`.
+2. **Sum Calculation**: It initializes a variable `sum_two_digits` to store the sum of elements with at most two digits.
+3. **Iteration**: It iterates over the first `k` elements of the array `xs`.
+4. **Digit Check**: For each element, it checks if the element has at most two digits (i.e., it is between -99 and 99 inclusive).
+5. **Sum Update**: If the element meets the criteria, it adds the element to `sum_two_digits`.
+6. **Return**: Finally, it returns the calculated sum.
+
+This implementation ensures that the function adheres to the constraints and correctly computes the sum of the specified elements.

@@ -1,0 +1,68 @@
+ Certainly! Below is the implementation of the `sort_array_based_on_head_tail` function in Julia based on the provided docstring:
+
+```julia
+"""
+    sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+
+Given an array of non-negative integers, return a copy of the given array after
+sorting, you will sort the given array in ascending order if the sum( first
+index value, last index value) is odd, or sort it in descending order if the
+sum( first index value, last index value) is even.
+
+Note:
+
+  - don't change the given array.
+
+Examples:
+
+```jldoctest
+julia> sort_array_based_on_head_tail(Int[])
+Int64[]
+
+julia> sort_array_based_on_head_tail([5])
+1-element Vector{Int64}:
+ 5
+
+julia> sort_array_based_on_head_tail([2, 4, 3, 0, 1, 5])
+6-element Vector{Int64}:
+ 0
+ 1
+ 2
+ 3
+ 4
+ 5
+
+julia> sort_array_based_on_head_tail([2, 4, 3, 0, 1, 5, 6])
+7-element Vector{Int64}:
+ 6
+ 5
+ 4
+ 3
+ 2
+ 1
+ 0
+```
+"""
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    if isempty(xs)
+        return Int[]
+    end
+
+    sum_head_tail = xs[1] + xs[end]
+
+    if isodd(sum_head_tail)
+        return sort(xs)
+    else
+        return sort(xs, rev=true)
+    end
+end
+```
+
+### Explanation:
+1. **Check if the array is empty**: If the array is empty, return an empty array of type `Int`.
+2. **Calculate the sum of the first and last elements**: This is done using `xs[1] + xs[end]`.
+3. **Determine the sorting order**:
+   - If the sum is odd, sort the array in ascending order using `sort(xs)`.
+   - If the sum is even, sort the array in descending order using `sort(xs, rev=true)`.
+
+This function ensures that the original array is not modified and returns a new sorted array based on the specified conditions.

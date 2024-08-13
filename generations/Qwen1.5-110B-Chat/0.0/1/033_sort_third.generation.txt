@@ -1,0 +1,18 @@
+```julia
+function sort_third(l::Vector)
+    sorted_thirds = sort(filter((x, val) -> x % 3 == 0, enumerate(l)) do tuple
+        tuple[2]
+    end)
+    
+    result = copy(l)
+    index = 1
+    for (i, val) in sorted_thirds
+        result[i] = val
+        index += 1
+    end
+    
+    return result
+end
+```
+
+This function first filters out the elements at indices that are divisible by three and sorts these values. Then, it iterates over these sorted values and replaces the elements at their original indices in a copy of the input list, ensuring the rest of the list remains unchanged. The sorted elements at indices divisible by three are correctly placed back into the list, and the modified list is returned.

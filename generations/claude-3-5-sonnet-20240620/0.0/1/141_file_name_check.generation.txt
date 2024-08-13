@@ -1,0 +1,69 @@
+Here's a Julia function that implements the file name check according to the specified conditions:
+
+```julia
+function file_name_check(file_name::String)::String
+    # Check if the file name contains exactly one dot
+    if count(==('.'), file_name) != 1
+        return "No"
+    end
+
+    # Split the file name into name and extension
+    name, ext = split(file_name, '.')
+
+    # Check if the name part is not empty and starts with a letter
+    if isempty(name) || !isletter(name[1])
+        return "No"
+    end
+
+    # Check if the extension is valid
+    if !(ext in ["txt", "exe", "dll"])
+        return "No"
+    end
+
+    # Count the number of digits in the file name
+    digit_count = count(isdigit, file_name)
+    if digit_count > 3
+        return "No"
+    end
+
+    # If all checks pass, return "Yes"
+    return "Yes"
+end
+```
+
+This function does the following:
+
+1. It first checks if the file name contains exactly one dot using the `count` function.
+
+2. It then splits the file name into the name part and the extension part using `split`.
+
+3. It checks if the name part is not empty and starts with a letter using `isempty` and `isletter`.
+
+4. It verifies if the extension is one of the valid extensions: "txt", "exe", or "dll".
+
+5. It counts the number of digits in the entire file name using `count` with `isdigit`.
+
+6. If the number of digits is more than 3, it returns "No".
+
+7. If all these checks pass, it returns "Yes".
+
+You can use this function as follows:
+
+```julia
+julia> file_name_check("example.txt")
+"Yes"
+
+julia> file_name_check("1example.dll")
+"No"
+
+julia> file_name_check("file1.exe")
+"Yes"
+
+julia> file_name_check("invalid.pdf")
+"No"
+
+julia> file_name_check("toomany1234.txt")
+"No"
+```
+
+This function should correctly handle all the conditions specified in the problem statement.

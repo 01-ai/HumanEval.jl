@@ -1,0 +1,26 @@
+Here's a Julia function that converts a positive integer to its Roman numeral equivalent in lowercase, adhering to the specified restrictions:
+
+```julia
+function int_to_mini_roman(number::Int)::String
+    @assert 1 <= number <= 1000 "Number must be between 1 and 1000"
+
+    # Define the Roman numeral mappings
+    roman_numerals = [
+        (1000, "m"), (900, "cm"), (500, "d"), (400, "cd"),
+        (100, "c"), (90, "xc"), (50, "l"), (40, "xl"),
+        (10, "x"), (9, "ix"), (5, "v"), (4, "iv"), (1, "i")
+    ]
+
+    result = ""
+    for (value, numeral) in roman_numerals
+        while number >= value
+            result *= numeral
+            number -= value
+        end
+    end
+
+    return result
+end
+```
+
+This function uses a list of tuples to map integer values to their corresponding Roman numeral strings in lowercase. It iterates through this list, appending the appropriate numeral to the result string while decrementing the number accordingly. This process continues until the number is reduced to zero.

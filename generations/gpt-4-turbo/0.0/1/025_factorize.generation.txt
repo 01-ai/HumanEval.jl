@@ -1,0 +1,33 @@
+```julia
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    if n < 2
+        return factors
+    end
+    
+    # Check for number of 2s
+    while n % 2 == 0
+        push!(factors, 2)
+        n = n ÷ 2
+    end
+    
+    # Check for odd factors from 3 onwards
+    factor = 3
+    while factor * factor <= n
+        while n % factor == 0
+            push!(factors, factor)
+            n = n ÷ factor
+        end
+        factor += 2
+    end
+    
+    # If n is still greater than 2, then it must be prime
+    if n > 2
+        push!(factors, n)
+    end
+    
+    return factors
+end
+```
+
+This function `factorize` takes an integer `n` and returns its prime factors in a sorted list, with each factor repeated according to its multiplicity in the factorization of `n`. The function efficiently handles even numbers first by dividing out all factors of 2, then proceeds to check for odd factors starting from 3. If after processing all possible factors up to the square root of `n`, the remaining `n` is greater than 2, it is considered a prime factor. This ensures that the function works efficiently for large numbers by reducing the number of divisions required.

@@ -1,0 +1,50 @@
+Here's a Julia function that implements the described behavior:
+
+```julia
+function rounded_avg(n::Int, m::Int)::Union{Int, String}
+    if n > m
+        return -1
+    end
+
+    # Calculate the average
+    avg = (n + m) / 2
+
+    # Round to the nearest integer
+    rounded = round(Int, avg)
+
+    # Convert to binary
+    binary = string(rounded, base=2)
+
+    return binary
+end
+```
+
+Let's break down the function:
+
+1. We first check if `n` is greater than `m`. If it is, we return -1 as specified.
+
+2. We calculate the average of `n` and `m` using the formula `(n + m) / 2`. This works because we're dealing with a sequence of integers from `n` to `m`, so their average is the same as the average of the first and last number.
+
+3. We round this average to the nearest integer using the `round` function with `Int` as the first argument to ensure we get an integer result.
+
+4. We convert the rounded integer to its binary representation using `string(rounded, base=2)`.
+
+5. Finally, we return the binary string.
+
+This function will work for the given examples:
+
+```julia
+julia> rounded_avg(1, 5)
+"11"
+
+julia> rounded_avg(7, 5)
+-1
+
+julia> rounded_avg(10, 20)
+"1111"
+
+julia> rounded_avg(20, 33)
+"11010"
+```
+
+Note that the function returns a `String` for valid inputs (representing the binary number) and an `Int` (-1) for invalid inputs, which matches the specified return type of `Union{Int, String}`.

@@ -1,0 +1,15 @@
+```julia
+function get_closest_vowel(word::String)::String
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    n = length(word)
+    
+    # We start from the second last character and go backwards to the second character
+    for i in n-1:-1:2
+        if word[i] in vowels && !(word[i-1] in vowels) && !(word[i+1] in vowels)
+            return string(word[i])
+        end
+    end
+    
+    return ""
+end
+```

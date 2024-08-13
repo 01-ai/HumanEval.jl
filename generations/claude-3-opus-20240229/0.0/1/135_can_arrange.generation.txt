@@ -1,0 +1,45 @@
+Here's a Julia function that solves the problem you described:
+
+```julia
+function can_arrange(xs::Vector{Int})::Int
+    n = length(xs)
+    
+    for i in 2:n
+        if xs[i] < xs[i-1]
+            return i
+        end
+    end
+    
+    return -1
+end
+```
+
+Explanation:
+
+1. The function `can_arrange` takes a vector of integers `xs` as input and returns an integer.
+
+2. We start by getting the length of the input vector `xs` and storing it in the variable `n`.
+
+3. We iterate over the vector `xs` starting from the second element (index 2) up to the last element.
+
+4. Inside the loop, we check if the current element `xs[i]` is less than the element immediately preceding it `xs[i-1]`.
+
+5. If we find an element that satisfies this condition, it means we have found the largest index of an element that is not greater than or equal to the element immediately preceding it. In this case, we return the index `i`.
+
+6. If we complete the loop without finding any element that satisfies the condition, it means no such element exists in the vector. In this case, we return -1.
+
+The time complexity of this function is O(n), where n is the length of the input vector `xs`, as we iterate over the vector once.
+
+You can test the function with the examples you provided:
+
+```jldoctest
+julia> can_arrange([1, 2, 4, 3, 5])
+4
+
+julia> can_arrange([1, 2, 3])
+-1
+```
+
+The function correctly returns 4 for the first example, indicating that the element at index 4 (which is 3) is not greater than or equal to the element immediately preceding it (which is 4).
+
+For the second example, the function returns -1 because the vector is already in increasing order, and no element satisfies the condition.

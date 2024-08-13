@@ -1,0 +1,45 @@
+To implement the `get_row` function in Julia, we need to follow these steps:
+
+1. Iterate through each row of the nested list `xs`.
+2. For each row, check if the integer `x` is present.
+3. If `x` is found, record its coordinates (row index and column index).
+4. Sort the coordinates first by row index in ascending order.
+5. For coordinates within the same row, sort them by column index in descending order.
+
+Here's the implementation of the `get_row` function:
+
+```julia
+function get_row(xs::Vector{Vector{Int}}, x::Int)::Vector{Tuple{Int, Int}}
+    coordinates = []
+
+    for (i, row) in enumerate(xs)
+        for (j, value) in enumerate(row)
+            if value == x
+                push!(coordinates, (i, j))
+            end
+        end
+    end
+
+    # Sort coordinates by row in ascending order, and by column in descending order within the same row
+    sort!(coordinates, by = t -> (t[1], -t[2]))
+
+    return coordinates
+end
+```
+
+### Explanation:
+- We use `enumerate(xs)` to get both the index and the row itself.
+- For each row, we use `enumerate(row)` to get both the column index and the value.
+- If the value matches `x`, we push the tuple `(i, j)` to the `coordinates` list.
+- After collecting all coordinates, we sort them using `sort!` with a custom sorting key `by = t -> (t[1], -t[2])`. This sorts primarily by the row index in ascending order and secondarily by the column index in descending order (hence the negative sign).
+
+### Example Usage:
+```julia
+println(get_row([[1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 1, 6], [1, 2, 3, 4, 5, 1]], 1))
+# Output: [(1, 1), (2, 5), (2, 1), (3, 6), (3, 1)]
+
+println(get_row(Vector{Int}[], 1))
+# Output: Tuple{Int64, Int64}[]
+
+println(get_row(Vector{Int}[Int[], [1], [1, 2, 3]], 3))
+#

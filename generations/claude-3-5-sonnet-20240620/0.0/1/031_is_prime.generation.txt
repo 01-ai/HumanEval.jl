@@ -1,0 +1,57 @@
+Here's a Julia function that implements the `is_prime` functionality as described:
+
+```julia
+function is_prime(n::Int)
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    
+    return true
+end
+```
+
+This implementation uses the following optimizations:
+
+1. It first checks if the number is less than or equal to 1, which are not prime by definition.
+2. It then checks if the number is 2 or 3, which are prime.
+3. It checks if the number is divisible by 2 or 3, which would make it not prime.
+4. For numbers greater than 3, it checks for divisibility by numbers of the form 6k ± 1 up to the square root of n. This is because all primes greater than 3 can be expressed in this form.
+
+This function will correctly handle all the example cases provided:
+
+```julia
+julia> is_prime(6)
+false
+
+julia> is_prime(101)
+true
+
+julia> is_prime(11)
+true
+
+julia> is_prime(13441)
+true
+
+julia> is_prime(61)
+true
+
+julia> is_prime(4)
+false
+
+julia> is_prime(1)
+false
+```
+
+This implementation is efficient for the range of numbers typically encountered and should work well for most use cases. For very large numbers, more advanced primality tests might be necessary.

@@ -1,0 +1,15 @@
+Sure, here is a Julia function that implements the described behavior:
+
+```julia
+function max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+    total_water = 0
+    for well in grid
+        for unit in well
+            total_water += unit
+        end
+    end
+    return ceil(total_water / capacity)
+end
+```
+
+This function works by first calculating the total amount of water in all wells. It then returns the smallest integer greater than or equal to the division of the total water by the bucket capacity, which represents the minimum number of times the bucket needs to be lowered to empty all wells.

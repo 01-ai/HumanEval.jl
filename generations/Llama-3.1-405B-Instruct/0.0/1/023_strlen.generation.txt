@@ -1,0 +1,22 @@
+Here is the Julia function that matches the provided docstring:
+```julia
+"""
+    strlen(x::String)::Int
+
+Return length of given string.
+
+# Examples
+
+```jldoctest
+julia> strlen("")
+0
+
+julia> strlen("abc")
+3
+```
+"""
+function strlen(x::String)::Int
+    return length(x)
+end
+```
+This function simply calls the built-in `length` function in Julia, which returns the number of characters in the input string. The function signature matches the docstring, taking a `String` as input and returning an `Int`.

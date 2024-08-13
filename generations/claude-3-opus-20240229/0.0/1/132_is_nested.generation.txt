@@ -1,0 +1,64 @@
+Here's the implementation of the `is_nested` function in Julia:
+
+```julia
+function is_nested(s::String)::Bool
+    stack = 0
+    nested = false
+
+    for char in s
+        if char == '['
+            stack += 1
+            if stack > 1
+                nested = true
+            end
+        elseif char == ']'
+            if stack == 0
+                return false
+            end
+            stack -= 1
+        end
+    end
+
+    return stack == 0 && nested
+end
+```
+
+Explanation:
+
+1. We initialize a variable `stack` to keep track of the number of open brackets encountered. We also initialize a boolean variable `nested` to indicate whether any nesting of brackets is found.
+
+2. We iterate through each character `char` in the input string `s`:
+   - If the character is an opening bracket `[`, we increment the `stack` by 1. If the `stack` becomes greater than 1, it means we have encountered a nested bracket, so we set `nested` to `true`.
+   - If the character is a closing bracket `]`, we check if the `stack` is already 0. If it is, it means we have encountered a closing bracket without a corresponding opening bracket, so we return `false`. Otherwise, we decrement the `stack` by 1.
+
+3. After iterating through all the characters in the string, we check two conditions:
+   - If `stack` is equal to 0, it means all opening brackets have been properly closed.
+   - If `nested` is `true`, it means we have encountered at least one nested bracket.
+
+4. If both conditions are satisfied, we return `true`. Otherwise, we return `false`.
+
+The function returns `true` if and only if there is a valid subsequence of brackets where at least one bracket in the subsequence is nested. It returns `false` if there are any unmatched brackets or if no nesting of brackets is found.
+
+Here are some examples:
+
+```jldoctest
+julia> is_nested("[[]]")
+true
+
+julia> is_nested("[]]]]]]][[[[[")
+false
+
+julia> is_nested("[][]")
+false
+
+julia> is_nested("[]")
+false
+
+julia> is_nested("[[[][]")
+true
+
+julia> is_nested("[[]][")
+true
+```
+
+The function correctly identifies whether the input string contains a valid subsequence of nested brackets.

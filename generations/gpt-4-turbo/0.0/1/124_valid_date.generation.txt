@@ -1,0 +1,44 @@
+```julia
+function valid_date(date::String)::Bool
+    # Check if the date string is empty
+    if isempty(date)
+        return false
+    end
+    
+    # Check the format of the date string
+    date_pattern = r"^\d{2}-\d{2}-\d{4}$"
+    if !occursin(date_pattern, date)
+        return false
+    end
+    
+    # Split the date into components
+    parts = split(date, "-")
+    if length(parts) != 3
+        return false
+    end
+    
+    # Extract month, day, and year
+    month_str, day_str, year_str = parts
+    month = parse(Int, month_str)
+    day = parse(Int, day_str)
+    year = parse(Int, year_str)  # Year is not used for validation in this function
+    
+    # Define the maximum days in each month
+    max_days = Dict(
+        1 => 31, 2 => 29, 3 => 31, 4 => 30, 5 => 31, 6 => 30,
+        7 => 31, 8 => 31, 9 => 30, 10 => 31, 11 => 30, 12 => 31
+    )
+    
+    # Check if the month is valid
+    if month < 1 || month > 12
+        return false
+    end
+    
+    # Check if the day is valid for the given month
+    if day < 1 || day > max_days[month]
+        return false
+    end
+    
+    return true
+end
+```

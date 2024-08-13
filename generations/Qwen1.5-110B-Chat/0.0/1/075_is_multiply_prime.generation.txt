@@ -1,0 +1,19 @@
+```julia
+function is_multiply_prime(a::Int)::Bool
+    primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+    count = 0
+    product = 1
+    for prime in primes
+        if a % prime == 0
+            count += 1
+            product *= prime
+            if count > 3 || product > a
+                return false
+            end
+        end
+    end
+    count == 3 && product == a
+end
+```
+
+This function `is_multiply_prime` checks if the given integer `a` is the product of exactly three prime numbers. It does this by iterating through a pre-defined list of prime numbers less than 100, checking if `a` is divisible by each prime, and keeping count of how many primes it has found that divide `a`. If more than three primes are found, or if the product of the primes exceeds `a`, the function returns `false`. If exactly three primes are found and their product equals `a`, it returns `true`.

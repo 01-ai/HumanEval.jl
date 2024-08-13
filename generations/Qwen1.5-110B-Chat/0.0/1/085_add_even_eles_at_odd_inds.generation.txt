@@ -1,0 +1,6 @@
+```julia
+function add_even_eles_at_odd_inds(xs::Vector{Int})::Int
+    sum(xs[i] for i in 1:length(xs) if i % 2 == 1 && xs[i] % 2 == 0)
+end
+```
+This function iterates over the input vector `xs`, checking for elements at odd indices (`i % 2 == 1`) that are also even (`xs[i] % 2 == 0`). It then sums up these elements and returns the total.

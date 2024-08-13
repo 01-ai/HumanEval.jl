@@ -1,0 +1,61 @@
+Here's a Julia function that solves the problem of matching parentheses as described:
+
+```julia
+function match_parens(lst::Vector{String})::String
+    # Combine both strings
+    combined = join(lst)
+    
+    # Count open and close parentheses
+    open_count = count('(', combined)
+    close_count = count(')', combined)
+    
+    # If the counts don't match, it's impossible to balance
+    if open_count != close_count
+        return "No"
+    end
+    
+    # Check if it's possible to arrange them correctly
+    open_available = open_count
+    close_available = close_count
+    open_needed = 0
+    
+    for char in combined
+        if char == '('
+            open_available -= 1
+            open_needed += 1
+        else  # char == ')'
+            close_available -= 1
+            if open_needed > 0
+                open_needed -= 1
+            else
+                if open_available > 0
+                    open_available -= 1
+                    open_needed += 1
+                else
+                    return "No"
+                end
+            end
+        end
+    end
+    
+    return "Yes"
+end
+```
+
+This function works as follows:
+
+1. We first combine both strings in the input list.
+
+2. We count the number of open and close parentheses in the combined string.
+
+3. If the counts of open and close parentheses don't match, it's impossible to create a balanced string, so we return "No".
+
+4. If the counts match, we simulate the process of arranging the parentheses:
+   - We keep track of available open and close parentheses, and how many open parentheses we need at any point.
+   - We iterate through the combined string:
+     - For an open parenthesis, we decrease the available count and increase the needed count.
+     - For a close parenthesis, we first try to match it with a needed open parenthesis. If there are no needed open parentheses, we try to use an available open parenthesis before it. If neither is possible, we return "No".
+
+5. If we make it through the entire string without returning "No", it means a valid arrangement is possible, so we return "Yes".
+
+This solution works because it checks if it's possible to rearrange the parentheses to create a valid string, without actually performing the rearrangement. It runs in O(n) time, where n is the total length of the input strings.

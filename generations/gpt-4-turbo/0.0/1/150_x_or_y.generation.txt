@@ -1,0 +1,29 @@
+To implement the function `x_or_y`, we first need a helper function to determine if a number `n` is prime. A number is considered prime if it is greater than 1 and has no divisors other than 1 and itself.
+
+Here's the implementation:
+
+```julia
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    end
+    for i in 2:sqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+function x_or_y(n::Int, x::Int, y::Int)::Int
+    if is_prime(n)
+        return x
+    else
+        return y
+    end
+end
+```
+
+This implementation includes:
+- A helper function `is_prime` that checks if a number `n` is prime.
+- The main function `x_or_y` that uses `is_prime` to decide whether to return `x` or `y` based on the primality of `n`.

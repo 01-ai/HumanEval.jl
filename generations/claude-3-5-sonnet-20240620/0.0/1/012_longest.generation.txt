@@ -1,0 +1,37 @@
+Here's a Julia function that implements the `longest` functionality as described:
+
+```julia
+function longest(xs::Vector{String})::Union{Nothing, String}
+    if isempty(xs)
+        return nothing
+    else
+        return reduce((x, y) -> length(x) >= length(y) ? x : y, xs)
+    end
+end
+```
+
+Let's break down the function:
+
+1. We first check if the input vector `xs` is empty using `isempty(xs)`. If it is, we return `nothing` as specified.
+
+2. If the vector is not empty, we use the `reduce` function to find the longest string:
+   - The reduce function applies a binary operation (in this case, our anonymous function) to the elements of the collection.
+   - Our anonymous function `(x, y) -> length(x) >= length(y) ? x : y` compares the lengths of two strings and returns the longer one (or the first one if they're equal in length).
+   - This operation is applied successively to all elements in the vector, effectively finding the longest string.
+
+3. The function's return type is specified as `Union{Nothing, String}`, which means it can return either `nothing` or a `String`, satisfying all possible outcomes.
+
+This implementation meets all the requirements:
+- It returns `nothing` for an empty input list.
+- It returns the longest string from the input list.
+- In case of multiple strings with the same maximum length, it returns the first one encountered.
+
+You can test this function with the examples provided:
+
+```julia
+println(longest(String[]))  # Output: nothing
+println(longest(["a", "b", "c"]))  # Output: a
+println(longest(["a", "bb", "ccc"]))  # Output: ccc
+```
+
+These should produce the expected outputs as shown in your examples.

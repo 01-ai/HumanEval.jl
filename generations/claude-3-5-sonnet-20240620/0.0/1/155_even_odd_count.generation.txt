@@ -1,0 +1,65 @@
+Here's a Julia function that counts the number of even and odd digits in a given integer and returns them as a tuple:
+
+```julia
+function even_odd_count(num::Int)::Tuple{Int, Int}
+    even_count = 0
+    odd_count = 0
+    
+    # Convert the number to its absolute value
+    num = abs(num)
+    
+    # Handle the case when num is 0
+    if num == 0
+        return (1, 0)
+    end
+    
+    while num > 0
+        digit = num % 10
+        if digit % 2 == 0
+            even_count += 1
+        else
+            odd_count += 1
+        end
+        num ÷= 10
+    end
+    
+    return (even_count, odd_count)
+end
+```
+
+This function does the following:
+
+1. We initialize two counters: `even_count` for even digits and `odd_count` for odd digits.
+
+2. We take the absolute value of the input number using `abs(num)` to handle negative numbers.
+
+3. We handle the special case when the input is 0. Since 0 is considered an even number, we return `(1, 0)`.
+
+4. We use a while loop to process each digit of the number:
+   - We get the rightmost digit using `num % 10`.
+   - We check if the digit is even or odd using `digit % 2 == 0`.
+   - We increment the appropriate counter.
+   - We remove the rightmost digit from the number using integer division `num ÷= 10`.
+
+5. Finally, we return a tuple with the even and odd counts.
+
+This function will work correctly for both positive and negative integers. Here are some example usages:
+
+```julia
+julia> even_odd_count(-12)
+(1, 1)
+
+julia> even_odd_count(123)
+(1, 2)
+
+julia> even_odd_count(2468)
+(4, 0)
+
+julia> even_odd_count(13579)
+(0, 5)
+
+julia> even_odd_count(0)
+(1, 0)
+```
+
+The function correctly handles all these cases, including negative numbers and zero.

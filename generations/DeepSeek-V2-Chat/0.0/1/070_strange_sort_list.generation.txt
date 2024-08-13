@@ -1,0 +1,24 @@
+Here's the implementation of the `strange_sort_list` function in Julia:
+
+```julia
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    sorted_xs = sort(xs)
+    result = Int[]
+    i, j = 1, length(sorted_xs)
+    
+    while i <= j
+        if i <= j
+            push!(result, sorted_xs[i])
+            i += 1
+        end
+        if i <= j
+            push!(result, sorted_xs[j])
+            j -= 1
+        end
+    end
+    
+    return result
+end
+```
+
+This function first sorts the input list `xs`. Then, it iterates through the sorted list, alternately adding the smallest and largest remaining elements to the result list until all elements are added. This creates the "strange" order as described.

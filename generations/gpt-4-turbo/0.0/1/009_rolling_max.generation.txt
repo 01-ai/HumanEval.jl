@@ -1,0 +1,21 @@
+```julia
+function rolling_max(numbers::Vector{Int})::Vector{Int}
+    # Initialize an empty vector to store the rolling maximums
+    maxima = Vector{Int}(undef, length(numbers))
+    
+    # Initialize the current maximum to the smallest possible integer
+    current_max = typemin(Int)
+    
+    # Iterate through the list of numbers
+    for i in 1:length(numbers)
+        # Update the current maximum if the current number is greater
+        if numbers[i] > current_max
+            current_max = numbers[i]
+        end
+        # Store the current maximum in the result vector
+        maxima[i] = current_max
+    end
+    
+    return maxima
+end
+```

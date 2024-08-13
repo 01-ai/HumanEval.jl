@@ -1,0 +1,15 @@
+To solve the problem of calculating the number of collisions between two sets of cars moving towards each other, we can use a simple mathematical approach. Here's the reasoning:
+
+1. Each car moving left to right will collide with every car moving right to left that it encounters.
+2. Since all cars move at the same speed and start from very far away, each car moving left to right will collide with exactly one car moving right to left.
+3. Therefore, the total number of collisions is simply the number of cars in one set, which is `n`.
+
+Here's the implementation of the function in Julia:
+
+```julia
+function car_race_collision(n::Int)::Int
+    return n
+end
+```
+
+This function takes an integer `n` representing the number of cars in each set and returns the total number of collisions, which is `n`.

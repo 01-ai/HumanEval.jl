@@ -1,0 +1,22 @@
+```julia
+function bf(planet1::String, planet2::String)::NTuple
+    # List of planets in order from the Sun
+    planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+    
+    # Check if both planets are valid
+    if planet1 ∉ planets || planet2 ∉ planets
+        return ()
+    end
+    
+    # Get indices of the planets
+    idx1 = findfirst(==(planet1), planets)
+    idx2 = findfirst(==(planet2), planets)
+    
+    # Determine the range between the two planets
+    if idx1 < idx2
+        return tuple(planets[idx1+1:idx2-1]...)
+    else
+        return tuple(planets[idx2+1:idx1-1]...)
+    end
+end
+```

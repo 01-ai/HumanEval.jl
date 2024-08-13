@@ -1,0 +1,43 @@
+ Certainly! Below is the implementation of the `digitSum` function in Julia based on the provided docstring:
+
+```julia
+"""
+    digitSum(s::String)::Int
+
+Write a function that takes a string as input and returns the sum of the upper
+characters only ASCII codes.
+
+# Examples
+
+```jldoctest
+julia> digitSum("")
+0
+
+julia> digitSum("abAB")
+131
+
+julia> digitSum("abcCd")
+67
+
+julia> digitSum("helloE")
+69
+
+julia> digitSum("woArBld")
+131
+
+julia> digitSum("aAaaaXa")
+153
+```
+"""
+function digitSum(s::String)::Int
+    sum = 0
+    for char in s
+        if isuppercase(char)
+            sum += Int(char)
+        end
+    end
+    return sum
+end
+```
+
+This function iterates through each character in the input string `s`, checks if the character is an uppercase letter using the `isuppercase` function, and if so, adds its ASCII code (converted to an integer) to the sum. Finally, it returns the total sum of the ASCII codes of the uppercase characters.

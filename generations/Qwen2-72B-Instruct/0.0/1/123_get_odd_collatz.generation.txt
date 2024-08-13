@@ -1,0 +1,22 @@
+```julia
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    # Initialize the result vector with BigInt type
+    odds = Vector{BigInt}()
+    # Convert n to BigInt to avoid overflow
+    x = BigInt(n)
+    while x != 1
+        # Check if x is odd
+        if x % 2 == 1
+            # If odd, push it to the odds vector
+            push!(odds, x)
+        end
+        # Apply the Collatz rule
+        x = x % 2 == 0 ? x ÷ 2 : 3x + 1
+    end
+    # Push 1 to the odds vector as it is always the last number in the sequence
+    push!(odds, 1)
+    # Return the sorted vector of odd numbers
+    return sort!(odds)
+end
+```
+This function computes the Collatz sequence for a given positive integer `n`, extracts the odd numbers from the sequence, and returns them in a sorted list. The use of `BigInt` ensures that the function can handle very large numbers without overflow.

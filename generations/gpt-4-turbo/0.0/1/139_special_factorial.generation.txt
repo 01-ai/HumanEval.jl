@@ -1,0 +1,17 @@
+```julia
+function special_factorial(n::Int)::BigInt
+    if n <= 0
+        throw(ArgumentError("n must be a positive integer"))
+    end
+    
+    result = BigInt(1)
+    for i in 1:n
+        factorial_i = factorial(BigInt(i))
+        result *= factorial_i
+    end
+    
+    return result
+end
+```
+
+This function computes the "Brazilian factorial" as described, by multiplying the factorial of each integer from 1 to `n`. It uses `BigInt` to handle potentially large numbers resulting from factorial calculations. The function checks if `n` is positive, throwing an error if not, to ensure valid input.

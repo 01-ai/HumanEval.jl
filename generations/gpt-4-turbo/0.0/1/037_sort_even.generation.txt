@@ -1,0 +1,17 @@
+```julia
+function sort_even(l::Vector)::Vector
+    # Extract elements at even indices (1-based indexing in Julia)
+    even_indices_elements = l[2:2:end]
+    
+    # Sort the elements at even indices
+    sorted_even_elements = sort(even_indices_elements)
+    
+    # Create a copy of the original list to modify
+    result = copy(l)
+    
+    # Replace the elements at even indices with the sorted elements
+    result[2:2:end] = sorted_even_elements
+    
+    return result
+end
+```

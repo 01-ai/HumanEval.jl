@@ -1,0 +1,25 @@
+```julia
+function palindrome_with_append(s::String)::String
+    n = length(s)
+    if n == 0
+        return s
+    end
+
+    # Convert string to array of characters for easier manipulation
+    s_chars = collect(s)
+
+    # Check from the end to find the longest palindromic suffix
+    for i in n:-1:1
+        if s_chars[1:i] == reverse(s_chars[1:i])
+            # If the substring s[1:i] is a palindrome
+            # Append the reverse of the remaining prefix to the end
+            return join(s_chars) * join(reverse(s_chars[1:n-i]))
+        end
+    end
+
+    # If no palindromic suffix found, return the whole string mirrored
+    return join(s_chars) * join(reverse(s_chars[1:end-1]))
+end
+```
+
+This function checks for the longest palindromic suffix by iterating from the end of the string towards the beginning. Once it finds the longest palindromic suffix, it appends the reverse of the prefix (the part of the string before the palindromic suffix) to the end of the original string to form the shortest palindrome starting with the original string. If no palindromic suffix is found (which theoretically shouldn't happen since a single character is a palindrome), it mirrors the entire string except the last character.

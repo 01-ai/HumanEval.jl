@@ -1,0 +1,33 @@
+Here's a Julia function that implements the `below_threshold` functionality as described:
+
+```julia
+function below_threshold(l::Vector, t::Number)::Bool
+    return all(x -> x < t, l)
+end
+```
+
+This function does the following:
+
+1. It takes two arguments:
+   - `l::Vector`: A vector (list) of numbers
+   - `t::Number`: A threshold value
+
+2. It uses the `all` function, which checks if all elements in an iterable satisfy a given condition.
+
+3. The condition is defined using an anonymous function `x -> x < t`, which checks if each element `x` is less than the threshold `t`.
+
+4. The function returns a `Bool` value:
+   - `true` if all numbers in the list are below the threshold
+   - `false` if any number in the list is equal to or greater than the threshold
+
+This implementation will work correctly for the given examples:
+
+```julia
+julia> below_threshold([1, 2, 4, 10], 100)
+true
+
+julia> below_threshold([1, 20, 4, 10], 5)
+false
+```
+
+The function is concise and efficient, as it stops checking as soon as it finds any number that is not below the threshold.

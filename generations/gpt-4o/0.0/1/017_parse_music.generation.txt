@@ -1,0 +1,38 @@
+Sure, let's implement the `parse_music` function in Julia. This function will take a string representing musical notes and return a vector of integers corresponding to the duration of each note in beats.
+
+Here's the implementation:
+
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    # Split the input string by spaces to get individual notes
+    notes = split(music_string, " ")
+    
+    # Create a dictionary to map note symbols to their corresponding beats
+    note_to_beats = Dict("o" => 4, "o|" => 2, ".|" => 1)
+    
+    # Initialize an empty vector to store the beats
+    beats = Int[]
+    
+    # Iterate over each note and convert it to its corresponding beats
+    for note in notes
+        push!(beats, note_to_beats[note])
+    end
+    
+    return beats
+end
+```
+
+Let's test the function with the provided example:
+
+```julia
+# Example usage
+music_string = "o o| .| o| o| .| .| .| .| o o"
+beats = parse_music(music_string)
+println(beats)  # Output should be [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]
+```
+
+This function works by:
+1. Splitting the input string into individual note symbols.
+2. Using a dictionary to map each note symbol to its corresponding number of beats.
+3. Iterating over the list of note symbols, converting each to its beat value, and storing the results in a vector.
+4. Returning the vector of beats.

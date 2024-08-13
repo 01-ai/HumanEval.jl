@@ -1,0 +1,13 @@
+```julia
+function mean_absolute_deviation(numbers::Vector{Float64})::Float64
+    n = length(numbers)
+    if n == 0
+        error("Input vector cannot be empty.")
+    end
+    mean_value = sum(numbers) / n
+    absolute_deviations = abs.(numbers .- mean_value)
+    return sum(absolute_deviations) / n
+end
+```
+
+This Julia function calculates the Mean Absolute Deviation (MAD) for a given vector of floating-point numbers. It first checks if the input vector is empty, then computes the mean of the numbers. After that, it calculates the absolute deviations of each number from the mean and finally returns the average of these absolute deviations.

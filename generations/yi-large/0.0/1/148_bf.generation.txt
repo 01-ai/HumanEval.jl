@@ -1,0 +1,25 @@
+function bf(planet1::String, planet2::String)::Tuple
+    # Define the list of planets in order from the Sun
+    planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+    
+    # Find the indices of the input planets
+    index1 = findfirst(isequal(planet1), planets)
+    index2 = findfirst(isequal(planet2), planets)
+    
+    # Check if both planets are in the list
+    if index1 === nothing || index2 === nothing
+        return ()  # Return an empty tuple if either planet is not found
+    end
+    
+    # Determine the start and end indices for the slice
+    start_index = min(index1, index2) + 1
+    end_index = max(index1, index2)
+    
+    # Slice the planet list and return the result as a tuple
+    return tuple(planets[start_index:end_index-1]...)
+end
+
+# Test the function
+println(bf("Jupiter", "Neptune"))
+println(bf("Earth", "Mercury"))
+println(bf("Mercury", "Uranus"))

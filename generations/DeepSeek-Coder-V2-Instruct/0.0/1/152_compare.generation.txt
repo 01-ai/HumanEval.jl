@@ -1,0 +1,9 @@
+ Here's the implementation of the `compare` function in Julia based on the provided doc string:
+
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    return [game[i] == guess[i] ? 0 : abs(game[i] - guess[i]) for i in 1:length(game)]
+end
+```
+
+This function iterates over each element in the `game` and `guess` vectors, compares them, and calculates the absolute difference if they are not equal. If they are equal, it assigns 0 to that position in the result vector.

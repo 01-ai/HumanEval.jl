@@ -1,0 +1,24 @@
+Here is the Julia function that matches the provided docstring:
+```julia
+function count_nums(xs::Vector{Int})::Int
+    count = 0
+    for x in xs
+        sum_of_digits = sum(d -> d != 0 ? abs(d) : 0, digits(x))
+        if sum_of_digits > 0
+            count += 1
+        end
+    end
+    return count
+end
+```
+Here's an explanation of the code:
+
+1. We initialize a counter `count` to 0.
+2. We iterate over each element `x` in the input array `xs`.
+3. For each element, we calculate the sum of its digits using the `digits` function and a lambda function that takes each digit `d` and returns its absolute value if it's non-zero, and 0 otherwise. This is done to ignore leading zeros.
+4. We check if the sum of digits is greater than 0. If it is, we increment the counter `count`.
+5. Finally, we return the total count.
+
+Note that the `digits` function is a built-in Julia function that returns an array of digits of a given integer. Also, the lambda function `d -> d != 0 ? abs(d) : 0` is used to handle the case where a digit is 0, in which case we want to ignore it in the sum.
+
+You can test this function with the examples provided in the docstring to verify its correctness.

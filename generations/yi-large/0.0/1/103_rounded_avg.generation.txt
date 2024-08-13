@@ -1,0 +1,16 @@
+function rounded_avg(n::Int, m::Int)::Union{Int, String}
+    if n > m
+        return "-1"
+    end
+
+    avg = (n + m) / 2
+    avg_rounded = round(Int, avg)
+
+    return bin(avg_rounded)[3:end]  # Remove "0b" prefix from binary representation
+end
+
+# Examples
+println(rounded_avg(1, 5))  # "11"
+println(rounded_avg(7, 5))  # "-1"
+println(rounded_avg(10, 20))  # "1111"
+println(rounded_avg(20, 33))  # "11010"

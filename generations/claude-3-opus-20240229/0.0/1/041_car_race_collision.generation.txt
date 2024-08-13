@@ -1,0 +1,26 @@
+To determine the number of collisions between the cars moving in opposite directions, we can use the concept of combinations. Since all the cars are moving at the same speed and the road is infinitely long, each car moving from left to right will collide with each car moving from right to left exactly once.
+
+Here's the implementation of the `car_race_collision` function in Julia:
+
+```julia
+function car_race_collision(n::Int)::Int
+    return binomial(n, 2)
+end
+
+function binomial(n::Int, k::Int)::Int
+    return factorial(n) ÷ (factorial(k) * factorial(n - k))
+end
+```
+
+Explanation:
+- The number of collisions is equal to the number of ways we can choose 2 cars, one from each set of `n` cars moving in opposite directions.
+- This is equivalent to the number of combinations of `n` choose 2, denoted as `C(n, 2)` or `nC2`.
+- The formula for `C(n, 2)` is `n! / (2! * (n-2)!)`, where `!` represents the factorial.
+- We can calculate the factorial using the `factorial` function in Julia.
+- The `binomial` function calculates the binomial coefficient `C(n, k)` using the formula `n! / (k! * (n-k)!)`.
+- Finally, we return the result of `binomial(n, 2)` as the number of collisions.
+
+Time Complexity: O(1)
+Space Complexity: O(1)
+
+I hope this helps! Let me know if you have any further questions.

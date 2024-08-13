@@ -1,0 +1,17 @@
+```julia
+# Import the isprime function from the Primes package
+import Primes: isprime
+
+"""
+    prime_length(s::String)::Bool
+
+    Returns true if the length of the string `s` is a prime number, false otherwise.
+"""
+function prime_length(s::String)::Bool
+    # Calculate the length of the string
+    len = length(s)
+    # Check if the length is a prime number
+    return isprime(len)
+end
+```
+This function uses the `isprime` function from the `Primes` package to check if the length of the string is a prime number. If the length is a prime number, the function returns `true`, otherwise it returns `false`.

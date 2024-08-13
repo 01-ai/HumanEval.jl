@@ -1,0 +1,19 @@
+Sure, here is the Julia function based on your docstring:
+
+```julia
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+    # Convert strings to floats, replacing commas with dots
+    a_num = typeof(a) <: AbstractString ? parse(Float64, replace(a, "," => ".")) : float(a)
+    b_num = typeof(b) <: AbstractString ? parse(Float64, replace(b, "," => ".")) : float(b)
+
+    # Compare and return the larger value, or nothing if they are equal
+    if a_num > b_num
+        return a_num == a ? a : string(a_num)
+    elseif a_num < b_num
+        return b_num == b ? b : string(b_num)
+    else
+        return nothing
+    end
+end
+```
+This function first converts both inputs to floats, replacing commas with dots in the process. It then compares the two numbers and returns the larger one in its original type. If the numbers are equal, it returns `nothing`.

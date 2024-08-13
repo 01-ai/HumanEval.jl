@@ -1,0 +1,77 @@
+Here's a Julia function that implements the `sort_third` functionality as described:
+
+```julia
+function sort_third(l::Vector)
+    # Create a copy of the input vector
+    result = copy(l)
+    
+    # Get the indices divisible by 3
+    third_indices = 3:3:length(l)
+    
+    # Extract the values at those indices
+    third_values = l[third_indices]
+    
+    # Sort the extracted values
+    sorted_third_values = sort(third_values)
+    
+    # Replace the values at the third indices with the sorted values
+    result[third_indices] = sorted_third_values
+    
+    return result
+end
+```
+
+This function works as follows:
+
+1. We create a copy of the input vector to avoid modifying the original.
+
+2. We generate a range of indices that are divisible by 3, starting from 3 and going up to the length of the input vector.
+
+3. We extract the values at these indices from the original vector.
+
+4. We sort these extracted values.
+
+5. We replace the values at the third indices in our result vector with the sorted values.
+
+6. Finally, we return the modified result vector.
+
+This implementation ensures that:
+- The function returns a new vector without modifying the input vector.
+- Only the values at indices divisible by 3 are sorted.
+- The values at other indices remain unchanged.
+
+You can test this function with the examples provided:
+
+```julia
+julia> sort_third([1, 2, 3])
+3-element Vector{Int64}:
+ 1
+ 2
+ 3
+
+julia> sort_third([5, 6, 3, 4, 8, 9, 2])
+7-element Vector{Int64}:
+ 5
+ 6
+ 3
+ 4
+ 8
+ 9
+ 2
+```
+
+Note that in these specific examples, the output looks the same as the input because the values at indices divisible by 3 are already in sorted order. To see the sorting effect more clearly, you could try:
+
+```julia
+julia> sort_third([5, 6, 9, 4, 8, 3, 2])
+7-element Vector{Int64}:
+ 5
+ 6
+ 3
+ 4
+ 8
+ 9
+ 2
+```
+
+Here, you can see that 9 and 3 (at indices 3 and 6) have been swapped.

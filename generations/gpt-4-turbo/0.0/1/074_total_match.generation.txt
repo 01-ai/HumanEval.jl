@@ -1,0 +1,16 @@
+```julia
+function total_match(xs::Vector{String}, ys::Vector{String})::Vector{String}
+    # Calculate the total number of characters in each list
+    total_chars_xs = sum(length(x) for x in xs)
+    total_chars_ys = sum(length(y) for y in ys)
+    
+    # Compare the total number of characters and return the appropriate list
+    if total_chars_xs < total_chars_ys
+        return xs
+    elseif total_chars_xs > total_chars_ys
+        return ys
+    else
+        return xs
+    end
+end
+```

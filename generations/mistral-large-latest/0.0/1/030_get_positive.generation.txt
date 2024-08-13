@@ -1,0 +1,9 @@
+Sure, here is the Julia function that fulfills the requirements:
+
+```julia
+function get_positive(xs::Vector)
+    return filter(x -> x > 0, xs)
+end
+```
+
+This function uses the `filter` function in Julia to return a new vector that only contains the elements of `xs` that are greater than 0.

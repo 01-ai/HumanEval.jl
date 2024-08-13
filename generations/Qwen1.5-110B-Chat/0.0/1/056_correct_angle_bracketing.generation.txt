@@ -1,0 +1,17 @@
+```julia
+function correct_angle_bracketing(brackets::String)::Bool
+    balance = 0
+    for char in brackets
+        if char == '<'
+            balance += 1
+        elseif char == '>'
+            balance -= 1
+        end
+        if balance < 0
+            return false
+        end
+    end
+    return balance == 0
+end
+```
+This Julia function iterates through the input string `brackets`, incrementing a counter for each opening bracket ("<") and decrementing it for each closing bracket (">"). If at any point the counter goes negative, it means there's a closing bracket without a matching opening bracket, so the function returns `false`. If the entire string is processed and the counter is zero, it means all opening brackets have matching closing brackets, so the function returns `true`.

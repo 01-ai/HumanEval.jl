@@ -1,0 +1,35 @@
+function is_nested(s::String)::Bool
+    # Initialize a stack to keep track of brackets
+    stack = Int[]
+    # Initialize a flag to indicate if we've found a nested bracket
+    nested = false
+
+    # Iterate over each character in the string
+    for c in s
+        # If the character is an opening bracket, push to the stack
+        if c == '['
+            push!(stack, 1)
+        # If the character is a closing bracket
+        elseif c == ']'
+            # If the stack is not empty, pop from the stack
+            if !isempty(stack)
+                pop!(stack)
+                # If the stack is not empty after popping, we have found a nested bracket
+                if !isempty(stack)
+                    nested = true
+                end
+            # If the stack is empty, the brackets are not balanced
+            else
+                return false
+            end
+        end
+    end
+
+    # Return the nested flag
+    return nested
+end
+
+# Example usage
+for s in ["[[]]", "[]]]]]]][[[[[]", "[][]", "[]", "[[][]]", "[[]][["]
+    println(is_nested(s))
+end

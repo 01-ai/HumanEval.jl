@@ -1,0 +1,42 @@
+Here's a Julia function that implements the `next_smallest` functionality as described:
+
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    if length(xs) < 2
+        return nothing
+    end
+    
+    smallest = typemax(Int)
+    second_smallest = typemax(Int)
+    
+    for x in xs
+        if x < smallest
+            second_smallest = smallest
+            smallest = x
+        elseif x < second_smallest && x != smallest
+            second_smallest = x
+        end
+    end
+    
+    return second_smallest == typemax(Int) ? nothing : second_smallest
+end
+```
+
+Let's break down how this function works:
+
+1. First, we check if the input vector has less than 2 elements. If so, we return `nothing` because there can't be a second smallest element.
+
+2. We initialize two variables: `smallest` and `second_smallest`, both set to the maximum possible integer value.
+
+3. We iterate through each element `x` in the input vector `xs`:
+   - If `x` is smaller than the current `smallest`, we update `second_smallest` to be the old `smallest`, and update `smallest` to be `x`.
+   - If `x` is smaller than the current `second_smallest` but not equal to `smallest`, we update `second_smallest` to be `x`.
+
+4. After the iteration, if `second_smallest` hasn't been updated (still equal to `typemax(Int)`), it means there was no second smallest element (all elements were the same), so we return `nothing`. Otherwise, we return `second_smallest`.
+
+This implementation handles all the cases mentioned in the examples:
+- It correctly finds the second smallest element in a list of unique numbers.
+- It works with unsorted lists.
+- It returns `nothing` for empty lists or lists with only one unique number.
+
+The time complexity of this solution is O(n), where n is the number of elements in the input vector, as we only need to iterate through the list once.

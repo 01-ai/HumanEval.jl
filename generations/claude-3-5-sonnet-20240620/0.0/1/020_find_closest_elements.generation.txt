@@ -1,0 +1,55 @@
+Here's a Julia function that finds the two closest elements in a list of numbers and returns them as a tuple:
+
+```julia
+function find_closest_elements(numbers::Vector{Float64})::Tuple{Float64, Float64}
+    if length(numbers) < 2
+        throw(ArgumentError("Input vector must have at least two elements"))
+    end
+
+    sorted_numbers = sort(numbers)
+    min_diff = Inf
+    closest_pair = (0.0, 0.0)
+
+    for i in 1:(length(sorted_numbers) - 1)
+        diff = sorted_numbers[i+1] - sorted_numbers[i]
+        if diff < min_diff
+            min_diff = diff
+            closest_pair = (sorted_numbers[i], sorted_numbers[i+1])
+        end
+    end
+
+    return closest_pair
+end
+```
+
+This function works as follows:
+
+1. First, we check if the input vector has at least two elements. If not, we throw an `ArgumentError`.
+
+2. We sort the input vector in ascending order. This allows us to compare adjacent elements to find the smallest difference.
+
+3. We initialize `min_diff` to positive infinity and `closest_pair` to `(0.0, 0.0)`.
+
+4. We iterate through the sorted vector, comparing each element with the next one.
+
+5. If we find a smaller difference than the current `min_diff`, we update `min_diff` and `closest_pair`.
+
+6. After the loop, we return `closest_pair`, which contains the two closest elements.
+
+This implementation has the following properties:
+
+- It returns the elements in order (smaller number, larger number) as required.
+- If there are multiple pairs with the same smallest difference, it returns the first such pair in the sorted order.
+- If there are duplicate numbers that are closest to each other, it will return that number twice in the tuple.
+
+You can test the function with the examples provided:
+
+```julia
+julia> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.2])
+(2.0, 2.2)
+
+julia> find_closest_elements([1.0, 2.0, 3.0, 4.0, 5.0, 2.0])
+(2.0, 2.0)
+```
+
+The function will work correctly for these and other cases, always returning the two closest elements as a tuple of Float64 values.

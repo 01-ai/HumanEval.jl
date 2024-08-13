@@ -1,0 +1,20 @@
+Sure, I can help you implement the `sort_numbers` function in Julia. Here's a possible solution:
+
+```julia
+function sort_numbers(numbers::String)::String
+    # Define a dictionary to map number names to their numerical values
+    number_map = Dict("zero" => 0, "one" => 1, "two" => 2, "three" => 3, "four" => 4,
+                      "five" => 5, "six" => 6, "seven" => 7, "eight" => 8, "nine" => 9)
+
+    # Split the input string into an array of number names
+    number_names = split(numbers)
+
+    # Sort the number names based on their numerical values
+    sorted_names = sort(number_names, by=x -> number_map[x])
+
+    # Join the sorted number names back into a string and return it
+    return join(sorted_names, " ")
+end
+```
+
+This function works by first defining a dictionary that maps each number name to its corresponding numerical value. It then splits the input string into an array of number names, sorts this array based on the numerical values of the names (using the `sort` function with a `by` argument), and finally joins the sorted names back into a string and returns it.

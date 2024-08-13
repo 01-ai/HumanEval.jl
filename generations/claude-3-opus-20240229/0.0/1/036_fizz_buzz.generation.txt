@@ -1,0 +1,52 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function fizz_buzz(n::Int)
+    count = 0
+    for i in 1:n-1
+        if (i % 11 == 0 || i % 13 == 0) && occursin("7", string(i))
+            count += count_sevens(i)
+        end
+    end
+    return count
+end
+
+function count_sevens(num::Int)
+    count = 0
+    while num > 0
+        if num % 10 == 7
+            count += 1
+        end
+        num ÷= 10
+    end
+    return count
+end
+```
+
+Explanation:
+
+1. The `fizz_buzz` function takes an integer `n` as input.
+
+2. We initialize a variable `count` to keep track of the number of times the digit 7 appears in the desired integers.
+
+3. We start a loop from 1 to n-1 (inclusive) to iterate over all integers less than `n`.
+
+4. Inside the loop, we check if the current integer `i` is divisible by 11 or 13 using the modulo operator `%`. We also check if the digit 7 appears in the integer by converting it to a string using `string(i)` and using the `occursin` function to check if the string contains the character "7".
+
+5. If both conditions are satisfied (divisible by 11 or 13 and contains the digit 7), we call the `count_sevens` function to count the number of occurrences of the digit 7 in the current integer `i`. We add the count to the `count` variable.
+
+6. After the loop ends, we return the final value of `count`, which represents the total number of times the digit 7 appears in integers less than `n` that are divisible by 11 or 13.
+
+7. The `count_sevens` function is a helper function that takes an integer `num` as input and counts the number of occurrences of the digit 7 in that integer.
+
+8. Inside the `count_sevens` function, we initialize a variable `count` to keep track of the count of 7's.
+
+9. We start a loop that continues as long as `num` is greater than 0.
+
+10. In each iteration, we check if the last digit of `num` (obtained by `num % 10`) is equal to 7. If it is, we increment the `count` by 1.
+
+11. We then integer divide `num` by 10 using `÷=` to remove the last digit and continue the loop with the remaining digits.
+
+12. Once the loop ends, we return the final value of `count`, which represents the number of occurrences of the digit 7 in the given integer.
+
+The solution has a time complexity of O(n log n) since we iterate over n-1 integers and for each integer, we perform a counting operation that takes O(log n) time in the worst case (when all digits are 7). The space complexity is O(1) as we only use a constant amount of extra space.

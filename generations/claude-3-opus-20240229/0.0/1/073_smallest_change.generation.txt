@@ -1,0 +1,50 @@
+Here's a solution to find the minimum number of elements that need to be changed to make an array palindromic in Julia:
+
+```julia
+function smallest_change(xs::Vector{Int})::Int
+    n = length(xs)
+    changes = 0
+
+    for i in 1:div(n, 2)
+        if xs[i] != xs[n-i+1]
+            changes += 1
+        end
+    end
+
+    return changes
+end
+```
+
+Explanation:
+
+1. We define the function `smallest_change` that takes a vector of integers `xs` as input and returns an integer.
+
+2. We calculate the length of the array `xs` and store it in the variable `n`.
+
+3. We initialize a variable `changes` to keep track of the number of elements that need to be changed to make the array palindromic.
+
+4. We iterate from index 1 to the middle of the array (since a palindrome is symmetric). We use `div(n, 2)` to calculate the middle index.
+
+5. For each index `i`, we compare the element at index `i` with the element at the corresponding index from the end of the array (`n-i+1`).
+   - If the elements are not equal, it means we need to change one of them to make the array palindromic. We increment the `changes` variable by 1.
+
+6. After the loop ends, we have counted the total number of elements that need to be changed.
+
+7. Finally, we return the value of `changes`, which represents the minimum number of elements that need to be changed to make the array palindromic.
+
+This solution has a time complexity of O(n), where n is the length of the input array, as we only iterate through half of the array once.
+
+The given examples will produce the expected outputs:
+
+```jldoctest
+julia> smallest_change([1, 2, 3, 5, 4, 7, 9, 6])
+4
+
+julia> smallest_change([1, 2, 3, 4, 3, 2, 2])
+1
+
+julia> smallest_change([1, 2, 3, 2, 1])
+0
+```
+
+I hope this helps! Let me know if you have any further questions.

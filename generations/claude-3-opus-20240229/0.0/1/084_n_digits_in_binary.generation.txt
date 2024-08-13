@@ -1,0 +1,50 @@
+Here's the implementation of the `n_digits_in_binary` function in Julia:
+
+```julia
+function n_digits_in_binary(N::Int)::String
+    if N == 0
+        return "0"
+    end
+    
+    binary_digits = ""
+    while N > 0
+        binary_digits = string(N % 2) * binary_digits
+        N ÷= 2
+    end
+    
+    return binary_digits
+end
+```
+
+Explanation:
+
+1. We first check if the input `N` is equal to 0. If it is, we return the string `"0"` since the binary representation of 0 is `"0"`.
+
+2. We initialize an empty string `binary_digits` to store the binary representation of `N`.
+
+3. We start a loop that continues as long as `N` is greater than 0. In each iteration:
+   - We compute the least significant bit of `N` by taking `N % 2` (the remainder when `N` is divided by 2). This gives us either 0 or 1.
+   - We convert the least significant bit to a string using `string()` and concatenate it with the existing `binary_digits` string. We concatenate it at the beginning of `binary_digits` to ensure the correct order of bits.
+   - We update `N` by dividing it by 2 using integer division `÷` (equivalent to `div()` function). This effectively removes the least significant bit from `N` in each iteration.
+
+4. After the loop ends, we have the binary representation of `N` stored in `binary_digits`. We return this string as the result.
+
+The function takes an integer `N` as input and returns a string representing the binary representation of `N`.
+
+Here are some example test cases:
+
+```jldoctest
+julia> n_digits_in_binary(1000)
+"1111101000"
+
+julia> n_digits_in_binary(150)
+"10010110"
+
+julia> n_digits_in_binary(147)
+"10010011"
+
+julia> n_digits_in_binary(0)
+"0"
+```
+
+The function correctly returns the binary representation of the given integers as strings.

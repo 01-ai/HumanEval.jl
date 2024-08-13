@@ -1,0 +1,11 @@
+```julia
+function sum_product(numbers::Vector{Int})::Tuple{Int, Int}
+    sum = 0
+    product = 1
+    for number in numbers
+        sum += number
+        product *= number
+    end
+    return (sum, product)
+end
+```

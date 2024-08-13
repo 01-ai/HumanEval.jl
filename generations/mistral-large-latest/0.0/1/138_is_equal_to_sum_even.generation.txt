@@ -1,0 +1,22 @@
+Sure, here is a Julia function that implements the described behavior:
+
+```julia
+function is_equal_to_sum_even(n::Int)::Bool
+    if n < 8 || n % 2 != 0
+        return false
+    else
+        for i in 2:2:n-6
+            for j in i+2:2:n-4
+                for k in j+2:2:n-2
+                    if n == i + j + k + (n - i - j - k)
+                        return true
+                    end
+                end
+            end
+        end
+    end
+    return false
+end
+```
+
+This function first checks if the number is less than 8 or odd, in which case it returns false. Then it iterates over all possible combinations of 4 even numbers that sum up to `n`. If it finds such a combination, it returns true. If it doesn't find any combination after checking all possibilities, it returns false.

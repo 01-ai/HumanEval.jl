@@ -1,0 +1,53 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function is_happy(s::String)::Bool
+    if length(s) < 3
+        return false
+    end
+
+    for i in 1:length(s)-2
+        if s[i] == s[i+1] || s[i] == s[i+2] || s[i+1] == s[i+2]
+            return false
+        end
+    end
+
+    return true
+end
+```
+
+Explanation:
+
+1. We first check if the length of the string `s` is less than 3. If it is, we return `false` because the string cannot be happy according to the given conditions.
+
+2. We then start a loop that iterates from index 1 to `length(s)-2`. This is because we need to check every three consecutive letters in the string.
+
+3. Inside the loop, we check if any two of the three consecutive letters at indexes `i`, `i+1`, and `i+2` are the same. If any two of them are the same, we return `false` because the string is not happy.
+
+4. If we complete the loop without returning `false`, it means that every three consecutive letters in the string are distinct. In this case, we return `true` because the string is happy.
+
+The function returns a boolean value indicating whether the string is happy or not.
+
+You can test the function with the provided examples:
+
+```julia
+julia> is_happy("a")
+false
+
+julia> is_happy("aa")
+false
+
+julia> is_happy("abcd")
+true
+
+julia> is_happy("aabb")
+false
+
+julia> is_happy("adb")
+true
+
+julia> is_happy("xyy")
+false
+```
+
+The code should produce the expected output for each example.

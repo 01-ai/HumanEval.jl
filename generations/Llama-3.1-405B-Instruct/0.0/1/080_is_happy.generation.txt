@@ -1,0 +1,51 @@
+Here is the Julia function that implements the `is_happy` function based on the provided docstring:
+```julia
+"""
+is_happy(s::String)::Bool
+
+You are given a string s. Your task is to check if the string is happy or not. A
+string is happy if its length is at least 3 and every 3 consecutive letters are
+distinct.
+
+# Examples
+
+```jldoctest
+julia> is_happy("a")
+false
+
+julia> is_happy("aa")
+false
+
+julia> is_happy("abcd")
+true
+
+julia> is_happy("aabb")
+false
+
+julia> is_happy("adb")
+true
+
+julia> is_happy("xyy")
+false
+```
+"""
+function is_happy(s::String)::Bool
+    length(s) < 3 && return false
+    for i in 1:length(s)-2
+        s[i] == s[i+1] || s[i] == s[i+2] || s[i+1] == s[i+2] && return false
+    end
+    return true
+end
+```
+Here's an explanation of the implementation:
+
+1. First, we check if the length of the string is less than 3. If it is, we immediately return `false`, since a happy string must have at least 3 characters.
+2. We then iterate over the string, considering every 3 consecutive characters. We use the `for` loop to iterate over the indices `i` of the string, starting from 1 and ending at `length(s)-2`.
+3. Inside the loop, we check if any of the 3 consecutive characters are equal. We use the `||` operator to check if any of the following conditions are true:
+	* `s[i] == s[i+1]`: the current character is equal to the next character.
+	* `s[i] == s[i+2]`: the current character is equal to the character after next.
+	* `s[i+1] == s[i+2]`: the next character is equal to the character after next.
+	If any of these conditions are true, we return `false`, since the string is not happy.
+4. If we reach the end of the loop without returning `false`, we return `true`, indicating that the string is happy.
+
+You can test this function using the examples provided in the docstring.

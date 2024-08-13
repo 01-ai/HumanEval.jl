@@ -1,0 +1,13 @@
+```julia
+function encrypt(s::String)
+    # Define the alphabet and the encrypted alphabet
+    const alpha = 'a':'z'
+    const enc_alpha = ['a' + (mod((i + 4), 26)) for i in 0:25]
+
+    # Convert the string to lowercase and map each character to its encrypted counterpart
+    encrypted = map(c -> c in alpha ? enc_alpha[c - 'a' + 1] : c, lowercase(s))
+
+    # Join the encrypted characters back into a string
+    return join(encrypted)
+end
+```

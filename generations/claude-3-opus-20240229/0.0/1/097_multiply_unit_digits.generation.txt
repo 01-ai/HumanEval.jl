@@ -1,0 +1,36 @@
+Here's the solution to the problem:
+
+```julia
+function multiply_unit_digits(a::Int, b::Int)::Int
+    unit_digit_a = abs(a % 10)
+    unit_digit_b = abs(b % 10)
+    return unit_digit_a * unit_digit_b
+end
+```
+
+Explanation:
+
+1. The function `multiply_unit_digits` takes two integers `a` and `b` as input and returns an integer.
+
+2. To obtain the unit digit of `a`, we use the modulo operator `%` with 10. This gives us the remainder when `a` is divided by 10, which is the unit digit. We use the `abs` function to handle negative numbers and ensure we always get the positive unit digit.
+   ```julia
+   unit_digit_a = abs(a % 10)
+   ```
+
+3. Similarly, we obtain the unit digit of `b` using the same approach.
+   ```julia
+   unit_digit_b = abs(b % 10)
+   ```
+
+4. Finally, we multiply the unit digits of `a` and `b` and return the result.
+   ```julia
+   return unit_digit_a * unit_digit_b
+   ```
+
+The function correctly handles the given examples:
+- `multiply_unit_digits(148, 412)` returns `16` because the unit digits are 8 and 2, and their product is 16.
+- `multiply_unit_digits(19, 28)` returns `72` because the unit digits are 9 and 8, and their product is 72.
+- `multiply_unit_digits(2020, 1851)` returns `0` because the unit digits are 0 and 1, and their product is 0.
+- `multiply_unit_digits(14, -15)` returns `20` because the unit digits are 4 and 5, and their product is 20. The negative sign is handled by the `abs` function.
+
+The function assumes the input is always valid, so no additional error handling is included.

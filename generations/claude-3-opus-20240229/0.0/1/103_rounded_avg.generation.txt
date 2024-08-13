@@ -1,0 +1,37 @@
+Here's a solution in Julia that meets the requirements:
+
+```julia
+function rounded_avg(n::Int, m::Int)::Union{Int, String}
+    if n > m
+        return -1
+    end
+
+    avg = sum(n:m) / (m - n + 1)
+    rounded_avg = round(Int, avg)
+    return string(rounded_avg, base=2)
+end
+```
+
+Here's how it works:
+
+1. The function takes two integer arguments `n` and `m`.
+2. First, it checks if `n` is greater than `m`. If so, it returns `-1`.
+3. If `n` is not greater than `m`, it calculates the sum of the integers from `n` to `m` using the colon operator `n:m`, which creates a range of integers from `n` to `m` (inclusive). It then divides this sum by the number of elements in the range `(m - n + 1)` to get the average.
+4. The `round` function is used to round the average to the nearest integer. The `Int` type is passed as the first argument to `round` to ensure that the result is an integer.
+5. Finally, the function returns the rounded average converted to a binary string using the `string` function with `base=2`.
+
+Here are some test cases:
+
+```jldoctest
+julia> rounded_avg(1, 5)
+"11"
+
+julia> rounded_avg(7, 5)
+-1
+
+julia> rounded_avg(10, 20)
+"1111"
+
+julia> rounded_avg(20, 33)
+"11010"
+```

@@ -1,0 +1,35 @@
+Here's the implementation of the `histogram` function in Julia:
+
+```julia
+function histogram(s::String)::Dict{String, Int}
+    # Split the string into individual letters and filter out empty strings
+    letters = filter(!isempty, split(s, " "))
+    
+    # Create a dictionary to count occurrences of each letter
+    counts = Dict{String, Int}()
+    
+    # Count occurrences of each letter
+    for letter in letters
+        if haskey(counts, letter)
+            counts[letter] += 1
+        else
+            counts[letter] = 1
+        end
+    end
+    
+    # Find the maximum count
+    max_count = maximum(values(counts), init=0)
+    
+    # Filter the dictionary to include only letters with the maximum count
+    result = Dict(letter => count for (letter, count) in counts if count == max_count)
+    
+    return result
+end
+```
+
+This function works as follows:
+1. It splits the input string into individual letters, filtering out any empty strings that might result from consecutive spaces.
+2. It counts the occurrences of each letter using a dictionary.
+3. It finds the maximum count of any letter.
+4. It filters the dictionary to include only those letters that have the maximum count.
+5. It returns the filtered dictionary.

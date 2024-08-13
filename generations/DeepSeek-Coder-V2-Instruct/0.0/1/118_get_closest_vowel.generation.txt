@@ -1,0 +1,19 @@
+ Here's the implementation of the `get_closest_vowel` function in Julia:
+
+```julia
+function get_closest_vowel(word::String)::String
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    consonants = Set(['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z',
+                      'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'])
+    
+    for i in length(word)-2:-1:2
+        if word[i] in vowels && word[i-1] in consonants && word[i+1] in consonants
+            return string(word[i])
+        end
+    end
+    
+    return ""
+end
+```
+
+This function iterates through the word from the second last character to the second character, checking if a vowel is surrounded by consonants. If such a vowel is found, it returns the vowel; otherwise, it returns an empty string.

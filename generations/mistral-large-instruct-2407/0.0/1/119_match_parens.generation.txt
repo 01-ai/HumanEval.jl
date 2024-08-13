@@ -1,0 +1,65 @@
+ Certainly! Below is the implementation of the `match_parens` function in Julia based on the given docstring:
+
+```julia
+"""
+    match_parens(lst::Vector{String})::String
+
+You are given a list of two strings, both strings consist of open parentheses
+"(" or close parentheses ")" only. Your job is to check if it is possible to
+concatenate the two strings in some order, that the resulting string will be
+good. A string S is considered to be good if and only if all parentheses in S
+are balanced. For example: the string "(())()" is good, while the string "())"
+is not. Return "Yes" if there"s a way to make a good string, and return "No"
+otherwise.
+
+# Examples
+
+```jldoctest
+julia> match_parens(["()(", ")"])
+"Yes"
+
+julia> match_parens([")", ")"])
+"No"
+```
+"""
+function match_parens(lst::Vector{String})::String
+    s1, s2 = lst
+
+    function is_balanced(s::String)::Bool
+        balance = 0
+        for char in s
+            if char == '('
+                balance += 1
+            elseif char == ')'
+                balance -= 1
+            end
+            if balance < 0
+                return false
+            end
+        end
+        return balance == 0
+    end
+
+    if is_balanced(s1 * s2) || is_balanced(s2 * s1)
+        return "Yes"
+    else
+        return "No"
+    end
+end
+
+# Examples
+println(match_parens(["()(", ")"]))  # Output: "Yes"
+println(match_parens([")", ")"]))    # Output: "No"
+```
+
+### Explanation:
+1. **Function Definition**: The function `match_parens` takes a vector of two strings as input.
+2. **Helper Function**: Inside `match_parens`, there is a helper function `is_balanced` that checks if a given string is balanced.
+   - It uses a counter `balance` to keep track of the number of open parentheses.
+   - It iterates through each character in the string, incrementing `balance` for '(' and decrementing for ')'.
+   - If `balance` becomes negative at any point, the string is not balanced.
+   - Finally, it checks if `balance` is zero, indicating that all parentheses are matched.
+3. **Concatenation Check**: The function checks if either `s1 * s2` or `s2 * s1` is balanced using the `is_balanced` function.
+4. **Return Result**: It returns "Yes" if any of the concatenations are balanced, otherwise "No".
+
+This implementation ensures that the function correctly determines if the two strings can be concatenated in any order to form a balanced string.

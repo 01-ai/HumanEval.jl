@@ -1,0 +1,38 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function even_odd_count(num::Int)::Tuple{Int, Int}
+    num_str = string(abs(num))
+    even_count = count(isodd, parse.(Int, collect(num_str)))
+    odd_count = length(num_str) - even_count
+    return (even_count, odd_count)
+end
+```
+
+Explanation:
+
+1. We define a function called `even_odd_count` that takes an integer `num` as input and returns a tuple of two integers representing the count of even and odd digits.
+
+2. Inside the function, we convert the absolute value of `num` to a string using the `string()` function and store it in the variable `num_str`. We use `abs()` to handle negative numbers.
+
+3. We use the `collect()` function to convert the string `num_str` into an array of characters.
+
+4. We use the `parse.(Int, ...)` function to convert each character in the array to an integer. This creates an array of integers representing each digit of the number.
+
+5. We use the `count()` function with the `isodd` function as the first argument to count the number of odd digits in the array. The `isodd` function returns `true` for odd numbers and `false` for even numbers.
+
+6. To calculate the count of even digits, we subtract the count of odd digits from the total length of the `num_str` string.
+
+7. Finally, we return a tuple `(even_count, odd_count)` containing the count of even digits and odd digits respectively.
+
+The function correctly handles the given examples:
+
+```jldoctest
+julia> even_odd_count(-12)
+(1, 1)
+
+julia> even_odd_count(123)
+(1, 2)
+```
+
+The solution efficiently counts the number of even and odd digits in the given integer and returns the result as a tuple.

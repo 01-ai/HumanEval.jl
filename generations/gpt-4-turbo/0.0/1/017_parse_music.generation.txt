@@ -1,0 +1,24 @@
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    # Split the string by spaces to separate the notes
+    notes = split(music_string)
+    
+    # Initialize an empty array to store the beats
+    beats = Int[]
+    
+    # Iterate over each note and determine the number of beats
+    for note in notes
+        if note == "o"
+            push!(beats, 4)  # Whole note
+        elseif note == "o|"
+            push!(beats, 2)  # Half note
+        elseif note == ".|"
+            push!(beats, 1)  # Quarter note
+        end
+    end
+    
+    return beats
+end
+```
+
+This function `parse_music` takes a string of musical notes and returns a vector of integers representing the number of beats each note lasts. The function splits the input string by spaces to separate individual notes, then iterates through each note to determine its duration based on the provided legend, and finally appends the corresponding number of beats to the result vector.

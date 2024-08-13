@@ -1,0 +1,42 @@
+function numerical_letter_grade(grades::Vector{Float64})::Vector{String}
+    # Initialize an empty vector to store the letter grades
+    letter_grades = Vector{String}(undef, length(grades))
+
+    # Loop through each GPA in the input vector
+    for (i, gpa) in enumerate(grades)
+        if gpa > 4.0
+            letter_grades[i] = "A+"
+        elseif gpa > 3.7
+            letter_grades[i] = "A"
+        elseif gpa > 3.3
+            letter_grades[i] = "A-"
+        elseif gpa > 3.0
+            letter_grades[i] = "B+"
+        elseif gpa > 2.7
+            letter_grades[i] = "B"
+        elseif gpa > 2.3
+            letter_grades[i] = "B-"
+        elseif gpa > 2.0
+            letter_grades[i] = "C+"
+        elseif gpa > 1.7
+            letter_grades[i] = "C"
+        elseif gpa > 1.3
+            letter_grades[i] = "C-"
+        elseif gpa > 1.0
+            letter_grades[i] = "D+"
+        elseif gpa > 0.7
+            letter_grades[i] = "D"
+        elseif gpa > 0.0
+            letter_grades[i] = "D-"
+        else
+            letter_grades[i] = "E"
+        end
+    end
+
+    return letter_grades
+end
+
+# Example usage
+grades = [4.0, 3.0, 1.7, 2.0, 3.5]
+letter_grades = numerical_letter_grade(grades)
+println(letter_grades)

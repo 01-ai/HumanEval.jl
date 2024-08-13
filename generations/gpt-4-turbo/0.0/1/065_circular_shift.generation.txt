@@ -1,0 +1,22 @@
+```julia
+function circular_shift(x::Int, shift::Int)::String
+    # Convert the integer to a string to manipulate digits
+    digits_str = string(x)
+    n = length(digits_str)
+    
+    # If shift is greater than or equal to the number of digits, reverse the digits
+    if shift >= n
+        return reverse(digits_str)
+    end
+    
+    # Calculate the effective shift needed (modulus with n)
+    effective_shift = shift % n
+    
+    # Perform the circular shift
+    shifted_str = digits_str[(n-effective_shift+1):n] * digits_str[1:(n-effective_shift)]
+    
+    return shifted_str
+end
+```
+
+This function first converts the integer `x` into a string to easily manipulate its digits. It then checks if the shift is greater than or equal to the number of digits, in which case it simply returns the reversed string of digits. Otherwise, it calculates the effective shift needed by taking the modulus of the shift with the number of digits. The function then performs the circular shift by concatenating the substring from the end of the original string (affected by the shift) with the beginning substring that remains unchanged.

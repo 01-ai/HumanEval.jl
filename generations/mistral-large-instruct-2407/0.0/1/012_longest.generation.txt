@@ -1,0 +1,35 @@
+ Certainly! Below is the implementation of the `longest` function in Julia based on the provided docstring:
+
+```julia
+"""
+    longest(xs::Vector{String})::Union{Nothing, String}
+
+Out of list of strings, return the longest one. Return the first one in case of
+multiple strings of the same length. Return `nothing` in case the input list is
+empty.
+
+# Examples
+
+```jldoctest
+julia> longest(String[])
+
+julia> longest(["a", "b", "c"])
+"a"
+
+julia> longest(["a", "bb", "ccc"])
+"ccc"
+```
+"""
+function longest(xs::Vector{String})::Union{Nothing, String}
+    isempty(xs) && return nothing
+    longest_str = xs[1]
+    for str in xs
+        if length(str) > length(longest_str)
+            longest_str = str
+        end
+    end
+    return longest_str
+end
+```
+
+This function iterates through the list of strings and keeps track of the longest string encountered. If the input list is empty, it returns `nothing`. If there are multiple strings of the same length, it returns the first one encountered.

@@ -1,0 +1,55 @@
+Here's a Julia function that implements the described behavior:
+
+```julia
+function reverse_string(s::String)::String
+    # Check if the string contains any letters
+    has_letters = any(isletter, s)
+    
+    # If there are no letters, simply reverse the entire string
+    if !has_letters
+        return reverse(s)
+    end
+    
+    # If there are letters, process each character
+    return join(map(s) do char
+        if isletter(char)
+            # If it's a letter, swap its case
+            if isuppercase(char)
+                return lowercase(char)
+            else
+                return uppercase(char)
+            end
+        else
+            # If it's not a letter, keep it as is
+            return char
+        end
+    end)
+end
+```
+
+This function does the following:
+
+1. First, it checks if the input string contains any letters using `any(isletter, s)`.
+
+2. If there are no letters in the string, it simply reverses the entire string using `reverse(s)` and returns it.
+
+3. If there are letters in the string, it processes each character:
+   - For letters, it swaps the case (lowercase to uppercase and vice versa) using `isuppercase()`, `lowercase()`, and `uppercase()` functions.
+   - For non-letters, it keeps them unchanged.
+
+4. The `map` function is used to apply this logic to each character in the string, and `join` is used to combine the resulting characters back into a string.
+
+This implementation satisfies all the requirements:
+- It reverses the case of letters.
+- It keeps non-letter characters unchanged.
+- If the string contains no letters, it reverses the entire string.
+
+You can test it with the provided examples:
+
+```julia
+println(reverse_string("1234"))  # Output: 4321
+println(reverse_string("ab"))    # Output: AB
+println(reverse_string("#a@C"))  # Output: #A@c
+```
+
+These should produce the expected outputs as shown in the examples.

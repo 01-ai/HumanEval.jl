@@ -1,0 +1,30 @@
+Here's the implementation of the `unique_elements` function in Julia:
+
+```julia
+function unique_elements(l::Vector)
+    return sort(unique(l))
+end
+```
+
+Explanation:
+1. The function takes a vector `l` as input.
+2. Inside the function, we first use the `unique` function to extract the unique elements from the input vector `l`. The `unique` function returns a new vector containing only the unique elements, preserving the order of the first occurrence of each element.
+3. We then apply the `sort` function to the resulting vector of unique elements to sort them in ascending order.
+4. Finally, the function returns the sorted vector of unique elements.
+
+The `unique_elements` function can be used as follows:
+
+```julia
+julia> unique_elements([5, 3, 5, 2, 3, 3, 9, 0, 123])
+6-element Vector{Int64}:
+   0
+   2
+   3
+   5
+   9
+ 123
+```
+
+In this example, the input vector `[5, 3, 5, 2, 3, 3, 9, 0, 123]` contains duplicate elements. The `unique_elements` function removes the duplicates and returns a sorted vector `[0, 2, 3, 5, 9, 123]` containing only the unique elements in ascending order.
+
+The function leverages the built-in `unique` and `sort` functions in Julia to achieve the desired result in a concise and efficient manner.

@@ -1,0 +1,18 @@
+```julia
+function move_one_ball(xs::Vector{Int})::Bool
+    if isempty(xs)
+        return true
+    end
+    
+    sorted_xs = sort(xs)
+    n = length(xs)
+    for i in 1:n
+        if xs == sorted_xs
+            return true
+        end
+        xs = [xs[end]] ∪ xs[1:end-1]  # Perform right shift operation
+    end
+    return false
+end
+```
+This Julia function `move_one_ball` takes an array of integers as input and checks if it's possible to sort the array in non-decreasing order by performing right shift operations. It iterates through the array, performing a right shift at each step and comparing the result to the sorted version of the array. If a match is found, it returns `true`; otherwise, it returns `false` after all shifts have been attempted. An empty array check is also included to immediately return `true`.

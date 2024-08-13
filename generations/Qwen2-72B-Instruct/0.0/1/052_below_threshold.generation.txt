@@ -1,0 +1,14 @@
+Here is a simple implementation of the function `below_threshold` in Julia:
+
+```julia
+function below_threshold(l::Vector, t::Number)
+    for i in l
+        if i >= t
+            return false
+        end
+    end
+    return true
+end
+```
+
+This function iterates through each element in the vector `l` and checks if it is below the threshold `t`. If it finds an element that is not below the threshold, it immediately returns `false`. If it goes through the entire list without finding any elements that are not below the threshold, it returns `true`.

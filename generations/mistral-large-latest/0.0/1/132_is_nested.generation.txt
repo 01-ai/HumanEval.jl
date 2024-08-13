@@ -1,0 +1,23 @@
+Sure, here is a Julia function that implements the described behavior:
+
+```julia
+function is_nested(s::String)::Bool
+    stack = Int[]
+    for c in s
+        if c == '['
+            push!(stack, 1)
+        elseif c == ']'
+            if isempty(stack)
+                return false
+            elseif stack[end] == 1
+                pop!(stack)
+            else
+                stack[end] += 1
+            end
+        end
+    end
+    return any(x -> x > 1, stack)
+end
+```
+
+This function uses a stack to keep track of the opening brackets. When it encounters a closing bracket, it checks if the stack is empty. If it is, the function returns false because there is a closing bracket without a corresponding opening bracket. If the stack is not empty, it checks the top element of the stack. If it is 1, it pops it from the stack because it corresponds to an opening bracket that has been closed. If it is greater than 1, it increments it because it corresponds to a nested bracket that has been closed. After processing all the characters in the string, the function checks if there are any elements in the stack that are greater than 1. If there are, it returns true because there is a nested bracket. If there are not, it returns false because there is no nested bracket.

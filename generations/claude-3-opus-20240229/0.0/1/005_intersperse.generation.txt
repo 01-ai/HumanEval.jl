@@ -1,0 +1,59 @@
+Here's the implementation of the `intersperse` function in Julia:
+
+```julia
+function intersperse(numbers::Vector{Int}, delimiter::Int)::Vector{Int}
+    result = Int[]
+    len = length(numbers)
+    
+    if len == 0
+        return result
+    end
+    
+    for i in 1:len-1
+        push!(result, numbers[i])
+        push!(result, delimiter)
+    end
+    
+    push!(result, numbers[end])
+    
+    return result
+end
+```
+
+Explanation:
+1. We define the `intersperse` function that takes a vector of integers `numbers` and an integer `delimiter` as input, and returns a vector of integers.
+
+2. We initialize an empty vector `result` to store the interspersed elements.
+
+3. We calculate the length of the input vector `numbers` and store it in the variable `len`.
+
+4. If the `numbers` vector is empty (i.e., `len == 0`), we return the empty `result` vector since there are no elements to intersperse.
+
+5. We start a loop that iterates from 1 to `len-1`. This loop will intersperse the delimiter between consecutive elements.
+
+6. Inside the loop:
+   - We push the current element of `numbers` at index `i` into the `result` vector using `push!()`.
+   - We push the `delimiter` into the `result` vector.
+
+7. After the loop, we push the last element of `numbers` into the `result` vector. This is done separately because the last element doesn't have a delimiter after it.
+
+8. Finally, we return the `result` vector containing the interspersed elements.
+
+This implementation follows the given examples and inserts the `delimiter` between every two consecutive elements of the input `numbers` vector.
+
+You can test the function with the provided examples:
+
+```julia
+julia> intersperse(Int[], 4)
+Int64[]
+
+julia> intersperse([1, 2, 3], 4)
+5-element Vector{Int64}:
+ 1
+ 4
+ 2
+ 4
+ 3
+```
+
+The function will work correctly for any input vector of integers and any integer delimiter.

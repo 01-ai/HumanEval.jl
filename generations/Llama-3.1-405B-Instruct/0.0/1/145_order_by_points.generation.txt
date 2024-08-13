@@ -1,0 +1,41 @@
+Here is the Julia function that implements the described behavior:
+```julia
+"""
+    order_by_points(nums::Vector{Int})::Vector{Int}
+
+Write a function which sorts the given list of integers in ascending order
+according to the sum of their digits. Note: if there are several items with
+similar sum of their digits, order them based on their index in original list.
+
+# Examples
+
+```jldoctest
+julia> order_by_points([1, 11, -1, -11, -12])
+5-element Vector{Int64}:
+  -1
+ -11
+   1
+ -12
+  11
+
+julia> order_by_points(Int[])
+Int64[]
+```
+"""
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    # Define a function to calculate the sum of digits of a number
+    sum_of_digits(x::Int) = sum(abs(x) .% 10 .^ (0:floor(log10(abs(x)))))
+
+    # Use `sort` with a custom sorting key
+    return sort(nums; by = x -> (sum_of_digits(x), indexin(x, nums)[1]))
+end
+```
+Here's an explanation of the code:
+
+1. We define a helper function `sum_of_digits` that calculates the sum of the digits of a given integer `x`. We use the fact that the sum of the digits of a number is equal to the sum of the remainders of the number divided by 10, raised to the power of the digit position (starting from 0).
+2. We use the `sort` function with a custom sorting key. The key is a tuple containing two elements:
+	* The first element is the sum of the digits of the number, calculated using the `sum_of_digits` function.
+	* The second element is the index of the number in the original list, obtained using the `indexin` function. This ensures that numbers with the same sum of digits are sorted based on their original order.
+3. The `sort` function returns the sorted list of numbers.
+
+You can test the function using the examples provided in the docstring.

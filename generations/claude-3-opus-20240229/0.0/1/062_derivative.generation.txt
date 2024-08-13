@@ -1,0 +1,50 @@
+Here's the solution to find the derivative of a polynomial represented as a vector of coefficients:
+
+```julia
+function derivative(xs::Vector)::Vector
+    n = length(xs)
+    if n == 0
+        return []
+    end
+    
+    deriv = similar(xs, n - 1)
+    for i in 1:(n-1)
+        deriv[i] = xs[i+1] * i
+    end
+    
+    return deriv
+end
+```
+
+Explanation:
+1. We first check the length of the input vector `xs`. If it is empty, we return an empty vector since the derivative of a constant (represented by an empty vector) is zero.
+
+2. We create a new vector `deriv` with a length one less than `xs` to store the coefficients of the derivative polynomial.
+
+3. We iterate from index 1 to `n-1` (where `n` is the length of `xs`):
+   - For each index `i`, we multiply the coefficient at index `i+1` in `xs` by `i` and store the result in `deriv[i]`.
+   - This is because the derivative of the term `xs[i+1] * x^i` is `xs[i+1] * i * x^(i-1)`, and we want to store the coefficient `xs[i+1] * i` in the derivative vector.
+
+4. Finally, we return the `deriv` vector containing the coefficients of the derivative polynomial.
+
+The time complexity of this solution is O(n), where n is the length of the input vector `xs`, as we iterate over the vector once. The space complexity is also O(n) since we create a new vector `deriv` to store the derivative coefficients.
+
+Examples:
+
+```jldoctest
+julia> derivative([3, 1, 2, 4, 5])
+4-element Vector{Int64}:
+  1
+  4
+ 12
+ 20
+
+julia> derivative([1, 2, 3])
+2-element Vector{Int64}:
+ 2
+ 6
+```
+
+In the first example, the input polynomial is `3 + x + 2x^2 + 4x^3 + 5x^4`, and the output represents the derivative polynomial `1 + 4x + 12x^2 + 20x^3`.
+
+In the second example, the input polynomial is `1 + 2x + 3x^2`, and the output represents the derivative polynomial `2 + 6x`.

@@ -1,0 +1,33 @@
+To efficiently compute the n-th element of the `fib4` sequence without using recursion, we can use an iterative approach with a loop. This method involves maintaining a list of the last four computed values and updating them in each iteration. Here's the implementation:
+
+```julia
+function fib4(n::Int)::Int
+    if n == 0
+        return 0
+    elseif n == 1
+        return 0
+    elseif n == 2
+        return 2
+    elseif n == 3
+        return 0
+    end
+
+    # Initialize the first four values
+    a, b, c, d = 0, 0, 2, 0
+
+    # Compute the sequence iteratively
+    for i in 4:n
+        next_value = a + b + c + d
+        a, b, c, d = b, c, d, next_value
+    end
+
+    return d
+end
+
+# Examples
+println(fib4(5))  # Output: 4
+println(fib4(6))  # Output: 8
+println(fib4(7))  # Output: 14
+```
+
+This function initializes the first four values of the sequence and then iteratively computes the subsequent values by updating the last four computed values in each iteration. This approach ensures that the function runs efficiently without the overhead of recursive calls.

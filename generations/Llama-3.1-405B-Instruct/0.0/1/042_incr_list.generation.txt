@@ -1,0 +1,57 @@
+Here is the Julia function that matches the provided docstring:
+```julia
+"""
+    incr_list(xs::Vector)::Vector
+
+Return list with elements incremented by 1.
+
+```jldoctest
+julia> incr_list([1, 2, 3])
+3-element Vector{Int64}:
+ 2
+ 3
+ 4
+
+julia> incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123])
+9-element Vector{Int64}:
+   6
+   4
+   6
+   3
+   4
+   4
+  10
+   1
+ 124
+```
+"""
+function incr_list(xs::Vector)::Vector
+    return xs .+ 1
+end
+```
+Explanation:
+
+* The function takes a `Vector` as input and returns a new `Vector`.
+* The `.+=` operator is used to perform element-wise addition of 1 to each element of the input vector `xs`. This is equivalent to incrementing each element by 1.
+* The resulting vector is returned by the function.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> incr_list([1, 2, 3])
+3-element Vector{Int64}:
+ 2
+ 3
+ 4
+
+julia> incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123])
+9-element Vector{Int64}:
+   6
+   4
+   6
+   3
+   4
+   4
+  10
+   1
+ 124
+```

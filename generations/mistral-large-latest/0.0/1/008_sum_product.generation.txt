@@ -1,0 +1,14 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function sum_product(numbers::Vector{Int})::Tuple{Int, Int}
+    sum = 0
+    product = 1
+    for number in numbers
+        sum += number
+        product *= number
+    end
+    return (sum, product)
+end
+```
+This function initializes the sum to 0 and the product to 1. It then iterates over each number in the input vector, adding it to the sum and multiplying it into the product. Finally, it returns a tuple containing the sum and the product.

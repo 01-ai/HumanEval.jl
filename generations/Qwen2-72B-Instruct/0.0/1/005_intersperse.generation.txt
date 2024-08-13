@@ -1,0 +1,13 @@
+```julia
+function intersperse(numbers::Vector{Int}, delimeter::Int)::Vector{Int}
+    if isempty(numbers)
+        return Int[]
+    end
+
+    result = [numbers[1]]
+    for i in 2:length(numbers)
+        push!(result, delimeter, numbers[i])
+    end
+    return result
+end
+```

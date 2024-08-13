@@ -1,0 +1,33 @@
+Here is the Julia function that implements the `get_odd_collatz` function based on the provided docstring:
+```julia
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    collatz_sequence = BigInt[n]
+    while n != 1
+        if n % 2 == 0
+            n = n ÷ 2
+        else
+            n = 3n + 1
+        end
+        push!(collatz_sequence, n)
+    end
+    return sort(filter(isodd, collatz_sequence))
+end
+```
+Here's an explanation of the code:
+
+1. We start by initializing the `collatz_sequence` vector with the input `n` as a `BigInt`.
+2. We enter a loop that continues until `n` reaches 1.
+3. Inside the loop, we check if `n` is even or odd. If it's even, we divide it by 2. If it's odd, we multiply it by 3 and add 1.
+4. We append the new value of `n` to the `collatz_sequence` vector.
+5. Once the loop exits, we filter the `collatz_sequence` vector to keep only the odd numbers using the `isodd` function.
+6. We sort the resulting vector in increasing order using the `sort` function.
+7. Finally, we return the sorted vector of odd numbers.
+
+You can test this function using the example provided in the docstring:
+```julia
+julia> get_odd_collatz(5)
+2-element Vector{BigInt}:
+ 1
+ 5
+```
+This should output the correct result. Let me know if you have any further questions or if you'd like me to explain any part of the code in more detail!

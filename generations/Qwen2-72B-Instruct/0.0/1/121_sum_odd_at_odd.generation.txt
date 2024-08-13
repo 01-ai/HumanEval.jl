@@ -1,0 +1,13 @@
+```julia
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    sum = 0
+    for (i, x) in enumerate(xs)
+        if i % 2 != 0 && x % 2 != 0
+            sum += x
+        end
+    end
+    return sum
+end
+```
+
+This function iterates over the elements of the vector `xs`, checking if the index `i` (1-based) is odd and if the element `x` is odd. If both conditions are met, the element is added to the sum. Finally, the sum is returned. Note that the index `i` is 1-based, which is consistent with Julia's indexing convention.

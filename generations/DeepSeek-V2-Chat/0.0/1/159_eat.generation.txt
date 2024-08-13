@@ -1,0 +1,15 @@
+Here's the implementation of the `eat` function in Julia:
+
+```julia
+function eat(number::Int, need::Int, remaining::Int)::Vector{Int}
+    # Calculate the total number of carrots the rabbit will eat
+    total_eaten = number + min(need, remaining)
+    
+    # Calculate the number of carrots left after the rabbit has eaten
+    carrots_left = max(0, remaining - need)
+    
+    return [total_eaten, carrots_left]
+end
+```
+
+This function calculates the total number of carrots the rabbit will eat by adding the number of carrots already eaten to the minimum of the carrots needed and the remaining carrots. It then calculates the number of carrots left by subtracting the carrots needed from the remaining carrots, ensuring that the result is not negative.

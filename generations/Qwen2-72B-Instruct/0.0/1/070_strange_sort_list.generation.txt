@@ -1,0 +1,36 @@
+```julia
+function strange_sort_list(xs::Vector{Int})
+    sorted_xs = similar(xs)
+    ismin = true
+    while !isempty(xs)
+        idx = if ismin
+            findmin(xs)[2]
+        else
+            findmax(xs)[2]
+        end
+        push!(sorted_xs, xs[idx])
+        deleteat!(xs, idx)
+        ismin = !ismin
+    end
+    return sorted_xs
+end
+``` 
+
+However, this solution is not very efficient due to the use of `findmin`, `findmax`, and `deleteat!` in each iteration. A more efficient solution would be:
+
+```julia
+function strange_sort_list(xs::Vector{Int})
+    sort!(xs)
+    strange_sorted = Vector{Int}()
+    while !isempty(xs)
+        if length(xs) > 1
+            push!(strange_sorted, xs[1], xs[end])
+            xs = xs[2:end-1]
+        else
+            push!(strange_sorted, xs[1])
+            xs = Int[]
+        end
+    end
+    return strange_sorted
+end
+```

@@ -1,0 +1,32 @@
+To solve this problem, you can extract the number of apples and oranges from the given string and then subtract their sum from the total number of fruits in the basket. Here's the implementation in Julia:
+
+```julia
+function fruit_distribution(s::String, n::Int)::Int
+    # Extract the number of apples and oranges from the string
+    fruits = split(s, " and ")
+    apples = parse(Int, split(fruits[1])[1])
+    oranges = parse(Int, split(fruits[2])[1])
+    
+    # Calculate the number of mango fruits
+    mangoes = n - apples - oranges
+    
+    return mangoes
+end
+```
+
+Explanation:
+1. The function takes two arguments: `s` (a string representing the number of apples and oranges) and `n` (an integer representing the total number of fruits in the basket).
+
+2. We split the string `s` using the delimiter " and " to separate the apple and orange counts. This results in an array `fruits` with two elements.
+
+3. We extract the number of apples by splitting the first element of `fruits` using a space delimiter and parsing the first element as an integer using `parse(Int, split(fruits[1])[1])`. This assumes that the apple count is always the first number in the string.
+
+4. Similarly, we extract the number of oranges by splitting the second element of `fruits` using a space delimiter and parsing the first element as an integer using `parse(Int, split(fruits[2])[1])`.
+
+5. We calculate the number of mango fruits by subtracting the sum of apples and oranges from the total number of fruits in the basket (`n`).
+
+6. Finally, we return the number of mango fruits.
+
+The function will return the correct number of mango fruits based on the given input string and total number of fruits in the basket.
+
+Note: This solution assumes that the input string always follows the format "X apples and Y oranges" and that the total number of fruits in the basket is always greater than or equal to the sum of apples and oranges.

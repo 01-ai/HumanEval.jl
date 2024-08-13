@@ -1,0 +1,35 @@
+ Here's the implementation of the `select_words` function in Julia:
+
+```julia
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    # Define vowels for easy checking
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    
+    # Split the string into words
+    words = split(s)
+    
+    # Function to count consonants in a word
+    function count_consonants(word::AbstractString)
+        count = 0
+        for char in word
+            if char ∉ vowels && isletter(char)
+                count += 1
+            end
+        end
+        return count
+    end
+    
+    # Filter words that have exactly `n` consonants
+    result = [word for word in words if count_consonants(word) == n]
+    
+    return result
+end
+```
+
+This function works as follows:
+1. It defines a set of vowels for easy checking.
+2. It splits the input string `s` into words.
+3. It defines a helper function `count_consonants` to count the number of consonants in a word.
+4. It filters the words to find those that have exactly `n` consonants and returns them.
+
+You can test this function with the provided examples to ensure it works correctly.

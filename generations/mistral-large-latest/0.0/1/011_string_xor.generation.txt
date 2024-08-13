@@ -1,0 +1,17 @@
+Sure, here is a Julia function that performs binary XOR on two strings consisting of `1`s and `0`s:
+
+```julia
+function string_xor(a::String, b::String)::String
+    @assert length(a) == length(b) "Inputs must have the same length"
+    @assert all(x -> x in ('0', '1'), a) "Input a must consist only of '0's and '1's"
+    @assert all(x -> x in ('0', '1'), b) "Input b must consist only of '0's and '1's"
+
+    result = ""
+    for (i, j) in zip(a, b)
+        result *= Int(i) ⊻ Int(j)
+    end
+    return result
+end
+```
+
+This function first checks if the inputs are valid, then it performs XOR operation on corresponding bits of the inputs using the `⊻` operator. The result is a string that represents the binary XOR of the inputs.

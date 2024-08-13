@@ -1,0 +1,22 @@
+Here is the Julia function that matches the provided docstring:
+```julia
+"""
+    add(x::Int, y::Int)
+
+Add two numbers `x` and `y`.
+
+# Examples
+
+```jldoctest
+julia> add(2, 3)
+5
+
+julia> add(5, 7)
+12
+```
+"""
+function add(x::Int, y::Int)
+    return x + y
+end
+```
+This function takes two `Int` arguments, `x` and `y`, and returns their sum. The docstring is included to provide documentation for the function. Let me know if you have any further requests!

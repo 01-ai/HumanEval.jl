@@ -1,0 +1,25 @@
+Here's the implementation of the `fizz_buzz` function in Julia:
+
+```julia
+function fizz_buzz(n::Int)
+    count = 0
+    for i in 1:n-1
+        if i % 11 == 0 || i % 13 == 0
+            count += count_sevens(i)
+        end
+    end
+    return count
+end
+
+function count_sevens(num::Int)
+    count = 0
+    for digit in string(num)
+        if digit == '7'
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function `fizz_buzz` iterates through all numbers less than `n` and checks if they are divisible by 11 or 13. If they are, it counts the number of sevens in those numbers using the helper function `count_sevens`. The `count_sevens` function converts the number to a string and iterates through each character, counting the occurrences of '7'.

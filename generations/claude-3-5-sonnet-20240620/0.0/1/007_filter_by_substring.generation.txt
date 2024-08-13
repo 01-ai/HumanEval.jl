@@ -1,0 +1,37 @@
+Here's a Julia function that implements the `filter_by_substring` functionality as described:
+
+```julia
+function filter_by_substring(strings::Vector{String}, substring::AbstractString)::Vector{String}
+    return filter(s -> occursin(substring, s), strings)
+end
+```
+
+This function does the following:
+
+1. It takes two arguments:
+   - `strings`: A vector of strings to be filtered
+   - `substring`: The substring to search for within each string
+
+2. It uses Julia's `filter` function, which creates a new array containing only the elements from `strings` for which the given condition is `true`.
+
+3. The condition is defined using an anonymous function `s -> occursin(substring, s)`:
+   - For each string `s` in `strings`, it checks if `substring` occurs in `s` using the `occursin` function.
+
+4. The function returns a new vector containing only the strings that include the given substring.
+
+5. The return type is explicitly specified as `Vector{String}` to match the function signature.
+
+This implementation will work correctly for the given examples:
+
+```julia
+julia> filter_by_substring(String[], "a")
+String[]
+
+julia> filter_by_substring(["abc", "bacd", "cde", "array"], "a")
+3-element Vector{String}:
+ "abc"
+ "bacd"
+ "array"
+```
+
+It will return an empty vector if the input vector is empty, and it will correctly filter strings containing the substring "a" in the second example.

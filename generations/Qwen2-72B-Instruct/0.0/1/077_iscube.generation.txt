@@ -1,0 +1,17 @@
+```julia
+import Math.sqrt, Math.cbrt, isinteger
+
+"""
+    iscube(a::Int)::Bool
+
+Check if `a` is a cube of some integer number.
+"""
+function iscube(a::Int)
+    # Calculate the cube root of the absolute value of a
+    cube_root = cbrt(abs(a))
+    
+    # Check if the cube root is an integer by comparing it to its rounded value
+    return isinteger(cube_root) && (a >= 0 || cube_root == round(Int, cube_root))
+end
+```
+This function uses the `cbrt` function to find the cube root of the absolute value of `a` and then checks if this cube root is an integer by comparing it to its rounded value. The additional condition `(a >= 0 || cube_root == round(Int, cube_root))` is to ensure that for negative `a`, the cube root is an integer only if `a` is a perfect cube of a negative integer.

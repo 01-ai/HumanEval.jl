@@ -1,0 +1,18 @@
+```julia
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    strongest_extension = ""
+    max_strength = -typemax(Int)
+    for extension in extensions
+        cap = sum(isupper, extension)
+        sm = sum(islower, extension)
+        strength = cap - sm
+        if strength > max_strength
+            max_strength = strength
+            strongest_extension = extension
+        end
+    end
+    return "$class_name.$strongest_extension"
+end
+```
+
+This function iterates through each extension, calculates its strength, and keeps track of the strongest one found so far. It then returns the class name concatenated with the strongest extension's name.

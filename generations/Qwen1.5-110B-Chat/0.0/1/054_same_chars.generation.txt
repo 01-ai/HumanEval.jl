@@ -1,0 +1,7 @@
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    # Remove duplicates from both strings and compare the sorted versions
+    return sort(collect(Set(s0))) == sort(collect(Set(s1)))
+end
+```
+This function works by converting the input strings into sets to remove any duplicate characters, then sorting the resulting sets and comparing them for equality. If the sorted sets are equal, it means both original strings contained the same characters, possibly in different orders and frequencies, and the function returns `true`. Otherwise, it returns `false`.

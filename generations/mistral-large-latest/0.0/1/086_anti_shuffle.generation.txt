@@ -1,0 +1,16 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function anti_shuffle(s::String)::String
+    words = split(s, " ")
+    ordered_words = map(words) do word
+        chars = collect(word)
+        sort!(chars)
+        join(chars)
+    end
+    ordered_sentence = join(ordered_words, " ")
+    return ordered_sentence
+end
+```
+
+This function works by first splitting the input string into words, then sorting the characters in each word, and finally joining the sorted words back together into a sentence. The sorting is done in-place (using `sort!`) based on the ASCII values of the characters. The `join` function is used to combine the characters of a word back into a string, and to combine the words of the sentence back into a string with spaces in between.

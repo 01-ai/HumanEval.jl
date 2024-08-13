@@ -1,0 +1,26 @@
+ Here's the implementation of the `find_max` function in Julia:
+
+```julia
+function find_max(words::Vector{String})::String
+    # Helper function to count unique characters in a word
+    function count_unique_chars(word::String)
+        return length(Set(word))
+    end
+
+    max_unique_count = 0
+    max_word = ""
+
+    for word in words
+        unique_count = count_unique_chars(word)
+        if unique_count > max_unique_count || 
+           (unique_count == max_unique_count && word < max_word)
+            max_unique_count = unique_count
+            max_word = word
+        end
+    end
+
+    return max_word
+end
+```
+
+This function iterates through each word in the input list, counts the number of unique characters using a helper function, and keeps track of the word with the maximum number of unique characters. If multiple words have the same number of unique characters, it returns the lexicographically smallest one.

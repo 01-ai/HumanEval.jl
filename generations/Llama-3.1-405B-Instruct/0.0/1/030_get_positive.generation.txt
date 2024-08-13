@@ -1,0 +1,32 @@
+Here is the Julia function that matches the provided docstring:
+```julia
+function get_positive(xs::Vector)
+    return filter(x -> x > 0, xs)
+end
+```
+This function uses the built-in `filter` function to create a new vector that only includes the elements of the input vector `xs` that are greater than 0.
+
+Here's an explanation of how the code works:
+
+* `filter` takes two arguments: a function and a collection (in this case, a vector).
+* The function `x -> x > 0` is an anonymous function that takes a single argument `x` and returns `true` if `x` is greater than 0, and `false` otherwise.
+* `filter` applies this function to each element of the input vector `xs`, and returns a new vector that only includes the elements for which the function returned `true`.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> get_positive([-1, 2, -4, 5, 6])
+3-element Vector{Int64}:
+ 2
+ 5
+ 6
+
+julia> get_positive([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])
+7-element Vector{Int64}:
+   5
+   3
+   2
+   3
+   9
+ 123
+   1
+```

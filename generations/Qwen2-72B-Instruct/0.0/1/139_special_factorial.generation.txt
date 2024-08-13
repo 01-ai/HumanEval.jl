@@ -1,0 +1,31 @@
+Here is the Julia function that implements the brazilian factorial as described:
+
+```julia
+function special_factorial(n::Int)::BigInt
+    result = BigInt(1)
+    for i in 1:n
+        factorial_i = BigInt(1)
+        for j in 1:i
+            factorial_i *= j
+        end
+        result *= factorial_i
+    end
+    return result
+end
+```
+
+However, we can make this more efficient by realizing that each factorial calculation is just a multiplication of the previous factorial by the next integer. This allows us to avoid recalculating the entire factorial for each number, and instead just multiply the previous factorial by the current number.
+
+Here is the more efficient version:
+
+```julia
+function special_factorial(n::Int)::BigInt
+    result = BigInt(1)
+    factorial_i = BigInt(1)
+    for i in 1:n
+        factorial_i *= i
+        result *= factorial_i
+    end
+    return result
+end
+```

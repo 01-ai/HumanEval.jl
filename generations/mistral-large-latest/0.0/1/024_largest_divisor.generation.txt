@@ -1,0 +1,14 @@
+Sure, here is a simple implementation of the `largest_divisor` function in Julia:
+
+```julia
+function largest_divisor(n::Int)::Int
+    for i in (n-1):-1:1
+        if n % i == 0
+            return i
+        end
+    end
+    return 1
+end
+```
+
+This function works by iterating over all numbers from `n-1` down to `1`. For each number `i`, it checks if `n` is divisible by `i` using the modulo operator `%`. If `n` is divisible by `i`, it returns `i` as the largest divisor. If no such number is found, it returns `1`, which is the smallest possible divisor.

@@ -1,0 +1,39 @@
+Here's a Julia function that implements the requested behavior:
+
+```julia
+function total_match(xs::Vector{String}, ys::Vector{String})::Vector{String}
+    sum_xs = sum(length, xs)
+    sum_ys = sum(length, ys)
+    
+    if sum_xs <= sum_ys
+        return xs
+    else
+        return ys
+    end
+end
+```
+
+This function does the following:
+
+1. It calculates the total number of characters in each list using `sum(length, xs)` and `sum(length, ys)`. The `length` function is applied to each string in the list, and then `sum` adds up all these lengths.
+
+2. It then compares the total lengths:
+   - If the total length of `xs` is less than or equal to the total length of `ys`, it returns `xs`.
+   - Otherwise, it returns `ys`.
+
+This implementation satisfies all the requirements:
+- It returns the list with the fewer total characters.
+- If both lists have the same number of total characters, it returns the first list (`xs`).
+- It works correctly for empty lists, single-element lists, and lists with multiple elements.
+
+You can test this function with the provided examples:
+
+```julia
+println(total_match(String[], String[]))
+println(total_match(["hi", "admin"], ["hI", "Hi"]))
+println(total_match(["hi", "admin"], ["hi", "hi", "admin", "project"]))
+println(total_match(["hi", "admin"], ["hI", "hi", "hi"]))
+println(total_match(["4"], ["1", "2", "3", "4", "5"]))
+```
+
+These should produce the expected outputs as shown in your examples.

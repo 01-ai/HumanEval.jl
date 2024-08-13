@@ -1,0 +1,40 @@
+To implement the `by_length` function in Julia, we need to follow these steps:
+
+1. Filter the integers to keep only those between 1 and 9 inclusive.
+2. Sort the filtered integers.
+3. Reverse the sorted list.
+4. Map each integer to its corresponding name.
+
+Here's the implementation:
+
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    # Define a dictionary to map integers to their corresponding names
+    digit_names = Dict(1 => "One", 2 => "Two", 3 => "Three", 4 => "Four", 5 => "Five", 
+                       6 => "Six", 7 => "Seven", 8 => "Eight", 9 => "Nine")
+    
+    # Filter the integers to keep only those between 1 and 9 inclusive
+    filtered = filter(x -> 1 <= x <= 9, xs)
+    
+    # Sort the filtered integers
+    sorted_filtered = sort(filtered)
+    
+    # Reverse the sorted list
+    reversed_sorted = reverse(sorted_filtered)
+    
+    # Map each integer to its corresponding name
+    result = [digit_names[x] for x in reversed_sorted]
+    
+    return result
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(by_length([2, 1, 1, 4, 5, 8, 2, 3]))  # Expected: ["Eight", "Five", "Four", "Three", "Two", "Two", "One", "One"]
+println(by_length(Int[]))  # Expected: String[]
+println(by_length([1, -1, 55]))  # Expected: ["One"]
+```
+
+This implementation should correctly handle the given examples and any other valid input according to the specified behavior.

@@ -1,0 +1,50 @@
+To implement the `sort_array` function in Julia, we need to sort the array of non-negative integers based on the number of ones in their binary representation. If two numbers have the same number of ones, they should be sorted based on their decimal value.
+
+Here's the implementation of the `sort_array` function:
+
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    # Define a custom sorting function
+    function custom_sort(x, y)
+        # Count the number of ones in the binary representation
+        count_ones_x = count_ones(x)
+        count_ones_y = count_ones(y)
+        
+        # First, compare based on the number of ones
+        if count_ones_x != count_ones_y
+            return count_ones_x < count_ones_y
+        else
+            # If the number of ones is the same, compare based on the decimal value
+            return x < y
+        end
+    end
+    
+    # Sort the array using the custom sorting function
+    return sort(arr, lt=custom_sort)
+end
+
+# Helper function to count the number of ones in the binary representation
+function count_ones(n::Int)::Int
+    return count(ch -> ch == '1', bitstring(n))
+end
+```
+
+### Explanation:
+1. **Custom Sorting Function**: The `custom_sort` function compares two integers `x` and `y`. It first counts the number of ones in their binary representations using the `count_ones` function. If the counts are different, it returns `true` if `x` has fewer ones than `y`. If the counts are the same, it returns `true` if `x` is less than `y` in decimal value.
+2. **Sorting**: The `sort` function is called with the custom sorting function `custom_sort` to sort the array `arr`.
+3. **Helper Function**: The `count_ones` function converts the integer to its binary string representation using `bitstring` and counts the number of '1' characters.
+
+### Example Usage:
+```julia
+julia> sort_array([1, 5, 2, 3, 4])
+5-element Vector{Int64}:
+ 1
+ 2
+ 4
+ 3
+ 5
+
+julia> sort_array([1, 0, 2, 3, 4])
+5-element Vector{Int64}:
+ 0
+ 1

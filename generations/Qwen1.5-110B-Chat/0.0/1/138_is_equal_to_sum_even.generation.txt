@@ -1,0 +1,9 @@
+```julia
+function is_equal_to_sum_even(n::Int)::Bool
+    # A number can be expressed as the sum of four positive even numbers
+    # if and only if it is >= 8 and is even.
+    # This is because the smallest sum of four positive even numbers is 2+2+2+2=8.
+    return n >= 8 && n % 2 == 0
+end
+```
+This function checks if the given integer `n` is equal to or greater than 8 and also if it is even. If both conditions are met, it returns `true`, indicating that `n` can be written as the sum of exactly four positive even numbers; otherwise, it returns `false`.

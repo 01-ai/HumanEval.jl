@@ -1,0 +1,26 @@
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing, Int}}
+    # Initialize the largest negative and smallest positive to nothing
+    largest_negative = nothing
+    smallest_positive = nothing
+
+    # Loop through the list to find the largest negative and smallest positive
+    for x in xs
+        if x < 0
+            if largest_negative === nothing || x > largest_negative
+                largest_negative = x
+            end
+        elseif x > 0
+            if smallest_positive === nothing || x < smallest_positive
+                smallest_positive = x
+            end
+        end
+    end
+
+    # Return the tuple of largest negative and smallest positive
+    return largest_negative, smallest_positive
+end
+
+# Test the function
+println(largest_smallest_integers([2, 4, 1, 3, 5, 7])) # (nothing, 1)
+println(largest_smallest_integers(Int[])) # (nothing, nothing)
+println(largest_smallest_integers([0])) # (nothing, nothing)

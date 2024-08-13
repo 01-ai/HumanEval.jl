@@ -1,0 +1,10 @@
+```julia
+function special_factorial(n::Int)::BigInt
+    result = BigInt(1)
+    for i in 1:n
+        result *= factorial(BigInt(i))
+    end
+    return result
+end
+```
+This function calculates the special factorial as described, by multiplying the factorial of each integer from 1 to `n`. The use of `BigInt` ensures that the result can handle very large numbers, which are likely to occur in this factorial computation for larger values of `n`.

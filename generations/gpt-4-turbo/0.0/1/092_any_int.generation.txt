@@ -1,0 +1,11 @@
+```julia
+function any_int(x::Number, y::Number, z::Number)::Bool
+    # Check if all inputs are integers
+    if isa(x, Integer) && isa(y, Integer) && isa(z, Integer)
+        # Check if any number is the sum of the other two
+        return (x == y + z) || (y == x + z) || (z == x + y)
+    else
+        return false
+    end
+end
+```

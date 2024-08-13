@@ -1,0 +1,19 @@
+ Here's the implementation of the `sort_array` function in Julia:
+
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    sort(arr, by = x -> (count_ones(x), x))
+end
+```
+
+This function uses the `sort` function from Julia's standard library, with a custom sorting criterion. The `by` keyword argument specifies a function that returns a tuple for each element in the array. The first element of the tuple is the number of ones in the binary representation of the element (`count_ones(x)`), and the second element is the element itself (`x`). This ensures that the array is sorted first by the number of ones in ascending order, and then by the decimal value in ascending order for elements with the same number of ones.
+
+Here are the examples provided in the doc string, tested in Julia:
+
+```julia
+julia> sort_array([1, 5, 2, 3, 4]) == [1, 2, 4, 3, 5]
+true
+
+julia> sort_array([1, 0, 2, 3, 4]) == [0, 1, 2, 4, 3]
+true
+```

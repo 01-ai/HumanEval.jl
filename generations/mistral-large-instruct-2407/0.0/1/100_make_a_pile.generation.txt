@@ -1,0 +1,39 @@
+ Certainly! Below is the implementation of the `make_a_pile` function in Julia based on the given docstring:
+
+```julia
+"""
+    make_a_pile(n::Int)::Vector{Int}
+
+Given a positive integer n, you have to make a pile of n levels of stones. The
+first level has n stones. The number of stones in the next level is:
+
+  - the next odd number if n is odd.
+  - the next even number if n is even.
+
+# Examples
+
+```jldoctest
+julia> make_a_pile(3)
+3-element Vector{Int64}:
+ 3
+ 5
+ 7
+```
+"""
+function make_a_pile(n::Int)::Vector{Int}
+    pile = Vector{Int}(undef, n)
+    pile[1] = n
+
+    for i in 2:n
+        if isodd(pile[i-1])
+            pile[i] = pile[i-1] + 2
+        else
+            pile[i] = pile[i-1] + 2
+        end
+    end
+
+    return pile
+end
+```
+
+This function initializes a vector `pile` of size `n` and sets the first element to `n`. It then iterates from the second level to the `n`-th level, determining the number of stones based on whether the previous level's number of stones is odd or even. The function returns the completed pile as a vector of integers.

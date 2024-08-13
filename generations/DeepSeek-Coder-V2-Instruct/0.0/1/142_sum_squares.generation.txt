@@ -1,0 +1,17 @@
+ Here's the implementation of the `sum_squares` function in Julia:
+
+```julia
+function sum_squares(xs::Vector{Int})::Int
+    n = length(xs)
+    for i in 1:n
+        if i % 3 == 0
+            xs[i] = xs[i]^2
+        elseif i % 4 == 0
+            xs[i] = xs[i]^3
+        end
+    end
+    return sum(xs)
+end
+```
+
+This function iterates over the list of integers, modifies the elements based on their indices as specified, and then returns the sum of the modified list.

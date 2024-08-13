@@ -1,0 +1,39 @@
+Here is a simple Julia function that matches the provided docstring:
+```julia
+"""
+    sum_to_n(n::Int)::Int
+
+`sum_to_n` is a function that sums numbers from `1` to `n`.
+
+# Examples
+
+```jldoctest
+julia> sum_to_n(30)
+465
+
+julia> sum_to_n(100)
+5050
+
+julia> sum_to_n(5)
+15
+
+julia> sum_to_n(10)
+55
+
+julia> sum_to_n(1)
+1
+```
+"""
+function sum_to_n(n::Int)::Int
+    return sum(1:n)
+end
+```
+This function uses Julia's built-in `sum` function and range operator `:`, which generates a sequence of numbers from 1 to `n`. The `sum` function then adds up all the numbers in this sequence, returning the result.
+
+Alternatively, you could use the formula for the sum of an arithmetic series, which is `n * (n + 1) / 2`. Here's an implementation using this formula:
+```julia
+function sum_to_n(n::Int)::Int
+    return n * (n + 1) ÷ 2
+end
+```
+This implementation is likely to be faster and more efficient for large values of `n`, since it avoids generating a sequence of numbers and instead uses a simple mathematical formula.

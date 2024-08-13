@@ -1,0 +1,19 @@
+Here is a Julia function that implements the functionality described in the docstring:
+
+```julia
+function common(l1::Vector, l2::Vector)::Vector
+    # Find the intersection of the two lists, remove duplicates, and sort the result
+    return sort(unique(setdiff(intersect(l1, l2), [])))
+end
+```
+
+However, the `setdiff` call with an empty array is unnecessary here since `intersect` already returns unique elements, and `unique` is also redundant. A more concise and efficient version would be:
+
+```julia
+function common(l1::Vector, l2::Vector)::Vector
+    # Find the intersection of the two lists and sort the result
+    return sort(intersect(l1, l2))
+end
+```
+
+This function uses the `intersect` function from Julia's Base library to find common elements between the two lists, then sorts the result to ensure the output is in ascending order. The `intersect` function automatically handles the removal of duplicates.

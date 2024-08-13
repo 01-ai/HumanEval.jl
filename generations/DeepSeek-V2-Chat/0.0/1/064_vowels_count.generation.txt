@@ -1,0 +1,19 @@
+Here's the implementation of the `vowels_count` function in Julia:
+
+```julia
+function vowels_count(s::String)::Int
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    count = 0
+    for char in s
+        if char in vowels
+            count += 1
+        end
+    end
+    if s[end] == 'y' || s[end] == 'Y'
+        count += 1
+    end
+    return count
+end
+```
+
+This function iterates through each character in the input string `s`, checks if it is a vowel (excluding 'y' and 'Y'), and increments the count accordingly. It then checks if the last character is 'y' or 'Y' and increments the count if true.

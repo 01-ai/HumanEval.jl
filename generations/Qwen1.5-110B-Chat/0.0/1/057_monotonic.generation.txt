@@ -1,0 +1,17 @@
+```julia
+function monotonic(l::Vector)::Bool
+    increasing = decreasing = true
+    
+    for i in 2:length(l)
+        if l[i] > l[i-1]
+            decreasing = false
+        elseif l[i] < l[i-1]
+            increasing = false
+        end
+    end
+    
+    increasing || decreasing
+end
+```
+
+This Julia function `monotonic` checks if the elements of the input vector `l` are either monotonically increasing or decreasing. It iterates through the vector, comparing each element to its predecessor. If any element is greater than its predecessor, it sets the `decreasing` flag to `false`. If any element is less, it sets the `increasing` flag to `false`. The function then returns `true` if at least one of these flags remains `true` (meaning the sequence is either increasing or decreasing throughout), and `false` otherwise.

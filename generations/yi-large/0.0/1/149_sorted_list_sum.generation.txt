@@ -1,0 +1,13 @@
+function sorted_list_sum(xs::Vector{String})::Vector{String}
+    # Filter out strings with odd lengths
+    filtered = filter(x -> iseven(length(x)), xs)
+    
+    # Sort the filtered list first by length and then alphabetically
+    sorted = sort(filtered, by = x -> (length(x), x))
+    
+    return sorted
+end
+
+# Test cases
+println(sorted_list_sum(["aa", "a", "aaa"]))
+println(sorted_list_sum(["ab", "a", "aaa", "cd"]))

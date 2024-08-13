@@ -1,0 +1,24 @@
+Here's the implementation of the `get_odd_collatz` function in Julia:
+
+```julia
+using BigInts
+
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    sequence = Vector{BigInt}()
+    current = BigInt(n)
+    
+    while current != 1
+        if current % 2 == 1
+            push!(sequence, current)
+        end
+        current = current % 2 == 0 ? current ÷ 2 : 3 * current + 1
+    end
+    
+    push!(sequence, BigInt(1))  # Always include 1 in the sequence
+    sort!(sequence)
+    
+    return sequence
+end
+```
+
+This function starts with the given integer `n` and iterates through the Collatz sequence, collecting only the odd numbers. It uses `BigInt` to avoid overflow issues. The sequence is sorted before being returned.

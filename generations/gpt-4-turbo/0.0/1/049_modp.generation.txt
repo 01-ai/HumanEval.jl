@@ -1,0 +1,8 @@
+```julia
+function modp(n::Int, p::Int)::Int
+    # Using the built-in function `powermod` to compute (2^n) % p efficiently
+    return powermod(2, n, p)
+end
+```
+
+This function uses Julia's built-in `powermod` function, which computes \( b^e \mod m \) efficiently and avoids overflow issues that could arise from directly computing large powers. In this case, \( b \) is 2, \( e \) is \( n \), and \( m \) is \( p \).

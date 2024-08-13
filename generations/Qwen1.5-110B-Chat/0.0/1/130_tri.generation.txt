@@ -1,0 +1,27 @@
+```julia
+function tri(n::Int)::Vector{Int}
+    tribonacci = Vector{Int}(undef, n)
+    tribonacci[1] = 1
+
+    if n >= 2
+        tribonacci[2] = 2
+    end
+
+    if n >= 3
+        for i in 3:n
+            if i % 2 == 0
+                tribonacci[i] = 1 + i / 2
+            else
+                tribonacci[i] = tribonacci[i - 1] + tribonacci[i - 2] + tribonacci[i + 1]
+                if i + 1 > n
+                    tribonacci[i] -= tribonacci[i + 1] # Adjust for out-of-bounds index
+                end
+            end
+        end
+    end
+
+    return tribonacci
+end
+```
+
+This function implements the Tribonacci sequence as described in the doc string. It initializes an array `tribonacci` of the required size and fills it with the Tribonacci numbers. For odd `n`, it ensures that the calculation does not go out of bounds by adjusting the value when `i + 1` exceeds `n`.

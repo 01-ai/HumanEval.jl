@@ -1,0 +1,29 @@
+```julia
+function match_parens(lst::Vector{String})::String
+    # Extract the two strings from the list
+    s1, s2 = lst[1], lst[2]
+
+    # Function to check if a string is balanced
+    function is_balanced(s::String)
+        balance = 0
+        for char in s
+            if char == '('
+                balance += 1
+            elseif char == ')'
+                balance -= 1
+            end
+            if balance < 0
+                return false
+            end
+        end
+        return balance == 0
+    end
+
+    # Check both possible concatenations
+    if is_balanced(s1 * s2) || is_balanced(s2 * s1)
+        return "Yes"
+    else
+        return "No"
+    end
+end
+```

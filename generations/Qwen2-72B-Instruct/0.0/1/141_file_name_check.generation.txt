@@ -1,0 +1,32 @@
+```julia
+function file_name_check(file_name::String)::String
+    # Define the valid extensions
+    valid_extensions = ["txt", "exe", "dll"]
+    
+    # Split the filename by the dot
+    parts = split(file_name, ".")
+    
+    # Check if there is exactly one dot in the filename
+    if length(parts) != 2
+        return "No"
+    end
+    
+    # Check if the name starts with a latin alphabet letter
+    if !isalpha(parts[1][1])
+        return "No"
+    end
+    
+    # Check if the number of digits is not more than three
+    if sum(isdigit, file_name) > 3
+        return "No"
+    end
+    
+    # Check if the extension is valid
+    if !(parts[2] in valid_extensions)
+        return "No"
+    end
+    
+    # If all checks pass, the filename is valid
+    return "Yes"
+end
+```

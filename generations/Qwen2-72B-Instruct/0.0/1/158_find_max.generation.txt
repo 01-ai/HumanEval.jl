@@ -1,0 +1,26 @@
+```julia
+function find_max(words::Vector{String})::String
+    # Initialize the maximum number of unique characters to 0
+    max_unique_chars = 0
+    # Initialize the result string
+    result = ""
+
+    for word in words
+        # Create a Set from the word to remove duplicate characters
+        unique_chars = Set(word)
+        # Get the number of unique characters
+        num_unique_chars = length(unique_chars)
+
+        # Check if the current word has more unique characters than the current maximum
+        # or if it has the same number of unique characters but comes first in lexicographical order
+        if num_unique_chars > max_unique_chars || (num_unique_chars == max_unique_chars && word < result)
+            max_unique_chars = num_unique_chars
+            result = word
+        end
+    end
+
+    return result
+end
+```
+
+This function iterates through each word in the input list, calculates the number of unique characters using a Set, and updates the result if the current word has more unique characters or if it has the same number of unique characters but comes first in lexicographical order.

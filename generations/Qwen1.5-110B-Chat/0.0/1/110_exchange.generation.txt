@@ -1,0 +1,14 @@
+```julia
+function exchange(lst1::Vector{Int}, lst2::Vector{Int})::String
+    odd_lst1 = count(isodd, lst1)
+    even_lst2 = count(iseven, lst2)
+    
+    if odd_lst1 <= even_lst2
+        return "YES"
+    else
+        return "NO"
+    end
+end
+```
+
+This Julia function `exchange` takes two integer vectors `lst1` and `lst2` as input. It counts the number of odd elements in `lst1` and the number of even elements in `lst2`. If the count of odd elements in `lst1` is less than or equal to the count of even elements in `lst2`, it is possible to exchange elements to make `lst1` all even, so it returns "YES". Otherwise, it returns "NO".

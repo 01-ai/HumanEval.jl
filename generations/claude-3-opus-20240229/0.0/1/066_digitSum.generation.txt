@@ -1,0 +1,51 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function digitSum(s::String)::Int
+    sum = 0
+    for char in s
+        if isuppercase(char)
+            sum += Int(char)
+        end
+    end
+    return sum
+end
+```
+
+Explanation:
+
+1. We define a function called `digitSum` that takes a string `s` as input and returns an integer.
+
+2. We initialize a variable `sum` to 0. This variable will store the sum of the ASCII codes of the uppercase characters.
+
+3. We iterate over each character `char` in the string `s` using a `for` loop.
+
+4. Inside the loop, we check if the current character `char` is an uppercase letter using the `isuppercase()` function.
+
+5. If the character is uppercase, we convert it to its corresponding ASCII code using `Int(char)` and add it to the `sum` variable.
+
+6. After the loop ends, we return the final value of `sum`, which represents the sum of the ASCII codes of the uppercase characters in the string.
+
+The function correctly handles the given examples:
+
+```julia
+julia> digitSum("")
+0
+
+julia> digitSum("abAB")
+131
+
+julia> digitSum("abcCd")
+67
+
+julia> digitSum("helloE")
+69
+
+julia> digitSum("woArBld")
+131
+
+julia> digitSum("aAaaaXa")
+153
+```
+
+The function returns the expected sum of the ASCII codes of the uppercase characters in each input string.

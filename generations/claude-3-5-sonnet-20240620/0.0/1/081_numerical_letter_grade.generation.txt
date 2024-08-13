@@ -1,0 +1,46 @@
+Here's a Julia function that converts numerical grades to letter grades based on the given table:
+
+```julia
+function numerical_letter_grade(grades::Vector{Float64})::Vector{String}
+    grade_table = [
+        (4.0, "A+"),
+        (3.7, "A"),
+        (3.3, "A-"),
+        (3.0, "B+"),
+        (2.7, "B"),
+        (2.3, "B-"),
+        (2.0, "C+"),
+        (1.7, "C"),
+        (1.3, "C-"),
+        (1.0, "D+"),
+        (0.7, "D"),
+        (0.0, "D-")
+    ]
+    
+    function get_letter_grade(gpa)
+        for (threshold, letter) in grade_table
+            if gpa > threshold
+                return letter
+            end
+        end
+        return "E"
+    end
+    
+    return [get_letter_grade(grade) for grade in grades]
+end
+```
+
+This function does the following:
+
+1. We define a `grade_table` that contains tuples of GPA thresholds and their corresponding letter grades, sorted in descending order.
+
+2. We define an inner function `get_letter_grade` that takes a single GPA and returns the corresponding letter grade:
+   - It iterates through the `grade_table`.
+   - If the GPA is greater than the current threshold, it returns the corresponding letter grade.
+   - If no threshold is met, it returns "E" (for GPAs <= 0.0).
+
+3. The main function uses a list comprehension to apply `get_letter_grade` to each GPA in the input `grades` vector.
+
+4. The function returns a vector of letter grades as strings.
+
+This implementation correctly handles the given example and should work for any set of numerical grades. It also handles edge cases like GPAs above 4.0 (which will be graded as "A+") and GPAs at or below 0.0 (which will be graded as "E").

@@ -1,0 +1,6 @@
+```julia
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    sides = sort([a, b, c])
+    return sides[1]^2 + sides[2]^2 == sides[3]^2
+end
+```

@@ -1,0 +1,37 @@
+Here's an implementation of the `median` function in Julia:
+
+```julia
+function median(l::Vector{T}) where T <: Real
+    n = length(l)
+    sorted_l = sort(l)
+    if isodd(n)
+        return sorted_l[n÷2 + 1]
+    else
+        return (sorted_l[n÷2] + sorted_l[n÷2 + 1]) / 2
+    end
+end
+```
+
+Explanation:
+
+1. We define a function `median` that takes a vector `l` of type `T`, where `T` is a subtype of `Real` (i.e., a real number type).
+2. We first find the length of the vector `l` using `length(l)` and store it in `n`.
+3. We then sort the elements of `l` in ascending order using `sort(l)` and store the sorted vector in `sorted_l`.
+4. Next, we check if `n` (the length of the vector) is odd using `isodd(n)`.
+5. If `n` is odd, we return the middle element of `sorted_l`, which is at index `n÷2 + 1` (integer division).
+6. If `n` is even, we return the average of the two middle elements of `sorted_l`, which are at indices `n÷2` and `n÷2 + 1`.
+
+Here are some examples:
+
+```jldoctest
+julia> median([3, 1, 2, 4, 5])
+3
+
+julia> median([-10, 4, 6, 1000, 10, 20])
+8.0
+
+julia> median([1, 2, 3, 4])
+2.5
+```
+
+Note that for an even number of elements, the median is the average of the two middle elements. For example, for `[1, 2, 3, 4]`, the median is `(2 + 3) / 2 = 2.5`.

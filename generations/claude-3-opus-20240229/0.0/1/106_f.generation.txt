@@ -1,0 +1,48 @@
+Here's the implementation of the function `f` in Julia:
+
+```julia
+function f(n::Int)::Vector{Int}
+    result = Vector{Int}(undef, n)
+    for i in 1:n
+        if i % 2 == 0
+            # Calculate the factorial of i
+            factorial = 1
+            for j in 1:i
+                factorial *= j
+            end
+            result[i] = factorial
+        else
+            # Calculate the sum of numbers from 1 to i
+            result[i] = sum(1:i)
+        end
+    end
+    return result
+end
+```
+
+Explanation:
+1. We define the function `f` that takes an integer `n` as input and returns a vector of integers.
+2. We create a vector `result` of size `n` to store the values.
+3. We start a loop from 1 to `n` (inclusive) using the `for` loop.
+4. Inside the loop, we check if the current index `i` is even using the modulo operator `%`.
+5. If `i` is even:
+   - We calculate the factorial of `i` by multiplying all the numbers from 1 to `i` using another loop.
+   - We assign the factorial value to `result[i]`.
+6. If `i` is odd:
+   - We calculate the sum of numbers from 1 to `i` using the `sum` function and the range `1:i`.
+   - We assign the sum value to `result[i]`.
+7. After the loop ends, we return the `result` vector.
+
+You can test the function with the provided example:
+
+```julia
+julia> f(5)
+5-element Vector{Int64}:
+  1
+  2
+  6
+ 24
+ 15
+```
+
+The function correctly returns a vector of size 5, where the value at each index `i` is the factorial of `i` if `i` is even, or the sum of numbers from 1 to `i` otherwise.

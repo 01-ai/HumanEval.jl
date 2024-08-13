@@ -1,0 +1,50 @@
+Here's a Julia function that implements the described behavior:
+
+```julia
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    # Return an empty array if the input is empty
+    if isempty(xs)
+        return Int[]
+    end
+    
+    # Create a copy of the input array
+    sorted_xs = copy(xs)
+    
+    # Calculate the sum of the first and last elements
+    sum_head_tail = xs[1] + xs[end]
+    
+    # Sort the array based on the sum
+    if sum_head_tail % 2 == 1
+        # If the sum is odd, sort in ascending order
+        sort!(sorted_xs)
+    else
+        # If the sum is even, sort in descending order
+        sort!(sorted_xs, rev=true)
+    end
+    
+    return sorted_xs
+end
+```
+
+This function does the following:
+
+1. It first checks if the input array `xs` is empty. If it is, it returns an empty `Int` array.
+
+2. It creates a copy of the input array using `copy(xs)` to avoid modifying the original array.
+
+3. It calculates the sum of the first and last elements of the input array using `xs[1] + xs[end]`.
+
+4. It then checks if this sum is odd or even:
+   - If the sum is odd (sum_head_tail % 2 == 1), it sorts the copy in ascending order using `sort!`.
+   - If the sum is even, it sorts the copy in descending order using `sort!(sorted_xs, rev=true)`.
+
+5. Finally, it returns the sorted copy of the array.
+
+This function satisfies all the requirements:
+- It works with an array of non-negative integers.
+- It returns a copy of the given array after sorting, without changing the original array.
+- It sorts in ascending order if the sum of the first and last elements is odd.
+- It sorts in descending order if the sum of the first and last elements is even.
+- It handles empty arrays and single-element arrays correctly.
+
+You can use this function as shown in the examples in your question.

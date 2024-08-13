@@ -1,0 +1,23 @@
+```julia
+function triples_sum_to_zero(l::Vector{Int})::Bool
+    n = length(l)
+    sort!(l) # Sorting the list to make it easier to find triples
+
+    for i in 1:(n-2)
+        left, right = i + 1, n
+        while left < right
+            sum = l[i] + l[left] + l[right]
+            if sum == 0
+                return true
+            elseif sum < 0
+                left += 1
+            else
+                right -= 1
+            end
+        end
+    end
+    return false
+end
+```
+
+This function first sorts the input list to make it easier to navigate through the list and find triples that sum to zero. It then iterates through the list, using a two-pointer technique to find if there exists a triple that sums to zero. If such a triple is found, it returns `true`. If no such triple exists, it returns `false`.

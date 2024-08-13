@@ -1,0 +1,3 @@
+function filter_integers(values::AbstractVector)::Vector{Int}
+    return [x for x in values if isa(x, Integer)]
+end

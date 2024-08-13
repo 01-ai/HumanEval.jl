@@ -1,0 +1,5 @@
+```julia
+function triangle_area(a::Number, h::Number)
+    return 0.5 * a * h
+end
+```

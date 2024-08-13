@@ -1,0 +1,33 @@
+```julia
+function count_up_to(n::Int)::Vector{Int}
+    # Helper function to determine if a number is prime
+    function is_prime(x::Int)::Bool
+        if x <= 1
+            return false
+        elseif x <= 3
+            return true
+        elseif x % 2 == 0 || x % 3 == 0
+            return false
+        end
+        i = 5
+        while i * i <= x
+            if x % i == 0 || x % (i + 2) == 0
+                return false
+            end
+            i += 6
+        end
+        return true
+    end
+
+    # Main logic to find primes less than n
+    primes = Int[]
+    for i in 2:(n-1)
+        if is_prime(i)
+            push!(primes, i)
+        end
+    end
+    return primes
+end
+```
+
+This function `count_up_to` first defines a nested helper function `is_prime` to check if a number is prime. It then iterates through numbers from 2 to `n-1`, checks if they are prime using the `is_prime` function, and collects them into an array `primes` which it returns. The function handles edge cases like `n = 0` or `n = 1` correctly by returning an empty array since there are no prime numbers less than 1.

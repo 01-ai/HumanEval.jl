@@ -1,0 +1,29 @@
+```julia
+function anti_shuffle(s::String)::String
+    # Split the string into words
+    words = split(s)
+    
+    # Process each word
+    processed_words = [sort!(collect(word)) for word in words]
+    
+    # Join the processed words back into a string
+    return join(processed_words)
+end
+```
+
+However, the above solution mutates the characters of the string which is not necessary since strings are immutable in Julia. A better approach would be to create a new sorted array of characters and then join them back into a string. Here is the corrected solution:
+
+```julia
+function anti_shuffle(s::String)::String
+    # Split the string into words
+    words = split(s)
+    
+    # Process each word
+    processed_words = [string(sort(collect(word))) for word in words]
+    
+    # Join the processed words back into a string
+    return join(processed_words, " ")
+end
+```
+
+Note: The `split` function without any arguments splits the string on whitespace by default, but when joining the processed words back into a string, we need to explicitly add the spaces by passing `" "` as the second argument to the `join` function. However, in the case where the original string has multiple spaces between words, this implementation will only preserve single spaces between words. If multiple spaces need to be preserved, a more complex implementation would be required.

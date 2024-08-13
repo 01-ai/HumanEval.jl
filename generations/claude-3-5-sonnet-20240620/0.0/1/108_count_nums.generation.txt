@@ -1,0 +1,56 @@
+Here's a Julia function that implements the `count_nums` functionality as described:
+
+```julia
+function count_nums(xs::Vector{Int})::Int
+    count = 0
+    for num in xs
+        digit_sum = sum_of_digits(num)
+        if digit_sum > 0
+            count += 1
+        end
+    end
+    return count
+end
+
+function sum_of_digits(num::Int)::Int
+    total = 0
+    is_negative = num < 0
+    num = abs(num)
+    
+    while num > 0
+        digit = num % 10
+        total += is_negative && total == 0 ? -digit : digit
+        num ÷= 10
+    end
+    
+    return total
+end
+```
+
+Let's break down the solution:
+
+1. We define the main function `count_nums` that takes a vector of integers and returns an integer.
+
+2. Inside `count_nums`, we iterate through each number in the input vector.
+
+3. For each number, we call a helper function `sum_of_digits` to calculate the sum of its digits.
+
+4. If the sum of digits is greater than 0, we increment our count.
+
+5. After checking all numbers, we return the final count.
+
+6. The `sum_of_digits` helper function:
+   - Handles both positive and negative numbers.
+   - For negative numbers, it makes the first non-zero digit negative.
+   - It calculates the sum of digits by repeatedly extracting the least significant digit and adding it to the total.
+
+This solution correctly handles the cases mentioned in the examples:
+
+- For an empty array, it returns 0.
+- For [-1, 11, -11], it returns 1 because:
+  - -1 has a sum of -1 (not > 0)
+  - 11 has a sum of 2 (> 0)
+  - -11 has a sum of 0 (-1 + 1, not > 0)
+- For [1, 1, 2], it returns 3 because all numbers have a sum of digits > 0.
+
+The function correctly handles negative numbers by making the first non-zero digit negative in the sum calculation.

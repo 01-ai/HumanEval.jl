@@ -1,0 +1,53 @@
+Here's a Julia function that implements the described behavior:
+
+```julia
+function prod_signs(xs::Vector{Int})::Union{Nothing,Int}
+    if isempty(xs)
+        return nothing
+    end
+
+    sign_product = 1
+    magnitude_sum = 0
+
+    for x in xs
+        if x == 0
+            return 0
+        elseif x < 0
+            sign_product *= -1
+        end
+        magnitude_sum += abs(x)
+    end
+
+    return sign_product * magnitude_sum
+end
+```
+
+This function does the following:
+
+1. First, it checks if the input vector `xs` is empty. If it is, it returns `nothing` as specified.
+
+2. It initializes two variables:
+   - `sign_product` to keep track of the product of signs (starting at 1)
+   - `magnitude_sum` to sum up the absolute values of the numbers
+
+3. It then iterates through each number `x` in the input vector `xs`:
+   - If `x` is 0, it immediately returns 0 (because any product including 0 will be 0)
+   - If `x` is negative, it multiplies `sign_product` by -1
+   - It adds the absolute value of `x` to `magnitude_sum`
+
+4. Finally, it returns the product of `sign_product` and `magnitude_sum`
+
+This implementation handles all the cases mentioned:
+
+```julia
+julia> prod_signs([1, 2, 2, -4])
+-9
+
+julia> prod_signs([0, 1])
+0
+
+julia> prod_signs([])
+nothing
+```
+
+The function correctly returns the sum of magnitudes multiplied by the product of signs for non-empty arrays, 0 if the array contains a 0, and `nothing` for an empty array.

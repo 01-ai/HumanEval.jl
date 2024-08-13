@@ -1,0 +1,39 @@
+Here's the implementation of the `fib` function in Julia to compute the n-th Fibonacci number:
+
+```julia
+"""
+    fib(n::Int)::Int
+
+Return n-th Fibonacci number.
+
+# Examples
+
+```jldoctest
+julia> fib(10)
+55
+
+julia> fib(1)
+1
+
+julia> fib(8)
+21
+```
+"""
+function fib(n::Int)::Int
+    if n <= 0
+        throw(ArgumentError("n must be a positive integer"))
+    elseif n == 1
+        return 1
+    elseif n == 2
+        return 1
+    else
+        a, b = 1, 1
+        for _ in 3:n
+            a, b = b, a + b
+        end
+        return b
+    end
+end
+```
+
+This function uses an iterative approach to compute the Fibonacci number, which is efficient and avoids the potential stack overflow issues of a recursive approach. It handles the base cases directly and uses a loop for larger values of `n`.

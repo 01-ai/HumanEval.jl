@@ -1,0 +1,42 @@
+Here is a Julia function that implements the `find_zero` function as described in the docstring:
+```julia
+function find_zero(xs::Vector{Int})
+    @assert length(xs) % 2 == 0 "Number of coefficients must be even"
+    @assert xs[end] != 0 "Largest coefficient must be non-zero"
+
+    # Define the polynomial function
+    f(x) = poly(xs, x)
+
+    # Use the bisection method to find a zero
+    a = -1.0
+    b = 1.0
+    while f(a) * f(b) > 0
+        a *= 2
+        b *= 2
+    end
+
+    # Perform bisection
+    while abs(b - a) > 1e-6
+        c = (a + b) / 2
+        if f(c) == 0
+            return c
+        elseif f(a) * f(c) < 0
+            b = c
+        else
+            a = c
+        end
+    end
+
+    # Return the approximate zero
+    return (a + b) / 2
+end
+```
+Here's an explanation of the implementation:
+
+1. We first check that the input `xs` has an even number of coefficients and that the largest coefficient is non-zero.
+2. We define the polynomial function `f(x)` using the `poly` function.
+3. We use the bisection method to find a zero of the polynomial. We start with an initial interval `[a, b] = [-1, 1]` and repeatedly double the interval until we find a sign change in the polynomial values at the endpoints.
+4. Once we have a sign change, we perform bisection to narrow down the interval until we find an approximate zero.
+5. We return the approximate zero as the average of the final interval `[a, b]`.
+
+Note that this implementation assumes that the polynomial has a real zero, and it may not work correctly if the polynomial has complex zeros or no zeros at all. Additionally, the bisection method may not be the most efficient method for finding zeros, especially for high-degree polynomials.

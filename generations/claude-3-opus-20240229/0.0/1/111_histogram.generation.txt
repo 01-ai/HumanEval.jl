@@ -1,0 +1,49 @@
+Here's a solution to the problem:
+
+```julia
+function histogram(s::String)::Dict{String, Int}
+    # Split the string into words
+    words = split(s)
+    
+    # Create an empty dictionary to store the counts
+    counts = Dict{String, Int}()
+    
+    # Count the occurrences of each word
+    for word in words
+        counts[word] = get(counts, word, 0) + 1
+    end
+    
+    # Find the maximum count
+    max_count = isempty(counts) ? 0 : maximum(values(counts))
+    
+    # Create a new dictionary with words having the maximum count
+    result = Dict{String, Int}()
+    for (word, count) in counts
+        if count == max_count
+            result[word] = count
+        end
+    end
+    
+    return result
+end
+```
+
+Explanation:
+
+1. The function takes a string `s` as input and returns a dictionary of type `Dict{String, Int}`.
+
+2. We split the string `s` into individual words using the `split` function, which splits the string on whitespace by default. This gives us an array of words.
+
+3. We create an empty dictionary called `counts` to store the count of each word.
+
+4. We iterate over each word in the `words` array. For each word, we update its count in the `counts` dictionary using the `get` function. If the word is not already in the dictionary, `get` returns a default value of 0, and we increment it by 1. If the word is already in the dictionary, we increment its existing count by 1.
+
+5. After counting the occurrences of all words, we find the maximum count using the `maximum` function on the values of the `counts` dictionary. If the `counts` dictionary is empty, we set the `max_count` to 0.
+
+6. We create a new dictionary called `result` to store the words that have the maximum count.
+
+7. We iterate over each word and its count in the `counts` dictionary. If the count of a word is equal to the `max_count`, we add that word and its count to the `result` dictionary.
+
+8. Finally, we return the `result` dictionary containing the words with the maximum count.
+
+The given examples should produce the expected output with this implementation.

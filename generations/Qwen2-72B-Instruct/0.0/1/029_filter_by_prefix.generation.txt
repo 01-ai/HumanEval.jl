@@ -1,0 +1,9 @@
+Here is the Julia function that implements the functionality described in the docstring:
+
+```julia
+function filter_by_prefix(xs::Vector{String}, prefix::String)::Vector{String}
+    return filter(x -> startswith(x, prefix), xs)
+end
+```
+
+This function uses the `filter` function from Julia's standard library to create a new array that contains only the elements from `xs` that start with the specified `prefix`. The `startswith` function is used as the predicate to determine if an element should be included in the filtered list.

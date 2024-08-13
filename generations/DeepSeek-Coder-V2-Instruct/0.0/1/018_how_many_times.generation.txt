@@ -1,0 +1,18 @@
+ Here's the implementation of the `how_many_times` function in Julia:
+
+```julia
+function how_many_times(s::String, sub_s::String)::Int
+    count = 0
+    i = 1
+    while i <= length(s) - length(sub_s) + 1
+        if s[i:i+length(sub_s)-1] == sub_s
+            count += 1
+            i += length(sub_s) - 1
+        end
+        i += 1
+    end
+    return count
+end
+```
+
+This function iterates through the string `s` and checks for occurrences of the substring `sub_s`. It counts overlapping occurrences by adjusting the index `i` accordingly.

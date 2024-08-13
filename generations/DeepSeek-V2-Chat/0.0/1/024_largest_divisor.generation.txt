@@ -1,0 +1,14 @@
+Here's the implementation of the `largest_divisor` function in Julia:
+
+```julia
+function largest_divisor(n::Int)::Int
+    for i in reverse(1:div(n, 2))
+        if n % i == 0
+            return i
+        end
+    end
+    return 1  # This case should never be reached for n > 1
+end
+```
+
+This function iterates from `n/2` down to `1` to find the largest divisor of `n` that is smaller than `n`. The `reverse` function is used to iterate in descending order, and `div(n, 2)` is used to get the integer division of `n` by `2`, ensuring that we only check up to half of `n`. The `%` operator checks for divisibility. If a divisor is found, it is returned immediately. If no divisor is found (which should not happen for `n > 1`), the function returns `1`.

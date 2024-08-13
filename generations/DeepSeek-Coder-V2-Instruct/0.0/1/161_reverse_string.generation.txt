@@ -1,0 +1,20 @@
+ Here's the implementation of the `reverse_string` function in Julia:
+
+```julia
+function reverse_string(s::String)::String
+    # Check if the string contains any letters
+    contains_letters = any(c -> isletter(c), s)
+    
+    if contains_letters
+        # Reverse the case of each letter
+        result = map(c -> isletter(c) ? ifelse(islower(c), uppercase(c), lowercase(c)) : c, s)
+    else
+        # Reverse the entire string
+        result = reverse(s)
+    end
+    
+    return result
+end
+```
+
+This function first checks if the string contains any letters. If it does, it maps over each character, reversing the case if it's a letter. If the string contains no letters, it simply reverses the entire string.

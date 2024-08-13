@@ -1,0 +1,18 @@
+Sure, here is the Julia function that fulfills the requirements:
+
+```julia
+function flip_case(s::String)::String
+    out = ""
+    for c in s
+        if islowercase(c)
+            out *= uppercase(c)
+        elseif isuppercase(c)
+            out *= lowercase(c)
+        else
+            out *= c
+        end
+    end
+    return out
+end
+```
+This function iterates over each character in the input string. If the character is lowercase, it converts it to uppercase and appends it to the output string. If the character is uppercase, it converts it to lowercase and appends it to the output string. If the character is neither lowercase nor uppercase (e.g., a number or a symbol), it appends the character to the output string as is. The function then returns the output string.

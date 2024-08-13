@@ -1,0 +1,35 @@
+Here is the Julia function that implements the specified behavior:
+```julia
+"""
+string_sequence(n::Int)::String
+
+Return a string containing space-delimited numbers starting from 0 upto `n`
+inclusive.
+
+# Examples
+
+```jldoctest
+julia> string_sequence(0)
+"0"
+
+julia> string_sequence(5)
+"0 1 2 3 4 5"
+```
+"""
+function string_sequence(n::Int)::String
+    return join(map(string, 0:n), " ")
+end
+```
+Explanation:
+
+* The `map` function applies the `string` function to each element of the range `0:n`, converting each number to a string.
+* The `join` function concatenates the resulting strings with a space delimiter.
+
+You can test this function using the provided examples:
+```julia
+julia> string_sequence(0)
+"0"
+
+julia> string_sequence(5)
+"0 1 2 3 4 5"
+```

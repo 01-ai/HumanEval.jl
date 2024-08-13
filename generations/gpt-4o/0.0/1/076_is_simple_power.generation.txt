@@ -1,0 +1,41 @@
+To implement the `is_simple_power` function in Julia, we need to determine if a given number `x` can be expressed as `n` raised to some integer power. Here's how we can achieve this:
+
+1. If `x` is 1, it is always a simple power of any number `n` because any number raised to the power of 0 is 1.
+2. For other values of `x`, we need to check if there exists an integer `k` such that `n^k = x`.
+
+We can use logarithms to help determine if such an integer `k` exists. Specifically, if `x = n^k`, then `k = log(x) / log(n)`. If `k` is an integer, then `x` is a simple power of `n`.
+
+Here's the implementation:
+
+```julia
+function is_simple_power(x::Number, n::Number)::Bool
+    # Special case: x is 1
+    if x == 1
+        return true
+    end
+    
+    # Special case: n is 1
+    if n == 1
+        return x == 1
+    end
+    
+    # Calculate the logarithm base n of x
+    k = log(x) / log(n)
+    
+    # Check if k is an integer
+    return k == round(k)
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(is_simple_power(1, 4))  # true
+println(is_simple_power(2, 2))  # true
+println(is_simple_power(8, 2))  # true
+println(is_simple_power(3, 2))  # false
+println(is_simple_power(3, 1))  # false
+println(is_simple_power(5, 3))  # false
+```
+
+This implementation should correctly determine if `x` is a simple power of `n` for the given examples.

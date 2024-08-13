@@ -1,0 +1,10 @@
+```julia
+function greatest_common_divisor(a::Int, b::Int)::Int
+    while b != 0
+        a, b = b, a % b
+    end
+    return abs(a)
+end
+```
+
+This function implements the Euclidean algorithm to find the greatest common divisor (GCD) of two integers `a` and `b`. The algorithm repeatedly replaces the larger number by its remainder when divided by the smaller number until one of the numbers becomes zero. The last non-zero remainder is the GCD. The function also ensures the result is non-negative by taking the absolute value of the result.

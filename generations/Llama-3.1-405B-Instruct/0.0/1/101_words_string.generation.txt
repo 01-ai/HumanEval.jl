@@ -1,0 +1,38 @@
+Here is the Julia function that implements the specified behavior:
+```julia
+function words_string(s::String)::Vector{String}
+    # Replace commas with spaces to handle both comma and space separated words
+    s = replace(s, "," => " ")
+    
+    # Split the string into words
+    words = split(s)
+    
+    # Filter out empty strings
+    return filter(!isempty, words)
+end
+```
+Here's an explanation of the code:
+
+1. We first replace all commas with spaces using the `replace` function. This allows us to handle both comma-separated and space-separated words.
+2. We then split the string into words using the `split` function, which splits on whitespace characters by default.
+3. Finally, we use the `filter` function to remove any empty strings from the resulting array of words. The `!isempty` predicate returns `true` for non-empty strings and `false` for empty strings, so `filter` removes the empty strings from the array.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> words_string("Hi, my name is John")
+5-element Vector{String}:
+ "Hi"
+ "my"
+ "name"
+ "is"
+ "John"
+
+julia> words_string("One, two, three, four, five, six")
+6-element Vector{String}:
+ "One"
+ "two"
+ "three"
+ "four"
+ "five"
+ "six"
+```

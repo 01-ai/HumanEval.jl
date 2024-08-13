@@ -1,0 +1,20 @@
+```julia
+function search(numbers::Vector)::Int
+    counts = Dict()
+    for num in numbers
+        if num in keys(counts)
+            counts[num] += 1
+        else
+            counts[num] = 1
+        end
+    end
+
+    for num in sort!(collect(keys(counts)), rev=true)
+        if counts[num] >= num
+            return num
+        end
+    end
+    return -1
+end
+```
+This Julia function first counts the frequency of each integer in the given vector using a dictionary. Then, it iterates over the sorted keys of the dictionary in descending order, checking if the integer's frequency is greater than or equal to the integer itself. If such an integer is found, it is returned. If no such integer exists after checking all, the function returns -1.

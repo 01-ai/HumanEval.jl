@@ -1,0 +1,16 @@
+Here's the implementation of the `intersperse` function in Julia:
+
+```julia
+function intersperse(numbers::Vector{Int}, delimeter::Int)::Vector{Int}
+    result = Vector{Int}()
+    for i in 1:length(numbers)
+        push!(result, numbers[i])
+        if i < length(numbers)
+            push!(result, delimeter)
+        end
+    end
+    return result
+end
+```
+
+This function iterates through the input vector `numbers` and appends each element to the `result` vector. After appending each element (except the last one), it also appends the `delimeter` to the `result` vector. This way, the `delimeter` is inserted between every two consecutive elements of the input list.

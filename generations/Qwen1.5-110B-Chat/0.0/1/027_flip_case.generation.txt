@@ -1,0 +1,15 @@
+```julia
+function flip_case(s::String)::String
+    return map(c -> c isa Lowercase ? uppercase(c) : lowercase(c), s)
+end
+```
+
+However, the `c isa Lowercase` syntax is not valid in Julia. We should use `islower(c)` and `isupper(c)` functions instead. Here's the corrected version:
+
+```julia
+function flip_case(s::String)::String
+    return map(c -> islower(c) ? uppercase(c) : lowercase(c), s)
+end
+```
+
+This function iterates over each character in the input string `s`. If the character is lowercase (determined by `islower(c)`), it converts it to uppercase using `uppercase(c)`. If the character is uppercase (determined by `isupper(c)`), it converts it to lowercase using `lowercase(c)`. The result is a new string with the case of each character flipped.

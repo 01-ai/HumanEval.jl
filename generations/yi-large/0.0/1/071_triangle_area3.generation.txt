@@ -1,0 +1,11 @@
+function triangle_area3(a::Number, b::Number, c::Number)::Number
+    # Check if the sides form a valid triangle
+    if a + b > c && a + c > b && b + c > a
+        # Use Heron's formula to calculate the area
+        s = (a + b + c) / 2  # semi-perimeter
+        area = sqrt(s * (s - a) * (s - b) * (s - c))
+        return round(area, digits=2)
+    else
+        return -1
+    end
+end

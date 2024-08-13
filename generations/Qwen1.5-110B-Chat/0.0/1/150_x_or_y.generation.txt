@@ -1,0 +1,5 @@
+```julia
+function x_or_y(n::Int, x::Int, y::Int)::Int
+    isprime(n) ? x : y
+end
+```

@@ -1,0 +1,14 @@
+Sure, here is the Julia function that matches your docstring:
+
+```julia
+using MD5
+
+function string_to_md5(text::String)::Union{Nothing,String}
+    if isempty(text)
+        return nothing
+    else
+        return bytes2hex(md5(text))
+    end
+end
+```
+This function uses the MD5 package to compute the MD5 hash of the input string. If the input string is empty, it returns nothing. The `bytes2hex` function is used to convert the byte array returned by `md5` to a hexadecimal string.

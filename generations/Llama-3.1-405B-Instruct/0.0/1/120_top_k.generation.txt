@@ -1,0 +1,37 @@
+Here is the Julia function that implements the `top_k` functionality based on the provided docstring:
+```julia
+function top_k(xs::Vector{Int}, k::Int)::Vector{Int}
+    # Check if k is within the valid range
+    @assert 0 <= k <= length(xs) "k is out of range"
+
+    # Sort the array in descending order
+    sorted_xs = sort(xs, rev=true)
+
+    # Return the top k elements
+    return sorted_xs[1:k]
+end
+```
+Here's an explanation of the implementation:
+
+1. We first check if `k` is within the valid range using an `@assert` statement. If `k` is not within the range, an `AssertionError` will be thrown.
+2. We sort the input array `xs` in descending order using the `sort` function with the `rev=true` keyword argument.
+3. We return the top `k` elements of the sorted array by indexing into the sorted array with `1:k`.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> top_k([-3, -4, 5], 3)
+3-element Vector{Int64}:
+  5
+ -3
+ -4
+
+julia> top_k([4, -4, 4], 2)
+2-element Vector{Int64}:
+ 4
+ 4
+
+julia> top_k([-3, 2, 1, 2, -1, -2, 1], 1)
+1-element Vector{Int64}:
+ 2
+```
+Note that this implementation has a time complexity of O(n log n) due to the sorting step, where n is the length of the input array. However, since the length of the array is bounded by 1000, this should not be a performance concern in practice.

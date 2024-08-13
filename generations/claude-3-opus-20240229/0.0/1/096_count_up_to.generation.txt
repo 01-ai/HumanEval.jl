@@ -1,0 +1,63 @@
+Here's the implementation of the `count_up_to` function in Julia:
+
+```julia
+function count_up_to(n::Int)::Vector{Int}
+    # Initialize an empty vector to store the prime numbers
+    primes = Int[]
+
+    # Iterate from 2 to n-1
+    for num in 2:n-1
+        # Check if the current number is prime
+        if is_prime(num)
+            # If it's prime, append it to the primes vector
+            push!(primes, num)
+        end
+    end
+
+    # Return the vector of prime numbers
+    return primes
+end
+
+function is_prime(num::Int)::Bool
+    # Handle the case when num is less than 2
+    if num < 2
+        return false
+    end
+
+    # Iterate from 2 to the square root of num
+    for i in 2:isqrt(num)
+        # If num is divisible by i, it's not prime
+        if num % i == 0
+            return false
+        end
+    end
+
+    # If no divisors found, num is prime
+    return true
+end
+```
+
+The `count_up_to` function takes a non-negative integer `n` as input and returns a vector of integers that are prime numbers and less than `n`.
+
+Here's how the function works:
+
+1. We initialize an empty vector called `primes` to store the prime numbers.
+
+2. We iterate from 2 to `n-1` (inclusive) using a `for` loop. For each number `num` in this range:
+   - We check if `num` is prime by calling the `is_prime` function.
+   - If `num` is prime, we append it to the `primes` vector using the `push!` function.
+
+3. After the loop ends, we return the `primes` vector containing all the prime numbers less than `n`.
+
+The `is_prime` function is a helper function that checks whether a given number `num` is prime or not. Here's how it works:
+
+1. If `num` is less than 2, we return `false` since numbers less than 2 are not prime.
+
+2. We iterate from 2 to the square root of `num` (inclusive) using a `for` loop. For each number `i` in this range:
+   - If `num` is divisible by `i` (i.e., `num % i == 0`), we return `false` since `num` is not prime.
+
+3. If we complete the loop without finding any divisors, we return `true` since `num` is prime.
+
+The `isqrt` function is used to calculate the integer square root of `num` efficiently.
+
+The provided examples should produce the expected outputs when using this implementation of `count_up_to`.

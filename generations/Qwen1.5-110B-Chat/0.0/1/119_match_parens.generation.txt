@@ -1,0 +1,13 @@
+```julia
+function match_parens(lst::Vector{String})::String
+    open_parens = count(c -> c == '(', lst[1]) + count(c -> c == '(', lst[2])
+    close_parens = count(c -> c == ')', lst[1]) + count(c -> c == ')', lst[2])
+
+    if open_parens == close_parens
+        return "Yes"
+    else
+        return "No"
+    end
+end
+```
+This Julia function `match_parens` takes a vector of two strings `lst` as input. It counts the number of open and close parentheses in both strings combined. If the counts are equal, it returns "Yes", indicating that the parentheses can be balanced by concatenating the strings in some order. Otherwise, it returns "No".

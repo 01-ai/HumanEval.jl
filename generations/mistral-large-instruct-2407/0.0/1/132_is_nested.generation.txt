@@ -1,0 +1,67 @@
+ Certainly! Below is the implementation of the `is_nested` function in Julia based on the given doc string:
+
+```julia
+"""
+    is_nested(s::String)::Bool
+
+Create a function that takes a string as input which contains only square
+brackets. The function should return `true` if and only if there is a valid
+subsequence of brackets where at least one bracket in the subsequence is nested.
+
+# Examples
+
+```jldoctest
+julia> is_nested("[[]]")
+true
+
+julia> is_nested("[]]]]]]][[[[[]")
+false
+
+julia> is_nested("[][]")
+false
+
+julia> is_nested("[]")
+false
+
+julia> is_nested("[[][]]")
+true
+
+julia> is_nested("[[]][[")
+true
+```
+"""
+function is_nested(s::String)::Bool
+    max_depth = 0
+    current_depth = 0
+
+    for char in s
+        if char == '['
+            current_depth += 1
+            max_depth = max(max_depth, current_depth)
+        elseif char == ']'
+            if current_depth > 0
+                current_depth -= 1
+            else
+                return false
+            end
+        end
+    end
+
+    return max_depth > 1 && current_depth == 0
+end
+```
+
+### Explanation:
+1. **Initialization**:
+   - `max_depth` keeps track of the maximum depth of nested brackets encountered.
+   - `current_depth` keeps track of the current depth of brackets as we iterate through the string.
+
+2. **Iteration**:
+   - For each character in the string:
+     - If it is an opening bracket `[`, increment `current_depth` and update `max_depth` if necessary.
+     - If it is a closing bracket `]`, decrement `current_depth` if it is greater than 0. If `current_depth` is 0 when encountering a closing bracket, it means the brackets are not properly nested, so return `false`.
+
+3. **Final Check**:
+   - After iterating through the string, check if `max_depth` is greater than 1 (indicating at least one nested bracket) and `current_depth` is 0 (indicating all brackets are properly closed).
+
+This function ensures that the string contains a valid subsequence of nested brackets and returns `true` if such a subsequence exists.

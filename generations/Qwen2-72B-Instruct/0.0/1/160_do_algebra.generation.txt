@@ -1,0 +1,24 @@
+```julia
+function do_algebra(operator::Vector{String}, operand::Vector{Int})
+    # Initialize the result with the first operand
+    result = operand[1]
+
+    # Loop through the operators and apply them to the operands
+    for i in 1:length(operator)
+        if operator[i] == "+"
+            result += operand[i + 1]
+        elseif operator[i] == "-"
+            result -= operand[i + 1]
+        elseif operator[i] == "*"
+            result *= operand[i + 1]
+        elseif operator[i] == "÷"
+            result = div(result, operand[i + 1])
+        elseif operator[i] == "^"
+            result = result ^ operand[i + 1]
+        end
+    end
+
+    # Return the final result
+    return result
+end
+```

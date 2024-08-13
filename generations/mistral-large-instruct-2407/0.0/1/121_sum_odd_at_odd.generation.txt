@@ -1,0 +1,42 @@
+ Certainly! Below is the implementation of the `sum_odd_at_odd` function in Julia based on the given docstring:
+
+```julia
+"""
+    sum_odd_at_odd(xs::Vector{Int})::Int
+
+Given a non-empty list of integers, return the sum of all of the odd elements
+that are in odd positions.
+
+# Examples
+
+```jldoctest
+julia> sum_odd_at_odd([5, 8, 7, 1])
+12
+
+julia> sum_odd_at_odd([3, 3, 3, 3, 3])
+9
+
+julia> sum_odd_at_odd([30, 13, 24, 321])
+0
+```
+"""
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    sum = 0
+    for i in 1:2:length(xs)
+        if isodd(xs[i])
+            sum += xs[i]
+        end
+    end
+    return sum
+end
+```
+
+### Explanation:
+1. **Function Signature**: The function `sum_odd_at_odd` takes a vector of integers `xs` and returns an integer.
+2. **Initialization**: A variable `sum` is initialized to 0 to keep track of the sum of odd elements at odd positions.
+3. **Loop**: A `for` loop iterates over the indices of the vector `xs` starting from 1 and incrementing by 2 (`1:2:length(xs)`). This ensures that only odd positions are considered.
+4. **Condition Check**: Inside the loop, the function checks if the element at the current index is odd using the `isodd` function.
+5. **Sum Update**: If the element is odd, it is added to the `sum`.
+6. **Return**: Finally, the function returns the computed `sum`.
+
+This implementation ensures that only the odd elements at odd positions are summed up, as required.

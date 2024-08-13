@@ -1,0 +1,37 @@
+Here's the implementation of the `sort_array_based_on_head_tail` function in Julia:
+
+```julia
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    if isempty(xs)
+        return xs
+    end
+    
+    head = xs[1]
+    tail = xs[end]
+    sum_head_tail = head + tail
+    
+    if iseven(sum_head_tail)
+        return sort(xs, rev=true)
+    else
+        return sort(xs)
+    end
+end
+```
+
+### Explanation:
+1. **Check if the array is empty**: If the input array `xs` is empty, return it as is.
+2. **Calculate the sum of the first and last elements**: 
+   - `head` is the first element of the array.
+   - `tail` is the last element of the array.
+   - `sum_head_tail` is the sum of `head` and `tail`.
+3. **Determine the sorting order**:
+   - If `sum_head_tail` is even, sort the array in descending order using `sort(xs, rev=true)`.
+   - If `sum_head_tail` is odd, sort the array in ascending order using `sort(xs)`.
+
+### Examples:
+- For an empty array `[]`, the function returns `[]`.
+- For a single-element array `[5]`, the function returns `[5]`.
+- For the array `[2, 4, 3, 0, 1, 5]`, the sum of the first and last elements is `2 + 5 = 7` (odd), so the function returns the array sorted in ascending order: `[0, 1, 2, 3, 4, 5]`.
+- For the array `[2, 4, 3, 0, 1, 5, 6]`, the sum of the first and last elements is `2 + 6 = 8` (even), so the function returns the array sorted in descending order: `[6, 5, 4, 3, 2, 1, 0]`.
+
+You can test the function with the provided examples to ensure it works as expected.

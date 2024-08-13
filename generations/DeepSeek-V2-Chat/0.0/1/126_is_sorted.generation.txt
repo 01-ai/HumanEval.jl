@@ -1,0 +1,16 @@
+Here's the implementation of the `is_sorted` function in Julia:
+
+```julia
+function is_sorted(xs::Vector{Int})::Bool
+    for i in 1:length(xs)-1
+        if xs[i] > xs[i+1]
+            return false
+        elseif xs[i] == xs[i+1]
+            return false
+        end
+    end
+    return true
+end
+```
+
+This function iterates through the list and checks if each element is less than or equal to the next element. If it finds any element that is greater than the next one or if it finds any duplicate elements (more than one consecutive occurrence of the same number), it returns `false`. Otherwise, it returns `true`.

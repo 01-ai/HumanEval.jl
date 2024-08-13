@@ -1,0 +1,17 @@
+ Here's the implementation of the `order_by_points` function in Julia:
+
+```julia
+function order_by_points(nums::Vector{Int})::Vector{Int}
+    # Helper function to calculate the sum of digits of a number
+    function sum_of_digits(n::Int)::Int
+        sum(abs(n) |> string |> collect .|> x -> parse(Int, x))
+    end
+
+    # Sort the numbers based on the sum of their digits, and by their original index if sums are equal
+    sorted_nums = sort(nums, by = n -> (sum_of_digits(n), findfirst(x -> x == n, nums)))
+
+    return sorted_nums
+end
+```
+
+This function first defines a helper function `sum_of_digits` to calculate the sum of the digits of a given number. It then sorts the input vector `nums` based on the sum of the digits of each number. If two numbers have the same sum of digits, they are ordered based on their original index in the list.

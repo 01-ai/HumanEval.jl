@@ -1,0 +1,20 @@
+```julia
+function largest_prime_factor(n::Int)::Int
+    factor = 2
+    last_factor = 1
+    while n > 1
+        if n % factor == 0
+            last_factor = factor
+            n = div(n, factor)
+            while n % factor == 0
+                n = div(n, factor)
+            end
+        end
+        factor += 1
+        if factor * factor > n
+            return n > 1 ? n : last_factor
+        end
+    end
+    return last_factor
+end
+```

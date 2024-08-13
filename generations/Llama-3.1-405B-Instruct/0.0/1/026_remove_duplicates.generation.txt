@@ -1,0 +1,43 @@
+Here is a Julia function that implements the behavior described in the docstring:
+
+```julia
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    seen = Set{Int}()
+    duplicates = Set{Int}()
+    result = Vector{Int}()
+
+    for num in numbers
+        if num in seen
+            push!(duplicates, num)
+        else
+            push!(seen, num)
+        end
+    end
+
+    for num in numbers
+        if !(num in duplicates)
+            push!(result, num)
+        end
+    end
+
+    return result
+end
+```
+
+This function works by first identifying the duplicate elements in the input vector. It does this by maintaining two sets: `seen` and `duplicates`. The `seen` set keeps track of all the elements that have been encountered so far, while the `duplicates` set keeps track of the elements that have been encountered more than once.
+
+After identifying the duplicates, the function then constructs the result vector by iterating over the input vector again and including only the elements that are not in the `duplicates` set.
+
+However, a more concise and efficient version can be achieved using a `Dict` to count the occurrences of each number and then filtering the original vector based on these counts:
+
+```julia
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    counts = Dict{Int, Int}()
+    for num in numbers
+        counts[num] = get(counts, num, 0) + 1
+    end
+    return [num for num in numbers if counts[num] == 1]
+end
+```
+
+This version only requires a single pass over the input vector to count the occurrences of each number, and then uses a list comprehension to filter out the duplicates while preserving the original order.

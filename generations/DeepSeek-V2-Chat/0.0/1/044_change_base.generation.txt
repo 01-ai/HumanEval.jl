@@ -1,0 +1,24 @@
+Here's the implementation of the `change_base` function in Julia:
+
+```julia
+function change_base(x::Int, base::Int)::String
+    if base < 2 || base > 9
+        throw(ArgumentError("Base must be between 2 and 9"))
+    end
+    
+    if x == 0
+        return "0"
+    end
+    
+    result = ""
+    while x > 0
+        remainder = x % base
+        result = string(remainder, result)
+        x = div(x, base)
+    end
+    
+    return result
+end
+```
+
+This function converts the integer `x` to the specified `base` and returns the result as a string. It handles the conversion by repeatedly dividing `x` by `base` and collecting the remainders, which represent the digits of the number in the new base. The remainders are concatenated in reverse order to form the final string representation.

@@ -1,0 +1,59 @@
+To solve this problem, we can follow these steps:
+
+1. Create a dictionary to store the frequency of each number in the list.
+2. Iterate through the dictionary, checking each number against the criteria.
+3. Keep track of the maximum number that satisfies the conditions.
+4. Return the result or -1 if no number satisfies the conditions.
+
+Here's the Julia function that implements this solution:
+
+```julia
+function search(numbers::Vector)::Int
+    # Create a dictionary to store the frequency of each number
+    freq = Dict{Int, Int}()
+    for num in numbers
+        freq[num] = get(freq, num, 0) + 1
+    end
+    
+    max_num = -1
+    
+    # Iterate through the dictionary
+    for (num, count) in freq
+        # Check if the number satisfies the conditions
+        if num > 0 && count >= num && num > max_num
+            max_num = num
+        end
+    end
+    
+    return max_num
+end
+```
+
+Let's break down the function:
+
+1. We create a dictionary `freq` to store the frequency of each number in the input vector.
+
+2. We iterate through the `numbers` vector and populate the `freq` dictionary. The `get(freq, num, 0)` function is used to handle the case when a number is encountered for the first time.
+
+3. We initialize `max_num` to -1, which will be our return value if no number satisfies the conditions.
+
+4. We iterate through the `freq` dictionary, checking each number against the conditions:
+   - The number must be greater than 0
+   - Its frequency must be greater than or equal to the number itself
+   - It must be greater than the current `max_num`
+
+5. If a number satisfies all conditions, we update `max_num`.
+
+6. Finally, we return `max_num`, which will be the greatest number satisfying the conditions or -1 if no such number exists.
+
+This solution has a time complexity of O(n), where n is the length of the input vector, as we iterate through the vector once to create the frequency dictionary and then iterate through the dictionary (which at most has n entries) to find the result.
+
+You can test this function with the provided examples:
+
+```julia
+println(search([4, 1, 2, 2, 3, 1]))  # Output: 2
+println(search([1, 2, 2, 3, 3, 3, 4, 4, 4]))  # Output: 3
+println(search([5, 5, 4, 4, 4]))  # Output: -1
+```
+
+These should produce the expected outputs as given in the problem statement.

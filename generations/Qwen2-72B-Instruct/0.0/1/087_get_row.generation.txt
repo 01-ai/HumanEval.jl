@@ -1,0 +1,16 @@
+```julia
+function get_row(xs::Vector{Vector{Int}}, x::Int)
+    coordinates = Tuple{Int, Int}[]
+    for (i, row) in enumerate(xs)
+        for (j, elem) in enumerate(row)
+            if elem == x
+                push!(coordinates, (i, length(row) - j + 1))
+            end
+        end
+    end
+    sort!(coordinates, by = c -> (c[1], -c[2]))
+    return coordinates
+end
+```
+
+This function iterates over each row and each element in the row. If the element matches the given integer `x`, it adds a tuple with the row number and the column number (counting from the right) to the `coordinates` vector. After iterating over all elements, it sorts the `coordinates` vector first by row number in ascending order and then by column number in descending order.

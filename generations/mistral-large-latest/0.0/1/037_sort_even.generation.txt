@@ -1,0 +1,15 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function sort_even(l::Vector)::Vector
+    even_indices = 2:2:length(l)
+    even_values = sort(l[even_indices])
+    l_copy = copy(l)
+    for (i, value) in zip(even_indices, even_values)
+        l_copy[i] = value
+    end
+    return l_copy
+end
+```
+
+This function first identifies the even indices of the input vector `l`, then sorts the values at these indices. It creates a copy of `l` to avoid modifying the original vector, and then replaces the values at the even indices with the sorted values. Finally, it returns the modified vector.

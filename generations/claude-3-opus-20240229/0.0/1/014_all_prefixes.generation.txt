@@ -1,0 +1,34 @@
+Here's the implementation of the `all_prefixes` function in Julia:
+
+```julia
+function all_prefixes(s::String)::Vector{String}
+    prefixes = String[]
+    for i in 1:length(s)
+        push!(prefixes, s[1:i])
+    end
+    return prefixes
+end
+```
+
+Explanation:
+
+1. We define the `all_prefixes` function that takes a string `s` as input and returns a vector of strings (`Vector{String}`).
+
+2. We initialize an empty vector called `prefixes` to store all the prefixes.
+
+3. We start a loop that iterates from 1 to the length of the input string `s`. The loop variable `i` represents the length of each prefix.
+
+4. Inside the loop, we use string indexing (`s[1:i]`) to extract the substring from the first character to the `i`-th character of the string `s`. This substring represents a prefix of `s`.
+
+5. We use the `push!` function to append each prefix to the `prefixes` vector.
+
+6. After the loop ends, we return the `prefixes` vector containing all the prefixes of the input string `s` from shortest to longest.
+
+The function satisfies the given example:
+
+```jldoctest
+julia> all_prefixes("abc") == ["a", "ab", "abc"]
+true
+```
+
+The time complexity of this function is O(n^2), where n is the length of the input string. This is because we iterate over the length of the string and perform string slicing operations in each iteration. The space complexity is O(n^2) as well, since we store all the prefixes in the `prefixes` vector, and the total length of all prefixes is (n * (n + 1)) / 2.

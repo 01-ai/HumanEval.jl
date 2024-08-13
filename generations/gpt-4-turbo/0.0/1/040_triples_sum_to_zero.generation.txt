@@ -1,0 +1,35 @@
+```julia
+function triples_sum_to_zero(l::Vector{Int})::Bool
+    n = length(l)
+    if n < 3
+        return false
+    end
+    
+    # Sort the array to use two-pointer technique
+    sort!(l)
+    
+    for i in 1:n-2
+        # To avoid duplicates and unnecessary checks
+        if i > 1 && l[i] == l[i-1]
+            continue
+        end
+        
+        # Two pointers
+        left = i + 1
+        right = n
+        
+        while left < right
+            sum = l[i] + l[left] + l[right]
+            if sum == 0
+                return true
+            elseif sum < 0
+                left += 1
+            else
+                right -= 1
+            end
+        end
+    end
+    
+    return false
+end
+```

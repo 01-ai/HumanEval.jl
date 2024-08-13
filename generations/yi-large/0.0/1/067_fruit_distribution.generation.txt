@@ -1,0 +1,19 @@
+function fruit_distribution(s::String, n::Int)::Int
+    # Split the string into words
+    words = split(s, [" apples and ", " oranges"])
+    
+    # Extract the number of apples and oranges
+    apples = parse(Int, words[1])
+    oranges = parse(Int, words[2])
+    
+    # Calculate the number of mangoes
+    mangoes = n - apples - oranges
+    
+    return mangoes
+end
+
+# Test cases
+println(fruit_distribution("5 apples and 6 oranges", 19)) # 8
+println(fruit_distribution("0 apples and 1 oranges", 3))   # 2
+println(fruit_distribution("2 apples and 3 oranges", 100)) # 95
+println(fruit_distribution("100 apples and 1 oranges", 120)) # 19

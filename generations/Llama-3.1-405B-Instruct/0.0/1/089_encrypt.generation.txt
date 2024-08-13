@@ -1,0 +1,20 @@
+Here is a Julia function that implements the encryption as described in the docstring:
+
+```julia
+function encrypt(s::String)
+    encrypted = ""
+    for char in s
+        if isletter(char)
+            shift = 2 * 2
+            base = isuppercase(char) ? 'A' : 'a'
+            encrypted_char = base + (char - base + shift) % 26
+            encrypted *= encrypted_char
+        else
+            encrypted *= char
+        end
+    end
+    return encrypted
+end
+```
+
+This function goes through each character in the input string. If the character is a letter, it calculates the encrypted character by shifting it down by 4 places (2 multiplied by 2) in the alphabet, wrapping around to the beginning of the alphabet if necessary. Non-letter characters are left unchanged. The encrypted characters are then concatenated to form the final encrypted string.

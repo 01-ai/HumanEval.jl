@@ -1,0 +1,56 @@
+To implement the function `skjkasdkd(xs::Vector{Int})::Int`, we need to follow these steps:
+
+1. Identify the largest prime number in the list.
+2. Sum the digits of this largest prime number.
+3. Return the sum of the digits.
+
+Here's the implementation in Julia:
+
+```julia
+function is_prime(n::Int)
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+
+function sum_of_digits(n::Int)
+    sum = 0
+    while n > 0
+        sum += n % 10
+        n = div(n, 10)
+    end
+    return sum
+end
+
+function skjkasdkd(xs::Vector{Int})::Int
+    largest_prime = 0
+    for x in xs
+        if is_prime(x) && x > largest_prime
+            largest_prime = x
+        end
+    end
+    return sum_of_digits(largest_prime)
+end
+```
+
+### Explanation:
+
+1. **is_prime(n::Int)**: This function checks if a number `n` is prime. It handles small numbers and uses trial division for larger numbers, checking divisibility up to the square root of `n`.
+
+2. **sum_of_digits(n::Int)**: This function calculates the sum of the digits of a number `n`.
+
+3. **skjkasdkd(xs::Vector{Int})::Int**: This function iterates through the list `xs`, finds the largest prime number using the `is_prime` function, and then calculates the sum of its digits using the `sum_of_digits` function.
+
+This implementation ensures that we correctly identify the largest prime number and compute the sum of its digits as required.

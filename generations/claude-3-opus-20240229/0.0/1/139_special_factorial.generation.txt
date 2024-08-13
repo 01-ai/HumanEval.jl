@@ -1,0 +1,33 @@
+Here's the implementation of the `special_factorial` function in Julia:
+
+```julia
+function special_factorial(n::Int)::BigInt
+    result = BigInt(1)
+    for i in 1:n
+        result *= factorial(BigInt(i))
+    end
+    return result
+end
+```
+
+Explanation:
+1. We define the function `special_factorial` that takes an integer `n` as input and returns a `BigInt` value.
+2. We initialize a variable `result` with the value of `BigInt(1)` to store the result of the special factorial.
+3. We start a loop that iterates from 1 to `n` (inclusive).
+4. Inside the loop, we multiply `result` by the factorial of each number from 1 to `n`.
+   - We use the built-in `factorial` function to calculate the factorial of each number.
+   - We convert each number to `BigInt` before passing it to `factorial` to ensure that the calculations are performed using arbitrary-precision integers.
+5. Finally, we return the `result`, which represents the special factorial of `n`.
+
+Note: We use `BigInt` to handle large factorial values that may exceed the range of regular integers.
+
+Example usage:
+```jldoctest
+julia> special_factorial(4)
+288
+```
+
+In this example, `special_factorial(4)` calculates the special factorial of 4, which is equivalent to:
+4! * 3! * 2! * 1! = 24 * 6 * 2 * 1 = 288
+
+The function correctly returns the result as a `BigInt` value.

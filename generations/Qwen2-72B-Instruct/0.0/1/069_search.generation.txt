@@ -1,0 +1,20 @@
+```julia
+function search(numbers::Vector)
+    # Create a dictionary to count the frequency of each number
+    freq = Dict{Int, Int}()
+    for num in numbers
+        freq[num] = get(freq, num, 0) + 1
+    end
+
+    # Find the greatest number whose frequency is greater than or equal to the number itself
+    result = -1
+    for (num, count) in freq
+        if count >= num && num > result
+            result = num
+        end
+    end
+
+    return result
+end
+```
+This function first counts the frequency of each number in the given vector using a dictionary. Then it iterates over the dictionary to find the greatest number whose frequency is greater than or equal to the number itself. If no such number exists, it returns -1.

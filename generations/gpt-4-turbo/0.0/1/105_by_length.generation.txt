@@ -1,0 +1,21 @@
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    # Dictionary to map numbers to their names
+    num_to_name = Dict(1 => "One", 2 => "Two", 3 => "Three", 4 => "Four", 5 => "Five",
+                       6 => "Six", 7 => "Seven", 8 => "Eight", 9 => "Nine")
+    
+    # Filter the array to include only numbers between 1 and 9
+    filtered = filter(x -> 1 <= x <= 9, xs)
+    
+    # Sort the filtered array
+    sorted = sort(filtered)
+    
+    # Reverse the sorted array
+    reversed = reverse(sorted)
+    
+    # Map the numbers to their corresponding names
+    named = map(x -> num_to_name[x], reversed)
+    
+    return named
+end
+```

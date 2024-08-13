@@ -1,0 +1,47 @@
+Here is the Julia function that implements the behavior described in the docstring:
+```julia
+function split_words(txt::String)::Union{Vector{<:AbstractString},Int}
+    # Check if there are any whitespaces in the text
+    if occursin(r"\s", txt)
+        # Split on whitespace
+        return split(txt)
+    # Check if there are any commas in the text
+    elseif occursin(",", txt)
+        # Split on commas
+        return split(txt, ",")
+    else
+        # Count the number of lower-case letters with odd order in the alphabet
+        count = 0
+        for c in txt
+            if islowercase(c) && (Int(c) - Int('a')) % 2 == 1
+                count += 1
+            end
+        end
+        return count
+    end
+end
+```
+Here's an explanation of the code:
+
+1. We first check if there are any whitespaces in the text using the `occursin` function with a regular expression that matches any whitespace character (`\s`).
+2. If there are whitespaces, we split the text on whitespace using the `split` function.
+3. If there are no whitespaces, we check if there are any commas in the text using the `occursin` function.
+4. If there are commas, we split the text on commas using the `split` function with a comma as the separator.
+5. If there are no commas, we count the number of lower-case letters with odd order in the alphabet. We do this by iterating over each character in the text, checking if it's a lower-case letter using the `islowercase` function, and then checking if its ASCII value minus the ASCII value of 'a' is odd using the modulo operator (`%`). If both conditions are true, we increment the count.
+6. Finally, we return the count.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> split_words("Hello world!")
+2-element Vector{SubString{String}}:
+ "Hello"
+ "world!"
+
+julia> split_words("Hello,world!")
+2-element Vector{SubString{String}}:
+ "Hello"
+ "world!"
+
+julia> split_words("abcdef")
+3
+```

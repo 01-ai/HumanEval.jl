@@ -1,0 +1,16 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function hex_key(num::String)::Int
+    prime_hex_digits = "2357BD"
+    count = 0
+    for digit in num
+        if digit in prime_hex_digits
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function works by iterating over each character in the input string and checking if it is in the string of prime hexadecimal digits. If it is, it increments a counter. The function then returns the counter.

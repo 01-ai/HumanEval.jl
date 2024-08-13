@@ -1,0 +1,22 @@
+Sure, here is a Julia function that fulfills the requirements:
+
+```julia
+function encode_swap(message::String)::String
+    vowels = "aeiou"
+    vowels_dict = Dict(zip(vowels, vowels[3:end] * vowels[1:2]))
+    encoded_message = ""
+
+    for char in message
+        if isletter(char)
+            new_char = isuppercase(char) ? uppercase(get(vowels_dict, lowercase(char), char)) : get(vowels_dict, lowercase(char), char)
+            encoded_message *= islowercase(char) ? uppercase(new_char) : lowercase(new_char)
+        else
+            encoded_message *= char
+        end
+    end
+
+    return encoded_message
+end
+```
+
+This function iterates over each character in the message. If the character is a letter, it checks if it's a vowel and replaces it with the corresponding letter two places ahead in the alphabet. It also swaps the case of the letter. If the character is not a letter, it just appends it to the encoded message as is.

@@ -1,0 +1,66 @@
+Here's a solution to the `strange_sort_list` problem in Julia:
+
+```julia
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    result = Int[]
+    sorted_xs = sort(xs)
+    
+    left = 1
+    right = length(sorted_xs)
+    
+    while left <= right
+        push!(result, sorted_xs[left])
+        left += 1
+        
+        if left <= right
+            push!(result, sorted_xs[right])
+            right -= 1
+        end
+    end
+    
+    return result
+end
+```
+
+Explanation:
+
+1. We start by creating an empty vector `result` to store the strangely sorted integers.
+
+2. We sort the input vector `xs` in ascending order and store it in `sorted_xs`. This helps us easily access the minimum and maximum values.
+
+3. We initialize two pointers, `left` and `right`, pointing to the leftmost and rightmost elements of `sorted_xs`, respectively.
+
+4. We enter a loop that continues as long as `left` is less than or equal to `right`.
+
+5. Inside the loop, we append the minimum value (`sorted_xs[left]`) to `result` and increment `left` by 1.
+
+6. We then check if `left` is still less than or equal to `right`. If true, we append the maximum value (`sorted_xs[right]`) to `result` and decrement `right` by 1.
+
+7. We repeat steps 5 and 6 until `left` becomes greater than `right`. This ensures that we alternate between appending the minimum and maximum values to `result`.
+
+8. Finally, we return the `result` vector containing the strangely sorted integers.
+
+The time complexity of this solution is O(n log n) due to the sorting step, where n is the length of the input vector `xs`. The space complexity is O(n) as we create a new vector `result` to store the strangely sorted integers.
+
+The solution handles the given examples correctly:
+
+```jldoctest
+julia> strange_sort_list([1, 2, 3, 4])
+4-element Vector{Int64}:
+ 1
+ 4
+ 2
+ 3
+
+julia> strange_sort_list([5, 5, 5, 5])
+4-element Vector{Int64}:
+ 5
+ 5
+ 5
+ 5
+
+julia> strange_sort_list(Int[])
+Int64[]
+```
+
+I hope this helps! Let me know if you have any further questions.

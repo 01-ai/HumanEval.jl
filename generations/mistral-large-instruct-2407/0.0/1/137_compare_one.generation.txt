@@ -1,0 +1,54 @@
+ Certainly! Below is the implementation of the `compare_one` function in Julia based on the provided docstring:
+
+```julia
+"""
+    compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+
+Create a function that takes integers, floats, or strings representing real
+numbers, and returns the larger variable in its given variable type. Return
+`nothing` if the values are equal. Note: If a real number is represented as a
+string, the floating point might be . or ,
+
+# Examples
+
+```jldoctest
+julia> compare_one(1, 2.5)
+2.5
+
+julia> compare_one(1, "2,3")
+"2,3"
+
+julia> compare_one("5,1", "6")
+"6"
+
+julia> compare_one("1", 1)
+
+```
+"""
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+    # Helper function to convert strings to floats
+    function parse_number(s::AbstractString)
+        s = replace(s, ',' => '.')
+        return parse(Float64, s)
+    end
+
+    # Convert inputs to Float64 for comparison
+    a_val = typeof(a) <: AbstractString ? parse_number(a) : Float64(a)
+    b_val = typeof(b) <: AbstractString ? parse_number(b) : Float64(b)
+
+    if a_val > b_val
+        return a
+    elseif b_val > a_val
+        return b
+    else
+        return nothing
+    end
+end
+```
+
+### Explanation:
+1. **Helper Function `parse_number`**: This function converts a string representing a real number (with either `.` or `,` as the decimal separator) to a `Float64`.
+2. **Conversion to `Float64`**: The inputs `a` and `b` are converted to `Float64` for comparison. If the input is a string, it uses the `parse_number` function to handle the conversion.
+3. **Comparison**: The function compares the numerical values of `a` and `b`. If `a` is greater, it returns `a`; if `b` is greater, it returns `b`; if they are equal, it returns `nothing`.
+
+This implementation ensures that the function works correctly with integers, floats, and strings representing real numbers, and handles different decimal separators in strings.

@@ -1,0 +1,12 @@
+Here's the implementation of the `common` function in Julia:
+
+```julia
+function common(l1::Vector, l2::Vector)::Vector
+    # Find the intersection of the two lists
+    intersection = intersect(l1, l2)
+    # Return the sorted unique elements
+    return sort(intersection)
+end
+```
+
+This function uses the `intersect` function to find the common elements between the two lists and then sorts the result using the `sort` function. The `intersect` function automatically handles the uniqueness of the elements.

@@ -1,0 +1,24 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing,Int}}
+    neg_max = nothing
+    pos_min = nothing
+
+    for x in xs
+        if x < 0
+            if neg_max === nothing || x > neg_max
+                neg_max = x
+            end
+        elseif x > 0
+            if pos_min === nothing || x < pos_min
+                pos_min = x
+            end
+        end
+    end
+
+    return (neg_max, pos_min)
+end
+```
+
+This function iterates over the input vector `xs`. If a negative number is found and either `neg_max` is `nothing` or the current number is greater than `neg_max`, then `neg_max` is updated. Similarly, if a positive number is found and either `pos_min` is `nothing` or the current number is less than `pos_min`, then `pos_min` is updated. Finally, the function returns a tuple containing `neg_max` and `pos_min`.

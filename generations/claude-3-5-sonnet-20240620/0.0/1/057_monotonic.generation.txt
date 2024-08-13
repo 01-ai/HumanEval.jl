@@ -1,0 +1,53 @@
+Here's a Julia function that implements the `monotonic` behavior as described:
+
+```julia
+function monotonic(l::Vector)::Bool
+    if length(l) <= 1
+        return true
+    end
+    
+    increasing = decreasing = true
+    
+    for i in 2:length(l)
+        if l[i] < l[i-1]
+            increasing = false
+        end
+        if l[i] > l[i-1]
+            decreasing = false
+        end
+        if !increasing && !decreasing
+            return false
+        end
+    end
+    
+    return true
+end
+```
+
+This function does the following:
+
+1. If the list has 0 or 1 elements, it's considered monotonic by definition, so we return `true`.
+
+2. We initialize two boolean flags: `increasing` and `decreasing`. Both start as `true`.
+
+3. We iterate through the list starting from the second element (index 2 in Julia).
+
+4. For each pair of adjacent elements, we check:
+   - If the current element is less than the previous, it's not increasing.
+   - If the current element is greater than the previous, it's not decreasing.
+
+5. If at any point we find that the sequence is neither increasing nor decreasing, we return `false`.
+
+6. If we make it through the entire list without returning `false`, the list is monotonic, so we return `true`.
+
+This implementation allows for both strictly monotonic (where each element is strictly greater or less than the previous) and non-strictly monotonic (where adjacent elements can be equal) sequences.
+
+You can test this function with the examples provided:
+
+```julia
+println(monotonic([1, 2, 4, 20]))   # true
+println(monotonic([1, 20, 4, 10]))  # false
+println(monotonic([4, 1, 0, -10]))  # true
+```
+
+This function will correctly handle increasing sequences, decreasing sequences, and sequences with equal adjacent elements, returning `true` for monotonic sequences and `false` for non-monotonic ones.

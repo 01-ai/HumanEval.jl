@@ -1,0 +1,34 @@
+```julia
+function get_max_triples(n::Int)::Int
+    # Generate the array a
+    a = [i * i - i + 1 for i in 1:n]
+    
+    # Count the remainders when divided by 3
+    remainder_count = zeros(Int, 3)
+    for value in a
+        remainder = value % 3
+        remainder_count[remainder + 1] += 1
+    end
+    
+    # Calculate the number of valid triples
+    # We need to find combinations of (a[i], a[j], a[k]) such that their sum % 3 == 0
+    # This can happen in the following scenarios:
+    # 1. All three numbers have the same remainder (0,0,0), (1,1,1), or (2,2,2)
+    # 2. One number from each remainder category (0,1,2)
+    
+    # Count triples of the same remainder
+    triples = 0
+    for count in remainder_count
+        if count >= 3
+            triples += count * (count - 1) * (count - 2) ÷ 6  # Combination nC3
+        end
+    end
+    
+    # Count triples with one from each remainder category
+    if all(remainder_count .>= 1)
+        triples += remainder_count[1] * remainder_count[2] * remainder_count[3]
+    end
+    
+    return triples
+end
+```

@@ -1,0 +1,37 @@
+Here's a Julia function that implements the `sum_product` functionality as described:
+
+```julia
+function sum_product(numbers::Vector{Int})::Tuple{Int, Int}
+    # Initialize sum to 0 and product to 1
+    sum_result = 0
+    product_result = 1
+
+    # Iterate through the numbers
+    for num in numbers
+        sum_result += num
+        product_result *= num
+    end
+
+    # Return the tuple of sum and product
+    return (sum_result, product_result)
+end
+```
+
+This function does the following:
+
+1. It takes a vector of integers (`numbers::Vector{Int}`) as input and returns a tuple of two integers (`::Tuple{Int, Int}`).
+
+2. We initialize `sum_result` to 0 and `product_result` to 1. This ensures that for an empty list, we return (0, 1) as required.
+
+3. We iterate through each number in the input vector:
+   - Add each number to `sum_result`
+   - Multiply each number with `product_result`
+
+4. Finally, we return a tuple containing `sum_result` and `product_result`.
+
+This implementation handles both the cases mentioned in the examples:
+
+- For an empty list `Int[]`, it will return `(0, 1)`.
+- For the list `[1, 2, 3, 4]`, it will return `(10, 24)`.
+
+The function correctly handles empty lists and lists with multiple elements, satisfying the requirements stated in the problem.

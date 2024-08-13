@@ -1,0 +1,11 @@
+```julia
+function fruit_distribution(s::String, n::Int)::Int
+    # Extract the number of apples and oranges from the string
+    numbers = map(int, matchall(r"(\d+)", s))
+    apples, oranges = numbers[1], numbers[2]
+    # Calculate the number of mangoes
+    mangoes = n - apples - oranges
+    return mangoes
+end
+```
+This function uses regular expressions to extract the number of apples and oranges from the input string, converts them to integers, and then calculates the number of mangoes by subtracting the number of apples and oranges from the total number of fruits.

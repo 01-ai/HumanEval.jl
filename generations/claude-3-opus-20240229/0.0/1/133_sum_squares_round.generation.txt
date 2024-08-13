@@ -1,0 +1,38 @@
+Here's the solution to the problem in Julia:
+
+```julia
+function sum_squares_round(xs::Vector)::Int
+    rounded_xs = ceil.(Int, xs)
+    sum(x^2 for x in rounded_xs)
+end
+```
+
+Explanation:
+1. We define a function named `sum_squares_round` that takes a vector `xs` as input and returns an integer.
+
+2. Inside the function, we first round each element of the input vector `xs` to the upper integer (ceiling) using the `ceil` function with the `Int` type specified. The dot notation `ceil.(Int, xs)` applies the `ceil` function element-wise to the vector `xs`. This step ensures that each element is rounded up to the nearest integer.
+
+3. We then calculate the sum of squares of the rounded elements using a list comprehension. The expression `x^2 for x in rounded_xs` generates the squares of each element in the `rounded_xs` vector.
+
+4. Finally, we use the `sum` function to compute the sum of the squared values and return the result as an integer.
+
+The function satisfies the given examples:
+
+```jldoctest
+julia> sum_squares_round([1, 2, 3])
+14
+
+julia> sum_squares_round([1, 4, 9])
+98
+
+julia> sum_squares_round([1, 3, 5, 7])
+84
+
+julia> sum_squares_round([1.4, 4.2, 0])
+29
+
+julia> sum_squares_round([-2.4, 1, 1])
+6
+```
+
+The function correctly rounds each element to the upper integer and returns the sum of their squares.

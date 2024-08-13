@@ -1,0 +1,15 @@
+function remove_vowels(text::String)::String
+    # Define a regular expression pattern to match vowels
+    vowel_pattern = r"[aeiouAEIOU]"
+
+    # Replace all vowels with empty string
+    return replace(text, vowel_pattern => "")
+end
+
+# Test the function
+println(remove_vowels(""))
+println(remove_vowels("abcdef\nghijklm"))
+println(remove_vowels("abcdef"))
+println(remove_vowels("aaaaa"))
+println(remove_vowels("aaBAA"))
+println(remove_vowels("zbcd"))

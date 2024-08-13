@@ -1,0 +1,19 @@
+```julia
+function find_max(words::Vector{String})::String
+    max_unique_word = ""
+    max_unique_count = 0
+
+    for word in sort(words)
+        unique_count = length(Set(word))
+        if unique_count > max_unique_count
+            max_unique_count = unique_count
+            max_unique_word = word
+        elseif unique_count == max_unique_count
+            max_unique_word = min(max_unique_word, word)
+        end
+    end
+
+    return max_unique_word
+end
+```
+This function iterates through the sorted list of words, keeping track of the word with the maximum number of unique characters. If it finds another word with the same number of unique characters, it chooses the lexicographically smaller one. The `sort` function ensures that in case of a tie, the lexicographically smaller word is returned.

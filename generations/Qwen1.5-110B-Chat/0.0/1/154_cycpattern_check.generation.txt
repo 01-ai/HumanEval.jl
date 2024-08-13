@@ -1,0 +1,21 @@
+```julia
+function cycpattern_check(a::String, b::String)::Bool
+    n, m = length(a), length(b)
+    if m > n
+        return false
+    end
+    
+    function is_substring(s1::String, s2::String)
+        occursin(s2, s1)
+    end
+    
+    for i in 1:m
+        if is_substring(a, b[i:end] * b[1:i-1])
+            return true
+        end
+    end
+    return false
+end
+```
+
+This Julia function `cycpattern_check` takes two strings `a` and `b` as input and checks if any rotation of the string `b` is a substring of the string `a`. It iterates through all possible rotations of `b` and uses the `occursin` function to check for substring presence, returning `true` as soon as it finds a match, or `false` if no match is found after checking all rotations.

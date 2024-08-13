@@ -1,0 +1,13 @@
+```julia
+function eat(number::Int, need::Int, remaining::Int)::Vector{Int}
+    # Calculate the total eaten carrots after meals
+    total_eaten = number + min(need, remaining)
+    
+    # Calculate the remaining carrots after meals
+    remaining_carrots = max(0, remaining - (need - (total_eaten - number)))
+    
+    return [total_eaten, remaining_carrots]
+end
+```
+
+This Julia function `eat` takes in three integers: the number of carrots already eaten, the number of carrots needed to eat, and the number of carrots remaining. It calculates the total number of carrots eaten after attempting to eat the required amount and the number of carrots left, considering the constraints. If there aren't enough remaining carrots to meet the need, it adjusts accordingly.

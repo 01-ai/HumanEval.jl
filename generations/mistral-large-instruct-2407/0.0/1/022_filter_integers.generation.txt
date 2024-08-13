@@ -1,0 +1,28 @@
+ Certainly! Below is the implementation of the `filter_integers` function in Julia based on the provided docstring:
+
+```julia
+"""
+    filter_integers(values::AbstractVector)::Vector{Int}
+
+Filter a given list of any values only for integers.
+
+# Examples
+
+```jldoctest
+julia> filter_integers(["a", 3.14, 5])
+1-element Vector{Int64}:
+ 5
+
+julia> filter_integers([1, 2, 3, "abc", Set(), []])
+3-element Vector{Int64}:
+ 1
+ 2
+ 3
+```
+"""
+function filter_integers(values::AbstractVector)::Vector{Int}
+    return filter(x -> x isa Int, values)
+end
+```
+
+This function uses the `filter` function to iterate over the elements of the input vector `values` and selects only those elements that are of type `Int`. The result is a `Vector{Int}` containing only the integer values from the original vector.

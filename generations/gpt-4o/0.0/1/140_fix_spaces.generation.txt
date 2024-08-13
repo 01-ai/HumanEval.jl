@@ -1,0 +1,28 @@
+Here is the implementation of the `fix_spaces` function in Julia:
+
+```julia
+function fix_spaces(s::String)::String
+    # Replace all consecutive spaces with a single hyphen
+    s = replace(s, r"\s{2,}" => "-")
+    # Replace all remaining single spaces with underscores
+    s = replace(s, " " => "_")
+    return s
+end
+```
+
+Let's break down the function:
+
+1. `replace(s, r"\s{2,}" => "-")`: This line uses a regular expression to find sequences of two or more consecutive whitespace characters (`\s{2,}`) and replaces them with a single hyphen (`-`).
+
+2. `replace(s, " " => "_")`: This line replaces all remaining single spaces with underscores (`_`).
+
+3. `return s`: Finally, the function returns the modified string.
+
+You can test the function with the provided examples to ensure it works as expected:
+
+```julia
+println(fix_spaces("Example"))         # "Example"
+println(fix_spaces("Example 1"))       # "Example_1"
+println(fix_spaces(" Example 2"))      # "_Example_2"
+println(fix_spaces(" Example   3"))    # "_Example-3"
+```

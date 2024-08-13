@@ -1,0 +1,63 @@
+Here's a Julia function that converts a positive integer to its Roman numeral equivalent in lowercase, following the given restrictions:
+
+```julia
+function int_to_mini_roman(number::Int)::String
+    if number < 1 || number > 1000
+        throw(ArgumentError("Number must be between 1 and 1000"))
+    end
+
+    roman_symbols = [
+        (1000, "m"), (900, "cm"), (500, "d"), (400, "cd"),
+        (100, "c"), (90, "xc"), (50, "l"), (40, "xl"),
+        (10, "x"), (9, "ix"), (5, "v"), (4, "iv"), (1, "i")
+    ]
+
+    result = ""
+    for (value, symbol) in roman_symbols
+        while number >= value
+            result *= symbol
+            number -= value
+        end
+    end
+
+    return result
+end
+```
+
+This function works as follows:
+
+1. First, it checks if the input number is within the valid range (1 to 1000). If not, it throws an ArgumentError.
+
+2. We define a list of tuples `roman_symbols` that contains the decimal values and their corresponding Roman numeral symbols in descending order. The symbols are in lowercase as required.
+
+3. We initialize an empty string `result` to store the Roman numeral.
+
+4. We iterate through the `roman_symbols` list. For each symbol:
+   - While the input number is greater than or equal to the current symbol's value, we add the symbol to the result string and subtract its value from the input number.
+
+5. Finally, we return the resulting Roman numeral string.
+
+This implementation correctly handles all numbers from 1 to 1000, including the examples provided:
+
+```julia
+julia> int_to_mini_roman(19)
+"xix"
+
+julia> int_to_mini_roman(152)
+"clii"
+
+julia> int_to_mini_roman(426)
+"cdxxvi"
+```
+
+The function will throw an error for numbers outside the specified range:
+
+```julia
+julia> int_to_mini_roman(0)
+ERROR: ArgumentError: Number must be between 1 and 1000
+
+julia> int_to_mini_roman(1001)
+ERROR: ArgumentError: Number must be between 1 and 1000
+```
+
+This implementation is efficient and straightforward, following the standard rules for Roman numeral conversion.

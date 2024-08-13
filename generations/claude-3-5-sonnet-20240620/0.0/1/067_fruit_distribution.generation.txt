@@ -1,0 +1,40 @@
+Here's a Julia function that solves the given task:
+
+```julia
+function fruit_distribution(s::String, n::Int)::Int
+    # Extract the number of apples and oranges from the string
+    apples, oranges = map(x -> parse(Int, x), match(r"(\d+) apples and (\d+) oranges", s).captures)
+    
+    # Calculate the number of mangoes
+    mangoes = n - apples - oranges
+    
+    return mangoes
+end
+```
+
+This function does the following:
+
+1. It uses a regular expression (`r"(\d+) apples and (\d+) oranges"`) to extract the number of apples and oranges from the input string.
+
+2. The `match` function is used with this regex to find the numbers in the string.
+
+3. The `captures` property of the match result gives us an array of the captured groups (the numbers).
+
+4. We use `map` with `parse(Int, x)` to convert these captured strings to integers.
+
+5. We then destructure the result into `apples` and `oranges` variables.
+
+6. The number of mangoes is calculated by subtracting the number of apples and oranges from the total number of fruits (`n`).
+
+7. Finally, the function returns the number of mangoes.
+
+This function will work correctly for all the given examples:
+
+```julia
+println(fruit_distribution("5 apples and 6 oranges", 19))  # Output: 8
+println(fruit_distribution("0 apples and 1 oranges", 3))   # Output: 2
+println(fruit_distribution("2 apples and 3 oranges", 100)) # Output: 95
+println(fruit_distribution("100 apples and 1 oranges", 120)) # Output: 19
+```
+
+The function assumes that the input string will always be in the format "X apples and Y oranges" where X and Y are non-negative integers. If you need to handle different input formats or error cases, you might want to add additional error checking.

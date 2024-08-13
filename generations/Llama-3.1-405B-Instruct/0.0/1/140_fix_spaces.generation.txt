@@ -1,0 +1,19 @@
+Here is the Julia function that implements the behavior described in the docstring:
+```julia
+function fix_spaces(s::String)::String
+    # Replace two or more consecutive spaces with "-"
+    s = replace(s, r"  +" => "-")
+    
+    # Replace remaining spaces with "_"
+    s = replace(s, " " => "_")
+    
+    return s
+end
+```
+Here's an explanation of the code:
+
+1. We use the `replace` function to replace two or more consecutive spaces with a single "-". We use a regular expression (`r"  +"`) to match two or more consecutive spaces.
+2. We then use another `replace` call to replace any remaining spaces with "_".
+3. Finally, we return the modified string.
+
+You can test this function with the examples provided in the docstring to see that it produces the expected output. Let me know if you have any questions or if you'd like me to elaborate on any part of the code!

@@ -1,0 +1,8 @@
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    # Sort the array based on the number of ones in binary representation
+    # and then by their decimal values if the number of ones are equal
+    sort(arr, by = x -> (count_ones(x), x))
+end
+```
+This function sorts the input array `arr` by first counting the number of ones in the binary representation of each number using `count_ones(x)`, and then by their decimal values if the number of ones are equal. The `sort` function in Julia allows us to specify a custom sorting criterion using the `by` keyword.

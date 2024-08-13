@@ -1,0 +1,48 @@
+Here's a solution to find the largest prime factor of a given integer `n` in Julia:
+
+```julia
+function largest_prime_factor(n::Int)::Int
+    factor = 2
+    while factor * factor <= n
+        if n % factor == 0
+            n ÷= factor
+        else
+            factor += 1
+        end
+    end
+    return n
+end
+```
+
+Explanation:
+
+1. We start with the smallest prime factor `factor` initialized to 2.
+
+2. We iterate while `factor * factor <= n` because if `n` is divisible by a factor larger than its square root, the other factor would be smaller than the square root, and we would have already found it.
+
+3. Inside the loop, we check if `n` is divisible by the current `factor`:
+   - If `n` is divisible by `factor`, we divide `n` by `factor` and update `n` accordingly. This step removes all occurrences of `factor` from `n`.
+   - If `n` is not divisible by `factor`, we increment `factor` to check the next potential factor.
+
+4. We repeat steps 3 and 4 until `factor * factor > n`, which means we have exhausted all possible factors less than or equal to the square root of `n`.
+
+5. At the end of the loop, `n` will be reduced to its largest prime factor, which we return.
+
+The function assumes that `n` is greater than 1 and not a prime number, as stated in the problem description.
+
+Let's test the function with the given examples:
+
+```jldoctest
+julia> largest_prime_factor(13195)
+29
+
+julia> largest_prime_factor(2048)
+2
+```
+
+The function correctly returns the largest prime factor for both examples.
+
+Time Complexity: O(sqrt(n))
+Space Complexity: O(1)
+
+The time complexity is O(sqrt(n)) because we only iterate up to the square root of `n`. The space complexity is O(1) as we only use a constant amount of additional space.

@@ -1,0 +1,3 @@
+function get_positive(xs::Vector{Int})
+    return filter(x -> x > 0, xs)
+end

@@ -1,0 +1,33 @@
+Here is the Julia function that implements the derivative of a polynomial based on the given docstring:
+
+```julia
+function derivative(xs::Vector)::Vector
+    # Check if the input vector is empty
+    if isempty(xs)
+        throw(ArgumentError("Input vector cannot be empty"))
+    end
+
+    # Calculate the derivative
+    deriv = [i * xs[i+1] for i in 1:length(xs)-1]
+
+    return deriv
+end
+```
+
+This function uses a list comprehension to calculate the derivative of the polynomial. The derivative of a polynomial `a + bx + cx^2 + ...` is `b + 2cx + 3dx^2 + ...`, so we multiply each coefficient by its index (starting from 1) to get the derivative.
+
+You can test this function with the examples provided in the docstring:
+
+```julia
+julia> derivative([3, 1, 2, 4, 5])
+4-element Vector{Int64}:
+  1
+  4
+ 12
+ 20
+
+julia> derivative([1, 2, 3])
+2-element Vector{Int64}:
+ 2
+ 6
+```

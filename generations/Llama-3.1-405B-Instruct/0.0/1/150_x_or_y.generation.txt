@@ -1,0 +1,42 @@
+Here is a Julia function that implements the behavior described in the docstring:
+```julia
+"""
+    x_or_y(n::Int, x::Int, y::Int)::Int
+
+A simple program which should return the value of x if n is a prime number and
+should return the value of y otherwise.
+
+# Examples
+
+```jldoctest
+julia> x_or_y(7, 34, 12)
+34
+
+julia> x_or_y(15, 8, 5)
+5
+```
+"""
+function x_or_y(n::Int, x::Int, y::Int)::Int
+    is_prime(n) ? x : y
+end
+
+# Helper function to check if a number is prime
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    end
+    for i in 2:isqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+```
+Here's an explanation of the code:
+
+The `x_or_y` function takes three integers as input: `n`, `x`, and `y`. It uses the ternary operator to return either `x` or `y` depending on whether `n` is prime or not. The primality check is delegated to the `is_prime` helper function.
+
+The `is_prime` function checks whether a given integer `n` is prime by iterating from 2 to the square root of `n` and checking if `n` is divisible by any of these numbers. If it is, then `n` is not prime, and the function returns `false`. If the loop completes without finding a divisor, then `n` is prime, and the function returns `true`.
+
+Note that the `is_prime` function uses the `isqrt` function from the Julia standard library to compute the square root of `n`. This is more efficient than computing the square root using the `sqrt` function and then converting the result to an integer.

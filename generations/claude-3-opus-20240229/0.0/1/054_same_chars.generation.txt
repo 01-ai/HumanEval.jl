@@ -1,0 +1,45 @@
+Here's a solution to check if two words have the same characters in Julia:
+
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    # Convert strings to character arrays and sort them
+    sorted_s0 = sort(collect(s0))
+    sorted_s1 = sort(collect(s1))
+    
+    # Compare the sorted character arrays
+    return sorted_s0 == sorted_s1
+end
+```
+
+Explanation:
+1. The function `same_chars` takes two strings `s0` and `s1` as input and returns a boolean value indicating whether they have the same characters or not.
+
+2. Inside the function, we convert each string to a character array using `collect()` and then sort the arrays using `sort()`. This step ensures that the characters in each string are in the same order, making it easier to compare them.
+
+3. Finally, we compare the sorted character arrays using the equality operator `==`. If the sorted arrays are equal, it means the original strings have the same characters, and the function returns `true`. Otherwise, it returns `false`.
+
+This solution has a time complexity of O(n log n) due to the sorting operation, where n is the length of the strings. The space complexity is O(n) to store the sorted character arrays.
+
+You can test the function with the provided examples:
+
+```julia
+julia> same_chars("eabcdzzzz", "dddzzzzzzzddeddabc")
+true
+
+julia> same_chars("abcd", "dddddddabc")
+true
+
+julia> same_chars("dddddddabc", "abcd")
+true
+
+julia> same_chars("eabcd", "dddddddabc")
+false
+
+julia> same_chars("abcd", "dddddddabce")
+false
+
+julia> same_chars("eabcdzzzz", "dddzzzzzzzddddabc")
+false
+```
+
+The function should produce the expected results for each example.

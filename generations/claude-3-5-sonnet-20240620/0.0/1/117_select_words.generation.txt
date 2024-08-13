@@ -1,0 +1,52 @@
+To implement the `select_words` function as described, we can follow these steps:
+
+1. Split the input string into words
+2. Define a helper function to count consonants in a word
+3. Filter the words based on the consonant count
+4. Return the filtered list
+
+Here's the implementation in Julia:
+
+```julia
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    # Helper function to count consonants in a word
+    function count_consonants(word::AbstractString)
+        consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
+        return count(c -> c in consonants, word)
+    end
+
+    # Split the string into words
+    words = split(s)
+
+    # Filter words with exactly n consonants
+    return filter(word -> count_consonants(word) == n, words)
+end
+```
+
+Let's break down the implementation:
+
+1. We define a helper function `count_consonants` that takes a word and counts the number of consonants in it. It uses a string of all consonants (both lowercase and uppercase) and counts how many characters in the word are in this consonant string.
+
+2. We use Julia's `split` function to split the input string `s` into words. By default, `split` uses whitespace as the delimiter.
+
+3. We use the `filter` function to keep only the words that have exactly `n` consonants. The `filter` function applies the condition `count_consonants(word) == n` to each word and keeps only those that satisfy this condition.
+
+4. The filtered list of words is returned.
+
+This implementation satisfies the requirements:
+- It returns a `Vector{<:AbstractString}`, specifically a vector of `SubString{String}`.
+- It preserves the order of words as they appear in the original string.
+- If the input string is empty, `split` will return an empty vector, which will then be returned by the function.
+- It handles both uppercase and lowercase letters correctly.
+
+You can test this function with the provided examples:
+
+```julia
+println(select_words("Mary had a little lamb", 4))
+println(select_words("Mary had a little lamb", 3))
+println(select_words("simple white space", 2))
+println(select_words("Hello world", 4))
+println(select_words("Uncle sam", 3))
+```
+
+This should produce the expected outputs as shown in the examples.

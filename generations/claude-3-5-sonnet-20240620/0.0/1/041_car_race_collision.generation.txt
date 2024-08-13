@@ -1,0 +1,30 @@
+To solve this problem, we need to understand a key insight: the number of collisions is independent of the actual positions of the cars or their speed. What matters is the relative ordering of the cars in each direction.
+
+Here's how we can approach this:
+
+1. Each car going left to right will collide with every car going right to left exactly once.
+2. There are n cars going in each direction.
+3. Therefore, the total number of collisions will be n * n.
+
+Here's the implementation in Julia:
+
+```julia
+function car_race_collision(n::Int)::Int
+    return n * n
+end
+```
+
+This function simply returns the square of the input n, which represents the total number of collisions.
+
+Explanation:
+- If there's 1 car in each direction, there will be 1 collision (1 * 1 = 1).
+- If there are 2 cars in each direction, there will be 4 collisions (2 * 2 = 4).
+- If there are 3 cars in each direction, there will be 9 collisions (3 * 3 = 9).
+- And so on...
+
+This solution works because:
+1. Each car from the left-to-right group will eventually meet every car from the right-to-left group.
+2. The order of the cars doesn't matter, nor does their starting position or speed (as long as all speeds are the same).
+3. The "infinite sturdiness" of the cars means that each collision occurs independently of others.
+
+This simple multiplication gives us the total number of unique pair-wise interactions between the two groups of cars, which is exactly what we're asked to count.

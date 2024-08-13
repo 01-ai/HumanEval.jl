@@ -1,0 +1,13 @@
+Here's the implementation of the `iscube` function in Julia:
+
+```julia
+function iscube(a::Int)::Bool
+    if a < 0
+        a = -a
+    end
+    root = round(Int, a^(1/3))
+    return root^3 == a
+end
+```
+
+This function first checks if the input `a` is negative and converts it to positive if necessary. Then, it calculates the cube root of `a`, rounds it to the nearest integer, and checks if cubing this integer gives back the original number. If it does, the function returns `true`; otherwise, it returns `false`.

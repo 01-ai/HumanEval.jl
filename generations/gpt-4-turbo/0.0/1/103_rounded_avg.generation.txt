@@ -1,0 +1,18 @@
+```julia
+function rounded_avg(n::Int, m::Int)::Union{Int, String}
+    if n > m
+        return -1
+    end
+    # Calculate the sum of the sequence from n to m
+    sum = (m - n + 1) * (n + m) ÷ 2
+    # Calculate the count of numbers from n to m
+    count = m - n + 1
+    # Calculate the average and round it
+    avg = round(Int, sum / count)
+    # Convert the rounded average to binary string
+    binary_string = string(avg, base=2)
+    return binary_string
+end
+```
+
+This function first checks if `n` is greater than `m`, in which case it returns `-1`. If `n` is less than or equal to `m`, it calculates the sum of the integers from `n` to `m` using the formula for the sum of an arithmetic series. It then calculates the average, rounds it to the nearest integer, and converts this integer to a binary string representation.

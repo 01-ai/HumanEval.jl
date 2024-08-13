@@ -1,0 +1,21 @@
+ Here's the implementation of the `remove_duplicates` function in Julia:
+
+```julia
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    # Create a dictionary to count occurrences of each number
+    counts = Dict{Int, Int}()
+    for number in numbers
+        if haskey(counts, number)
+            counts[number] += 1
+        else
+            counts[number] = 1
+        end
+    end
+
+    # Filter out numbers that occur more than once
+    result = [number for number in numbers if counts[number] == 1]
+    return result
+end
+```
+
+This function first counts the occurrences of each number using a dictionary. Then, it filters the original list to keep only those numbers that occur exactly once. The order of the elements is preserved as required.

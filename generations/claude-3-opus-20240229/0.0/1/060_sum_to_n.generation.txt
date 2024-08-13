@@ -1,0 +1,38 @@
+Here's the implementation of the `sum_to_n` function in Julia:
+
+```julia
+function sum_to_n(n::Int)::Int
+    return (n * (n + 1)) ÷ 2
+end
+```
+
+This function uses the formula for the sum of an arithmetic series from 1 to n, which is:
+
+```
+sum = (n * (n + 1)) / 2
+```
+
+In Julia, we use the `÷` operator for integer division to ensure that the result is an integer.
+
+The function takes an integer `n` as input and returns the sum of numbers from 1 to `n` as an integer.
+
+Here are some examples of using the `sum_to_n` function:
+
+```julia
+julia> sum_to_n(30)
+465
+
+julia> sum_to_n(100)
+5050
+
+julia> sum_to_n(5)
+15
+
+julia> sum_to_n(10)
+55
+
+julia> sum_to_n(1)
+1
+```
+
+The time complexity of this function is O(1) since it performs a constant number of arithmetic operations regardless of the input value `n`. It provides an efficient way to calculate the sum of numbers from 1 to `n` without using loops or recursion.

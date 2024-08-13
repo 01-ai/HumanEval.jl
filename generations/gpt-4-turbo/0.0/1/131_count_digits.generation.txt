@@ -1,0 +1,19 @@
+```julia
+function count_digits(n::Int)::Int
+    digits_str = string(n)
+    product = 1
+    has_odd = false
+    
+    for digit_char in digits_str
+        digit = parse(Int, digit_char)
+        if digit % 2 != 0
+            product *= digit
+            has_odd = true
+        end
+    end
+    
+    return has_odd ? product : 0
+end
+```
+
+This function converts the integer `n` to a string to easily iterate over each digit. It initializes a `product` variable to 1 and a boolean `has_odd` to false. For each digit, if the digit is odd (checked using `digit % 2 != 0`), it multiplies it to the `product` and sets `has_odd` to true. If after checking all digits, no odd digit was found (`has_odd` is false), the function returns 0. Otherwise, it returns the `product` of the odd digits.

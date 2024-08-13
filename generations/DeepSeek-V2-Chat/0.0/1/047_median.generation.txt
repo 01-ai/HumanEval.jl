@@ -1,0 +1,15 @@
+Here's the implementation of the `median` function in Julia:
+
+```julia
+function median(l::Vector)
+    sorted_l = sort(l)
+    n = length(sorted_l)
+    if n % 2 == 1
+        return sorted_l[div(n, 2) + 1]
+    else
+        return (sorted_l[div(n, 2)] + sorted_l[div(n, 2) + 1]) / 2
+    end
+end
+```
+
+This function first sorts the input vector `l`, then calculates the median based on whether the number of elements is odd or even. If the number of elements is odd, it returns the middle element. If the number of elements is even, it returns the average of the two middle elements.

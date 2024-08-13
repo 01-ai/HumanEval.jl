@@ -1,0 +1,55 @@
+Here's the implementation of the `pluck` function in Julia:
+
+```julia
+function pluck(xs::Vector{Int})::Vector{Int}
+    # Initialize variables to store the smallest even value and its index
+    smallest_even = nothing
+    smallest_index = nothing
+
+    # Iterate through the array to find the smallest even value and its index
+    for (index, value) in enumerate(xs)
+        if value % 2 == 0
+            if smallest_even === nothing || value < smallest_even
+                smallest_even = value
+                smallest_index = index
+            end
+        end
+    end
+
+    # Return the result based on whether an even value was found
+    if smallest_even === nothing
+        return []
+    else
+        return [smallest_even, smallest_index]
+    end
+end
+```
+
+### Explanation:
+1. **Initialization**: We initialize `smallest_even` and `smallest_index` to `nothing` to keep track of the smallest even value and its index.
+2. **Iteration**: We iterate through the array using `enumerate(xs)` which provides both the index and the value of each element.
+3. **Condition Check**: For each value, we check if it is even (`value % 2 == 0`). If it is even, we then check if it is the smallest even value found so far. If it is, we update `smallest_even` and `smallest_index`.
+4. **Result**: After the loop, we check if `smallest_even` is still `nothing`. If it is, it means no even value was found, so we return an empty array. Otherwise, we return an array containing the smallest even value and its index.
+
+### Examples:
+```julia
+julia> pluck([4, 2, 3])
+2-element Vector{Int64}:
+ 2
+ 2
+
+julia> pluck([1, 2, 3])
+2-element Vector{Int64}:
+ 2
+ 2
+
+julia> pluck(Int[])
+Int64[]
+
+julia> pluck([5, 0, 3, 0, 4, 2])
+2-element Vector{Int64}:
+ 0
+ 2
+```
+
+This implementation should meet the requirements and constraints specified in the docstring.

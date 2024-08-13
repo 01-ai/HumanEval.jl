@@ -1,0 +1,12 @@
+To decode the string that was encoded using the `encode_cyclic` function, we need to reverse the cyclic transformation applied during encoding. In the encoding process, for every group of three characters, the positions were cycled as follows: first character moved to the last, and the second and third characters moved one position forward. To decode, we need to reverse this cycle: the last character moves to the first position, and the first and second characters move one position backward.
+
+Here's the implementation of the `decode_cyclic` function:
+
+```julia
+function decode_cyclic(s::String)::String
+    # Reverse the cyclic transformation applied during encoding
+    join((length(x) == 3 ? x[3] * x[1] * x[2] : x for x in Iterators.partition(s, 3)))
+end
+```
+
+This function uses a similar approach to the encoding function. It partitions the string into groups of three characters and then rearranges each group from the encoded order back to the original order. If a group is not exactly three characters (which can happen if the length of the string is not a multiple of three), it remains unchanged. This matches the behavior of the encoding function, which also leaves the last group unchanged if it's not three characters long.

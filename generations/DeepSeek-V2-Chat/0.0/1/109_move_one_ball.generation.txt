@@ -1,0 +1,31 @@
+Here's the implementation of the `move_one_ball` function in Julia:
+
+```julia
+function move_one_ball(xs::Vector{Int})::Bool
+    n = length(xs)
+    if n == 0
+        return true
+    end
+
+    # Find the index of the minimum element
+    min_index = findmin(xs)[2]
+
+    # Check if the elements before the minimum element are in decreasing order
+    for i in 1:min_index-1
+        if xs[i] > xs[i+1]
+            return false
+        end
+    end
+
+    # Check if the elements after the minimum element are in increasing order
+    for i in min_index+1:n
+        if xs[i] < xs[i-1]
+            return false
+        end
+    end
+
+    return true
+end
+```
+
+This function works by first finding the index of the minimum element in the array. It then checks if the elements before the minimum element are in decreasing order and if the elements after the minimum element are in increasing order. If both conditions are satisfied, it means that the array can be sorted into non-decreasing order by performing right shift operations, so the function returns `true`. Otherwise, it returns `false`.

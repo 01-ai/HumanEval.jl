@@ -1,0 +1,34 @@
+Here is the Julia function that implements the `compare` function based on the provided doc string:
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    return abs.(game .- guess)
+end
+```
+Explanation:
+
+* The function takes two input vectors `game` and `guess` of type `Vector{Int}`.
+* The `.=` operator is used to perform element-wise subtraction between the two vectors.
+* The `abs.` function is used to take the absolute value of each element in the resulting vector.
+* The resulting vector is returned by the function.
+
+You can test this function using the examples provided in the doc string:
+```julia
+julia> compare([1, 2, 3, 4, 5, 1], [1, 2, 3, 4, 2, -2])
+6-element Vector{Int64}:
+ 0
+ 0
+ 0
+ 0
+ 3
+ 3
+
+julia> compare([0, 5, 0, 0, 0, 4], [4, 1, 1, 0, 0, -2])
+6-element Vector{Int64}:
+ 4
+ 4
+ 1
+ 0
+ 0
+ 6
+```
+I hope this implementation meets your requirements! Let me know if you have any further questions.

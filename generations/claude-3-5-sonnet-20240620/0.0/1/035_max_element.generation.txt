@@ -1,0 +1,46 @@
+Here's a Julia function that implements the `max_element` functionality as described:
+
+```julia
+function max_element(xs::Vector{T}) where T <: Real
+    if isempty(xs)
+        throw(ArgumentError("Input list cannot be empty"))
+    end
+    
+    max_val = xs[1]
+    for x in xs[2:end]
+        if x > max_val
+            max_val = x
+        end
+    end
+    
+    return max_val
+end
+```
+
+This function does the following:
+
+1. It takes a vector `xs` of type `Vector{T}` where `T` is constrained to be a subtype of `Real`. This allows the function to work with various numeric types (integers, floating-point numbers, etc.).
+
+2. It first checks if the input vector is empty. If it is, it throws an `ArgumentError` with an appropriate message.
+
+3. It initializes `max_val` with the first element of the vector.
+
+4. It then iterates through the rest of the elements in the vector (from the second element to the end).
+
+5. For each element, it compares it with the current `max_val`. If the element is greater, it updates `max_val`.
+
+6. After the loop, it returns the `max_val`, which is the maximum element in the list.
+
+This implementation has a time complexity of O(n), where n is the length of the input vector, as it needs to iterate through all elements once.
+
+You can use this function as shown in the examples:
+
+```julia
+julia> max_element([1, 2, 3])
+3
+
+julia> max_element([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])
+123
+```
+
+Note that Julia already has built-in functions for this purpose, such as `maximum(xs)` or `max(xs...)`, which you might prefer to use in practice. This implementation is provided to demonstrate how such a function could be written from scratch.

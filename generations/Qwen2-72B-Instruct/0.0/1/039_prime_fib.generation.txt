@@ -1,0 +1,82 @@
+Here is the Julia function that meets the requirements specified in the docstring:
+
+```julia
+function prime_fib(n::Int)::Int
+    function isprime(x::Int)
+        if x <= 1
+            return false
+        end
+        for i in 2:(sqrt(x))
+            if x % i == 0
+                return false
+            end
+        end
+        return true
+    end
+
+    function fib(n::Int)
+        a, b = 0, 1
+        for _ in 1:n-1
+            a, b = b, a + b
+        end
+        return b
+    end
+
+    count, i = 0, 1
+    while true
+        fib_i = fib(i)
+        if isprime(fib_i)
+            count += 1
+            if count == n
+                return fib_i
+            end
+        end
+        i += 1
+    end
+end
+```
+
+However, this function can be optimized by checking for primality only up to the square root of the number and by using a more efficient prime checking function. Here is an optimized version:
+
+```julia
+function prime_fib(n::Int)::Int
+    function isprime(x::Int)
+        if x <= 3
+            return x > 1
+        end
+        if x % 2 == 0 || x % 3 == 0
+            return false
+        end
+        i = 5
+        while i * i <= x
+            if x % i == 0 || x % (i + 2) == 0
+                return false
+            end
+            i += 6
+        end
+        return true
+    end
+
+    function fib(n::Int)
+        a, b = 0, 1
+        for _ in 1:n-1
+            a, b = b, a + b
+        end
+        return b
+    end
+
+    count, i = 0, 1
+    while true
+        fib_i = fib(i)
+        if isprime(fib_i)
+            count += 1
+            if count == n
+                return fib_i
+            end
+        end
+        i += 1
+    end
+end
+```
+
+This function first defines a helper function `isprime` to check if a number is prime, and a helper function `fib` to calculate the nth Fibonacci number. It then uses a loop to find the nth prime Fibonacci number.

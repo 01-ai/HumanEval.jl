@@ -1,0 +1,31 @@
+Here is a Julia function that implements the median calculation based on the provided docstring:
+
+```julia
+function median(l::Vector)
+    # Sort the vector in ascending order
+    sorted_l = sort(l)
+    
+    # Calculate the length of the vector
+    n = length(sorted_l)
+    
+    # If the length is odd, return the middle element
+    if n % 2 != 0
+        return sorted_l[div(n, 2) + 1]
+    # If the length is even, return the average of the two middle elements
+    else
+        return (sorted_l[div(n, 2)] + sorted_l[div(n, 2) + 1]) / 2
+    end
+end
+```
+
+This function first sorts the input vector in ascending order. Then, it checks if the length of the vector is odd or even. If it's odd, it returns the middle element. If it's even, it returns the average of the two middle elements.
+
+You can test this function with the examples provided in the docstring:
+
+```julia
+julia> median([3, 1, 2, 4, 5])
+3
+
+julia> median([-10, 4, 6, 1000, 10, 20])
+8.0
+```

@@ -1,0 +1,19 @@
+ Here's the implementation of the function `starts_one_ends` in Julia:
+
+```julia
+function starts_one_ends(n::Int)::Int
+    if n == 1
+        return 2  # For n = 1, the numbers are 1 and 10, so 2 numbers start or end with 1
+    else
+        # For n > 1, the count of n-digit numbers starting with 1 is 9^(n-1)
+        # The count of n-digit numbers ending with 1 is also 9^(n-1)
+        # However, we need to subtract the overlap where both start and end with 1, which is 9^(n-2)
+        return 2 * 9^(n-1) - 9^(n-2)
+    end
+end
+```
+
+This function works as follows:
+- For `n = 1`, there are only two numbers (1 and 10) that start or end with 1.
+- For `n > 1`, the count of n-digit numbers starting with 1 is `9^(n-1)` because the first digit is fixed as 1, and the remaining `n-1` digits can be any of the 9 digits (1-9). Similarly, the count of n-digit numbers ending with 1 is also `9^(n-1)`.
+- However, we need to subtract the overlap where both start and end with 1, which is `9^(n-2)` because the first and last digits are fixed as 1, and the remaining `n-2` digits can be any of the 9 digits (1-9).

@@ -1,0 +1,44 @@
+Here's a Julia function that implements the `sum_odd_at_odd` functionality as described:
+
+```julia
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    sum = 0
+    for i in 1:2:length(xs)  # Step by 2 to only consider odd positions
+        if xs[i] % 2 != 0  # Check if the element is odd
+            sum += xs[i]
+        end
+    end
+    return sum
+end
+```
+
+Let's break down how this function works:
+
+1. We initialize a variable `sum` to 0. This will store our running total.
+
+2. We use a for loop that starts at index 1 and increments by 2 each iteration (`1:2:length(xs)`). This ensures we only look at odd-indexed positions (1, 3, 5, etc.).
+
+3. For each odd-indexed element, we check if it's odd by using the modulo operator `%`. If `xs[i] % 2 != 0`, the number is odd.
+
+4. If the number is odd, we add it to our `sum`.
+
+5. After the loop completes, we return the final sum.
+
+This function will work for the given examples:
+
+```julia
+julia> sum_odd_at_odd([5, 8, 7, 1])
+12
+
+julia> sum_odd_at_odd([3, 3, 3, 3, 3])
+9
+
+julia> sum_odd_at_odd([30, 13, 24, 321])
+0
+```
+
+In the first example, it sums 5 and 7 (odd numbers at positions 1 and 3).
+In the second example, it sums 3 and 3 and 3 (odd numbers at positions 1, 3, and 5).
+In the third example, there are no odd numbers at odd positions, so it returns 0.
+
+This implementation is efficient as it only iterates through the necessary elements (odd positions) and performs a simple check and addition for each.

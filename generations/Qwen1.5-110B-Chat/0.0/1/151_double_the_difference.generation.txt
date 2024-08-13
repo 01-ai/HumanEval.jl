@@ -1,0 +1,13 @@
+```julia
+function double_the_difference(xs::Vector)
+    sum = 0
+    for x in xs
+        if x > 0 && isinteger(x) && isodd(x)
+            sum += x^2
+        end
+    end
+    return sum
+end
+```
+
+This Julia function iterates through the input list, checks if each number is positive, an integer, and odd. If all conditions are met, it squares the number and adds it to the sum. The final sum is returned.

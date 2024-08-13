@@ -1,0 +1,25 @@
+```julia
+function histogram(s::String)::Dict{String, Int}
+    # Split the string by spaces to get individual letters
+    letters = split(s)
+    
+    # Create a dictionary to count occurrences of each letter
+    counts = Dict{String, Int}()
+    for letter in letters
+        counts[letter] = get(counts, letter, 0) + 1
+    end
+    
+    # Determine the maximum count
+    max_count = maximum(values(counts); init=0)
+    
+    # Filter the dictionary to keep only the letters with the maximum count
+    max_counts = Dict{String, Int}()
+    for (letter, count) in counts
+        if count == max_count
+            max_counts[letter] = count
+        end
+    end
+    
+    return max_counts
+end
+```

@@ -1,0 +1,34 @@
+To implement the `triangle_area3` function in Julia, we need to follow these steps:
+
+1. Check if the given sides form a valid triangle using the triangle inequality theorem.
+2. If the sides form a valid triangle, calculate the area using Heron's formula.
+3. Round the area to 2 decimal points.
+4. If the sides do not form a valid triangle, return -1.
+
+Here's the implementation:
+
+```julia
+function triangle_area3(a::Number, b::Number, c::Number)::Number
+    # Check if the sides form a valid triangle
+    if a + b > c && a + c > b && b + c > a
+        # Calculate the semi-perimeter
+        s = (a + b + c) / 2
+        # Calculate the area using Heron's formula
+        area = sqrt(s * (s - a) * (s - b) * (s - c))
+        # Round the area to 2 decimal points
+        return round(area, digits=2)
+    else
+        # Return -1 if the sides do not form a valid triangle
+        return -1
+    end
+end
+```
+
+You can test the function with the provided examples:
+
+```julia
+println(triangle_area3(3, 4, 5))  # Should print 6.0
+println(triangle_area3(1, 2, 10)) # Should print -1
+```
+
+This function first checks if the sides satisfy the triangle inequality theorem. If they do, it calculates the area using Heron's formula and rounds it to 2 decimal points. If not, it returns -1.

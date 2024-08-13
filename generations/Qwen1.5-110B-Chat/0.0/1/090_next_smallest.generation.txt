@@ -1,0 +1,16 @@
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    if length(xs) < 2
+        return nothing
+    end
+    
+    unique_xs = unique(xs)
+    if length(unique_xs) < 2
+        return nothing
+    end
+    
+    sorted_xs = sort(unique_xs)
+    return sorted_xs[2]
+end
+```
+This Julia function first checks if the input vector has less than 2 elements or if all elements are the same (resulting in less than 2 unique elements after sorting), in which case it returns `nothing`. Otherwise, it sorts the unique elements and returns the second element, which is the 2nd smallest element in the original list.

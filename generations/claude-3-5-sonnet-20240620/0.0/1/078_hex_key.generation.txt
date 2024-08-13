@@ -1,0 +1,41 @@
+Here's a Julia function that solves the problem as described:
+
+```julia
+function hex_key(num::String)::Int
+    prime_hex_digits = Set(['2', '3', '5', '7', 'B', 'D'])
+    return count(c -> c in prime_hex_digits, uppercase(num))
+end
+```
+
+Let's break down how this function works:
+
+1. We define a set `prime_hex_digits` that contains all the hexadecimal digits that correspond to prime numbers: 2, 3, 5, 7, 11 (B in hex), and 13 (D in hex).
+
+2. We use the `count` function to iterate through each character in the input string `num`.
+
+3. For each character, we check if it's in our `prime_hex_digits` set using the `in` operator.
+
+4. The `uppercase` function is applied to the input string to ensure that any lowercase letters are converted to uppercase (although the problem statement mentions that A-F will always be uppercase, this adds a bit of robustness to the function).
+
+5. The `count` function returns the total number of characters that satisfy our condition, which is exactly what we want.
+
+This function will correctly handle all the example cases provided:
+
+```julia
+julia> hex_key("AB")
+1
+
+julia> hex_key("1077E")
+2
+
+julia> hex_key("ABED1A33")
+4
+
+julia> hex_key("123456789ABCDEF0")
+6
+
+julia> hex_key("2020")
+2
+```
+
+It will also correctly handle empty strings (returning 0) and strings with no prime hexadecimal digits (also returning 0).

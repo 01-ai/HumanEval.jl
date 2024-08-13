@@ -1,0 +1,29 @@
+Here's the implementation of the `search` function in Julia:
+
+```julia
+function search(numbers::Vector{Int})::Int
+    # Create a dictionary to count the frequency of each number
+    frequency = Dict{Int, Int}()
+    
+    # Count the frequency of each number in the list
+    for num in numbers
+        if haskey(frequency, num)
+            frequency[num] += 1
+        else
+            frequency[num] = 1
+        end
+    end
+    
+    # Find the greatest integer that meets the criteria
+    result = -1
+    for (num, freq) in frequency
+        if freq >= num && num > result
+            result = num
+        end
+    end
+    
+    return result
+end
+```
+
+This function first counts the frequency of each number in the list using a dictionary. Then, it iterates through the dictionary to find the greatest integer that has a frequency greater than or equal to its value. If no such integer is found, it returns `-1`.

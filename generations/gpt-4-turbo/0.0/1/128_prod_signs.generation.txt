@@ -1,0 +1,21 @@
+```julia
+function prod_signs(xs::Vector{Int})::Union{Nothing,Int}
+    if isempty(xs)
+        return nothing
+    end
+    
+    # Calculate the product of signs
+    sign_product = 1
+    for x in xs
+        sign_product *= sign(x)
+    end
+    
+    # Calculate the sum of magnitudes
+    magnitude_sum = sum(abs.(xs))
+    
+    # Return the product of the sum of magnitudes and the product of signs
+    return sign_product * magnitude_sum
+end
+```
+
+This function first checks if the input vector `xs` is empty and returns `nothing` if it is. It then calculates the product of the signs of the integers in the vector using a loop. The sign of each integer is determined by the `sign` function, which returns -1, 0, or 1. The sum of the magnitudes (absolute values) of the integers is computed using the `sum` function combined with the `abs.` function to apply `abs` element-wise. Finally, the function returns the product of the sum of magnitudes and the product of signs.

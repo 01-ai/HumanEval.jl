@@ -1,0 +1,34 @@
+Here is the Julia function that implements the `intersperse` functionality as described in the docstring:
+```julia
+function intersperse(numbers::Vector{Int}, delimeter::Int)::Vector{Int}
+    result = Int[]
+    for (i, num) in enumerate(numbers)
+        push!(result, num)
+        if i < length(numbers)
+            push!(result, delimeter)
+        end
+    end
+    return result
+end
+```
+Here's an explanation of the implementation:
+
+1. We initialize an empty vector `result` to store the output.
+2. We iterate over the input vector `numbers` using `enumerate`, which gives us both the index `i` and the value `num` at each position.
+3. We push each `num` onto the `result` vector.
+4. If we're not at the last element of the input vector (i.e., `i < length(numbers)`), we push the `delimeter` onto the `result` vector.
+5. Finally, we return the completed `result` vector.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> intersperse(Int[], 4)
+Int64[]
+
+julia> intersperse([1, 2, 3], 4)
+5-element Vector{Int64}:
+ 1
+ 4
+ 2
+ 4
+ 3
+```

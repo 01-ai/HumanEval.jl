@@ -1,0 +1,20 @@
+Here's the implementation of the `correct_bracketing` function in Julia:
+
+```julia
+function correct_bracketing(brackets::String)::Bool
+    balance = 0
+    for char in brackets
+        if char == '('
+            balance += 1
+        elseif char == ')'
+            balance -= 1
+        end
+        if balance < 0
+            return false
+        end
+    end
+    return balance == 0
+end
+```
+
+This function uses a balance counter to keep track of the number of opening and closing brackets. It increments the counter for each opening bracket `(` and decrements it for each closing bracket `)`. If at any point the balance becomes negative, it means there are more closing brackets than opening ones up to that point, so the function returns `false`. Finally, the function returns `true` if the balance is zero at the end, indicating that every opening bracket has a corresponding closing bracket.

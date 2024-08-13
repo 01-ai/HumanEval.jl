@@ -1,0 +1,60 @@
+ Certainly! Below is the implementation of the `strange_sort_list` function in Julia based on the provided docstring:
+
+```julia
+"""
+    strange_sort_list(xs::Vector{Int})::Vector{Int}
+
+Given list of integers, return list in strange order. Strange sorting, is when
+you start with the minimum value, then maximum of the remaining integers, then
+minimum and so on.
+
+# Examples
+
+```jldoctest
+julia> strange_sort_list([1, 2, 3, 4])
+4-element Vector{Int64}:
+ 1
+ 4
+ 2
+ 3
+
+julia> strange_sort_list([5, 5, 5, 5])
+4-element Vector{Int64}:
+ 5
+ 5
+ 5
+ 5
+
+julia> strange_sort_list(Int[])
+Int64[]
+```
+"""
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    if isempty(xs)
+        return Int[]
+    end
+
+    sorted_xs = sort(xs)
+    result = Vector{Int}()
+
+    while !isempty(sorted_xs)
+        push!(result, popfirst!(sorted_xs))
+        if !isempty(sorted_xs)
+            push!(result, pop!(sorted_xs))
+        end
+    end
+
+    return result
+end
+```
+
+### Explanation:
+1. **Check for Empty Input**: If the input list `xs` is empty, return an empty list of type `Int[]`.
+2. **Sort the List**: Sort the input list `xs` to get a sorted version `sorted_xs`.
+3. **Initialize Result List**: Create an empty vector `result` to store the final output.
+4. **Strange Sorting Logic**:
+   - While `sorted_xs` is not empty, remove the first element (minimum value) and append it to `result`.
+   - If `sorted_xs` is still not empty, remove the last element (maximum value) and append it to `result`.
+5. **Return the Result**: After processing all elements, return the `result` list.
+
+This function ensures that the list is sorted in the "strange" order as described.

@@ -1,0 +1,24 @@
+Here is the Julia function that implements the functionality described in the doc string:
+
+```julia
+function find_closest_elements(numbers::Vector{Float64})
+    # Sort the numbers to make comparison easier
+    sorted_numbers = sort(numbers)
+    # Initialize variables to store the closest pair and their difference
+    closest_pair = (sorted_numbers[1], sorted_numbers[2])
+    smallest_diff = abs(sorted_numbers[2] - sorted_numbers[1])
+    
+    # Iterate through the sorted list to find the pair with the smallest difference
+    for i in 1:(length(sorted_numbers) - 1)
+        diff = abs(sorted_numbers[i+1] - sorted_numbers[i])
+        if diff < smallest_diff
+            smallest_diff = diff
+            closest_pair = (sorted_numbers[i], sorted_numbers[i+1])
+        end
+    end
+    
+    return closest_pair
+end
+```
+
+This function first sorts the input vector to ensure that all potential pairs are adjacent to each other, which simplifies the process of finding the closest pair. It then iterates through the sorted list, comparing each pair of adjacent numbers to find the pair with the smallest difference. The function finally returns this closest pair.

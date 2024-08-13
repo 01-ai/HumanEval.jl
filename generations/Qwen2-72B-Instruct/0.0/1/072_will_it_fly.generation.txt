@@ -1,0 +1,10 @@
+```julia
+function will_it_fly(q::Vector{Int}, w::Int)::Bool
+    # Check if the vector is palindromic
+    is_balanced = q == reverse(q)
+    # Calculate the sum of the elements in the vector
+    total_weight = sum(q)
+    # Check if the vector is balanced and the total weight is less than or equal to w
+    return is_balanced && total_weight <= w
+end
+```

@@ -1,0 +1,28 @@
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    # Check if the lengths of the input vectors are the same
+    if length(game) != length(guess)
+        throw(ArgumentError("The lengths of game and guess vectors must be the same."))
+    end
+
+    # Initialize a result vector with the same length as the input vectors
+    result = Vector{Int}(undef, length(game))
+
+    # Iterate over each pair of game score and guess
+    for i in eachindex(game, guess)
+        # Calculate the absolute difference between the game score and the guess
+        result[i] = abs(game[i] - guess[i])
+    end
+
+    return result
+end
+
+# Test the function with the provided examples
+# Example 1
+game1 = [1, 2, 3, 4, 5, 1]
+guess1 = [1, 2, 3, 4, 2, -2]
+println(compare(game1, guess1))
+
+# Example 2
+game2 = [0, 5, 0, 0, 0, 4]
+guess2 = [4, 1, 1, 0, 0, -2]
+println(compare(game2, guess2))

@@ -1,0 +1,20 @@
+```julia
+function palindrome_with_append(s::String)::String
+    function longest_palindromic_suffix(s::String)
+        n = length(s)
+        for i = 1:n
+            if ispalindrome(s[(n-i+1):n])
+                return s[(n-i+1):n]
+            end
+        end
+        return ""
+    end
+
+    palindromic_suffix = longest_palindromic_suffix(s)
+    non_palindromic_prefix = s[1:end-(length(palindromic_suffix)-1)]
+    reversed_prefix = reverse(non_palindromic_prefix)
+    return s * reversed_prefix
+end
+```
+
+This Julia function `palindrome_with_append` first defines a helper function `longest_palindromic_suffix` to find the longest palindromic suffix of the input string `s`. It then determines the non-palindromic prefix by excluding the palindromic suffix from the original string. The function concludes by appending the reverse of the non-palindromic prefix to the original string, ensuring the result is the shortest palindrome starting with the input string. The examples provided in the docstring illustrate its usage correctly.

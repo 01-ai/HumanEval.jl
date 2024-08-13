@@ -1,0 +1,19 @@
+```julia
+function closest_integer(value::String)::Int
+    num = parse(Float64, value)
+    if num >= 0
+        if num - floor(num) < 0.5
+            floor(Int, num)
+        else
+            ceil(Int, num)
+        end
+    else
+        if abs(num) - floor(abs(num)) < 0.5
+            floor(Int, num)
+        else
+            ceil(Int, num)
+        end
+    end
+end
+```
+This function first parses the input string into a `Float64` number. It then checks if the number is non-negative. If it is, it uses `floor` and `ceil` to determine the closest integer, rounding away from zero if the number is exactly between two integers. For negative numbers, it does the same but takes the absolute value first to ensure it's rounding away from zero correctly, then converts back to the correct sign.

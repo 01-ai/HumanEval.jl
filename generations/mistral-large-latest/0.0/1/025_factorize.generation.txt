@@ -1,0 +1,22 @@
+Sure, here is the Julia function that implements the factorize function based on the given docstring:
+
+```julia
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    i = 2
+    while i * i <= n
+        if n % i == 0
+            push!(factors, i)
+            n = div(n, i)
+        else
+            i += 1
+        end
+    end
+    if n > 1
+        push!(factors, n)
+    end
+    return factors
+end
+```
+
+This function works by iterating over all numbers from 2 to sqrt(n) and checking if they are factors of n. If a factor is found, it is added to the list of factors and n is divided by the factor. This process is repeated until n is no longer divisible by the current factor, at which point the next number is considered. If any portion of n remains after considering all numbers up to sqrt(n), that portion is added to the list of factors, as it must be a prime factor of n.

@@ -1,0 +1,19 @@
+Sure, I can help with that. Here's a Julia function that sorts an array of non-negative integers according to the number of ones in their binary representation in ascending order. For similar number of ones, it sorts based on decimal value.
+
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    function count_ones(n::Int)
+        count = 0
+        while n > 0
+            n &= n - 1
+            count += 1
+        end
+        return count
+    end
+
+    sort!(arr, by = x -> (count_ones(x), x))
+    return arr
+end
+```
+
+In this function, `count_ones` is a helper function that counts the number of ones in the binary representation of a number. The `sort!` function is used to sort the array in place. The `by` keyword argument is a function that takes one argument and returns a value to sort by. In this case, it returns a tuple where the first element is the count of ones and the second element is the number itself. This ensures that the array is sorted first by the count of ones and then by the number itself.

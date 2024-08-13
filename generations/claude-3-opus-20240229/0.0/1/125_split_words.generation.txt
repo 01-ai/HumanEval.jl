@@ -1,0 +1,40 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function split_words(txt::String)::Union{Vector{<:AbstractString},Int}
+    if contains(txt, ' ')
+        return split(txt)
+    elseif contains(txt, ',')
+        return split(txt, ',')
+    else
+        count = 0
+        for (i, char) in enumerate(lowercase(txt))
+            if isletter(char) && isodd(Int(char) - Int('a'))
+                count += 1
+            end
+        end
+        return count
+    end
+end
+```
+
+Explanation:
+
+1. The function `split_words` takes a string `txt` as input and returns either a vector of substrings or an integer.
+
+2. First, we check if the string contains whitespace characters using `contains(txt, ' ')`. If whitespace exists, we use the `split(txt)` function to split the string on whitespace and return the resulting vector of substrings.
+
+3. If there are no whitespace characters, we check if the string contains commas using `contains(txt, ',')`. If commas exist, we use `split(txt, ',')` to split the string on commas and return the resulting vector of substrings.
+
+4. If there are no whitespace characters or commas, we count the number of lowercase letters with odd order in the alphabet. We initialize a variable `count` to keep track of the count.
+
+5. We iterate over each character in the lowercase version of the string using `enumerate(lowercase(txt))`. For each character, we check if it is a letter using `isletter(char)` and if its order in the alphabet is odd using `isodd(Int(char) - Int('a'))`. If both conditions are true, we increment the `count` by 1.
+
+6. Finally, we return the `count` of lowercase letters with odd order in the alphabet.
+
+The function handles all three cases:
+- If the string contains whitespace, it splits on whitespace and returns the vector of substrings.
+- If the string contains commas (but no whitespace), it splits on commas and returns the vector of substrings.
+- If the string contains neither whitespace nor commas, it counts the number of lowercase letters with odd order in the alphabet and returns the count.
+
+The examples you provided should work as expected with this implementation.

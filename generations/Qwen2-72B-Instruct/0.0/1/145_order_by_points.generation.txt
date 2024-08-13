@@ -1,0 +1,9 @@
+```julia
+function order_by_points(nums::Vector{Int})
+    # Function to calculate the sum of digits of a number
+    sum_of_digits(n) = sum(digits(abs(n)))
+
+    # Sort the numbers based on the sum of their digits and then by their index
+    return sort(nums, by = n -> (sum_of_digits(n), findfirst(==(n), nums)))
+end
+```

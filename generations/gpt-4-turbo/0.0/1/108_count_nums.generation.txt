@@ -1,0 +1,24 @@
+```julia
+function count_nums(xs::Vector{Int})::Int
+    function sum_of_digits(n::Int)
+        sum = 0
+        if n < 0
+            sum -= abs(n % 10)  # First digit negative if the number is negative
+            n = abs(n ÷ 10)
+        end
+        while n != 0
+            sum += n % 10
+            n = n ÷ 10
+        end
+        return sum
+    end
+    
+    count = 0
+    for x in xs
+        if sum_of_digits(x) > 0
+            count += 1
+        end
+    end
+    return count
+end
+```

@@ -1,0 +1,49 @@
+Here's a Julia function that calculates the Mean Absolute Deviation (MAD) for a given list of numbers:
+
+```julia
+function mean_absolute_deviation(numbers::Vector{Float64})::Float64
+    if isempty(numbers)
+        throw(ArgumentError("Input vector must not be empty"))
+    end
+
+    # Calculate the mean of the dataset
+    mean_value = sum(numbers) / length(numbers)
+
+    # Calculate the sum of absolute deviations from the mean
+    sum_of_absolute_deviations = sum(abs.(numbers .- mean_value))
+
+    # Calculate the mean absolute deviation
+    mad = sum_of_absolute_deviations / length(numbers)
+
+    return mad
+end
+```
+
+This function does the following:
+
+1. First, it checks if the input vector is empty. If it is, it throws an `ArgumentError`.
+
+2. It calculates the mean of the dataset using `sum(numbers) / length(numbers)`.
+
+3. It then calculates the sum of absolute deviations from the mean. This is done using the broadcasted subtraction `numbers .- mean_value` to get the differences, then applying `abs.()` to get the absolute values, and finally summing them up.
+
+4. The Mean Absolute Deviation is then calculated by dividing the sum of absolute deviations by the number of elements.
+
+5. Finally, it returns the calculated MAD.
+
+This function satisfies the type annotations in the function signature: it takes a `Vector{Float64}` as input and returns a `Float64`.
+
+You can use this function like this:
+
+```julia
+julia> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0])
+1.0
+
+julia> mean_absolute_deviation([1.0, 1.0, 1.0, 1.0])
+0.0
+
+julia> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0, 5.0])
+1.2
+```
+
+The function correctly calculates the Mean Absolute Deviation for the given example and should work for any non-empty vector of Float64 numbers.

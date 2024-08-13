@@ -1,0 +1,17 @@
+```julia
+function split_words(txt::String)
+    # Check for whitespace and split on it if present
+    if any(isspace, txt)
+        return split(txt)
+    end
+
+    # Check for commas and split on them if present
+    if any(==(','), txt)
+        return split(txt, ",")
+    end
+
+    # If no whitespace or commas, count the number of lowercase letters with odd order
+    count = sum(1 for c in txt if islower(c) && isodd(Int(c) - 'a'))
+    return count
+end
+```

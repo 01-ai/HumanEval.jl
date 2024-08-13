@@ -1,0 +1,44 @@
+To implement the `is_nested` function in Julia, we need to check if there is at least one nested pair of square brackets in the input string. A nested pair means that there is at least one pair of brackets inside another pair of brackets.
+
+Here's how we can approach this problem:
+
+1. Traverse the string while maintaining a count of the open brackets.
+2. If we encounter a closing bracket and the count of open brackets is greater than one, it means we have a nested bracket.
+3. If we find such a nested bracket, we can immediately return `true`.
+4. If we traverse the entire string without finding any nested brackets, we return `false`.
+
+Let's implement this in Julia:
+
+```julia
+function is_nested(s::String)::Bool
+    open_count = 0
+    
+    for char in s
+        if char == '['
+            open_count += 1
+        elseif char == ']'
+            if open_count > 1
+                return true
+            end
+            open_count -= 1
+        end
+    end
+    
+    return false
+end
+```
+
+This function iterates through each character in the string `s`. It increments the `open_count` when it encounters an opening bracket `[` and decrements it when it encounters a closing bracket `]`. If at any point the `open_count` is greater than 1 when encountering a closing bracket, it indicates that there is a nested bracket, and the function returns `true`. If the loop completes without finding any nested brackets, the function returns `false`.
+
+Let's test the function with the provided examples:
+
+```julia
+println(is_nested("[[]]"))          # true
+println(is_nested("[]]]]]]][[[[[]")) # false
+println(is_nested("[][]"))          # false
+println(is_nested("[]"))            # false
+println(is_nested("[[][]]"))        # true
+println(is_nested("[[]][["))        # true
+```
+
+This should produce the expected results as described in the docstring.

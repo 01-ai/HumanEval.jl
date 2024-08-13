@@ -1,0 +1,7 @@
+```julia
+function words_string(s::String)::Vector{String}
+    # Split the string by commas and spaces
+    words = split(s, r"[, ]+", keepempty=false)
+    return words
+end
+```

@@ -1,0 +1,9 @@
+```julia
+function sorted_list_sum(xs::Vector{String})::Vector{String}
+    # Filter out strings with odd lengths
+    even_length_strings = filter(s -> length(s) % 2 == 0, xs)
+    
+    # Sort the filtered strings first by length, then alphabetically
+    sort(even_length_strings, by = s -> (length(s), s))
+end
+```

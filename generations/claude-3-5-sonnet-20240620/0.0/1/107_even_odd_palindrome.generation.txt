@@ -1,0 +1,53 @@
+Here's a Julia function that solves the problem of counting even and odd integer palindromes within a given range:
+
+```julia
+function even_odd_palindrome(n::Int)::Tuple{Int, Int}
+    even_count = 0
+    odd_count = 0
+    
+    for num in 1:n
+        if is_palindrome(num)
+            if iseven(num)
+                even_count += 1
+            else
+                odd_count += 1
+            end
+        end
+    end
+    
+    return (even_count, odd_count)
+end
+
+function is_palindrome(num::Int)::Bool
+    return num == reverse_number(num)
+end
+
+function reverse_number(num::Int)::Int
+    reversed = 0
+    while num > 0
+        reversed = reversed * 10 + num % 10
+        num = num ÷ 10
+    end
+    return reversed
+end
+```
+
+Let's break down the solution:
+
+1. We define the main function `even_odd_palindrome(n::Int)::Tuple{Int, Int}` that takes an integer `n` and returns a tuple of two integers.
+
+2. We initialize two counters: `even_count` for even palindromes and `odd_count` for odd palindromes.
+
+3. We iterate through the numbers from 1 to n (inclusive).
+
+4. For each number, we check if it's a palindrome using the `is_palindrome` helper function.
+
+5. If the number is a palindrome, we check if it's even or odd using the `iseven` function and increment the appropriate counter.
+
+6. After checking all numbers, we return a tuple with the even and odd counts.
+
+7. The `is_palindrome` function checks if a number is equal to its reverse.
+
+8. The `reverse_number` function reverses the digits of a given number.
+
+This solution efficiently counts the even and odd palindromes within the given range and returns the result as a tuple. It works for the given constraints (1 <= n <= 10^3) and correctly handles all cases, including single-digit numbers which are always palindromes.

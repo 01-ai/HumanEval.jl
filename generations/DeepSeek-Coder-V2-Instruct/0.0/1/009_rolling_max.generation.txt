@@ -1,0 +1,19 @@
+ Here's the implementation of the `rolling_max` function in Julia:
+
+```julia
+function rolling_max(numbers::Vector{Int})::Vector{Int}
+    result = Vector{Int}(undef, length(numbers))
+    current_max = typemin(Int)
+    
+    for i in 1:length(numbers)
+        if numbers[i] > current_max
+            current_max = numbers[i]
+        end
+        result[i] = current_max
+    end
+    
+    return result
+end
+```
+
+This function iterates through the input vector `numbers`, updating the `current_max` whenever it encounters a number greater than the current maximum. It then assigns the `current_max` to the corresponding position in the `result` vector.

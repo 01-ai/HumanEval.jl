@@ -1,0 +1,28 @@
+Sure, here's a Julia function that should meet your requirements:
+
+```julia
+function split_words(txt::String)::Union{Vector{<:AbstractString}, Int}
+    # Try to split on whitespace first
+    split_txt = split(txt, r"\s")
+    if !isempty(split_txt)
+        return split_txt
+    end
+
+    # If no whitespace, try to split on commas
+    split_txt = split(txt, ",")
+    if !isempty(split_txt)
+        return split_txt
+    end
+
+    # If no commas, count lower-case letters with odd order in the alphabet
+    count = 0
+    for char in txt
+        if 'a' <= char <= 'z' && isodd(Int(char) - Int('a'))
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function first tries to split the input string on whitespace. If that results in an empty vector, it tries to split on commas. If that also results in an empty vector, it counts the number of lower-case letters with odd order in the alphabet and returns that count.

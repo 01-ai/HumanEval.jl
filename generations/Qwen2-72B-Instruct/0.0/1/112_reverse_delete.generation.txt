@@ -1,0 +1,11 @@
+```julia
+function reverse_delete(s::String, c::String)
+    # Filter out characters in s that are not in c
+    filtered_s = filter(x -> !occursin(x, c), s)
+    
+    # Check if the filtered string is a palindrome
+    is_palindrome = filtered_s == reverse(filtered_s)
+    
+    return (filtered_s, is_palindrome)
+end
+```

@@ -1,0 +1,23 @@
+```julia
+function intersection(interval1::Vector{Int}, interval2::Vector{Int})::String
+    # Find the intersection of the two intervals
+    start = max(interval1[1], interval2[1])
+    end = min(interval1[2], interval2[2])
+    # If there is no intersection
+    if start > end
+        return "NO"
+    end
+    # Calculate the length of the intersection
+    length = end - start + 1
+    # Check if the length is a prime number
+    function isprime(n::Int)
+        n <= 1 && return false
+        for i in 2:sqrt(n)
+            n % i == 0 && return false
+        end
+        return true
+    end
+    return isprime(length) ? "YES" : "NO"
+end
+```
+This Julia function first calculates the intersection of the two given intervals. If there is no intersection, it immediately returns "NO". Then, it computes the length of the intersection and uses a helper function `isprime` to check if this length is a prime number. Based on this check, it returns either "YES" or "NO".

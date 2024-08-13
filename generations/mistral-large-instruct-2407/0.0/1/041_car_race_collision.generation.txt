@@ -1,0 +1,26 @@
+ To solve the problem of counting the number of collisions between two sets of cars moving in opposite directions, we can use a combinatorial approach. Since each car moving left to right will collide with each car moving right to left, the total number of collisions is simply the product of the number of cars in each set.
+
+Given that there are `n` cars moving in each direction, the number of collisions is `n * n`.
+
+Here is the implementation of the `car_race_collision` function in Julia:
+
+```julia
+"""
+    car_race_collision(n::Int)::Int
+
+Imagine a road that's a perfectly straight infinitely long line. `n` cars are
+driving left to right; simultaneously, a different set of n cars are driving
+right to left. The two sets of cars start out being very far from each other.
+All cars move in the same speed. Two cars are said to collide when a car that's
+moving left to right hits a car that's moving right to left. However, the cars
+are infinitely sturdy and strong; as a result, they continue moving in their
+trajectory as if they did not collide.
+
+This function outputs the number of such collisions.
+"""
+function car_race_collision(n::Int)::Int
+    return n * n
+end
+```
+
+This function takes an integer `n` as input and returns the number of collisions, which is `n * n`. The function is straightforward and leverages the fact that each car in one set will collide with each car in the other set exactly once.

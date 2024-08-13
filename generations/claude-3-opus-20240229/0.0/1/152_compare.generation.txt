@@ -1,0 +1,39 @@
+To solve this problem, you can use the `abs` function in Julia to calculate the absolute difference between each guess and the corresponding score. Here's the solution:
+
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    return [abs(game[i] - guess[i]) for i in 1:length(game)]
+end
+```
+
+Explanation:
+1. The function `compare` takes two vectors `game` and `guess` of type `Vector{Int}` as input.
+2. It uses a list comprehension to iterate over the indices of `game` and `guess` simultaneously.
+3. For each index `i`, it calculates the absolute difference between `game[i]` and `guess[i]` using the `abs` function.
+4. The resulting absolute differences are collected into a new vector, which is returned as the output.
+
+The function returns a vector of the same length as `game` and `guess`, where each element represents the absolute difference between the corresponding elements in `game` and `guess`.
+
+Here are the example test cases and their results:
+
+```jldoctest
+julia> compare([1, 2, 3, 4, 5, 1], [1, 2, 3, 4, 2, -2])
+6-element Vector{Int64}:
+ 0
+ 0
+ 0
+ 0
+ 3
+ 3
+
+julia> compare([0, 5, 0, 0, 0, 4], [4, 1, 1, 0, 0, -2])
+6-element Vector{Int64}:
+ 4
+ 4
+ 1
+ 0
+ 0
+ 6
+```
+
+The solution uses a concise and efficient list comprehension to calculate the absolute differences between the elements of `game` and `guess`. It returns the expected output for the given test cases.

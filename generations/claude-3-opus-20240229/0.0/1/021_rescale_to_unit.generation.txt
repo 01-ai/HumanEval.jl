@@ -1,0 +1,49 @@
+Here's the implementation of the `rescale_to_unit` function in Julia:
+
+```julia
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    min_val = minimum(numbers)
+    max_val = maximum(numbers)
+    
+    if min_val == max_val
+        throw(ArgumentError("The input list must contain at least two distinct numbers."))
+    end
+    
+    return (numbers .- min_val) ./ (max_val - min_val)
+end
+```
+
+Explanation:
+
+1. The function takes a vector of `Float64` numbers as input and returns a vector of `Float64` numbers.
+
+2. We find the minimum and maximum values in the input vector using the `minimum` and `maximum` functions, respectively.
+
+3. We check if the minimum and maximum values are the same. If they are, it means the input list does not contain at least two distinct numbers, and we raise an `ArgumentError` with an appropriate message.
+
+4. If the input list is valid, we apply a linear transformation to each number in the vector:
+   - We subtract the minimum value from each number to shift the range to start from 0.
+   - We divide the shifted numbers by the range (maximum value - minimum value) to scale them between 0 and 1.
+
+5. The transformed vector is returned as the output.
+
+The function uses vectorized operations (`.`) to perform element-wise subtraction and division, which is more efficient than using a loop.
+
+You can test the function with the example provided:
+
+```julia
+julia> rescale_to_unit([1.0, 2.0, 3.0, 4.0, 5.0])
+5-element Vector{Float64}:
+ 0.0
+ 0.25
+ 0.5
+ 0.75
+ 1.0
+```
+
+The function will raise an `ArgumentError` if the input list does not contain at least two distinct numbers:
+
+```julia
+julia> rescale_to_unit([1.0, 1.0, 1.0])
+ERROR: ArgumentError: The input list must contain at least two distinct numbers.
+```

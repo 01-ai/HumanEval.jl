@@ -1,0 +1,44 @@
+Here is the Julia function that implements the described behavior:
+```julia
+function find_max(words::Vector{String})::String
+    # Initialize the maximum word and its unique character count
+    max_word = ""
+    max_unique_chars = 0
+
+    # Iterate over each word in the list
+    for word in words
+        # Count the number of unique characters in the word
+        unique_chars = length(unique(word))
+
+        # If this word has more unique characters than the current max,
+        # or if it has the same number of unique characters but comes first
+        # in lexicographical order, update the max word
+        if unique_chars > max_unique_chars || (unique_chars == max_unique_chars && word < max_word)
+            max_word = word
+            max_unique_chars = unique_chars
+        end
+    end
+
+    # Return the word with the maximum number of unique characters
+    return max_word
+end
+```
+Here's an explanation of the code:
+
+1. We initialize the `max_word` variable to an empty string and `max_unique_chars` to 0.
+2. We iterate over each word in the input list using a `for` loop.
+3. For each word, we count the number of unique characters using the `unique` function and store it in `unique_chars`.
+4. We check if the current word has more unique characters than the current max, or if it has the same number of unique characters but comes first in lexicographical order. If either condition is true, we update `max_word` and `max_unique_chars`.
+5. Finally, we return the `max_word` variable, which now holds the word with the maximum number of unique characters.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> find_max(["name", "of", "string"])
+"string"
+
+julia> find_max(["name", "enam", "game"])
+"enam"
+
+julia> find_max(["aaaaaaa", "bb", "cc"])
+"aaaaaaa"
+```

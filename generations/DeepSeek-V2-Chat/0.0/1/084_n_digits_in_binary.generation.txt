@@ -1,0 +1,18 @@
+Here's the implementation of the `n_digits_in_binary` function in Julia:
+
+```julia
+function n_digits_in_binary(N::Int)::String
+    # Calculate the sum of the digits of N
+    digit_sum = sum(digits(N))
+    
+    # Convert the sum to binary and return as a string
+    return string(digit_sum, base=2)
+end
+```
+
+This function works as follows:
+1. It calculates the sum of the digits of the input integer `N` using the `digits` function, which returns an array of the digits of `N`.
+2. It then sums these digits using the `sum` function.
+3. Finally, it converts the sum to a binary string using the `string` function with the `base=2` argument.
+
+You can test the function with the provided examples to ensure it works correctly.

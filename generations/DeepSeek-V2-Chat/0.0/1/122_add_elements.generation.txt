@@ -1,0 +1,15 @@
+Here's the implementation of the `add_elements` function in Julia:
+
+```julia
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    sum = 0
+    for i in 1:k
+        if 10 <= xs[i] < 100 || -100 < xs[i] <= -10
+            sum += xs[i]
+        end
+    end
+    return sum
+end
+```
+
+This function iterates over the first `k` elements of the array `xs`, checks if each element has at most two digits (including negative numbers), and adds them to the sum if they do. The constraints ensure that the function will always have a valid input range to work with.

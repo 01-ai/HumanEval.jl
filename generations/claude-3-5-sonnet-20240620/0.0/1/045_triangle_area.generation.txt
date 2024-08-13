@@ -1,0 +1,30 @@
+Here's a Julia function that calculates the area of a triangle given the length of a side (base) and the height:
+
+```julia
+function triangle_area(a, h)
+    return 0.5 * a * h
+end
+```
+
+This function implements the formula for the area of a triangle: A = (1/2) * base * height
+
+Let's break down the function:
+
+1. `function triangle_area(a, h)` defines a function named `triangle_area` that takes two parameters:
+   - `a`: the length of the base of the triangle
+   - `h`: the height of the triangle
+
+2. `return 0.5 * a * h` calculates the area by multiplying the base (`a`) by the height (`h`) and then multiplying the result by 0.5 (which is equivalent to dividing by 2).
+
+3. The result is automatically returned.
+
+This function will work with both integer and floating-point inputs. Julia will automatically promote the result to a floating-point number if necessary.
+
+You can use this function as shown in the example:
+
+```julia
+julia> triangle_area(5, 3)
+7.5
+```
+
+The function is simple and efficient, directly implementing the mathematical formula for the area of a triangle.

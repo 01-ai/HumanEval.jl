@@ -1,0 +1,17 @@
+Sure, here is the implementation of the `sum_product` function in Julia:
+
+```julia
+function sum_product(numbers::Vector{Int})::Tuple{Int, Int}
+    sum = 0
+    product = 1
+    
+    for num in numbers
+        sum += num
+        product *= num
+    end
+    
+    return (sum, product)
+end
+```
+
+This function iterates over the list of integers, calculates the sum and product of the elements, and returns them as a tuple. The function handles the case of an empty list by initializing `sum` to 0 and `product` to 1, which are the correct values for an empty sum and product, respectively.

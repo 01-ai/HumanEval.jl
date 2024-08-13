@@ -1,0 +1,26 @@
+Here's a Julia function to decode a string that was encoded using the `encode_shift` function:
+
+```julia
+function decode_shift(s::String)::String
+    join(((x - 'a' - 5 + 26) % 26 + 'a' for x in s))
+end
+```
+
+This `decode_shift` function works as follows:
+
+1. It takes an encoded string `s` as input.
+
+2. It uses a generator expression to process each character `x` in the input string:
+   - `x - 'a'` converts the character to a number (0-25)
+   - `-5` shifts the number back by 5 positions
+   - `+ 26` is added to ensure the result is positive
+   - `% 26` wraps the result around if it exceeds 25
+   - `+ 'a'` converts the number back to a character
+
+3. The `join` function combines all the processed characters into a single string.
+
+4. The function returns the decoded string.
+
+This function effectively reverses the encoding process of `encode_shift` by shifting each character 5 positions backwards in the alphabet instead of forwards.
+
+Note: This function assumes that the input string contains only lowercase letters (a-z). If the input might contain other characters, you may need to add additional logic to handle them correctly.

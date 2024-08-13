@@ -1,0 +1,57 @@
+Here's a Julia function that implements the described behavior:
+
+```julia
+function choose_num(x::Int, y::Int)::Int
+    # Ensure x is not greater than y
+    if x > y
+        return -1
+    end
+    
+    # Start from the larger number and work our way down
+    for num in y:-1:x
+        if iseven(num)
+            return num
+        end
+    end
+    
+    # If no even number is found, return -1
+    return -1
+end
+```
+
+Let's break down how this function works:
+
+1. First, we check if `x` is greater than `y`. If it is, we return -1 immediately because there's no valid range.
+
+2. We then use a reverse loop starting from `y` and going down to `x`. This ensures we find the largest even number in the range.
+
+3. For each number in this range, we check if it's even using the `iseven()` function.
+
+4. If we find an even number, we return it immediately. Since we're going from high to low, this will be the largest even number in the range.
+
+5. If we complete the loop without finding any even numbers, we return -1.
+
+This function correctly handles the given examples:
+
+```julia
+julia> choose_num(12, 15)
+14
+
+julia> choose_num(13, 12)
+-1
+```
+
+It also correctly handles other cases:
+
+```julia
+julia> choose_num(1, 10)
+10
+
+julia> choose_num(3, 3)
+-1
+
+julia> choose_num(2, 2)
+2
+```
+
+This implementation ensures that we always return the largest even number in the given range, or -1 if no such number exists.

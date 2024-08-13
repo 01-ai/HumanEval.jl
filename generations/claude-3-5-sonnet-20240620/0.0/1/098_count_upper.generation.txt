@@ -1,0 +1,45 @@
+Here's a Julia function that counts the number of uppercase vowels at odd indices in a given string:
+
+```julia
+function count_upper(s::String)::Int
+    vowels = Set(['A', 'E', 'I', 'O', 'U'])
+    count = 0
+    for i in 1:2:length(s)
+        if i <= length(s) && s[i] in vowels
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+Let's break down the function:
+
+1. We define a set of uppercase vowels: `vowels = Set(['A', 'E', 'I', 'O', 'U'])`.
+
+2. We initialize a counter `count` to 0.
+
+3. We iterate through the string using a step of 2 to only check odd indices: `for i in 1:2:length(s)`.
+
+4. For each odd index, we check two conditions:
+   - `i <= length(s)`: This ensures we don't go out of bounds for strings with even length.
+   - `s[i] in vowels`: This checks if the character at the current odd index is an uppercase vowel.
+
+5. If both conditions are met, we increment the counter.
+
+6. Finally, we return the count.
+
+This function will correctly handle the examples you provided:
+
+```julia
+julia> count_upper("aBCdEf")
+1
+
+julia> count_upper("abcdefg")
+0
+
+julia> count_upper("dBBE")
+0
+```
+
+Note that in your examples, you used backslashes before the strings. In Julia, you don't need to use backslashes for regular strings. If you want to include special characters or escape sequences, you can use the raw string literal by prefixing the string with `r`, like this: `r"your\string\here"`.

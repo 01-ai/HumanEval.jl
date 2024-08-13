@@ -1,0 +1,17 @@
+```julia
+function correct_bracketing(brackets::String)::Bool
+    stack = Int[]
+    for char in brackets
+        if char == '('
+            push!(stack, 1)
+        elseif char == ')'
+            if isempty(stack)
+                return false
+            end
+            pop!(stack)
+        end
+    end
+    return isempty(stack)
+end
+```
+This Julia function uses a stack to check if every opening bracket "(" has a corresponding closing bracket ")". It iterates through the input string `brackets`, pushing 1 onto the stack for each opening bracket and popping from the stack for each closing bracket. If the stack is empty when a closing bracket is encountered, or if the stack is not empty after processing the entire string, the function returns `false`, indicating incorrect bracketing. Otherwise, it returns `true`.

@@ -1,0 +1,42 @@
+Here's a Julia function that implements the described behavior:
+
+```julia
+function check_dict_case(d::Dict{String,<:Any})::Bool
+    if isempty(d)
+        return false
+    end
+
+    keys_array = collect(keys(d))
+    first_key = keys_array[1]
+
+    if all(islowercase, first_key)
+        return all(key -> all(islowercase, key), keys_array)
+    elseif all(isuppercase, first_key)
+        return all(key -> all(isuppercase, key), keys_array)
+    else
+        return false
+    end
+end
+```
+
+Let's break down the function:
+
+1. We first check if the dictionary is empty. If it is, we return `false` as per the requirement.
+
+2. We collect all the keys of the dictionary into an array for easier processing.
+
+3. We take the first key to determine whether we're checking for all lowercase or all uppercase.
+
+4. If the first key is all lowercase, we check if all other keys are also all lowercase.
+
+5. If the first key is all uppercase, we check if all other keys are also all uppercase.
+
+6. If the first key is neither all lowercase nor all uppercase, we return `false`.
+
+7. The `all` function is used to check if a condition is true for all elements in a collection.
+
+8. `islowercase` and `isuppercase` are used to check if a character is lowercase or uppercase, respectively.
+
+This function will return `true` if all keys are either all lowercase or all uppercase, and `false` otherwise. It will also return `false` for an empty dictionary or if the keys contain any non-alphabetic characters.
+
+Note: The function signature in the question specifies `Dict{String}`, but in Julia, a dictionary type needs both key and value types. I've used `Dict{String,<:Any}` to allow any value type while keeping the keys as strings.

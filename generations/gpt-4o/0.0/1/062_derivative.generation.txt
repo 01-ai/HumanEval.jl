@@ -1,0 +1,37 @@
+Here's the implementation of the `derivative` function in Julia:
+
+```julia
+function derivative(xs::Vector)::Vector
+    n = length(xs)
+    if n <= 1
+        return Int[]
+    end
+    return [i * xs[i+1] for i in 1:n-1]
+end
+```
+
+This function calculates the derivative of a polynomial given its coefficients. The coefficients are provided in a vector `xs`, where `xs[i]` represents the coefficient of the `x^(i-1)` term. The function returns a new vector containing the coefficients of the derivative of the polynomial.
+
+### Explanation:
+- The length of the input vector `xs` is determined.
+- If the length is less than or equal to 1, the derivative is an empty vector because the derivative of a constant is zero.
+- For each coefficient in the input vector (except the first one, which is the constant term), the function multiplies the coefficient by its corresponding power and constructs a new vector with these values.
+
+### Examples:
+```julia
+julia> derivative([3, 1, 2, 4, 5])
+4-element Vector{Int64}:
+  1
+  4
+ 12
+ 20
+
+julia> derivative([1, 2, 3])
+2-element Vector{Int64}:
+ 2
+ 6
+```
+
+In the first example, the polynomial is `3 + 1*x + 2*x^2 + 4*x^3 + 5*x^4`. The derivative is `1 + 4*x + 12*x^2 + 20*x^3`, so the function returns `[1, 4, 12, 20]`.
+
+In the second example, the polynomial is `1 + 2*x + 3*x^2`. The derivative is `2 + 6*x`, so the function returns `[2, 6]`.

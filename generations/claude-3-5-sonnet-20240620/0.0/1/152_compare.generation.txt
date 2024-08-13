@@ -1,0 +1,37 @@
+To solve this problem, you can create a function `compare` that takes two vectors as input (the game scores and the guesses) and returns a vector of differences. Here's a Julia implementation that meets the requirements:
+
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    return [abs(g - s) for (g, s) in zip(game, guess)]
+end
+```
+
+Let's break down the solution:
+
+1. The function `compare` takes two arguments:
+   - `game`: A vector of integers representing the actual scores
+   - `guess`: A vector of integers representing the guessed scores
+
+2. The function uses a list comprehension to create a new vector:
+   - `[abs(g - s) for (g, s) in zip(game, guess)]`
+
+3. Inside the list comprehension:
+   - `zip(game, guess)` pairs up the corresponding elements from `game` and `guess`
+   - For each pair `(g, s)`, we calculate the absolute difference using `abs(g - s)`
+   - This gives us 0 if the guess is correct, or the absolute difference if it's incorrect
+
+4. The result is a vector of the same length as the input vectors, containing the differences between guesses and actual scores
+
+This implementation is concise and efficient, taking advantage of Julia's vectorized operations. It will work correctly for the given examples and any other valid input of equal-length vectors of integers.
+
+You can test the function with the provided examples:
+
+```julia
+println(compare([1, 2, 3, 4, 5, 1], [1, 2, 3, 4, 2, -2]))
+# Output: [0, 0, 0, 0, 3, 3]
+
+println(compare([0, 5, 0, 0, 0, 4], [4, 1, 1, 0, 0, -2]))
+# Output: [4, 4, 1, 0, 0, 6]
+```
+
+The function will return the expected results, matching the differences between the actual scores and the guesses.

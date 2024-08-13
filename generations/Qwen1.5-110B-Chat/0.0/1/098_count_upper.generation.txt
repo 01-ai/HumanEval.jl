@@ -1,0 +1,14 @@
+```julia
+function count_upper(s::String)::Int
+    uppercase_vowels = "AEIOU"
+    count = 0
+    for i in 1:2:length(s)
+        if s[i] ∈ uppercase_vowels
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This Julia function `count_upper` takes a string `s` as input and counts the number of uppercase vowels located at odd indices within the string. It iterates through the string, checking every other character (odd indices), and increments the `count` variable whenever an uppercase vowel is found. Finally, it returns the total count of such vowels.

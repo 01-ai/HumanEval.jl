@@ -1,0 +1,20 @@
+```julia
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    # Check if the array is empty or has only one element
+    if length(xs) <= 1
+        return copy(xs)
+    end
+    
+    # Calculate the sum of the first and last element
+    sum_head_tail = xs[1] + xs[end]
+    
+    # Determine the sorting order based on the sum of the head and tail
+    if sum_head_tail % 2 == 0
+        # Sum is even, sort in descending order
+        return sort(xs, rev=true)
+    else
+        # Sum is odd, sort in ascending order
+        return sort(xs)
+    end
+end
+```

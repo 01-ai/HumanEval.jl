@@ -1,0 +1,9 @@
+```julia
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    # Sort the sides to ensure a and b are the smaller two, and c is the hypotenuse
+    a, b, c = sort([a, b, c])
+    
+    # Check if the square of the hypotenuse is equal to the sum of squares of the other two sides
+    return a^2 + b^2 == c^2
+end
+```

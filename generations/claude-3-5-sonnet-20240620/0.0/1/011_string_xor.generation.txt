@@ -1,0 +1,60 @@
+Here's a Julia function that performs binary XOR on two input strings consisting of '1's and '0's:
+
+```julia
+function string_xor(a::String, b::String)::String
+    # Ensure the strings have the same length
+    if length(a) != length(b)
+        throw(ArgumentError("Input strings must have the same length"))
+    end
+
+    # Perform XOR operation
+    result = Char[]
+    for (bit_a, bit_b) in zip(a, b)
+        if bit_a ∉ ['0', '1'] || bit_b ∉ ['0', '1']
+            throw(ArgumentError("Input strings must contain only '0' and '1'"))
+        end
+        push!(result, (bit_a == bit_b) ? '0' : '1')
+    end
+
+    return String(result)
+end
+```
+
+This function does the following:
+
+1. It first checks if the input strings have the same length. If not, it throws an `ArgumentError`.
+
+2. It then iterates through both strings simultaneously using `zip`.
+
+3. For each pair of bits, it checks if they are valid ('0' or '1'). If not, it throws an `ArgumentError`.
+
+4. It performs the XOR operation:
+   - If the bits are the same (both '0' or both '1'), it adds '0' to the result.
+   - If the bits are different, it adds '1' to the result.
+
+5. Finally, it converts the result array of characters to a string and returns it.
+
+You can use this function like this:
+
+```julia
+julia> string_xor("10", "11")
+"01"
+
+julia> string_xor("1010", "0101")
+"1111"
+
+julia> string_xor("11110000", "00001111")
+"11111111"
+```
+
+This function correctly handles the example you provided:
+
+```julia
+julia> string_xor("10", "110")
+ERROR: ArgumentError: Input strings must have the same length
+
+julia> string_xor("10", "10")
+"00"
+```
+
+Note that in your example, you used `"10"` and `"110"` which have different lengths. The function will throw an error in this case. If you meant to use `"10"` and `"10"`, the result would be `"00"` as shown in the last example.

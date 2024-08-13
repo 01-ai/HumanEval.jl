@@ -1,0 +1,9 @@
+Sure, here is the Julia function that fulfills the requirements:
+
+```julia
+function filter_by_prefix(xs::Vector{String}, prefix::String)::Vector{String}
+    return filter(x -> startswith(x, prefix), xs)
+end
+```
+
+This function uses the `filter` function from Julia's base library, which applies a predicate function to each element of a collection and returns a new collection containing only the elements for which the predicate function returns `true`. In this case, the predicate function is `startswith(x, prefix)`, which checks if a string `x` starts with the given `prefix`.

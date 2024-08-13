@@ -1,0 +1,32 @@
+Here's the implementation of the `same_chars` function in Julia:
+
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    # Create dictionaries to count the occurrences of each character in both strings
+    count0 = Dict{Char, Int}()
+    count1 = Dict{Char, Int}()
+    
+    # Count characters in s0
+    for char in s0
+        if haskey(count0, char)
+            count0[char] += 1
+        else
+            count0[char] = 1
+        end
+    end
+    
+    # Count characters in s1
+    for char in s1
+        if haskey(count1, char)
+            count1[char] += 1
+        else
+            count1[char] = 1
+        end
+    end
+    
+    # Check if both dictionaries have the same keys and values
+    return count0 == count1
+end
+```
+
+This function works by counting the occurrences of each character in both strings and then comparing the resulting dictionaries. If the dictionaries are equal, it means the strings have the same characters with the same frequencies, and the function returns `true`. Otherwise, it returns `false`.

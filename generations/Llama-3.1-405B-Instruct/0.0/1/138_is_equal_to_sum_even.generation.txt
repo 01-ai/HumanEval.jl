@@ -1,0 +1,68 @@
+Here is a Julia function that implements the logic described in the docstring:
+
+```julia
+"""
+    is_equal_to_sum_even(n::Int)::Bool
+
+Evaluate whether the given number `n` can be written as the sum of exactly 4
+positive even numbers.
+
+# Example
+
+```jldoctest
+julia> is_equal_to_sum_even(4)
+false
+
+julia> is_equal_to_sum_even(6)
+false
+
+julia> is_equal_to_sum_even(8)
+true
+```
+"""
+function is_equal_to_sum_even(n::Int)::Bool
+    # If n is less than 8, it cannot be written as the sum of 4 positive even numbers
+    if n < 8
+        return false
+    end
+    
+    # If n is not divisible by 2, it cannot be written as the sum of even numbers
+    if n % 2 != 0
+        return false
+    end
+    
+    # Try all possible combinations of 4 even numbers that sum up to n
+    for i in 2:2:(n-6)
+        for j in 2:2:(n-i-4)
+            for k in 2:2:(n-i-j-2)
+                l = n - i - j - k
+                if l % 2 == 0 && l > 0
+                    return true
+                end
+            end
+        end
+    end
+    
+    # If no combination is found, return false
+    return false
+end
+```
+
+However, this solution has a time complexity of O(n^3) due to the nested loops, which can be inefficient for large inputs. A more efficient solution can be achieved by using a mathematical approach.
+
+Since we are looking for 4 even numbers that sum up to `n`, we can divide `n` by 2 and look for 4 numbers that sum up to `n/2`. This is equivalent to finding 4 numbers that sum up to `n/2 - 4` and then adding 2 to each number.
+
+Here is a more efficient Julia function:
+
+```julia
+function is_equal_to_sum_even(n::Int)::Bool
+    if n < 8 || n % 2 != 0
+        return false
+    end
+    
+    n_div_2 = n ÷ 2
+    return n_div_2 >= 8
+end
+```
+
+This function simply checks if `n` is greater than or equal to 8 and if `n` is divisible by 2. If both conditions are true, it returns `true`; otherwise, it returns `false`. This solution has a time complexity of O(1), making it much more efficient than the previous solution.

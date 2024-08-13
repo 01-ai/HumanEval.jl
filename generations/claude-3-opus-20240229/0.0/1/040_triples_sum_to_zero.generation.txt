@@ -1,0 +1,43 @@
+Here's a solution to the `triples_sum_to_zero` problem in Julia:
+
+```julia
+function triples_sum_to_zero(l::Vector{Int})::Bool
+    n = length(l)
+    
+    for i in 1:n-2
+        for j in i+1:n-1
+            for k in j+1:n
+                if l[i] + l[j] + l[k] == 0
+                    return true
+                end
+            end
+        end
+    end
+    
+    return false
+end
+```
+
+Explanation:
+
+1. The function `triples_sum_to_zero` takes a vector of integers `l` as input and returns a boolean value indicating whether there exist three distinct elements in the list that sum to zero.
+
+2. We store the length of the input vector `l` in the variable `n`.
+
+3. We use three nested loops to generate all possible combinations of three distinct elements from the vector `l`:
+   - The outermost loop iterates from index `1` to `n-2` (inclusive) using the variable `i`.
+   - The middle loop iterates from index `i+1` to `n-1` (inclusive) using the variable `j`.
+   - The innermost loop iterates from index `j+1` to `n` (inclusive) using the variable `k`.
+   
+   This ensures that we consider all possible combinations of three distinct elements.
+
+4. Inside the innermost loop, we check if the sum of the three elements at indices `i`, `j`, and `k` is equal to zero.
+   - If the sum is zero, it means we have found three distinct elements that sum to zero, so we return `true`.
+
+5. If we have exhausted all possible combinations and haven't found any triplet that sums to zero, we return `false`.
+
+The time complexity of this solution is O(n^3), where n is the length of the input vector. It uses three nested loops to generate all possible combinations of three distinct elements.
+
+Note: This solution assumes that the input vector `l` contains at least three elements. If the input vector has fewer than three elements, the function will always return `false`.
+
+I hope this helps! Let me know if you have any further questions.

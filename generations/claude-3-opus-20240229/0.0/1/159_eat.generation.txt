@@ -1,0 +1,37 @@
+Here's the Julia function to solve the problem:
+
+```julia
+function eat(number::Int, need::Int, remaining::Int)::Vector{Int}
+    total_eaten = number + min(need, remaining)
+    carrots_left = max(remaining - need, 0)
+    return [total_eaten, carrots_left]
+end
+```
+
+Here's how the function works:
+
+1. `total_eaten` is calculated by adding the number of carrots already eaten (`number`) with the minimum of the number of carrots needed (`need`) and the remaining carrots (`remaining`). This ensures that the total eaten carrots cannot exceed the number of remaining carrots.
+
+2. `carrots_left` is calculated by taking the maximum of `remaining - need` and 0. If `remaining - need` is negative, it means there are not enough remaining carrots to satisfy the need, so the rabbit will eat all remaining carrots, and `carrots_left` will be set to 0.
+
+3. The function returns a vector with the `total_eaten` and `carrots_left` values.
+
+Here are the test cases from the examples:
+
+```julia
+@show eat(5, 6, 10)  # [11, 4]
+@show eat(4, 8, 9)   # [12, 1]
+@show eat(1, 10, 10) # [11, 0]
+@show eat(2, 11, 5)  # [7, 0]
+```
+
+The output will be:
+
+```
+eat(5, 6, 10) = [11, 4]
+eat(4, 8, 9) = [12, 1]
+eat(1, 10, 10) = [11, 0]
+eat(2, 11, 5) = [7, 0]
+```
+
+These results match the expected output given in the examples.

@@ -1,0 +1,52 @@
+Here's a Julia function that implements the described behavior:
+
+```julia
+function sum_squares(xs::Vector{Int})::Int
+    result = 0
+    for (index, x) in enumerate(xs)
+        if index % 12 == 0  # Multiple of both 3 and 4
+            result += x^3
+        elseif index % 3 == 0
+            result += x^2
+        elseif index % 4 == 0
+            result += x^3
+        else
+            result += x
+        end
+    end
+    return result
+end
+```
+
+This function does the following:
+
+1. It initializes a `result` variable to 0, which will store the sum of the modified entries.
+
+2. It iterates through the input vector `xs` using `enumerate` to get both the index and value of each entry.
+
+3. For each entry:
+   - If the index is a multiple of both 3 and 4 (i.e., multiple of 12), it cubes the value (as per the rule for multiples of 4).
+   - If the index is a multiple of 3 (but not 4), it squares the value.
+   - If the index is a multiple of 4 (but not 3), it cubes the value.
+   - For all other indices, it leaves the value unchanged.
+
+4. It adds the modified (or unmodified) value to the `result`.
+
+5. After processing all entries, it returns the final sum.
+
+This implementation handles all the cases mentioned in the problem description:
+- It squares entries at indices that are multiples of 3.
+- It cubes entries at indices that are multiples of 4 (but not 3).
+- It leaves other entries unchanged.
+- It works for empty lists (returning 0).
+- It works with negative numbers.
+
+You can test it with the provided examples:
+
+```julia
+println(sum_squares([1, 2, 3]))  # Output: 12
+println(sum_squares(Int[]))  # Output: 0
+println(sum_squares([-1, -5, 2, -1, -5]))  # Output: -8
+```
+
+These should produce the expected outputs as shown in the example doctest.

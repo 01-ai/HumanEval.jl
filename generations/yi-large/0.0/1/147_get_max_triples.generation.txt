@@ -1,0 +1,24 @@
+function get_max_triples(n::Int)::Int
+    # Initialize the count of triples
+    triple_count = 0
+
+    # Generate the array a
+    a = [i^2 - i + 1 for i in 1:n]
+
+    # Iterate over all possible triples
+    for i in 1:n-2
+        for j in i+1:n-1
+            for k in j+1:n
+                # Check if the sum is a multiple of 3
+                if (a[i] + a[j] + a[k]) % 3 == 0
+                    triple_count += 1
+                end
+            end
+        end
+    end
+
+    return triple_count
+end
+
+# Example usage
+println(get_max_triples(5))  # Output: 1

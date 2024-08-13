@@ -1,0 +1,61 @@
+ Certainly! Below is the implementation of the `get_odd_collatz` function in Julia based on the provided docstring:
+
+```julia
+"""
+    get_odd_collatz(n::Int)::Vector{BigInt}
+
+Given a positive integer `n`, return a sorted list that has the odd numbers in
+collatz sequence.
+
+The Collatz conjecture is a conjecture in mathematics that concerns a sequence
+defined as follows: start with any positive integer n. Then each term is
+obtained from the previous term as follows: if the previous term is even, the
+next term is one half of the previous term. If the previous term is odd, the
+next term is 3 times the previous term plus 1. The conjecture is that no matter
+what value of n, the sequence will always reach 1.
+
+!!! note
+
+     1. Collatz(1) is [1].
+     2. returned list sorted in increasing order.
+     3. Consider using BigInt to avoid overflow
+
+# Examples
+
+```jldoctest
+julia> get_odd_collatz(5)  # The collatz sequence for 5 is [5, 16, 8, 4, 2, 1], so the odd numbers are only 1, and 5.
+2-element Vector{BigInt}:
+ 1
+ 5
+```
+"""
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    n = BigInt(n)
+    collatz_sequence = BigInt[]
+
+    while n != 1
+        push!(collatz_sequence, n)
+        if isodd(n)
+            n = 3n + 1
+        else
+            n = n ÷ 2
+        end
+    end
+    push!(collatz_sequence, 1)
+
+    odd_numbers = filter(isodd, collatz_sequence)
+    return sort(odd_numbers)
+end
+```
+
+### Explanation:
+1. **Initialization**: The function starts by converting the input integer `n` to a `BigInt` to avoid overflow issues.
+2. **Collatz Sequence Generation**: It then generates the Collatz sequence by repeatedly applying the rules:
+   - If `n` is odd, the next term is `3n + 1`.
+   - If `n` is even, the next term is `n ÷ 2`.
+   - The sequence stops when `n` becomes 1.
+3. **Filtering Odd Numbers**: The function filters out the odd numbers from the generated sequence.
+4. **Sorting**: The filtered odd numbers are sorted in increasing order.
+5. **Return**: The sorted list of odd numbers is returned.
+
+This implementation ensures that the function adheres to the requirements specified in the docstring.

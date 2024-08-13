@@ -1,0 +1,6 @@
+```julia
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    unique_if_even_free = filter(x -> all(isodd, digits(x)), xs)
+    sort(unique_if_even_free)
+end
+```

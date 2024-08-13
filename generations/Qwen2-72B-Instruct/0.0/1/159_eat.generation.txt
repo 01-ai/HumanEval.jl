@@ -1,0 +1,16 @@
+```julia
+function eat(number::Int, need::Int, remaining::Int)
+    # Calculate the actual number of carrots that can be eaten
+    actual_eat = min(need, remaining)
+    
+    # Update the total number of eaten carrots
+    total_eaten = number + actual_eat
+    
+    # Calculate the number of remaining carrots after eating
+    remaining_carrots = max(0, remaining - actual_eat)
+    
+    # Return the result as a vector
+    return [total_eaten, remaining_carrots]
+end
+```
+This function adheres to the given docstring and constraints, providing the correct functionality for the described problem.

@@ -1,0 +1,31 @@
+Here's a Julia function that implements the `closest_integer` functionality as described:
+
+```julia
+function closest_integer(value::String)::Int
+    # Convert the string to a floating-point number
+    num = parse(Float64, value)
+    
+    # Use the round function with the RoundNearestTiesAway mode
+    return round(Int, num, RoundNearestTiesAway)
+end
+```
+
+This function first converts the input string to a floating-point number using `parse`. Then, it uses the `round` function with the `RoundNearestTiesAway` mode to round the number to the nearest integer, rounding away from zero if the number is equidistant from two integers.
+
+Here are the examples provided in the docstring:
+
+```julia
+julia> closest_integer("10")
+10
+
+julia> closest_integer("15.3")
+15
+
+julia> closest_integer("14.5")
+15
+
+julia> closest_integer("-14.5")
+-15
+```
+
+You can test the function with these examples to ensure it works as expected.

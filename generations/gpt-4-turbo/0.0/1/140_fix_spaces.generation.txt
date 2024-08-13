@@ -1,0 +1,15 @@
+```julia
+function fix_spaces(s::String)::String
+    # Replace multiple spaces with a single dash
+    s = replace(s, r"\s{2,}" => "-")
+    # Replace remaining single spaces with underscores
+    s = replace(s, " " => "_")
+    return s
+end
+```
+
+This function uses regular expressions to handle the replacement of spaces. The `replace` function is used twice:
+1. First, it targets sequences of two or more spaces (`\s{2,}`) and replaces them with a single dash (`-`).
+2. Then, it replaces any remaining single spaces with underscores (`_`). 
+
+This approach ensures that all consecutive spaces are replaced with a dash first, before handling individual spaces, which matches the requirements specified in the docstring examples.

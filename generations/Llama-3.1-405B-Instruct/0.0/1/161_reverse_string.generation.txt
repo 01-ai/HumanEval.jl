@@ -1,0 +1,35 @@
+Here is the Julia function that implements the described behavior:
+```julia
+function reverse_string(s::String)::String
+    if !any(isletter, s)
+        return reverse(s)
+    else
+        return map(s) do c
+            if isletter(c)
+                islowercase(c) ? uppercase(c) : lowercase(c)
+            else
+                c
+            end
+        end |> join
+    end
+end
+```
+Here's an explanation of the code:
+
+1. We first check if the string contains any letters using the `any` function and the `isletter` predicate. If it doesn't, we simply reverse the string using the `reverse` function.
+2. If the string does contain letters, we use the `map` function to apply a transformation to each character in the string.
+3. Inside the `map` function, we check if the character is a letter using the `isletter` predicate. If it is, we swap its case using the `uppercase` and `lowercase` functions.
+4. If the character is not a letter, we leave it unchanged.
+5. Finally, we join the transformed characters back into a string using the `join` function.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> reverse_string("1234")
+"4321"
+
+julia> reverse_string("ab")
+"AB"
+
+julia> reverse_string("#a@C")
+"#A@c"
+```

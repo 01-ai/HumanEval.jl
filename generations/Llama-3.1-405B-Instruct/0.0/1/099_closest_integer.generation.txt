@@ -1,0 +1,34 @@
+Here is the Julia function that implements the behavior described in the docstring:
+```julia
+function closest_integer(value::String)::Int
+    num = parse(Float64, value)
+    if num >= 0
+        return ceil(Int, num - 0.5) + 1
+    else
+        return floor(Int, num + 0.5) - 1
+    end
+end
+```
+However, the above code has some issues. Here is the correct version:
+```julia
+function closest_integer(value::String)::Int
+    num = parse(Float64, value)
+    if num >= 0
+        return round(Int, num, RoundNearestTiesAway)
+    else
+        return round(Int, num, RoundNearestTiesAway)
+    end
+end
+```
+Or more simply:
+```julia
+function closest_integer(value::String)::Int
+    num = parse(Float64, value)
+    return round(Int, num, RoundNearestTiesAway)
+end
+```
+This function uses the `round` function with the `RoundNearestTiesAway` rounding mode, which rounds ties away from zero. This ensures that the function behaves as described in the docstring. 
+
+Note that the `parse` function is used to convert the input string to a `Float64` number, and the `round` function is used to round this number to the nearest integer. The `RoundNearestTiesAway` rounding mode is used to ensure that ties are rounded away from zero. 
+
+You can test this function with the examples provided in the docstring to see that it produces the correct results.

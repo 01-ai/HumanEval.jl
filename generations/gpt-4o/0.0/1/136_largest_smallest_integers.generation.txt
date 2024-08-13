@@ -1,0 +1,43 @@
+Here's the implementation of the `largest_smallest_integers` function in Julia:
+
+```julia
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing, Int}}
+    largest_negative = nothing
+    smallest_positive = nothing
+
+    for x in xs
+        if x < 0
+            if largest_negative === nothing || x > largest_negative
+                largest_negative = x
+            end
+        elseif x > 0
+            if smallest_positive === nothing || x < smallest_positive
+                smallest_positive = x
+            end
+        end
+    end
+
+    return (largest_negative, smallest_positive)
+end
+```
+
+### Explanation:
+1. **Initialization**: We initialize `largest_negative` and `smallest_positive` to `nothing`.
+2. **Iteration**: We iterate through each element `x` in the input vector `xs`.
+3. **Check for Negative Integers**: If `x` is negative, we check if `largest_negative` is `nothing` or if `x` is greater than the current `largest_negative`. If either condition is true, we update `largest_negative` to `x`.
+4. **Check for Positive Integers**: If `x` is positive, we check if `smallest_positive` is `nothing` or if `x` is smaller than the current `smallest_positive`. If either condition is true, we update `smallest_positive` to `x`.
+5. **Return**: Finally, we return a tuple containing `largest_negative` and `smallest_positive`.
+
+### Examples:
+```julia
+julia> largest_smallest_integers([2, 4, 1, 3, 5, 7])
+(nothing, 1)
+
+julia> largest_smallest_integers(Int[])
+(nothing, nothing)
+
+julia> largest_smallest_integers([0])
+(nothing, nothing)
+```
+
+This function correctly handles the cases where there are no negative or positive integers in the input list by returning `nothing` for the respective values.

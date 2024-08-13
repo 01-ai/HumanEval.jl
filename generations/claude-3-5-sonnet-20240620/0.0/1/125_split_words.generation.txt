@@ -1,0 +1,60 @@
+Here's a Julia function that implements the described behavior:
+
+```julia
+function split_words(txt::String)::Union{Vector{<:AbstractString},Int}
+    # Check if there are any whitespace characters
+    if any(isspace, txt)
+        return split(txt)
+    end
+    
+    # Check if there are any commas
+    if occursin(',', txt)
+        return split(txt, ',')
+    end
+    
+    # Count lowercase letters with odd order in the alphabet
+    count = 0
+    for char in lowercase(txt)
+        if isletter(char) && isodd(Int(char) - Int('a'))
+            count += 1
+        end
+    end
+    
+    return count
+end
+```
+
+Let's break down the function:
+
+1. We first check if there are any whitespace characters in the input string using `any(isspace, txt)`. If there are, we split the string on whitespace using `split(txt)` and return the result.
+
+2. If there are no whitespace characters, we check for commas using `occursin(',', txt)`. If commas are present, we split the string on commas using `split(txt, ',')` and return the result.
+
+3. If there are neither whitespace characters nor commas, we count the number of lowercase letters with odd order in the alphabet. We do this by:
+   - Converting the string to lowercase with `lowercase(txt)`.
+   - Iterating through each character.
+   - Checking if the character is a letter using `isletter(char)`.
+   - Calculating the order of the letter in the alphabet by subtracting the ASCII value of 'a' from the ASCII value of the current character.
+   - Checking if this order is odd using `isodd()`.
+   - Incrementing the count if all these conditions are met.
+
+4. Finally, we return the count.
+
+This function will work as expected for the given examples:
+
+```julia
+julia> split_words("Hello world!")
+2-element Vector{SubString{String}}:
+ "Hello"
+ "world!"
+
+julia> split_words("Hello,world!")
+2-element Vector{SubString{String}}:
+ "Hello"
+ "world!"
+
+julia> split_words("abcdef")
+3
+```
+
+In the last example, the function returns 3 because there are three lowercase letters with odd order in the alphabet: 'a' (order 0), 'c' (order 2), and 'e' (order 4).

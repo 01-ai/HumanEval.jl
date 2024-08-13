@@ -1,0 +1,10 @@
+```julia
+function sorted_list_sum(xs::Vector{String})::Vector{String}
+    # Filter out strings with odd lengths
+    even_length_strings = filter(x -> length(x) % 2 == 0, xs)
+    # Sort the list by length of each word, then alphabetically for equal lengths
+    sorted_list = sort(even_length_strings, by = x -> (length(x), x))
+    return sorted_list
+end
+```
+This function first filters out the strings with odd lengths using the `filter` function. Then, it sorts the resulting list by the length of each word using the `sort` function. If two words have the same length, it sorts them alphabetically. The sorted list is then returned.

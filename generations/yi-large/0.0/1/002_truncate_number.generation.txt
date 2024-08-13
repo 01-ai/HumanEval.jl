@@ -1,0 +1,8 @@
+function truncate_number(number::Float64)::Float64
+    integer_part, decimal_part = modf(number)
+    return decimal_part
+end
+
+# Example usage:
+# julia> truncate_number(3.5)
+# 0.5

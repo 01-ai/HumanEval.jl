@@ -1,0 +1,15 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function sum_squares(xs::Vector{Int})::Int
+    for (i, x) in enumerate(xs)
+        if i % 3 == 0
+            xs[i] = x^2
+        elseif i % 4 == 0
+            xs[i] = x^3
+        end
+    end
+    return sum(xs)
+end
+```
+This function first iterates over the input vector `xs` with index `i` and value `x`. If the index `i` is a multiple of 3, it squares the value `x` and updates the corresponding entry in the vector. If the index `i` is a multiple of 4 but not a multiple of 3, it cubes the value `x` and updates the corresponding entry in the vector. Finally, it returns the sum of all entries in the vector.

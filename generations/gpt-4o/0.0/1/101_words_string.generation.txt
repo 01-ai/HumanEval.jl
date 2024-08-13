@@ -1,0 +1,31 @@
+To implement the `words_string` function in Julia, we need to split the input string based on both commas and spaces, and then filter out any empty strings that might result from the splitting process. Here's how you can do it:
+
+1. Use a regular expression to split the string by either commas or spaces.
+2. Filter out any empty strings from the resulting array.
+
+Here's the implementation:
+
+```julia
+function words_string(s::String)::Vector{String}
+    # Split the string by commas or spaces using a regular expression
+    words = split(s, r"[,\s]+")
+    # Filter out any empty strings
+    return filter(x -> !isempty(x), words)
+end
+```
+
+Let's test the function with the provided examples:
+
+```julia
+println(words_string("Hi, my name is John"))
+println(words_string("One, two, three, four, five, six"))
+```
+
+This should output:
+
+```
+["Hi", "my", "name", "is", "John"]
+["One", "two", "three", "four", "five", "six"]
+```
+
+This implementation ensures that the string is split correctly and any empty strings are removed from the result.

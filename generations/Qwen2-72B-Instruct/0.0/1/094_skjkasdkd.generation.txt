@@ -1,0 +1,37 @@
+Here is the Julia function that implements the given doc string. The function `skjkasdkd` finds the largest prime number in the list and returns the sum of its digits.
+
+```julia
+function skjkasdkd(xs::Vector{Int})::Int
+
+    # Helper function to check if a number is prime
+    isprime(n::Int) = all(x -> n % x != 0, 2:n-1) && n > 1
+
+    # Find the largest prime number in the list
+    largest_prime = filter(isprime, xs) |> maximum
+
+    # Return the sum of the digits of the largest prime number
+    sum_of_digits = sum(digit for digit in digits(largest_prime))
+
+    return sum_of_digits
+end
+```
+
+However, the `isprime` function defined above is not efficient for large numbers. A more efficient way to check if a number is prime is to only check divisibility up to the square root of the number. Here is a more efficient version of the function:
+
+```julia
+function skjkasdkd(xs::Vector{Int})::Int
+
+    # Helper function to check if a number is prime
+    isprime(n::Int) = all(x -> n % x != 0, 2:isqrt(n)) && n > 1
+
+    # Find the largest prime number in the list
+    largest_prime = filter(isprime, xs) |> maximum
+
+    # Return the sum of the digits of the largest prime number
+    sum_of_digits = sum(digit for digit in digits(largest_prime))
+
+    return sum_of_digits
+end
+```
+
+Note: The `isprime` function defined above is not the most efficient way to check if a number is prime. Julia has a built-in `isprime` function which is much faster. However, since the built-in `isprime` function is not available in Julia versions before 1.5, the above function uses a custom `isprime` function. If you are using Julia 1.5 or later, you can replace the custom `isprime` function with the built-in `isprime` function.

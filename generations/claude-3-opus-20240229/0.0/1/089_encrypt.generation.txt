@@ -1,0 +1,51 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function encrypt(s::String)
+    encrypted = ""
+    for char in s
+        if isletter(char)
+            shift = (lowercase(char) - 'a' + 2 * 2) % 26
+            if isuppercase(char)
+                encrypted *= uppercase(Char(shift + 'a'))
+            else
+                encrypted *= Char(shift + 'a')
+            end
+        else
+            encrypted *= char
+        end
+    end
+    return encrypted
+end
+```
+
+Explanation:
+1. We define the function `encrypt` that takes a string `s` as an argument.
+2. We initialize an empty string `encrypted` to store the encrypted version of the input string.
+3. We iterate over each character `char` in the input string `s`.
+4. For each character, we check if it is a letter using the `isletter` function.
+   - If the character is a letter, we calculate the shift by subtracting 'a' from the lowercase version of the character, adding 2 multiplied by 2, and taking the modulus with 26. This ensures that the shift wraps around the alphabet.
+   - If the original character is uppercase (checked using `isuppercase`), we convert the shifted character back to uppercase using `uppercase` and append it to the `encrypted` string.
+   - If the original character is lowercase, we directly append the shifted character to the `encrypted` string.
+5. If the character is not a letter, we simply append it to the `encrypted` string without any modification.
+6. Finally, we return the `encrypted` string.
+
+The function handles both uppercase and lowercase letters, and it preserves any non-letter characters in the input string.
+
+You can test the function with the examples you provided:
+
+```julia
+julia> encrypt("hi")
+"lm"
+
+julia> encrypt("asdfghjkl")
+"ewhjklnop"
+
+julia> encrypt("gf")
+"kj"
+
+julia> encrypt("et")
+"ix"
+```
+
+The function should work as expected and encrypt the input string by rotating the alphabet based on the specified rule.

@@ -1,0 +1,10 @@
+```julia
+function histogram(s::String)::Dict{String, Int}
+    letter_counts = Dict{String, Int}()
+    for letter in split(s)
+        letter_counts[letter] = get(letter_counts, letter, 0) + 1
+    end
+    max_count = maximum(values(letter_counts), default=0)
+    return Dict(k => v for (k, v) in letter_counts if v == max_count)
+end
+```

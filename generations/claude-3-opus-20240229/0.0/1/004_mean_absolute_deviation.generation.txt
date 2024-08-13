@@ -1,0 +1,41 @@
+Here's the implementation of the `mean_absolute_deviation` function in Julia:
+
+```julia
+function mean_absolute_deviation(numbers::Vector{Float64})::Float64
+    n = length(numbers)
+    mean_value = sum(numbers) / n
+
+    absolute_differences = abs.(numbers .- mean_value)
+    mad = sum(absolute_differences) / n
+
+    return mad
+end
+```
+
+Explanation:
+
+1. The function takes a vector of floating-point numbers (`numbers`) as input and returns a single floating-point value.
+
+2. We calculate the length of the input vector using the `length` function and store it in the variable `n`. This represents the number of elements in the dataset.
+
+3. We calculate the mean of the dataset by summing up all the numbers using the `sum` function and dividing by `n`. The result is stored in the variable `mean_value`.
+
+4. We calculate the absolute differences between each element in the dataset and the mean value. We use the `abs` function to compute the absolute value of each difference, and the dot notation (`.-`) to perform element-wise subtraction between the `numbers` vector and `mean_value`. The resulting absolute differences are stored in the `absolute_differences` vector.
+
+5. We calculate the Mean Absolute Deviation by summing up all the absolute differences using the `sum` function and dividing by `n`. The result is stored in the variable `mad`.
+
+6. Finally, we return the calculated Mean Absolute Deviation value.
+
+You can test the function with the provided example:
+
+```julia
+julia> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0])
+1.0
+```
+
+The Mean Absolute Deviation for the given dataset `[1.0, 2.0, 3.0, 4.0]` is calculated as follows:
+- Mean value: (1.0 + 2.0 + 3.0 + 4.0) / 4 = 2.5
+- Absolute differences: [1.5, 0.5, 0.5, 1.5]
+- Mean Absolute Deviation: (1.5 + 0.5 + 0.5 + 1.5) / 4 = 1.0
+
+Therefore, the function correctly returns the Mean Absolute Deviation of 1.0 for the given dataset.

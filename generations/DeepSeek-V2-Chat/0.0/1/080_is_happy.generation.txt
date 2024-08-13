@@ -1,0 +1,18 @@
+Here's the implementation of the `is_happy` function in Julia:
+
+```julia
+function is_happy(s::String)::Bool
+    n = length(s)
+    if n < 3
+        return false
+    end
+    for i in 1:(n-2)
+        if s[i] == s[i+1] || s[i] == s[i+2] || s[i+1] == s[i+2]
+            return false
+        end
+    end
+    return true
+end
+```
+
+This function checks if the string `s` has a length of at least 3. If not, it returns `false`. If the length is sufficient, it iterates through the string, checking every set of three consecutive characters to ensure they are all distinct. If any set of three consecutive characters are not all distinct, it returns `false`. If all sets of three consecutive characters are distinct, it returns `true`.

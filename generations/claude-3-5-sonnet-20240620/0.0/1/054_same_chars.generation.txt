@@ -1,0 +1,29 @@
+Here's a Julia function that checks if two words have the same characters, regardless of their order or frequency:
+
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    # Convert strings to sets of characters
+    set0 = Set(s0)
+    set1 = Set(s1)
+    
+    # Compare the sets
+    return set0 == set1
+end
+```
+
+This function works as follows:
+
+1. We convert both input strings `s0` and `s1` to sets of characters using `Set(s0)` and `Set(s1)`. 
+   - A set only contains unique elements, so this step eliminates duplicate characters.
+
+2. We then compare these sets using `==`.
+   - If the sets are equal, it means both strings contain exactly the same unique characters.
+
+3. The function returns the result of this comparison as a boolean value.
+
+This implementation correctly handles all the example cases provided:
+
+- It returns `true` for cases where the strings have the same unique characters, regardless of their order or frequency.
+- It returns `false` when one string contains a character that the other doesn't have.
+
+The use of sets makes this solution efficient, as set operations in Julia are generally fast. The time complexity is O(n) where n is the length of the longer string, as we need to create sets from the strings.

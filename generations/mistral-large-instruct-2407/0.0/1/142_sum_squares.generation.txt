@@ -1,0 +1,51 @@
+ Certainly! Below is the implementation of the `sum_squares` function in Julia based on the provided docstring:
+
+```julia
+"""
+    sum_squares(xs::Vector{Int})::Int
+
+This function will take a list of integers. For all entries in the list, the
+function shall square the integer entry if its index is a multiple of 3 and will
+cube the integer entry if its index is a multiple of 4 and not a multiple of 3.
+The function will not change the entries in the list whose indexes are not a
+multiple of 3 or 4. The function shall then return the sum of all entries.
+
+# Examples
+
+```jldoctest
+julia> sum_squares([1, 2, 3])
+12
+
+julia> sum_squares(Int[])
+0
+
+julia> sum_squares([-1, -5, 2, -1, -5])
+-8
+```
+"""
+function sum_squares(xs::Vector{Int})::Int
+    total_sum = 0
+    for (index, value) in enumerate(xs)
+        if index % 3 == 0
+            total_sum += value^2
+        elseif index % 4 == 0
+            total_sum += value^3
+        else
+            total_sum += value
+        end
+    end
+    return total_sum
+end
+```
+
+### Explanation:
+1. **Function Signature**: The function `sum_squares` takes a vector of integers `xs` and returns an integer.
+2. **Initialization**: A variable `total_sum` is initialized to 0 to keep track of the sum of the modified entries.
+3. **Loop through the Vector**: The function iterates over the vector using `enumerate` to get both the index and the value of each entry.
+4. **Conditional Modification**:
+   - If the index is a multiple of 3, the value is squared and added to `total_sum`.
+   - If the index is a multiple of 4 and not a multiple of 3, the value is cubed and added to `total_sum`.
+   - Otherwise, the value is added to `total_sum` without modification.
+5. **Return the Result**: The function returns the `total_sum` after processing all entries.
+
+This implementation ensures that the function behaves as described in the docstring and handles the examples correctly.

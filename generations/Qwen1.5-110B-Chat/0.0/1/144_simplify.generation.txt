@@ -1,0 +1,14 @@
+```julia
+function simplify(x::String, n::String)::Bool
+    x_num, x_den = map(parse, split(x, "/"))
+    n_num, n_den = map(parse, split(n, "/"))
+    
+    # Multiply the numerators and denominators
+    result_num = x_num * n_num
+    result_den = x_den * n_den
+    
+    # Check if the result is a whole number by comparing the denominator to 1
+    result_den == 1
+end
+```
+This Julia function takes two string inputs representing fractions, `x` and `n`, and determines if their multiplication results in a whole number. It does this by parsing the numerators and denominators, multiplying them accordingly, and then checking if the resulting denominator is 1, which would indicate that the product is a whole number.

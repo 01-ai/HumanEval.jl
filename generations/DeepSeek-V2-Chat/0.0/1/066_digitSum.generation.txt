@@ -1,0 +1,9 @@
+Here's the implementation of the `digitSum` function in Julia:
+
+```julia
+function digitSum(s::String)::Int
+    sum(c -> isuppercase(c) ? Int(c) : 0, s)
+end
+```
+
+This function iterates over each character in the string `s`, checks if it is an uppercase character using `isuppercase`, and if so, converts it to its ASCII integer value using `Int(c)`. The sum of these values is then returned. If the character is not uppercase, it contributes `0` to the sum.

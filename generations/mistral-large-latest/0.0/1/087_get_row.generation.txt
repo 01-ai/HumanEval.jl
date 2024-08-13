@@ -1,0 +1,18 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function get_row(xs::Vector{Vector{Int}}, x::Int)::Vector{Tuple{Int, Int}}
+    result = Tuple{Int, Int}[]
+    for (i, row) in enumerate(xs)
+        for (j, col) in enumerate(row)
+            if col == x
+                push!(result, (i, j))
+            end
+        end
+    end
+    sort!(result, by = x -> (x[1], -x[2]))
+    return result
+end
+```
+
+This function iterates over each row and column of the 2D data. If the column value equals the given integer `x`, it adds a tuple of the row and column indices to the result list. After all iterations, it sorts the result list by row indices in ascending order and column indices in descending order.

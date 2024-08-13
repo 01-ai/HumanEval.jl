@@ -1,0 +1,46 @@
+Here's the implementation of the `longest` function in Julia based on the given description:
+
+```julia
+function longest(xs::Vector{String})::Union{Nothing, String}
+    if isempty(xs)
+        return nothing
+    end
+    
+    max_length = 0
+    longest_string = ""
+    
+    for str in xs
+        if length(str) > max_length
+            max_length = length(str)
+            longest_string = str
+        end
+    end
+    
+    return longest_string
+end
+```
+
+Explanation:
+
+1. The function takes a vector of strings `xs` as input and returns either `Nothing` or a `String`.
+
+2. We first check if the input vector `xs` is empty using the `isempty` function. If it is empty, we return `nothing` since there are no strings to compare.
+
+3. We initialize two variables:
+   - `max_length` is set to 0 and will keep track of the maximum length encountered so far.
+   - `longest_string` is set to an empty string and will store the longest string found.
+
+4. We iterate over each string `str` in the input vector `xs` using a `for` loop.
+
+5. For each string, we compare its length with the current `max_length`. If the length of the current string is greater than `max_length`, we update `max_length` to the length of the current string and update `longest_string` to the current string.
+
+6. After the loop finishes, we have found the longest string in the vector, and it is stored in `longest_string`.
+
+7. Finally, we return `longest_string`, which contains the longest string from the input vector.
+
+The function satisfies the given examples:
+- If the input vector is empty (`String[]`), it returns `nothing`.
+- If the input vector contains strings of equal length, it returns the first one (e.g., `["a", "b", "c"]` returns `"a"`).
+- If the input vector contains strings of different lengths, it returns the longest one (e.g., `["a", "bb", "ccc"]` returns `"ccc"`).
+
+The time complexity of this function is O(n), where n is the number of strings in the input vector, as it iterates over each string once. The space complexity is O(1) since it only uses a constant amount of extra space to store the `max_length` and `longest_string` variables.

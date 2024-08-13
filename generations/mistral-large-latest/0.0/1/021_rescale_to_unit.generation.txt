@@ -1,0 +1,13 @@
+Sure, here is the Julia function that implements the required functionality:
+
+```julia
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    if length(numbers) < 2
+        error("The list must contain at least two elements")
+    end
+    min_num = minimum(numbers)
+    max_num = maximum(numbers)
+    return [(num - min_num) / (max_num - min_num) for num in numbers]
+end
+```
+This function first checks if the input vector has at least two elements. If not, it throws an error. Then it finds the minimum and maximum numbers in the vector. Finally, it applies a linear transformation to each number in the vector such that the smallest number becomes 0 and the largest number becomes 1. The transformed vector is then returned.

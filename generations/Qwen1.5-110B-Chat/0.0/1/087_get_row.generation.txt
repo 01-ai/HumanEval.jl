@@ -1,0 +1,13 @@
+```julia
+function get_row(xs::Vector{Vector{Int}}, x::Int)::Vector{Tuple{Int, Int}}
+    coordinates = []
+    for (row_num, row) in enumerate(xs)
+        row_coordinates = [(col_num + 1, row_num + 1) for (col_num, col) in enumerate(row) if col == x]
+        sorted_row_coordinates = sort!(row_coordinates, by = t -> (t[2], -t[1]))
+        append!(coordinates, sorted_row_coordinates)
+    end
+    sort!(coordinates, by = t -> t[2])
+    return coordinates
+end
+```
+This Julia function iterates through the given nested list (`xs`) and finds the integer `x` in each row. For each occurrence, it creates a tuple representing the row and column indices (1-based, as per the problem statement) and appends it to a list. The row coordinates are sorted in ascending order, and within each row, the column coordinates are sorted in descending order. Finally, the function returns the sorted list of tuples.

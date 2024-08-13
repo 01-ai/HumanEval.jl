@@ -1,0 +1,15 @@
+Sure, I can help with that. Here's a simple Julia function that meets your requirements:
+
+```julia
+function truncate_number(number::Float64)::Float64
+    # Check if the number is positive
+    if number >= 0
+        # Use the mod function to get the decimal part of the number
+        return mod(number, 1)
+    else
+        error("The input number must be positive")
+    end
+end
+```
+
+This function uses the `mod` function to find the remainder when the number is divided by 1, which is effectively the decimal part of the number. If the number is not positive, it throws an error.

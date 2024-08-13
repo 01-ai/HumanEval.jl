@@ -1,0 +1,39 @@
+To solve the problem of determining if two strings of parentheses can be concatenated to form a balanced string, we can follow these steps:
+
+1. Count the number of open and close parentheses in each string.
+2. Check if the total number of open parentheses equals the total number of close parentheses.
+3. Ensure that the number of unmatched open parentheses (after considering the close parentheses from the second string) does not exceed the number of open parentheses in the first string.
+
+Here's the implementation of the `match_parens` function in Julia:
+
+```julia
+function match_parens(lst::Vector{String})::String
+    # Count the number of open and close parentheses in each string
+    count_open1 = count(c -> c == '(', lst[1])
+    count_close1 = count(c -> c == ')', lst[1])
+    count_open2 = count(c -> c == '(', lst[2])
+    count_close2 = count(c -> c == ')', lst[2])
+    
+    # Total open and close parentheses
+    total_open = count_open1 + count_open2
+    total_close = count_close1 + count_close2
+    
+    # Check if the total number of open parentheses equals the total number of close parentheses
+    if total_open != total_close
+        return "No"
+    end
+    
+    # Check if the number of unmatched open parentheses does not exceed the number of open parentheses in the first string
+    if count_open1 >= count_close2
+        return "Yes"
+    else
+        return "No"
+    end
+end
+
+# Examples
+println(match_parens(["()(", ")"]))  # "Yes"
+println(match_parens([")", ")"]))    # "No"
+```
+
+This function works by first counting the parentheses in each string, then checking if the total number of open and close parentheses match. Finally, it ensures that the first string has enough open parentheses to match the close parentheses from the second string. If all conditions are met, it returns "Yes"; otherwise, it returns "No".

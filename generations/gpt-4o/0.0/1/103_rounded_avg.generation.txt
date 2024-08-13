@@ -1,0 +1,42 @@
+Here's the implementation of the `rounded_avg` function in Julia:
+
+```julia
+function rounded_avg(n::Int, m::Int)::Union{Int, String}
+    if n > m
+        return -1
+    end
+    
+    # Calculate the sum of integers from n to m
+    total_sum = sum(n:m)
+    
+    # Calculate the number of integers from n to m
+    count = m - n + 1
+    
+    # Calculate the average and round it to the nearest integer
+    avg = round(total_sum / count)
+    
+    # Convert the rounded average to binary string
+    return string(bin(avg))
+end
+```
+
+Let's break down the function step-by-step:
+
+1. **Check if `n` is greater than `m`:**
+   - If `n` is greater than `m`, return `-1` as specified.
+
+2. **Calculate the sum of integers from `n` to `m`:**
+   - Use the `sum` function with the range `n:m` to get the total sum of all integers between `n` and `m` inclusive.
+
+3. **Calculate the number of integers from `n` to `m`:**
+   - The count of integers in the range is `m - n + 1`.
+
+4. **Calculate the average and round it:**
+   - Compute the average by dividing the total sum by the count of integers.
+   - Use the `round` function to round the average to the nearest integer.
+
+5. **Convert the rounded average to a binary string:**
+   - Use the `bin` function to convert the rounded average to a binary string.
+   - Use the `string` function to ensure the result is a string.
+
+This function should now work as expected based on the provided examples.

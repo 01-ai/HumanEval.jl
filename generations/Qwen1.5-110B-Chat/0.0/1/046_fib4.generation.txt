@@ -1,0 +1,18 @@
+```julia
+function fib4(n::Int)::Int
+    if n <= 1
+        return 0
+    elseif n == 2
+        return 2
+    elseif n == 3
+        return 0
+    end
+
+    a, b, c, d = 0, 0, 2, 0
+    for _ in 4:n
+        a, b, c, d = d, a, b, a + b + c + d
+    end
+    return d
+end
+```
+This function efficiently computes the n-th element of the fib4 number sequence using an iterative approach, which avoids recursion and is more performant for larger values of n.

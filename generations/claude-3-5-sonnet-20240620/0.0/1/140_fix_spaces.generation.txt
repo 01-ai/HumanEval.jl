@@ -1,0 +1,46 @@
+Here's a Julia function that implements the requested behavior:
+
+```julia
+function fix_spaces(s::String)::String
+    # First, replace two or more consecutive spaces with a single dash
+    s = replace(s, r" {2,}" => "-")
+    
+    # Then, replace any remaining single spaces with underscores
+    s = replace(s, " " => "_")
+    
+    return s
+end
+```
+
+This function does the following:
+
+1. It uses a regular expression `r" {2,}"` to match two or more consecutive spaces and replaces them with a single dash `-`.
+
+2. After that, it replaces any remaining single spaces with underscores `_`.
+
+3. Finally, it returns the modified string.
+
+This implementation will handle all the cases mentioned in the examples:
+
+```julia
+julia> fix_spaces("Example")
+"Example"
+
+julia> fix_spaces("Example 1")
+"Example_1"
+
+julia> fix_spaces(" Example 2")
+"_Example_2"
+
+julia> fix_spaces(" Example   3")
+"_Example-3"
+```
+
+Note that this function will also handle cases with more than three consecutive spaces, replacing them all with a single dash. For example:
+
+```julia
+julia> fix_spaces("Too    many      spaces")
+"Too-many-spaces"
+```
+
+This approach ensures that all spaces are replaced according to the specified rules, regardless of how many consecutive spaces appear in the input string.

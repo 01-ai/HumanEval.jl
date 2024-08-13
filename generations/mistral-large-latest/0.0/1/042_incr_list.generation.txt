@@ -1,0 +1,8 @@
+Sure, here is the Julia function that matches your docstring:
+
+```julia
+function incr_list(xs::Vector)::Vector
+    return [x + 1 for x in xs]
+end
+```
+This function uses a list comprehension to create a new vector where each element is the corresponding element in the input vector incremented by 1. The function then returns this new vector.

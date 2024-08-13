@@ -1,0 +1,44 @@
+Here's a Julia function that implements the `common` functionality as described:
+
+```julia
+function common(l1::Vector, l2::Vector)::Vector
+    # Convert both input vectors to sets
+    set1 = Set(l1)
+    set2 = Set(l2)
+    
+    # Find the intersection of the two sets
+    common_elements = intersect(set1, set2)
+    
+    # Convert the result back to a vector and sort it
+    return sort(collect(common_elements))
+end
+```
+
+This implementation does the following:
+
+1. It converts both input vectors `l1` and `l2` to sets using `Set()`. This automatically removes any duplicates within each list.
+
+2. It uses the `intersect()` function to find the common elements between the two sets. This operation is typically more efficient than manually comparing elements.
+
+3. The result of the intersection is then converted back to a vector using `collect()`.
+
+4. Finally, the resulting vector is sorted using `sort()` to ensure the output is in ascending order.
+
+This implementation will work for any type of elements that can be stored in a `Set` and sorted. It's efficient because it uses set operations, which are generally faster for this kind of task than iterating through the lists manually.
+
+You can use this function exactly as shown in the examples:
+
+```julia
+julia> common([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121])
+3-element Vector{Int64}:
+   1
+   5
+ 653
+
+julia> common([5, 3, 2, 8], [3, 2])
+2-element Vector{Int64}:
+ 2
+ 3
+```
+
+This implementation satisfies all the requirements: it returns a sorted vector of unique common elements from the two input lists.

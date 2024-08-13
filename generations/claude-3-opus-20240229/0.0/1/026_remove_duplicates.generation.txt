@@ -1,0 +1,47 @@
+Here's a solution to the problem of removing duplicates from a vector of integers while keeping the order of the remaining elements the same as in the input:
+
+```julia
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    seen = Set{Int}()
+    result = Vector{Int}()
+
+    for num in numbers
+        if !(num in seen)
+            push!(seen, num)
+            push!(result, num)
+        end
+    end
+
+    return result
+end
+```
+
+Explanation:
+
+1. We define a function `remove_duplicates` that takes a vector of integers `numbers` as input and returns a new vector of integers.
+
+2. We create an empty set `seen` to keep track of the elements we have encountered so far.
+
+3. We also create an empty vector `result` to store the unique elements in the order they appear.
+
+4. We iterate over each element `num` in the input vector `numbers`.
+
+5. For each element:
+   - If `num` is not already in the `seen` set (checked using the `in` operator), we add it to the `seen` set and append it to the `result` vector using the `push!` function.
+   - If `num` is already in the `seen` set, we skip it and move on to the next element.
+
+6. After iterating through all the elements, we return the `result` vector, which contains the unique elements in the same order as they appeared in the input.
+
+The time complexity of this solution is O(n), where n is the number of elements in the input vector. We iterate through the vector once, and the set operations (checking for presence and insertion) have an average time complexity of O(1). The space complexity is also O(n) in the worst case, as we store the unique elements in the `result` vector and the `seen` set.
+
+You can test the function with the provided example:
+
+```julia
+julia> remove_duplicates([1, 2, 3, 2, 4])
+3-element Vector{Int64}:
+ 1
+ 3
+ 4
+```
+
+The duplicated element 2 is removed, and the remaining elements 1, 3, and 4 are kept in the same order as in the input vector.

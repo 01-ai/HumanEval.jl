@@ -1,0 +1,33 @@
+function exchange(lst1::Vector{Int}, lst2::Vector{Int})::String
+    # First, check if all numbers in lst1 are even
+    if all(isodd, lst1)
+        return "NO"  # If all are odd, it's impossible to make them even
+    end
+    
+    # Now, check if there's at least one even number in lst2
+    if all(isodd, lst2)
+        return "NO"  # If all are odd, it's impossible to exchange for even
+    end
+    
+    # If we reach here, there's at least one even number in lst2
+    # and not all numbers in lst1 are odd.
+    
+    # Check if it's possible to exchange odd numbers in lst1 with even numbers in lst2
+    odds_in_lst1 = filter(isodd, lst1)
+    evens_in_lst2 = filter(iseven, lst2)
+    
+    # If the number of odd numbers in lst1 is less than or equal to the number of even numbers in lst2,
+    # it's possible to exchange and make all numbers in lst1 even
+    if length(odds_in_lst1) <= length(evens_in_lst2)
+        return "YES"
+    else
+        return "NO"
+    end
+end
+
+# Example usage:
+# julia> exchange([1, 2, 3, 4], [1, 2, 3, 4])
+# "YES"
+# 
+# julia> exchange([1, 2, 3, 4], [1, 5, 3, 4])
+# "NO"

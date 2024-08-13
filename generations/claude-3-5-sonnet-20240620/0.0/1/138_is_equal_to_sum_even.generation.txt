@@ -1,0 +1,60 @@
+To solve this problem, we need to implement a function that checks if a given number `n` can be written as the sum of exactly 4 positive even numbers. Here's a Julia function that does this:
+
+```julia
+function is_equal_to_sum_even(n::Int)::Bool
+    # Check if n is less than 8 (smallest sum of 4 positive even numbers)
+    if n < 8
+        return false
+    end
+    
+    # Check if n is odd (sum of 4 even numbers is always even)
+    if n % 2 != 0
+        return false
+    end
+    
+    # Check if n can be represented as sum of 4 positive even numbers
+    for a in 2:2:n-6
+        for b in 2:2:n-a-4
+            for c in 2:2:n-a-b-2
+                d = n - a - b - c
+                if d > 0 && d % 2 == 0
+                    return true
+                end
+            end
+        end
+    end
+    
+    return false
+end
+```
+
+Let's break down the function:
+
+1. We first check if `n` is less than 8, which is the smallest possible sum of 4 positive even numbers (2 + 2 + 2 + 2). If it is, we return `false`.
+
+2. We then check if `n` is odd. Since the sum of 4 even numbers is always even, if `n` is odd, we can immediately return `false`.
+
+3. If `n` passes these initial checks, we use nested loops to try all possible combinations of 4 positive even numbers that sum up to `n`.
+
+4. We iterate `a`, `b`, and `c` through even numbers, and calculate `d` as the difference between `n` and the sum of `a`, `b`, and `c`.
+
+5. If `d` is positive and even, we have found a valid combination, so we return `true`.
+
+6. If we've gone through all possible combinations without finding a valid one, we return `false`.
+
+This function will correctly handle the example cases:
+
+```julia
+julia> is_equal_to_sum_even(4)
+false
+
+julia> is_equal_to_sum_even(6)
+false
+
+julia> is_equal_to_sum_even(8)
+true
+```
+
+The function returns `true` for 8 because 8 can be written as 2 + 2 + 2 + 2.
+
+Note that this solution has a time complexity of O(n^3) in the worst case, which might be slow for very large numbers. For better performance with large numbers, more advanced mathematical approaches or dynamic programming techniques could be considered.

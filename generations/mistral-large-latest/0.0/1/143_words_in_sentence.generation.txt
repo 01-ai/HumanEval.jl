@@ -1,0 +1,33 @@
+Sure, I can help you implement the function `words_in_sentence` in Julia. Here's a possible solution:
+
+```julia
+function isprime(n::Int)
+    if n < 2
+        return false
+    elseif n < 4
+        return true
+    elseif n % 2 == 0
+        return false
+    else
+        for d in 3:2:isqrt(n)
+            if n % d == 0
+                return false
+            end
+        end
+        return true
+    end
+end
+
+function words_in_sentence(sentence::String)::String
+    words = split(sentence)
+    result = []
+    for word in words
+        if isprime(length(word))
+            push!(result, word)
+        end
+    end
+    return join(result, " ")
+end
+```
+
+In this solution, I first defined a helper function `isprime` to check if a number is prime. Then, in the `words_in_sentence` function, I split the sentence into words, and for each word, I check if its length is prime. If it is, I add it to the result. Finally, I join the words in the result with a space and return the result.

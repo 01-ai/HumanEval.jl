@@ -1,0 +1,21 @@
+```julia
+function get_closest_vowel(word::String)::String
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    len = length(word)
+    
+    # Iterate from the second last character to the second character
+    for i in len-1:-1:2
+        if word[i] in vowels && !(word[i-1] in vowels) && !(word[i+1] in vowels)
+            return string(word[i])
+        end
+    end
+    
+    return ""
+end
+
+# Examples
+println(get_closest_vowel("yogurt"))  # "u"
+println(get_closest_vowel("FULL"))    # "U"
+println(get_closest_vowel("quick"))   # ""
+println(get_closest_vowel("ab"))      # ""
+```

@@ -1,0 +1,20 @@
+```julia
+function is_nested(s::String)::Bool
+    depth = 0
+    has_nested = false
+    for char in s
+        if char == '['
+            depth += 1
+            if depth > 1
+                has_nested = true
+            end
+        elseif char == ']'
+            depth -= 1
+            if depth < 0
+                return false # Early return if there's an unmatched closing bracket
+            end
+        end
+    end
+    return has_nested && depth == 0 # Check for nested brackets and balanced sequence
+end
+```

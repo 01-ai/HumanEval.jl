@@ -1,0 +1,13 @@
+```julia
+function change_base(x::Int, base::Int)::String
+    if base < 2 || base > 9
+        error("Base must be between 2 and 9")
+    end
+    digits = []
+    while x > 0
+        push!(digits, x % base)
+        x = div(x, base)
+    end
+    return join(digits, "") |> reverse
+end
+```

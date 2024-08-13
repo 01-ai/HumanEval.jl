@@ -1,0 +1,18 @@
+```julia
+function encode_swap(message::String)::String
+    vowels = Dict('a' => 'c', 'e' => 'g', 'i' => 'k', 'o' => 'q', 'u' => 'w',
+                  'A' => 'C', 'E' => 'G', 'I' => 'K', 'O' => 'Q', 'U' => 'W')
+    encoded = ""
+    for char in message
+        if char in vowels
+            append!(encoded, vowels[char])
+        elseif isletter(char)
+            append!(encoded, islower(char) ? uppercase(char) : lowercase(char))
+        else
+            append!(encoded, char)
+        end
+    end
+    return encoded
+end
+```
+This function `encode_swap` takes a string `message` as input and returns a new string where all letters have their case swapped and all vowels are replaced with the letter that appears two places after them in the English alphabet. The function uses a dictionary to map vowels to their corresponding replacements and iterates over each character in the input string, applying the transformations as needed.

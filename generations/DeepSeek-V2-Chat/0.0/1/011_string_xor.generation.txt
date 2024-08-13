@@ -1,0 +1,20 @@
+Here's the implementation of the `string_xor` function in Julia:
+
+```julia
+function string_xor(a::String, b::String)::String
+    # Ensure both strings are of the same length
+    if length(a) != length(b)
+        throw(ArgumentError("Input strings must be of the same length"))
+    end
+
+    # Perform binary XOR on each character
+    result = map(zip(a, b)) do (char_a, char_b)
+        xor(parse(Int, char_a), parse(Int, char_b))
+    end
+
+    # Convert the result back to a string
+    return join(string.(result))
+end
+```
+
+This function first checks if the input strings are of the same length. If not, it throws an `ArgumentError`. Then, it performs the binary XOR operation on each pair of characters from the input strings using the `map` function and the `xor` function from Julia's standard library. Finally, it converts the resulting array of integers back to a string and returns it.

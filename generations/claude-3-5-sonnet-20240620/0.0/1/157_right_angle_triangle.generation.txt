@@ -1,0 +1,44 @@
+To implement the `right_angle_triangle` function in Julia, we'll use the Pythagorean theorem. In a right-angled triangle, the square of the length of the hypotenuse (the longest side) is equal to the sum of squares of the other two sides.
+
+Here's the implementation:
+
+```julia
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    sides = sort([a, b, c])
+    return isapprox(sides[1]^2 + sides[2]^2, sides[3]^2, rtol=1e-9)
+end
+```
+
+Let's break down this implementation:
+
+1. We use the `sort` function to arrange the sides in ascending order. This ensures that the largest side (the potential hypotenuse) is always at the end.
+
+2. We check if the sum of squares of the two shorter sides is approximately equal to the square of the longest side using the Pythagorean theorem.
+
+3. We use `isapprox` instead of exact equality to account for potential floating-point inaccuracies. The `rtol` parameter sets a relative tolerance of 1e-9, which should be suitable for most practical cases.
+
+4. The function returns `true` if the condition is met (indicating a right-angled triangle) and `false` otherwise.
+
+This implementation will work for both integer and floating-point inputs. It correctly handles cases where the right angle might not be between the two shortest sides.
+
+You can use this function as shown in the examples:
+
+```julia
+julia> right_angle_triangle(3, 4, 5)
+true
+
+julia> right_angle_triangle(1, 2, 3)
+false
+```
+
+The function will also work correctly for floating-point inputs and for triangles where the right angle is not between the two shortest sides:
+
+```julia
+julia> right_angle_triangle(5.0, 12.0, 13.0)
+true
+
+julia> right_angle_triangle(12, 5, 13)
+true
+```
+
+This implementation should cover all cases and provide accurate results for determining whether a triangle is right-angled based on its side lengths.

@@ -1,0 +1,18 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function get_closest_vowel(word::String)::String
+    vowels = "aeiouAEIOU"
+    consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
+
+    for i in length(word)-1:-1:2
+        if word[i] in vowels && word[i-1] in consonants && word[i+1] in consonants
+            return word[i]
+        end
+    end
+
+    return ""
+end
+```
+
+This function iterates over the word from the right side (index `length(word)-1` to `2`) and checks if the current character is a vowel and both its neighbors are consonants. If it finds such a vowel, it returns it. If it doesn't find any vowel that meets the conditions, it returns an empty string.

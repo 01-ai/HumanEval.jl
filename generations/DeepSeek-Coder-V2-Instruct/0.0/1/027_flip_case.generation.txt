@@ -1,0 +1,9 @@
+ Here's the implementation of the `flip_case` function in Julia:
+
+```julia
+function flip_case(s::String)::String
+    return map(c -> islower(c) ? uppercase(c) : lowercase(c), s)
+end
+```
+
+This function uses the `map` function to apply a transformation to each character in the string `s`. The transformation checks if a character is lowercase using `islower(c)`. If it is, it converts it to uppercase using `uppercase(c)`. If it is not lowercase (implying it is uppercase), it converts it to lowercase using `lowercase(c)`.

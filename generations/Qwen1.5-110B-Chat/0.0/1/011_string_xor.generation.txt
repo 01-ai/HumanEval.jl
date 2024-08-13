@@ -1,0 +1,9 @@
+```julia
+function string_xor(a::String, b::String)::String
+    result = ""
+    for i in 1:min(length(a), length(b))
+        result *= string(parse(Int, string(a[i]) ⊻ string(b[i])))
+    end
+    return result
+end
+```

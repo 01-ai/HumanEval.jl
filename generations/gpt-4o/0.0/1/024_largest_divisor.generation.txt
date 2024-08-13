@@ -1,0 +1,21 @@
+Sure, here is the implementation of the `largest_divisor` function in Julia:
+
+```julia
+function largest_divisor(n::Int)::Int
+    for i in (n-1):-1:1
+        if n % i == 0
+            return i
+        end
+    end
+    return 1  # This line is theoretically unreachable since 1 is always a divisor of any n > 1
+end
+```
+
+This function iterates from `n-1` down to `1` and returns the first number that divides `n` evenly. The largest divisor smaller than `n` will be found in this way. 
+
+Here is how it works with the example provided:
+
+```julia
+julia> largest_divisor(15)
+5
+```

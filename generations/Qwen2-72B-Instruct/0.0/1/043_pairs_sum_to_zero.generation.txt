@@ -1,0 +1,12 @@
+```julia
+function pairs_sum_to_zero(l::Vector{Int})
+    elements = Set{Int}()
+    for num in l
+        if -num in elements
+            return true
+        end
+        push!(elements, num)
+    end
+    return false
+end
+```

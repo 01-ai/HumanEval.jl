@@ -1,0 +1,18 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function longest(xs::Vector{String})::Union{Nothing, String}
+    if isempty(xs)
+        return nothing
+    else
+        longest_string = xs[1]
+        for string in xs
+            if length(string) > length(longest_string)
+                longest_string = string
+            end
+        end
+        return longest_string
+    end
+end
+```
+This function first checks if the input vector `xs` is empty. If it is, the function returns `nothing`. If `xs` is not empty, the function initializes `longest_string` as the first string in `xs`. Then it iterates over the strings in `xs`, and if it finds a string that is longer than `longest_string`, it updates `longest_string`. Finally, the function returns `longest_string`.

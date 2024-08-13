@@ -1,0 +1,63 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function is_equal_to_sum_even(n::Int)::Bool
+    # Check if n is less than 8
+    if n < 8
+        return false
+    end
+
+    # Check if n is odd
+    if n % 2 != 0
+        return false
+    end
+
+    # Check if n can be written as the sum of 4 positive even numbers
+    for a in 2:2:n-6
+        for b in a:2:n-4-a
+            for c in b:2:n-2-a-b
+                d = n - a - b - c
+                if d % 2 == 0 && d >= c
+                    return true
+                end
+            end
+        end
+    end
+
+    return false
+end
+```
+
+Explanation:
+1. We first check if the given number `n` is less than 8. If it is, we know that it cannot be written as the sum of 4 positive even numbers, so we return `false`.
+
+2. Next, we check if `n` is odd. If it is, we know that it cannot be written as the sum of even numbers, so we return `false`.
+
+3. If `n` is even and greater than or equal to 8, we proceed to check if it can be written as the sum of 4 positive even numbers.
+
+4. We use nested loops to generate all possible combinations of four even numbers `a`, `b`, `c`, and `d` that sum up to `n`.
+   - The outer loop iterates over `a` from 2 to `n-6` in steps of 2.
+   - The middle loop iterates over `b` from `a` to `n-4-a` in steps of 2.
+   - The inner loop iterates over `c` from `b` to `n-2-a-b` in steps of 2.
+   - We calculate `d` as `n - a - b - c`.
+
+5. If we find a combination where `d` is even and greater than or equal to `c`, it means we have found a valid combination of four positive even numbers that sum up to `n`, so we return `true`.
+
+6. If we finish all the loops without finding a valid combination, it means `n` cannot be written as the sum of 4 positive even numbers, so we return `false`.
+
+The code uses the `::Int` and `::Bool` type annotations to specify the input and output types of the function, respectively.
+
+You can test the function with the examples you provided:
+
+```jldoctest
+julia> is_equal_to_sum_even(4)
+false
+
+julia> is_equal_to_sum_even(6)
+false
+
+julia> is_equal_to_sum_even(8)
+true
+```
+
+The function will return `true` if the given number can be written as the sum of exactly 4 positive even numbers, and `false` otherwise.

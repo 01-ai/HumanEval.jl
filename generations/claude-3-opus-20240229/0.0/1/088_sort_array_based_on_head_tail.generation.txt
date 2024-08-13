@@ -1,0 +1,36 @@
+Here's the solution to the problem of sorting an array based on the sum of the first and last index values:
+
+```julia
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    if isempty(xs)
+        return Int[]
+    end
+    
+    first_value = xs[1]
+    last_value = xs[end]
+    
+    if (first_value + last_value) % 2 == 0
+        return sort(xs, rev=true)
+    else
+        return sort(xs)
+    end
+end
+```
+
+Explanation:
+
+1. First, we check if the input array `xs` is empty. If it is, we return an empty array of type `Int`.
+
+2. If the array is not empty, we retrieve the first and last values of the array using `xs[1]` and `xs[end]`, respectively.
+
+3. We calculate the sum of the first and last values and check if it is even or odd using the modulo operator `%`.
+
+4. If the sum is even, we sort the array in descending order using `sort(xs, rev=true)`. The `rev=true` argument specifies that the sorting should be done in reverse (descending) order.
+
+5. If the sum is odd, we sort the array in ascending order using `sort(xs)`.
+
+6. Finally, we return the sorted array.
+
+The function takes an input array of type `Vector{Int}` and returns a new array of the same type with the elements sorted based on the condition.
+
+The examples provided in the problem statement would produce the expected output when passed through this function.

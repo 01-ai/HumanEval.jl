@@ -1,0 +1,9 @@
+Here is the Julia function that implements the functionality described in the docstring:
+
+```julia
+function filter_integers(values::AbstractVector)::Vector{Int}
+    return filter(x -> x isa Integer, values)
+end
+```
+
+This function uses the `filter` function from Julia's standard library to create a new array that only contains elements from the input vector `values` that are of integer type. The `filter` function takes a predicate function as its first argument, which is applied to each element of the input vector. In this case, the predicate function `x -> x isa Integer` checks if an element is an instance of the `Integer` abstract type. The result is an array of integers that are present in the input vector.

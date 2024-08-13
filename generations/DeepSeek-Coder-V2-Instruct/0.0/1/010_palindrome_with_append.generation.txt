@@ -1,0 +1,24 @@
+ Here's the implementation of the `palindrome_with_append` function in Julia:
+
+```julia
+function palindrome_with_append(s::String)::String
+    # Helper function to check if a string is a palindrome
+    function is_palindrome(str::String)::Bool
+        return str == reverse(str)
+    end
+
+    # Find the longest palindromic suffix
+    for i in length(s):-1:0
+        if is_palindrome(s[1:i])
+            # Append the reverse of the prefix to the end of the string
+            prefix = s[i+1:end]
+            return s * reverse(prefix)
+        end
+    end
+
+    # If the input string is empty, return it as is
+    return s
+end
+```
+
+This function works by iterating over the string from the end to the beginning, checking for the longest palindromic suffix. Once found, it appends the reverse of the non-palindromic prefix to the end of the string to form the shortest palindrome.

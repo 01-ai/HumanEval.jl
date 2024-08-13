@@ -1,0 +1,63 @@
+Here's a Julia function that implements the `parse_music` functionality as described:
+
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    # Define a dictionary to map note symbols to their beat counts
+    note_map = Dict(
+        "\\o" => 4,   # whole note
+        "\\o|" => 2,  # half note
+        "\\.|" => 1   # quarter note
+    )
+    
+    # Initialize an empty vector to store the beat counts
+    beat_counts = Int[]
+    
+    # Initialize an empty string to build each note
+    current_note = ""
+    
+    # Iterate through each character in the input string
+    for char in music_string
+        if char == '\\'
+            # Start of a new note
+            if !isempty(current_note)
+                # Add the beat count for the previous note
+                push!(beat_counts, get(note_map, current_note, 0))
+            end
+            current_note = "\\"
+        elseif char in ['o', '|', '.']
+            # Continue building the current note
+            current_note *= char
+        elseif !isempty(current_note)
+            # End of a note (space or any other character)
+            push!(beat_counts, get(note_map, current_note, 0))
+            current_note = ""
+        end
+    end
+    
+    # Add the last note if there is one
+    if !isempty(current_note)
+        push!(beat_counts, get(note_map, current_note, 0))
+    end
+    
+    return beat_counts
+end
+```
+
+This function does the following:
+
+1. We define a dictionary `note_map` that maps each note symbol to its corresponding beat count.
+
+2. We initialize an empty vector `beat_counts` to store the parsed beat counts.
+
+3. We iterate through each character in the input string:
+   - If we encounter a backslash (`\`), we start a new note.
+   - If we encounter 'o', '|', or '.', we continue building the current note.
+   - If we encounter any other character (like a space), we consider it as the end of a note.
+
+4. Whenever we complete a note, we look up its beat count in the `note_map` and add it to `beat_counts`.
+
+5. After processing all characters, we add the last note if there is one.
+
+6. Finally, we return the `beat_counts` vector.
+
+This function should correctly parse the input string and return a vector of integers representing the beat counts for each note, as per the given example.

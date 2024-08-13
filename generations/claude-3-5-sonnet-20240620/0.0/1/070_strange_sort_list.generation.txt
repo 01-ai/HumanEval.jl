@@ -1,0 +1,85 @@
+Here's a Julia function that implements the strange sorting algorithm you described:
+
+```julia
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    if isempty(xs)
+        return Int[]
+    end
+
+    sorted = sort(xs)
+    result = Int[]
+    left, right = 1, length(sorted)
+    
+    while left <= right
+        if length(result) % 2 == 0
+            push!(result, sorted[left])
+            left += 1
+        else
+            push!(result, sorted[right])
+            right -= 1
+        end
+    end
+    
+    return result
+end
+```
+
+This function works as follows:
+
+1. First, we check if the input vector is empty. If it is, we return an empty vector of integers.
+
+2. We sort the input vector in ascending order.
+
+3. We initialize an empty result vector and two pointers, `left` and `right`, pointing to the start and end of the sorted vector respectively.
+
+4. We enter a loop that continues while `left` is less than or equal to `right`:
+   - If the length of the result vector is even (including 0), we add the element at the `left` pointer (which will be the current minimum) to the result and increment `left`.
+   - If the length of the result vector is odd, we add the element at the `right` pointer (which will be the current maximum) to the result and decrement `right`.
+
+5. Finally, we return the result vector.
+
+This implementation satisfies the strange sorting criteria:
+- It starts with the minimum value (the first element of the sorted list).
+- It then takes the maximum of the remaining values (the last element of the sorted list).
+- It alternates between minimum and maximum until all elements are used.
+
+The function works correctly for the given examples:
+
+```julia
+julia> strange_sort_list([1, 2, 3, 4])
+4-element Vector{Int64}:
+ 1
+ 4
+ 2
+ 3
+
+julia> strange_sort_list([5, 5, 5, 5])
+4-element Vector{Int64}:
+ 5
+ 5
+ 5
+ 5
+
+julia> strange_sort_list(Int[])
+Int64[]
+```
+
+It also handles other cases correctly, such as lists with repeated elements or negative numbers:
+
+```julia
+julia> strange_sort_list([3, 1, 2, 3, 1])
+5-element Vector{Int64}:
+ 1
+ 3
+ 1
+ 3
+ 2
+
+julia> strange_sort_list([-3, 0, -1, 4, -2])
+5-element Vector{Int64}:
+ -3
+  4
+ -2
+  0
+ -1
+```

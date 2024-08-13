@@ -1,0 +1,47 @@
+Here is the Julia function that implements the logic described in the docstring:
+```julia
+function hex_key(num::String)::Int
+    # Define the prime hexadecimal digits
+    prime_hex_digits = ['2', '3', '5', '7', 'B', 'D']
+    
+    # Initialize a counter for prime hexadecimal digits
+    count = 0
+    
+    # Iterate over each character in the input string
+    for c in num
+        # Check if the character is a prime hexadecimal digit
+        if c in prime_hex_digits
+            # Increment the counter if it is
+            count += 1
+        end
+    end
+    
+    # Return the count of prime hexadecimal digits
+    return count
+end
+```
+Here's an explanation of the code:
+
+1. We define a vector `prime_hex_digits` that contains the prime hexadecimal digits as characters.
+2. We initialize a counter `count` to keep track of the number of prime hexadecimal digits found in the input string.
+3. We iterate over each character `c` in the input string `num`.
+4. For each character, we check if it is a prime hexadecimal digit by checking if it is in the `prime_hex_digits` vector. If it is, we increment the `count` variable.
+5. Finally, we return the `count` variable, which represents the number of prime hexadecimal digits found in the input string.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> hex_key("AB")
+1
+
+julia> hex_key("1077E")
+2
+
+julia> hex_key("ABED1A33")
+4
+
+julia> hex_key("123456789ABCDEF0")
+6
+
+julia> hex_key("2020")
+2
+```

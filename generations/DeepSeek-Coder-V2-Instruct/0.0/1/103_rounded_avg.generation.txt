@@ -1,0 +1,14 @@
+ Here's the implementation of the `rounded_avg` function in Julia:
+
+```julia
+function rounded_avg(n::Int, m::Int)::Union{Int, String}
+    if n > m
+        return -1
+    end
+    
+    avg = round((n + m) / 2)
+    return string(avg, base=2)
+end
+```
+
+This function first checks if `n` is greater than `m`. If so, it returns `-1`. Otherwise, it calculates the average of `n` and `m`, rounds it to the nearest integer, and converts the result to a binary string.

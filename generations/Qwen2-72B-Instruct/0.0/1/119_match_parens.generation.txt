@@ -1,0 +1,37 @@
+```julia
+function match_parens(lst::Vector{String})::String
+    # Initialize counters for open and close parentheses
+    open_count, close_count = 0, 0
+
+    # Count open and close parentheses in both strings
+    for str in lst
+        for ch in str
+            if ch == '('
+                open_count += 1
+            elseif ch == ')'
+                close_count += 1
+            end
+        end
+    end
+
+    # Check if the total number of open and close parentheses are equal
+    if open_count != close_count
+        return "No"
+    end
+
+    # Check if the first string has more open parentheses than close ones
+    # and the second string has more close parentheses than open ones
+    first_str_diff = count(c -> c == '(', lst[1]) - count(c -> c == ')', lst[1])
+    second_str_diff = count(c -> c == '(', lst[2]) - count(c -> c == ')', lst[2])
+
+    if first_str_diff <= 0 && second_str_diff >= 0
+        return "Yes"
+    elseif first_str_diff >= 0 && second_str_diff <= 0
+        return "Yes"
+    else
+        return "No"
+    end
+end
+```
+
+This function first counts the total number of open and close parentheses in both strings. If the total number of open and close parentheses is not equal, it immediately returns "No". Then, it checks if the first string has more open parentheses than close ones and the second string has more close parentheses than open ones, or vice versa. If either of these conditions is true, it returns "Yes", indicating that the strings can be concatenated in some order to form a balanced string. Otherwise, it returns "No".

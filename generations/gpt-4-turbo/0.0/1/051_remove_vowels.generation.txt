@@ -1,0 +1,12 @@
+```julia
+function remove_vowels(text::String)::String
+    # Define the vowels to be removed (both lowercase and uppercase)
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    
+    # Use a comprehension to filter out vowels from the text
+    filtered_text = [char for char in text if char ∉ vowels]
+    
+    # Join the characters back into a string
+    return join(filtered_text)
+end
+```

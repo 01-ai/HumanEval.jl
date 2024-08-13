@@ -1,0 +1,27 @@
+ Here's the implementation of the `parse_music` function in Julia:
+
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    # Define the mapping from note symbols to beats
+    note_to_beats = Dict("o" => 4, "o|" => 2, ".|" => 1)
+    
+    # Split the input string into individual note symbols
+    notes = split(music_string)
+    
+    # Initialize an empty vector to store the beats
+    beats = Vector{Int}()
+    
+    # Iterate over each note symbol and convert it to the corresponding number of beats
+    for note in notes
+        if haskey(note_to_beats, note)
+            push!(beats, note_to_beats[note])
+        else
+            error("Unknown note symbol: $note")
+        end
+    end
+    
+    return beats
+end
+```
+
+This function first defines a dictionary mapping each note symbol to its corresponding number of beats. It then splits the input string into individual note symbols and iterates over them, converting each symbol to its corresponding number of beats using the dictionary. The resulting beats are stored in a vector and returned.

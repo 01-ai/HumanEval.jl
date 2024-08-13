@@ -1,0 +1,32 @@
+To implement the `do_algebra` function in Julia, we need to construct an algebraic expression from the given operators and operands, and then evaluate that expression. Here's how you can do it:
+
+1. Initialize the expression with the first operand.
+2. Iterate through the operators and operands, appending each operator and the next operand to the expression.
+3. Evaluate the constructed expression.
+
+Here's the implementation:
+
+```julia
+function do_algebra(operator::Vector{String}, operand::Vector{Int})
+    # Start with the first operand
+    expression = string(operand[1])
+    
+    # Iterate through the operators and operands to build the expression
+    for i in 1:length(operator)
+        expression *= " " * operator[i] * " " * string(operand[i + 1])
+    end
+    
+    # Evaluate the constructed expression
+    return eval(Meta.parse(expression))
+end
+
+# Example usage
+println(do_algebra(["+", "*", "-"], [2, 3, 4, 5]))  # Output should be 9
+```
+
+### Explanation:
+- **Initialization**: We start by converting the first operand to a string and storing it in the `expression` variable.
+- **Building the Expression**: We loop through the `operator` list. For each operator, we append the operator and the corresponding operand (converted to a string) to the `expression`.
+- **Evaluation**: We use `Meta.parse` to convert the constructed string expression into a Julia expression, and then `eval` to evaluate it.
+
+This approach ensures that the expression is built correctly and evaluated as intended.

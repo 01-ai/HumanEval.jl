@@ -1,0 +1,44 @@
+To determine if a given integer `a` is a perfect cube, we need to check if there exists an integer `n` such that \( n^3 = a \). We can achieve this by computing the cube root of `a` and checking if the result, when rounded to the nearest integer, cubed, equals `a`.
+
+Here's the implementation of the `iscube` function in Julia:
+
+```julia
+function iscube(a::Int)::Bool
+    # Compute the cube root of the absolute value of a
+    n = round(Int, abs(a)^(1/3))
+    # Check if n^3 equals the absolute value of a
+    return n^3 == abs(a)
+end
+```
+
+Let's break down the function:
+
+1. **Compute the cube root**: We use `abs(a)^(1/3)` to compute the cube root of the absolute value of `a`. This ensures that we handle negative numbers correctly.
+2. **Round to the nearest integer**: We use `round(Int, ...)` to round the cube root to the nearest integer.
+3. **Check if it's a perfect cube**: We check if the cube of the rounded integer equals the absolute value of `a`.
+
+This function will return `true` if `a` is a perfect cube and `false` otherwise.
+
+Here are the examples provided in the docstring to verify the function:
+
+```julia
+julia> iscube(1)
+true
+
+julia> iscube(2)
+false
+
+julia> iscube(-1)
+true
+
+julia> iscube(64)
+true
+
+julia> iscube(0)
+true
+
+julia> iscube(180)
+false
+```
+
+You can test the function with these examples to ensure it works correctly.

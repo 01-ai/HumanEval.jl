@@ -1,0 +1,55 @@
+ Certainly! Below is the implementation of the `max_fill` function in Julia based on the given docstring:
+
+```julia
+"""
+    max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+
+You are given a rectangular grid of wells. Each row represents a single well,
+and each 1 in a row represents a single unit of water. Each well has a
+corresponding bucket that can be used to extract water from it, and all buckets
+have the same capacity. Your task is to use the buckets to empty the wells.
+Output the number of times you need to lower the buckets.
+
+!!! note
+
+    Constraints: * all wells have the same length * 1 <= grid.length <= 10^2 * 1 <= grid[:,1].length <= 10^2 * grid[i][j] -> 0 | 1 * 1 <= capacity <= 10
+
+# Examples
+
+```jldoctest
+julia> max_fill([[0, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 1]], 1)
+6
+
+julia> max_fill([[0, 0, 1, 1], [0, 0, 0, 0], [1, 1, 1, 1], [0, 1, 1, 1]], 2)
+5
+
+julia> max_fill([[0, 0, 0], [0, 0, 0]], 5)
+0
+```
+"""
+function max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+    # Initialize the count of times the buckets need to be lowered
+    count = 0
+
+    # Iterate over each row (well) in the grid
+    for well in grid
+        # Calculate the number of units of water in the current well
+        water_units = sum(well)
+
+        # Calculate the number of times the bucket needs to be lowered for this well
+        count += cld(water_units, capacity)
+    end
+
+    return count
+end
+```
+
+### Explanation:
+1. **Initialization**: We initialize a `count` variable to keep track of the number of times the buckets need to be lowered.
+2. **Iteration**: We iterate over each row (well) in the grid.
+3. **Water Units Calculation**: For each well, we calculate the number of units of water by summing the elements of the row.
+4. **Bucket Lowering Calculation**: We use the `cld` function (ceiling division) to determine how many times the bucket needs to be lowered to empty the well. This function returns the smallest integer greater than or equal to the division of `water_units` by `capacity`.
+5. **Update Count**: We update the `count` with the number of times the bucket needs to be lowered for the current well.
+6. **Return Result**: Finally, we return the total count.
+
+This implementation ensures that the function adheres to the constraints and correctly calculates the number of times the buckets need to be lowered to empty all the wells.

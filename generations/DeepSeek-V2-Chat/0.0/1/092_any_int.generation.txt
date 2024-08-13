@@ -1,0 +1,15 @@
+Here's the implementation of the `any_int` function in Julia:
+
+```julia
+function any_int(x::Number, y::Number, z::Number)::Bool
+    # Check if all numbers are integers
+    if !(x isa Integer && y isa Integer && z isa Integer)
+        return false
+    end
+
+    # Check if one of the numbers is equal to the sum of the other two
+    return x == y + z || y == x + z || z == x + y
+end
+```
+
+This function first checks if all three numbers are integers. If not, it returns `false`. Then, it checks if any one of the numbers is equal to the sum of the other two. If this condition is met, it returns `true`; otherwise, it returns `false`.

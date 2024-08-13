@@ -1,0 +1,22 @@
+```julia
+function vowels_count(s::String)::Int
+    # Define the vowels including 'y' and 'Y' for general cases
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    
+    # Initialize count of vowels
+    count = 0
+    
+    # Iterate through each character in the string
+    for (i, char) in enumerate(s)
+        # Check if the character is a vowel
+        if char in vowels
+            count += 1
+        # Special case for 'y' or 'Y' at the end of the word
+        elseif (char == 'y' || char == 'Y') && i == length(s)
+            count += 1
+        end
+    end
+    
+    return count
+end
+```

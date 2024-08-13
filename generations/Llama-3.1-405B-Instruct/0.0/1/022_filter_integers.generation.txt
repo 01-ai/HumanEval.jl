@@ -1,0 +1,21 @@
+Here is the Julia function that implements the behavior described in the docstring:
+```julia
+function filter_integers(values::AbstractVector)::Vector{Int}
+    return [x for x in values if x isa Integer]
+end
+```
+This function uses a list comprehension to create a new vector that only includes the elements from the input vector that are integers. The `isa` function is used to check if each element is an instance of the `Integer` type.
+
+You can test this function with the examples provided in the docstring to see that it produces the expected output:
+```julia
+julia> filter_integers(["a", 3.14, 5])
+1-element Vector{Int64}:
+ 5
+
+julia> filter_integers([1, 2, 3, "abc", Set(), []])
+3-element Vector{Int64}:
+ 1
+ 2
+ 3
+```
+Note that this implementation assumes that the input vector can contain any type of value, and that the output vector should only contain integers. If the input vector is guaranteed to only contain integers and other specific types, a more specialized implementation may be possible.

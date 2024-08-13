@@ -1,0 +1,44 @@
+To implement the `cycpattern_check` function in Julia, we need to check if any rotation of the second string `b` is a substring of the first string `a`. Here's how we can achieve this:
+
+1. Generate all rotations of the string `b`.
+2. Check if any of these rotations is a substring of `a`.
+3. Return `true` if any rotation is found in `a`, otherwise return `false`.
+
+Here's the implementation:
+
+```julia
+function cycpattern_check(a::String, b::String)::Bool
+    # Function to generate all rotations of a string
+    function rotations(s::String)
+        n = length(s)
+        [s[i:end] * s[1:i-1] for i in 1:n]
+    end
+
+    # Generate all rotations of b
+    b_rotations = rotations(b)
+
+    # Check if any rotation of b is a substring of a
+    for rotation in b_rotations
+        if occursin(rotation, a)
+            return true
+        end
+    end
+
+    return false
+end
+
+# Example usage
+println(cycpattern_check("abcd", "abd"))  # false
+println(cycpattern_check("hello", "ell"))  # true
+println(cycpattern_check("whassup", "psus"))  # false
+println(cycpattern_check("abab", "baa"))  # true
+println(cycpattern_check("efef", "eeff"))  # false
+println(cycpattern_check("himenss", "simen"))  # true
+```
+
+### Explanation:
+1. **Rotations Function**: The `rotations` function generates all possible rotations of the string `s`. For a string of length `n`, it creates `n` rotations by slicing the string at each position and concatenating the two parts in reverse order.
+2. **Checking Substrings**: For each rotation of `b`, we use the `occursin` function to check if it is a substring of `a`. If any rotation is found, we return `true`.
+3. **Return False**: If no rotation of `b` is found in `a`, we return `false`.
+
+This approach ensures that we check all possible rotations of `b` efficiently.

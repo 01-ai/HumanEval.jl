@@ -1,0 +1,11 @@
+```julia
+function median(l::Vector)
+    sorted_l = sort(l)
+    n = length(sorted_l)
+    if n % 2 == 0
+        return 0.5 * (sorted_l[n ÷ 2] + sorted_l[n ÷ 2 + 1])
+    else
+        return sorted_l[div(n + 1, 2)]
+    end
+end
+```

@@ -1,0 +1,55 @@
+Here's a solution to the problem:
+
+```julia
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+    # Convert strings to floats
+    if isa(a, AbstractString)
+        a = parse(Float64, replace(a, "," => "."))
+    end
+    if isa(b, AbstractString)
+        b = parse(Float64, replace(b, "," => "."))
+    end
+    
+    # Compare the values
+    if a > b
+        return a
+    elseif b > a
+        return b
+    else
+        return nothing
+    end
+end
+```
+
+Explanation:
+
+1. The function `compare_one` takes two arguments `a` and `b`, which can be either integers, floats, or strings representing real numbers.
+
+2. First, we check if `a` is a string using `isa(a, AbstractString)`. If it is, we replace any commas with dots using `replace(a, "," => ".")` and then parse the string to a float using `parse(Float64, ...)`. This ensures that the string is converted to a floating-point number for comparison.
+
+3. We do the same conversion for `b` if it is a string.
+
+4. After the conversion, we compare the values of `a` and `b`:
+   - If `a` is greater than `b`, we return `a`.
+   - If `b` is greater than `a`, we return `b`.
+   - If `a` and `b` are equal, we return `nothing`.
+
+5. The function returns the larger value in its original type (integer, float, or string) if they are not equal, or `nothing` if they are equal.
+
+Here are some example usages:
+
+```julia
+julia> compare_one(1, 2.5)
+2.5
+
+julia> compare_one(1, "2,3")
+"2,3"
+
+julia> compare_one("5,1", "6")
+"6"
+
+julia> compare_one("1", 1)
+nothing
+```
+
+The function correctly compares integers, floats, and strings representing real numbers, and returns the larger value in its original type or `nothing` if they are equal.

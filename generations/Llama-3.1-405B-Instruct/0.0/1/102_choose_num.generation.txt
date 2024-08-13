@@ -1,0 +1,32 @@
+Here is the Julia function that implements the behavior described in the docstring:
+
+```julia
+function choose_num(x::Int, y::Int)::Int
+    # Check if the input range is valid
+    if x > y
+        return -1
+    end
+
+    # Find the largest even number in the range [x, y]
+    largest_even = y - (y % 2)
+
+    # If the largest even number is less than x, return -1
+    if largest_even < x
+        return -1
+    else
+        return largest_even
+    end
+end
+```
+
+This function first checks if the input range `[x, y]` is valid. If `x` is greater than `y`, it immediately returns `-1`. Otherwise, it calculates the largest even number in the range by subtracting the remainder of `y` divided by 2 from `y`. If this largest even number is less than `x`, it means there is no even number in the range, so the function returns `-1`. Otherwise, it returns the largest even number.
+
+You can test this function with the examples provided in the docstring:
+
+```julia
+julia> choose_num(12, 15)
+14
+
+julia> choose_num(13, 12)
+-1
+```

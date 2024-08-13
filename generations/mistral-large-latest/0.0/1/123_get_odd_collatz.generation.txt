@@ -1,0 +1,25 @@
+Sure, here's a Julia function that should meet your requirements:
+
+```julia
+function get_odd_collatz(n::Int)::Vector{BigInt}
+    # Convert n to BigInt to avoid overflow
+    n = BigInt(n)
+    # Initialize an empty vector to store the odd numbers
+    odd_numbers = BigInt[]
+    # While n is not 1
+    while n != 1
+        # If n is odd, add it to the vector
+        if isodd(n)
+            push!(odd_numbers, n)
+        end
+        # Apply the Collatz conjecture rule
+        n = iseven(n) ? n ÷ 2 : 3n + 1
+    end
+    # Push 1 to the vector as it's always part of the sequence and it's odd
+    push!(odd_numbers, 1)
+    # Sort the vector in increasing order and return it
+    return sort(odd_numbers)
+end
+```
+
+This function starts by converting `n` to a `BigInt` to avoid overflow. It then initializes an empty vector `odd_numbers` to store the odd numbers in the Collatz sequence. The function then enters a loop that continues until `n` equals 1. In each iteration of the loop, if `n` is odd, it's added to the `odd_numbers` vector. Then, the Collatz conjecture rule is applied to `n`. After the loop finishes, 1 is added to the `odd_numbers` vector, as it's always part of the sequence and it's odd. Finally, the function sorts the `odd_numbers` vector in increasing order and returns it.

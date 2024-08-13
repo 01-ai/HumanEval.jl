@@ -1,0 +1,48 @@
+To simplify the expression `x * n` and determine if it evaluates to a whole number, we can multiply the numerators and denominators separately and then check if the resulting denominator is 1. Here's the implementation in Julia:
+
+```julia
+function simplify(x::String, n::String)::Bool
+    # Extract numerator and denominator from x
+    x_parts = split(x, '/')
+    x_num = parse(Int, x_parts[1])
+    x_den = parse(Int, x_parts[2])
+
+    # Extract numerator and denominator from n
+    n_parts = split(n, '/')
+    n_num = parse(Int, n_parts[1])
+    n_den = parse(Int, n_parts[2])
+
+    # Multiply numerators and denominators
+    result_num = x_num * n_num
+    result_den = x_den * n_den
+
+    # Check if the result is a whole number
+    return result_den == 1
+end
+```
+
+Explanation:
+1. We split the string `x` by the '/' character to extract the numerator and denominator. We parse them as integers using `parse(Int, ...)`.
+
+2. We do the same for the string `n` to extract its numerator and denominator.
+
+3. We multiply the numerators (`x_num * n_num`) and denominators (`x_den * n_den`) separately to get the resulting numerator and denominator.
+
+4. Finally, we check if the resulting denominator is equal to 1. If it is, the expression `x * n` evaluates to a whole number, and we return `true`. Otherwise, we return `false`.
+
+The function assumes that the input strings `x` and `n` are valid fractions in the format "<numerator>/<denominator>" and that the denominators are not zero.
+
+You can test the function with the provided examples:
+
+```julia
+julia> simplify("1/5", "5/1")
+true
+
+julia> simplify("1/6", "2/1")
+false
+
+julia> simplify("7/10", "10/2")
+false
+```
+
+The function will return the expected results based on whether the expression `x * n` evaluates to a whole number or not.

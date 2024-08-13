@@ -1,0 +1,40 @@
+Here is a Julia function that implements the behavior described in the docstring:
+
+```julia
+"""
+    how_many_times(s::String, sub_s::String)::Int
+
+Find how many times a given substring can be found in the original string. Count
+overlaping cases.
+
+# Examples
+
+```jldoctest
+julia> how_many_times("", "a")
+0
+
+julia> how_many_times("aaa", "a")
+3
+
+julia> how_many_times("aaaa", "aa")
+3
+```
+"""
+function how_many_times(s::String, sub_s::String)::Int
+    count = 0
+    start_idx = 1
+    while start_idx <= length(s)
+        idx = findfirst(sub_s, s[start_idx:end])
+        if idx === nothing
+            break
+        end
+        count += 1
+        start_idx += idx
+    end
+    return count
+end
+```
+
+This function uses a while loop to iterate over the string `s`. It uses the `findfirst` function to find the first occurrence of `sub_s` in the substring of `s` starting from `start_idx`. If `sub_s` is found, it increments the count and moves the `start_idx` to the position right after the found occurrence. If `sub_s` is not found, it breaks the loop. The function returns the count of occurrences of `sub_s` in `s`. 
+
+Note that the `findfirst` function returns `nothing` if the substring is not found, so we need to check for this case to avoid an error. Also, we use `start_idx:end` to create a substring of `s` starting from `start_idx` to the end of `s`, which allows us to search for `sub_s` in the remaining part of `s`.

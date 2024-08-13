@@ -1,0 +1,39 @@
+function palindrome_with_append(s::String)::String
+    n = length(s)
+    if n <= 1
+        return s
+    end
+
+    # Find the longest palindromic suffix of s
+    for i in n:-1:1
+        suffix = s[i:n]
+        if ispalindrome(suffix)
+            # If the entire string is a palindrome, no need to append anything
+            if i == 1
+                return s
+            end
+            # Append the reverse of the prefix before the palindromic suffix
+            prefix = s[1:i-1]
+            return string(s, reverse(prefix))
+        end
+    end
+end
+
+# Helper function to check if a string is a palindrome
+function ispalindrome(s::String)::Bool
+    return s == reverse(s)
+end
+
+# Examples
+"""
+```jldoctest
+julia> palindrome_with_append("")
+""
+
+julia> palindrome_with_append("cat")
+"catac"
+
+julia> palindrome_with_append("cata")
+"catac"
+```
+"""

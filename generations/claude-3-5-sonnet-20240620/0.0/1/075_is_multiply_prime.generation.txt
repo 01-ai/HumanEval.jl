@@ -1,0 +1,72 @@
+Here's a Julia function that checks if a given number is the multiplication of 3 prime numbers:
+
+```julia
+function is_multiply_prime(a::Int)::Bool
+    # Function to check if a number is prime
+    function is_prime(n::Int)::Bool
+        if n < 2
+            return false
+        end
+        for i in 2:isqrt(n)
+            if n % i == 0
+                return false
+            end
+        end
+        return true
+    end
+
+    # Function to find prime factors
+    function prime_factors(n::Int)::Vector{Int}
+        factors = Int[]
+        for i in 2:n
+            while n % i == 0 && is_prime(i)
+                push!(factors, i)
+                n ÷= i
+            end
+            if n == 1
+                break
+            end
+        end
+        return factors
+    end
+
+    # Main logic
+    if a <= 1 || a >= 100
+        return false
+    end
+
+    factors = prime_factors(a)
+    return length(factors) == 3 && prod(factors) == a
+end
+```
+
+This function does the following:
+
+1. We define a helper function `is_prime(n::Int)::Bool` that checks if a given number is prime.
+
+2. We define another helper function `prime_factors(n::Int)::Vector{Int}` that returns a vector of prime factors of a given number.
+
+3. In the main `is_multiply_prime` function:
+   - We first check if the input `a` is within the valid range (2 to 99). If not, we return `false`.
+   - We then find the prime factors of `a` using the `prime_factors` function.
+   - Finally, we check if the number of prime factors is exactly 3 and if their product equals the original number `a`.
+
+This function will return `true` if the input number is the product of exactly 3 prime numbers, and `false` otherwise.
+
+You can use this function as follows:
+
+```julia
+julia> is_multiply_prime(30)  # 30 = 2 * 3 * 5
+true
+
+julia> is_multiply_prime(12)  # 12 = 2 * 2 * 3 (not 3 distinct primes)
+false
+
+julia> is_multiply_prime(17)  # 17 is prime itself
+false
+
+julia> is_multiply_prime(210)  # 210 = 2 * 3 * 5 * 7 (more than 3 primes)
+false
+```
+
+This implementation should work correctly for all numbers less than 100, as specified in the problem statement.

@@ -1,0 +1,12 @@
+```julia
+number_map = Dict("zero" => 0, "one" => 1, "two" => 2, "three" => 3,
+                  "four" => 4, "five" => 5, "six" => 6, "seven" => 7,
+                  "eight" => 8, "nine" => 9)
+
+sort_numbers(numbers::String) = begin
+    number_list = split(numbers)
+    sorted_list = sort(number_list, by = x -> number_map[x])
+    join(sorted_list)
+end
+```
+This function first creates a dictionary that maps the string representations of numbers to their numeric values. Then it splits the input string into a list of numbers, sorts this list based on the numeric value of each number using the 'by' keyword, and finally joins the sorted list back into a string.

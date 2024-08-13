@@ -1,0 +1,22 @@
+Sure, I can help with that. However, I want to point out that Julia already has a built-in function `length()` to get the length of a string. But, if you want to create a custom function, here it is:
+
+```julia
+"""
+    strlen(x::String)::Int
+
+Return length of given string.
+
+# Examples
+
+```jldoctest
+julia> strlen("")
+0
+
+julia> strlen("abc")
+3
+```
+"""
+strlen(x::String)::Int = length(x)
+```
+
+This function takes a string as an argument and returns its length as an integer. The function uses Julia's built-in `length()` function to determine the string's length. The docstring you provided is included to provide information about the function's usage and behavior.

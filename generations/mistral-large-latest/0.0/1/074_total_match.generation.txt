@@ -1,0 +1,16 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function total_match(xs::Vector{String}, ys::Vector{String})::Vector{String}
+    total_xs = sum(length, xs)
+    total_ys = sum(length, ys)
+    if total_xs < total_ys
+        return xs
+    elseif total_xs > total_ys
+        return ys
+    else
+        return xs
+    end
+end
+```
+This function first calculates the total number of characters in each list by summing the lengths of all strings in the list. It then compares these totals and returns the list with the smaller total. If the totals are equal, it returns the first list.

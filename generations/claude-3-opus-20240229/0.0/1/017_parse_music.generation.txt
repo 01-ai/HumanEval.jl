@@ -1,0 +1,65 @@
+Here's the solution for the `parse_music` function in Julia:
+
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    beats = Int[]
+    i = 1
+    while i <= length(music_string)
+        if music_string[i] == '\\'
+            if music_string[i+1] == 'o'
+                if i+2 <= length(music_string) && music_string[i+2] == '|'
+                    push!(beats, 2)
+                    i += 3
+                else
+                    push!(beats, 4)
+                    i += 2
+                end
+            elseif music_string[i+1] == '.'
+                if i+2 <= length(music_string) && music_string[i+2] == '|'
+                    push!(beats, 1)
+                    i += 3
+                else
+                    i += 1
+                end
+            else
+                i += 1
+            end
+        else
+            i += 1
+        end
+    end
+    return beats
+end
+```
+
+Explanation:
+1. We initialize an empty vector `beats` to store the parsed beat values.
+2. We start a loop that iterates through each character of the `music_string` using an index variable `i`.
+3. Inside the loop, we check if the current character is a backslash (`\\`). If it is, we proceed to check the next character.
+   - If the next character is `'o'`, we check if there is a `'|'` character after it. If there is, it represents a half note (2 beats), so we push 2 to the `beats` vector and increment `i` by 3. Otherwise, it represents a whole note (4 beats), so we push 4 to the `beats` vector and increment `i` by 2.
+   - If the next character is `'.'`, we check if there is a `'|'` character after it. If there is, it represents a quarter note (1 beat), so we push 1 to the `beats` vector and increment `i` by 3. Otherwise, we simply increment `i` by 1.
+   - If the next character is neither `'o'` nor `'.'`, we increment `i` by 1.
+4. If the current character is not a backslash, we simply increment `i` by 1.
+5. After the loop ends, we return the `beats` vector containing the parsed beat values.
+
+The function takes a string `music_string` as input and returns a vector of integers representing the beat values of each note in the music string.
+
+Here are some example usage and outputs:
+
+```jldoctest
+julia> parse_music("\\o \\o| \\.| \\o| \\o| \\.| \\.| \\.| \\.| \\o \\o")
+11-element Vector{Int64}:
+ 4
+ 2
+ 1
+ 2
+ 2
+ 1
+ 1
+ 1
+ 1
+ 4
+ 4
+```
+
+The function correctly parses the music string and returns the corresponding beat values for each note.

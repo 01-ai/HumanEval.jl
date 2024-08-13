@@ -1,0 +1,23 @@
+Sure, here is the implementation of the `add_even_eles_at_odd_inds` function in Julia:
+
+```julia
+function add_even_eles_at_odd_inds(xs::Vector{Int})::Int
+    sum = 0
+    for i in 1:2:length(xs)
+        if xs[i] % 2 == 0
+            sum += xs[i]
+        end
+    end
+    return sum
+end
+```
+
+This function iterates over the list `xs` considering only the elements at odd indices (1-based index), checks if they are even, and adds them to the sum. Finally, it returns the sum. 
+
+Let's test the function with the provided example:
+
+```julia
+println(add_even_eles_at_odd_inds([4, 2, 6, 7]))  # Output should be 10
+```
+
+This should output `10` as expected.

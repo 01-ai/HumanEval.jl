@@ -1,0 +1,51 @@
+Here's a Julia function that implements the described behavior:
+
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    # Dictionary to map digits to their names
+    digit_names = Dict(
+        1 => "One", 2 => "Two", 3 => "Three", 4 => "Four", 5 => "Five",
+        6 => "Six", 7 => "Seven", 8 => "Eight", 9 => "Nine"
+    )
+    
+    # Filter numbers between 1 and 9, sort them, and reverse the order
+    filtered_sorted = sort(filter(x -> 1 <= x <= 9, xs), rev=true)
+    
+    # Convert each number to its corresponding name
+    return [digit_names[num] for num in filtered_sorted]
+end
+```
+
+Let's break down the function:
+
+1. We define a dictionary `digit_names` that maps each digit to its corresponding name.
+
+2. We use `filter(x -> 1 <= x <= 9, xs)` to keep only the numbers between 1 and 9 (inclusive).
+
+3. We `sort` the filtered array and immediately reverse it with `rev=true`.
+
+4. Finally, we use a list comprehension to convert each number in the filtered and sorted array to its corresponding name using the `digit_names` dictionary.
+
+This function will work for all the given examples:
+
+```julia
+julia> by_length([2, 1, 1, 4, 5, 8, 2, 3])
+8-element Vector{String}:
+ "Eight"
+ "Five"
+ "Four"
+ "Three"
+ "Two"
+ "Two"
+ "One"
+ "One"
+
+julia> by_length(Int[])
+0-element Vector{String}
+
+julia> by_length([1, -1, 55])
+1-element Vector{String}:
+ "One"
+```
+
+Note that in the actual output, the strings won't have backslashes before them. The backslashes in the example output are likely an artifact of how the strings are being displayed in that particular environment.

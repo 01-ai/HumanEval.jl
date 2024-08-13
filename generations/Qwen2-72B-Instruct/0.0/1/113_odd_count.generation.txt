@@ -1,0 +1,12 @@
+```julia
+function odd_count(xs::Vector{String})::Vector{String}
+    result = []
+    for str in xs
+        odd_count = sum(d -> parse(Int, d) % 2 != 0, str)
+        template = "the number of odd elements $(odd_count)n the str$(odd_count)ng $(odd_count) of the $(odd_count)nput."
+        push!(result, template)
+    end
+    return result
+end
+```
+This function iterates over each string in the input vector, calculates the number of odd digits in the string, and then constructs the output string by replacing all "i"s with the calculated odd count. The resulting strings are collected in a new vector and returned.

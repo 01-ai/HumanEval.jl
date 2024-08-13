@@ -1,0 +1,5 @@
+```julia
+function flip_case(s::String)::String
+    return mapreduce(c -> islower(c) ? uppercase(c) : lowercase(c), string, s)
+end
+```

@@ -1,0 +1,26 @@
+Here's the implementation of the `add` function in Julia based on the provided documentation:
+
+```julia
+function add(x::Int, y::Int)
+    return x + y
+end
+```
+
+Explanation:
+- The function is named `add` and takes two parameters `x` and `y`.
+- The types of both `x` and `y` are specified as `Int` using the `::` syntax, indicating that the function expects integers as input.
+- Inside the function, we simply return the sum of `x` and `y` using the `+` operator.
+
+The function behaves exactly as described in the documentation:
+
+```jldoctest
+julia> add(2, 3)
+5
+
+julia> add(5, 7)
+12
+```
+
+The examples provided in the documentation serve as test cases to ensure the correct behavior of the `add` function.
+
+This is a very basic example, but it demonstrates how to define a function in Julia with type annotations for the parameters and how to implement the desired functionality.

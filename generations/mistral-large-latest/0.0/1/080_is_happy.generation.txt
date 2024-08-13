@@ -1,0 +1,14 @@
+Sure, here is the Julia function that implements the described behavior:
+
+```julia
+function is_happy(s::String)::Bool
+    length(s) < 3 && return false
+    for i in 1:(length(s)-2)
+        if s[i] == s[i+1] || s[i] == s[i+2] || s[i+1] == s[i+2]
+            return false
+        end
+    end
+    return true
+end
+```
+This function first checks if the length of the string is less than 3. If it is, it returns false. Then it iterates over the string and checks every 3 consecutive letters. If any of them are the same, it returns false. If it finishes the loop without finding any identical consecutive letters, it returns true.

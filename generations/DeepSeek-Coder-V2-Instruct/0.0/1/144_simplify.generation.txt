@@ -1,0 +1,18 @@
+ Here's the implementation of the `simplify` function in Julia:
+
+```julia
+function simplify(x::String, n::String)::Bool
+    # Parse the fractions
+    num_x, denom_x = parse.(Int, split(x, "/"))
+    num_n, denom_n = parse.(Int, split(n, "/"))
+    
+    # Calculate the product of the two fractions
+    product_num = num_x * num_n
+    product_denom = denom_x * denom_n
+    
+    # Check if the product is a whole number
+    return product_num % product_denom == 0
+end
+```
+
+This function first parses the input strings to extract the numerators and denominators. It then calculates the numerator and denominator of the product of the two fractions. Finally, it checks if the numerator of the product is divisible by the denominator, indicating that the product is a whole number.

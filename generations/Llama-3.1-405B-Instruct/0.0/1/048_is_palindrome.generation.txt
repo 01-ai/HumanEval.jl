@@ -1,0 +1,35 @@
+Here is the Julia function that implements the `is_palindrome` function based on the provided docstring:
+```julia
+"""
+    is_palindrome(text::String)::Bool
+
+Checks if given string is a palindrome
+
+# Examples
+
+```jldoctest
+julia> is_palindrome("")
+true
+
+julia> is_palindrome("aba")
+true
+
+julia> is_palindrome("aaaaa")
+true
+
+julia> is_palindrome("zbcd")
+false
+```
+"""
+function is_palindrome(text::String)::Bool
+    text = lowercase(text)  # convert to lowercase for case-insensitive comparison
+    return text == reverse(text)
+end
+```
+Here's an explanation of the implementation:
+
+1. We first convert the input string to lowercase using the `lowercase` function to ensure the comparison is case-insensitive.
+2. We then compare the original string with its reverse using the `reverse` function.
+3. If the string is the same when reversed, it's a palindrome, and we return `true`. Otherwise, we return `false`.
+
+You can test this function using the examples provided in the docstring to verify its correctness.

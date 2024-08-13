@@ -1,0 +1,35 @@
+Here's a Julia function that implements the `filter_integers` functionality as described:
+
+```julia
+function filter_integers(values::AbstractVector)::Vector{Int}
+    return filter(x -> isa(x, Integer), values)
+end
+```
+
+This function does the following:
+
+1. It takes an `AbstractVector` as input, which allows it to work with any vector-like structure in Julia.
+
+2. It uses the `filter` function to create a new vector containing only the elements that satisfy the given condition.
+
+3. The condition `x -> isa(x, Integer)` is an anonymous function that checks if each element `x` is an instance of `Integer`.
+
+4. The `isa` function checks if the value is an instance of the specified type (in this case, `Integer`).
+
+5. The function is explicitly typed to return a `Vector{Int}`, as specified in the function signature.
+
+This implementation will work correctly for the given examples:
+
+```julia
+julia> filter_integers(["a", 3.14, 5])
+1-element Vector{Int64}:
+ 5
+
+julia> filter_integers([1, 2, 3, "abc", Set(), []])
+3-element Vector{Int64}:
+ 1
+ 2
+ 3
+```
+
+It will filter out any non-integer values, including strings, floating-point numbers, sets, and empty arrays, returning only the integer values in the input vector.

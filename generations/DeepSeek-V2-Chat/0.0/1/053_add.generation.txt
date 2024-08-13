@@ -1,0 +1,24 @@
+Here's the implementation of the `add` function in Julia:
+
+```julia
+"""
+    add(x::Int, y::Int)
+
+Add two numbers `x` and `y`.
+
+# Examples
+
+```jldoctest
+julia> add(2, 3)
+5
+
+julia> add(5, 7)
+12
+```
+"""
+function add(x::Int, y::Int)
+    return x + y
+end
+```
+
+This function takes two integers `x` and `y` as input and returns their sum. The docstring includes examples demonstrating how to use the function.

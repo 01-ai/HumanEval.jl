@@ -1,0 +1,45 @@
+Here's a solution to find the minimum sum of any non-empty sub-array of an array of integers in Julia:
+
+```julia
+function min_sub_array_sum(nums::Vector{Int})::Int
+    min_sum = nums[1]
+    current_sum = nums[1]
+    
+    for i in 2:length(nums)
+        current_sum = min(nums[i], current_sum + nums[i])
+        min_sum = min(min_sum, current_sum)
+    end
+    
+    return min_sum
+end
+```
+
+Here's how the code works:
+
+1. We initialize `min_sum` and `current_sum` to the first element of the array. `min_sum` will store the minimum sum of any sub-array encountered so far, and `current_sum` will store the sum of the current sub-array being considered.
+
+2. We start a loop from the second element of the array (index 2) to the last element.
+
+3. For each element `nums[i]`, we update `current_sum` by taking the minimum of two values:
+   - `nums[i]`: This represents the case where we start a new sub-array from the current element.
+   - `current_sum + nums[i]`: This represents the case where we extend the current sub-array by including the current element.
+
+   By taking the minimum of these two values, we decide whether to start a new sub-array or continue with the existing sub-array.
+
+4. After updating `current_sum`, we update `min_sum` by taking the minimum of `min_sum` and `current_sum`. This ensures that `min_sum` always holds the minimum sum of any sub-array encountered so far.
+
+5. After the loop ends, we return `min_sum`, which represents the minimum sum of any non-empty sub-array in the given array.
+
+The time complexity of this algorithm is O(n), where n is the length of the input array, as we iterate through the array once. The space complexity is O(1) since we only use a constant amount of extra space.
+
+Here are the example test cases:
+
+```jldoctest
+julia> min_sub_array_sum([2, 3, 4, 1, 2, 4])
+1
+
+julia> min_sub_array_sum([-1, -2, -3])
+-6
+```
+
+Both test cases pass, indicating that the function correctly finds the minimum sum of any non-empty sub-array in the given arrays.

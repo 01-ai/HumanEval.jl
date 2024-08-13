@@ -1,0 +1,38 @@
+ Certainly! Below is the implementation of the `vowels_count` function in Julia based on the given doc string:
+
+```julia
+"""
+    vowels_count(s::String)::Int
+
+Write a function `vowels_count` which takes a string representing a word as
+input and returns the number of vowels in the string. Vowels in this case are
+'a', 'e', 'i', 'o', 'u' in both lower and upper cases. Here, 'y' or 'Y' is also
+a vowel, but only when it is at the end of the given word.
+
+# Examples
+
+```jldoctest
+julia> vowels_count("abcde")
+2
+
+julia> vowels_count("ACEDY")
+3
+```
+"""
+function vowels_count(s::String)::Int
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    count = 0
+
+    for (i, char) in enumerate(s)
+        if char in vowels
+            count += 1
+        elseif char in ['y', 'Y'] && i == length(s)
+            count += 1
+        end
+    end
+
+    return count
+end
+```
+
+This function iterates through each character in the input string `s`, checks if it is a vowel (including 'y' or 'Y' at the end of the string), and counts the number of vowels. The `Set` is used for efficient membership testing of vowels.

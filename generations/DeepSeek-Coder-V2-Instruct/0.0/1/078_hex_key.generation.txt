@@ -1,0 +1,20 @@
+ Here's the implementation of the `hex_key` function in Julia:
+
+```julia
+function hex_key(num::String)::Int
+    # Define the set of prime hexadecimal digits
+    prime_hex_digits = Set(['2', '3', '5', '7', 'B', 'D'])
+    
+    # Count the number of prime hexadecimal digits in the input string
+    count = 0
+    for char in num
+        if char in prime_hex_digits
+            count += 1
+        end
+    end
+    
+    return count
+end
+```
+
+This function iterates over each character in the input string, checks if it is a prime hexadecimal digit, and counts the occurrences of such digits. The prime hexadecimal digits are stored in a set for efficient membership checking.

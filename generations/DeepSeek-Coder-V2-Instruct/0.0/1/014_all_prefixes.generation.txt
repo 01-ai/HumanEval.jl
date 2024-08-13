@@ -1,0 +1,13 @@
+ Here's the implementation of the `all_prefixes` function in Julia:
+
+```julia
+function all_prefixes(s::String)::Vector{String}
+    prefixes = Vector{String}()
+    for i in 1:length(s)
+        push!(prefixes, s[1:i])
+    end
+    return prefixes
+end
+```
+
+This function iterates over the length of the input string `s` and collects all prefixes from the shortest to the longest, storing them in a vector which is then returned.

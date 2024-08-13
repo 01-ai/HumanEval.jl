@@ -1,0 +1,23 @@
+```julia
+function is_prime(n::Int)
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    
+    return true
+end
+```
+
+This function checks if a number `n` is prime. It first handles simple cases for small numbers and then uses a loop to check divisibility for larger numbers, optimizing by skipping even numbers and checking divisibility by 6k±1 numbers.

@@ -1,0 +1,18 @@
+Sure, I can help with that. The function you're asking for computes 2^n modulo p. To avoid large numbers, we can use the property of modulus that (a*b)%m = ((a%m)*(b%m))%m. Here's a Julia function that does this:
+
+```julia
+function modp(n::Int, p::Int)::Int
+    result = 1
+    base = 2 % p
+    while n > 0
+        if n % 2 == 1
+            result = (result * base) % p
+        end
+        n = n >> 1
+        base = (base * base) % p
+    end
+    return result
+end
+```
+
+This function uses a loop to iterate over the bits of `n`. If the current bit is 1, it multiplies the current result by the base (2^i % p), where i is the position of the current bit. The base is squared (and the result is taken modulo p) in each iteration, which corresponds to increasing i by 1. The result is also taken modulo p in each iteration to keep the numbers small.

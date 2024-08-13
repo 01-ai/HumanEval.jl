@@ -1,0 +1,35 @@
+```julia
+function separate_paren_groups(paren_string::String)::Vector{String}
+    stack = Int[]
+    result = String[]
+    current_group = ""
+
+    for char in replace(paren_string, " " => "")
+        if char == '('
+            push!(stack, length(current_group) + 1)
+            current_group *= char
+        elseif char == ')'
+            if !isempty(stack)
+                start_index = stack.popfirst!
+                push!(result, current_group[start_index:end])
+                current_group = current_group[1:start_index-1]
+            else
+                error("Unbalanced parentheses")
+            end
+        else
+            current_group *= char
+        end
+    end
+
+    if !isempty(stack)
+        error("Unbalanced parentheses")
+    end
+
+    if !isempty(current_group)
+        push!(result, current_group)
+    end
+
+    return result
+end
+```
+This function iterates through the input string, using a stack to keep track of the start of each parenthesis group. When an open parenthesis is encountered, it marks the position in the current group. When a closing parenthesis is found, it separates the group from the current string and adds it to the result vector. Spaces are ignored by replacing them with an empty string before processing. The function ensures that parentheses are balanced and returns a vector of separate parenthesis groups.

@@ -1,0 +1,37 @@
+Here's an implementation of the `select_words` function in Julia:
+
+```julia
+function select_words(s::String, n::Int)::Vector{SubString{String}}
+    words = split(s)
+    result = SubString{String}[]
+
+    for word in words
+        consonant_count = count(c -> c ∉ "aeiouAEIOU", word)
+        if consonant_count == n
+            push!(result, SubString(s, findfirst(word, s), findlast(word, s)))
+        end
+    end
+
+    return result
+end
+```
+
+This implementation does the following:
+
+1. The function takes a string `s` and an integer `n` as input parameters.
+
+2. We split the string `s` into individual words using the `split` function, which splits the string on whitespace by default. This gives us an array of words.
+
+3. We initialize an empty vector `result` to store the words that meet the criteria.
+
+4. We iterate over each `word` in the `words` array.
+
+5. For each word, we count the number of consonants using the `count` function. The condition `c -> c ∉ "aeiouAEIOU"` checks if each character `c` is not a vowel (uppercase or lowercase). The `∉` operator means "not in".
+
+6. If the `consonant_count` is equal to `n`, it means the word has exactly `n` consonants. In this case, we push a `SubString` of `s` corresponding to the word into the `result` vector. We use `findfirst` and `findlast` to find the starting and ending indices of the word in the original string `s`.
+
+7. After iterating over all the words, we return the `result` vector containing the words that have exactly `n` consonants, in the order they appear in the string `s`.
+
+The function returns a vector of `SubString{String}` because we are using `SubString` to refer to the words within the original string `s`, avoiding unnecessary memory allocation.
+
+The examples you provided can be used to test the function and verify its correctness.

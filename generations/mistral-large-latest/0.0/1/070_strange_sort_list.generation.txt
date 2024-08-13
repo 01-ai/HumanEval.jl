@@ -1,0 +1,32 @@
+Sure, here is the Julia function that implements the strange sort algorithm based on the given docstring:
+
+```julia
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    # Check if the input list is empty
+    if isempty(xs)
+        return xs
+    end
+
+    # Initialize the sorted list
+    sorted_list = Int[]
+
+    # While there are still elements in the input list
+    while !isempty(xs)
+        # Find the minimum element and remove it from the list
+        min_elem = findmin(xs)[2]
+        deleteat!(xs, min_elem)
+        push!(sorted_list, min_elem)
+
+        # If there are still elements in the list, find the maximum element and remove it
+        if !isempty(xs)
+            max_elem = findmax(xs)[2]
+            deleteat!(xs, max_elem)
+            push!(sorted_list, max_elem)
+        end
+    end
+
+    return sorted_list
+end
+```
+
+This function first checks if the input list is empty. If it is, it simply returns the empty list. Otherwise, it initializes an empty sorted list. It then enters a loop that continues until there are no elements left in the input list. In each iteration of the loop, it finds the minimum element in the list, removes it, and adds it to the sorted list. If there are still elements in the list, it finds the maximum element, removes it, and adds it to the sorted list. Finally, it returns the sorted list.

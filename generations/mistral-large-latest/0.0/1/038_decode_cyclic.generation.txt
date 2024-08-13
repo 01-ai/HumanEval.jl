@@ -1,0 +1,9 @@
+Sure, I can help with that. The `decode_cyclic` function should reverse the operation of `encode_cyclic`. Here's how you can implement it in Julia:
+
+```julia
+function decode_cyclic(s::String)::String
+    join((length(x) == 3 ? x[3] * x[1] * x[2] : x for x in Iterators.partition(s, 3)))
+end
+```
+
+This function works by partitioning the input string `s` into groups of three characters, just like `encode_cyclic`. However, instead of arranging the characters in the order `[2, 3, 1]`, it arranges them in the order `[3, 1, 2]`, effectively reversing the operation of `encode_cyclic`. If the length of the partition is not 3, it leaves the partition as it is. The results are then joined into a single string.

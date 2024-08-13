@@ -1,0 +1,15 @@
+To implement the `string_to_md5` function, we need to use the `MD5` module to compute the MD5 hash of a given string. If the input string is empty, the function should return `nothing`. Here's the implementation:
+
+```julia
+using MD5
+
+function string_to_md5(text::String)::Union{Nothing,String}
+    if isempty(text)
+        return nothing
+    else
+        return bytes2hex(md5(text))
+    end
+end
+```
+
+This function first checks if the input string `text` is empty using the `isempty` function. If it is, the function returns `nothing`. Otherwise, it computes the MD5 hash of the string using the `md5` function from the `MD5` module and converts the resulting byte array to a hexadecimal string using the `bytes2hex` function. The result is then returned.

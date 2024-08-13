@@ -1,0 +1,41 @@
+To implement the function `check_if_last_char_is_a_letter`, we need to follow these steps:
+
+1. Check if the input string is empty. If it is, return `false`.
+2. Trim any trailing whitespace from the string.
+3. Check if the last character of the trimmed string is an alphabetical character.
+4. Ensure that this character is not part of a word by checking if it is preceded by a space.
+
+Here's the implementation in Julia:
+
+```julia
+function check_if_last_char_is_a_letter(s::String)::Bool
+    # Step 1: Check if the string is empty
+    if isempty(s)
+        return false
+    end
+    
+    # Step 2: Trim trailing whitespace
+    trimmed_s = rstrip(s)
+    
+    # Step 3: Check if the last character is an alphabetical character
+    if isempty(trimmed_s) || !isletter(trimmed_s[end])
+        return false
+    end
+    
+    # Step 4: Ensure the character is not part of a word
+    # It should be preceded by a space or be the first character
+    if length(trimmed_s) == 1 || trimmed_s[end-1] == ' '
+        return true
+    else
+        return false
+    end
+end
+
+# Examples
+println(check_if_last_char_is_a_letter("apple pie"))  # false
+println(check_if_last_char_is_a_letter("apple pi e"))  # false
+println(check_if_last_char_is_a_letter("apple pi e "))  # false
+println(check_if_last_char_is_a_letter(""))  # false
+```
+
+This function follows the steps outlined and ensures that the last character is checked correctly according to the given conditions.

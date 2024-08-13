@@ -1,0 +1,40 @@
+ Certainly! Below is the implementation of the `median` function in Julia based on the given docstring:
+
+```julia
+"""
+    median(l::Vector)
+
+Return median of elements in the list l.
+
+# Examples
+
+```jldoctest
+julia> median([3, 1, 2, 4, 5])
+3
+
+julia> median([-10, 4, 6, 1000, 10, 20])
+8.0
+```
+"""
+function median(l::Vector)
+    sorted_l = sort(l)
+    n = length(sorted_l)
+    if n % 2 == 1
+        return sorted_l[(n + 1) ÷ 2]
+    else
+        return (sorted_l[n ÷ 2] + sorted_l[n ÷ 2 + 1]) / 2
+    end
+end
+```
+
+### Explanation:
+1. **Sorting the List**: The function first sorts the input vector `l`.
+2. **Finding the Median**:
+   - If the number of elements `n` is odd, the median is the middle element of the sorted list.
+   - If the number of elements `n` is even, the median is the average of the two middle elements.
+
+### Examples:
+- For `median([3, 1, 2, 4, 5])`, the sorted list is `[1, 2, 3, 4, 5]`, and the median is `3`.
+- For `median([-10, 4, 6, 1000, 10, 20])`, the sorted list is `[-10, 4, 6, 10, 20, 1000]`, and the median is `(6 + 10) / 2 = 8.0`.
+
+This implementation should work correctly for any vector of numbers.

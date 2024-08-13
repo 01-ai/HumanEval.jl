@@ -1,0 +1,21 @@
+Here's the implementation of the `rescale_to_unit` function in Julia:
+
+```julia
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    if length(numbers) < 2
+        throw(ArgumentError("The list must contain at least two elements"))
+    end
+    
+    min_val = minimum(numbers)
+    max_val = maximum(numbers)
+    
+    if min_val == max_val
+        throw(ArgumentError("All numbers in the list are the same, cannot rescale"))
+    end
+    
+    rescaled_numbers = [(x - min_val) / (max_val - min_val) for x in numbers]
+    return rescaled_numbers
+end
+```
+
+This function first checks if the input vector has at least two elements. It then finds the minimum and maximum values in the list. If all numbers are the same, it throws an error. Otherwise, it rescales each number by subtracting the minimum value and dividing by the range (maximum - minimum).

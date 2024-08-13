@@ -1,0 +1,9 @@
+function words_string(s::String)::Vector{String}
+    # Split the string by commas and spaces
+    words = split(s, r"[, ]+")
+    
+    # Filter out any empty strings
+    filter!(!isempty, words)
+    
+    return words
+end

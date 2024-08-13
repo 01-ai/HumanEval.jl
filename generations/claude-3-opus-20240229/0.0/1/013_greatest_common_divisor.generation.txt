@@ -1,0 +1,43 @@
+Here's an implementation of the `greatest_common_divisor` function in Julia:
+
+```julia
+function greatest_common_divisor(a::Int, b::Int)::Int
+    while b != 0
+        a, b = b, a % b
+    end
+    return abs(a)
+end
+```
+
+This function uses the Euclidean algorithm to find the greatest common divisor (GCD) of two integers `a` and `b`. Here's how it works:
+
+1. The function takes two integers `a` and `b` as input.
+
+2. It enters a `while` loop that continues as long as `b` is not equal to zero.
+
+3. Inside the loop, it performs the following steps:
+   - Assigns the value of `b` to `a`.
+   - Assigns the remainder of `a` divided by `b` to `b`.
+
+4. The loop continues until `b` becomes zero, at which point `a` will contain the GCD of the initial values of `a` and `b`.
+
+5. Finally, the function returns the absolute value of `a` to handle cases where the input numbers are negative.
+
+The Euclidean algorithm is based on the principle that the GCD of two numbers `a` and `b` is the same as the GCD of `b` and the remainder of `a` divided by `b`. By repeatedly applying this principle, the algorithm reduces the problem until one of the numbers becomes zero, at which point the other number is the GCD.
+
+Here are some examples of using the `greatest_common_divisor` function:
+
+```julia
+julia> greatest_common_divisor(3, 5)
+1
+
+julia> greatest_common_divisor(25, 15)
+5
+
+julia> greatest_common_divisor(-12, 18)
+6
+```
+
+In the last example, the function correctly handles negative numbers by returning the absolute value of the GCD.
+
+The time complexity of the Euclidean algorithm is O(log(min(a, b))), where `a` and `b` are the input integers. This makes it an efficient method for finding the GCD of two numbers.

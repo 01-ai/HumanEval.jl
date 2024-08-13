@@ -1,0 +1,71 @@
+ Certainly! Below is the implementation of the `unique_digits` function in Julia based on the given doc string:
+
+```julia
+"""
+    unique_digits(xs::Vector{Int})::Vector{Int}
+
+Given a list of positive integers `xs`. Return a sorted list of all
+elements that hasn't any even digit.
+
+!!! note
+
+    Returned list should be sorted in increasing order.
+
+# Examples
+
+```jldoctest
+julia> unique_digits([15, 33, 1422, 1])
+3-element Vector{Int64}:
+  1
+ 15
+ 33
+
+julia> unique_digits([152, 313, 1422, 10])
+1-element Vector{Int64}:
+ 313
+```
+"""
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    # Helper function to check if a number has any even digit
+    function has_even_digit(n::Int)::Bool
+        while n > 0
+            digit = n % 10
+            if digit % 2 == 0
+                return true
+            end
+            n ÷= 10
+        end
+        return false
+    end
+
+    # Filter out numbers with even digits and sort the result
+    result = filter(x -> !has_even_digit(x), xs)
+    return sort(result)
+end
+```
+
+### Explanation:
+1. **Helper Function `has_even_digit`**:
+   - This function checks if a given number `n` has any even digit.
+   - It iterates through each digit of the number by taking the remainder when divided by 10 (`n % 10`).
+   - If any digit is even (`digit % 2 == 0`), it returns `true`.
+   - If no even digits are found, it returns `false`.
+
+2. **Main Function `unique_digits`**:
+   - It uses the `filter` function to keep only those numbers in `xs` that do not have any even digits (`!has_even_digit(x)`).
+   - The resulting list is then sorted in increasing order using the `sort` function.
+
+### Examples:
+```julia
+julia> unique_digits([15, 33, 1422, 1])
+3-element Vector{Int64}:
+  1
+ 15
+ 33
+
+julia> unique_digits([152, 313, 1422, 10])
+1-element Vector{Int64}:
+ 313
+```
+
+This implementation should meet the requirements specified in the doc string.

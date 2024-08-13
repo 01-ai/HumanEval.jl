@@ -1,0 +1,14 @@
+```julia
+function is_bored(s::String)::Int
+    sentences = split(s, r"[.!?]")
+    count = 0
+    for sentence in sentences
+        sentence = strip(sentence)
+        if !isempty(sentence) && startswith(sentence, "I")
+            count += 1
+        end
+    end
+    return count
+end
+```
+This Julia function `is_bored` takes a string `s` as input and splits it into sentences using the punctuation marks `.`, `?`, and `!` as delimiters. It then iterates through each sentence, stripping any leading or trailing whitespace, and checks if the sentence starts with the word "I". If it does, the `count` is incremented. Finally, the function returns the total count of sentences that start with "I", which represents the number of "boredoms".

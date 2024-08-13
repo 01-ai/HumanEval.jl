@@ -1,0 +1,22 @@
+ Here's the implementation of the `exchange` function in Julia:
+
+```julia
+function exchange(lst1::Vector{Int}, lst2::Vector{Int})::String
+    # Check if lst1 already contains only even numbers
+    if all(x -> x % 2 == 0, lst1)
+        return "YES"
+    end
+
+    # Check if there is at least one even number in lst2 for each odd number in lst1
+    odd_count_lst1 = count(x -> x % 2 != 0, lst1)
+    even_count_lst2 = count(x -> x % 2 == 0, lst2)
+
+    if odd_count_lst1 <= even_count_lst2
+        return "YES"
+    else
+        return "NO"
+    end
+end
+```
+
+This function first checks if `lst1` already contains only even numbers. If it does, it returns "YES". If not, it counts the number of odd numbers in `lst1` and the number of even numbers in `lst2`. If the number of odd numbers in `lst1` is less than or equal to the number of even numbers in `lst2`, it returns "YES"; otherwise, it returns "NO".

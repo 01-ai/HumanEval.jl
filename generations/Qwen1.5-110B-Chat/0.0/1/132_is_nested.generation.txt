@@ -1,0 +1,20 @@
+```julia
+function is_nested(s::String)::Bool
+    stack = Int[]
+    for c in s
+        if c == '['
+            push!(stack, 1)
+        elseif c == ']'
+            if isempty(stack)
+                return false
+            end
+            pop!(stack)
+            if !isempty(stack) && stack[end] == 1
+                push!(stack, 2)  # Mark that we have a nested bracket
+            end
+        end
+    end
+    return any(x -> x == 2, stack)  # Return true if there's a nested bracket
+end
+```
+This Julia function `is_nested` uses a stack to keep track of the brackets in the input string `s`. It iterates through each character in the string, pushing 1 onto the stack for each opening bracket encountered. When a closing bracket is encountered, it pops the top of the stack, and if the stack is not empty, it checks if the last operation was an opening bracket (marked by 1). If so, it marks a nested bracket by pushing 2 onto the stack. The function finally checks if there's a 2 in the stack, which indicates at least one nested bracket, and returns `true` if found, `false` otherwise.

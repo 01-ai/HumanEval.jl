@@ -1,0 +1,27 @@
+Here is the Julia function that implements the specified behavior:
+```julia
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    min_val = minimum(numbers)
+    max_val = maximum(numbers)
+    range = max_val - min_val
+    
+    # Apply linear transformation to rescale numbers to unit range [0, 1]
+    return (numbers .- min_val) ./ range
+end
+```
+Here's a brief explanation of the implementation:
+
+1. First, we find the minimum and maximum values in the input vector `numbers`.
+2. We calculate the range of the input values by subtracting the minimum from the maximum.
+3. We then apply a linear transformation to each element of the input vector by subtracting the minimum value and dividing by the range. This has the effect of rescaling the numbers to the unit range [0, 1].
+
+You can test this function using the example provided in the docstring:
+```julia
+numbers = [1.0, 2.0, 3.0, 4.0, 5.0]
+rescaled_numbers = rescale_to_unit(numbers)
+println(rescaled_numbers)
+```
+This should output the rescaled numbers:
+```
+[0.0, 0.25, 0.5, 0.75, 1.0]
+```

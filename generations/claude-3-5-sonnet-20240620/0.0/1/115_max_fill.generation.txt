@@ -1,0 +1,49 @@
+Here's a Julia function that solves the problem:
+
+```julia
+function max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+    num_wells = length(grid)
+    well_depth = length(grid[1])
+    
+    total_fills = 0
+    current_fill = zeros(Int, num_wells)
+    
+    for depth in 1:well_depth
+        for well in 1:num_wells
+            if grid[well][depth] == 1
+                current_fill[well] += 1
+                if current_fill[well] == capacity
+                    total_fills += 1
+                    current_fill[well] = 0
+                end
+            end
+        end
+    end
+    
+    # Handle partially filled buckets at the end
+    total_fills += sum(current_fill .> 0)
+    
+    return total_fills
+end
+```
+
+This function works as follows:
+
+1. We start by getting the number of wells and the depth of each well.
+
+2. We initialize a counter for the total number of times we need to lower the buckets (`total_fills`) and an array to keep track of how full each bucket currently is (`current_fill`).
+
+3. We iterate through each depth of the wells, and for each depth, we check each well:
+   - If there's water at this depth (grid[well][depth] == 1), we add it to the current fill of that well's bucket.
+   - If the bucket becomes full (equal to capacity), we increment the total fills count and empty the bucket.
+
+4. After going through all depths, we check if there are any partially filled buckets left. We count each of these as an additional fill.
+
+5. Finally, we return the total number of fills.
+
+This solution efficiently handles the constraints:
+- It works for any number of wells and any well depth within the given constraints.
+- It correctly handles the bucket capacity.
+- It counts both full bucket extractions and partially filled buckets at the end.
+
+The time complexity of this solution is O(num_wells * well_depth), which is efficient for the given constraints.

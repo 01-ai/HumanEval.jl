@@ -1,0 +1,63 @@
+Here's a Julia function that implements the `make_a_pile` logic as described:
+
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    if n <= 0
+        throw(ArgumentError("n must be a positive integer"))
+    end
+    
+    result = Vector{Int}(undef, n)
+    result[1] = n
+    
+    for i in 2:n
+        if n % 2 == 0  # n is even
+            result[i] = result[i-1] + 2
+        else  # n is odd
+            result[i] = result[i-1] + 2
+        end
+    end
+    
+    return result
+end
+```
+
+Let's break down the function:
+
+1. We first check if the input `n` is positive. If not, we throw an `ArgumentError`.
+
+2. We initialize a vector `result` of length `n` to store our pile levels.
+
+3. The first element of `result` is always `n` itself, as per the requirement.
+
+4. We then iterate from the second element to the nth element:
+   - If `n` is even, we add 2 to the previous element to get the next even number.
+   - If `n` is odd, we also add 2 to the previous element, which gives us the next odd number.
+
+5. Finally, we return the `result` vector.
+
+This function will work for both odd and even `n`. Let's test it:
+
+```julia
+julia> make_a_pile(3)
+3-element Vector{Int64}:
+ 3
+ 5
+ 7
+
+julia> make_a_pile(4)
+4-element Vector{Int64}:
+ 4
+ 6
+ 8
+10
+
+julia> make_a_pile(5)
+5-element Vector{Int64}:
+ 5
+ 7
+ 9
+11
+13
+```
+
+The function correctly generates the pile for both odd and even inputs, following the specified rules.

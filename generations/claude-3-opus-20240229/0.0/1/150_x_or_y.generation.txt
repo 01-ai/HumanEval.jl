@@ -1,0 +1,35 @@
+Here's the implementation of the `x_or_y` function in Julia:
+
+```julia
+function x_or_y(n::Int, x::Int, y::Int)::Int
+    if isprime(n)
+        return x
+    else
+        return y
+    end
+end
+```
+
+Explanation:
+
+1. The function `x_or_y` takes three integer parameters: `n`, `x`, and `y`.
+2. Inside the function, we use the `isprime` function to check if `n` is a prime number.
+   - The `isprime` function is a built-in function in Julia that returns `true` if the given number is prime and `false` otherwise.
+3. If `n` is a prime number (`isprime(n)` returns `true`), the function immediately returns the value of `x` using the `return` statement.
+4. If `n` is not a prime number (`isprime(n)` returns `false`), the function returns the value of `y`.
+
+The function signature `x_or_y(n::Int, x::Int, y::Int)::Int` specifies that the function takes three integer parameters (`n`, `x`, and `y`) and returns an integer value.
+
+Here are the example function calls and their expected outputs:
+
+```jldoctest
+julia> x_or_y(7, 34, 12)
+34
+
+julia> x_or_y(15, 8, 5)
+5
+```
+
+In the first example, `n` is 7, which is a prime number, so the function returns the value of `x`, which is 34.
+
+In the second example, `n` is 15, which is not a prime number, so the function returns the value of `y`, which is 5.

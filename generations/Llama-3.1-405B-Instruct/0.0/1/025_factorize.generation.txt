@@ -1,0 +1,30 @@
+Here is a Julia function that implements the `factorize` function as described in the docstring:
+```julia
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    i = 2
+    while i * i <= n
+        if n % i == 0
+            push!(factors, i)
+            n = n ÷ i
+        else
+            i += 1
+        end
+    end
+    if n > 1
+        push!(factors, n)
+    end
+    return factors
+end
+```
+Here's an explanation of how the function works:
+
+1. We start with an empty vector `factors` that will store the prime factors of `n`.
+2. We initialize a variable `i` to 2, which is the smallest prime number.
+3. We loop until `i` squared is greater than `n`. This is because a larger factor of `n` would have already been found by a smaller `i`.
+4. Inside the loop, we check if `n` is divisible by `i` by checking if the remainder of `n` divided by `i` is 0. If it is, we add `i` to the `factors` vector and divide `n` by `i`.
+5. If `n` is not divisible by `i`, we increment `i` by 1.
+6. After the loop, if `n` is still greater than 1, it means that `n` is a prime number and we add it to the `factors` vector.
+7. Finally, we return the `factors` vector.
+
+You can test this function with the examples provided in the docstring to see that it produces the correct output.

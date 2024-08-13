@@ -1,0 +1,34 @@
+```julia
+function separate_paren_groups(paren_string::String)::Vector{String}
+    # Remove all spaces from the input string
+    clean_string = replace(paren_string, " " => "")
+    
+    # Initialize variables to store the results and track the current depth of parentheses
+    results = Vector{String}()
+    current_group = []
+    depth = 0
+    
+    # Iterate over each character in the cleaned string
+    for char in clean_string
+        if char == '('
+            # Increase the depth for an opening parenthesis
+            depth += 1
+            push!(current_group, char)
+        elseif char == ')'
+            # Append the closing parenthesis and decrease the depth
+            push!(current_group, char)
+            depth -= 1
+            
+            # If depth reaches zero, we have a complete group
+            if depth == 0
+                push!(results, join(current_group))
+                current_group = []
+            end
+        end
+    end
+    
+    return results
+end
+```
+
+This function works by iterating through the string, tracking the depth of nested parentheses, and collecting characters into groups. When the depth returns to zero, it indicates that a complete group of balanced parentheses has been collected, which is then added to the results list. The function ignores spaces by preprocessing the string to remove them.

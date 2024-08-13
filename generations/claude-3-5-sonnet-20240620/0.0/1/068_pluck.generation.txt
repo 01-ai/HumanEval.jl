@@ -1,0 +1,52 @@
+Here's a Julia function that solves the given problem:
+
+```julia
+function pluck(xs::Vector{Int})::Vector{Int}
+    smallest_even = typemax(Int)
+    smallest_index = -1
+    
+    for (index, value) in enumerate(xs)
+        if value % 2 == 0 && value < smallest_even
+            smallest_even = value
+            smallest_index = index
+        end
+    end
+    
+    if smallest_index == -1
+        return Int[]
+    else
+        return [smallest_even, smallest_index]
+    end
+end
+```
+
+This function does the following:
+
+1. We initialize `smallest_even` with the maximum possible integer value and `smallest_index` with -1.
+
+2. We iterate through the input array `xs` using `enumerate` to get both the index and value of each element.
+
+3. For each element, we check if it's even (using `value % 2 == 0`) and if it's smaller than our current `smallest_even`.
+
+4. If both conditions are true, we update `smallest_even` and `smallest_index`.
+
+5. After the loop, if `smallest_index` is still -1, it means we didn't find any even numbers, so we return an empty array.
+
+6. Otherwise, we return an array with two elements: the smallest even value and its index.
+
+This solution satisfies all the requirements:
+- It returns the smallest even value and its index.
+- If there are multiple nodes with the same smallest even value, it returns the one with the smallest index (because we only update when we find a strictly smaller value).
+- It returns an empty array if there are no even values or if the input array is empty.
+- It works with the given constraints (array length and non-negative integer values).
+
+You can test this function with the provided examples:
+
+```julia
+println(pluck([4, 2, 3]))        # [2, 2]
+println(pluck([1, 2, 3]))        # [2, 2]
+println(pluck(Int[]))            # []
+println(pluck([5, 0, 3, 0, 4, 2])) # [0, 2]
+```
+
+These should all produce the expected outputs.

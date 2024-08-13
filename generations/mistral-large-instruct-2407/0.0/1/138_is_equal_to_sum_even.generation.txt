@@ -1,0 +1,38 @@
+ Certainly! To determine if a given number `n` can be written as the sum of exactly 4 positive even numbers, we need to consider the properties of even numbers. An even number can be expressed as `2k` where `k` is an integer. Therefore, the sum of four even numbers can be written as `2k1 + 2k2 + 2k3 + 2k4 = 2(k1 + k2 + k3 + k4)`.
+
+For `n` to be the sum of four positive even numbers, `n` must be even and at least `8` (since the smallest four positive even numbers are `2, 2, 2, 2` which sum to `8`).
+
+Here is the implementation of the `is_equal_to_sum_even` function in Julia:
+
+```julia
+"""
+    is_equal_to_sum_even(n::Int)::Bool
+
+Evaluate whether the given number `n` can be written as the sum of exactly 4
+positive even numbers.
+
+# Example
+
+```jldoctest
+julia> is_equal_to_sum_even(4)
+false
+
+julia> is_equal_to_sum_even(6)
+false
+
+julia> is_equal_to_sum_even(8)
+true
+```
+"""
+function is_equal_to_sum_even(n::Int)::Bool
+    # Check if n is even and at least 8
+    return n >= 8 && iseven(n)
+end
+
+# Test cases
+println(is_equal_to_sum_even(4))  # false
+println(is_equal_to_sum_even(6))  # false
+println(is_equal_to_sum_even(8))  # true
+```
+
+This function checks if `n` is at least `8` and even, which are the necessary conditions for `n` to be the sum of exactly four positive even numbers.

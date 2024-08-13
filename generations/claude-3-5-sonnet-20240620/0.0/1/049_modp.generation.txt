@@ -1,0 +1,50 @@
+Here's a Julia function that implements the `modp` operation as described:
+
+```julia
+function modp(n::Int, p::Int)::Int
+    if n == 0
+        return 1
+    end
+    
+    result = 1
+    base = 2 % p
+    
+    while n > 0
+        if n & 1 == 1
+            result = (result * base) % p
+        end
+        base = (base * base) % p
+        n >>= 1
+    end
+    
+    return result
+end
+```
+
+This implementation uses the modular exponentiation algorithm, which is an efficient way to calculate large powers modulo a number. Here's how it works:
+
+1. If `n` is 0, we return 1 (since 2^0 = 1).
+
+2. We initialize `result` to 1 and `base` to 2 % p.
+
+3. We use a binary exponentiation method:
+   - We iterate while `n` is greater than 0.
+   - If the least significant bit of `n` is 1, we multiply `result` by `base` and take the modulus.
+   - We square `base` and take the modulus.
+   - We right-shift `n` by 1 bit.
+
+4. Finally, we return the result.
+
+This method is efficient and avoids issues with large intermediate results by applying the modulus at each step.
+
+You can test this function with the examples provided:
+
+```julia
+println(modp(3, 5))    # Output: 3
+println(modp(1101, 101))    # Output: 2
+println(modp(0, 101))    # Output: 1
+println(modp(3, 11))    # Output: 8
+println(modp(100, 101))    # Output: 1
+```
+
+These should all produce the expected outputs.

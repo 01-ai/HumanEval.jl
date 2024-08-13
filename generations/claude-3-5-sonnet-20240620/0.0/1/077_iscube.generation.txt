@@ -1,0 +1,52 @@
+Here's a Julia function that determines if an integer `a` is a cube of some integer number:
+
+```julia
+function iscube(a::Int)::Bool
+    if a == 0
+        return true
+    end
+    
+    # Take the absolute value to handle negative numbers
+    a = abs(a)
+    
+    # Find the cube root and round it to the nearest integer
+    cube_root = round(Int, cbrt(a))
+    
+    # Check if the cube of the rounded cube root equals the input
+    return cube_root^3 == a
+end
+```
+
+This function works as follows:
+
+1. First, we handle the special case of 0, which is considered a cube (0^3 = 0).
+
+2. We take the absolute value of `a` to handle negative numbers, since (-n)^3 = -(n^3).
+
+3. We calculate the cube root of `a` using the `cbrt` function and round it to the nearest integer using `round(Int, ...)`.
+
+4. Finally, we check if the cube of this rounded cube root equals the original input `a`. If it does, then `a` is a perfect cube.
+
+This function will correctly handle all the example cases:
+
+```julia
+julia> iscube(1)
+true
+
+julia> iscube(2)
+false
+
+julia> iscube(-1)
+true
+
+julia> iscube(64)
+true
+
+julia> iscube(0)
+true
+
+julia> iscube(180)
+false
+```
+
+The function works for both positive and negative integers, and it correctly identifies perfect cubes. It's also efficient, as it doesn't need to check all possible numbers up to `a`, but instead uses the cube root calculation to quickly determine if `a` is a perfect cube.

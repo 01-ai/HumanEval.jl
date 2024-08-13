@@ -1,0 +1,36 @@
+Here's a Julia function that flips the case of characters in a given string:
+
+```julia
+function flip_case(s::String)::String
+    return join(map(c -> islowercase(c) ? uppercase(c) : lowercase(c), s))
+end
+```
+
+This function does the following:
+
+1. It takes a string `s` as input and is annotated to return a String.
+
+2. It uses `map` to iterate over each character `c` in the input string `s`.
+
+3. For each character, it checks if it's lowercase using `islowercase(c)`:
+   - If the character is lowercase, it converts it to uppercase using `uppercase(c)`.
+   - If the character is not lowercase (i.e., it's uppercase or not a letter), it converts it to lowercase using `lowercase(c)`.
+
+4. The `map` function returns an iterator of the transformed characters.
+
+5. Finally, `join` is used to concatenate all the transformed characters back into a single string.
+
+You can use this function as follows:
+
+```julia
+julia> flip_case("Hello")
+"hELLO"
+
+julia> flip_case("World!")
+"wORLD!"
+
+julia> flip_case("Julia 1.0")
+"jULIA 1.0"
+```
+
+This function will flip the case of all alphabetic characters while leaving non-alphabetic characters (like numbers, punctuation, or spaces) unchanged.

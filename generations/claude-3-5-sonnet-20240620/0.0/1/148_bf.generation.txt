@@ -1,0 +1,61 @@
+Here's a Julia function that implements the described behavior:
+
+```julia
+function bf(planet1::String, planet2::String)::Tuple
+    planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+    
+    # Check if both input planets are valid
+    if !(planet1 in planets && planet2 in planets)
+        return ()
+    end
+    
+    # Find the indices of the input planets
+    index1 = findfirst(==(planet1), planets)
+    index2 = findfirst(==(planet2), planets)
+    
+    # Determine the range of planets between planet1 and planet2
+    if index1 < index2
+        return Tuple(planets[index1+1:index2-1])
+    elseif index1 > index2
+        return Tuple(planets[index2+1:index1-1])
+    else
+        return ()  # Return empty tuple if planet1 and planet2 are the same
+    end
+end
+```
+
+This function does the following:
+
+1. We define a list of planets in order of their proximity to the Sun.
+
+2. We first check if both input planets are valid (i.e., they exist in our list of planets). If not, we return an empty tuple.
+
+3. We find the indices of the input planets in our list.
+
+4. We then determine the range of planets between `planet1` and `planet2`:
+   - If `planet1` is closer to the Sun than `planet2`, we return the planets between them in order.
+   - If `planet2` is closer to the Sun than `planet1`, we return the planets between them in order.
+   - If `planet1` and `planet2` are the same, we return an empty tuple.
+
+5. We use `Tuple()` to convert the array slice to a tuple before returning.
+
+This function will work for the given examples:
+
+```julia
+julia> bf("Jupiter", "Neptune")
+("Saturn", "Uranus")
+
+julia> bf("Earth", "Mercury")
+("Venus",)
+
+julia> bf("Mercury", "Uranus")
+("Venus", "Earth", "Mars", "Jupiter", "Saturn")
+
+julia> bf("Earth", "Earth")
+()
+
+julia> bf("Earth", "Pluto")
+()
+```
+
+Note that the function is case-sensitive, so planet names should be provided with the first letter capitalized, as shown in the examples.

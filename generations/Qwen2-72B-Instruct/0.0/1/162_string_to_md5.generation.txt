@@ -1,0 +1,11 @@
+Here is the Julia function that matches the given docstring:
+
+```julia
+using MD5
+
+function string_to_md5(text::String)::Union{Nothing,String}
+    text == "" ? nothing : hexdigest(MD5, text)
+end
+```
+
+This function takes a string `text` as an argument and returns the MD5 hash of the string if it is not empty. If the string is empty, it returns `nothing`. The `hexdigest` function from the `MD5` module is used to generate the hash.

@@ -1,0 +1,23 @@
+Sure, here's a Julia function that implements the described behavior:
+
+```julia
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    strongest_strength = typemin(Int)
+    strongest_extension = ""
+
+    for extension in extensions
+        cap = count(isuppercase, extension)
+        sm = count(islowercase, extension)
+        strength = cap - sm
+
+        if strength > strongest_strength
+            strongest_strength = strength
+            strongest_extension = extension
+        end
+    end
+
+    return "$class_name.$strongest_extension"
+end
+```
+
+This function iterates over each extension in the given list, calculates its strength as described, and keeps track of the strongest one found so far. Finally, it returns the class name concatenated with the strongest extension, separated by a dot.

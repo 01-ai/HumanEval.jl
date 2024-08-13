@@ -1,0 +1,21 @@
+```julia
+function check_dict_case(d::Dict{String})::Bool
+    if isempty(d)
+        return false
+    end
+    
+    all_lower = true
+    all_upper = true
+    
+    for key in keys(d)
+        if !all(islower, key)
+            all_lower = false
+        end
+        if !all(isupper, key)
+            all_upper = false
+        end
+    end
+    
+    return all_lower || all_upper
+end
+```

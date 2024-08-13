@@ -1,0 +1,72 @@
+Here's a Julia function that implements the `prime_fib` functionality as described:
+
+```julia
+function prime_fib(n::Int)::Int
+    function is_prime(num)
+        if num < 2
+            return false
+        end
+        for i in 2:isqrt(num)
+            if num % i == 0
+                return false
+            end
+        end
+        return true
+    end
+
+    function fibonacci()
+        a, b = 0, 1
+        return Channel() do channel
+            while true
+                put!(channel, b)
+                a, b = b, a + b
+            end
+        end
+    end
+
+    count = 0
+    for fib in fibonacci()
+        if is_prime(fib)
+            count += 1
+            if count == n
+                return fib
+            end
+        end
+    end
+end
+```
+
+Let's break down the implementation:
+
+1. We define a helper function `is_prime(num)` that checks if a given number is prime.
+
+2. We define a `fibonacci()` function that generates Fibonacci numbers using a channel. This allows us to generate Fibonacci numbers indefinitely without storing them all in memory.
+
+3. In the main `prime_fib` function, we iterate through the Fibonacci numbers.
+
+4. For each Fibonacci number, we check if it's prime using the `is_prime` function.
+
+5. If the number is prime, we increment our count. When the count reaches `n`, we return that Fibonacci number.
+
+This implementation efficiently generates both Fibonacci numbers and checks for primality, returning the nth number that satisfies both conditions.
+
+You can use this function as follows:
+
+```julia
+julia> prime_fib(1)
+2
+
+julia> prime_fib(2)
+3
+
+julia> prime_fib(3)
+5
+
+julia> prime_fib(4)
+13
+
+julia> prime_fib(5)
+89
+```
+
+The function will work for larger values of `n` as well, though it may take longer to compute for very large values due to the increasing size of Fibonacci numbers and the complexity of primality testing for large numbers.

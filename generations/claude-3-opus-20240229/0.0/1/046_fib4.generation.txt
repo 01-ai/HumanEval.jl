@@ -1,0 +1,58 @@
+Here's an efficient implementation of the `fib4` function in Julia without using recursion:
+
+```julia
+function fib4(n::Int)::Int
+    if n == 0 || n == 1
+        return 0
+    elseif n == 2
+        return 2
+    end
+
+    # Initialize an array to store the fib4 values
+    fib4_values = [0, 0, 2, 0]
+
+    # Iterate from 4 to n and calculate fib4 values
+    for i in 4:n
+        next_fib4 = fib4_values[4] + fib4_values[3] + fib4_values[2] + fib4_values[1]
+        fib4_values[1] = fib4_values[2]
+        fib4_values[2] = fib4_values[3]
+        fib4_values[3] = fib4_values[4]
+        fib4_values[4] = next_fib4
+    end
+
+    return fib4_values[4]
+end
+```
+
+Explanation:
+
+1. We first handle the base cases for `n == 0`, `n == 1`, and `n == 2` by returning the corresponding fib4 values.
+
+2. We initialize an array `fib4_values` to store the last four fib4 values. Initially, it contains the fib4 values for `n = 0`, `n = 1`, `n = 2`, and `n = 3`.
+
+3. We start a loop from `4` to `n` to calculate the fib4 values iteratively.
+
+4. Inside the loop, we calculate the next fib4 value by summing up the last four fib4 values stored in the `fib4_values` array.
+
+5. We update the `fib4_values` array by shifting the values to the left and storing the newly calculated fib4 value at the last position.
+
+6. After the loop ends, the `fib4_values` array will contain the last four fib4 values, and the fib4 value for `n` will be stored at the last position (`fib4_values[4]`).
+
+7. Finally, we return the fib4 value for `n`.
+
+This implementation avoids recursion and efficiently calculates the fib4 value for a given `n` by storing and updating only the last four fib4 values in an array. The time complexity of this solution is O(n), and the space complexity is O(1) since we are using a fixed-size array.
+
+You can test the function with the provided examples:
+
+```julia
+julia> fib4(5)
+4
+
+julia> fib4(6)
+8
+
+julia> fib4(7)
+14
+```
+
+The function will efficiently compute the n-th element of the fib4 number sequence.

@@ -1,0 +1,33 @@
+Sure, here's the implementation of the `string_xor` function in Julia:
+
+```julia
+function string_xor(a::String, b::String)::String
+    # Ensure both strings are of the same length
+    if length(a) != length(b)
+        throw(ArgumentError("Input strings must be of the same length"))
+    end
+
+    # Perform XOR operation
+    result = String()
+    for i in 1:length(a)
+        if a[i] == b[i]
+            result *= "0"
+        else
+            result *= "1"
+        end
+    end
+
+    return result
+end
+```
+
+This function first checks if the input strings `a` and `b` are of the same length. If they are not, it throws an `ArgumentError`. Then, it iterates through each character of the strings, performs the XOR operation, and constructs the result string accordingly. 
+
+Here are some examples to test the function:
+
+```julia
+println(string_xor("010", "110"))  # Output: "100"
+println(string_xor("1010", "0101"))  # Output: "1111"
+println(string_xor("1111", "0000"))  # Output: "1111"
+println(string_xor("0000", "0000"))  # Output: "0000"
+```

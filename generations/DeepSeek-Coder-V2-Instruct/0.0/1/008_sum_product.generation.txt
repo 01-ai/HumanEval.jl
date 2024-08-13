@@ -1,0 +1,11 @@
+ Here's the implementation of the `sum_product` function in Julia:
+
+```julia
+function sum_product(numbers::Vector{Int})::Tuple{Int, Int}
+    sum_result = sum(numbers)
+    product_result = prod(numbers)
+    return (sum_result, product_result)
+end
+```
+
+This function calculates the sum and product of all integers in the given list and returns them as a tuple. If the list is empty, the sum will be 0 and the product will be 1, as per the behavior of `sum` and `prod` functions in Julia.

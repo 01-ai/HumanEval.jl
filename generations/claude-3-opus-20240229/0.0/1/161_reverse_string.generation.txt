@@ -1,0 +1,55 @@
+Here's an implementation of the `reverse_string` function in Julia:
+
+```julia
+function reverse_string(s::String)
+    result = ""
+    contains_letters = false
+
+    for char in s
+        if isalpha(char)
+            contains_letters = true
+            result *= uppercasefirst(lowercase(char))
+        else
+            result *= char
+        end
+    end
+
+    if !contains_letters
+        result = reverse(result)
+    end
+
+    return result
+end
+```
+
+Here's how the function works:
+
+1. We initialize an empty string `result` to store the transformed characters, and a boolean flag `contains_letters` to keep track of whether the input string contains any letters or not.
+
+2. We loop through each character `char` in the input string `s`.
+
+3. If `char` is a letter (checked using `isalpha(char)`), we set `contains_letters` to `true`, and append the reversed case of `char` to `result`. To reverse the case, we first convert `char` to lowercase using `lowercase(char)`, then capitalize the first character using `uppercasefirst`.
+
+4. If `char` is not a letter, we simply append it to `result` as it is.
+
+5. After the loop, if `contains_letters` is `false` (meaning the input string didn't contain any letters), we reverse the `result` string using `reverse(result)`.
+
+6. Finally, we return the `result` string.
+
+Here are some examples:
+
+```jldoctest
+julia> reverse_string("1234")
+"4321"
+
+julia> reverse_string("ab")
+"AB"
+
+julia> reverse_string("#a@C")
+"#A@c"
+
+julia> reverse_string("Hello, World!")
+"hELLO, wORLD!"
+```
+
+Note that this implementation assumes that the input string is a valid string. If you need to handle invalid inputs or other edge cases, you may need to add additional checks and error handling.

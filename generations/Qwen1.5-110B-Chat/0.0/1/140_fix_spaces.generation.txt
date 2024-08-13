@@ -1,0 +1,10 @@
+```julia
+function fix_spaces(s::String)::String
+    # Replace all consecutive spaces with a single dash
+    s = replace(s, r"\s{2,}" => "-")
+    # Replace remaining single spaces with underscores
+    return replace(s, " " => "_")
+end
+```
+
+This function first uses the `replace` function with a regular expression to find all occurrences of two or more consecutive spaces (`\s{2,}`) and replaces them with a dash. Then, it replaces any remaining single spaces with underscores. This approach ensures that all consecutive spaces are turned into a single dash before converting individual spaces to underscores, adhering to the given requirements.

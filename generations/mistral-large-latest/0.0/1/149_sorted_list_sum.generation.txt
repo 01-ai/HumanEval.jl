@@ -1,0 +1,14 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function sorted_list_sum(xs::Vector{String})::Vector{String}
+    # Filter out strings with odd lengths
+    filtered_xs = filter(x -> iseven(length(x)), xs)
+
+    # Sort the filtered list by length and then alphabetically
+    sorted_xs = sort(filtered_xs, by = x -> (length(x), x))
+
+    return sorted_xs
+end
+```
+This function first filters out the strings with odd lengths from the input list `xs`. Then it sorts the filtered list first by the length of the strings and then alphabetically. The sorted list is then returned.

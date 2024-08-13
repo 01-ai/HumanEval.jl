@@ -1,0 +1,5 @@
+```julia
+function common(l1::Vector, l2::Vector)::Vector
+    unique(sort(intersect(l1, l2)))
+end
+```

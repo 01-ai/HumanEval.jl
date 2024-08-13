@@ -1,0 +1,11 @@
+To create the `decode_cyclic` function, we need to reverse the operation performed by `encode_cyclic`. The encoding function takes groups of three characters and rearranges them in the order of second, third, and then first character. Therefore, to decode, we'll take the same groups and rearrange them back to the original order, which is first, second, and then third character.
+
+Here's the Julia function to decode the string:
+
+```julia
+function decode_cyclic(s::String)::String
+    join((length(x) == 3 ? x[3] * x[1] * x[2] : x for x in Iterators.partition(s, 3)))
+end
+```
+
+This function iterates over every group of three characters in the input string `s`. If the group has three characters, it rearranges them in the order of third, first, and second, effectively reversing the encoding process. For groups with less than three characters (which shouldn't occur if the encoding was strict, but this handles edge cases), it keeps them as is. The `join` function then combines these groups back into a single string.

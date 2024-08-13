@@ -1,0 +1,12 @@
+```julia
+function pluck(xs::Vector{Int})::Vector{Int}
+    even_nodes = [(x, i) for (i, x) in enumerate(xs) if x % 2 == 0]
+    if isempty(even_nodes)
+        return Int64[]
+    else
+        smallest_even = minimum(even_nodes, by=x->x[1])
+        return [smallest_even[1], smallest_even[2]]
+    end
+end
+```
+This Julia function, `pluck`, first identifies all the even-valued nodes in the input array `xs` along with their indices. If no even nodes are found, it returns an empty array. Otherwise, it determines the node with the smallest even value and returns this value along with its index in a two-element array.

@@ -1,0 +1,13 @@
+```julia
+function split_words(txt::String)::Union{Vector{<:AbstractString},Int}
+    if occursin(r"\s", txt)  # check for whitespace
+        return split(txt)
+    elseif occursin(",", txt)  # check for comma
+        return split(replace(txt, r"\s" => ""), ",")
+    else
+        odd_letters = filter(l -> islower(l) && Int(lowercase(l)) % 2 == 1, txt)
+        return length(odd_letters)
+    end
+end
+```
+This function first checks if the input string `txt` contains whitespace; if it does, it splits the string on whitespace using `split(txt)`. If there are no whitespaces, it checks for commas and splits the string accordingly, removing any whitespace first with `replace(txt, r"\s" => "")` before splitting on commas. If neither whitespace nor commas are present, it counts the number of lowercase letters that have an odd position in the alphabet, as per the given conditions.

@@ -1,0 +1,49 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function is_prime(n::Int)::Bool
+    if n < 2
+        return false
+    end
+    for i in 2:isqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+function prime_length(s::String)::Bool
+    return is_prime(length(s))
+end
+```
+
+Explanation:
+
+1. We define a helper function `is_prime` that takes an integer `n` and returns `true` if `n` is prime and `false` otherwise.
+   - If `n` is less than 2, it is not prime, so we return `false`.
+   - We iterate from 2 to the square root of `n` (inclusive) using `isqrt(n)` to check for divisibility.
+   - If `n` is divisible by any number in the range, it is not prime, so we return `false`.
+   - If the loop completes without finding any divisors, `n` is prime, so we return `true`.
+
+2. In the `prime_length` function, we simply call the `is_prime` function with the length of the input string `s` using `length(s)`.
+   - If the length of the string is prime, `is_prime` will return `true`, and `prime_length` will return `true`.
+   - If the length of the string is not prime, `is_prime` will return `false`, and `prime_length` will return `false`.
+
+The function satisfies the given examples:
+
+```jldoctest
+julia> prime_length("Hello")
+true
+
+julia> prime_length("abcdcba")
+true
+
+julia> prime_length("kittens")
+true
+
+julia> prime_length("orange")
+false
+```
+
+The time complexity of the `is_prime` function is O(sqrt(n)), where n is the length of the string. The `prime_length` function simply calls `is_prime`, so its time complexity is also O(sqrt(n)).

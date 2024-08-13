@@ -1,0 +1,28 @@
+```julia
+function split_words(txt::String)::Union{Vector{<:AbstractString}, Int}
+    # Check for spaces and split if present
+    if occursin(' ', txt)
+        return split(txt)
+    end
+    
+    # Check for commas and split if present
+    if occursin(',', txt)
+        return split(txt, ',')
+    end
+    
+    # Count lower-case letters with odd order in the alphabet
+    odd_count = 0
+    for char in txt
+        if 'a' <= char <= 'z'
+            order = Int(char) - Int('a')
+            if order % 2 == 1
+                odd_count += 1
+            end
+        end
+    end
+    
+    return odd_count
+end
+```
+
+This function first checks if the input string contains spaces and splits the string by spaces if they are present. If not, it checks for commas and splits by commas if they are found. If neither spaces nor commas are present, it counts the number of lowercase letters in the string that have an odd order in the alphabet (where 'a' is 0, 'b' is 1, etc.). The function returns either a vector of substrings or an integer count, depending on the content of the input string.

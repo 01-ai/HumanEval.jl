@@ -1,0 +1,36 @@
+Here is a Julia function that implements the functionality described in the doc string:
+
+```julia
+function monotonic(l::Vector)
+    if length(l) < 2
+        return true
+    end
+
+    increasing = false
+    decreasing = false
+
+    for i in 1:(length(l)-1)
+        if l[i+1] > l[i]
+            increasing = true
+        elseif l[i+1] < l[i]
+            decreasing = true
+        end
+
+        if increasing && decreasing
+            return false
+        end
+    end
+
+    return true
+end
+```
+
+However, this function can be simplified by using the `all` function in Julia:
+
+```julia
+function monotonic(l::Vector)
+    return all(x -> x >= 0, diff(l)) || all(x -> x <= 0, diff(l))
+end
+```
+
+This function works by taking the difference between each pair of elements in the vector (using the `diff` function), and then checking if all of these differences are non-negative (indicating a monotonically increasing sequence) or non-positive (indicating a monotonically decreasing sequence).

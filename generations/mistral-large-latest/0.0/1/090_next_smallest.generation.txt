@@ -1,0 +1,15 @@
+Sure, here is the Julia function that fulfills the requirements:
+
+```julia
+function next_smallest(xs::Vector{Int})::Union{Nothing,Int}
+    if length(xs) < 2
+        return nothing
+    elseif length(unique(xs)) < 2
+        return nothing
+    else
+        sort!(xs)
+        return xs[2]
+    end
+end
+```
+This function first checks if the length of the input vector `xs` is less than 2. If it is, it returns `nothing` because there is no second smallest element. Then it checks if all elements in the vector are the same by checking the length of the unique elements in the vector. If all elements are the same, it also returns `nothing`. If neither of these cases is true, it sorts the vector in ascending order and returns the second element.

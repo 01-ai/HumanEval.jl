@@ -1,0 +1,17 @@
+Sure, here is the Julia function that fulfills the requirements:
+
+```julia
+function how_many_times(s::String, sub_s::String)::Int
+    count = 0
+    i = 1
+    while i <= length(s) - length(sub_s) + 1
+        if s[i:i+length(sub_s)-1] == sub_s
+            count += 1
+        end
+        i += 1
+    end
+    return count
+end
+```
+
+This function works by iterating over the string `s` and checking if the substring starting at the current position matches `sub_s`. If it does, it increments the count. It continues this until it has checked every possible substring of the same length as `sub_s` in `s`.

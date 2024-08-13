@@ -1,0 +1,40 @@
+```julia
+function is_multiply_prime(a::Int)::Bool
+    if a < 2
+        return false
+    end
+
+    prime_factors = 0
+    # Check for divisibility by 2
+    if a % 2 == 0
+        prime_factors += 1
+        a ÷= 2
+        # Make sure it's not divisible by 2 more than once
+        if a % 2 == 0
+            return false
+        end
+    end
+
+    # Check for divisibility by odd numbers
+    d = 3
+    while d * d <= a
+        if a % d == 0
+            prime_factors += 1
+            a ÷= d
+            # Make sure it's not divisible by the same prime more than once
+            if a % d == 0
+                return false
+            end
+        end
+        d += 2
+    end
+
+    # If a is a prime number greater than 2
+    if a > 2
+        prime_factors += 1
+    end
+
+    return prime_factors == 3
+end
+```
+This function checks if the given number `a` is the product of exactly 3 prime numbers. It first checks if `a` is less than 2, in which case it cannot be the product of prime numbers and returns `false`. Then, it checks for divisibility by 2 and odd numbers, counting each unique prime factor. If the total count of unique prime factors is exactly 3, it returns `true`; otherwise, it returns `false`.

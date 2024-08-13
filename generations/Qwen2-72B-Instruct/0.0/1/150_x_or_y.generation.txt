@@ -1,0 +1,9 @@
+Here is the Julia function based on the given doc string:
+
+```julia
+function x_or_y(n::Int, x::Int, y::Int)::Int
+    isprime(n) ? x : y
+end
+```
+
+This function uses the ternary operator `? :` to return `x` if `n` is a prime number, and `y` otherwise. The `isprime` function from Julia's standard library is used to check if `n` is a prime number.

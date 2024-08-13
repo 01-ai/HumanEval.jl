@@ -1,0 +1,15 @@
+```julia
+function how_many_times(s::String, sub_s::String)::Int
+    count = start = 0
+    while start <= length(s) - length(sub_s)
+        index = search(s, sub_s, start)
+        if index !== nothing
+            count += 1
+            start = index + 1
+        else
+            break
+        end
+    end
+    count
+end
+```

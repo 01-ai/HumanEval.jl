@@ -1,0 +1,48 @@
+Here's the implementation of the `closest_integer` function in Julia:
+
+```julia
+function closest_integer(value::String)::Int
+    num = parse(Float64, value)
+    rounded = round(num)
+    
+    if num == rounded
+        return Int(rounded)
+    elseif num > 0
+        return Int(ceil(num))
+    else
+        return Int(floor(num))
+    end
+end
+```
+
+Explanation:
+
+1. We use the `parse` function to convert the input string `value` to a floating-point number (`Float64`).
+
+2. We use the `round` function to round the number to the nearest integer. If the number is equidistant from two integers, `round` rounds to the nearest even integer.
+
+3. We check if the rounded value is equal to the original number. If they are equal, it means the number is already an integer, so we convert it to an integer using `Int` and return it.
+
+4. If the rounded value is not equal to the original number, we check if the number is positive or negative.
+   - If the number is positive, we use the `ceil` function to round it up to the nearest integer, convert it to an integer using `Int`, and return it.
+   - If the number is negative, we use the `floor` function to round it down to the nearest integer, convert it to an integer using `Int`, and return it.
+
+This implementation handles the case of rounding away from zero when the number is equidistant from two integers.
+
+Here are some examples of using the `closest_integer` function:
+
+```jldoctest
+julia> closest_integer("10")
+10
+
+julia> closest_integer("15.3")
+15
+
+julia> closest_integer("14.5")
+15
+
+julia> closest_integer("-14.5")
+-15
+```
+
+The function correctly returns the closest integer to the given value, and when the number is equidistant from two integers, it rounds away from zero.

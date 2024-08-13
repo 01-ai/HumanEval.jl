@@ -1,0 +1,44 @@
+Here's a Julia function that meets the given requirements:
+
+```julia
+function any_int(x::Number, y::Number, z::Number)::Bool
+    # Check if all numbers are integers
+    if !all(isinteger, (x, y, z))
+        return false
+    end
+
+    # Convert to integers
+    x, y, z = Int(x), Int(y), Int(z)
+
+    # Check if any number is equal to the sum of the other two
+    return (x == y + z) || (y == x + z) || (z == x + y)
+end
+```
+
+Let's break down the function:
+
+1. The function takes three arguments of type `Number` and returns a `Bool`.
+
+2. First, we check if all the numbers are integers using the `isinteger` function and the `all` function. If any of the numbers is not an integer, we return `false`.
+
+3. If all numbers are integers, we convert them to `Int` type to ensure proper comparison.
+
+4. Finally, we check if any of the numbers is equal to the sum of the other two. We use the logical OR operator (`||`) to combine these conditions. If any of these conditions is true, the function returns `true`. Otherwise, it returns `false`.
+
+This function will work correctly for the given examples:
+
+```julia
+julia> any_int(5, 2, 7)
+true
+
+julia> any_int(3, 2, 2)
+false
+
+julia> any_int(3, -2, 1)
+true
+
+julia> any_int(3.6, -2.2, 2)
+false
+```
+
+It correctly handles integer inputs, negative numbers, and returns `false` for non-integer inputs.

@@ -1,0 +1,22 @@
+Sure, here is the Julia function that implements the Brazilian factorial:
+
+```julia
+function special_factorial(n::Int)::BigInt
+    if n < 0
+        error("Input should be a non-negative integer")
+    elseif n == 0
+        return one(BigInt)
+    else
+        result = one(BigInt)
+        for i in 1:n
+            factorial_i = BigInt(1)
+            for j in 1:i
+                factorial_i *= j
+            end
+            result *= factorial_i
+        end
+        return result
+    end
+end
+```
+This function first checks if the input is a non-negative integer. If it is not, it throws an error. If the input is 0, it returns 1 (since the factorial of 0 is 1). Otherwise, it calculates the Brazilian factorial by iterating from 1 to n, calculating the factorial of each number i (denoted as `factorial_i`), and multiplying the result by `factorial_i`. The result is then returned as a `BigInt`.

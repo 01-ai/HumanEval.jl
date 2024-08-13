@@ -1,0 +1,67 @@
+Here's a Julia function that converts a given positive integer to its corresponding mini Roman numeral representation:
+
+```julia
+function int_to_mini_roman(num::Int)
+    if num < 1 || num > 1000
+        throw(DomainError("Number must be in the range 1 <= num <= 1000"))
+    end
+
+    roman_numerals = Dict(
+        1000 => "m",
+        900 => "cm",
+        500 => "d",
+        400 => "cd",
+        100 => "c",
+        90 => "xc",
+        50 => "l",
+        40 => "xl",
+        10 => "x",
+        9 => "ix",
+        5 => "v",
+        4 => "iv",
+        1 => "i"
+    )
+
+    result = ""
+    for (value, symbol) in sort(collect(roman_numerals), by=x->x[1], rev=true)
+        count = div(num, value)
+        result *= repeat(symbol, count)
+        num -= value * count
+    end
+
+    return result
+end
+```
+
+Here's how the function works:
+
+1. First, we check if the input number is within the allowed range of 1 to 1000. If not, we throw a `DomainError`.
+
+2. We create a dictionary `roman_numerals` that maps each Roman numeral value to its corresponding symbol.
+
+3. We initialize an empty string `result` to store the final Roman numeral representation.
+
+4. We iterate over the key-value pairs of `roman_numerals` in descending order of their values.
+
+5. For each value, we calculate how many times it can be subtracted from the input number by using integer division `div(num, value)`. This gives us the count of the symbol to be repeated.
+
+6. We repeat the symbol `count` times and append it to the `result` string using `result *= repeat(symbol, count)`.
+
+7. We update `num` by subtracting the value multiplied by the count: `num -= value * count`.
+
+8. After iterating over all the key-value pairs, the `result` string contains the final Roman numeral representation, which is returned.
+
+Here are some examples:
+
+```jldoctest
+julia> int_to_mini_roman(19)
+"xix"
+
+julia> int_to_mini_roman(152)
+"clii"
+
+julia> int_to_mini_roman(426)
+"cdxxvi"
+```
+
+Note: This implementation assumes that the input number is within the valid range of 1 to 1000. If you need to handle numbers outside this range, you'll need to modify the function accordingly.

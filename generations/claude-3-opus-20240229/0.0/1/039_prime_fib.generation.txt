@@ -1,0 +1,61 @@
+Here's the implementation of the `prime_fib` function in Julia:
+
+```julia
+function prime_fib(n::Int)::Int
+    # Initialize variables
+    a, b = 1, 1
+    count = 0
+
+    while count < n
+        # Generate the next Fibonacci number
+        c = a + b
+        a, b = b, c
+
+        # Check if the current Fibonacci number is prime
+        if is_prime(c)
+            count += 1
+            if count == n
+                return c
+            end
+        end
+    end
+end
+
+# Helper function to check if a number is prime
+function is_prime(num::Int)::Bool
+    if num < 2
+        return false
+    end
+    for i in 2:isqrt(num)
+        if num % i == 0
+            return false
+        end
+    end
+    return true
+end
+```
+
+Explanation:
+1. The `prime_fib` function takes an integer `n` as input and returns the n-th number that is both a Fibonacci number and prime.
+
+2. We initialize two variables `a` and `b` to 1, representing the first two Fibonacci numbers. We also initialize a variable `count` to keep track of the count of prime Fibonacci numbers found so far.
+
+3. We start a loop that continues until we find the n-th prime Fibonacci number.
+
+4. Inside the loop, we generate the next Fibonacci number `c` by adding `a` and `b`. We then update `a` and `b` to `b` and `c`, respectively, for the next iteration.
+
+5. We check if the current Fibonacci number `c` is prime using the `is_prime` helper function.
+
+6. If `c` is prime, we increment the `count` by 1. If `count` equals `n`, we have found the n-th prime Fibonacci number, so we return `c` and exit the function.
+
+7. The loop continues until we find the n-th prime Fibonacci number.
+
+8. The `is_prime` helper function takes an integer `num` as input and returns `true` if `num` is prime, and `false` otherwise.
+
+9. Inside `is_prime`, we first check if `num` is less than 2. If it is, we return `false` since numbers less than 2 are not prime.
+
+10. We iterate from 2 to the square root of `num` (inclusive). If any number in this range divides `num` evenly (i.e., the remainder is 0), then `num` is not prime, and we return `false`.
+
+11. If we complete the loop without finding any divisors, `num` is prime, and we return `true`.
+
+The `prime_fib` function efficiently finds the n-th prime Fibonacci number by generating Fibonacci numbers and checking their primality until the desired count is reached.

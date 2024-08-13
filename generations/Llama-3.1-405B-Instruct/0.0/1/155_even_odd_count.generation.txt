@@ -1,0 +1,36 @@
+Here is the Julia function that implements the specified behavior:
+```julia
+function even_odd_count(num::Int)::Tuple{Int, Int}
+    num_str = string(abs(num))  # Convert to string and remove negative sign
+    even_count = 0
+    odd_count = 0
+
+    for char in num_str
+        digit = parse(Int, char)
+        if digit % 2 == 0
+            even_count += 1
+        else
+            odd_count += 1
+        end
+    end
+
+    return even_count, odd_count
+end
+```
+Here's an explanation of the code:
+
+1. We first convert the input integer to a string using `string(abs(num))`, which removes the negative sign if present.
+2. We initialize two counters, `even_count` and `odd_count`, to zero.
+3. We iterate over each character in the string representation of the number using a `for` loop.
+4. For each character, we parse it back to an integer using `parse(Int, char)`.
+5. We check if the digit is even by using the modulo operator (`%`). If the remainder is zero, it's even, and we increment `even_count`. Otherwise, we increment `odd_count`.
+6. Finally, we return a tuple containing the even and odd counts.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> even_odd_count(-12)
+(1, 1)
+
+julia> even_odd_count(123)
+(1, 2)
+```

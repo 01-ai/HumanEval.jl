@@ -1,0 +1,11 @@
+Based on the description, every car moving left to right will collide with every car moving right to left. Therefore, the total number of collisions will be the product of the number of cars in each set. Here's the Julia function:
+
+```julia
+function car_race_collision(n::Int)::Int
+    # Every car moving left to right will collide with every car moving right to left
+    # Therefore, the total number of collisions will be the product of the number of cars in each set
+    return n * n
+end
+```
+
+This function takes an integer `n` as input, representing the number of cars in each set, and returns the total number of collisions as an integer. The total number of collisions is calculated as `n * n`, because each car from one set will collide with each car from the other set.

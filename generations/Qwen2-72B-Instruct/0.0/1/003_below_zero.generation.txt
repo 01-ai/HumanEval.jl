@@ -1,0 +1,12 @@
+```julia
+function below_zero(operations::Vector{Int})
+    balance = 0
+    for op in operations
+        balance += op
+        if balance < 0
+            return true
+        end
+    end
+    return false
+end
+```

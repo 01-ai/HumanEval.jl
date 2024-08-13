@@ -1,0 +1,26 @@
+Sure, here is the implementation of the `fizz_buzz` function in Julia:
+
+```julia
+function fizz_buzz(n::Int)
+    count = 0
+    for i in 1:n-1
+        if i % 11 == 0 || i % 13 == 0
+            count += count_occurrences_of_7(i)
+        end
+    end
+    return count
+end
+
+function count_occurrences_of_7(num::Int)
+    count = 0
+    while num > 0
+        if num % 10 == 7
+            count += 1
+        end
+        num = div(num, 10)
+    end
+    return count
+end
+```
+
+This function `fizz_buzz` iterates through all integers less than `n` and checks if they are divisible by 11 or 13. If they are, it counts the occurrences of the digit 7 in those numbers using the helper function `count_occurrences_of_7`. The helper function `count_occurrences_of_7` counts how many times the digit 7 appears in a given number.

@@ -1,0 +1,20 @@
+```julia
+function f(n::Int)::Vector{Int}
+    result = Vector{Int}(undef, n)
+    for i in 1:n
+        if i % 2 == 0
+            # If i is even, calculate factorial
+            result[i] = factorial(i)
+        else
+            # If i is odd, calculate the sum of numbers from 1 to i (which is i*(i+1)/2)
+            result[i] = div(i * (i + 1), 2)
+        end
+    end
+    return result
+end
+
+# Test the function with the given example
+@show f(5)
+```
+
+This Julia function `f` follows the provided specifications. It iterates over each index `i` from 1 to `n`, checking if `i` is even or odd. If `i` is even, it calculates the factorial of `i` using `factorial(i)`. If `i` is odd, it calculates the sum of numbers from 1 to `i` using the formula `i*(i+1)/2`, which is a more efficient way to compute the sum than a loop. The function then populates the result array with these values and returns it. The test at the end demonstrates the function with `n=5`, as per the example.

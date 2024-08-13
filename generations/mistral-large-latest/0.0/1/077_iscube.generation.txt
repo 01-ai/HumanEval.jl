@@ -1,0 +1,12 @@
+Sure, here is the Julia function that fulfills the requirements:
+
+```julia
+function iscube(a::Int)::Bool
+    if a < 0
+        a *= -1
+    end
+    root = round(Int, cbrt(a))
+    return root^3 == a
+end
+```
+This function first checks if the input number `a` is negative. If it is, it makes `a` positive because the cube root of a negative number is a complex number, but we are only interested in real numbers. Then it calculates the cube root of `a` and rounds it to the nearest integer. If the cube of this integer is equal to `a`, then `a` is a perfect cube and the function returns `true`. Otherwise, it returns `false`.

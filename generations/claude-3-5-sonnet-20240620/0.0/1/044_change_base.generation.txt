@@ -1,0 +1,75 @@
+Here's a Julia function that changes the numerical base of an input number `x` to the specified `base`, returning the result as a string:
+
+```julia
+function change_base(x::Int, base::Int)::String
+    if base < 2 || base > 9
+        throw(ArgumentError("Base must be between 2 and 9"))
+    end
+    
+    if x == 0
+        return "0"
+    end
+    
+    result = ""
+    n = abs(x)
+    
+    while n > 0
+        digit = n % base
+        result = string(digit) * result
+        n ÷= base
+    end
+    
+    return x < 0 ? "-" * result : result
+end
+```
+
+This function does the following:
+
+1. It first checks if the `base` is within the valid range (2 to 9). If not, it throws an `ArgumentError`.
+
+2. If the input `x` is 0, it returns "0" immediately.
+
+3. It initializes an empty string `result` to store the converted number.
+
+4. It takes the absolute value of `x` to handle negative numbers.
+
+5. It uses a loop to convert the number:
+   - It calculates the remainder when divided by the base (this gives the rightmost digit in the new base).
+   - It prepends this digit to the result string.
+   - It integer-divides the number by the base to move to the next digit.
+
+6. If the original number was negative, it prepends a minus sign to the result.
+
+7. Finally, it returns the result string.
+
+This function will work correctly for the given examples:
+
+```julia
+julia> change_base(8, 3)
+"22"
+
+julia> change_base(8, 2)
+"1000"
+
+julia> change_base(7, 2)
+"111"
+```
+
+It will also handle negative numbers and zero correctly:
+
+```julia
+julia> change_base(-8, 3)
+"-22"
+
+julia> change_base(0, 5)
+"0"
+```
+
+And it will throw an error for invalid bases:
+
+```julia
+julia> change_base(10, 1)
+ERROR: ArgumentError: Base must be between 2 and 9
+```
+
+This implementation should meet all the requirements specified in the problem statement.

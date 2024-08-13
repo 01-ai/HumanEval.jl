@@ -1,0 +1,23 @@
+Here's the implementation of the `split_words` function in Julia:
+
+```julia
+function split_words(txt::String)::Union{Vector{<:AbstractString},Int}
+    if occursin(r"\s", txt)
+        return split(txt)
+    elseif occursin(",", txt)
+        return split(txt, ",")
+    else
+        count = 0
+        for char in txt
+            if islowercase(char)
+                if (Int(char) - Int('a')) % 2 == 1
+                    count += 1
+                end
+            end
+        end
+        return count
+    end
+end
+```
+
+This function first checks if there are any whitespaces in the input string. If so, it splits the string on whitespace. If there are no whitespaces but there are commas, it splits the string on commas. If neither whitespaces nor commas are present, it counts the number of lowercase letters that have an odd position in the alphabet (where 'a' is 0, 'b' is 1, etc.).

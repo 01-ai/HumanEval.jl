@@ -1,0 +1,7 @@
+```julia
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    sum(filter((x, idx) -> idx % 2 != 0 && x % 2 != 0, enumerate(xs)))
+end
+```
+
+This function, `sum_odd_at_odd`, iterates over the input vector `xs` using `enumerate` to get both the value and its index. It then filters out the elements that are both odd (with `x % 2 != 0`) and at odd positions (with `idx % 2 != 0`). Finally, it calculates the sum of these filtered elements using `sum`.

@@ -1,0 +1,35 @@
+To implement the `simplify` function, we need to follow these steps:
+
+1. Parse the input strings `x` and `n` to extract their numerators and denominators.
+2. Multiply the numerators and denominators of `x` and `n` to get the resulting fraction.
+3. Check if the resulting fraction is a whole number by ensuring its denominator is 1.
+
+Here's the implementation:
+
+```julia
+function simplify(x::String, n::String)::Bool
+    # Parse the input strings to get the numerators and denominators
+    num_x, den_x = split(x, "/")
+    num_n, den_n = split(n, "/")
+    
+    # Convert the parsed strings to integers
+    num_x = parse(Int, num_x)
+    den_x = parse(Int, den_x)
+    num_n = parse(Int, num_n)
+    den_n = parse(Int, den_n)
+    
+    # Multiply the numerators and denominators
+    result_num = num_x * num_n
+    result_den = den_x * den_n
+    
+    # Check if the resulting fraction is a whole number
+    return result_den == 1
+end
+
+# Examples
+println(simplify("1/5", "5/1"))  # true
+println(simplify("1/6", "2/1"))  # false
+println(simplify("7/10", "10/2"))  # false
+```
+
+This function works by first splitting the input strings to extract the numerators and denominators, then converting these parts to integers. It multiplies the numerators and denominators to get the resulting fraction and finally checks if the denominator of the resulting fraction is 1, indicating that it is a whole number.

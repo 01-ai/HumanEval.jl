@@ -1,0 +1,39 @@
+Sure, here is the Julia function that fulfills the requirements:
+
+```julia
+"""
+    generate_integers(a::Int, b::Int)::Vector{Int}
+
+Given two positive integers a and b, return the even digits between a and b, in
+ascending order.
+
+# Example
+
+```jldoctest
+julia> generate_integers(2, 8)
+4-element Vector{Int64}:
+ 2
+ 4
+ 6
+ 8
+
+julia> generate_integers(8, 2)
+4-element Vector{Int64}:
+ 2
+ 4
+ 6
+ 8
+
+julia> generate_integers(10, 14)
+Int64[]
+```
+"""
+function generate_integers(a::Int, b::Int)::Vector{Int}
+    # Sort a and b
+    a, b = min(a, b), max(a, b)
+
+    # Filter even numbers between a and b
+    return filter(x -> x % 2 == 0, a:b)
+end
+```
+This function first sorts the input integers `a` and `b` to ensure `a` is always less than or equal to `b`. Then it uses the `filter` function to create a new collection with all elements of `a:b` that satisfy the condition of being even (`x % 2 == 0`).

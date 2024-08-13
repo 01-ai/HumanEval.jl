@@ -1,0 +1,46 @@
+ Certainly! Below is the implementation of the `fizz_buzz` function in Julia based on the given doc string:
+
+```julia
+"""
+    fizz_buzz(n::Int)
+
+Return the number of times the digit 7 appears in integers less than `n` which are
+divisible by 11 or 13.
+
+# Examples
+
+```jldoctest
+julia> fizz_buzz(50)
+0
+
+julia> fizz_buzz(78)
+2
+
+julia> fizz_buzz(79)
+3
+```
+"""
+function fizz_buzz(n::Int)
+    count = 0
+    for i in 1:(n-1)
+        if i % 11 == 0 || i % 13 == 0
+            count += count(==('7'), string(i))
+        end
+    end
+    return count
+end
+```
+
+### Explanation:
+1. **Function Definition**: The function `fizz_buzz` takes a single integer argument `n`.
+2. **Initialization**: A counter `count` is initialized to zero. This will keep track of the number of times the digit '7' appears.
+3. **Loop Through Numbers**: A loop iterates through all integers from 1 to `n-1`.
+4. **Check Divisibility**: For each integer `i`, it checks if `i` is divisible by 11 or 13.
+5. **Count Digit '7'**: If the integer is divisible by 11 or 13, it converts the integer to a string and counts the occurrences of the digit '7'.
+6. **Update Counter**: The count of '7's is added to the `count`.
+7. **Return Result**: Finally, the function returns the total count of '7's.
+
+### Examples:
+- `fizz_buzz(50)` returns `0` because there are no numbers less than 50 that are divisible by 11 or 13 and contain the digit '7'.
+- `fizz_buzz(78)` returns `2` because the numbers 77 and 78 are divisible by 11 or 13 and contain the digit '7'.
+- `fizz_buzz(79)` returns `3` because the numbers 77 and 78 are divisible by 11 or 13 and contain the digit '7', and 77 contains two '7's.

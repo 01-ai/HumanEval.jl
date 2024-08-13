@@ -1,0 +1,45 @@
+Here's a solution to the `right_angle_triangle` problem in Julia:
+
+```julia
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    # Sort the sides in ascending order
+    sides = sort([a, b, c])
+    
+    # Check if the Pythagorean theorem holds
+    return isapprox(sides[1]^2 + sides[2]^2, sides[3]^2)
+end
+```
+
+Explanation:
+
+1. We start by sorting the three sides (`a`, `b`, `c`) in ascending order using the `sort` function. This ensures that the hypotenuse (the longest side) is always the last element in the `sides` array.
+
+2. We then check if the Pythagorean theorem holds for the sorted sides. According to the Pythagorean theorem, in a right-angled triangle, the square of the hypotenuse (the longest side) is equal to the sum of the squares of the other two sides.
+
+3. We use the `isapprox` function to compare the square of the hypotenuse (`sides[3]^2`) with the sum of the squares of the other two sides (`sides[1]^2 + sides[2]^2`). The `isapprox` function checks if the two values are approximately equal within a small tolerance.
+
+4. If the Pythagorean theorem holds, the function returns `true`, indicating that the triangle is a right-angled triangle. Otherwise, it returns `false`.
+
+Here are some test cases:
+
+```julia
+julia> right_angle_triangle(3, 4, 5)
+true
+
+julia> right_angle_triangle(1, 2, 3)
+false
+
+julia> right_angle_triangle(5, 12, 13)
+true
+
+julia> right_angle_triangle(7, 24, 25)
+true
+
+julia> right_angle_triangle(8, 15, 17)
+true
+
+julia> right_angle_triangle(2, 2, 2)
+false
+```
+
+This solution correctly determines whether the given sides form a right-angled triangle based on the Pythagorean theorem.

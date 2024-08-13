@@ -1,0 +1,29 @@
+```julia
+function fib4(n::Int)::Int
+    # Base cases directly defined
+    if n == 0
+        return 0
+    elseif n == 1
+        return 0
+    elseif n == 2
+        return 2
+    elseif n == 3
+        return 0
+    end
+
+    # Initialize the first four values of the sequence
+    a, b, c, d = 0, 0, 2, 0
+
+    # Compute the sequence from 4 to n
+    for i in 4:n
+        # Current value is the sum of the previous four
+        current = a + b + c + d
+        # Shift the previous values for the next iteration
+        a, b, c, d = b, c, d, current
+    end
+
+    return d
+end
+```
+
+This function initializes the first four values of the `fib4` sequence and iterates from 4 to `n`, updating the values in a rolling manner to avoid the need for recursion or a larger array. Each iteration computes the next value in the sequence as the sum of the previous four values, then shifts these values to prepare for the next iteration. The function returns the `n`-th value of the sequence.

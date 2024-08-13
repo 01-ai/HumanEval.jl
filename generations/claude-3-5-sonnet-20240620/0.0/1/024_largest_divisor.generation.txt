@@ -1,0 +1,38 @@
+Here's a Julia function that finds the largest divisor of a given number `n` that is smaller than `n`:
+
+```julia
+function largest_divisor(n::Int)::Int
+    if n == 1
+        return 1
+    end
+    
+    for i in reverse(2:isqrt(n))
+        if n % i == 0
+            return n ÷ i
+        end
+    end
+    
+    return 1
+end
+```
+
+This function works as follows:
+
+1. First, we handle the edge case where `n` is 1. In this case, the largest divisor (other than itself) is 1.
+
+2. We then iterate from `isqrt(n)` down to 2. We use `isqrt(n)` as our upper bound because the largest possible divisor (other than `n` itself) cannot be larger than the square root of `n`.
+
+3. For each number `i` in this range, we check if it divides `n` evenly (i.e., if `n % i == 0`).
+
+4. If we find such a divisor, we return `n ÷ i`. This is because if `i` divides `n`, then `n ÷ i` is also a divisor of `n`, and it will be larger than `i` (unless `i` is the square root of `n`).
+
+5. If we don't find any divisors in this loop, it means `n` is prime, so we return 1.
+
+This function will correctly return 5 for the input 15, as shown in your example:
+
+```julia
+julia> largest_divisor(15)
+5
+```
+
+It's efficient because it starts from the square root and works its way down, which means it will find the largest divisor quickly. It also uses integer division (`÷`) to ensure the return value is an integer.

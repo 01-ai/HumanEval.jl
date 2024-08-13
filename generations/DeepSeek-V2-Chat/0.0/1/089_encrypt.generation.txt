@@ -1,0 +1,18 @@
+Here's the implementation of the `encrypt` function in Julia:
+
+```julia
+function encrypt(s::String)
+    # Define the alphabet
+    alphabet = 'a':'z'
+    
+    # Create a dictionary for quick lookup of rotated characters
+    rotated_dict = Dict(c => alphabet[(Int(c) - Int('a') + 4) % 26 + 1] for c in alphabet)
+    
+    # Encrypt the string
+    encrypted_string = join(rotated_dict[c] for c in s)
+    
+    return encrypted_string
+end
+```
+
+This function works by first defining the alphabet as a range of characters from 'a' to 'z'. It then creates a dictionary that maps each character in the alphabet to its rotated counterpart, where the rotation is by 4 places (2 multiplied by 2). Finally, it constructs the encrypted string by looking up each character in the input string in the dictionary and joining the results.

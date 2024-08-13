@@ -1,0 +1,13 @@
+```julia
+function has_close_elements(numbers::Vector{Float64}, threshold::Float64)::Bool
+    for i in 1:length(numbers)-1
+        for j in i+1:length(numbers)
+            if abs(numbers[i] - numbers[j]) < threshold
+                return true
+            end
+        end
+    end
+    return false
+end
+```
+This function iterates over each pair of numbers in the given vector and checks if the absolute difference between any two numbers is less than the specified threshold. If such a pair is found, it returns `true`; otherwise, it returns `false` after checking all pairs.

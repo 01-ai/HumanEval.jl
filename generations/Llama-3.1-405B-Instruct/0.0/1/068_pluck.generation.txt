@@ -1,0 +1,53 @@
+Here is the Julia function that implements the `pluck` function based on the given docstring:
+```julia
+function pluck(xs::Vector{Int})::Vector{Int}
+    if isempty(xs)
+        return Int[]
+    end
+
+    min_even = typemax(Int)
+    min_index = 0
+
+    for (i, x) in enumerate(xs)
+        if x % 2 == 0 && x < min_even
+            min_even = x
+            min_index = i
+        end
+    end
+
+    if min_index == 0
+        return Int[]
+    else
+        return [min_even, min_index]
+    end
+end
+```
+Here's an explanation of the code:
+
+1. We first check if the input array `xs` is empty. If it is, we return an empty array `Int[]`.
+2. We initialize two variables: `min_even` to store the smallest even value found so far, and `min_index` to store the index of that value. We initialize `min_even` to `typemax(Int)`, which is the largest possible integer value in Julia, and `min_index` to 0.
+3. We iterate over the input array `xs` using `enumerate`, which returns both the index `i` and the value `x` at that index.
+4. For each value `x`, we check if it is even (i.e., `x % 2 == 0`) and if it is smaller than the current smallest even value `min_even`. If both conditions are true, we update `min_even` and `min_index` accordingly.
+5. After iterating over the entire array, we check if `min_index` is still 0. If it is, it means we didn't find any even values, so we return an empty array `Int[]`.
+6. Otherwise, we return a two-element array containing the smallest even value `min_even` and its index `min_index`.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> pluck([4, 2, 3])
+2-element Vector{Int64}:
+ 2
+ 2
+
+julia> pluck([1, 2, 3])
+2-element Vector{Int64}:
+ 2
+ 2
+
+julia> pluck(Int[])
+Int64[]
+
+julia> pluck([5, 0, 3, 0, 4, 2])
+2-element Vector{Int64}:
+ 0
+ 2
+```

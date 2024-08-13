@@ -1,0 +1,6 @@
+```julia
+function sort_array(arr::Vector{Int})::Vector{Int}
+    # Sort the array based on a tuple (number of ones in binary, value)
+    sort(arr, by=x -> (count_ones(x), x))
+end
+```

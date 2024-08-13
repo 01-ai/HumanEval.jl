@@ -1,0 +1,65 @@
+ Certainly! Below is the implementation of the `reverse_delete` function in Julia based on the given docstring:
+
+```julia
+"""
+    reverse_delete(s::String, c::String)::Tuple{String, Bool}
+
+We are given two strings `s` and `c`, you have to delete all the characters in
+`s` that are equal to any character in `c` then check if the result string is
+palindrome.  A string is called palindrome if it reads the same backward as
+forward. You should return a tuple containing the result string and
+`true`/`false` for the check.
+
+# Examples
+
+```jldoctest
+julia> reverse_delete("abcde", "ae")
+("bcd", false)
+
+julia> reverse_delete("abcdef", "b")
+("acdef", false)
+
+julia> reverse_delete("abcdedcba", "ab")
+("cdedc", true)
+```
+"""
+function reverse_delete(s::String, c::String)::Tuple{String, Bool}
+    # Create a set of characters to be deleted
+    delete_chars = Set(c)
+
+    # Filter out characters in `s` that are in `delete_chars`
+    result_string = filter(ch -> !(ch in delete_chars), s)
+
+    # Check if the result string is a palindrome
+    is_palindrome = result_string == reverse(result_string)
+
+    return (result_string, is_palindrome)
+end
+```
+
+### Explanation:
+1. **Create a Set of Characters to be Deleted**:
+   - We convert the string `c` into a set of characters (`delete_chars`). This allows for efficient membership testing.
+
+2. **Filter Out Characters**:
+   - We use the `filter` function to remove characters from `s` that are present in `delete_chars`.
+
+3. **Check for Palindrome**:
+   - We check if the resulting string is a palindrome by comparing it to its reverse.
+
+4. **Return the Result**:
+   - The function returns a tuple containing the filtered string and a boolean indicating whether it is a palindrome.
+
+### Examples:
+```julia
+julia> reverse_delete("abcde", "ae")
+("bcd", false)
+
+julia> reverse_delete("abcdef", "b")
+("acdef", false)
+
+julia> reverse_delete("abcdedcba", "ab")
+("cdedc", true)
+```
+
+This implementation should work as expected based on the provided examples.

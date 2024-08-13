@@ -1,0 +1,39 @@
+```julia
+function skjkasdkd(xs::Vector{Int})::Int
+    # Helper function to check if a number is prime
+    function is_prime(n::Int)::Bool
+        if n <= 1
+            return false
+        elseif n <= 3
+            return true
+        elseif n % 2 == 0 || n % 3 == 0
+            return false
+        end
+        i = 5
+        while i * i <= n
+            if n % i == 0 || n % (i + 2) == 0
+                return false
+            end
+            i += 6
+        end
+        return true
+    end
+
+    # Find the largest prime in the list
+    largest_prime = -1
+    for x in xs
+        if is_prime(x) && x > largest_prime
+            largest_prime = x
+        end
+    end
+
+    # Sum the digits of the largest prime
+    sum_digits = 0
+    while largest_prime > 0
+        sum_digits += largest_prime % 10
+        largest_prime ÷= 10
+    end
+
+    return sum_digits
+end
+```

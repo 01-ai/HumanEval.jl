@@ -1,0 +1,24 @@
+ To solve the problem of counting the number of collisions between two sets of cars moving towards each other on an infinitely long straight road, we can use a simple mathematical approach. Here's the reasoning:
+
+1. **Setup**:
+   - There are `n` cars moving left to right.
+   - There are `n` cars moving right to left.
+   - All cars move at the same speed.
+
+2. **Collision Mechanism**:
+   - A collision occurs when a car moving left to right meets a car moving right to left.
+   - Since all cars move at the same speed, each car moving left to right will collide with each car moving right to left exactly once.
+
+3. **Counting Collisions**:
+   - Each of the `n` cars moving left to right will collide with each of the `n` cars moving right to left.
+   - Therefore, the total number of collisions is simply the product of the number of cars in each set, which is `n * n`.
+
+Given this understanding, the function can be implemented as follows:
+
+```julia
+function car_race_collision(n::Int)::Int
+    return n * n
+end
+```
+
+This function simply returns the square of the number of cars, which represents the total number of collisions.

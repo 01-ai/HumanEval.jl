@@ -1,0 +1,53 @@
+Here's a Julia function that removes all elements that occur more than once from a list of integers, while keeping the order of the remaining elements the same as in the input:
+
+```julia
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    count_dict = Dict{Int, Int}()
+    result = Int[]
+
+    # Count occurrences of each number
+    for num in numbers
+        count_dict[num] = get(count_dict, num, 0) + 1
+    end
+
+    # Keep only numbers that appear once
+    for num in numbers
+        if count_dict[num] == 1
+            push!(result, num)
+        end
+    end
+
+    return result
+end
+```
+
+This function works as follows:
+
+1. We create an empty dictionary `count_dict` to store the count of each number in the input vector.
+
+2. We also create an empty vector `result` to store the final result.
+
+3. We iterate through the input `numbers` once to count the occurrences of each number. We use the `get` function with a default value of 0 to handle the case when a number is encountered for the first time.
+
+4. We then iterate through the input `numbers` again. For each number, we check if its count in `count_dict` is exactly 1. If it is, we add that number to our `result` vector.
+
+5. Finally, we return the `result` vector containing only the numbers that appeared once in the original input.
+
+This approach maintains the original order of the elements that are kept, as we iterate through the input list in its original order when building the result.
+
+You can use this function like this:
+
+```julia
+julia> remove_duplicates([1, 2, 3, 2, 4])
+3-element Vector{Int64}:
+ 1
+ 3
+ 4
+
+julia> remove_duplicates([1, 1, 2, 3, 3, 4, 5, 5])
+2-element Vector{Int64}:
+ 2
+ 4
+```
+
+This function has a time complexity of O(n) where n is the length of the input vector, as we iterate through the list twice. The space complexity is also O(n) in the worst case, where all elements are unique.

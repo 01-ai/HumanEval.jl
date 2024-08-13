@@ -1,0 +1,45 @@
+To implement the `sort_numbers` function, we need to follow these steps:
+
+1. Define a mapping from the string representation of numbers to their corresponding integer values.
+2. Split the input string into individual number words.
+3. Convert these words to their integer equivalents using the mapping.
+4. Sort the integer values.
+5. Convert the sorted integer values back to their string representations.
+6. Join the sorted string representations into a single string with spaces.
+
+Here's the implementation:
+
+```julia
+function sort_numbers(numbers::String)::String
+    # Mapping from string representation to integer value
+    num_map = Dict(
+        "zero" => 0,
+        "one" => 1,
+        "two" => 2,
+        "three" => 3,
+        "four" => 4,
+        "five" => 5,
+        "six" => 6,
+        "seven" => 7,
+        "eight" => 8,
+        "nine" => 9
+    )
+    
+    # Split the input string into individual number words
+    num_words = split(numbers)
+    
+    # Convert the words to their integer equivalents and sort them
+    sorted_nums = sort(getindex.(Ref(num_map), num_words))
+    
+    # Convert the sorted integer values back to their string representations
+    sorted_words = [k for (k, v) in num_map if v in sorted_nums]
+    
+    # Join the sorted string representations into a single string with spaces
+    return join(sorted_words, " ")
+end
+
+# Example usage
+println(sort_numbers("three one five"))  # Output: "one three five"
+```
+
+This function should work as expected based on the provided docstring and example.

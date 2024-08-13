@@ -1,0 +1,6 @@
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    # Calculate the absolute differences between corresponding elements
+    return abs.(game .- guess)
+end
+```

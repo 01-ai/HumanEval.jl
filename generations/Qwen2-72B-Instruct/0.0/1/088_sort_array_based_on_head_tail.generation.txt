@@ -1,0 +1,25 @@
+```julia
+function sort_array_based_on_head_tail(xs::Vector{Int})
+    # Check if the array is empty or has only one element
+    if length(xs) <= 1
+        return copy(xs)
+    end
+
+    # Determine the sorting order based on the sum of the first and last elements
+    is_odd = (xs[1] + xs[end]) % 2 != 0
+
+    # Create a copy of the array to avoid modifying the original array
+    sorted_xs = copy(xs)
+
+    # Sort the array in ascending or descending order based on the determined sorting order
+    if is_odd
+        sort!(sorted_xs)
+    else
+        sort!(sorted_xs, rev=true)
+    end
+
+    return sorted_xs
+end
+```
+
+This function first checks if the input array is empty or has only one element, in which case it simply returns a copy of the array. Then, it determines the sorting order based on whether the sum of the first and last elements is odd or even. It creates a copy of the input array to avoid modifying the original array and sorts the copy in the determined order. Finally, it returns the sorted copy of the array.

@@ -1,0 +1,21 @@
+ Here's the implementation of the `mean_absolute_deviation` function in Julia:
+
+```julia
+function mean_absolute_deviation(numbers::Vector{Float64})::Float64
+    mean_value = mean(numbers)
+    absolute_deviations = abs.(numbers .- mean_value)
+    return mean(absolute_deviations)
+end
+```
+
+This function calculates the mean absolute deviation as described:
+1. It computes the mean of the input vector `numbers`.
+2. It calculates the absolute difference between each element in `numbers` and the mean.
+3. It returns the mean of these absolute differences.
+
+Here's how you can use this function:
+
+```julia
+julia> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0])
+1.0
+```

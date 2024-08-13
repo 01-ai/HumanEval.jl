@@ -1,0 +1,11 @@
+```julia
+function remove_duplicates(numbers::Vector{Int})::Vector{Int}
+    counts = Dict{Int, Int}()
+    for num in numbers
+        counts[num] = get(counts, num, 0) + 1
+    end
+    return [num for num in numbers if counts[num] == 1]
+end
+```
+
+This function `remove_duplicates` takes a vector of integers and returns a new vector with all duplicates removed, preserving the order of the first occurrences of each unique element. It uses a dictionary to count occurrences of each number and then filters the original list to include only those numbers that appear exactly once.

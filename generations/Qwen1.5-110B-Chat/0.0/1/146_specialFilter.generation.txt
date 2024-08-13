@@ -1,0 +1,13 @@
+```julia
+function specialFilter(nums::Vector{Int})::Int
+    count = 0
+    for num in nums
+        if num > 10 && isodd(digit(num, 1)) && isodd(digit(num, endof(string(num))))
+            count += 1
+        end
+    end
+    count
+end
+```
+
+This Julia function iterates through the input array `nums`. For each number, it checks if the number is greater than 10 and if both the first and last digits are odd. If these conditions are met, it increments the `count` variable. Finally, the function returns the total count of numbers meeting the criteria.

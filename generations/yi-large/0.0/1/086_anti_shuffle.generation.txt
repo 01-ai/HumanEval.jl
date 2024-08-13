@@ -1,0 +1,13 @@
+function anti_shuffle(s::String)::String
+    # Split the string into words
+    words = split(s, " ")
+    # For each word, sort the characters
+    sorted_words = [join(sort(collect(word))) for word in words]
+    # Join the sorted words back into a string with spaces
+    return join(sorted_words, " ")
+end
+
+# Test cases
+println(anti_shuffle("Hi"))
+println(anti_shuffle("hello"))
+println(anti_shuffle("Hello World!!!"))

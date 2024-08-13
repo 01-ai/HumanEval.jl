@@ -1,0 +1,17 @@
+```julia
+function select_words(s::String, n::Int)::Vector{<:AbstractString}
+    vowels = "aeiouAEIOU"
+    words = split(s)
+    selected_words = String[]
+
+    for word in words
+        consonant_count = count(c -> c ∉ vowels, word)
+        if consonant_count == n
+            push!(selected_words, word)
+        end
+    end
+
+    return selected_words
+end
+```
+This Julia function `select_words` takes a string `s` and an integer `n` as inputs. It splits the string into words, then iterates through each word, counting the number of consonants. If a word has exactly `n` consonants, it adds that word to the `selected_words` array. Finally, it returns the array of selected words.

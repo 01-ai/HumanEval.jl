@@ -1,0 +1,25 @@
+```julia
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    groups = split(paren_string, " ")
+    depths = Int[]
+
+    for group in groups
+        level = 0
+        max_level = 0
+        for char in group
+            if char == '('
+                level += 1
+                max_level = max(max_level, level)
+            elseif char == ')'
+                level -= 1
+                @assert level >= 0 "Unmatched closing parenthesis"
+            end
+        end
+        push!(depths, max_level)
+    end
+
+    return depths
+end
+```
+
+This function `parse_nested_parens` takes a string `paren_string` containing multiple groups of nested parentheses separated by spaces. It splits the input string into these groups and then iterates over each group to find the maximum depth of nesting by tracking the level of opening parentheses encountered. The maximum level for each group is stored in a vector and returned at the end. The function also includes an assertion to ensure that there are no unmatched closing parentheses.

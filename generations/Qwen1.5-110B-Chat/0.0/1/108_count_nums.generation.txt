@@ -1,0 +1,19 @@
+```julia
+function count_nums(xs::Vector{Int})::Int
+    count = 0
+    for x in xs
+        digits = abs(x) % 10
+        is_negative = x < 0
+        while digits != 0
+            if is_negative && digits > 0 || !is_negative
+                count += 1
+            end
+            digits = digits ÷ 10
+            is_negative = false  # Reset is_negative after processing the first digit of a negative number
+        end
+    end
+    return count
+end
+```
+
+This function iterates through each integer in the input vector `xs`. For each number, it calculates the sum of its signed digits. If the number is negative, it treats the first digit as negative and then processes the rest of the digits as positive. The function counts each digit that contributes to a sum > 0 (considering the sign of the first digit for negative numbers). The variable `is_negative` is used to track if the current digit being processed is part of the first digit of a negative number. After processing the first digit of a negative number, it is reset to `false` to avoid incorrectly applying the negative sign to subsequent digits.

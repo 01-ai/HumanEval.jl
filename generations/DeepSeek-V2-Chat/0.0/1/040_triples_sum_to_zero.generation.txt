@@ -1,0 +1,24 @@
+Here's the implementation of the `triples_sum_to_zero` function in Julia:
+
+```julia
+function triples_sum_to_zero(l::Vector{Int})::Bool
+    n = length(l)
+    if n < 3
+        return false
+    end
+    
+    for i in 1:n-2
+        for j in i+1:n-1
+            for k in j+1:n
+                if l[i] + l[j] + l[k] == 0
+                    return true
+                end
+            end
+        end
+    end
+    
+    return false
+end
+```
+
+This function iterates through all possible combinations of three distinct elements in the list and checks if their sum is zero. If it finds such a combination, it returns `true`; otherwise, it returns `false` after checking all combinations.

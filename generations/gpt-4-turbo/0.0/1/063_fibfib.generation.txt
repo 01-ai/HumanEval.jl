@@ -1,0 +1,22 @@
+```julia
+function fibfib(n::Int)::Int
+    if n == 0
+        return 0
+    elseif n == 1
+        return 0
+    elseif n == 2
+        return 1
+    else
+        # Initialize the first three elements
+        a, b, c = 0, 0, 1
+        # Compute the sequence from 3 to n
+        for i in 3:n
+            next_val = a + b + c
+            a, b, c = b, c, next_val
+        end
+        return c
+    end
+end
+```
+
+This function uses an iterative approach to compute the `n`-th FibFib number, which is more efficient than a naive recursive approach. It initializes the first three values of the sequence and then iterates from 3 to `n`, updating the values in a rolling fashion to avoid the need for a large array or deep recursion.

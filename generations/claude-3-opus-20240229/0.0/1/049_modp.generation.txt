@@ -1,0 +1,50 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function modp(n::Int, p::Int)::Int
+    result = 1
+    base = 2
+    while n > 0
+        if n % 2 == 1
+            result = (result * base) % p
+        end
+        base = (base * base) % p
+        n ÷= 2
+    end
+    return result
+end
+```
+
+Explanation:
+
+1. We initialize `result` to 1 and `base` to 2, as we want to compute 2^n modulo p.
+
+2. We use a while loop to iterate until `n` becomes 0. In each iteration:
+   - If `n` is odd (i.e., `n % 2 == 1`), we multiply `result` by `base` and take the modulo with `p`. This is because if the current bit of `n` is 1, we need to include the corresponding power of 2 in the result.
+   - We update `base` by squaring it and taking the modulo with `p`. This is done to efficiently compute the powers of 2 modulo p.
+   - We divide `n` by 2 using integer division (`÷=`) to move to the next bit.
+
+3. Finally, we return the `result`, which represents 2^n modulo p.
+
+The algorithm uses the concept of modular exponentiation and binary exponentiation to efficiently compute the result. It has a time complexity of O(log n) and avoids overflow issues by constantly taking the modulo with `p`.
+
+You can test the function with the provided examples:
+
+```julia
+julia> modp(3, 5)
+3
+
+julia> modp(1101, 101)
+2
+
+julia> modp(0, 101)
+1
+
+julia> modp(3, 11)
+8
+
+julia> modp(100, 101)
+1
+```
+
+The function should produce the expected results for all the given examples.

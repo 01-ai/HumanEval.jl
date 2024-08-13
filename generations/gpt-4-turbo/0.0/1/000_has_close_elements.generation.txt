@@ -1,0 +1,15 @@
+```julia
+function has_close_elements(numbers::Vector{Float64}, threshold::Float64)::Bool
+    # Sort the numbers to make comparison of neighbors sufficient
+    sorted_numbers = sort(numbers)
+    
+    # Check the difference between consecutive elements
+    for i in 1:length(sorted_numbers)-1
+        if abs(sorted_numbers[i] - sorted_numbers[i+1]) < threshold
+            return true
+        end
+    end
+    
+    return false
+end
+```

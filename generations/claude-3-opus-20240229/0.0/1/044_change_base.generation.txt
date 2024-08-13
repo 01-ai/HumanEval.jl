@@ -1,0 +1,56 @@
+Here's the implementation of the `change_base` function in Julia:
+
+```julia
+function change_base(x::Int, base::Int)::String
+    if base < 2 || base > 9
+        throw(ArgumentError("Base must be between 2 and 9."))
+    end
+    
+    if x == 0
+        return "0"
+    end
+    
+    result = ""
+    while x > 0
+        digit = x % base
+        result = string(digit) * result
+        x ÷= base
+    end
+    
+    return result
+end
+```
+
+Explanation:
+1. We start by checking if the `base` is within the valid range (2 to 9). If it's not, we throw an `ArgumentError` with an appropriate message.
+
+2. We handle the special case when `x` is zero. In this case, we simply return the string "0" since the base conversion of zero is always "0" regardless of the base.
+
+3. We initialize an empty string `result` to store the converted number.
+
+4. We enter a loop that continues as long as `x` is greater than zero. In each iteration:
+   - We calculate the remainder (`digit`) of `x` divided by `base` using the modulo operator `%`. This gives us the least significant digit in the new base.
+   - We convert the `digit` to a string using the `string()` function and prepend it to the `result` string using the `*` operator. This ensures that the digits are added in the correct order.
+   - We update `x` by dividing it by `base` using the integer division operator `÷`. This removes the least significant digit from `x` and moves on to the next digit.
+
+5. Finally, we return the `result` string, which represents the input number `x` converted to the new `base`.
+
+The function takes care of the specified requirements:
+- It accepts an integer `x` and a base `base` as input.
+- It throws an error if the base is not within the valid range of 2 to 9.
+- It returns the converted number as a string.
+
+You can test the function with the provided examples:
+
+```jldoctest
+julia> change_base(8, 3)
+"22"
+
+julia> change_base(8, 2)
+"1000"
+
+julia> change_base(7, 2)
+"111"
+```
+
+The function should produce the expected results.

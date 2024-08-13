@@ -1,0 +1,43 @@
+Here's a solution to the problem:
+
+```julia
+function check_if_last_char_is_a_letter(s::String)::Bool
+    if isempty(s)
+        return false
+    end
+    
+    last_char = s[end]
+    
+    if !isletter(last_char)
+        return false
+    end
+    
+    if length(s) == 1
+        return true
+    end
+    
+    second_last_char = s[end-1]
+    
+    if second_last_char == ' '
+        return true
+    end
+    
+    return false
+end
+```
+
+Explanation:
+
+1. We first check if the string `s` is empty. If it is empty, we return `false` since an empty string does not have any characters.
+
+2. We retrieve the last character of the string using `s[end]` and store it in the variable `last_char`.
+
+3. We check if `last_char` is a letter using the `isletter()` function. If it is not a letter, we return `false` since the condition is not satisfied.
+
+4. If the length of the string is 1, it means the string consists of only one character, which is a letter. In this case, we return `true`.
+
+5. If the length of the string is greater than 1, we retrieve the second last character using `s[end-1]` and store it in the variable `second_last_char`.
+
+6. We check if `second_last_char` is a space. If it is a space, it means the last character is a letter and is not part of a word, so we return `true`. Otherwise, we return `false`.
+
+This function should correctly handle the given examples and any other string input.

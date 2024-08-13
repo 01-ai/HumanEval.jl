@@ -1,0 +1,20 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function vowels_count(s::String)::Int
+    vowels = "aeiouAEIOU"
+    count = 0
+    for char in s
+        if char == 'y' || char == 'Y'
+            if char == last(s)
+                count += 1
+            end
+        elseif char in vowels
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function iterates over each character in the input string. If the character is 'y' or 'Y', it checks if it's the last character of the string and increments the count if it is. If the character is any other vowel, it simply increments the count. The function finally returns the total count of vowels.

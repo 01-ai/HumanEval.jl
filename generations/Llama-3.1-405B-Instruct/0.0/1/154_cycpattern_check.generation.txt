@@ -1,0 +1,58 @@
+Here is a Julia function that implements the desired behavior:
+```julia
+function cycpattern_check(a::String, b::String)::Bool
+    """
+    Check if the second word or any of its rotations is a substring in the first word.
+
+    Parameters:
+    a (String): The first word.
+    b (String): The second word.
+
+    Returns:
+    Bool: True if the second word or any of its rotations is a substring in the first word, False otherwise.
+    """
+    # Concatenate the second word with itself to generate all possible rotations
+    double_b = b * b
+    
+    # Check if any rotation of the second word is a substring of the first word
+    for i in 1:length(b)
+        # Extract a rotation of the second word
+        rotation = double_b[i:i+length(b)-1]
+        
+        # Check if the rotation is a substring of the first word
+        if occursin(rotation, a)
+            return true
+        end
+    end
+    
+    # If no rotation is found, return False
+    return false
+end
+```
+Here's an explanation of the code:
+
+1. We concatenate the second word with itself to generate all possible rotations. This is done by creating a new string `double_b` that contains the second word twice.
+2. We then iterate over each character in the second word, and for each character, we extract a rotation of the second word by taking a substring of `double_b` starting at the current character and ending at the current character plus the length of the second word minus one.
+3. We then check if the extracted rotation is a substring of the first word using the `occursin` function. If it is, we immediately return `true`.
+4. If we reach the end of the loop without finding a rotation that is a substring of the first word, we return `false`.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> cycpattern_check("abcd", "abd")
+false
+
+julia> cycpattern_check("hello", "ell")
+true
+
+julia> cycpattern_check("whassup", "psus")
+false
+
+julia> cycpattern_check("abab", "baa")
+true
+
+julia> cycpattern_check("efef", "eeff")
+false
+
+julia> cycpattern_check("himenss", "simen")
+true
+```

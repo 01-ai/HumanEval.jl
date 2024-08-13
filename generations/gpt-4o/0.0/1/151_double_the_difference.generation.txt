@@ -1,0 +1,15 @@
+Here's the implementation of the `double_the_difference` function in Julia:
+
+```julia
+function double_the_difference(xs::Vector)
+    sum = 0
+    for x in xs
+        if x isa Int && x > 0 && isodd(x)
+            sum += x^2
+        end
+    end
+    return sum
+end
+```
+
+This function iterates through each element in the input vector `xs`, checks if the element is a positive integer and odd, and if so, adds its square to the sum. Finally, it returns the sum of these squares. If the input list is empty, it returns 0 as specified.

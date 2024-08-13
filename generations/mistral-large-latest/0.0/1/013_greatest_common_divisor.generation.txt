@@ -1,0 +1,12 @@
+Sure, I can help with that. Here's a simple implementation of the greatest common divisor (GCD) function in Julia using the Euclidean algorithm:
+
+```julia
+function greatest_common_divisor(a::Int, b::Int)::Int
+    while b != 0
+        a, b = b, a % b
+    end
+    return abs(a)
+end
+```
+
+This function works by repeatedly replacing `a` with `b` and `b` with `a % b` until `b` is zero, at which point `a` is the GCD of the original `a` and `b`. The `abs(a)` is used to ensure the result is always positive.

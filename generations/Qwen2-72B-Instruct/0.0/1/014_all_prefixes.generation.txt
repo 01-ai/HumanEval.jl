@@ -1,0 +1,5 @@
+```julia
+function all_prefixes(s::String)
+    return [s[1:i] for i in 1:length(s)]
+end
+```

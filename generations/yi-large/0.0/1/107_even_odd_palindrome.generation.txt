@@ -1,0 +1,29 @@
+function even_odd_palindrome(n::Int)::Tuple{Int, Int}
+    if n < 1 || n > 10^3
+        throw(DomainError(n, "1 <= n <= 10^3 is not satisfied."))
+    end
+
+    even_count = 0
+    odd_count = 0
+
+    for i in 1:n
+        if is_palindrome(i)
+            if iseven(i)
+                even_count += 1
+            else
+                odd_count += 1
+            end
+        end
+    end
+
+    return (even_count, odd_count)
+end
+
+function is_palindrome(x::Int)::Bool
+    str_x = string(x)
+    return str_x == reverse(str_x)
+end
+
+# Test cases
+println(even_odd_palindrome(3)) # (1, 2)
+println(even_odd_palindrome(12)) # (4, 6)

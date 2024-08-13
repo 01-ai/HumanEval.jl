@@ -1,0 +1,19 @@
+Here is the Julia function that meets the requirements:
+```julia
+function total_match(xs::Vector{String}, ys::Vector{String})::Vector{String}
+    total_chars_xs = sum(length(x) for x in xs)
+    total_chars_ys = sum(length(y) for y in ys)
+    
+    if total_chars_xs <= total_chars_ys
+        return xs
+    else
+        return ys
+    end
+end
+```
+Here's an explanation of the code:
+
+1. We calculate the total number of characters in each list using a generator expression inside the `sum` function.
+2. We compare the total number of characters in each list. If the first list has fewer or equal characters, we return it. Otherwise, we return the second list.
+
+You can test this function with the examples provided in the docstring to verify its correctness. Let me know if you have any further questions!

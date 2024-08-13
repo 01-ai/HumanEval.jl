@@ -1,0 +1,57 @@
+To implement the `factorize` function in Julia, we need to find the prime factors of a given integer `n` and return them in a vector. Here's how we can do it:
+
+1. Start with the smallest prime number, which is 2.
+2. Divide `n` by the current prime number as long as it is divisible.
+3. Move to the next prime number and repeat the process until `n` becomes 1.
+4. Collect all the prime factors in a vector and return it.
+
+Here's the implementation:
+
+```julia
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    divisor = 2
+    
+    while n > 1
+        while n % divisor == 0
+            push!(factors, divisor)
+            n = div(n, divisor)
+        end
+        divisor += 1
+    end
+    
+    return factors
+end
+```
+
+Let's break down the function:
+
+- We initialize an empty vector `factors` to store the prime factors.
+- We start with the smallest prime number, `divisor = 2`.
+- We use a `while` loop to keep dividing `n` by the current `divisor` as long as `n` is divisible by `divisor`.
+- If `n` is no longer divisible by `divisor`, we increment `divisor` to check the next potential prime factor.
+- This process continues until `n` is reduced to 1.
+- Finally, we return the vector `factors` containing all the prime factors of the original `n`.
+
+Here are the examples provided in the docstring to test the function:
+
+```julia
+julia> factorize(8)
+3-element Vector{Int64}:
+ 2
+ 2
+ 2
+
+julia> factorize(25)
+2-element Vector{Int64}:
+ 5
+ 5
+
+julia> factorize(70)
+3-element Vector{Int64}:
+ 2
+ 5
+ 7
+```
+
+This implementation should work correctly for any positive integer `n`.

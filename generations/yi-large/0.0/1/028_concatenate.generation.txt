@@ -1,0 +1,7 @@
+function concatenate(xs::Vector{String})::String
+    return join(xs, "")
+end
+
+# Tests
+@assert concatenate(String[]) == ""
+@assert concatenate(["a", "b", "c"]) == "abc"

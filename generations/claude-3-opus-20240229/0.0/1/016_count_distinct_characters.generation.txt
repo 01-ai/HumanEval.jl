@@ -1,0 +1,36 @@
+Here's a solution to count the number of distinct characters in a string, ignoring case:
+
+```julia
+function count_distinct_characters(s::String)::Int
+    unique_chars = Set{Char}()
+    for c in lowercase(s)
+        push!(unique_chars, c)
+    end
+    return length(unique_chars)
+end
+```
+
+Explanation:
+1. We define a function `count_distinct_characters` that takes a string `s` as input and returns an integer.
+
+2. We create an empty `Set` called `unique_chars` to store the distinct characters. The `Set` data structure ensures that each element is unique, so it automatically handles duplicates for us.
+
+3. We start a `for` loop that iterates over each character `c` in the lowercase version of the input string `s`. By using `lowercase(s)`, we convert all characters to lowercase to ignore case sensitivity.
+
+4. Inside the loop, we use the `push!` function to add each character `c` to the `unique_chars` set. If a character is already present in the set, it will not be added again.
+
+5. After the loop finishes, we return the length of the `unique_chars` set using the `length` function, which gives us the count of distinct characters in the string.
+
+Let's test the function with the provided examples:
+
+```julia
+julia> count_distinct_characters("xyzXYZ")
+3
+
+julia> count_distinct_characters("Jerry")
+4
+```
+
+The function correctly counts the number of distinct characters in both cases, ignoring case sensitivity.
+
+I hope this helps! Let me know if you have any further questions.

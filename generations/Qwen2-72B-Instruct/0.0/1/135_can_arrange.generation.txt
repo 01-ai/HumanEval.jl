@@ -1,0 +1,10 @@
+```julia
+function can_arrange(xs::Vector{Int})
+    for i in reverse(1:length(xs)-1)
+        if xs[i] > xs[i+1]
+            return i+1
+        end
+    end
+    return -1
+end
+```

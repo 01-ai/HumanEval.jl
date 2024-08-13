@@ -1,0 +1,38 @@
+Here's the implementation of the `incr_list` function in Julia:
+
+```julia
+function incr_list(xs::Vector)::Vector
+    return xs .+ 1
+end
+```
+
+Explanation:
+- The function takes a vector `xs` as input.
+- It uses the `.+` broadcasting operator to add 1 to each element of the vector.
+- The function returns the resulting vector with incremented elements.
+
+The `.+` broadcasting operator applies the addition operation element-wise to the vector, incrementing each element by 1.
+
+You can test the function with the provided examples:
+
+```julia
+julia> incr_list([1, 2, 3])
+3-element Vector{Int64}:
+ 2
+ 3
+ 4
+
+julia> incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123])
+9-element Vector{Int64}:
+   6
+   4
+   6
+   3
+   4
+   4
+  10
+   1
+ 124
+```
+
+The function works as expected, returning a new vector with each element incremented by 1.

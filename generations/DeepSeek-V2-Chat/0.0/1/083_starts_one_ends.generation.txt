@@ -1,0 +1,26 @@
+To solve the problem of counting n-digit positive integers that start or end with 1, we need to consider the following:
+
+1. An n-digit number that starts with 1 can be represented as `1 followed by (n-1) digits`.
+2. An n-digit number that ends with 1 can be represented as `(n-1) digits followed by 1`.
+
+For an n-digit number:
+- If it starts with 1, the remaining (n-1) digits can be any combination of digits from 0 to 9, giving us 10^(n-1) possibilities.
+- If it ends with 1, the leading (n-1) digits can also be any combination of digits from 0 to 9, giving us another 10^(n-1) possibilities.
+
+However, we need to subtract the overlap where the number both starts and ends with 1, which is a single case for each n-digit number.
+
+Thus, the total count is:
+\[ \text{Count} = 10^{(n-1)} + 10^{(n-1)} - 1 \]
+
+Here is the Julia function implementing this logic:
+
+```julia
+function starts_one_ends(n::Int)::Int
+    if n == 1
+        return 1  # Special case for single-digit numbers
+    end
+    return 2 * 10^(n-1) - 1
+end
+```
+
+This function handles the special case where `n` is 1 separately, as there is only one number (1 itself) that meets the criteria. For all other values of `n`, it calculates the count using the derived formula.

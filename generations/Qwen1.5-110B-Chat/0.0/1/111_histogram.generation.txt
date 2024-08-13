@@ -1,0 +1,34 @@
+```julia
+function histogram(s::String)::Dict{String, Int}
+    if s == ""
+        return Dict{String, Int}()
+    end
+
+    letter_counts = Dict{String, Int}()
+    words = split(s)
+
+    for word in words
+        if haskey(letter_counts, word)
+            letter_counts[word] += 1
+        else
+            letter_counts[word] = 1
+        end
+    end
+
+    max_count = 0
+    for count in values(letter_counts)
+        max_count = max(max_count, count)
+    end
+
+    most_frequent_letters = Dict{String, Int}()
+    for (letter, count) in letter_counts
+        if count == max_count
+            most_frequent_letters[letter] = count
+        end
+    end
+
+    return most_frequent_letters
+end
+```
+
+This Julia function `histogram` takes a string `s` as input, splits it into individual letters (considering space-separated values), and counts the occurrences of each letter. It then returns a dictionary containing the letters with the highest repetition count. If there are multiple letters with the same maximum count, all are included in the result. The function handles an empty string by returning an empty dictionary.

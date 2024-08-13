@@ -1,0 +1,11 @@
+```julia
+function max_element(xs)
+    max_val = xs[1]
+    for x in xs
+        if x > max_val
+            max_val = x
+        end
+    end
+    return max_val
+end
+```

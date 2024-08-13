@@ -1,0 +1,31 @@
+ Here's the implementation of the `triples_sum_to_zero` function in Julia:
+
+```julia
+function triples_sum_to_zero(l::Vector{Int})::Bool
+    n = length(l)
+    if n < 3
+        return false
+    end
+    
+    sort!(l)
+    
+    for i in 1:n-2
+        left = i + 1
+        right = n
+        while left < right
+            sum = l[i] + l[left] + l[right]
+            if sum == 0
+                return true
+            elseif sum < 0
+                left += 1
+            else
+                right -= 1
+            end
+        end
+    end
+    
+    return false
+end
+```
+
+This function first checks if the length of the list is less than 3, in which case it immediately returns `false`. Then, it sorts the list to facilitate the search for three distinct elements that sum to zero. It uses a two-pointer technique to efficiently find such a triplet if it exists.

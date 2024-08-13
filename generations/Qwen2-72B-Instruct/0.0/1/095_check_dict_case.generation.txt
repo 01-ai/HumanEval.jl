@@ -1,0 +1,22 @@
+```julia
+function check_dict_case(d::Dict{String})
+    if isempty(d)
+        return false
+    end
+
+    lower_case = 0
+    upper_case = 0
+
+    for key in keys(d)
+        if all(c -> islower(c), key)
+            lower_case += 1
+        elseif all(c -> isupper(c), key)
+            upper_case += 1
+        else
+            return false
+        end
+    end
+
+    return lower_case == length(d) || upper_case == length(d)
+end
+```

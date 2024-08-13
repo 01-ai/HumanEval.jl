@@ -1,0 +1,39 @@
+Here's the implementation of the `anti_shuffle` function in Julia:
+
+```julia
+function anti_shuffle(s::String)::String
+    words = split(s)
+    ordered_words = map(word -> join(sort(collect(word))), words)
+    return join(ordered_words, " ")
+end
+```
+
+Let's break down the steps:
+
+1. We split the input string `s` into individual words using the `split` function. By default, `split` uses whitespace as the delimiter. The resulting `words` is an array of substrings.
+
+2. We use the `map` function to apply a transformation to each word in the `words` array. The transformation is defined by an anonymous function `word -> join(sort(collect(word)))`:
+   - `collect(word)` converts the word (a string) into an array of characters.
+   - `sort` sorts the characters in ascending order based on their ASCII values.
+   - `join` concatenates the sorted characters back into a string.
+
+3. After applying the transformation to each word, we have an array of ordered words stored in `ordered_words`.
+
+4. Finally, we use `join(ordered_words, " ")` to join the ordered words back into a single string, with a space as the separator between words.
+
+5. The function returns the resulting ordered string.
+
+Here are some examples of using the `anti_shuffle` function:
+
+```jldoctest
+julia> anti_shuffle("Hi")
+"Hi"
+
+julia> anti_shuffle("hello")
+"ehllo"
+
+julia> anti_shuffle("Hello World!!!")
+"Hello !!!Wdlor"
+```
+
+The function preserves the order of words and blank spaces in the sentence while replacing each word with its ordered version based on the ASCII values of its characters.

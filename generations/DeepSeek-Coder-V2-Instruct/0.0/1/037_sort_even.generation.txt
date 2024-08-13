@@ -1,0 +1,26 @@
+ Here's the implementation of the `sort_even` function in Julia:
+
+```julia
+function sort_even(l::Vector)::Vector
+    # Extract even-indexed elements and sort them
+    even_elements = sort(l[2:2:end])
+    
+    # Create a new list to store the result
+    result = similar(l)
+    
+    # Copy the odd-indexed elements directly
+    result[1:2:end] = l[1:2:end]
+    
+    # Copy the sorted even-indexed elements
+    result[2:2:end] = even_elements
+    
+    return result
+end
+```
+
+This function works as follows:
+1. It extracts the elements at even indices from the input list `l` and sorts them.
+2. It creates a new list `result` of the same size as `l`.
+3. It copies the elements at odd indices from `l` to `result`.
+4. It copies the sorted even-indexed elements into their respective positions in `result`.
+5. Finally, it returns the `result` list.

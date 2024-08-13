@@ -1,0 +1,34 @@
+Sure, here's a Julia function that implements the described behavior:
+
+```julia
+function starts_one_ends(n::Int)::Int
+    if n == 1
+        return 1
+    end
+    # Total n-digit numbers
+    total_numbers = 9 * 10^(n-1)
+    # Numbers starting with 1
+    start_with_1 = 10^(n-1)
+    # Numbers ending with 1
+    end_with_1 = 9 * 10^(n-2)
+    # Numbers starting and ending with 1 (to avoid double counting)
+    start_and_end_with_1 = 10^(n-2)
+    
+    return start_with_1 + end_with_1 - start_and_end_with_1
+end
+```
+
+This function calculates the count of n-digit numbers that start or end with 1 by considering the following:
+1. The total number of n-digit numbers.
+2. The number of n-digit numbers that start with 1.
+3. The number of n-digit numbers that end with 1.
+4. The number of n-digit numbers that both start and end with 1 (to avoid double counting).
+
+Let's break down the logic:
+- For `n = 1`, there is only one 1-digit number that is 1.
+- For `n > 1`, the total number of n-digit numbers is `9 * 10^(n-1)`.
+- The number of n-digit numbers starting with 1 is `10^(n-1)`.
+- The number of n-digit numbers ending with 1 is `9 * 10^(n-2)`.
+- The number of n-digit numbers both starting and ending with 1 is `10^(n-2)`.
+
+The final count is obtained by adding the numbers starting with 1 and ending with 1, and then subtracting the numbers that both start and end with 1 to avoid double counting.

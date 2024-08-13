@@ -1,0 +1,27 @@
+Based on the provided function signature and examples, here's an implementation of the `sum_to_n` function in Julia:
+
+```julia
+function sum_to_n(n::Int)::Int
+    return (n * (n + 1)) ÷ 2
+end
+```
+
+This implementation uses the mathematical formula for the sum of an arithmetic sequence from 1 to n, which is:
+
+```
+Sum = n * (n + 1) / 2
+```
+
+In the code, we use integer division `÷` instead of regular division `/` to ensure the result is always an integer, as specified in the function signature.
+
+This formula is very efficient as it calculates the sum in constant time, regardless of the value of `n`. It avoids the need for a loop, making it faster and more concise than an iterative approach.
+
+This implementation will correctly produce the results shown in the examples:
+
+- `sum_to_n(30)` returns 465
+- `sum_to_n(100)` returns 5050
+- `sum_to_n(5)` returns 15
+- `sum_to_n(10)` returns 55
+- `sum_to_n(1)` returns 1
+
+The function adheres to the specified signature, taking an integer `n` as input and returning an integer as output.

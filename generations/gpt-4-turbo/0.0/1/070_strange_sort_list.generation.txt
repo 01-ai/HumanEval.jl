@@ -1,0 +1,21 @@
+```julia
+function strange_sort_list(xs::Vector{Int})::Vector{Int}
+    sorted_xs = sort(xs)
+    result = Int[]
+    left = 1
+    right = length(sorted_xs)
+    
+    while left <= right
+        if left == right
+            push!(result, sorted_xs[left])
+            break
+        end
+        push!(result, sorted_xs[left])
+        push!(result, sorted_xs[right])
+        left += 1
+        right -= 1
+    end
+    
+    return result
+end
+```

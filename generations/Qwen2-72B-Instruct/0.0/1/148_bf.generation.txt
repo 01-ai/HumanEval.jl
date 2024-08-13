@@ -1,0 +1,15 @@
+```julia
+planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+
+function bf(planet1::String, planet2::String)::NTuple
+    idx1, idx2 = findfirst(isequal(planet1), planets), findfirst(isequal(planet2), planets)
+    if idx1 === nothing || idx2 === nothing || idx1 == idx2
+        return ()
+    end
+    if idx1 > idx2
+        idx1, idx2 = idx2, idx1
+    end
+    return Tuple(planets[idx1+1:idx2-1])
+end
+```
+This function first creates a list of the planets in order of their proximity to the Sun. It then finds the indices of `planet1` and `planet2` in this list. If either planet is not found, or if they are the same planet, it returns an empty tuple. If `planet1` is further from the Sun than `planet2`, it swaps the indices. Finally, it returns a tuple of the planets between `planet1` and `planet2`.

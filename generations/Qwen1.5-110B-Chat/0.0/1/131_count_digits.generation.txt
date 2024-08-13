@@ -1,0 +1,16 @@
+```julia
+function count_digits(n::Int)::Int
+    odd_product = 1
+    has_odd = false
+    while n > 0
+        digit = n % 10
+        if digit % 2 == 1
+            odd_product *= digit
+            has_odd = true
+        end
+        n = n ÷ 10
+    end
+    has_odd ? odd_product : 0
+end
+```
+This Julia function iterates through the digits of the input integer `n`, checking each digit to see if it is odd. If an odd digit is found, it multiplies the current product by that digit. The variable `has_odd` keeps track of whether any odd digits have been encountered. If no odd digits are found by the end of the iteration, the function returns 0; otherwise, it returns the product of the odd digits.

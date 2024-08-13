@@ -1,0 +1,8 @@
+```julia
+function fruit_distribution(s::String, n::Int)::Int
+    fruits = split(s, " ")
+    apples = parse(Int, fruits[1])
+    oranges = parse(Int, fruits[4])
+    return n - apples - oranges
+end
+```

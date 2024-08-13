@@ -1,0 +1,8 @@
+```julia
+function count_distinct_characters(s::String)::Int
+    # Convert the string to lowercase to ignore case differences
+    # then convert it to a Set to remove duplicates, and finally
+    # return the length of the Set.
+    return length(Set(lowercase(s)))
+end
+```

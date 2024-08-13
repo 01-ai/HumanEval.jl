@@ -1,0 +1,15 @@
+Sure, here is the Julia function implementation for `intersperse` based on your docstring:
+
+```julia
+function intersperse(numbers::Vector{Int}, delimeter::Int)::Vector{Int}
+    result = Vector{Int}()
+    for (i, num) in enumerate(numbers)
+        append!(result, num)
+        if i < length(numbers)
+            append!(result, delimeter)
+        end
+    end
+    return result
+end
+```
+This function iterates over the input `numbers` vector and appends each number followed by the `delimeter` to the `result` vector, except for the last number. The `enumerate` function is used to get both the index and value of each element in the `numbers` vector.

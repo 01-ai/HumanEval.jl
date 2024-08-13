@@ -1,0 +1,24 @@
+To solve this problem, we need to determine the number of collisions between two sets of cars moving in opposite directions on an infinitely long straight road. Given that there are `n` cars moving left to right and `n` cars moving right to left, and that all cars move at the same speed, we can deduce that each car moving left to right will collide with each car moving right to left exactly once.
+
+Here's the implementation of the function in Julia:
+
+```julia
+function car_race_collision(n::Int)::Int
+    # Each car moving left to right will collide with each car moving right to left
+    # Therefore, the total number of collisions is n * n
+    return n * n
+end
+```
+
+This function simply returns the product of `n` with itself, which represents the total number of collisions. Each car from the first set will collide with each car from the second set exactly once, leading to `n * n` collisions.
+
+Let's test the function with a few examples:
+
+```julia
+println(car_race_collision(1))  # Output should be 1
+println(car_race_collision(2))  # Output should be 4
+println(car_race_collision(3))  # Output should be 9
+println(car_race_collision(10)) # Output should be 100
+```
+
+This function is efficient with a time complexity of O(1) since it only involves a single multiplication operation.

@@ -1,0 +1,18 @@
+```julia
+function change_base(x::Int, base::Int)::String
+    if base < 2 || base > 9
+        throw(ArgumentError("Base must be between 2 and 9"))
+    end
+
+    result = ""
+    while x > 0
+        remainder = x % base
+        result = string(remainder) * result
+        x = x ÷ base
+    end
+
+    return result == "" ? "0" : result
+end
+```
+
+This function `change_base` takes an integer `x` and a `base` and converts the number `x` from base 10 to the specified `base`. The function checks if the base is between 2 and 9, computes the remainder when `x` is divided by `base`, prepends it to the result string, and then updates `x` by integer division with `base`. The loop continues until `x` becomes zero. If the result string is empty (which happens if `x` is 0), it returns "0". Otherwise, it returns the result string which is the representation of the original number in the new base.

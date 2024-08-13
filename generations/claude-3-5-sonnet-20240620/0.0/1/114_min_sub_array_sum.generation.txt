@@ -1,0 +1,48 @@
+Here's a Julia function that solves the problem of finding the minimum sum of any non-empty subarray:
+
+```julia
+function min_sub_array_sum(nums::Vector{Int})::Int
+    n = length(nums)
+    if n == 0
+        error("Input array must not be empty")
+    end
+
+    min_sum = nums[1]
+    current_sum = 0
+
+    for num in nums
+        current_sum = min(num, current_sum + num)
+        min_sum = min(min_sum, current_sum)
+    end
+
+    return min_sum
+end
+```
+
+This function uses Kadane's algorithm with a slight modification to find the minimum sum subarray instead of the maximum sum subarray. Here's how it works:
+
+1. We first check if the input array is empty. If it is, we raise an error.
+
+2. We initialize `min_sum` with the first element of the array. This handles the case where the minimum sum subarray is a single element.
+
+3. We initialize `current_sum` to 0.
+
+4. We iterate through each number in the array:
+   - For each number, we have two choices: either start a new subarray from this number (`num`) or extend the current subarray (`current_sum + num`). We choose the minimum of these two options.
+   - We update `min_sum` if the `current_sum` is smaller than the current `min_sum`.
+
+5. After the iteration, `min_sum` will contain the minimum sum of any non-empty subarray.
+
+This algorithm has a time complexity of O(n) where n is the length of the input array, as it makes a single pass through the array. The space complexity is O(1) as it uses only a constant amount of extra space.
+
+You can test this function with the examples you provided:
+
+```julia
+julia> min_sub_array_sum([2, 3, 4, 1, 2, 4])
+1
+
+julia> min_sub_array_sum([-1, -2, -3])
+-6
+```
+
+The function correctly returns 1 for the first example (the subarray [1]) and -6 for the second example (the entire array [-1, -2, -3]).

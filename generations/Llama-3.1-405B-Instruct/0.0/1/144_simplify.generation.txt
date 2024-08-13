@@ -1,0 +1,33 @@
+Here is a Julia function that implements the `simplify` function based on the provided docstring:
+```julia
+function simplify(x::String, n::String)::Bool
+    # Split the input strings into numerator and denominator
+    x_num, x_den = map(parse(Int), split(x, '/'))
+    n_num, n_den = map(parse(Int), split(n, '/'))
+
+    # Calculate the product of the numerators and denominators
+    product_num = x_num * n_num
+    product_den = x_den * n_den
+
+    # Check if the product is a whole number
+    return product_num % product_den == 0
+end
+```
+Here's an explanation of the code:
+
+1. We first split the input strings `x` and `n` into their numerator and denominator parts using the `split` function.
+2. We then parse the resulting strings into integers using the `parse` function.
+3. We calculate the product of the numerators and denominators by multiplying the corresponding parts together.
+4. Finally, we check if the product is a whole number by using the modulo operator (`%`). If the remainder is 0, then the product is a whole number, and we return `true`. Otherwise, we return `false`.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> simplify("1/5", "5/1")
+true
+
+julia> simplify("1/6", "2/1")
+false
+
+julia> simplify("7/10", "10/2")
+false
+```

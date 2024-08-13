@@ -1,0 +1,58 @@
+ Certainly! Below is the implementation of the `count_nums` function in Julia based on the given docstring:
+
+```julia
+"""
+    count_nums(xs::Vector{Int})::Int
+
+Write a function `count_nums` which takes an array of integers and returns the
+number of elements which has a sum of digits > 0. If a number is negative, then
+its first signed digit will be negative: e.g. -123 has signed digits -1, 2, and
+3.
+
+# Examples
+
+```jldoctest
+julia> count_nums(Int[])
+0
+
+julia> count_nums([-1, 11, -11])
+1
+
+julia> count_nums([1, 1, 2])
+3
+```
+"""
+function count_nums(xs::Vector{Int})::Int
+    function sum_of_digits(n::Int)::Int
+        n < 0 ? sum_of_digits(-n, true) : sum_of_digits(n, false)
+    end
+
+    function sum_of_digits(n::Int, is_negative::Bool)::Int
+        sum = 0
+        while n > 0
+            digit = n % 10
+            sum += is_negative && sum == 0 ? -digit : digit
+            n ÷= 10
+        end
+        sum
+    end
+
+    count = 0
+    for x in xs
+        if sum_of_digits(x) > 0
+            count += 1
+        end
+    end
+    count
+end
+```
+
+### Explanation:
+1. **sum_of_digits(n::Int)::Int**: This helper function determines if the number is negative and calls the appropriate version of `sum_of_digits`.
+2. **sum_of_digits(n::Int, is_negative::Bool)::Int**: This helper function calculates the sum of the digits of a number. If the number is negative, it negates the first digit.
+3. **count_nums(xs::Vector{Int})::Int**: This function iterates over the array `xs`, calculates the sum of digits for each element using the helper function, and counts how many of these sums are greater than 0.
+
+### Examples:
+- `count_nums(Int[])` returns `0` because the array is empty.
+- `count_nums([-1, 11, -11])` returns `1` because only `11` has a sum of digits greater than 0.
+- `count_nums([1, 1, 2])` returns `3` because all elements have a sum of digits greater than 0.

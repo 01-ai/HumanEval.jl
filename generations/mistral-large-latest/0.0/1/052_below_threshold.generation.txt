@@ -1,0 +1,13 @@
+Sure, here is the Julia function that fulfills the requirements:
+
+```julia
+function below_threshold(l::Vector, t::Number)::Bool
+    for i in l
+        if i >= t
+            return false
+        end
+    end
+    return true
+end
+```
+This function iterates over each element in the vector `l` and checks if it is greater than or equal to the threshold `t`. If it finds such an element, it immediately returns `false`. If it doesn't find any element greater than or equal to `t` after checking all elements, it returns `true`.

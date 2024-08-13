@@ -1,0 +1,15 @@
+```julia
+function reverse_string(s::String)::String
+    # Check if the string contains any letters
+    contains_letters = any(isletter, s)
+    
+    if contains_letters
+        # If the string contains letters, reverse the case of each letter
+        return foldl((acc, c) -> acc * (isletter(c) ? (islower(c) ? uppercase(c) : lowercase(c)) : c), "", s)
+    else
+        # If the string contains no letters, reverse the string
+        return reverse(s)
+    end
+end
+```
+This function first checks if the string `s` contains any letters. If it does, it reverses the case of each letter in the string. If it doesn't, it reverses the entire string.

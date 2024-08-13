@@ -1,0 +1,18 @@
+```julia
+function double_the_difference(xs::Vector)
+    # Initialize sum
+    sum_squares = 0
+    
+    # Iterate through each element in the vector
+    for x in xs
+        # Check if the number is odd, non-negative, and an integer
+        if x % 2 != 0 && x >= 0 && x == floor(x)
+            # Add the square of the number to the sum
+            sum_squares += x^2
+        end
+    end
+    
+    # Return the computed sum of squares
+    return sum_squares
+end
+```

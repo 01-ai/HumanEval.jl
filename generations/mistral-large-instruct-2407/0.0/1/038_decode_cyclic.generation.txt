@@ -1,0 +1,31 @@
+ Certainly! Below is the implementation of the `decode_cyclic` function in Julia, which decodes a string that was encoded using the `encode_cyclic` function.
+
+```julia
+"""
+    decode_cyclic(s::String)::String
+
+Takes as input string encoded with `encode_cyclic` function. Returns decoded
+string.
+"""
+function decode_cyclic(s::String)::String
+    join((length(x) == 3 ? x[3] * x[1] * x[2] : x for x in Iterators.partition(s, 3)))
+end
+```
+
+Here's a brief explanation of how the `decode_cyclic` function works:
+- It uses `Iterators.partition` to split the input string `s` into chunks of three characters.
+- For each chunk of three characters, it rearranges the characters to their original positions (i.e., the third character becomes the first, the first character becomes the second, and the second character becomes the third).
+- If the chunk has fewer than three characters (which can happen at the end of the string), it leaves the chunk unchanged.
+- Finally, it joins all the rearranged chunks back into a single string and returns it.
+
+You can test the functions with the following code:
+
+```julia
+encoded = encode_cyclic("abcdefghi")
+println(encoded)  # Output should be "bcadefghi"
+
+decoded = decode_cyclic(encoded)
+println(decoded)  # Output should be "abcdefghi"
+```
+
+This will demonstrate that the `decode_cyclic` function correctly reverses the encoding done by the `encode_cyclic` function.

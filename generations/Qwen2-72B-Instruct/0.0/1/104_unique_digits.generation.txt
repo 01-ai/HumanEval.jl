@@ -1,0 +1,10 @@
+```julia
+function unique_digits(xs::Vector{Int})::Vector{Int}
+    # Filter out numbers with even digits
+    filtered = filter(x -> all(d -> d % 2 != 0, digits(x)), xs)
+    # Sort the filtered list
+    sort!(filtered)
+    return filtered
+end
+```
+This function first filters out the numbers in the input vector `xs` that contain even digits by using the `filter` function along with `digits` and `all`. Then, it sorts the resulting vector in increasing order using `sort!` and returns the sorted vector.

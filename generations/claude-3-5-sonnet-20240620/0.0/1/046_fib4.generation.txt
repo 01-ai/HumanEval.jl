@@ -1,0 +1,55 @@
+To efficiently compute the n-th element of the fib4 sequence without recursion, we can use an iterative approach with a fixed-size array to store the last four values. Here's an implementation of the `fib4` function in Julia:
+
+```julia
+function fib4(n::Int)::Int
+    if n < 0
+        throw(ArgumentError("n must be non-negative"))
+    elseif n <= 1
+        return 0
+    elseif n == 2
+        return 2
+    end
+
+    # Initialize the first four values
+    values = [0, 0, 2, 0]
+
+    for i in 4:n
+        # Calculate the next value and update the array
+        next_value = sum(values)
+        values[1:3] = values[2:4]
+        values[4] = next_value
+    end
+
+    return values[4]
+end
+```
+
+This implementation works as follows:
+
+1. We first handle the base cases:
+   - If n is negative, we throw an ArgumentError.
+   - If n is 0 or 1, we return 0.
+   - If n is 2, we return 2.
+
+2. For n ≥ 3, we use an array `values` to store the last four values of the sequence.
+
+3. We initialize `values` with the first four elements of the sequence: [0, 0, 2, 0].
+
+4. We then iterate from 4 to n:
+   - Calculate the next value by summing all elements in `values`.
+   - Shift the values in the array one position to the left.
+   - Add the new calculated value to the end of the array.
+
+5. After the loop, the last element of `values` contains the n-th element of the fib4 sequence, which we return.
+
+This approach is efficient because it uses constant space (the `values` array always has 4 elements) and has a time complexity of O(n), as we perform a constant number of operations for each iteration from 4 to n.
+
+You can test the function with the provided examples:
+
+```julia
+println(fib4(5))  # Output: 4
+println(fib4(6))  # Output: 8
+println(fib4(7))  # Output: 14
+```
+
+This implementation should correctly and efficiently compute the n-th element of the fib4 sequence for any non-negative integer n.

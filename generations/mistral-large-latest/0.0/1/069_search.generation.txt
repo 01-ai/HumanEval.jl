@@ -1,0 +1,23 @@
+Sure, here is a Julia function that implements the described behavior:
+
+```julia
+function search(numbers::Vector{Int})::Int
+    count_dict = Dict{Int, Int}()
+    for number in numbers
+        if haskey(count_dict, number)
+            count_dict[number] += 1
+        else
+            count_dict[number] = 1
+        end
+    end
+    max_value = -1
+    for (key, value) in count_dict
+        if key <= value && key > max_value
+            max_value = key
+        end
+    end
+    return max_value
+end
+```
+
+This function first creates a dictionary to count the frequency of each number in the input vector. Then it iterates over the dictionary to find the maximum number that is less than or equal to its frequency. If no such number is found, it returns -1.

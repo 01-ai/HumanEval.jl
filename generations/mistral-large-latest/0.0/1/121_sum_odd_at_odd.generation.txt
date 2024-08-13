@@ -1,0 +1,14 @@
+Sure, here is the Julia function that fulfills the requirements:
+
+```julia
+function sum_odd_at_odd(xs::Vector{Int})::Int
+    sum = 0
+    for i in 1:2:length(xs)
+        if isodd(xs[i])
+            sum += xs[i]
+        end
+    end
+    return sum
+end
+```
+This function iterates over the odd indices of the vector `xs` using a step of 2 in the range `1:2:length(xs)`. For each odd index, it checks if the element is odd using the `isodd` function. If the element is odd, it adds it to the sum. The function finally returns the sum.

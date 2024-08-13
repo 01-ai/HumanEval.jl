@@ -1,0 +1,17 @@
+ Here's the implementation of the `rescale_to_unit` function in Julia:
+
+```julia
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    min_val = minimum(numbers)
+    max_val = maximum(numbers)
+    range_val = max_val - min_val
+    
+    if range_val == 0.0
+        return fill(0.5, length(numbers))  # If all numbers are the same, return a vector of 0.5
+    end
+    
+    return [(x - min_val) / range_val for x in numbers]
+end
+```
+
+This function first finds the minimum and maximum values in the input vector. It then calculates the range between these two values. For each number in the input vector, it subtracts the minimum value and divides by the range to rescale the number to the unit interval [0, 1]. If all numbers are the same (i.e., the range is 0), it returns a vector filled with 0.5 to handle this edge case.

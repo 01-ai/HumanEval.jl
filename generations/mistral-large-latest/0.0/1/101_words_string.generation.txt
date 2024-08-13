@@ -1,0 +1,13 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function words_string(s::String)::Vector{String}
+    # Split the string into words by commas or spaces
+    words = split(s, r"[,\s]+")
+    # Filter out empty strings
+    words = filter!(x -> x != "", words)
+    return words
+end
+```
+
+This function uses the `split` function to split the string `s` into words, using a regular expression that matches one or more commas or spaces. Then it uses the `filter!` function to remove any empty strings from the resulting array. The `!` in `filter!` means that it modifies the array in place.

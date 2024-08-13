@@ -1,0 +1,6 @@
+```julia
+function car_race_collision(n::Int)::Int
+    return n^2
+end
+```
+The reasoning behind this implementation is that for each car moving left to right, there are `n` cars moving right to left. Since every car from one direction will eventually collide with every car from the opposite direction, the total number of collisions is the square of the number of cars, `n^2`. This assumes a perfect alignment where each car collides with every other car from the opposite direction without any influence from previous collisions affecting their path.

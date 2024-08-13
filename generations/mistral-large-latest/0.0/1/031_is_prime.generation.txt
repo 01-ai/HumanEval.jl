@@ -1,0 +1,22 @@
+Sure, here's a simple implementation of the `is_prime` function in Julia:
+
+```julia
+function is_prime(n::Int)
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    else
+        for i in 5:2:sqrt(Int, n)
+            if n % i == 0 || n % (i + 2) == 0
+                return false
+            end
+        end
+        return true
+    end
+end
+```
+
+This function works by first checking if the number is less than or equal to 1 (in which case it's not prime), or if it's less than or equal to 3 (in which case it is prime). It then checks if the number is divisible by 2 or 3. If it is, it's not prime. If it's not, the function checks for divisibility by all numbers of the form 6k ± 1, up to the square root of the number. This is because all primes are of the form 6k ± 1, for some integer k. If the number is divisible by any of these, it's not prime. If it's not divisible by any of them, it is prime.

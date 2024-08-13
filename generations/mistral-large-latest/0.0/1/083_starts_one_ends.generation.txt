@@ -1,0 +1,26 @@
+Sure, here is a Julia function that fulfills the requirements:
+
+```julia
+function starts_one_ends(n::Int)::Int
+    if n == 1
+        return 2
+    end
+
+    # Count of numbers starting with 1
+    start_with_1 = 9 * 10^(n-2)
+
+    # Count of numbers ending with 1
+    end_with_1 = 9 * 10^(n-1)
+
+    # Subtract the number 111...11 which is counted twice
+    if n > 1
+        subtract = 1 * 10^(n-1)
+    else
+        subtract = 0
+    end
+
+    return start_with_1 + end_with_1 - subtract
+end
+```
+
+This function works by separately counting the numbers that start with 1 and end with 1, and then subtracting the number 111...11 which is counted twice. The special case of n=1 is handled separately, as there are exactly 2 one-digit numbers that start or end with 1 (i.e., 1 and 10).

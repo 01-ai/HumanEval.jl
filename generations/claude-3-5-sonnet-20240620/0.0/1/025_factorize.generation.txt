@@ -1,0 +1,68 @@
+Here's a Julia function that implements the factorize functionality as described:
+
+```julia
+function factorize(n::Int)::Vector{Int}
+    factors = Int[]
+    
+    # Handle special cases
+    if n <= 1
+        return factors
+    end
+    
+    # Start with the smallest prime factor, 2
+    factor = 2
+    
+    while n > 1
+        if n % factor == 0
+            push!(factors, factor)
+            n = div(n, factor)
+        else
+            # If the current factor doesn't divide n, move to the next potential factor
+            factor += (factor == 2) ? 1 : 2
+        end
+    end
+    
+    return factors
+end
+```
+
+This function works as follows:
+
+1. We initialize an empty vector `factors` to store the prime factors.
+
+2. We handle the special cases where n is 1 or less, returning an empty vector.
+
+3. We start with the smallest prime factor, 2.
+
+4. We enter a while loop that continues as long as n is greater than 1:
+   - If the current factor divides n evenly, we add it to our factors list and divide n by this factor.
+   - If it doesn't divide evenly, we move to the next potential factor. We add 1 if the current factor is 2 (to get to 3), or 2 for all other cases (as all prime numbers except 2 are odd).
+
+5. We continue this process until n becomes 1, at which point we've found all prime factors.
+
+6. Finally, we return the list of factors.
+
+This implementation will return the prime factors in order from smallest to largest, and each factor will appear the number of times it occurs in the factorization. The product of all returned factors will equal the input number.
+
+You can test it with the examples provided:
+
+```julia
+julia> factorize(8)
+3-element Vector{Int64}:
+ 2
+ 2
+ 2
+
+julia> factorize(25)
+2-element Vector{Int64}:
+ 5
+ 5
+
+julia> factorize(70)
+3-element Vector{Int64}:
+ 2
+ 5
+ 7
+```
+
+This implementation is efficient for most practical purposes, but for very large numbers or for heavy use, more advanced factorization algorithms might be needed.

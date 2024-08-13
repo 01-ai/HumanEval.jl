@@ -1,0 +1,7 @@
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    return [abs(game[i] - guess[i]) for i in 1:length(game)]
+end
+```
+
+This Julia function `compare` takes in two vectors `game` and `guess`, both containing integers, and returns a new vector of the same length. Each element in the returned vector represents the absolute difference between the corresponding elements of `game` and `guess`. If the guess is correct, the difference is 0; otherwise, it's the absolute value of the difference. The function uses a list comprehension for a concise and efficient implementation.

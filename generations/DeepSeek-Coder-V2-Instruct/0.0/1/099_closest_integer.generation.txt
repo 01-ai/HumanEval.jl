@@ -1,0 +1,14 @@
+ Here's the implementation of the `closest_integer` function in Julia:
+
+```julia
+function closest_integer(value::String)::Int
+    num = parse(Float64, value)
+    if num >= 0
+        return floor(Int, num + 0.5)
+    else
+        return ceil(Int, num - 0.5)
+    end
+end
+```
+
+This function first parses the input string to a `Float64` number. Then, it checks if the number is non-negative or negative. For non-negative numbers, it uses `floor` with an adjustment of `0.5` to round away from zero. For negative numbers, it uses `ceil` with an adjustment of `-0.5` to achieve the same effect.

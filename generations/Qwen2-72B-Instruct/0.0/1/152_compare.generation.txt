@@ -1,0 +1,9 @@
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    results = zeros(Int, length(game))
+    for i in eachindex(game)
+        results[i] = abs(game[i] - guess[i])
+    end
+    return results
+end
+```

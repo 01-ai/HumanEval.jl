@@ -1,0 +1,13 @@
+```julia
+function simplify(x::String, n::String)::Bool
+    x_parts = split(x, '/')
+    n_parts = split(n, '/')
+    x_num, x_den = parse(Int, x_parts[1]), parse(Int, x_parts[2])
+    n_num, n_den = parse(Int, n_parts[1]), parse(Int, n_parts[2])
+    # Simplify the expression x * n
+    final_num = x_num * n_num
+    final_den = x_den * n_den
+    # Check if the final expression is a whole number
+    return final_num % final_den == 0
+end
+```

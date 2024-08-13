@@ -1,0 +1,11 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function reverse_delete(s::String, c::String)::Tuple{String, Bool}
+    result = filter(!in(c), s)
+    palindrome = result == reverse(result)
+    return (result, palindrome)
+end
+```
+
+This function works by first filtering out the characters in `s` that are also in `c`. Then it checks if the resulting string is the same as its reverse, which indicates whether it's a palindrome. The function returns a tuple containing the result string and a boolean indicating whether it's a palindrome.

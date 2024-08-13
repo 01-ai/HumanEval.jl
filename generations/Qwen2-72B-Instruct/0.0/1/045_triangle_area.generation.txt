@@ -1,0 +1,9 @@
+Here is the Julia function that meets the requirements specified in the docstring:
+
+```julia
+function triangle_area(a, h)
+    return 0.5 * a * h
+end
+```
+
+This function calculates the area of a triangle given the length of a side (`a`) and the height (`h`) perpendicular to that side. The formula used is `area = 0.5 * base * height`.

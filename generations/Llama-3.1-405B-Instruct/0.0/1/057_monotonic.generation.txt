@@ -1,0 +1,35 @@
+Here is a Julia function that implements the `monotonic` function as described in the docstring:
+```julia
+function monotonic(l::Vector)::Bool
+    increasing = decreasing = true
+
+    for i in 2:length(l)
+        if l[i] > l[i-1]
+            decreasing = false
+        elseif l[i] < l[i-1]
+            increasing = false
+        end
+    end
+
+    return increasing || decreasing
+end
+```
+Here's an explanation of the implementation:
+
+* We initialize two boolean variables `increasing` and `decreasing` to `true`, which will track whether the list is monotonically increasing or decreasing, respectively.
+* We iterate through the list starting from the second element (index 2).
+* For each element, we check if it is greater than the previous element. If it is, we set `decreasing` to `false`, since the list cannot be monotonically decreasing.
+* If the element is less than the previous element, we set `increasing` to `false`, since the list cannot be monotonically increasing.
+* After iterating through the entire list, we return `true` if either `increasing` or `decreasing` is still `true`, indicating that the list is monotonically increasing or decreasing, respectively.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> monotonic([1, 2, 4, 20])
+true
+
+julia> monotonic([1, 20, 4, 10])
+false
+
+julia> monotonic([4, 1, 0, -10])
+true
+```

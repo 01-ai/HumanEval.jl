@@ -1,0 +1,32 @@
+```julia
+function encode_swap(message::String)::String
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    encoded_message = ""
+
+    for char in message
+        if char ∈ vowels
+            # Find the vowel in the array and replace it with the letter 2 places after
+            index = findfirst(isequal(char), vowels)
+            if index ≤ 3
+                new_char = vowels[index + 2]
+            else
+                new_char = vowels[index - 3]  # Wrap around for 'u'
+            end
+        elseif 'A' ≤ char ≤ 'Z'
+            # Swap case for uppercase letters
+            new_char = lowercase(char)
+        elseif 'a' ≤ char ≤ 'z'
+            # Swap case for lowercase letters
+            new_char = uppercase(char)
+        else
+            # Keep non-letter characters as is
+            new_char = char
+        end
+        encoded_message *= string(new_char)
+    end
+
+    return encoded_message
+end
+```
+
+This function `encode_swap` takes a string `message` as input and follows the rules described in the doc string to encode it. It swaps the case of all letters and replaces vowels with the letter that appears 2 places after them in the English alphabet, wrapping around for 'u'. Non-letter characters remain unchanged.

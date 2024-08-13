@@ -1,0 +1,10 @@
+Here's the implementation of the `remove_vowels` function in Julia:
+
+```julia
+function remove_vowels(text::String)::String
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    return join(filter(c -> c ∉ vowels, text))
+end
+```
+
+This function uses a set of vowels to efficiently check if a character is a vowel and filters out those characters from the input string. The `join` function is then used to concatenate the remaining characters back into a single string.

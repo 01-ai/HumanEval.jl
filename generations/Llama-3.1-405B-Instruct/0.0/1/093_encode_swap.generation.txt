@@ -1,0 +1,65 @@
+Here is the Julia function that implements the specified behavior:
+```julia
+function encode_swap(message::String)::String
+    """
+    Encodes a message by swapping case of all letters and replacing vowels with the letter 2 places after it in the alphabet.
+    
+    Parameters:
+    message (String): The input message to be encoded.
+    
+    Returns:
+    String: The encoded message.
+    """
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    encoded_message = ""
+
+    for char in message
+        # Check if character is a vowel
+        if lowercase(char) in vowels
+            # Find the index of the vowel in the alphabet (a=1, b=2, ..., z=26)
+            idx = Int(lowercase(char)) - 96
+            # Replace vowel with the letter 2 places after it
+            new_idx = (idx + 2 - 1) % 26 + 1
+            new_char = Char(new_idx + 96)
+            # Swap case of the new character
+            if isuppercase(char)
+                encoded_message *= lowercase(new_char)
+            else
+                encoded_message *= uppercase(new_char)
+            end
+        else
+            # If not a vowel, just swap case
+            if isuppercase(char)
+                encoded_message *= lowercase(char)
+            else
+                encoded_message *= uppercase(char)
+            end
+        end
+    end
+
+    return encoded_message
+end
+```
+Here's an explanation of the code:
+
+1. We define the `encode_swap` function that takes a `message` string as input and returns the encoded string.
+2. We define the `vowels` array containing the lowercase vowels.
+3. We initialize an empty string `encoded_message` that will store the encoded message.
+4. We iterate through each character `char` in the input `message`.
+5. If the character is a vowel (checked by converting to lowercase and searching in the `vowels` array), we:
+	* Find the index of the vowel in the alphabet (a=1, b=2, ..., z=26) using ASCII values.
+	* Replace the vowel with the letter 2 places after it by adding 2 to the index and taking the result modulo 26 (to wrap around the alphabet).
+	* Convert the new index back to a character using ASCII values.
+	* Swap the case of the new character based on the original case of the input character.
+6. If the character is not a vowel, we simply swap its case using the `isuppercase` and `lowercase`/`uppercase` functions.
+7. We append the encoded character to the `encoded_message` string.
+8. Finally, we return the encoded message.
+
+You can test the function using the examples provided in the docstring:
+```julia
+julia> encode_swap("test")
+"TGST"
+
+julia> encode_swap("This is a message")
+"tHKS KS C MGSSCGG"
+```

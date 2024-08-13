@@ -1,0 +1,20 @@
+function split_words(txt::String)::Union{Vector{<:AbstractString}, Int}
+    if occursin(r"\s", txt)
+        return split(txt)
+    elseif occursin(r",", txt)
+        return split(txt, ",")
+    else
+        count = 0
+        for (i, char) in enumerate(txt)
+            if islowercase(char) && isodd(Int(char) - Int('a'))
+                count += 1
+            end
+        end
+        return count
+    end
+end
+
+# Test cases
+println(split_words("Hello world!"))  # Should return ["Hello", "world!"]
+println(split_words("Hello,world!"))   # Should return ["Hello", "world!"]
+println(split_words("abcdef"))         # Should return 3

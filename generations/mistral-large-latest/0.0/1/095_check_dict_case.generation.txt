@@ -1,0 +1,21 @@
+Sure, here's a Julia function that meets the requirements specified in the docstring:
+
+```julia
+function check_dict_case(d::Dict{String})::Bool
+    if isempty(d)
+        return false
+    end
+
+    first_key_case = islowercase(first(keys(d)))
+
+    for key in keys(d)
+        if islowercase(key) != first_key_case
+            return false
+        end
+    end
+
+    return true
+end
+```
+
+This function first checks if the dictionary is empty and returns `false` if it is. Then it determines whether the first key is in lower case or not. It then iterates over the keys of the dictionary and checks if the case of each key matches the case of the first key. If it finds a key that doesn't match, it returns `false`. If it goes through all keys without finding a mismatch, it returns `true`.

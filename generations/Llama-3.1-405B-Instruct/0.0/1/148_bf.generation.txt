@@ -1,0 +1,43 @@
+Here is the Julia function that meets the requirements:
+```julia
+function bf(planet1::String, planet2::String)::NTuple
+    # Define the order of planets in our solar system
+    planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+    
+    # Check if both planet names are correct
+    if !(planet1 in planets) || !(planet2 in planets)
+        return ()
+    end
+    
+    # Find the indices of the two planets
+    idx1 = findfirst(isequal(planet1), planets)
+    idx2 = findfirst(isequal(planet2), planets)
+    
+    # Swap indices if planet1 is farther from the Sun than planet2
+    if idx1 > idx2
+        idx1, idx2 = idx2, idx1
+    end
+    
+    # Return the planets between the two indices (exclusive)
+    return tuple(planets[idx1+1:idx2-1]...)
+end
+```
+Here's an explanation of the code:
+
+1. We define the order of planets in our solar system as a vector of strings.
+2. We check if both input planet names are correct by checking if they are in the `planets` vector. If either of them is not, we return an empty tuple.
+3. We find the indices of the two planets in the `planets` vector using `findfirst`.
+4. We swap the indices if `planet1` is farther from the Sun than `planet2`, so that `idx1` is always the smaller index.
+5. We return a tuple containing the planets between the two indices (exclusive) using slicing and the `tuple` function.
+
+You can test this function with the examples you provided:
+```julia
+julia> bf("Jupiter", "Neptune")
+("Saturn", "Uranus")
+
+julia> bf("Earth", "Mercury")
+("Venus",)
+
+julia> bf("Mercury", "Uranus")
+("Venus", "Earth", "Mars", "Jupiter", "Saturn")
+```

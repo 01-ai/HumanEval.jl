@@ -1,0 +1,71 @@
+Here's a Julia function that validates a given date string according to the specified rules:
+
+```julia
+function valid_date(date::String)::Bool
+    # Check if the date string is empty
+    if isempty(date)
+        return false
+    end
+
+    # Check if the date format is correct (mm-dd-yyyy)
+    if !occursin(r"^\d{2}-\d{2}-\d{4}$", date)
+        return false
+    end
+
+    # Extract month, day, and year from the date string
+    month, day, year = parse.(Int, split(date, "-"))
+
+    # Check if month is valid (1-12)
+    if month < 1 || month > 12
+        return false
+    end
+
+    # Define the number of days for each month
+    days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+    # Check for leap year and update February's days if necessary
+    if year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
+        days_in_month[2] = 29
+    end
+
+    # Check if the day is valid for the given month
+    if day < 1 || day > days_in_month[month]
+        return false
+    end
+
+    return true
+end
+```
+
+This function does the following:
+
+1. Checks if the date string is empty.
+2. Uses a regular expression to check if the date format is correct (mm-dd-yyyy).
+3. Extracts the month, day, and year from the date string.
+4. Checks if the month is valid (between 1 and 12).
+5. Defines an array with the number of days for each month.
+6. Checks for leap years and updates February's days if necessary.
+7. Checks if the day is valid for the given month.
+
+If all checks pass, the function returns `true`, otherwise it returns `false`.
+
+You can use this function as follows:
+
+```julia
+julia> valid_date("03-11-2000")
+true
+
+julia> valid_date("15-01-2012")
+false
+
+julia> valid_date("04-0-2040")
+false
+
+julia> valid_date("06-04-2020")
+true
+
+julia> valid_date("06/04/2020")
+false
+```
+
+This implementation covers all the rules specified in the problem statement and should work correctly for the given examples and other date strings.

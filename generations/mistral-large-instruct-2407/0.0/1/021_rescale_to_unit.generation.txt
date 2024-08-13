@@ -1,0 +1,60 @@
+ Certainly! Below is the implementation of the `rescale_to_unit` function in Julia based on the provided docstring:
+
+```julia
+"""
+    rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+
+Given list of numbers (of at least two elements), apply a linear transform to
+that list, such that the smallest number will become 0 and the largest will
+become 1
+
+# Examples
+
+```jldoctest
+julia> rescale_to_unit([1.0, 2.0, 3.0, 4.0, 5.0])
+5-element Vector{Float64}:
+ 0.0
+ 0.25
+ 0.5
+ 0.75
+ 1.0
+```
+"""
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    if length(numbers) < 2
+        throw(ArgumentError("The input vector must contain at least two elements."))
+    end
+
+    min_val = minimum(numbers)
+    max_val = maximum(numbers)
+
+    if min_val == max_val
+        throw(ArgumentError("The input vector must contain distinct elements."))
+    end
+
+    return (numbers .- min_val) ./ (max_val - min_val)
+end
+```
+
+### Explanation:
+1. **Input Validation**:
+   - The function first checks if the input vector has at least two elements. If not, it throws an `ArgumentError`.
+   - It also checks if all elements in the vector are the same (i.e., `min_val == max_val`). If they are, it throws an `ArgumentError` because rescaling would be undefined in this case.
+
+2. **Rescaling**:
+   - The minimum value (`min_val`) and the maximum value (`max_val`) of the input vector are calculated.
+   - The rescaling is performed using the formula: `(numbers .- min_val) ./ (max_val - min_val)`.
+   - This formula shifts the numbers so that the smallest value becomes 0 and scales them so that the largest value becomes 1.
+
+### Example Usage:
+```julia
+julia> rescale_to_unit([1.0, 2.0, 3.0, 4.0, 5.0])
+5-element Vector{Float64}:
+ 0.0
+ 0.25
+ 0.5
+ 0.75
+ 1.0
+```
+
+This implementation ensures that the input vector is properly rescaled to the range [0, 1].

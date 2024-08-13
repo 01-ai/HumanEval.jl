@@ -1,0 +1,14 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function count_nums(xs::Vector{Int})::Int
+    function sum_digits(n::Int)::Int
+        n == 0 && return 0
+        sign(n) * (abs(rem(n, 10)) + sum_digits(div(n, 10)))
+    end
+
+    return count(x -> sum_digits(x) > 0, xs)
+end
+```
+
+This function first defines a helper function `sum_digits` that calculates the sum of the signed digits of a number. Then it uses the `count` function to count the number of elements in the array that have a sum of digits greater than 0.

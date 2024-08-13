@@ -1,0 +1,13 @@
+```julia
+function modp(n::Int, p::Int)::Int
+    result = 1
+    while n > 0
+        if n % 2 == 1
+            result = (result * 2) % p
+        end
+        n = n ÷ 2
+    end
+    return result
+end
+```
+This function calculates \(2^n \mod p\) efficiently by using the binary exponentiation method, which reduces the number of multiplications and thus improves performance, especially for large values of \(n\). It iterates through the bits of \(n\), squaring the current result on each iteration and multiplying by 2 if the current bit of \(n\) is 1, all while keeping the result modulo \(p\) to avoid integer overflow issues.

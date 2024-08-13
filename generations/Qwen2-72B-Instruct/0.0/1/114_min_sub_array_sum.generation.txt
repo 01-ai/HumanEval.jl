@@ -1,0 +1,12 @@
+```julia
+function min_sub_array_sum(nums::Vector{Int})::Int
+    min_sum = nums[1]
+    current_sum = nums[1]
+    for i in 2:length(nums)
+        current_sum = min(nums[i], current_sum + nums[i])
+        min_sum = min(min_sum, current_sum)
+    end
+    return min_sum
+end
+```
+This function uses a variation of Kadane's algorithm to find the minimum sum of any non-empty sub-array. It iterates through the array, keeping track of the current sum and the minimum sum found so far. At each step, it updates the current sum to be the minimum of the current element and the sum of the current element and the current sum. It also updates the minimum sum to be the minimum of the current minimum sum and the current sum.

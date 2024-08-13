@@ -1,0 +1,43 @@
+Here is the Julia function that implements the `remove_vowels` functionality based on the provided docstring:
+```julia
+"""
+    remove_vowels(text::String)::String
+
+`remove_vowels` is a function that takes string and returns string without vowels.
+
+# Examples
+
+```jldoctest
+julia> remove_vowels("")
+""
+
+julia> remove_vowels("abcdef\\nghijklm")
+"bcdf\\nghjklm"
+
+julia> remove_vowels("abcdef")
+"bcdf"
+
+julia> remove_vowels("aaaaa")
+""
+
+julia> remove_vowels("aaBAA")
+"B"
+
+julia> remove_vowels("zbcd")
+"zbcd"
+```
+"""
+function remove_vowels(text::String)::String
+    vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    return join([char for char in text if char ∉ vowels])
+end
+```
+Here's an explanation of the implementation:
+
+* We define the `remove_vowels` function that takes a `String` input `text` and returns a `String` output.
+* We define a vector `vowels` that contains all the vowel characters (both lowercase and uppercase).
+* We use a list comprehension to iterate over each character `char` in the input `text`.
+* For each character, we check if it is not in the `vowels` vector using the `∉` operator. If it is not a vowel, we include it in the output string.
+* We use the `join` function to concatenate all the non-vowel characters into a single string, which is returned as the output.
+
+You can test this function using the examples provided in the docstring to verify its correctness.

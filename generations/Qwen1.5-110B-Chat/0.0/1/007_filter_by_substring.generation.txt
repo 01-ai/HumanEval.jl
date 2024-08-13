@@ -1,0 +1,5 @@
+```julia
+function filter_by_substring(strings::Vector{String}, substring::AbstractString)::Vector{String}
+    return filter(string -> occursin(substring, string), strings)
+end
+```

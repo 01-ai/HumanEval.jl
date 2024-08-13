@@ -1,0 +1,29 @@
+Here is the implementation of the `sort_even` function in Julia:
+
+```julia
+function sort_even(l::Vector)::Vector
+    # Extract the elements at even indices
+    even_indices = 2:2:length(l)
+    even_elements = l[even_indices]
+    
+    # Sort the even elements
+    sorted_even_elements = sort(even_elements)
+    
+    # Create a copy of the original list to modify
+    l_sorted = copy(l)
+    
+    # Replace the elements at even indices with the sorted elements
+    l_sorted[even_indices] = sorted_even_elements
+    
+    return l_sorted
+end
+```
+
+You can test the function with the provided examples:
+
+```julia
+println(sort_even([1, 2, 3]) == [1, 2, 3])  # true
+println(sort_even([5, 6, 3, 4]) == [5, 4, 3, 6])  # true
+```
+
+This function works by first extracting the elements at the even indices, sorting those elements, and then placing the sorted elements back into their respective positions in a copy of the original list.

@@ -1,0 +1,57 @@
+ Certainly! Below is the implementation of the `hex_key` function in Julia based on the provided docstring:
+
+```julia
+"""
+    hex_key(num::String)::Int
+
+You have been tasked to write a function that receives a hexadecimal number as a
+string and counts the number of hexadecimal digits that are primes (prime
+number, or a prime, is a natural number greater than 1 that is not a product of
+two smaller natural numbers). Hexadecimal digits are 0, 1, 2, 3, 4, 5, 6, 7, 8,
+9, A, B, C, D, E, F. Prime numbers are 2, 3, 5, 7, 11, 13, 17,... So you have to
+determine a number of the following digits: 2, 3, 5, 7, B (=decimal 11), D
+(=decimal 13). Note: you may assume the input is always correct or empty string,
+and symbols A,B,C,D,E,F are always uppercase.
+
+# Examples
+
+```jldoctest
+julia> hex_key("AB")
+1
+
+julia> hex_key("1077E")
+2
+
+julia> hex_key("ABED1A33")
+4
+
+julia> hex_key("123456789ABCDEF0")
+6
+
+julia> hex_key("2020")
+2
+```
+"""
+function hex_key(num::String)::Int
+    prime_hex_digits = Set(['2', '3', '5', '7', 'B', 'D'])
+    count = 0
+    for char in num
+        if char in prime_hex_digits
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+### Explanation:
+1. **Prime Hexadecimal Digits**: The function identifies the hexadecimal digits that are prime numbers: `2`, `3`, `5`, `7`, `B` (which is 11 in decimal), and `D` (which is 13 in decimal).
+2. **Counting Primes**: The function iterates through each character in the input string and checks if it is one of the prime hexadecimal digits.
+3. **Return Count**: The function returns the count of prime hexadecimal digits found in the input string.
+
+### Examples:
+- `hex_key("AB")` returns `1` because `B` is a prime hexadecimal digit.
+- `hex_key("1077E")` returns `2` because `7` and `7` are prime hexadecimal digits.
+- `hex_key("ABED1A33")` returns `4` because `B`, `D`, `3`, and `3` are prime hexadecimal digits.
+- `hex_key("123456789ABCDEF0")` returns `6` because `2`, `3`, `5`, `7`, `B`, and `D` are prime hexadecimal digits.
+- `hex_key("2020")` returns `2` because `2` and `2` are prime hexadecimal digits.

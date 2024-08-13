@@ -1,0 +1,58 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing, Int}}
+    largest_negative = nothing
+    smallest_positive = nothing
+
+    for num in xs
+        if num < 0
+            if largest_negative === nothing || num > largest_negative
+                largest_negative = num
+            end
+        elseif num > 0
+            if smallest_positive === nothing || num < smallest_positive
+                smallest_positive = num
+            end
+        end
+    end
+
+    return (largest_negative, smallest_positive)
+end
+```
+
+Explanation:
+
+1. We define the function `largest_smallest_integers` that takes a vector of integers `xs` as input and returns a tuple of `Union{Nothing, Int}` values.
+
+2. We initialize two variables: `largest_negative` and `smallest_positive` to `nothing`. These variables will store the largest negative integer and smallest positive integer, respectively.
+
+3. We iterate over each number `num` in the input vector `xs`.
+
+4. If `num` is negative (less than 0):
+   - If `largest_negative` is `nothing` (meaning no negative integer has been found yet) or if `num` is greater than the current `largest_negative`, we update `largest_negative` to `num`.
+
+5. If `num` is positive (greater than 0):
+   - If `smallest_positive` is `nothing` (meaning no positive integer has been found yet) or if `num` is smaller than the current `smallest_positive`, we update `smallest_positive` to `num`.
+
+6. After iterating through all the numbers, we return a tuple `(largest_negative, smallest_positive)`.
+
+The function handles the following cases:
+- If there are no negative integers in the list, `largest_negative` remains `nothing`.
+- If there are no positive integers in the list, `smallest_positive` remains `nothing`.
+- If the list is empty or contains only zero, both `largest_negative` and `smallest_positive` remain `nothing`.
+
+The examples you provided should produce the expected results:
+
+```jldoctest
+julia> largest_smallest_integers([2, 4, 1, 3, 5, 7])
+(nothing, 1)
+
+julia> largest_smallest_integers(Int[])
+(nothing, nothing)
+
+julia> largest_smallest_integers([0])
+(nothing, nothing)
+```
+
+I hope this helps! Let me know if you have any further questions.

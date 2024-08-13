@@ -1,0 +1,16 @@
+```julia
+function select_words(s::String, n::Int)
+    words = split(s)
+    consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
+    selected_words = String[]
+
+    for word in words
+        count_consonants = sum([1 for c in word if c in consonants])
+        if count_consonants == n
+            push!(selected_words, word)
+        end
+    end
+
+    return selected_words
+end
+```

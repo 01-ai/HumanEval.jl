@@ -1,0 +1,30 @@
+Here's the implementation of the `anti_shuffle` function in Julia:
+
+```julia
+function anti_shuffle(s::String)::String
+    # Split the string into words
+    words = split(s, " ")
+    
+    # Function to sort characters in a word
+    sort_word(word::String) = join(sort(collect(word)))
+    
+    # Apply the sort_word function to each word and join them back with spaces
+    sorted_words = map(sort_word, words)
+    
+    return join(sorted_words, " ")
+end
+```
+
+This function works as follows:
+1. It splits the input string `s` into words using spaces as delimiters.
+2. It defines a helper function `sort_word` that sorts the characters in a word based on their ASCII values.
+3. It applies the `sort_word` function to each word in the list of words.
+4. Finally, it joins the sorted words back together with spaces and returns the result.
+
+You can test the function with the provided examples:
+
+```julia
+println(anti_shuffle("Hi"))  # Output: "Hi"
+println(anti_shuffle("hello"))  # Output: "ehllo"
+println(anti_shuffle("Hello World!!!"))  # Output: "Hello !!!Wdlor"
+```

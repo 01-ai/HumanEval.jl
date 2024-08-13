@@ -1,0 +1,25 @@
+ Here's the implementation of the `max_fill` function in Julia based on the provided doc string:
+
+```julia
+function max_fill(grid::Vector{Vector{Int}}, capacity::Int)::Int
+    total_water = 0
+    
+    # Calculate the total amount of water in the grid
+    for row in grid
+        total_water += sum(row)
+    end
+    
+    # Calculate the number of times the buckets need to be lowered
+    return ceil(Int, total_water / capacity)
+end
+```
+
+This function first calculates the total amount of water in the grid by summing up all the 1s in each row. Then, it divides the total amount of water by the bucket capacity and rounds up to the nearest integer to determine the number of times the buckets need to be lowered.
+
+Here are the examples provided in the doc string tested with the function:
+
+```julia
+println(max_fill([[0, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 1]], 1))  # Output: 6
+println(max_fill([[0, 0, 1, 1], [0, 0, 0, 0], [1, 1, 1, 1], [0, 1, 1, 1]], 2))  # Output: 5
+println(max_fill([[0, 0, 0], [0, 0, 0]], 5))  # Output: 0
+```

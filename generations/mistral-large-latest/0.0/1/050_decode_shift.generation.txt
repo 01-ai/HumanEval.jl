@@ -1,0 +1,12 @@
+Sure, I can help with that. The `encode_shift` function you provided shifts every character in the input string by 5 positions in the alphabet. To decode a string encoded with this function, we need to shift every character back by 5 positions. Here's how you can do it in Julia:
+
+```julia
+"""
+Takes as input string encoded with `encode_shift` function. Returns decoded string.
+"""
+function decode_shift(s::String)::String
+    join(((x - 'a' - 5 + 26) % 26 + 'a' for x in s))
+end
+```
+
+This function works by subtracting 5 from the ASCII value of each character in the input string, then taking the modulus with respect to 26 (the number of letters in the alphabet) to ensure that the result is still a valid letter. The `join` function is then used to combine the resulting characters back into a string.

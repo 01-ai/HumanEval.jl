@@ -1,0 +1,12 @@
+```julia
+function is_simple_power(x::Number, n::Number)::Bool
+    if n == 1
+        return x == 1
+    end
+    power = 1
+    while power < x
+        power *= n
+    end
+    return power == x
+end
+```

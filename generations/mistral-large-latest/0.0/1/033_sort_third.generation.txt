@@ -1,0 +1,19 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function sort_third(l::Vector)
+    # Find indices that are divisible by three
+    divisible_by_three = findall(x -> x % 3 == 0, 1:length(l))
+
+    # Sort the values at these indices
+    sorted_values = sort(l[divisible_by_three])
+
+    # Replace the values at these indices with the sorted values
+    for (i, index) in enumerate(divisible_by_three)
+        l[index] = sorted_values[i]
+    end
+
+    return l
+end
+```
+This function first finds all indices of the input list `l` that are divisible by three. It then sorts the values at these indices. Finally, it replaces the values at these indices with the sorted values and returns the modified list.

@@ -1,0 +1,7 @@
+```julia
+function rescale_to_unit(numbers::Vector{Float64})::Vector{Float64}
+    min_num = minimum(numbers)
+    max_num = maximum(numbers)
+    return [(x - min_num) / (max_num - min_num) for x in numbers]
+end
+```

@@ -1,0 +1,37 @@
+Sure, I can help with that. Here's a simple implementation of the `is_multiply_prime` function in Julia. This function first defines a helper function `is_prime` to check if a number is prime, then it checks if the input number `a` can be expressed as the product of three prime numbers.
+
+```julia
+function is_prime(n::Int)
+    if n < 2
+        return false
+    elseif n < 4
+        return true
+    elseif n % 2 == 0
+        return false
+    else
+        for d in 3:2:isqrt(n)
+            if n % d == 0
+                return false
+            end
+        end
+        return true
+    end
+end
+
+function is_multiply_prime(a::Int)
+    if a < 100 && a > 1
+        for i in 2:isqrt(a)
+            if is_prime(i)
+                for j in i:isqrt(a)
+                    if is_prime(j) && is_prime(a ÷ (i * j))
+                        return true
+                    end
+                end
+            end
+        end
+    end
+    return false
+end
+```
+
+This function should work for numbers less than 100. It first checks if the number is within the valid range (1 to 99), then it iterates over all possible pairs of prime numbers that could multiply to give a number less than or equal to `a`. If it finds such a pair and the quotient of `a` divided by their product is also prime, it returns `true`. Otherwise, it returns `false`.

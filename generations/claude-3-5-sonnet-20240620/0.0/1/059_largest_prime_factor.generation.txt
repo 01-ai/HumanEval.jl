@@ -1,0 +1,67 @@
+Here's a Julia function that finds the largest prime factor of a given number n, assuming n > 1 and is not prime:
+
+```julia
+function largest_prime_factor(n::Int)::Int
+    largest_factor = 1
+    
+    # Handle all factors of 2
+    while n % 2 == 0
+        largest_factor = 2
+        n = div(n, 2)
+    end
+    
+    # Check odd factors up to sqrt(n)
+    for i in 3:2:isqrt(n)
+        while n % i == 0
+            largest_factor = i
+            n = div(n, i)
+        end
+    end
+    
+    # If n is still greater than 2, it's prime
+    if n > 2
+        largest_factor = n
+    end
+    
+    return largest_factor
+end
+```
+
+This function works as follows:
+
+1. We start by initializing `largest_factor` to 1.
+
+2. We handle all factors of 2 first, as it's the only even prime. This also makes the subsequent loop more efficient.
+
+3. We then loop through odd numbers from 3 up to the square root of n. We only need to check up to the square root because if n has a factor larger than its square root, it can only have one such factor.
+
+4. For each potential factor, we divide n by it as many times as possible, updating `largest_factor` each time.
+
+5. After the loop, if n is still greater than 2, it means n itself is prime (or a prime factor of the original number), so we set it as the largest factor.
+
+6. Finally, we return the largest factor found.
+
+This implementation is efficient because:
+- It only checks factors up to the square root of n.
+- It handles the even factor (2) separately, allowing the main loop to only check odd numbers.
+- It divides n by each factor it finds, reducing the size of n for subsequent checks.
+
+The function correctly handles the given examples:
+
+```julia
+julia> largest_prime_factor(13195)
+29
+
+julia> largest_prime_factor(2048)
+2
+```
+
+It also correctly handles other cases, including when the number itself is the largest prime factor:
+
+```julia
+julia> largest_prime_factor(97)
+97
+
+julia> largest_prime_factor(100)
+5
+```

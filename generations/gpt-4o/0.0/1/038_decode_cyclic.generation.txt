@@ -1,0 +1,25 @@
+Sure, I'll implement the `decode_cyclic` function for you. The `decode_cyclic` function will reverse the transformation applied by the `encode_cyclic` function, which cycles groups of three characters by moving the first character to the end of the group.
+
+Here's the implementation:
+
+```julia
+function decode_cyclic(s::String)::String
+    join((length(x) == 3 ? x[3] * x[1] * x[2] : x for x in Iterators.partition(s, 3)))
+end
+```
+
+This function works by iterating over the string in partitions of three characters, and for each partition, it rearranges the characters to their original positions. If the partition is not of length 3 (which can happen at the end of the string if its length is not a multiple of 3), it leaves the partition unchanged.
+
+Let's test both functions to ensure they work correctly:
+
+```julia
+# Test the encode_cyclic function
+encoded = encode_cyclic("abcdefghi")
+println(encoded)  # Output should be "bcaefdhgi"
+
+# Test the decode_cyclic function
+decoded = decode_cyclic(encoded)
+println(decoded)  # Output should be "abcdefghi"
+```
+
+This should confirm that the `decode_cyclic` function correctly reverses the encoding applied by the `encode_cyclic` function.

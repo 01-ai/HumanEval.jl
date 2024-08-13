@@ -1,0 +1,55 @@
+Here's a Julia function that implements the requested behavior:
+
+```julia
+function largest_smallest_integers(xs::Vector{Int})::Tuple{Union{Nothing, Int}, Union{Nothing,Int}}
+    largest_negative = nothing
+    smallest_positive = nothing
+
+    for x in xs
+        if x < 0
+            if isnothing(largest_negative) || x > largest_negative
+                largest_negative = x
+            end
+        elseif x > 0
+            if isnothing(smallest_positive) || x < smallest_positive
+                smallest_positive = x
+            end
+        end
+    end
+
+    return (largest_negative, smallest_positive)
+end
+```
+
+This function does the following:
+
+1. We initialize two variables, `largest_negative` and `smallest_positive`, to `nothing`.
+
+2. We iterate through each element `x` in the input vector `xs`:
+
+   - If `x` is negative, we update `largest_negative` if it's currently `nothing` or if `x` is larger than the current `largest_negative`.
+   - If `x` is positive, we update `smallest_positive` if it's currently `nothing` or if `x` is smaller than the current `smallest_positive`.
+
+3. After the loop, we return a tuple containing `largest_negative` and `smallest_positive`.
+
+This implementation handles all the required cases:
+
+- If there are no negative numbers, `largest_negative` will remain `nothing`.
+- If there are no positive numbers, `smallest_positive` will remain `nothing`.
+- Zero is neither considered positive nor negative, so it doesn't affect the result.
+- If the list is empty, both values will be `nothing`.
+
+You can test the function with the provided examples:
+
+```julia
+println(largest_smallest_integers([2, 4, 1, 3, 5, 7]))  # (nothing, 1)
+println(largest_smallest_integers(Int[]))  # (nothing, nothing)
+println(largest_smallest_integers([0]))  # (nothing, nothing)
+
+# Additional test cases
+println(largest_smallest_integers([-1, -2, 3, 4]))  # (-1, 3)
+println(largest_smallest_integers([-1, -2, -3]))  # (-1, nothing)
+println(largest_smallest_integers([1, 2, 3]))  # (nothing, 1)
+```
+
+This function correctly handles all the cases and returns the expected results.

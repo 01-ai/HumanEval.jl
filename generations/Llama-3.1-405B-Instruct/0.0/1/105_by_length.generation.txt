@@ -1,0 +1,42 @@
+Here is the Julia function that implements the described behavior:
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    # Filter integers between 1 and 9 inclusive, sort, and reverse the array
+    sorted_xs = reverse(sort(filter(x -> 1 <= x <= 9, xs)))
+    
+    # Replace each digit with its corresponding name
+    digit_names = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    result = [digit_names[x] for x in sorted_xs]
+    
+    return result
+end
+```
+Here's an explanation of the code:
+
+1. First, we filter the input array `xs` to only include integers between 1 and 9 inclusive using the `filter` function.
+2. We then sort the filtered array in ascending order using the `sort` function.
+3. We reverse the sorted array using the `reverse` function to get the desired order.
+4. We define an array `digit_names` that maps each digit to its corresponding name.
+5. We use a list comprehension to replace each digit in the reversed array with its corresponding name from `digit_names`.
+6. Finally, we return the resulting array of strings.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> by_length([2, 1, 1, 4, 5, 8, 2, 3])
+8-element Vector{String}:
+ "Eight"
+ "Five"
+ "Four"
+ "Three"
+ "Two"
+ "Two"
+ "One"
+ "One"
+
+julia> by_length(Int[])
+String[]
+
+julia> by_length([1, -1, 55])
+1-element Vector{String}:
+ "One"
+```

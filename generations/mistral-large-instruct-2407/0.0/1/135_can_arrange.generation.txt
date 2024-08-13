@@ -1,0 +1,32 @@
+ Certainly! Below is the implementation of the `can_arrange` function in Julia based on the given docstring:
+
+```julia
+"""
+can_arrange(xs::Vector{Int})::Int
+
+Create a function which returns the largest index of an element which is not
+greater than or equal to the element immediately preceding it. If no such
+element exists then return -1. The given array will not contain duplicate
+values.
+
+# Examples
+
+```jldoctest
+julia> can_arrange([1, 2, 4, 3, 5])
+4
+
+julia> can_arrange([1, 2, 3])
+-1
+```
+"""
+function can_arrange(xs::Vector{Int})::Int
+    for i in 2:length(xs)
+        if xs[i] < xs[i-1]
+            return i
+        end
+    end
+    return -1
+end
+```
+
+This function iterates through the array starting from the second element and checks if the current element is less than the previous one. If it finds such an element, it returns the index of that element. If no such element is found, it returns -1.

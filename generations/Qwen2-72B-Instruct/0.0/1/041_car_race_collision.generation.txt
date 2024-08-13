@@ -1,0 +1,8 @@
+```julia
+function car_race_collision(n::Int)::Int
+    # Since each car moving left to right will inevitably collide with each car
+    # moving right to left, and there are n cars in each direction, the total
+    # number of collisions will be n * n.
+    return n * n
+end
+```

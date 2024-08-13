@@ -1,0 +1,23 @@
+ Here's the implementation of the `is_prime` function in Julia:
+
+```julia
+function is_prime(n::Int)
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+```
+
+This function checks if a number `n` is prime by first handling the simple cases (numbers less than 2, even numbers, and multiples of 3). For numbers greater than 3, it checks divisibility starting from 5 and skips even numbers and multiples of 3 by incrementing `i` by 6 each time. This is an efficient way to check for primality, especially for larger numbers.

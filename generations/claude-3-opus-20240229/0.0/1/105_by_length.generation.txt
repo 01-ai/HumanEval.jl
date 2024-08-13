@@ -1,0 +1,62 @@
+Here's a solution to the problem using Julia:
+
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    # Define the mapping of digits to their corresponding names
+    digit_names = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+
+    # Filter the array to keep only integers between 1 and 9 inclusive
+    filtered_xs = filter(x -> 1 <= x <= 9, xs)
+
+    # Sort the filtered array in ascending order
+    sorted_xs = sort(filtered_xs)
+
+    # Reverse the sorted array
+    reversed_xs = reverse(sorted_xs)
+
+    # Replace each digit with its corresponding name
+    result = map(x -> digit_names[x], reversed_xs)
+
+    return result
+end
+```
+
+Explanation:
+
+1. We define a vector `digit_names` that contains the corresponding names for each digit from 1 to 9.
+
+2. We use the `filter` function to create a new array `filtered_xs` that contains only the integers between 1 and 9 inclusive from the input array `xs`. The `filter` function takes a predicate function `x -> 1 <= x <= 9` that returns `true` for integers between 1 and 9 and `false` otherwise.
+
+3. We use the `sort` function to sort the `filtered_xs` array in ascending order and store the result in `sorted_xs`.
+
+4. We use the `reverse` function to reverse the order of elements in `sorted_xs` and store the result in `reversed_xs`.
+
+5. We use the `map` function to replace each digit in `reversed_xs` with its corresponding name from the `digit_names` vector. The `map` function applies the anonymous function `x -> digit_names[x]` to each element `x` in `reversed_xs`.
+
+6. Finally, we return the resulting vector of strings.
+
+The code handles the case of an empty input array by returning an empty array, as specified in the problem statement.
+
+You can test the function with the provided examples:
+
+```julia
+julia> by_length([2, 1, 1, 4, 5, 8, 2, 3])
+8-element Vector{String}:
+ "Eight"
+ "Five"
+ "Four"
+ "Three"
+ "Two"
+ "Two"
+ "One"
+ "One"
+
+julia> by_length(Int[])
+String[]
+
+julia> by_length([1, -1, 55])
+1-element Vector{String}:
+ "One"
+```
+
+The function produces the expected output for each example case.

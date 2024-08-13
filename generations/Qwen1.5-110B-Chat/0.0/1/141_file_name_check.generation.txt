@@ -1,0 +1,29 @@
+```julia
+function file_name_check(file_name::String)::String
+    digits_count = count(isdigit, file_name)
+    dot_index = findfirst(isequal('.'), file_name)
+    
+    if digits_count > 3 || dot_index == nothing
+        return "No"
+    end
+    
+    first_letter_valid = isletter(file_name[1]) && (file_name[1] ∈ 'a':'z' || file_name[1] ∈ 'A':'Z')
+    if !first_letter_valid
+        return "No"
+    end
+    
+    pre_dot = file_name[1:dot_index-1]
+    post_dot = file_name[dot_index+1:end]
+    
+    valid_extensions = ["txt", "exe", "dll"]
+    extension_valid = post_dot ∈ valid_extensions
+    
+    if pre_dot == "" || !extension_valid
+        return "No"
+    end
+    
+    return "Yes"
+end
+```
+
+This Julia function `file_name_check` follows the specifications in the doc string. It checks the validity of a file name by examining the number of digits, the presence of a single dot, the correctness of the initial letter, and the validity of the file extension. If all conditions are met, it returns "Yes"; otherwise, it returns "No".

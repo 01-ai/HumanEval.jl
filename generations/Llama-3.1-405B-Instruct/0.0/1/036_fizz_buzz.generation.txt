@@ -1,0 +1,22 @@
+Here is the Julia function that implements the behavior described in the docstring:
+```julia
+function fizz_buzz(n::Int)
+    count = 0
+    for i in 1:n-1
+        if i % 11 == 0 || i % 13 == 0
+            count += sum(digit == '7' for digit in string(i))
+        end
+    end
+    return count
+end
+```
+Here's an explanation of the code:
+
+1. We initialize a counter `count` to 0, which will keep track of the number of times the digit 7 appears.
+2. We loop through all integers `i` from 1 to `n-1` (since we're looking for integers less than `n`).
+3. For each `i`, we check if it's divisible by 11 or 13 using the modulo operator (`%`). If it is, we proceed to the next step.
+4. We convert `i` to a string using the `string()` function, and then use a generator expression to iterate over each character (digit) in the string.
+5. We use the `sum()` function to count the number of times the digit '7' appears in the string. We add this count to the overall `count` variable.
+6. Finally, we return the total count of 7's.
+
+You can test this function using the examples provided in the docstring to verify that it produces the correct output.

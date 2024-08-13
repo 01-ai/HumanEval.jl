@@ -1,0 +1,52 @@
+Here's a Julia function that implements the rolling_max operation as described:
+
+```julia
+function rolling_max(numbers::Vector{Int})::Vector{Int}
+    if isempty(numbers)
+        return Int[]
+    end
+    
+    result = similar(numbers)
+    current_max = numbers[1]
+    result[1] = current_max
+    
+    for i in 2:length(numbers)
+        current_max = max(current_max, numbers[i])
+        result[i] = current_max
+    end
+    
+    return result
+end
+```
+
+This function does the following:
+
+1. First, it checks if the input vector is empty. If it is, it returns an empty vector of integers.
+
+2. It creates a new vector `result` of the same size and type as the input `numbers` to store the rolling maximum values.
+
+3. It initializes `current_max` with the first element of the input vector and sets the first element of the `result` vector to this value.
+
+4. It then iterates through the rest of the elements in the input vector (from the second element onward):
+   - For each element, it updates `current_max` to be the maximum of the current `current_max` and the current element.
+   - It then sets the corresponding element in the `result` vector to this `current_max`.
+
+5. Finally, it returns the `result` vector containing the rolling maximum values.
+
+This implementation has a time complexity of O(n), where n is the length of the input vector, as it makes a single pass through the input vector. The space complexity is also O(n) to store the result vector.
+
+You can test this function with the example you provided:
+
+```julia
+julia> rolling_max([1, 2, 3, 2, 3, 4, 2])
+7-element Vector{Int64}:
+ 1
+ 2
+ 3
+ 3
+ 3
+ 4
+ 4
+```
+
+This should produce the expected output as shown in your example.

@@ -1,0 +1,24 @@
+Sure, here is a Julia function that implements the required functionality:
+
+```julia
+function separate_paren_groups(paren_string::String)::Vector{String}
+    paren_string = replace(paren_string, " " => "")
+    result = String[]
+    open_count = 0
+    start = 0
+    for (i, c) in enumerate(paren_string)
+        if c == '('
+            open_count += 1
+        elseif c == ')'
+            open_count -= 1
+            if open_count == 0
+                push!(result, paren_string[start:i])
+                start = i + 1
+            end
+        end
+    end
+    return result
+end
+```
+
+This function works by iterating over the characters in the input string and keeping track of the number of open parentheses. When it encounters a closing parenthesis that matches an opening one, it adds the substring from the last start point to the current character to the result list and updates the start point. It also removes any spaces from the input string before processing it.

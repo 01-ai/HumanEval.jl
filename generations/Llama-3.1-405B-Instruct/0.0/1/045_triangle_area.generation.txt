@@ -1,0 +1,19 @@
+Here is the Julia function that matches the provided docstring:
+```julia
+"""
+    triangle_area(a, h)
+
+Given length of a side and high return area for a triangle.
+
+# Examples
+
+```jldoctest
+julia> triangle_area(5, 3)
+7.5
+```
+"""
+function triangle_area(a, h)
+    return 0.5 * a * h
+end
+```
+This function takes two arguments, `a` and `h`, which represent the length of a side and the height of the triangle, respectively. The function returns the area of the triangle using the formula `0.5 * base * height`.

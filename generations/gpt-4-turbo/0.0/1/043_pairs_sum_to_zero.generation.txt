@@ -1,0 +1,19 @@
+```julia
+function pairs_sum_to_zero(l::Vector{Int})::Bool
+    # Create a set to store elements
+    seen = Set{Int}()
+    
+    # Iterate through each element in the list
+    for num in l
+        # Check if the negative of the current number exists in the set
+        if -num in seen
+            return true
+        end
+        # Add the current number to the set
+        push!(seen, num)
+    end
+    
+    # If no pairs found that sum to zero
+    return false
+end
+```

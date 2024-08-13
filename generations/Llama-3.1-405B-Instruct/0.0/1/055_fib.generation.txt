@@ -1,0 +1,35 @@
+Here is a high-quality, readable, and well-documented Julia function that meets the requirements:
+```julia
+"""
+    fib(n::Int)::Int
+
+Return n-th Fibonacci number.
+
+# Examples
+
+```jldoctest
+julia> fib(10)
+55
+
+julia> fib(1)
+1
+
+julia> fib(8)
+21
+```
+"""
+function fib(n::Int)::Int
+    if n <= 1
+        return n
+    else
+        a, b = 0, 1
+        for _ in 2:n
+            a, b = b, a + b
+        end
+        return b
+    end
+end
+```
+This implementation uses an iterative approach to calculate the n-th Fibonacci number, which is more efficient than a recursive approach for large values of n. The function takes an integer `n` as input and returns the corresponding Fibonacci number as an integer.
+
+Note that I've included the docstring in the code, as per your request. The docstring provides a brief description of the function, its input and output types, and some examples of usage. The `jldoctest` block is used to specify examples that can be used to test the function.

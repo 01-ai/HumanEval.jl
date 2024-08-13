@@ -1,0 +1,28 @@
+```julia
+function closest_integer(value::String)::Int
+    # Convert the string to a floating-point number
+    num = parse(Float64, value)
+    
+    # Get the floor and ceiling of the number
+    floor_num = floor(num)
+    ceil_num = ceil(num)
+    
+    # Check the distance to the floor and ceiling
+    dist_to_floor = abs(num - floor_num)
+    dist_to_ceil = abs(num - ceil_num)
+    
+    # Determine the closest integer
+    if dist_to_floor < dist_to_ceil
+        return Int(floor_num)
+    elseif dist_to_ceil < dist_to_floor
+        return Int(ceil_num)
+    else
+        # If equidistant, round away from zero
+        if num > 0
+            return Int(ceil_num)
+        else
+            return Int(floor_num)
+        end
+    end
+end
+```

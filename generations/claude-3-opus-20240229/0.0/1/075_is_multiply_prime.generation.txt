@@ -1,0 +1,45 @@
+Here's the solution to the problem in Julia:
+
+```julia
+function is_multiply_prime(a::Int)::Bool
+    if a < 2
+        return false
+    end
+
+    primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+    prime_count = 0
+
+    for prime in primes
+        while a % prime == 0
+            a ÷= prime
+            prime_count += 1
+        end
+    end
+
+    return a == 1 && prime_count == 3
+end
+```
+
+Explanation:
+
+1. First, we check if the given number `a` is less than 2. If it is, we return `false` since prime numbers are greater than or equal to 2.
+
+2. We create a list of prime numbers less than 100 called `primes`. This list will be used to check if `a` can be divided by these prime numbers.
+
+3. We initialize a variable `prime_count` to keep track of the count of prime factors of `a`.
+
+4. We iterate over each prime number in the `primes` list.
+
+5. For each prime number, we check if it divides `a` evenly using the modulo operator `%`. If it does, we enter a while loop.
+
+6. Inside the while loop, we keep dividing `a` by the current prime number using integer division `÷=` until it no longer divides evenly. Each time we divide `a`, we increment the `prime_count` by 1.
+
+7. After the while loop, we move on to the next prime number in the `primes` list.
+
+8. After the iteration over all prime numbers is complete, we check two conditions:
+   - If `a` has been reduced to 1 (meaning it was completely divided by the prime factors), and
+   - If the `prime_count` is equal to 3 (meaning `a` was the multiplication of exactly 3 prime numbers).
+
+9. If both conditions are satisfied, we return `true`, indicating that `a` is the multiplication of 3 prime numbers. Otherwise, we return `false`.
+
+This function efficiently checks if a given number `a` (less than 100) is the multiplication of 3 prime numbers by iterating over a predefined list of prime numbers and counting the number of prime factors.

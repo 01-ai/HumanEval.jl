@@ -1,0 +1,16 @@
+```julia
+function count_digits(n::Int)::Int
+    product = 1
+    has_odd = false
+    while n > 0
+        digit = n % 10
+        if digit % 2 != 0
+            product *= digit
+            has_odd = true
+        end
+        n = div(n, 10)
+    end
+    return has_odd ? product : 0
+end
+```
+In this function, we iterate through each digit of the integer `n` by taking the remainder when divided by 10 and then dividing `n` by 10 (using integer division) to remove the last digit. If the digit is odd, we multiply it to the `product` variable. The `has_odd` flag is used to check if there is at least one odd digit in `n`. If there are no odd digits, the function returns 0; otherwise, it returns the product of the odd digits.

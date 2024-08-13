@@ -1,0 +1,15 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function fix_spaces(s::String)::String
+    # Replace all spaces with underscores
+    s = replace(s, " " => "_")
+
+    # Replace all consecutive underscores with -
+    s = replace(s, r"_{2,}" => "-")
+
+    return s
+end
+```
+
+This function first replaces all spaces in the input string with underscores. Then it replaces all consecutive underscores (two or more) with a single hyphen.

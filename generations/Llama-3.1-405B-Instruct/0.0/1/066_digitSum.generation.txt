@@ -1,0 +1,42 @@
+Here is the Julia function that implements the specified behavior:
+```julia
+"""
+    digitSum(s::String)::Int
+
+Write a function that takes a string as input and returns the sum of the upper
+characters only ASCII codes.
+
+# Examples
+
+```jldoctest
+julia> digitSum("")
+0
+
+julia> digitSum("abAB")
+131
+
+julia> digitSum("abcCd")
+67
+
+julia> digitSum("helloE")
+69
+
+julia> digitSum("woArBld")
+131
+
+julia> digitSum("aAaaaXa")
+153
+```
+"""
+function digitSum(s::String)::Int
+    return sum(Int(c) for c in s if isuppercase(c))
+end
+```
+Explanation:
+
+* The function uses a generator expression to iterate over each character `c` in the input string `s`.
+* The `isuppercase(c)` function is used to filter out only the uppercase characters.
+* The `Int(c)` conversion is used to get the ASCII code of each uppercase character.
+* The `sum` function is used to calculate the sum of the ASCII codes of the uppercase characters.
+
+You can test this function using the provided examples to verify its correctness.

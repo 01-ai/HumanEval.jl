@@ -1,0 +1,21 @@
+```julia
+function is_sorted(xs::Vector{Int})::Bool
+    # Check for more than 1 duplicate and if the list is sorted in ascending order
+    last_x = xs[1]
+    duplicate_count = 1
+    for x in xs[2:end]
+        if x < last_x
+            return false # Not sorted in ascending order
+        elseif x == last_x
+            duplicate_count += 1
+            if duplicate_count > 1
+                return false # More than 1 duplicate
+            end
+        else
+            last_x = x
+            duplicate_count = 1
+        end
+    end
+    return true
+end
+```

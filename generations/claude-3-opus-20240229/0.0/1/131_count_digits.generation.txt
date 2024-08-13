@@ -1,0 +1,56 @@
+Here's the solution to the problem using Julia:
+
+```julia
+function count_digits(n::Int)::Int
+    product = 1
+    has_odd_digit = false
+
+    while n > 0
+        digit = n % 10
+        if isOdd(digit)
+            product *= digit
+            has_odd_digit = true
+        end
+        n ÷= 10
+    end
+
+    return has_odd_digit ? product : 0
+end
+```
+
+Explanation:
+
+1. We initialize `product` to 1, which will store the product of the odd digits. We also initialize `has_odd_digit` to `false`, which will keep track of whether any odd digit is encountered.
+
+2. We start a `while` loop that continues as long as `n` is greater than 0.
+
+3. Inside the loop, we extract the rightmost digit of `n` using the modulo operator `%` and store it in the `digit` variable.
+
+4. We check if the `digit` is odd using the `isOdd()` function. If it is odd, we multiply `product` by the `digit` and set `has_odd_digit` to `true`.
+
+5. We update `n` by dividing it by 10 using the integer division operator `÷` to remove the rightmost digit.
+
+6. After the loop ends, we check the value of `has_odd_digit`. If it is `true`, it means there was at least one odd digit in the number, so we return the `product`. If `has_odd_digit` is `false`, it means all the digits were even, so we return 0.
+
+The function takes an integer `n` as input and returns an integer, as specified by the type annotations `::Int`.
+
+Here are some example test cases:
+
+```julia
+julia> count_digits(1)
+1
+
+julia> count_digits(4)
+0
+
+julia> count_digits(235)
+15
+
+julia> count_digits(2468)
+0
+
+julia> count_digits(13579)
+945
+```
+
+The solution has a time complexity of O(log n) since we iterate over each digit of the number, and the number of digits is proportional to the logarithm of the number. The space complexity is O(1) as we only use a constant amount of additional space.

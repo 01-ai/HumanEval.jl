@@ -1,0 +1,38 @@
+Sure, here is the implementation of the `digitSum` function in Julia:
+
+```julia
+function digitSum(s::String)::Int
+    sum = 0
+    for char in s
+        if 'A' <= char <= 'Z'
+            sum += Int(char)
+        end
+    end
+    return sum
+end
+```
+
+Let's break down the function:
+
+1. **Initialization**: We initialize a variable `sum` to 0. This will hold the cumulative sum of the ASCII values of the uppercase characters.
+
+2. **Iteration**: We iterate over each character in the input string `s`.
+
+3. **Condition Check**: For each character, we check if it is an uppercase letter by verifying if it lies between 'A' and 'Z' in the ASCII table.
+
+4. **Summation**: If the character is uppercase, we convert it to its ASCII value using `Int(char)` and add it to `sum`.
+
+5. **Return**: Finally, we return the computed sum.
+
+Here are the examples provided in the docstring to verify the function:
+
+```julia
+println(digitSum(""))          # Output: 0
+println(digitSum("abAB"))      # Output: 131
+println(digitSum("abcCd"))     # Output: 67
+println(digitSum("helloE"))    # Output: 69
+println(digitSum("woArBld"))   # Output: 131
+println(digitSum("aAaaaXa"))   # Output: 153
+```
+
+This function should work correctly for the given examples and any other string input.

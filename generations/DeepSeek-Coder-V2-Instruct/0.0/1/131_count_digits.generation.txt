@@ -1,0 +1,21 @@
+ Here's the implementation of the `count_digits` function in Julia:
+
+```julia
+function count_digits(n::Int)::Int
+    product = 1
+    has_odd_digit = false
+    
+    while n > 0
+        digit = n % 10
+        if digit % 2 != 0
+            product *= digit
+            has_odd_digit = true
+        end
+        n = div(n, 10)
+    end
+    
+    return has_odd_digit ? product : 0
+end
+```
+
+This function iterates through each digit of the input integer `n`, checks if the digit is odd, and if so, multiplies it to the `product`. If no odd digits are found, it returns `0`.

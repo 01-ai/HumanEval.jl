@@ -1,0 +1,14 @@
+```julia
+function prime_length(s::String)::Bool
+    length_s = length(s)
+    if length_s < 2
+        return false
+    end
+    for i in 2:sqrt(length_s)
+        if length_s % i == 0
+            return false
+        end
+    end
+    return true
+end
+```

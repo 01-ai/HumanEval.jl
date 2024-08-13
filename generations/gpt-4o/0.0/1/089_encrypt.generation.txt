@@ -1,0 +1,41 @@
+To implement the `encrypt` function in Julia, we need to rotate each letter in the input string by 4 positions in the alphabet. This can be achieved by shifting the ASCII value of each character and wrapping around if necessary.
+
+Here's the implementation:
+
+```julia
+function encrypt(s::String)
+    encrypted = String[]
+    for char in s
+        if 'a' <= char <= 'z'
+            new_char = Char((Int(char) - Int('a') + 4) % 26 + Int('a'))
+            push!(encrypted, new_char)
+        else
+            push!(encrypted, char)
+        end
+    end
+    return join(encrypted)
+end
+```
+
+### Explanation:
+1. **Initialization**: We initialize an empty array `encrypted` to store the encrypted characters.
+2. **Loop through each character**: We iterate over each character in the input string `s`.
+3. **Check if character is a lowercase letter**: We check if the character is between 'a' and 'z'.
+4. **Shift the character**: 
+   - Convert the character to its ASCII value using `Int(char)`.
+   - Subtract the ASCII value of 'a' to get a zero-based index.
+   - Add 4 to this index to shift the character by 4 positions.
+   - Use modulo 26 to wrap around if the index exceeds 25.
+   - Convert back to a character by adding the ASCII value of 'a'.
+5. **Handle non-alphabet characters**: If the character is not a lowercase letter, we simply add it to the `encrypted` array without any changes.
+6. **Join the encrypted characters**: Finally, we join the array of characters into a single string and return it.
+
+### Example Usage:
+```julia
+println(encrypt("hi"))         # Output: "lm"
+println(encrypt("asdfghjkl"))  # Output: "ewhjklnop"
+println(encrypt("gf"))         # Output: "kj"
+println(encrypt("et"))         # Output: "ix"
+```
+
+This function should correctly encrypt the input string by rotating each letter by 4 positions in the alphabet.

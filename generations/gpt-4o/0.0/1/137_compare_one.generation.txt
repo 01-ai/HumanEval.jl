@@ -1,0 +1,40 @@
+To implement the `compare_one` function in Julia, we need to handle the comparison of integers, floats, and strings that represent real numbers. The function should return the larger value in its original type or `nothing` if the values are equal. For strings, we need to handle both `.` and `,` as decimal separators.
+
+Here's the implementation:
+
+```julia
+function parse_real_number(x::AbstractString)
+    # Replace ',' with '.' to handle European decimal format
+    x = replace(x, ',' => '.')
+    return parse(Float64, x)
+end
+
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})::Union{Integer, AbstractFloat, AbstractString, Nothing}
+    # Convert strings to floats for comparison
+    a_val = isa(a, AbstractString) ? parse_real_number(a) : a
+    b_val = isa(b, AbstractString) ? parse_real_number(b) : b
+    
+    if a_val > b_val
+        return a
+    elseif b_val > a_val
+        return b
+    else
+        return nothing
+    end
+end
+
+# Examples
+println(compare_one(1, 2.5))         # 2.5
+println(compare_one(1, "2,3"))       # "2,3"
+println(compare_one("5,1", "6"))     # "6"
+println(compare_one("1", 1))         # nothing
+```
+
+### Explanation:
+1. **parse_real_number Function**: This helper function converts a string with a comma as a decimal separator to a float by replacing the comma with a dot and then parsing it.
+2. **compare_one Function**:
+   - It first checks if the inputs are strings and converts them to floats for comparison.
+   - It then compares the numeric values.
+   - Depending on the comparison, it returns the original input that is larger or `nothing` if they are equal.
+
+This implementation ensures that the function handles different types correctly and returns the expected results.

@@ -1,0 +1,7 @@
+```julia
+function right_angle_triangle(a::Number, b::Number, c::Number)::Bool
+    sides = sort([a, b, c])
+    return sides[1]^2 + sides[2]^2 == sides[3]^2
+end
+```
+This function first sorts the sides of the triangle to ensure that the longest side is last. Then it checks the Pythagorean theorem, which states that in a right-angled triangle, the square of the length of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the lengths of the other two sides. If this condition is met, the function returns `true`, otherwise it returns `false`.

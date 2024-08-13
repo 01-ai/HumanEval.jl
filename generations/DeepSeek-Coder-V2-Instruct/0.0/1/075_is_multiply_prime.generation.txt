@@ -1,0 +1,61 @@
+ To implement the `is_multiply_prime` function in Julia, we need to follow these steps:
+
+1. Generate a list of prime numbers less than 100.
+2. Check if the given number `a` can be expressed as the product of exactly three of these prime numbers.
+
+Here's the implementation:
+
+```julia
+function is_multiply_prime(a::Int)::Bool
+    # Helper function to check if a number is prime
+    function is_prime(n::Int)::Bool
+        if n <= 1
+            return false
+        elseif n <= 3
+            return true
+        elseif n % 2 == 0 || n % 3 == 0
+            return false
+        end
+        i = 5
+        while i * i <= n
+            if n % i == 0 || n % (i + 2) == 0
+                return false
+            end
+            i += 6
+        end
+        return true
+    end
+
+    # Generate a list of prime numbers less than 100
+    primes = [i for i in 2:99 if is_prime(i)]
+
+    # Check if a can be expressed as the product of exactly three primes
+    for i in 1:length(primes)
+        for j in i+1:length(primes)
+            for k in j+1:length(primes)
+                if primes[i] * primes[j] * primes[k] == a
+                    return true
+                end
+            end
+        end
+    end
+
+    return false
+end
+```
+
+### Explanation:
+
+1. **Prime Checking Function (`is_prime`)**:
+   - This function checks if a number `n` is prime by testing divisibility.
+   - It handles small numbers directly and uses a loop to check larger numbers efficiently.
+
+2. **Generating Primes**:
+   - We generate a list of prime numbers less than 100 using the `is_prime` function.
+
+3. **Checking Multiplication**:
+   - We use three nested loops to iterate through all combinations of three different primes from our list.
+   - If we find a combination where the product of the three primes equals `a`, we return `true`.
+   - If no such combination is found, we return `false`.
+
+This approach ensures that we efficiently check all possible combinations of three primes to determine if `a` is their product.

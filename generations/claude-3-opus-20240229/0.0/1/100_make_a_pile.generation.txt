@@ -1,0 +1,63 @@
+Here's the solution to the problem of making a pile of stones based on the given rules:
+
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    pile = Vector{Int}()
+    num = n
+
+    for i in 1:n
+        push!(pile, num)
+        if isodd(num)
+            num += 2
+        else
+            num += 1
+        end
+    end
+
+    return pile
+end
+```
+
+Explanation:
+
+1. We define a function called `make_a_pile` that takes an integer `n` as input and returns a vector of integers.
+
+2. We initialize an empty vector called `pile` to store the levels of stones.
+
+3. We also initialize a variable `num` with the value of `n`, which represents the number of stones in the first level.
+
+4. We start a loop that iterates `n` times, representing the number of levels in the pile.
+
+5. Inside the loop:
+   - We append the current value of `num` to the `pile` vector using the `push!` function.
+   - We check if `num` is odd using the `isodd` function.
+     - If `num` is odd, we increment it by 2 to get the next odd number.
+     - If `num` is even, we increment it by 1 to get the next even number.
+
+6. After the loop ends, we return the `pile` vector containing the levels of stones.
+
+The function follows the given rules:
+- The first level has `n` stones.
+- If `n` is odd, the next level has the next odd number of stones.
+- If `n` is even, the next level has the next even number of stones.
+
+The function returns a vector representing the pile of stones, where each element represents the number of stones in each level.
+
+Example usage:
+
+```julia
+julia> make_a_pile(3)
+3-element Vector{Int64}:
+ 3
+ 5
+ 7
+
+julia> make_a_pile(4)
+4-element Vector{Int64}:
+ 4
+ 5
+ 7
+ 9
+```
+
+I hope this helps! Let me know if you have any further questions.

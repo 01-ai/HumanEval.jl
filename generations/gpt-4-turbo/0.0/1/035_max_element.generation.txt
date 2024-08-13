@@ -1,0 +1,8 @@
+```julia
+function max_element(xs)
+    if isempty(xs)
+        throw(ArgumentError("The list cannot be empty"))
+    end
+    maximum(xs)
+end
+```

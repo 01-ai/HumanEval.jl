@@ -1,0 +1,12 @@
+Here's the implementation of the `words_string` function in Julia:
+
+```julia
+function words_string(s::String)::Vector{String}
+    # Split the string by both commas and spaces
+    words = split(s, r"[,\s]+")
+    # Filter out any empty strings
+    return filter(word -> !isempty(word), words)
+end
+```
+
+This function uses a regular expression to split the input string by both commas and spaces, and then filters out any empty strings that might result from consecutive delimiters.

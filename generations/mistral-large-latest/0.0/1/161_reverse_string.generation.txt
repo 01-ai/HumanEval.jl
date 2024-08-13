@@ -1,0 +1,26 @@
+Sure, here is the Julia function that fulfills the requirements:
+
+```julia
+function reverse_string(s::String)::String
+    let = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    res = ""
+    rev = false
+
+    for c in s
+        if c in let
+            rev = true
+            res *= (c == lowercase(c) ? uppercase(c) : lowercase(c))
+        else
+            res *= c
+        end
+    end
+
+    if !rev
+        res = reverse(res)
+    end
+
+    return res
+end
+```
+
+This function iterates over each character in the string. If the character is a letter, it changes the case and adds it to the result string. If the character is not a letter, it adds it to the result string as is. If no letters are found in the string, it reverses the string.

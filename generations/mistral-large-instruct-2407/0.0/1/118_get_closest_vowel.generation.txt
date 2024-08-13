@@ -1,0 +1,55 @@
+ Certainly! Below is the implementation of the `get_closest_vowel` function in Julia based on the provided docstring:
+
+```julia
+"""
+    get_closest_vowel(word::String)::String
+
+You are given a word. Your task is to find the closest vowel that stands between
+two consonants from the right side of the word (case sensitive).
+
+Vowels in the beginning and ending doesn't count. Return empty string if you
+didn't find any vowel met the above condition.
+
+You may assume that the given string contains English letter only.
+
+# Example
+
+```jldoctest
+julia> get_closest_vowel("yogurt")
+"u"
+
+julia> get_closest_vowel("FULL")
+"U"
+
+julia> get_closest_vowel("quick")
+""
+
+julia> get_closest_vowel("ab")
+""
+```
+"""
+function get_closest_vowel(word::String)::String
+    vowels = "aeiouAEIOU"
+    n = length(word)
+
+    for i in (n-2):-1:2
+        if word[i] in vowels && word[i-1] ∉ vowels && word[i+1] ∉ vowels
+            return string(word[i])
+        end
+    end
+
+    return ""
+end
+```
+
+### Explanation:
+1. **Vowels Definition**: The `vowels` string contains all the vowels (both lowercase and uppercase).
+2. **Loop Through the Word**: The loop starts from the third-to-last character and moves towards the beginning of the word. This ensures we are checking from the right side.
+3. **Check Conditions**: For each character, it checks if:
+   - The character is a vowel.
+   - The character before it is a consonant.
+   - The character after it is a consonant.
+4. **Return the Vowel**: If all conditions are met, the function returns the vowel as a string.
+5. **Return Empty String**: If no such vowel is found, the function returns an empty string.
+
+This implementation should work correctly for the given examples and any other valid input strings.

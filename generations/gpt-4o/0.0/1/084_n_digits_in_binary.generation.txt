@@ -1,0 +1,36 @@
+To implement the `n_digits_in_binary` function in Julia, we need to follow these steps:
+
+1. Convert the integer \( N \) to its binary representation.
+2. Sum the digits of the binary representation.
+3. Return the sum as a string.
+
+Here's the implementation:
+
+```julia
+function n_digits_in_binary(N::Int)::String
+    # Convert the integer N to its binary representation
+    binary_representation = bitstring(N)
+    
+    # Sum the digits of the binary representation
+    sum_of_digits = sum(c == '1' for c in binary_representation)
+    
+    # Return the sum as a string
+    return string(sum_of_digits)
+end
+```
+
+Let's break down the function:
+
+1. `bitstring(N)` converts the integer \( N \) to its binary representation as a string of '0's and '1's.
+2. `sum(c == '1' for c in binary_representation)` counts the number of '1's in the binary representation.
+3. `string(sum_of_digits)` converts the sum of the digits to a string.
+
+Now, let's test the function with the provided examples:
+
+```julia
+println(n_digits_in_binary(1000))  # Should print "1"
+println(n_digits_in_binary(150))   # Should print "110"
+println(n_digits_in_binary(147))   # Should print "1100"
+```
+
+This implementation should work correctly for the given constraints.

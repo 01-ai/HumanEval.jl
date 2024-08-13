@@ -1,0 +1,20 @@
+Sure, here is the implementation of the `unique_elements` function in Julia:
+
+```julia
+function unique_elements(l::Vector)
+    return sort(unique(l))
+end
+```
+
+This function first uses the `unique` function to remove duplicate elements from the list, and then sorts the resulting list using the `sort` function. Here is how it works with the provided example:
+
+```julia
+julia> unique_elements([5, 3, 5, 2, 3, 3, 9, 0, 123])
+6-element Vector{Int64}:
+   0
+   2
+   3
+   5
+   9
+ 123
+```

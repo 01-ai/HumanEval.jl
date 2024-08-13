@@ -1,0 +1,21 @@
+```julia
+function derivative(xs::Vector)
+    # Length of the input vector
+    n = length(xs)
+    
+    # If the polynomial is a constant or empty, the derivative is an empty vector
+    if n <= 1
+        return Int[]
+    end
+    
+    # Initialize the result vector for the derivative coefficients
+    derivative_coeffs = Vector{Int}(undef, n - 1)
+    
+    # Compute the derivative coefficients
+    for i in 2:n
+        derivative_coeffs[i - 1] = xs[i] * (i - 1)
+    end
+    
+    return derivative_coeffs
+end
+```

@@ -1,0 +1,46 @@
+To implement the `largest_prime_factor` function in Julia, we need to find the largest prime factor of a given integer `n`. Here's a step-by-step approach to achieve this:
+
+1. **Divide by 2**: Continuously divide `n` by 2 to handle the even factors.
+2. **Check for odd factors**: Iterate through odd numbers starting from 3 to the square root of `n` to check for factors.
+3. **Update the largest factor**: Keep track of the largest factor found.
+4. **Handle the remaining prime**: If after all divisions, `n` is still greater than 2, then `n` itself is a prime factor and should be considered.
+
+Here's the implementation in Julia:
+
+```julia
+function largest_prime_factor(n::Int)::Int
+    # Step 1: Handle the factor of 2
+    while n % 2 == 0
+        n = div(n, 2)
+    end
+    largest = 2
+    
+    # Step 2: Check for odd factors from 3 onwards
+    factor = 3
+    while factor * factor <= n
+        while n % factor == 0
+            n = div(n, factor)
+            largest = factor
+        end
+        factor += 2
+    end
+    
+    # Step 3: If n is still greater than 2, then it is a prime factor
+    if n > 2
+        largest = n
+    end
+    
+    return largest
+end
+
+# Examples
+println(largest_prime_factor(13195))  # Output: 29
+println(largest_prime_factor(2048))   # Output: 2
+```
+
+### Explanation:
+- **Step 1**: We handle the factor of 2 separately by continuously dividing `n` by 2 until `n` is no longer even.
+- **Step 2**: We then check for odd factors starting from 3 up to the square root of `n`. For each factor, we divide `n` as long as it is divisible by that factor and update the `largest` factor.
+- **Step 3**: If after all these divisions, `n` is still greater than 2, then `n` itself is a prime factor and should be the largest prime factor.
+
+This approach ensures that we efficiently find the largest prime factor of `n`.

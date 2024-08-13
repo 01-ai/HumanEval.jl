@@ -1,0 +1,50 @@
+Here's the implementation of the `compare` function in Julia:
+
+```julia
+function compare(game::Vector{Int}, guess::Vector{Int})::Vector{Int}
+    # Ensure the input vectors are of the same length
+    if length(game) != length(guess)
+        throw(ArgumentError("The length of game and guess vectors must be the same"))
+    end
+
+    # Initialize an empty vector to store the results
+    result = Vector{Int}(undef, length(game))
+
+    # Iterate over the elements of the vectors
+    for i in 1:length(game)
+        # Calculate the absolute difference if the guess is incorrect, otherwise 0
+        result[i] = game[i] == guess[i] ? 0 : abs(game[i] - guess[i])
+    end
+
+    return result
+end
+```
+
+### Explanation:
+1. **Input Validation**: The function first checks if the lengths of the `game` and `guess` vectors are the same. If not, it throws an `ArgumentError`.
+2. **Result Initialization**: An empty vector `result` of the same length as the input vectors is initialized to store the differences.
+3. **Iteration and Comparison**: The function iterates over each element of the vectors. If the guess matches the actual game score, it stores `0` in the result vector. Otherwise, it stores the absolute difference between the game score and the guess.
+4. **Return Result**: Finally, the function returns the result vector.
+
+### Example Usage:
+```julia
+julia> compare([1, 2, 3, 4, 5, 1], [1, 2, 3, 4, 2, -2])
+6-element Vector{Int64}:
+ 0
+ 0
+ 0
+ 0
+ 3
+ 3
+
+julia> compare([0, 5, 0, 0, 0, 4], [4, 1, 1, 0, 0, -2])
+6-element Vector{Int64}:
+ 4
+ 4
+ 1
+ 0
+ 0
+ 6
+```
+
+This implementation ensures that the function behaves as expected according to the provided docstring and examples.

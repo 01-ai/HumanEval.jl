@@ -1,0 +1,9 @@
+Sure, here is the Julia function that fulfills the requirements:
+
+```julia
+function filter_by_substring(strings::Vector{String}, substring::AbstractString)::Vector{String}
+    return filter(x -> occursin(substring, x), strings)
+end
+```
+
+This function uses the `filter` function from Julia's base library, which applies a given function to each element of a collection and returns a new collection containing only the elements for which the function returns `true`. In this case, the function we're using is `occursin`, which checks if a substring occurs in a string.

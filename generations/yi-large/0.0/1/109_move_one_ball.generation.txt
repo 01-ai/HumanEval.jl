@@ -1,0 +1,35 @@
+function move_one_ball(xs::Vector{Int})::Bool
+    # Check if the array is empty or has only one element
+    if length(xs) <= 1
+        return true
+    end
+
+    # Find the minimum element and its index
+    min_val = minimum(xs)
+    min_index = findfirst(isequal(min_val), xs)
+
+    # Check if the array is already sorted from the minimum element
+    is_sorted = true
+    for i in min_index:length(xs)-1
+        if xs[i] > xs[i+1]
+            is_sorted = false
+            break
+        end
+    end
+
+    # Check if the array is sorted from the minimum element to the end, and then from the start to the element before the minimum
+    if is_sorted
+        for i in 1:min_index-1
+            if xs[i] < xs[min_index]
+                return false
+            end
+        end
+        return true
+    else
+        return false
+    end
+end
+
+# Test cases
+println(move_one_ball([3, 4, 5, 1, 2]))  # true
+println(move_one_ball([3, 5, 4, 1, 2]))  # false

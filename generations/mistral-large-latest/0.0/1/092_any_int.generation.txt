@@ -1,0 +1,18 @@
+Sure, here is the Julia function based on your description:
+
+```julia
+function any_int(x::Number, y::Number, z::Number)::Bool
+    # Check if all numbers are integers
+    if !(isa(x, Int) && isa(y, Int) && isa(z, Int))
+        return false
+    end
+
+    # Check if one of the numbers is equal to the sum of the other two
+    if x == y + z || y == x + z || z == x + y
+        return true
+    end
+
+    return false
+end
+```
+This function first checks if all three input numbers are integers. If not, it immediately returns `false`. Then it checks if one of the numbers is equal to the sum of the other two. If so, it returns `true`. If neither condition is met, it returns `false`.

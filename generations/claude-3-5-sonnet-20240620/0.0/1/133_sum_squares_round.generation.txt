@@ -1,0 +1,49 @@
+To solve this problem, we need to create a function that does the following:
+
+1. Rounds each number in the input vector to the ceiling (next integer up)
+2. Squares each rounded number
+3. Sums up all the squared numbers
+4. Returns the result as an integer
+
+Here's the Julia function that accomplishes this:
+
+```julia
+function sum_squares_round(xs::Vector)::Int
+    return sum(ceil(Int, x)^2 for x in xs)
+end
+```
+
+Let's break down the function:
+
+1. `function sum_squares_round(xs::Vector)::Int` declares a function that takes a vector `xs` as input and returns an integer.
+
+2. `sum(... for x in xs)` is a sum comprehension that iterates over each element `x` in the input vector `xs`.
+
+3. `ceil(Int, x)` rounds `x` up to the nearest integer. The `Int` argument ensures that the result is an integer type.
+
+4. `ceil(Int, x)^2` squares the rounded value.
+
+5. The `sum` function adds up all these squared values.
+
+6. The result is implicitly returned and is guaranteed to be an integer.
+
+This function will work correctly for all the given examples:
+
+```julia
+julia> sum_squares_round([1, 2, 3])
+14
+
+julia> sum_squares_round([1, 4, 9])
+98
+
+julia> sum_squares_round([1, 3, 5, 7])
+84
+
+julia> sum_squares_round([1.4, 4.2, 0])
+29
+
+julia> sum_squares_round([-2.4, 1, 1])
+6
+```
+
+The function handles both integer and floating-point inputs, rounding up each number before squaring and summing.

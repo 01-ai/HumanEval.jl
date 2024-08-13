@@ -1,0 +1,15 @@
+```julia
+function count_up_to(n::Int)::Vector{Int}
+    isprime(n::Int) = n > 1 && all(n % d ≠ 0 for d in 2:(isqrt(n)))
+    primes = Int[]
+    i = 2
+    while length(primes) < n && i < n
+        if isprime(i)
+            push!(primes, i)
+        end
+        i += 1
+    end
+    return primes
+end
+```
+This Julia function `count_up_to(n::Int)::Vector{Int}` implements the logic to find the first `n` prime numbers less than `n`. It uses a helper function `isprime(n::Int)` to check if a number is prime, and then iterates through numbers starting from 2, adding to the `primes` array whenever a prime number is found, until `n` primes are found or we reach a number equal to `n`. The function then returns the array of prime numbers.

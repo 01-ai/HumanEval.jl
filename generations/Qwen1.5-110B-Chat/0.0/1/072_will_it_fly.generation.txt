@@ -1,0 +1,14 @@
+```julia
+function will_it_fly(q::Vector{Int}, w::Int)::Bool
+    # Check if the list is a palindrome (balanced)
+    is_balanced = q == reverse(q)
+    
+    # Check if the sum of its elements is less than or equal to the maximum weight
+    sum_less_or_equal_w = sum(q) <= w
+    
+    # Return true if both conditions are met
+    return is_balanced && sum_less_or_equal_w
+end
+```
+
+This Julia function `will_it_fly` takes in a vector of integers `q` and an integer `w`, and it returns `true` if the vector is a palindrome and the sum of its elements is less than or equal to `w`, otherwise it returns `false`.

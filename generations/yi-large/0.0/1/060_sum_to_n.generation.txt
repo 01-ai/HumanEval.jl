@@ -1,0 +1,8 @@
+function sum_to_n(n::Int)::Int
+    return (n * (n + 1)) ÷ 2
+end
+
+# Test the function
+for n in [30, 100, 5, 10, 1]
+    println("sum_to_n($n) = $(sum_to_n(n))")
+end

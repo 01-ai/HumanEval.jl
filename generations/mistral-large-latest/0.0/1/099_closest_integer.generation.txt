@@ -1,0 +1,14 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function closest_integer(value::String)::Int
+    num = parse(Float64, value)
+    if num - trunc(num) == 0.5
+        return round(Int, num - sign(num) * 0.5)
+    else
+        return round(Int, num)
+    end
+end
+```
+
+This function first converts the string to a Float64 number. Then it checks if the number is equidistant from two integers (i.e., the decimal part is 0.5). If it is, it rounds the number away from zero by subtracting 0.5 times the sign of the number before rounding. If the number is not equidistant from two integers, it simply rounds the number to the nearest integer.

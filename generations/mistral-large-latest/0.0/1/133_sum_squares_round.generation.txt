@@ -1,0 +1,34 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+"""
+    sum_squares_round(xs::Vector)::Int
+
+You are given a list of numbers. You need to return the sum of squared numbers
+in the given list, round each element in the list to the upper int(Ceiling)
+first.
+
+# Examples
+
+```jldoctest
+julia> sum_squares_round([1, 2, 3])
+14
+
+julia> sum_squares_round([1, 4, 9])
+98
+
+julia> sum_squares_round([1, 3, 5, 7])
+84
+
+julia> sum_squares_round([1.4, 4.2, 0])
+29
+
+julia> sum_squares_round([-2.4, 1, 1])
+6
+```
+"""
+function sum_squares_round(xs::Vector)::Int
+    return sum(map(x -> ceil(Int, x)^2, xs))
+end
+```
+This function takes a vector of numbers as input, rounds each number up to the nearest integer using the `ceil` function, squares the result, and then returns the sum of these squares.

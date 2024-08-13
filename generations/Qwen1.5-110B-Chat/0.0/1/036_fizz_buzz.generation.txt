@@ -1,0 +1,23 @@
+```julia
+function fizz_buzz(n::Int)
+    count = 0
+    for i in 1:n-1
+        if i % 11 == 0 || i % 13 == 0
+            count += count_digits(i, 7)
+        end
+    end
+    return count
+end
+
+function count_digits(num::Int, digit::Int)
+    count = 0
+    while num > 0
+        if num % 10 == digit
+            count += 1
+        end
+        num = num ÷ 10
+    end
+    return count
+end
+```
+This solution defines two functions: `fizz_buzz` and `count_digits`. The `fizz_buzz` function iterates through all numbers less than `n` and checks if each number is divisible by 11 or 13. If it is, it calls the `count_digits` function to count how many times the digit 7 appears in that number. The `count_digits` function takes a number and a digit, then counts the occurrences of that digit within the number.

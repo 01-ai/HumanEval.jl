@@ -1,0 +1,11 @@
+```julia
+function closest_integer(value::String)::Int
+    num = parse(Float64, value)
+    if num > 0
+        return num >= round(Int, num) + 0.5 ? ceil(Int, num) : floor(Int, num)
+    else
+        return num <= round(Int, num) - 0.5 ? floor(Int, num) : ceil(Int, num)
+    end
+end
+```
+This function first parses the string to a Float64. Then it checks if the number is positive or negative. If it's positive and the number is greater than or equal to the half way point between the two closest integers, it rounds up. Otherwise, it rounds down. If the number is negative and the number is less than or equal to the half way point between the two closest integers, it rounds down. Otherwise, it rounds up. This ensures that numbers equidistant from two integers are rounded away from zero.

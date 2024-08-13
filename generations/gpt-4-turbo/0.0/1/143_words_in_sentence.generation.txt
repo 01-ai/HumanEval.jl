@@ -1,0 +1,36 @@
+To implement the function `words_in_sentence`, we need to follow these steps:
+
+1. **Split the Sentence**: Break the input sentence into individual words using spaces as delimiters.
+2. **Check for Prime Lengths**: For each word, check if its length is a prime number.
+3. **Prime Number Helper Function**: Create a helper function to determine if a number is prime.
+4. **Construct Result**: Collect words with prime lengths and join them into a single string separated by spaces.
+
+Here's the implementation:
+
+```julia
+function is_prime(n::Int)
+    if n <= 1
+        return false
+    elseif n <= 3
+        return true
+    elseif n % 2 == 0 || n % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= n
+        if n % i == 0 || n % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+
+function words_in_sentence(sentence::String)::String
+    words = split(sentence)
+    prime_length_words = [word for word in words if is_prime(length(word))]
+    return join(prime_length_words, " ")
+end
+```
+
+This function first splits the sentence into words. It then filters these words, keeping only those whose lengths are prime numbers. Finally, it joins these words back into a single string with spaces in between. The `is_prime` function efficiently checks for prime numbers, handling edge cases and using a simple trial division method optimized for small numbers.

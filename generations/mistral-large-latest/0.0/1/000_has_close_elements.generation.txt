@@ -1,0 +1,15 @@
+Sure, here is the Julia function that fulfills the requirements:
+
+```julia
+function has_close_elements(numbers::Vector{Float64}, threshold::Float64)::Bool
+    sort!(numbers)
+    for i in 1:(length(numbers)-1)
+        if numbers[i+1] - numbers[i] < threshold
+            return true
+        end
+    end
+    return false
+end
+```
+
+This function first sorts the input vector of numbers. Then it iterates over the sorted vector and checks the difference between each consecutive pair of numbers. If the difference is less than the given threshold, it returns true. If no such pair is found, it returns false.

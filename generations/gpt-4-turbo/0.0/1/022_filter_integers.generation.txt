@@ -1,0 +1,5 @@
+```julia
+function filter_integers(values::AbstractVector)::Vector{Int}
+    return [v for v in values if isa(v, Int)]
+end
+```

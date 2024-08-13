@@ -1,0 +1,23 @@
+```julia
+function search(numbers::Vector{Int})::Int
+    # Create a dictionary to count the frequency of each number
+    freq = Dict{Int, Int}()
+    for num in numbers
+        freq[num] = get(freq, num, 0) + 1
+    end
+
+    # Initialize the result as -1 (default if no valid number is found)
+    result = -1
+
+    # Check each number and its frequency
+    for (num, count) in freq
+        # The number must be greater than zero and its frequency should be at least the number itself
+        if num > 0 && count >= num
+            # Update the result with the maximum valid number found
+            result = max(result, num)
+        end
+    end
+
+    return result
+end
+```

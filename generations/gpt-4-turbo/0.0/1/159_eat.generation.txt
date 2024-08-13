@@ -1,0 +1,15 @@
+```julia
+function eat(number::Int, need::Int, remaining::Int)::Vector{Int}
+    # Calculate how many carrots can be eaten from the remaining stock
+    eaten_from_remaining = min(need, remaining)
+    
+    # Update the total number of eaten carrots
+    total_eaten = number + eaten_from_remaining
+    
+    # Calculate the new remaining carrots after eating
+    new_remaining = remaining - eaten_from_remaining
+    
+    # Return the results as a vector
+    return [total_eaten, new_remaining]
+end
+```

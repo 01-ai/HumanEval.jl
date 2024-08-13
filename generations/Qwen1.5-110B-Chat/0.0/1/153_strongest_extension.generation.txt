@@ -1,0 +1,9 @@
+```julia
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    extension_strengths = [(ext, count(c -> c isa Uppercase, ext) - count(c -> c isa Lowercase, ext)) for ext in extensions]
+    strongest_ext = first(ext_strength for ext_strength in extension_strengths if ext_strength[2] == maximum(strength for strength in last.(extension_strengths)))
+    return "$(class_name).$(strongest_ext[1])"
+end
+```
+
+This Julia function `strongest_extension` takes a class name and a vector of extension names as input. It calculates the strength of each extension based on the provided formula (CAP - SM) and returns the class name concatenated with the name of the strongest extension. If there are ties, it selects the first one encountered in the list.

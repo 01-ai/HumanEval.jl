@@ -1,0 +1,49 @@
+Here's a Julia function that implements the `remove_vowels` functionality as described:
+
+```julia
+function remove_vowels(text::String)::String
+    vowels = "aeiouAEIOU"
+    return join(filter(c -> !(c in vowels), text))
+end
+```
+
+This function does the following:
+
+1. We define a string `vowels` containing all vowels (both lowercase and uppercase).
+
+2. We use the `filter` function to create a new string containing only the characters that are not vowels.
+
+3. The `!(c in vowels)` condition checks if each character `c` is not in the `vowels` string.
+
+4. Finally, we use `join` to concatenate the filtered characters back into a single string.
+
+This implementation will remove all vowels (both lowercase and uppercase) from the input string and return the result. It handles all the cases mentioned in the examples, including:
+
+- Returning an empty string when all characters are removed
+- Preserving non-vowel characters, including spaces and special characters
+- Handling both lowercase and uppercase vowels
+- Returning the original string if it contains no vowels
+
+You can use this function as follows:
+
+```julia
+julia> remove_vowels("\\")
+"\\"
+
+julia> remove_vowels("abcdef\\nghijklm")
+"bcdf\\nghjklm"
+
+julia> remove_vowels("abcdef")
+"bcdf"
+
+julia> remove_vowels("aaaaa")
+""
+
+julia> remove_vowels("aaBAA")
+"B"
+
+julia> remove_vowels("zbcd")
+"zbcd"
+```
+
+This implementation should work correctly for all the provided examples and any other input strings.

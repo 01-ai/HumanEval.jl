@@ -1,0 +1,63 @@
+To solve this problem, we need to check if the parentheses in the concatenated strings can be balanced. Here's a solution in Julia:
+
+```julia
+function match_parens(lst::Vector{String})::String
+    left = 0
+    right = 0
+    
+    for str in lst
+        for c in str
+            if c == '('
+                left += 1
+            elseif c == ')'
+                if left > 0
+                    left -= 1
+                else
+                    right += 1
+                end
+            end
+        end
+    end
+    
+    if left == right
+        return "Yes"
+    else
+        return "No"
+    end
+end
+```
+
+Explanation:
+1. We initialize two variables, `left` and `right`, to keep track of the count of open and close parentheses respectively.
+
+2. We iterate over each string in the input list `lst`.
+
+3. For each string, we iterate over each character:
+   - If the character is an open parenthesis `(`, we increment the `left` count.
+   - If the character is a close parenthesis `)`, we check if there is a matching open parenthesis:
+     - If `left` is greater than 0, it means there is an open parenthesis available, so we decrement `left`.
+     - If `left` is 0, it means there is no matching open parenthesis, so we increment `right`.
+
+4. After processing all the strings, we check if the count of open parentheses `left` is equal to the count of close parentheses `right`:
+   - If they are equal, it means the parentheses can be balanced, so we return "Yes".
+   - If they are not equal, it means the parentheses cannot be balanced, so we return "No".
+
+The time complexity of this solution is O(n), where n is the total length of all the strings in the input list. We iterate over each character in each string once.
+
+Here are some examples of how the function works:
+
+```jldoctest
+julia> match_parens(["()(", ")"])
+"Yes"
+
+julia> match_parens([")", ")"])
+"No"
+
+julia> match_parens(["(", "())"])
+"Yes"
+
+julia> match_parens(["(", ")))"])
+"No"
+```
+
+I hope this helps! Let me know if you have any further questions.

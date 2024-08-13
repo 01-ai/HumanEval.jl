@@ -1,0 +1,8 @@
+```julia
+function by_length(xs::Vector{Int})::Vector{String}
+    filtered_xs = filter(x -> 1 <= x <= 9, xs)
+    sorted_xs = sort(filtered_xs, rev=true)
+    digit_to_name = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    return map(x -> digit_to_name[x], sorted_xs)
+end
+```

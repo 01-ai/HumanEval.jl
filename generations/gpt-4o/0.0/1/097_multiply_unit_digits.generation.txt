@@ -1,0 +1,30 @@
+Sure, here is the implementation of the `multiply_unit_digits` function in Julia:
+
+```julia
+function multiply_unit_digits(a::Int, b::Int)::Int
+    # Get the unit digits of both numbers
+    unit_digit_a = abs(a) % 10
+    unit_digit_b = abs(b) % 10
+    
+    # Return the product of the unit digits
+    return unit_digit_a * unit_digit_b
+end
+```
+
+This function extracts the unit digits of the given integers by taking the absolute value and then using the modulo operation with 10. It then multiplies these unit digits and returns the result. 
+
+Here are the examples provided in the docstring:
+
+```julia
+julia> multiply_unit_digits(148, 412)
+16
+
+julia> multiply_unit_digits(19, 28)
+72
+
+julia> multiply_unit_digits(2020, 1851)
+0
+
+julia> multiply_unit_digits(14, -15)
+20
+```

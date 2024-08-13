@@ -1,0 +1,18 @@
+```julia
+function anti_shuffle(s::String)::String
+    # Split the string into words based on spaces
+    words = split(s, " ", keepempty=true)
+    
+    # Sort the characters in each word and join them back
+    sorted_words = [join(sort(word)) for word in words]
+    
+    # Join the sorted words back into a single string with spaces
+    return join(sorted_words, " ")
+end
+```
+
+This function works by first splitting the input string `s` into words, where words are defined as sequences of characters separated by spaces. The `split` function is used with the `keepempty=true` option to ensure that sequences of spaces are preserved in the output.
+
+Each word is then sorted character by character using the `sort` function, which sorts characters in ascending order based on their ASCII values. The sorted characters of each word are then joined back together into a single string.
+
+Finally, the sorted words are joined back into a single string with spaces between them, preserving the original spacing of the input string. This results in a new string where each word has its characters sorted, but the overall structure of the string (including word order and spacing) remains the same.

@@ -1,0 +1,16 @@
+```julia
+function encrypt(s::String)
+    encrypted = ""
+    for c in s
+        if c isa Char && 'a' ≤ c ≤ 'z'
+            encrypted *= Char(Int(c) + 4)
+        elseif c isa Char && 'A' ≤ c ≤ 'Z'
+            encrypted *= Char(Int(c) + 4)
+        else
+            encrypted *= c
+        end
+    end
+    return encrypted
+end
+```
+This function `encrypt` takes a string `s` as input and iterates through each character. If the character is a lowercase or uppercase letter, it adds 4 to its ASCII value to shift it by two multiplied by two places in the alphabet, wrapping around if necessary. Other characters are added to the encrypted string unchanged.

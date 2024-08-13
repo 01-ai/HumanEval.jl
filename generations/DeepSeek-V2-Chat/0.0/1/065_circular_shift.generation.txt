@@ -1,0 +1,24 @@
+Here's the implementation of the `circular_shift` function in Julia:
+
+```julia
+function circular_shift(x::Int, shift::Int)::String
+    # Convert the integer to a string to work with individual digits
+    digits_str = string(x)
+    len = length(digits_str)
+    
+    # If shift is greater than the number of digits, return the digits reversed
+    if shift >= len
+        return reverse(digits_str)
+    end
+    
+    # Calculate the effective shift within the bounds of the number of digits
+    effective_shift = shift % len
+    
+    # Perform the circular shift
+    shifted_str = digits_str[end-effective_shift+1:end] * digits_str[1:end-effective_shift]
+    
+    return shifted_str
+end
+```
+
+This function first converts the integer `x` to a string to easily manipulate its digits. It then checks if the `shift` is greater than or equal to the number of digits, in which case it returns the reversed string. Otherwise, it calculates the effective shift and performs the circular shift by concatenating the appropriate substrings.

@@ -1,0 +1,32 @@
+Here's the implementation of the `do_algebra` function in Julia:
+
+```julia
+function do_algebra(operator::Vector{String}, operand::Vector{Int})
+    # Start with the first operand
+    result = operand[1]
+    
+    # Iterate over the operators and operands to build and evaluate the expression
+    for i in 1:length(operator)
+        op = operator[i]
+        num = operand[i + 1]
+        
+        if op == "+"
+            result += num
+        elseif op == "-"
+            result -= num
+        elseif op == "*"
+            result *= num
+        elseif op == "÷"
+            result = div(result, num)
+        elseif op == "^"
+            result = result ^ num
+        else
+            error("Unsupported operator: $op")
+        end
+    end
+    
+    return result
+end
+```
+
+This function iterates through the operators and operands, applying each operation in sequence to build and evaluate the algebraic expression. The `div` function is used for floor division, and exponentiation is handled with the `^` operator.

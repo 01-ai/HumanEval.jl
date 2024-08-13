@@ -1,0 +1,21 @@
+ Here's the implementation of the `count_nums` function in Julia:
+
+```julia
+function count_nums(xs::Vector{Int})::Int
+    count = 0
+    for num in xs
+        sum_digits = 0
+        abs_num = abs(num)
+        while abs_num > 0
+            sum_digits += abs_num % 10 * (num < 0 ? -1 : 1)
+            abs_num = div(abs_num, 10)
+        end
+        if sum_digits > 0
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function iterates over each number in the input vector `xs`. For each number, it calculates the sum of its digits, taking into account the sign of the number. If the sum of the digits is greater than 0, it increments the count. Finally, it returns the count.

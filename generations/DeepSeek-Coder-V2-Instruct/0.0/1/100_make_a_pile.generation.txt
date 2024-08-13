@@ -1,0 +1,18 @@
+ Here's the implementation of the `make_a_pile` function in Julia:
+
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    pile = Vector{Int}(undef, n)
+    pile[1] = n
+    for i in 2:n
+        if n % 2 == 0
+            pile[i] = pile[i-1] + 2
+        else
+            pile[i] = pile[i-1] + 2
+        end
+    end
+    return pile
+end
+```
+
+This function initializes a vector `pile` with `n` elements. The first element is set to `n`. For each subsequent level, it adds 2 to the previous level's number of stones, which ensures that the sequence alternates between odd and even numbers as required.

@@ -1,0 +1,34 @@
+Here's the implementation of the `vowels_count` function in Julia:
+
+```julia
+function vowels_count(s::String)::Int
+    # Define the set of vowels
+    vowels = Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+    
+    # Initialize the count of vowels
+    count = 0
+    
+    # Iterate through each character in the string
+    for i in 1:length(s)
+        if s[i] in vowels
+            count += 1
+        elseif (i == length(s)) && (s[i] == 'y' || s[i] == 'Y')
+            count += 1
+        end
+    end
+    
+    return count
+end
+
+# Examples
+println(vowels_count("abcde"))  # Output: 2
+println(vowels_count("ACEDY"))  # Output: 3
+```
+
+This function works as follows:
+1. It defines a set of vowels including both lowercase and uppercase characters.
+2. It initializes a counter to keep track of the number of vowels.
+3. It iterates through each character in the input string.
+4. If the character is in the set of vowels, it increments the counter.
+5. If the character is 'y' or 'Y' and it is the last character in the string, it also increments the counter.
+6. Finally, it returns the count of vowels.

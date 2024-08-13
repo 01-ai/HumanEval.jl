@@ -1,0 +1,64 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function intersection(interval1::Vector{Int}, interval2::Vector{Int})::String
+    start1, end1 = interval1
+    start2, end2 = interval2
+
+    # Check if the intervals intersect
+    if end1 < start2 || end2 < start1
+        return "NO"
+    end
+
+    # Calculate the intersection interval
+    intersection_start = max(start1, start2)
+    intersection_end = min(end1, end2)
+
+    # Calculate the length of the intersection
+    intersection_length = intersection_end - intersection_start + 1
+
+    # Check if the intersection length is a prime number
+    if intersection_length < 2
+        return "NO"
+    end
+
+    for i in 2:sqrt(intersection_length)
+        if intersection_length % i == 0
+            return "NO"
+        end
+    end
+
+    return "YES"
+end
+```
+
+Explanation:
+
+1. We extract the start and end values of both intervals from the input vectors.
+
+2. We first check if the intervals intersect by comparing their start and end values. If `end1` is less than `start2` or `end2` is less than `start1`, it means the intervals don't intersect, so we return "NO".
+
+3. If the intervals intersect, we calculate the intersection interval by taking the maximum of the start values (`intersection_start`) and the minimum of the end values (`intersection_end`).
+
+4. We calculate the length of the intersection interval by subtracting the start value from the end value and adding 1 (since the intervals are closed).
+
+5. If the intersection length is less than 2, it means the length is either 0 or 1, which are not prime numbers, so we return "NO".
+
+6. We check if the intersection length is a prime number by iterating from 2 to the square root of the intersection length. If any number in this range divides the intersection length without leaving a remainder, it means the length is not a prime number, so we return "NO".
+
+7. If the loop completes without finding any divisors, it means the intersection length is a prime number, so we return "YES".
+
+The code handles the given examples correctly:
+
+```jldoctest
+julia> intersection([1, 2], [2, 3])
+"NO"
+
+julia> intersection([-1, 1], [0, 4])
+"NO"
+
+julia> intersection([-3, -1], [-5, 5])
+"YES"
+```
+
+The solution has a time complexity of O(sqrt(n)), where n is the length of the intersection interval, due to the prime number check loop.

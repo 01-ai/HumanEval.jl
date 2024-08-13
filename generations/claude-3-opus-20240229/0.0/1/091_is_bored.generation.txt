@@ -1,0 +1,49 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function is_bored(s::String)::Int
+    sentences = split(s, r"[.?!]")
+    count = 0
+    for sentence in sentences
+        if startswith(strip(sentence), "I ")
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+Explanation:
+
+1. We split the input string `s` into sentences using the regular expression `r"[.?!]"`. This regular expression matches any of the characters `.`, `?`, or `!`, which are used as delimiters for sentences.
+
+2. We initialize a variable `count` to keep track of the number of boredoms.
+
+3. We iterate over each sentence in the `sentences` array.
+
+4. For each sentence, we first remove any leading or trailing whitespace using the `strip()` function. Then, we check if the sentence starts with the word "I " using the `startswith()` function.
+
+5. If the sentence starts with "I ", we increment the `count` by 1.
+
+6. After iterating over all the sentences, we return the final value of `count`, which represents the number of boredoms in the input string.
+
+Example usage:
+
+```jldoctest
+julia> is_bored("Hello world")
+0
+
+julia> is_bored("The sky is blue. The sun is shining. I love this weather")
+1
+
+julia> is_bored("I am bored. I want to go outside. I need some fresh air.")
+3
+```
+
+In the first example, there are no sentences that start with "I ", so the function returns 0.
+
+In the second example, there is one sentence that starts with "I ", so the function returns 1.
+
+In the third example, there are three sentences that start with "I ", so the function returns 3.
+
+This solution follows the given problem statement and correctly counts the number of boredoms in the input string.

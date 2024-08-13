@@ -1,0 +1,14 @@
+Sure, here is the Julia function that implements the given docstring:
+
+```julia
+function add_even_eles_at_odd_inds(xs::Vector{Int})::Int
+    sum = 0
+    for i in 1:2:length(xs)
+        if iseven(xs[i])
+            sum += xs[i]
+        end
+    end
+    return sum
+end
+```
+This function iterates over the odd indices of the vector `xs` using a step of 2 in the range `1:2:length(xs)`. If the element at the current index is even, it adds it to the sum. The function finally returns the sum.

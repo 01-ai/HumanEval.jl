@@ -1,0 +1,55 @@
+To solve this problem, we'll need to implement a function that does the following:
+
+1. Split the input sentence into words
+2. Check if the length of each word is a prime number
+3. If it is, add the word to the result
+4. Join the selected words and return the result
+
+Here's a Julia implementation that accomplishes this:
+
+```julia
+function is_prime(n::Int)::Bool
+    if n <= 1
+        return false
+    end
+    for i in 2:isqrt(n)
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+function words_in_sentence(sentence::String)::String
+    words = split(sentence)
+    prime_length_words = filter(word -> is_prime(length(word)), words)
+    return join(prime_length_words, " ")
+end
+```
+
+Let's break down the implementation:
+
+1. We define a helper function `is_prime(n::Int)::Bool` that checks if a given number is prime. This function:
+   - Returns `false` for numbers less than or equal to 1
+   - Checks for divisibility up to the square root of the number
+   - Returns `true` if no divisors are found
+
+2. In the main `words_in_sentence` function:
+   - We use `split(sentence)` to split the input sentence into an array of words
+   - We use `filter` to keep only the words whose length is prime
+   - The `filter` function uses a lambda that calls `is_prime(length(word))` for each word
+   - Finally, we join the filtered words with spaces using `join(prime_length_words, " ")`
+
+This implementation satisfies the given constraints:
+- It works for sentences of length 1 to 100
+- It assumes the sentence contains only letters (as per the constraints)
+- It preserves the original order of words
+
+You can test the function with the given examples:
+
+```julia
+println(words_in_sentence("This is a test"))  # Output: "is"
+println(words_in_sentence("lets go for swimming"))  # Output: "go for"
+```
+
+The function will correctly return the words with prime-number lengths in the same order as they appear in the original sentence.

@@ -1,0 +1,17 @@
+```julia
+function is_sorted(xs::Vector{Int})::Bool
+    # Check for duplicates by comparing length of unique elements to original
+    if length(unique(xs)) != length(xs)
+        return false
+    end
+    
+    # Check if the list is sorted in ascending order
+    for i in 1:length(xs)-1
+        if xs[i] > xs[i+1]
+            return false
+        end
+    end
+    
+    return true
+end
+```

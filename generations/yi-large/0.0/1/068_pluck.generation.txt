@@ -1,0 +1,21 @@
+function pluck(xs::Vector{Int})::Vector{Int}
+    if isempty(xs)
+        return Int[]
+    end
+
+    even_nodes = filter(x -> x % 2 == 0, xs)
+    if isempty(even_nodes)
+        return Int[]
+    end
+
+    min_even_value = minimum(even_nodes)
+    min_index = findfirst(isequal(min_even_value), xs)
+
+    return [min_even_value, min_index]
+end
+
+# Test cases
+println(pluck([4, 2, 3]))  # Expected: [2, 2]
+println(pluck([1, 2, 3]))  # Expected: [2, 2]
+println(pluck(Int[]))      # Expected: []
+println(pluck([5, 0, 3, 0, 4, 2])) # Expected: [0, 2]

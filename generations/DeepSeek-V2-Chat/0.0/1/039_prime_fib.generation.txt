@@ -1,0 +1,46 @@
+To implement the `prime_fib` function, we need to generate Fibonacci numbers and check if they are prime. Once we find a prime Fibonacci number, we count it towards our target `n`. Here's how you can implement this in Julia:
+
+```julia
+function is_prime(num::Int)::Bool
+    if num <= 1
+        return false
+    elseif num <= 3
+        return true
+    elseif num % 2 == 0 || num % 3 == 0
+        return false
+    end
+    i = 5
+    while i * i <= num
+        if num % i == 0 || num % (i + 2) == 0
+            return false
+        end
+        i += 6
+    end
+    return true
+end
+
+function prime_fib(n::Int)::Int
+    if n <= 0
+        throw(ArgumentError("n must be a positive integer"))
+    end
+    
+    a, b = 0, 1
+    count = 0
+    
+    while true
+        if is_prime(b)
+            count += 1
+            if count == n
+                return b
+            end
+        end
+        a, b = b, a + b
+    end
+end
+```
+
+### Explanation:
+1. **is_prime function**: This helper function checks if a number is prime. It handles small numbers and uses a loop to check divisibility for larger numbers.
+2. **prime_fib function**: This function generates Fibonacci numbers in a loop. For each Fibonacci number, it checks if it is prime using the `is_prime` function. If it is prime, it increments the count. When the count matches `n`, it returns the current Fibonacci number.
+
+This implementation ensures that we correctly find the n-th prime Fibonacci number.

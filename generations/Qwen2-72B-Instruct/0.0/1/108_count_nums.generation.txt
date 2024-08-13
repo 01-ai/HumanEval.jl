@@ -1,0 +1,21 @@
+```julia
+function count_nums(xs::Vector{Int})::Int
+    count = 0
+    for x in xs
+        sum_of_digits = 0
+        for digit in digits(abs(x))
+            sum_of_digits += digit
+        end
+        # Adjust for negative numbers
+        if x < 0
+            sum_of_digits -= 2 * digits(abs(x))[1]
+        end
+        if sum_of_digits > 0
+            count += 1
+        end
+    end
+    return count
+end
+```
+
+This function iterates over each number in the input vector, calculates the sum of its digits (taking into account the sign of the number), and increments the `count` variable if the sum of digits is greater than 0. The function finally returns the count of such numbers.

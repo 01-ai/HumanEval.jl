@@ -1,0 +1,29 @@
+Here is the Julia function that matches the given docstring:
+
+```julia
+function incr_list(xs::Vector)
+    return xs .+ 1
+end
+```
+
+This function uses the broadcast operator (`.+`) to increment each element of the input vector by 1. The result is a new vector with each element incremented. Here is how you can test this function:
+
+```julia
+julia> incr_list([1, 2, 3])
+3-element Vector{Int64}:
+ 2
+ 3
+ 4
+
+julia> incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123])
+9-element Vector{Int64}:
+   6
+   4
+   6
+   3
+   4
+   4
+  10
+   1
+ 124
+```

@@ -1,0 +1,20 @@
+ Here's the implementation of the `correct_angle_bracketing` function in Julia:
+
+```julia
+function correct_angle_bracketing(brackets::String)::Bool
+    balance = 0
+    for char in brackets
+        if char == '<'
+            balance += 1
+        elseif char == '>'
+            balance -= 1
+        end
+        if balance < 0
+            return false
+        end
+    end
+    return balance == 0
+end
+```
+
+This function iterates through each character in the input string. It maintains a `balance` counter that increments for each opening bracket `<` and decrements for each closing bracket `>`. If at any point the `balance` becomes negative, it means there are more closing brackets than opening ones up to that point, so the function returns `false`. If the loop completes and the `balance` is zero, it means every opening bracket has a corresponding closing bracket, so the function returns `true`.

@@ -1,0 +1,38 @@
+Here's an implementation of the `count_up_to` function in Julia that meets the given requirements:
+
+```julia
+function count_up_to(n::Int)::Vector{Int}
+    if n <= 2
+        return Int[]
+    end
+    
+    primes = Int[]
+    is_prime = trues(n-1)
+    is_prime[1] = false
+    
+    for i in 2:n-1
+        if is_prime[i]
+            push!(primes, i)
+            for j in i*i:i:n-1
+                is_prime[j] = false
+            end
+        end
+    end
+    
+    return primes
+end
+```
+
+This implementation uses the Sieve of Eratosthenes algorithm to efficiently find all prime numbers up to `n-1`. Here's how it works:
+
+1. If `n` is 2 or less, we return an empty array since there are no prime numbers less than 2.
+
+2. We create a boolean array `is_prime` of size `n-1`, initially set to `true` for all elements except the first one (which represents 1, which is not prime).
+
+3. We iterate through numbers from 2 to `n-1`:
+   - If a number is marked as prime, we add it to our `primes` array.
+   - We then mark all multiples of this prime number (starting from its square) as not prime.
+
+4. Finally, we return the `primes` array containing all prime numbers less than `n`.
+
+This implementation efficiently handles all the given test cases and correctly returns an array of prime numbers less than the input `n`.

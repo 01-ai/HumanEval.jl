@@ -1,0 +1,5 @@
+```julia
+function sum_to_n(n::Int)::Int
+    return n * (n + 1) ÷ 2
+end
+```

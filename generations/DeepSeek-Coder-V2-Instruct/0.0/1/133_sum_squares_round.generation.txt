@@ -1,0 +1,13 @@
+ Here's the implementation of the `sum_squares_round` function in Julia:
+
+```julia
+function sum_squares_round(xs::Vector)::Int
+    # Round each element to the upper integer (ceiling)
+    rounded_xs = ceil.(Int, xs)
+    
+    # Square each element and sum them up
+    return sum(x^2 for x in rounded_xs)
+end
+```
+
+This function first rounds each element in the input vector `xs` to the nearest integer greater than or equal to the element using `ceil.(Int, xs)`. Then, it squares each of these rounded values and sums them up using a generator expression within the `sum` function. The result is returned as an integer.

@@ -1,0 +1,32 @@
+Here's the implementation of the `strlen` function in Julia:
+
+```julia
+function strlen(x::String)::Int
+    return length(x)
+end
+```
+
+Explanation:
+- The function `strlen` takes a single argument `x` of type `String` and returns an integer (`Int`).
+- Inside the function, we simply use the built-in `length` function in Julia to calculate the length of the input string `x`.
+- The `length` function returns the number of characters in the string.
+- Finally, the length of the string is returned as the result of the `strlen` function.
+
+The `strlen` function provides a convenient way to get the length of a string in Julia. It is equivalent to directly using `length(x)` on a string `x`.
+
+Here are some examples of using the `strlen` function:
+
+```julia
+julia> strlen("")
+0
+
+julia> strlen("abc")
+3
+
+julia> strlen("Hello, World!")
+13
+```
+
+In each example, the `strlen` function returns the number of characters in the given string.
+
+Note that this implementation assumes that the input is a valid string. If you want to handle other input types, you may need to add additional type checks or error handling.

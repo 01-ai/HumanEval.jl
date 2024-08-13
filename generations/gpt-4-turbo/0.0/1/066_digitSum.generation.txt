@@ -1,0 +1,13 @@
+```julia
+function digitSum(s::String)::Int
+    sum = 0
+    for c in s
+        if 'A' <= c <= 'Z'
+            sum += Int(c)
+        end
+    end
+    return sum
+end
+```
+
+This function iterates over each character in the string `s`. If the character is an uppercase letter (between 'A' and 'Z'), it adds the ASCII value of the character to the `sum`. The ASCII value is obtained by converting the character `c` to an integer using `Int(c)`. The function finally returns the accumulated sum.

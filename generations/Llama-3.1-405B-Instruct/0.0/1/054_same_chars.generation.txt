@@ -1,0 +1,27 @@
+Here is a Julia function that implements the `same_chars` function as described in the docstring:
+```julia
+function same_chars(s0::String, s1::String)::Bool
+    # Convert both strings to sets of characters
+    set0 = Set(collect(s0))
+    set1 = Set(collect(s1))
+    
+    # Check if the two sets are equal
+    return set0 == set1
+end
+```
+Here's an explanation of the code:
+
+1. We convert each string to a set of characters using the `collect` function, which returns a vector of characters, and then the `Set` constructor, which removes duplicates and returns a set of unique characters.
+2. We then compare the two sets using the `==` operator, which returns `true` if the two sets are equal and `false` otherwise.
+
+This implementation has a time complexity of O(n), where n is the length of the shorter string, since we need to iterate over each character in the strings to create the sets.
+
+You can test this function using the examples provided in the docstring:
+```julia
+println(same_chars("eabcdzzzz", "dddzzzzzzzddeddabc"))  # true
+println(same_chars("abcd", "dddddddabc"))  # true
+println(same_chars("dddddddabc", "abcd"))  # true
+println(same_chars("eabcd", "dddddddabc"))  # false
+println(same_chars("abcd", "dddddddabce"))  # false
+println(same_chars("eabcdzzzz", "dddzzzzzzzddddabc"))  # false
+```

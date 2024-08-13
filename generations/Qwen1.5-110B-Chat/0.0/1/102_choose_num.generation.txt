@@ -1,0 +1,19 @@
+```julia
+function choose_num(x::Int, y::Int)::Int
+    # Check if the range is valid (x <= y)
+    if x > y
+        return -1
+    end
+    
+    # Start from the higher end, y, and move downwards to find the biggest even number
+    for num in y:-1:x
+        if iseven(num)
+            return num
+        end
+    end
+    
+    # If no even number is found, return -1
+    return -1
+end
+```
+This function iterates from `y` down to `x` and checks each number to see if it's even. If it finds an even number, it returns that number immediately. If the loop completes without finding an even number, it returns `-1`, indicating that no even number exists within the given range.

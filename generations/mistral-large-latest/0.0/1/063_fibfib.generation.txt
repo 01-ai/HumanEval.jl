@@ -1,0 +1,18 @@
+Sure, I can help with that. Here's a Julia function that efficiently computes the n-th element of the FibFib number sequence using dynamic programming to avoid redundant computations:
+
+```julia
+function fibfib(n::Int)::Int
+    # Initialize the first three elements of the sequence
+    fibfib = [0, 0, 1]
+
+    # Compute the n-th element iteratively
+    for i in 4:n
+        fibfib[i % 3 + 1] = sum(fibfib)
+    end
+
+    # Return the n-th element
+    return fibfib[n % 3 + 1]
+end
+```
+
+This function works by initializing the first three elements of the sequence and then iteratively computing the next elements by summing the last three elements. The modulo operation is used to cycle through the last three elements in the array, effectively making the function use constant space.

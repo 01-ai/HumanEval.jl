@@ -1,0 +1,38 @@
+Here is the Julia function that implements the described behavior:
+```julia
+function count_digits(n::Int)::Int
+    """
+    Given a positive integer n, return the product of the odd digits. Return 0 if
+    all digits are even.
+    """
+    product = 1
+    has_odd_digit = false
+
+    for digit in digits(n)
+        if isodd(digit)
+            product *= digit
+            has_odd_digit = true
+        end
+    end
+
+    return has_odd_digit ? product : 0
+end
+```
+Here's an explanation of the code:
+
+1. We initialize two variables: `product` to store the product of the odd digits, and `has_odd_digit` to track whether we've encountered at least one odd digit.
+2. We iterate over the digits of the input integer `n` using the `digits` function.
+3. For each digit, we check whether it's odd using the `isodd` function. If it is, we multiply the `product` by the digit and set `has_odd_digit` to `true`.
+4. After iterating over all digits, we return the `product` if `has_odd_digit` is `true`, indicating that we've encountered at least one odd digit. Otherwise, we return 0.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> count_digits(1)
+1
+
+julia> count_digits(4)
+0
+
+julia> count_digits(235)
+15
+```

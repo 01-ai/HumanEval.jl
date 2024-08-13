@@ -1,0 +1,9 @@
+Here is the Julia function that implements the functionality described in the docstring:
+
+```julia
+function strlen(x::String)::Int
+    return length(x)
+end
+```
+
+This function takes a string `x` as an argument and returns its length as an integer using the built-in `length` function in Julia.

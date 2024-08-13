@@ -1,0 +1,40 @@
+Here's a Julia function that calculates the Brazilian factorial (also known as the special factorial) as per the given definition:
+
+```julia
+function special_factorial(n::Int)::BigInt
+    if n <= 0
+        throw(ArgumentError("Input must be a positive integer"))
+    end
+    
+    result = BigInt(1)
+    for i in 1:n
+        result *= factorial(BigInt(i))
+    end
+    
+    return result
+end
+```
+
+Let's break down the function:
+
+1. We first check if the input `n` is positive. If not, we throw an `ArgumentError`.
+
+2. We initialize the `result` as a `BigInt(1)`. We use `BigInt` to handle potentially very large numbers.
+
+3. We then loop from 1 to n, calculating the factorial of each number and multiplying it to our result.
+
+4. The `factorial()` function is a built-in Julia function that calculates the regular factorial. We convert `i` to `BigInt` before passing it to `factorial()` to ensure we're working with `BigInt` throughout.
+
+5. Finally, we return the result.
+
+This function will correctly calculate the Brazilian factorial for positive integers. For example:
+
+```julia
+julia> special_factorial(4)
+288
+
+julia> special_factorial(5)
+34560
+```
+
+Note that the Brazilian factorial grows extremely quickly. Even for relatively small inputs, the result can be a very large number, which is why we use `BigInt` to handle arbitrary-precision integers.

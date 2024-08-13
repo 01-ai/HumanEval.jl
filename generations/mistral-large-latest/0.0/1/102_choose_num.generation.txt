@@ -1,0 +1,26 @@
+Sure, here is the Julia function based on your description:
+
+```julia
+function choose_num(x::Int, y::Int)::Int
+    # Ensure x and y are positive
+    if x <= 0 || y <= 0
+        throw(DomainError("x and y must be positive integers"))
+    end
+
+    # If x is greater than y, swap them
+    if x > y
+        x, y = y, x
+    end
+
+    # Find the biggest even integer number in the range [x, y]
+    for i in y:-1:x
+        if i % 2 == 0
+            return i
+        end
+    end
+
+    # If no even number is found, return -1
+    return -1
+end
+```
+This function first checks if `x` and `y` are positive. If not, it throws a `DomainError`. Then it checks if `x` is greater than `y` and if so, it swaps them. After that, it iterates over the range from `y` to `x` in reverse order and checks if each number is even. If it finds an even number, it returns that number. If it doesn't find any even number, it returns `-1`.

@@ -1,0 +1,14 @@
+```julia
+function count_distinct_characters(s::String)::Int
+    # Convert the string to lowercase to ignore case differences
+    lower_s = lowercase(s)
+    
+    # Use a Set to store unique characters
+    unique_chars = Set(lower_s)
+    
+    # Return the number of unique characters
+    return length(unique_chars)
+end
+```
+
+This function first converts the input string to lowercase to ensure that character comparison is case-insensitive. It then uses a `Set` to store unique characters, as sets automatically handle duplicates. Finally, it returns the number of elements in the set, which corresponds to the number of distinct characters in the input string.

@@ -1,0 +1,35 @@
+Here is a Julia function that implements the `min_sub_array_sum` function as described in the doc string:
+```julia
+function min_sub_array_sum(nums::Vector{Int})::Int
+    """
+    Given an array of integers `nums`, find the minimum sum of any non-empty
+    sub-array of nums.
+    """
+    min_sum = typemax(Int)
+    current_sum = 0
+
+    for num in nums
+        current_sum = min(num, current_sum + num)
+        min_sum = min(min_sum, current_sum)
+    end
+
+    return min_sum
+end
+```
+Here's an explanation of the code:
+
+* We initialize `min_sum` to the maximum possible integer value (`typemax(Int)`) and `current_sum` to 0.
+* We iterate through each element `num` in the input array `nums`.
+* For each element, we update `current_sum` to be the minimum of the current element `num` and the sum of `current_sum` and `num`. This effectively "resets" the sum whenever we encounter a negative number.
+* We update `min_sum` to be the minimum of the current `min_sum` and `current_sum`.
+* Finally, we return the minimum sum found.
+
+You can test this function using the examples provided in the doc string:
+```julia
+julia> min_sub_array_sum([2, 3, 4, 1, 2, 4])
+1
+
+julia> min_sub_array_sum([-1, -2, -3])
+-6
+```
+I hope this implementation meets your requirements! Let me know if you have any further questions.

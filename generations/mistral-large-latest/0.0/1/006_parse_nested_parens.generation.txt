@@ -1,0 +1,35 @@
+Sure, here is a Julia function that implements the required functionality:
+
+```julia
+function parse_nested_parens(paren_string::String)::Vector{Int}
+    max_depth = 0
+    depths = Int[]
+    current_depth = 0
+
+    for char in paren_string
+        if char == '('
+            current_depth += 1
+            max_depth = max(max_depth, current_depth)
+        elseif char == ')'
+            current_depth -= 1
+            if current_depth < 0
+                push!(depths, max_depth)
+                max_depth = 0
+                current_depth = 0
+            end
+        elseif char == ' '
+            push!(depths, max_depth)
+            max_depth = 0
+            current_depth = 0
+        end
+    end
+
+    if max_depth > 0
+        push!(depths, max_depth)
+    end
+
+    return depths
+end
+```
+
+This function works by iterating over each character in the input string. If the character is an opening parenthesis, it increments a counter tracking the current depth and updates the maximum depth seen so far. If the character is a closing parenthesis, it decrements the current depth counter. If the character is a space or the current depth becomes negative (indicating that a group of parentheses has ended), it resets the current depth and maximum depth counters and adds the maximum depth seen so far to the output list. Finally, if there is a group of parentheses at the end of the string without a trailing space, it adds the maximum depth of that group to the output list.

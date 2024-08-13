@@ -1,0 +1,25 @@
+ Certainly! Below is the implementation of the `all_prefixes` function in Julia based on the given doc string:
+
+```julia
+"""
+    all_prefixes(s::String)::Vector{String}
+
+Return list of all prefixes from shortest to longest of the input string.
+
+# Examples
+
+```jldoctest
+julia> all_prefixes("abc") == ["a", "ab", "abc"]
+true
+```
+"""
+function all_prefixes(s::String)::Vector{String}
+    prefixes = String[]
+    for i in 1:length(s)
+        push!(prefixes, s[1:i])
+    end
+    return prefixes
+end
+```
+
+This function iterates through the input string `s` and collects all prefixes from the shortest to the longest, storing them in a vector which is then returned.

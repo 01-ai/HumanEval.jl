@@ -1,0 +1,21 @@
+```julia
+function make_a_pile(n::Int)::Vector{Int}
+    # Initialize the pile with the first level having n stones
+    pile = [n]
+    
+    # Determine the next number of stones based on the parity of the current top level
+    current_stones = n
+    for i in 2:n
+        if current_stones % 2 == 0
+            current_stones += 2  # Next even number
+        else
+            current_stones += 2  # Next odd number
+        end
+        push!(pile, current_stones)
+    end
+    
+    return pile
+end
+```
+
+This function starts with the first level having `n` stones. For each subsequent level, it checks if the current number of stones is even or odd and adds 2 to get the next even or odd number, respectively. This is repeated until the pile has `n` levels. Each level's stone count is stored in the `pile` vector, which is returned at the end.

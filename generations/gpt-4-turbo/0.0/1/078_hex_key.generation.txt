@@ -1,0 +1,11 @@
+```julia
+function hex_key(num::String)::Int
+    # Define the set of prime hexadecimal digits
+    prime_hex_digits = Set(['2', '3', '5', '7', 'B', 'D'])
+    
+    # Count the number of characters in the input string that are in the prime_hex_digits set
+    count = sum(c in prime_hex_digits for c in num)
+    
+    return count
+end
+```

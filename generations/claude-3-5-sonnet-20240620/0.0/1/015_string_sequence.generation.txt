@@ -1,0 +1,47 @@
+Here's a Julia function that meets the requirements you've described:
+
+```julia
+function string_sequence(n::Int)::String
+    if n < 0
+        return ""
+    elseif n == 0
+        return "0"
+    else
+        return join(0:n, " ")
+    end
+end
+```
+
+This function does the following:
+
+1. It takes an integer `n` as input and returns a string.
+
+2. If `n` is negative, it returns an empty string.
+
+3. If `n` is 0, it returns "0".
+
+4. For any positive `n`, it creates a range from 0 to `n` (inclusive), converts each number to a string, and joins them with a space delimiter.
+
+The function uses Julia's `join` function, which takes an iterable (in this case, the range `0:n`) and a delimiter (in this case, a space " ") and returns a string with all elements joined together.
+
+This implementation will work correctly for the examples you provided:
+
+```julia
+julia> string_sequence(0)
+"0"
+
+julia> string_sequence(5)
+"0 1 2 3 4 5"
+```
+
+It will also handle other cases correctly:
+
+```julia
+julia> string_sequence(-1)
+""
+
+julia> string_sequence(10)
+"0 1 2 3 4 5 6 7 8 9 10"
+```
+
+This solution is efficient and concise, making use of Julia's built-in functions to handle the string creation and joining.

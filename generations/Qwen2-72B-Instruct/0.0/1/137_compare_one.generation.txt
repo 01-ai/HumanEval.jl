@@ -1,0 +1,16 @@
+```julia
+function compare_one(a::Union{Integer, AbstractFloat, AbstractString}, b::Union{Integer, AbstractFloat, AbstractString})
+    # Convert strings to numbers, handling both . and , as decimal points
+    a_num = a isa String ? parse(Float64, replace(a, ',' => '.')) : a
+    b_num = b isa String ? parse(Float64, replace(b, ',' => '.')) : b
+
+    # Compare the numbers and return the larger one in its original type, or nothing if equal
+    if a_num > b_num
+        return a
+    elseif a_num < b_num
+        return b
+    else
+        return nothing
+    end
+end
+```

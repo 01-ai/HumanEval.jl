@@ -1,0 +1,17 @@
+```julia
+function sort_even(l::Vector)::Vector
+    # Extract even-indexed elements and sort them
+    sorted_evens = sort(l[1:2:end])
+    
+    # Keep odd-indexed elements as they are
+    odd_elements = l[2:2:end]
+    
+    # Merge sorted even-indexed elements back into the original list, keeping odd-indexed elements in place
+    sorted_l = copy(l)
+    sorted_l[1:2:end] = sorted_evens
+    
+    return sorted_l
+end
+```
+
+This function first extracts the even-indexed elements from the input vector `l`, sorts them, and then merges them back into the original list, preserving the odd-indexed elements in their original positions. The function adheres to the provided doc string specifications.

@@ -1,0 +1,34 @@
+Here's a solution to the problem in Julia:
+
+```julia
+function add_even_eles_at_odd_inds(xs::Vector{Int})::Int
+    sum = 0
+    for i in 1:2:length(xs)
+        if xs[i] % 2 == 0
+            sum += xs[i]
+        end
+    end
+    return sum
+end
+```
+
+Explanation:
+
+1. We define a function `add_even_eles_at_odd_inds` that takes a vector of integers `xs` as input and returns an integer.
+
+2. We initialize a variable `sum` to keep track of the sum of even elements at odd indices.
+
+3. We use a `for` loop to iterate over the odd indices of the vector `xs`. The loop starts from index 1 and increments by 2 in each iteration (`1:2:length(xs)`).
+
+4. Inside the loop, we check if the element at the current odd index is even using the modulo operator (`%`). If the element is even (i.e., divisible by 2), we add it to the `sum` variable.
+
+5. After the loop finishes, we return the final value of `sum`, which represents the sum of even elements at odd indices.
+
+You can test the function with the provided example:
+
+```jldoctest
+julia> add_even_eles_at_odd_inds([4, 2, 6, 7])
+10
+```
+
+In this example, the even elements at odd indices are 4 (index 1) and 6 (index 3). The sum of these elements is 4 + 6 = 10, which is the expected output.

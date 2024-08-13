@@ -1,0 +1,21 @@
+```julia
+using Primes
+
+"""
+    words_in_sentence(sentence::String)::String
+
+Return a string that contains the words from the original sentence, whose lengths are prime numbers.
+The order of the words in the new string should be the same as the original one.
+"""
+function words_in_sentence(sentence::String)::String
+    # Split the sentence into words
+    words = split(sentence)
+    
+    # Filter words whose lengths are prime numbers
+    prime_length_words = filter(word -> isprime(length(word)), words)
+    
+    # Join the filtered words back into a string
+    return join(prime_length_words, " ")
+end
+```
+Note: This solution uses the `Primes` package for checking if a number is prime. If the package is not already installed, it can be added by running `]add Primes` in the Julia REPL.

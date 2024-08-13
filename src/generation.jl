@@ -2,6 +2,9 @@ export gen_code
 
 using ProgressMeter
 using OpenAI
+using PromptingTools
+
+const PT = PromptingTools
 
 function gen_prompt(model, task::HumanEvalTask; chain_of_thought=false)
     cot = chain_of_thought ? " You need first to write a step-by-step outline and then write the code." : ""
@@ -28,13 +31,19 @@ end
 
 
 function gen_reply(model, task::HumanEvalTask; chain_of_thought=false, kw...)
-    provider = OpenAI.OpenAIProvider(
-        api_key=ENV["OPENAI_API_KEY"],
-        base_url=ENV["OPENAI_BASE_URL"],
-    )
     prompt = gen_prompt(Val(Symbol(model)), task; chain_of_thought)
-    r = create_chat(provider, model, prompt; kw...)
-    [c[:message][:content] for c in r.response[:choices]]
+
+    if haskey(ENV, "ANTHROPIC_API_KEY")
+        res = PT.anthropic_api(PT.AnthropicSchema(); messages=[prompt[end]], model=model, url=ENV["ANTHROPIC_BASE_URL"], api_key=ENV["ANTHROPIC_API_KEY"], system=prompt[begin]["content"])
+        [c[:text] for c in res.response[:content]]
+    else
+        provider = OpenAI.OpenAIProvider(
+            api_key=ENV["OPENAI_API_KEY"],
+            base_url=ENV["OPENAI_BASE_URL"],
+        )
+        r = create_chat(provider, model, prompt; kw...)
+        [c[:message][:content] for c in r.response[:choices]]
+    end
 end
 
 """

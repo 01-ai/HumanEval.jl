@@ -1,0 +1,45 @@
+Sure, here's the implementation of the `change_base` function in Julia:
+
+```julia
+function change_base(x::Int, base::Int)::String
+    if base < 2 || base > 9
+        throw(ArgumentError("Base must be between 2 and 9"))
+    end
+
+    if x == 0
+        return "0"
+    end
+
+    digits = ""
+    while x > 0
+        remainder = x % base
+        digits = string(remainder) * digits
+        x = div(x, base)
+    end
+
+    return digits
+end
+```
+
+Let's break down the function:
+
+1. **Input Validation**: The function first checks if the base is between 2 and 9. If not, it throws an `ArgumentError`.
+
+2. **Edge Case for Zero**: If the input number `x` is zero, it directly returns the string "0".
+
+3. **Conversion Process**:
+   - It initializes an empty string `digits` to store the result.
+   - It uses a while loop to repeatedly divide the number `x` by the base and collect the remainders.
+   - The remainders are prepended to the `digits` string to build the final result in the correct order.
+
+4. **Return the Result**: Finally, it returns the string representation of the number in the new base.
+
+Here are the examples provided in the docstring to test the function:
+
+```julia
+println(change_base(8, 3))  # Output: "22"
+println(change_base(8, 2))  # Output: "1000"
+println(change_base(7, 2))  # Output: "111"
+```
+
+This implementation should work correctly for converting numbers to bases between 2 and 9.

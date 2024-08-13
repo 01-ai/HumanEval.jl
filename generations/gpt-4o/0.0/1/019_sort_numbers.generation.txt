@@ -1,0 +1,46 @@
+To implement the `sort_numbers` function in Julia, we need to follow these steps:
+
+1. Define a mapping from the string representations of numbers to their corresponding integer values.
+2. Split the input string into individual number words.
+3. Convert these words to their integer equivalents using the mapping.
+4. Sort the integers.
+5. Convert the sorted integers back to their string representations.
+6. Join the sorted string representations into a single space-delimited string.
+
+Here's the implementation:
+
+```julia
+function sort_numbers(numbers::String)::String
+    # Define the mapping from number words to their corresponding integer values
+    number_map = Dict(
+        "zero" => 0, "one" => 1, "two" => 2, "three" => 3, "four" => 4,
+        "five" => 5, "six" => 6, "seven" => 7, "eight" => 8, "nine" => 9
+    )
+    
+    # Define the reverse mapping from integer values to number words
+    reverse_map = Dict(v => k for (k, v) in number_map)
+    
+    # Split the input string into individual number words
+    number_words = split(numbers)
+    
+    # Convert the number words to their integer equivalents
+    number_values = [number_map[word] for word in number_words]
+    
+    # Sort the integer values
+    sorted_values = sort(number_values)
+    
+    # Convert the sorted integer values back to their string representations
+    sorted_words = [reverse_map[value] for value in sorted_values]
+    
+    # Join the sorted string representations into a single space-delimited string
+    return join(sorted_words, " ")
+end
+```
+
+### Example Usage
+
+```julia
+println(sort_numbers("three one five"))  # Output: "one three five"
+```
+
+This function will correctly sort the space-delimited string of number words from smallest to largest.

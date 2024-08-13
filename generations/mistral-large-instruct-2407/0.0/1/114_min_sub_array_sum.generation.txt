@@ -1,0 +1,65 @@
+ Certainly! Below is the implementation of the `min_sub_array_sum` function in Julia based on the given doc string:
+
+```julia
+"""
+    min_sub_array_sum(nums::Vector{Int})::Int
+
+Given an array of integers `nums`, find the minimum sum of any non-empty
+sub-array of nums.
+
+# Example
+
+```jldoctest
+julia> min_sub_array_sum([2, 3, 4, 1, 2, 4])
+1
+
+julia> min_sub_array_sum([-1, -2, -3])
+-6
+```
+"""
+function min_sub_array_sum(nums::Vector{Int})::Int
+    if isempty(nums)
+        throw(ArgumentError("Input array must be non-empty"))
+    end
+
+    min_sum = typemax(Int)
+    current_sum = 0
+
+    for num in nums
+        current_sum += num
+        if current_sum < min_sum
+            min_sum = current_sum
+        end
+        if current_sum > 0
+            current_sum = 0
+        end
+    end
+
+    return min_sum
+end
+```
+
+### Explanation:
+1. **Initialization**:
+   - `min_sum` is initialized to the maximum possible integer value (`typemax(Int)`).
+   - `current_sum` is initialized to 0.
+
+2. **Iteration**:
+   - Iterate through each element in the `nums` array.
+   - Add the current element to `current_sum`.
+   - Update `min_sum` if `current_sum` is less than `min_sum`.
+   - If `current_sum` becomes greater than 0, reset it to 0 (this is because we are looking for the minimum sum, and any positive sum can be discarded for the purpose of finding the minimum).
+
+3. **Return**:
+   - The function returns the `min_sum` which is the minimum sum of any non-empty sub-array.
+
+### Example Usage:
+```julia
+julia> min_sub_array_sum([2, 3, 4, 1, 2, 4])
+1
+
+julia> min_sub_array_sum([-1, -2, -3])
+-6
+```
+
+This implementation ensures that the function efficiently finds the minimum sum of any non-empty sub-array in the given array of integers.

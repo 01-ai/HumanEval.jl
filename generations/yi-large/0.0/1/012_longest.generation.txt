@@ -1,0 +1,17 @@
+function longest(xs::Vector{String})::Union{Nothing, String}
+    if isempty(xs)
+        return nothing
+    end
+
+    max_length = 0
+    longest_string = nothing
+
+    for s in xs
+        if length(s) >= max_length
+            max_length = length(s)
+            longest_string = s
+        end
+    end
+
+    return longest_string
+end

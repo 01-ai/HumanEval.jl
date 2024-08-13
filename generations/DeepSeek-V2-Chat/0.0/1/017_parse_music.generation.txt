@@ -1,0 +1,27 @@
+Here's the implementation of the `parse_music` function in Julia:
+
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    # Define the mapping from note symbols to their durations
+    note_durations = Dict("o" => 4, "o|" => 2, ".|" => 1)
+    
+    # Split the input string into individual note symbols
+    notes = split(music_string)
+    
+    # Initialize an empty vector to store the durations
+    durations = Vector{Int}()
+    
+    # Iterate over each note symbol and convert it to its duration
+    for note in notes
+        if haskey(note_durations, note)
+            push!(durations, note_durations[note])
+        else
+            error("Unknown note symbol: $note")
+        end
+    end
+    
+    return durations
+end
+```
+
+This function first defines a dictionary mapping each note symbol to its corresponding duration. It then splits the input string into individual note symbols, iterates over each symbol, and converts it to its duration using the dictionary. The durations are collected into a vector and returned. If an unknown note symbol is encountered, an error is raised.

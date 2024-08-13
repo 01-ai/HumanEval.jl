@@ -1,0 +1,35 @@
+Here is a Julia function that implements the `largest_divisor` function as described in the doc string:
+```julia
+"""
+    largest_divisor(n::Int)::Int
+
+For a given number `n`, find the largest number that divides `n` evenly, smaller
+than `n`.
+
+```jldoctest
+julia> largest_divisor(15)
+5
+```
+"""
+function largest_divisor(n::Int)::Int
+    for i in n-1:-1:1
+        if n % i == 0
+            return i
+        end
+    end
+    error("No divisors found for $n")
+end
+```
+Here's an explanation of the code:
+
+* We start from `n-1` and iterate downwards to `1` using a `for` loop.
+* Inside the loop, we check if `n` is divisible by the current number `i` using the modulo operator (`n % i == 0`).
+* If `n` is divisible by `i`, we return `i` immediately, as it is the largest divisor smaller than `n`.
+* If the loop completes without finding a divisor, we throw an error using the `error` function.
+
+You can test this function using the example provided in the doc string:
+```julia
+julia> largest_divisor(15)
+5
+```
+I hope this implementation meets your requirements! Let me know if you have any further questions.

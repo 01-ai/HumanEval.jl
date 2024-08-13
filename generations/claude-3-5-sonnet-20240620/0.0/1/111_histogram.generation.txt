@@ -1,0 +1,59 @@
+Here's a Julia function that implements the histogram functionality as described:
+
+```julia
+function histogram(s::String)::Dict{String, Int}
+    # Split the string into individual letters
+    letters = split(s)
+    
+    # Count occurrences of each letter
+    counts = Dict{String, Int}()
+    for letter in letters
+        counts[letter] = get(counts, letter, 0) + 1
+    end
+    
+    # Find the maximum count
+    max_count = isempty(counts) ? 0 : maximum(values(counts))
+    
+    # Create a new dictionary with only the letters that have the maximum count
+    result = Dict{String, Int}()
+    for (letter, count) in counts
+        if count == max_count
+            result[letter] = count
+        end
+    end
+    
+    return result
+end
+```
+
+This function does the following:
+
+1. It splits the input string into individual letters using `split(s)`.
+
+2. It creates a dictionary `counts` to store the count of each letter.
+
+3. It iterates through each letter, updating its count in the `counts` dictionary.
+
+4. It finds the maximum count among all letters.
+
+5. It creates a new dictionary `result` that only includes the letters with the maximum count.
+
+6. Finally, it returns the `result` dictionary.
+
+This implementation handles all the cases mentioned in the examples:
+
+- It returns a dictionary with all letters if they all have the same count.
+- It returns a dictionary with only the letters that have the maximum count if some letters appear more frequently than others.
+- It returns an empty dictionary if the input string is empty.
+
+You can use this function as follows:
+
+```julia
+println(histogram("a b c"))
+println(histogram("a b b a"))
+println(histogram("a b c a b"))
+println(histogram("b b b b a"))
+println(histogram(""))
+```
+
+This should produce output matching the examples you provided.

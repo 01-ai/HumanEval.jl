@@ -1,0 +1,23 @@
+```julia
+function factorize(n::Int)::Vector{Int}
+    factors = Vector{Int}()
+    # Divide n by 2 to get rid of all the even factors
+    while n % 2 == 0
+        push!(factors, 2)
+        n = div(n, 2)
+    end
+    # n must be odd at this point, so we can skip one element (Note i = i + 2)
+    for i = 3:2:isqrt(n)
+        # While i divides n, append i and divide n
+        while n % i == 0
+            push!(factors, i)
+            n = div(n, i)
+        end
+    end
+    # This condition is to handle the case when n is a prime number greater than 2
+    if n > 2
+        push!(factors, n)
+    end
+    return factors
+end
+```

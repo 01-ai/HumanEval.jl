@@ -1,0 +1,37 @@
+Here is the Julia function that implements the `strongest_extension` function based on the provided docstring:
+```julia
+function strongest_extension(class_name::String, extensions::Vector{String})::String
+    strongest_ext = ""
+    max_strength = -Inf
+
+    for ext in extensions
+        cap_count = sum(isuppercase, ext)
+        sm_count = sum(islowercase, ext)
+        strength = cap_count - sm_count
+
+        if strength > max_strength
+            max_strength = strength
+            strongest_ext = ext
+        end
+    end
+
+    return class_name * "." * strongest_ext
+end
+```
+Here's an explanation of the code:
+
+1. We initialize the `strongest_ext` variable to an empty string and `max_strength` to negative infinity.
+2. We iterate over each extension in the `extensions` vector.
+3. For each extension, we count the number of uppercase letters using `sum(isuppercase, ext)` and the number of lowercase letters using `sum(islowercase, ext)`.
+4. We calculate the strength of the extension using the formula `CAP - SM`.
+5. If the strength of the current extension is greater than the maximum strength found so far, we update `max_strength` and `strongest_ext`.
+6. Finally, we return the strongest extension in the format `ClassName.StrongestExtensionName`.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> strongest_extension("Slices", ["SErviNGSliCes", "Cheese", "StuFfed"])
+"Slices.SErviNGSliCes"
+
+julia> strongest_extension("my_class", ["AA", "Be", "CC"])
+"my_class.AA"
+```

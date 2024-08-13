@@ -1,0 +1,31 @@
+Here is the Julia function that implements the `parse_music` function based on the provided docstring:
+```julia
+function parse_music(music_string::String)::Vector{Int}
+    note_durations = Dict("o" => 4, "o|" => 2, ".|" => 1)
+    notes = split(music_string, " ")
+    return [note_durations[note] for note in notes]
+end
+```
+Here's an explanation of the implementation:
+
+1. We define a dictionary `note_durations` that maps each note symbol to its corresponding duration in beats.
+2. We split the input `music_string` into individual notes using the `split` function with a space character as the delimiter.
+3. We use a list comprehension to create a vector of integers, where each integer is the duration of the corresponding note. We look up the duration of each note in the `note_durations` dictionary.
+
+You can test this function using the example provided in the docstring:
+```julia
+julia> parse_music("o o| .| o| o| .| .| .| .| o o")
+11-element Vector{Int64}:
+ 4
+ 2
+ 1
+ 2
+ 2
+ 1
+ 1
+ 1
+ 1
+ 4
+ 4
+```
+I hope this implementation meets your requirements! Let me know if you have any further questions.

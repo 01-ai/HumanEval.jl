@@ -1,0 +1,26 @@
+Here is the Julia function that implements the behavior described in the docstring:
+```julia
+function can_arrange(xs::Vector{Int})::Int
+    for i in length(xs):-1:2
+        if xs[i] < xs[i-1]
+            return i
+        end
+    end
+    return -1
+end
+```
+Here's an explanation of the code:
+
+* We iterate over the input vector `xs` in reverse order, starting from the last element and moving towards the first element.
+* We check if the current element `xs[i]` is less than the previous element `xs[i-1]`. If this condition is true, it means we've found an element that is not greater than or equal to the element immediately preceding it.
+* If we find such an element, we return its index `i`.
+* If we reach the beginning of the vector without finding such an element, we return -1, indicating that no such element exists.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> can_arrange([1, 2, 4, 3, 5])
+4
+
+julia> can_arrange([1, 2, 3])
+-1
+```

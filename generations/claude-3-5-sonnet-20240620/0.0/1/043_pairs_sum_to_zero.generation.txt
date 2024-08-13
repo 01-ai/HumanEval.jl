@@ -1,0 +1,35 @@
+Here's a Julia function that implements the `pairs_sum_to_zero` behavior as described:
+
+```julia
+function pairs_sum_to_zero(l::Vector{Int})::Bool
+    seen = Set{Int}()
+    for num in l
+        if -num in seen
+            return true
+        end
+        push!(seen, num)
+    end
+    return false
+end
+```
+
+This function works as follows:
+
+1. We create an empty `Set` called `seen` to store the numbers we've encountered.
+
+2. We iterate through each number `num` in the input list `l`.
+
+3. For each number, we check if its negation `-num` is already in the `seen` set. If it is, we've found a pair that sums to zero, so we return `true`.
+
+4. If we haven't found a match, we add the current number to the `seen` set.
+
+5. If we've gone through all numbers without finding a pair that sums to zero, we return `false`.
+
+This implementation has a time complexity of O(n) where n is the length of the input list, as we only need to iterate through the list once. The space complexity is also O(n) in the worst case, as we might need to store all numbers in the set if no pair is found.
+
+This function correctly handles all the given test cases:
+
+- It returns `false` for `[1, 3, 5, 0]`, `[1, 3, -2, 1]`, `[1, 2, 3, 7]`, and `[1]` because none of these lists contain two distinct elements that sum to zero.
+- It returns `true` for `[2, 4, -5, 3, 5, 7]` because it contains 5 and -5, which sum to zero.
+
+The function also correctly handles the requirement that the two elements must be distinct, as it only checks for the negation of the current number in the previously seen numbers.

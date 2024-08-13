@@ -1,0 +1,23 @@
+```julia
+function pluck(xs::Vector{Int})
+    # Initialize variables to store the smallest even value and its index
+    smallest_even = typemax(Int)
+    index = -1
+
+    # Iterate over the array to find the smallest even value and its index
+    for (i, x) in enumerate(xs)
+        if x % 2 == 0 && x < smallest_even
+            smallest_even = x
+            index = i
+        end
+    end
+
+    # If an even value was found, return it and its index, otherwise return an empty array
+    if index != -1
+        return [smallest_even, index]
+    else
+        return Int[]
+    end
+end
+```
+This function will correctly implement the `pluck` function as described in the docstring. It iterates over the given array, finds the smallest even value and its index, and returns them in a list. If there are no even values or the array is empty, it returns an empty array.

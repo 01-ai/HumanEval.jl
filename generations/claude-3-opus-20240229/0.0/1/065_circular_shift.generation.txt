@@ -1,0 +1,48 @@
+Here's the implementation of the `circular_shift` function in Julia:
+
+```julia
+function circular_shift(x::Int, shift::Int)::String
+    digits = string(x)
+    len = length(digits)
+
+    if shift >= len
+        return reverse(digits)
+    else
+        shifted_digits = digits[end-shift+1:end] * digits[1:end-shift]
+        return shifted_digits
+    end
+end
+```
+
+Let's break down the code:
+
+1. We convert the integer `x` to a string using `string(x)` to obtain the digits as a string. We store the result in the variable `digits`.
+
+2. We calculate the length of the `digits` string and store it in the variable `len`.
+
+3. We check if `shift` is greater than or equal to the number of digits (`len`). If it is, we simply return the reversed `digits` string using `reverse(digits)`. This handles the case where the shift is greater than the number of digits.
+
+4. If `shift` is less than the number of digits, we perform the circular shift:
+   - We extract the last `shift` digits from the `digits` string using `digits[end-shift+1:end]`.
+   - We extract the remaining digits from the beginning of the `digits` string using `digits[1:end-shift]`.
+   - We concatenate the two extracted parts using `*` to obtain the shifted digits.
+
+5. Finally, we return the `shifted_digits` string.
+
+Here are some example usages:
+
+```julia
+julia> circular_shift(12, 1)
+"21"
+
+julia> circular_shift(12, 2)
+"12"
+
+julia> circular_shift(123, 1)
+"312"
+
+julia> circular_shift(123, 4)
+"321"
+```
+
+The function handles the case where `shift` is greater than the number of digits by returning the reversed digits. It also works correctly for shifts that are less than the number of digits, performing the circular shift as expected.

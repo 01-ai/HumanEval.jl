@@ -1,0 +1,55 @@
+Here is the Julia function that implements the behavior described in the docstring:
+```julia
+function sort_array_based_on_head_tail(xs::Vector{Int})::Vector{Int}
+    if isempty(xs)
+        return Int[]
+    end
+
+    head = xs[1]
+    tail = xs[end]
+    sum_head_tail = head + tail
+
+    if sum_head_tail % 2 == 0
+        return sort(xs; rev=true)
+    else
+        return sort(xs)
+    end
+end
+```
+Here's an explanation of the code:
+
+1. We first check if the input array `xs` is empty. If it is, we return an empty array `Int[]`.
+2. We extract the first and last elements of the array, `head` and `tail`, respectively.
+3. We calculate the sum of `head` and `tail`, `sum_head_tail`.
+4. We check if `sum_head_tail` is even by using the modulo operator (`%`). If it is even, we sort the array in descending order using `sort(xs; rev=true)`.
+5. If `sum_head_tail` is odd, we sort the array in ascending order using `sort(xs)`.
+6. In both cases, we return a new sorted array without modifying the original array.
+
+You can test this function using the examples provided in the docstring:
+```julia
+julia> sort_array_based_on_head_tail(Int[])
+Int64[]
+
+julia> sort_array_based_on_head_tail([5])
+1-element Vector{Int64}:
+ 5
+
+julia> sort_array_based_on_head_tail([2, 4, 3, 0, 1, 5])
+6-element Vector{Int64}:
+ 0
+ 1
+ 2
+ 3
+ 4
+ 5
+
+julia> sort_array_based_on_head_tail([2, 4, 3, 0, 1, 5, 6])
+7-element Vector{Int64}:
+ 6
+ 5
+ 4
+ 3
+ 2
+ 1
+ 0
+```

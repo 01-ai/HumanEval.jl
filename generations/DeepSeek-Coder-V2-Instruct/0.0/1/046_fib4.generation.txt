@@ -1,0 +1,29 @@
+ Here's the implementation of the `fib4` function in Julia, which efficiently computes the n-th element of the `fib4` number sequence without using recursion:
+
+```julia
+function fib4(n::Int)::Int
+    if n == 0
+        return 0
+    elseif n == 1
+        return 0
+    elseif n == 2
+        return 2
+    elseif n == 3
+        return 0
+    end
+
+    # Initialize the base cases
+    fibs = [0, 0, 2, 0]
+
+    # Compute the sequence iteratively
+    for i in 4:n
+        next_fib = sum(fibs)
+        # Shift the array to the left and add the new value
+        fibs = [fibs[2], fibs[3], fibs[4], next_fib]
+    end
+
+    return fibs[4]
+end
+```
+
+This function uses an iterative approach to compute the `fib4` sequence. It starts with the base cases and iteratively computes the next value in the sequence by summing the last four values. The array `fibs` is updated in each iteration to maintain the last four values of the sequence.

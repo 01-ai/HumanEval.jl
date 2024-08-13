@@ -1,0 +1,16 @@
+```julia
+function sum_squares(xs::Vector{Int})::Int
+    total_sum = 0
+    for (index, value) in enumerate(xs)
+        if index % 3 == 0
+            total_sum += value^2
+        elseif index % 4 == 0 && index % 3 != 0
+            total_sum += value^3
+        else
+            total_sum += value
+        end
+    end
+    return total_sum
+end
+```
+This Julia function iterates over the input vector `xs`, checking the index of each element. If the index is a multiple of 3, it squares the element; if the index is a multiple of 4 and not a multiple of 3, it cubes the element. For all other cases, it adds the element as is. Finally, it returns the sum of all these modified and unmodified elements.

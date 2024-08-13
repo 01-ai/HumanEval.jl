@@ -1,0 +1,21 @@
+```julia
+function sort_third(l::Vector)
+    # Extract elements at indices divisible by 3
+    third_elements = [l[i] for i in 1:length(l) if (i-1) % 3 == 2]
+    
+    # Sort these elements
+    sorted_third_elements = sort(third_elements)
+    
+    # Create a new list with sorted elements at indices divisible by 3
+    result = copy(l)
+    sorted_index = 1
+    for i in 1:length(l)
+        if (i-1) % 3 == 2
+            result[i] = sorted_third_elements[sorted_index]
+            sorted_index += 1
+        end
+    end
+    
+    return result
+end
+```

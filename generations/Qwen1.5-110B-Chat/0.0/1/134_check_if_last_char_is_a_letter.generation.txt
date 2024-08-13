@@ -1,0 +1,26 @@
+```julia
+function check_if_last_char_is_a_letter(s::String)::Bool
+    if s == ""
+        return false
+    end
+    
+    last_char = s[end]
+    if !isalpha(last_char)
+        return false
+    end
+    
+    # Check if the last character is not part of a word
+    if length(s) > 1 && isalpha(s[end-1])
+        return false
+    end
+    
+    # Check if there's a space before the last character to ensure it's not part of a word
+    if length(s) > 1 && s[end-1] != ' '
+        return false
+    end
+    
+    return true
+end
+```
+
+This function first checks if the string is empty, in which case it returns `false`. Then it verifies if the last character is an alphabetical character. If it is, the function checks if the character before it is also an alphabet character or if there's a space before it to ensure it's not part of a word. If these conditions are met, it returns `true`; otherwise, `false`.

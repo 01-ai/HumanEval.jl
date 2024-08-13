@@ -1,0 +1,40 @@
+Here's the solution to the problem:
+
+```julia
+function add_elements(xs::Vector{Int}, k::Int)::Int
+    sum = 0
+    for i in 1:k
+        if xs[i] >= 10 && xs[i] <= 99
+            sum += xs[i]
+        end
+    end
+    return sum
+end
+```
+
+Explanation:
+
+1. We define the function `add_elements` that takes a vector of integers `xs` and an integer `k` as input and returns an integer.
+
+2. We initialize a variable `sum` to 0, which will store the sum of the elements with at most two digits.
+
+3. We start a loop that iterates from 1 to `k` (inclusive). This loop will consider only the first `k` elements of `xs`.
+
+4. Inside the loop, we check if the current element `xs[i]` has at most two digits by checking if it is greater than or equal to 10 and less than or equal to 99.
+
+5. If the element has at most two digits, we add it to the `sum` variable.
+
+6. After the loop ends, we return the final value of `sum`, which represents the sum of the elements with at most two digits from the first `k` elements of `xs`.
+
+The given example can be tested as follows:
+
+```jldoctest
+julia> add_elements([111, 21, 3, 4000, 5, 6, 7, 8, 9], 4)  # sum of 21 + 3
+24
+```
+
+The constraints are satisfied:
+- The length of `xs` is between 1 and 100.
+- The value of `k` is between 1 and the length of `xs`.
+
+The time complexity of this solution is O(k) since we iterate over the first `k` elements of `xs`. The space complexity is O(1) as we only use a constant amount of extra space to store the `sum` variable.

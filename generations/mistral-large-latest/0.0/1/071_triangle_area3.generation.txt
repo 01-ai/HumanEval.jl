@@ -1,0 +1,17 @@
+Sure, here is the Julia function that meets your requirements:
+
+```julia
+function triangle_area3(a::Number, b::Number, c::Number)::Number
+    # Check if the three sides form a valid triangle
+    if (a + b > c) & (b + c > a) & (c + a > b)
+        # Calculate the semi-perimeter
+        s = (a + b + c) / 2
+        # Calculate the area using Heron's formula and round to 2 decimal points
+        area = round(sqrt(s * (s - a) * (s - b) * (s - c)), digits=2)
+        return area
+    else
+        return -1
+    end
+end
+```
+This function first checks if the three sides form a valid triangle. If they do, it calculates the semi-perimeter and then the area using Heron's formula. The area is then rounded to 2 decimal points. If the three sides do not form a valid triangle, the function returns -1.

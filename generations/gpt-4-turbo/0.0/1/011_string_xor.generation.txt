@@ -1,0 +1,16 @@
+```julia
+function string_xor(a::String, b::String)::String
+    # Ensure both strings are of the same length
+    if length(a) != length(b)
+        throw(ArgumentError("Both strings must be of the same length"))
+    end
+    
+    # Perform XOR operation character by character
+    result = [xor(parse(Int, a[i]), parse(Int, b[i])) for i in 1:length(a)]
+    
+    # Convert the result array back to a string
+    return join(string.(result))
+end
+```
+
+This function `string_xor` takes two binary strings `a` and `b`, checks if they are of the same length, and then performs a bitwise XOR operation on each corresponding pair of characters. The result is collected in an array and then converted back to a string which is returned.
